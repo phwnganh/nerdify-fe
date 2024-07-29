@@ -1,23 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import ModalCustom from './components/Modal';
+import Navbar from './components/Header';
 
 function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // Hàm để mở Modal
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  // Hàm để đóng Modal
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      {/* <h1>Test Modal</h1>
+      <button onClick={showModal}>Open Modal</button>
+      <ModalCustom
+        title="Example Modal"
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        footer={null} // Không có footer
+      >
+        This is a modal content
+      </ModalCustom> */}
     </div>
   );
 }
