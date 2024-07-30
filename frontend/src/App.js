@@ -3,6 +3,9 @@ import './App.css';
 import { useState } from 'react';
 import ModalCustom from './components/Modal';
 import Navbar from './components/Header';
+import BreadCrumbHome from './components/BreadCrumb/BreadCrumbHome';
+import InputCustom from './components/Input';
+import Footer from './components/Footer';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,7 +21,9 @@ function App() {
   };
   return (
     <div className="App">
+      {/*test cac component */}
       <Navbar/>
+      <BreadCrumbHome/>
       {/* <h1>Test Modal</h1>
       <button onClick={showModal}>Open Modal</button>
       <ModalCustom
@@ -29,6 +34,7 @@ function App() {
       >
         This is a modal content
       </ModalCustom> */}
+      <Footer/>
     </div>
   );
 }
