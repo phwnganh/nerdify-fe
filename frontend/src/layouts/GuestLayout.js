@@ -1,0 +1,31 @@
+import React from "react";
+import Navbar from "../components/Header";
+import Footer from "../components/Footer";
+import { Divider } from "antd";
+
+const GuestLayout = ({ children }) => {
+  return (
+    <div style={styles.container}>
+      <Navbar />
+      <div style={styles.content}>{children}</div>
+      <Divider />
+      <Footer />
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+  },
+  content: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+};
+
+export default GuestLayout;

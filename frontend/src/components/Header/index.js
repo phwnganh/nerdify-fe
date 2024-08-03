@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Col, Layout, Row, Tabs } from "antd";
-// import { Header } from "antd/es/layout/layout";
 import MenuBar from "../Menu";
 import InputCustom from "../Input";
 import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+import CLIENT_URI from "../../routers";
 const { Header } = Layout;
+
 export default function Navbar() {
+  const navigate = useNavigate();
   const [selectedKey, setSelectedKey] = useState("home");
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -20,7 +23,6 @@ export default function Navbar() {
   const handleSearchClick = () => {
     setSearchVisible(true);
   };
-
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -73,8 +75,11 @@ export default function Navbar() {
           <div
             className="search-container"
             onClick={handleSearchClick}
-            
-            style={{ display: "flex", alignItems: "center", paddingRight: '10px' }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              paddingRight: "10px",
+            }}
           >
             <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
             {searchVisible && (
@@ -89,10 +94,19 @@ export default function Navbar() {
               />
             )}
           </div>
-          <ButtonCustom buttonType="primary" style={{ marginRight: "10px" }}>
+          <ButtonCustom
+            buttonType="primary"
+            style={{ marginRight: "10px" }}
+            onClick={() => navigate(CLIENT_URI.LOGIN)}
+          >
             ĐĂNG NHẬP
           </ButtonCustom>
-          <ButtonCustom buttonType="secondary">ĐĂNG KÝ</ButtonCustom>
+          <ButtonCustom
+            buttonType="secondary"
+            onClick={() => navigate(CLIENT_URI.REGISTER)}
+          >
+            ĐĂNG KÝ
+          </ButtonCustom>
         </Col>
       </Row>
     </Header>

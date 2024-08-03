@@ -1,7 +1,14 @@
-const ROUTER = {
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import LoginPage from "../pages/GuestsPage/Login";
+import GuestLayout from "../layouts/GuestLayout";
+import RegisterPage from "../pages/GuestsPage/Register";
+import { LandingPage } from "../pages/GuestsPage/LandingPage";
+
+const CLIENT_URI = {
   HOME: "/",
-  DANG_NHAP: "/login",
-  DANG_KY: "/register",
+  LOGIN: "/login",
+  REGISTER: "/register",
+  FORGOT_PASSWORD: "/forgot-password",
 
   // LEARNER
   COURSE_PHASE: "/course-phase",
@@ -10,4 +17,37 @@ const ROUTER = {
   PROFILE: "/personal-profile",
 };
 
-export default ROUTER;
+export default CLIENT_URI;
+
+export const router = createBrowserRouter([
+  // Guest urls
+  {
+    children: [
+      {
+        path: CLIENT_URI.LOGIN,
+        element: <LoginPage />,
+      },
+      {
+        path: CLIENT_URI.REGISTER,
+        element: <RegisterPage />,
+      },
+    ],
+  },
+  {
+    element: (
+      <GuestLayout>
+        <Outlet />
+      </GuestLayout>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.HOME,
+        element: <LandingPage />,
+      },
+    ],
+  },
+
+  // Learner urls
+
+  // Admin urls
+]);
