@@ -3,6 +3,7 @@ import LoginPage from "../pages/GuestsPage/Login";
 import GuestLayout from "../layouts/GuestLayout";
 import RegisterPage from "../pages/GuestsPage/Register";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
+import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 
 const CLIENT_URI = {
   HOME: "/",
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
         path: CLIENT_URI.HOME,
         element: <LandingPage />,
       },
+      {
+        path: CLIENT_URI.COURSE_PHASE,
+        element: <ViewLevelDetail/>
+      }
     ],
   },
 

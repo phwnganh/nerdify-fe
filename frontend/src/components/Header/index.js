@@ -5,7 +5,7 @@ import InputCustom from "../Input";
 import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import CLIENT_URI from "../../routers";
 const { Header } = Layout;
@@ -56,8 +56,10 @@ export default function Navbar() {
             selectedKey={selectedKey}
             onClick={handleMenuClick}
           >
-            <MenuItem key="home">TRANG CHỦ</MenuItem>
-            <MenuItem key="courses">KHÓA HỌC</MenuItem>
+            <MenuItem key="home" onClick={() => navigate(CLIENT_URI.HOME)}>TRANG CHỦ</MenuItem>
+            <MenuItem key="practices" onClick={() => navigate(CLIENT_URI.COURSE_PHASE)}>LUYỆN TẬP</MenuItem>
+            <MenuItem key="flashcards">FLASHCARD</MenuItem>
+            <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
             <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
           </MenuBar>

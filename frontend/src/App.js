@@ -6,6 +6,7 @@ import Navbar from './components/Header';
 import BreadCrumbHome from './components/BreadCrumb/BreadCrumbHome';
 import InputCustom from './components/Input';
 import Footer from './components/Footer';
+import ViewLevelDetail from './pages/LearnersPage/LevelDetailPage';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -34,6 +35,7 @@ function App() {
       >
         This is a modal content
       </ModalCustom> */}
+      <ViewLevelDetail/>
       <Footer/>
     </div>
   );

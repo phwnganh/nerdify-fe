@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import {
   FacebookOutlined,
   MailOutlined,
