@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Card, List } from "antd";
+import { Col, Row, Card, List, Avatar } from "antd";
 import ButtonCustom from "../../../components/Button";
 import landingPageImg from "../../../assets/landingPage/landingPage.png";
 import landingPageImg2 from "../../../assets/landingPage/landingPage2.png";
@@ -9,7 +9,7 @@ import speaking from "../../../assets/landingPage/speaking.png";
 import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
-import { CheckOutlined } from "@ant-design/icons";
+import { CheckOutlined, StarFilled } from "@ant-design/icons";
 const { Meta } = Card;
 export const LandingPage = () => {
   const skills = [
@@ -50,6 +50,33 @@ export const LandingPage = () => {
     },
     {
       title: "Title 4",
+    },
+  ];
+
+  const feedbacks = [
+    {
+      name: "Tuan",
+      content:
+        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      stars: 5,
+    },
+    {
+      name: "Tuan2",
+      content:
+        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      stars: 4,
+    },
+    {
+      name: "Tuan3",
+      content:
+        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      stars: 3,
+    },
+    {
+      name: "Tuan4",
+      content:
+        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      stars: 2,
     },
   ];
   return (
@@ -169,6 +196,7 @@ export const LandingPage = () => {
           </ButtonCustom>
         </Col>
       </Row>
+      {/* Khoa hoc */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC</h2>
         <List
@@ -180,15 +208,8 @@ export const LandingPage = () => {
           renderItem={(item) => (
             <List.Item>
               <Card
-                // style={{ width: "280px" }}
-                cover={
-                  <img
-                    alt="example"
-                    src={sample}
-                    height={130}
-                    // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
+                style={{ width: "330px" }}
+                cover={<img alt="example" src={sample} />}
               >
                 <Meta
                   // avatar={<Avatar src={sample} />}
@@ -208,6 +229,96 @@ export const LandingPage = () => {
             </List.Item>
           )}
         />
+      </div>
+      {/* Blog */}
+      <div>
+        <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
+        <List
+          grid={{
+            gutter: 16,
+            column: 4,
+          }}
+          dataSource={course}
+          renderItem={(item) => (
+            <List.Item>
+              <Card
+                style={{ width: "330px" }}
+                cover={<img alt="example" src={sample} />}
+              >
+                <p>
+                  Title content da sd asd fadgasd sadf g hd dsfs dr rwg dfg rs
+                  tgfdg etd gfd gret dfg
+                </p>
+              </Card>
+            </List.Item>
+          )}
+        />
+      </div>
+      {/* Feedback */}
+      <div>
+        <h2 style={{ fontSize: "40px", textAlign: "center" }}>FEEDBACK</h2>
+        <List
+          grid={{
+            gutter: 16,
+            column: 4,
+          }}
+          dataSource={feedbacks}
+          renderItem={(item) => (
+            <List.Item>
+              <Card style={{ width: "330px" }}>
+                <Row>
+                  <Col span={4}>
+                    <Avatar src={sample} size={42} />
+                  </Col>
+                  <Col>
+                    <Row>
+                      <b>{item.name}</b>
+                    </Row>
+                    <Row>
+                      {Array.from({ length: item.stars }).map((_, index) => (
+                        <StarFilled
+                          style={{ color: "#FFCC33", fontSize: "20px" }}
+                        />
+                      ))}
+                    </Row>
+                  </Col>
+                </Row>
+                <p>{item.content}</p>
+              </Card>
+            </List.Item>
+          )}
+        />
+      </div>
+
+      <div
+        style={{
+          background: "#FFCD26",
+          height: "250px",
+          borderRadius: "20px",
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "40px",
+            padding: "50px 0px 0px 0px",
+            color: "white",
+            fontWeight: "600",
+          }}
+        >
+          Đăng ký ngay để nhận ưu đãi lên đến 50%
+        </p>
+        <ButtonCustom
+          buttonType="primary"
+          style={{
+            fontSize: "30px",
+            fontWeight: "600",
+            padding: "30px 30px",
+          }}
+          // onClick={() => navigate(CLIENT_URI.LOGIN)}
+        >
+          Đăng ký
+        </ButtonCustom>
       </div>
     </div>
   );
