@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Card, List } from "antd";
+import { Col, Row, List, Card } from "antd";
 import ButtonCustom from "../../../components/Button";
 import landingPageImg from "../../../assets/landingPage/landingPage.png";
 import landingPageImg2 from "../../../assets/landingPage/landingPage2.png";
@@ -10,6 +10,7 @@ import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
 import { CheckOutlined } from "@ant-design/icons";
+import CardCustom from "../../../components/Card";
 const { Meta } = Card;
 export const LandingPage = () => {
   const skills = [
@@ -53,7 +54,7 @@ export const LandingPage = () => {
     },
   ];
   return (
-    <div>
+    <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
@@ -179,13 +180,14 @@ export const LandingPage = () => {
           dataSource={course}
           renderItem={(item) => (
             <List.Item>
-              <Card
+              <CardCustom
                 // style={{ width: "280px" }}
                 cover={
                   <img
                     alt="example"
                     src={sample}
-                    height={130}
+                    height={150}
+                    style={{objectFit: 'cover'}}
                     // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                   />
                 }
@@ -204,7 +206,7 @@ export const LandingPage = () => {
                 >
                   Bắt đầu
                 </ButtonCustom>
-              </Card>
+              </CardCustom>
             </List.Item>
           )}
         />
