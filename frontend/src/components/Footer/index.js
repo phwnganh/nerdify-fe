@@ -7,6 +7,7 @@ import {
   PhoneOutlined,
   TikTokOutlined,
 } from "@ant-design/icons";
+import { TitleCustom } from "../Typography";
 export default function Footer() {
   return (
     <Row gutter={[32, 32]} style={{ maxWidth: "100%" }}>
@@ -30,20 +31,20 @@ export default function Footer() {
         </Row>
       </Col>
       <Col span={6}>
-        <h5>Tài nguyên học tập</h5>
+        <TitleCustom level={5}>Tài nguyên học tập</TitleCustom>
         <p>Các bài tập đa dạng</p>
         <p>Bộ từ vựng flashcards</p>
         <p>Blog học tiếng Đức</p>
       </Col>
       <Col span={6}>
-        <h5>Hỗ trợ học viên</h5>
+        <TitleCustom level={5}>Hỗ trợ học viên</TitleCustom>
         <p>Điều khoản và điều kiện</p>
         <p>Chính sách bảo mật</p>
         <p>Chính sách hoàn tiền</p>
         <p>Khảo sát và phản hồi</p>
       </Col>
       <Col span={6}>
-        <h5>Liên hệ</h5>
+        <TitleCustom level={5}>Liên hệ</TitleCustom>
         <p>
           <PhoneOutlined /> 0943206786
         </p>
