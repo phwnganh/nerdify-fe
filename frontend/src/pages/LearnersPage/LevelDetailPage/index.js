@@ -12,6 +12,7 @@ import Icon from "@ant-design/icons/lib/components/Icon";
 import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ScrollablePhaseDiv } from "./styled";
+import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 export default function ViewLevelDetail() {
   const phases = [
     {
@@ -49,6 +50,7 @@ export default function ViewLevelDetail() {
   };
   return (
     <div style={{ padding: "24px" }}>
+      <BreadCrumbHome/>
       <CardCustom bordered={false} style={{ maxWidth: 1000, margin: "auto" }}>
         <Row gutter={[16, 16]}>
           <Col md={12}>

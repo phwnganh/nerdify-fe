@@ -8,6 +8,7 @@ import LoginPage from "../pages/GuestsPage/Login";
 import GuestLayout from "../layouts/GuestLayout";
 import { HomePage } from "../pages/LearnersPage/HomePage";
 import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
+import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExercises";
 
 const LearnersRoute = ({children}) => {
       const role = UserRole();
@@ -27,26 +28,6 @@ const LearnersRoute = ({children}) => {
     export const router = createBrowserRouter([
       // Guest urls
       {
-        children: [
-          {
-            path: CLIENT_URI.LOGIN,
-            element: (
-              <GuestRoute>
-                <LoginPage/>
-              </GuestRoute>
-            ),
-          },
-          {
-            path: CLIENT_URI.REGISTER,
-            element: (
-              <GuestRoute>
-                <RegisterPage/>
-              </GuestRoute>
-            ),
-          },
-        ],
-      },
-      {
         element: (
           <GuestLayout>
             <Outlet />
@@ -59,8 +40,20 @@ const LearnersRoute = ({children}) => {
             element: <LandingPage/>,
           },
           {
-            path: CLIENT_URI.COURSE_PHASE,
+            path: CLIENT_URI.LEVEL_DETAIL,
             element: <ViewLevelDetail />,
+          },
+          {
+            path: CLIENT_URI.LOGIN,
+            element: (
+                <LoginPage/>
+            ),
+          },
+          {
+            path: CLIENT_URI.REGISTER,
+            element: (
+                <RegisterPage/>
+            ),
           },
         ],
       },

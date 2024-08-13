@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BreadCrumbCustom, BreadCrumbItem } from ".";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 export default function BreadCrumbHome() {
   const [breadcrumb, setBreadCrumb] = useState([]);
   const navigate = useNavigate();
-  const handleClick = (path) => {
-    if (path === "/courses") {
+  const location = useLocation();
+
+  useEffect(() => {
+    if(location.pathname === '/level-detail'){
       setBreadCrumb([
-        { path: "/", label: "Home" },
-        { path: "/course-phase", label: "Courses" },
-      ]);
-    } else if (path === "/flashcards") {
+        {path: "/", label: "Trang chủ"},
+        {path: "/level-detail", label: "Trình độ"}
+      ])
+    }
+  }, [location.pathname])
+  const handleClick = (path) => {
+    if (path === "/flashcards") {
       setBreadCrumb([
         { path: "/", label: "Home" },
         { path: "/flashcards", label: "Flashcards" },
@@ -18,15 +23,9 @@ export default function BreadCrumbHome() {
     } else if (path === "/all-exercises") {
       setBreadCrumb([
         { path: "/", label: "Home" },
-        { path: "/course-phase", label: "Courses" },
-        { path: "/all-exercises", label: "Exercise" },
+        { path: "/level-detail", label: "Trình độ" },
+        { path: "/one-exercise", label: "Bài tập" },
       ]);
-    }else if(path === "/one-exercise"){
-      setBreadCrumb([
-            {path: "/", label: "Home"},
-            {path: "/course-phase", label: "Courses"},
-            {path: "/one-exercise", label: "Exercise"}
-      ])
     }
     navigate(path);
   };
@@ -35,7 +34,7 @@ export default function BreadCrumbHome() {
     <div>
       <BreadCrumbCustom>
         {breadcrumb.map((item) => (
-          <BreadCrumbItem key={item.path}>
+          <BreadCrumbItem key={item.path} className={location.pathname === item.path ? "active" : ""}>
             <a href="" onClick={() => handleClick(item.path)}>
               {item.label}
             </a>

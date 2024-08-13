@@ -14,7 +14,7 @@ const CLIENT_URI = {
   FORGOT_PASSWORD: "/forgot-password",
 
   // LEARNER
-  COURSE_PHASE: "/level-detail",
+  LEVEL_DETAIL: "/level-detail",
   ONE_EXERCISE: "/one-exercise",
   PROFILE: "/personal-profile",
 };

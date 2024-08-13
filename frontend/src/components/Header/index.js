@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Layout, Row, Tabs } from "antd";
 import MenuBar from "../Menu";
 import InputCustom from "../Input";
@@ -6,7 +6,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
 import logo from "../../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import CLIENT_URI from "../../routers";
 const { Header } = Layout;
 
@@ -15,6 +15,14 @@ export default function Navbar() {
   const [selectedKey, setSelectedKey] = useState("home");
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const location = useLocation()
+  useEffect(() => {
+    if(location.pathname === CLIENT_URI.LEVEL_DETAIL || location.pathname === CLIENT_URI.ONE_EXERCISE){
+      setSelectedKey("practices")
+    }else if(location.pathname === CLIENT_URI.LANDING_PAGE){
+      setSelectedKey("home")
+    }
+  }, [location.pathname])
   const handleMenuClick = (e) => {
     setSelectedKey(e.key);
     console.log(e.key);
@@ -56,12 +64,12 @@ export default function Navbar() {
             selectedKey={selectedKey}
             onClick={handleMenuClick}
           >
-            <MenuItem key="home" onClick={() => navigate(CLIENT_URI.HOME)}>
+            <MenuItem key="home" onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}>
               TRANG CHỦ
             </MenuItem>
             <MenuItem
               key="practices"
-              onClick={() => navigate(CLIENT_URI.COURSE_PHASE)}
+              onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
             >
               LUYỆN TẬP
             </MenuItem>
