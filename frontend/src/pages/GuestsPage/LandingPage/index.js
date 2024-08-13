@@ -209,7 +209,7 @@ export const LandingPage = () => {
           renderItem={(item) => (
             <List.Item>
               <CardCustom
-                 cover={
+                cover={
                   <img
                     alt="example"
                     src={sample}

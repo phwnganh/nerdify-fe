@@ -56,8 +56,15 @@ export default function Navbar() {
             selectedKey={selectedKey}
             onClick={handleMenuClick}
           >
-            <MenuItem key="home" onClick={() => navigate(CLIENT_URI.HOME)}>TRANG CHỦ</MenuItem>
-            <MenuItem key="practices" onClick={() => navigate(CLIENT_URI.COURSE_PHASE)}>LUYỆN TẬP</MenuItem>
+            <MenuItem key="home" onClick={() => navigate(CLIENT_URI.HOME)}>
+              TRANG CHỦ
+            </MenuItem>
+            <MenuItem
+              key="practices"
+              onClick={() => navigate(CLIENT_URI.COURSE_PHASE)}
+            >
+              LUYỆN TẬP
+            </MenuItem>
             <MenuItem key="flashcards">FLASHCARD</MenuItem>
             <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
