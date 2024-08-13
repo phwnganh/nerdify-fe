@@ -10,6 +10,7 @@ import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
+import CardCustom from "../../../components/Card";
 const { Meta } = Card;
 export const LandingPage = () => {
   const skills = [
@@ -80,7 +81,7 @@ export const LandingPage = () => {
     },
   ];
   return (
-    <div>
+    <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
@@ -207,9 +208,16 @@ export const LandingPage = () => {
           dataSource={course}
           renderItem={(item) => (
             <List.Item>
-              <Card
-                style={{ width: "330px" }}
-                cover={<img alt="example" src={sample} />}
+              <CardCustom
+                 cover={
+                  <img
+                    alt="example"
+                    src={sample}
+                    height={150}
+                    style={{objectFit: 'cover'}}
+                    // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
               >
                 <Meta
                   // avatar={<Avatar src={sample} />}
@@ -225,7 +233,7 @@ export const LandingPage = () => {
                 >
                   Bắt đầu
                 </ButtonCustom>
-              </Card>
+              </CardCustom>
             </List.Item>
           )}
         />
@@ -241,15 +249,22 @@ export const LandingPage = () => {
           dataSource={course}
           renderItem={(item) => (
             <List.Item>
-              <Card
-                style={{ width: "330px" }}
-                cover={<img alt="example" src={sample} />}
+              <CardCustom
+                 cover={
+                  <img
+                    alt="example"
+                    src={sample}
+                    height={150}
+                    style={{objectFit: 'cover'}}
+                    // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
               >
                 <p>
                   Title content da sd asd fadgasd sadf g hd dsfs dr rwg dfg rs
                   tgfdg etd gfd gret dfg
                 </p>
-              </Card>
+              </CardCustom>
             </List.Item>
           )}
         />

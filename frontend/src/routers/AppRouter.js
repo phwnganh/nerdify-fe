@@ -55,7 +55,7 @@ const LearnersRoute = ({children}) => {
           {
             path: CLIENT_URI.LANDING_PAGE,
             // element: <LandingPage />,
-            element: <HomePage />,
+            element: <LandingPage />,
           },
           {
             path: CLIENT_URI.COURSE_PHASE,
