@@ -5,56 +5,20 @@ import RegisterPage from "../pages/GuestsPage/Register";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { HomePage } from "../pages/LearnersPage/HomePage";
+import UserRole from "../hooks/userRole";
 
 const CLIENT_URI = {
-  HOME: "/",
+  LANDING_PAGE: "/",
   LOGIN: "/login",
   REGISTER: "/register",
   FORGOT_PASSWORD: "/forgot-password",
 
   // LEARNER
-  COURSE_PHASE: "/course-phase",
-  ALL_EXERCISES: "/all-exercises",
+  COURSE_PHASE: "/level-detail",
   ONE_EXERCISE: "/one-exercise",
   PROFILE: "/personal-profile",
 };
 
 export default CLIENT_URI;
 
-export const router = createBrowserRouter([
-  // Guest urls
-  {
-    children: [
-      {
-        path: CLIENT_URI.LOGIN,
-        element: <LoginPage />,
-      },
-      {
-        path: CLIENT_URI.REGISTER,
-        element: <RegisterPage />,
-      },
-    ],
-  },
-  {
-    element: (
-      <GuestLayout>
-        <Outlet />
-      </GuestLayout>
-    ),
-    children: [
-      {
-        path: CLIENT_URI.HOME,
-        // element: <LandingPage />,
-        element: <HomePage />,
-      },
-      {
-        path: CLIENT_URI.COURSE_PHASE,
-        element: <ViewLevelDetail />,
-      },
-    ],
-  },
 
-  // Learner urls
-
-  // Admin urls
-]);

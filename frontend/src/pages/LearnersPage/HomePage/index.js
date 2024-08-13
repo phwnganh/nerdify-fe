@@ -58,7 +58,7 @@ export const HomePage = () => {
         </Row>
       </div>
 
-      <div>
+      <div style={{}}>
         <h2
           style={{
             fontSize: "40px",
