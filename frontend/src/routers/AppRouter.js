@@ -7,6 +7,7 @@ import RegisterPage from "../pages/GuestsPage/Register";
 import LoginPage from "../pages/GuestsPage/Login";
 import GuestLayout from "../layouts/GuestLayout";
 import { HomePage } from "../pages/LearnersPage/HomePage";
+import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
 
 const LearnersRoute = ({children}) => {
       const role = UserRole();
@@ -55,7 +56,7 @@ const LearnersRoute = ({children}) => {
           {
             path: CLIENT_URI.LANDING_PAGE,
             // element: <LandingPage />,
-            element: <LandingPage />,
+            element: <LandingPage/>,
           },
           {
             path: CLIENT_URI.COURSE_PHASE,
