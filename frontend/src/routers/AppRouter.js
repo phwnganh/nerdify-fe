@@ -9,6 +9,7 @@ import GuestLayout from "../layouts/GuestLayout";
 import { HomePage } from "../pages/LearnersPage/HomePage";
 import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
 import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExercises";
+import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningExercises";
 
 const LearnersRoute = ({children}) => {
       const role = UserRole();
@@ -41,7 +42,7 @@ const LearnersRoute = ({children}) => {
           },
           {
             path: CLIENT_URI.LEVEL_DETAIL,
-            element: <ViewLevelDetail />,
+            element: <ListeningExercise />,
           },
           {
             path: CLIENT_URI.LOGIN,
