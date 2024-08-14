@@ -10,7 +10,7 @@ import {
 import { TitleCustom } from "../Typography";
 export default function Footer() {
   return (
-    <Row gutter={[32, 32]} style={{ maxWidth: "100%" }}>
+    <Row gutter={[32, 32]} style={{ width: "100%" }}>
       <Col span={6}>
         <Row style={{ marginLeft: "13px" }}>
           {/* <Col> */}
