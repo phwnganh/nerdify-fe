@@ -5,8 +5,12 @@ import {
   TextCustom,
   ParagraphCustom,
 } from "../../../components/Typography";
-import logo from "../../../assets/logo.png";
-import listening from "../../../assets/listening.png";
+import a1 from "../../../assets/levelImage/a1.png";
+import listening from "../../../assets/exercisesSkill/listening.png";
+import reading from "../../../assets/exercisesSkill/reading.png";
+import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
+import writing from "../../../assets/exercisesSkill/writing.png";
+import grammar from "../../../assets/exercisesSkill/grammar.png";
 import { Affix, Col, Row } from "antd";
 import Icon from "@ant-design/icons/lib/components/Icon";
 import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
@@ -17,30 +21,120 @@ export default function ViewLevelDetail() {
   const phases = [
     {
       name: "Phase 1",
-      exercises: ["Bài tập nghe 1", "Bài tập đọc 1", "Checkpoint Quiz"],
+      exercises: [
+        {
+          id: 1,
+          title: "Bài tập nghe 1",
+          exerciseType: "listening",
+          exerciseImage: listening,
+        },
+        {
+          id: 2,
+          title: "Bài tập đọc 1",
+          exerciseType: "reading",
+          exerciseImage: reading,
+        },
+        {
+          id: 3,
+          title: "Bài tập từ vựng 1",
+          exerciseType: "vocabulary",
+          exerciseImage: vocabulary,
+        },
+        {
+          id: 4,
+          title: "Checkpoint Quiz",
+          exerciseType: "quiz",
+        },
+      ],
     },
     {
       name: "Phase 2",
-      exercises: ["Bài tập ngữ pháp 1", "Bài tập từ vựng 1", "Checkpoint Quiz"],
+      exercises: [
+        {
+          id: 1,
+          title: "Bài tập ngữ pháp 1",
+          exerciseType: "grammar",
+          exerciseImage: grammar,
+        },
+        {
+          id: 2,
+          title: "Bài tập từ vựng 1",
+          exerciseType: "vocabulary",
+          exerciseImage: vocabulary,
+        },
+        {
+          id: 3,
+          title: "Checkpoint Quiz",
+          exerciseType: "quiz",
+        },
+      ],
     },
     {
       name: "Phase 3",
       exercises: [
-        "Bài tập nghe 1",
-        "Bài tập ngữ pháp 1",
-        "Bài tập đọc 2",
-        "Checkpoint Quiz",
+        {
+          id: 1,
+          title: "Bài tập nghe 1",
+          exerciseType: "listening",
+          exerciseImage: listening,
+        },
+        {
+          id: 2,
+          title: "Bài tập ngữ pháp 1",
+          exerciseType: "grammar",
+          exerciseImage: grammar,
+        },
+        {
+          id: 3,
+          title: "Bài tập đọc 2",
+          exerciseType: "reading",
+          exerciseImage: reading,
+        },
+        {
+          id: 4,
+          title: "Checkpoint Quiz",
+          exerciseType: "quiz",
+        },
       ],
     },
     {
       name: "Phase 4",
       exercises: [
-        "Bài tập nghe 1",
-        "Bài tập đọc 1",
-        "Bài tập ngữ pháp 1",
-        "Bài tập đọc 2",
-        "Bài tập từ vựng 2",
-        "Checkpoint Quiz",
+        {
+          id: 1,
+          title: "Bài tập nghe 1",
+          exerciseType: "listening",
+          exerciseImage: listening,
+        },
+        {
+          id: 2,
+          title: "Bài tập ngữ pháp 1",
+          exerciseType: "grammar",
+          exerciseImage: grammar,
+        },
+        {
+          id: 3,
+          title: "Bài tập đọc 1",
+          exerciseType: "reading",
+          exerciseImage: reading,
+        },
+        {
+          id: 4,
+          title: "Bài tập ngữ pháp 2",
+          exerciseType: "grammar",
+          exerciseImage: grammar,
+        },
+        {
+          id: 5,
+          title: "Bài tập đọc 2",
+          exerciseType: "reading",
+          exerciseImage: reading,
+        },
+        {
+          id: 6,
+          title: "Checkpoint Quiz",
+          exerciseType: "quiz",
+        },
       ],
     },
   ];
@@ -50,11 +144,11 @@ export default function ViewLevelDetail() {
   };
   return (
     <div style={{ padding: "24px" }}>
-      <BreadCrumbHome/>
+      <BreadCrumbHome />
       <CardCustom bordered={false} style={{ maxWidth: 1000, margin: "auto" }}>
         <Row gutter={[16, 16]}>
           <Col md={12}>
-            <img src={logo} alt="" srcset="" maxWidth={100} />
+            <img src={a1} alt="" srcset="" width={"50%"} />
           </Col>
           <Col md={12}>
             <TitleCustom level={2}>Bài tập trình độ A1</TitleCustom>
@@ -111,11 +205,16 @@ export default function ViewLevelDetail() {
             >
               <Row gutter={[16, 16]}>
                 <Col md={12}>
-                  <img src={listening} alt="" srcset="" width={"50%"} />
+                  <img
+                    src={exercise.exerciseImage}
+                    alt=""
+                    srcset=""
+                    width={"50%"}
+                  />
                 </Col>
                 <Col md={12}>
                   <TitleCustom level={4} style={{ textAlign: "center" }}>
-                    {exercise}
+                    {exercise.title}
                   </TitleCustom>
                 </Col>
               </Row>
