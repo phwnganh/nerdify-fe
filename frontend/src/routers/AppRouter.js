@@ -12,6 +12,7 @@ import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExerc
 import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningExercises";
 import WritingExercises from "../pages/LearnersPage/DetailExercises/WritingExercises";
 import VocabularyExercises from "../pages/LearnersPage/DetailExercises/VocabularyExercises";
+import GrammarExercises from "../pages/LearnersPage/DetailExercises/GrammarExercises";
 
 const LearnersRoute = ({children}) => {
       const role = UserRole();
