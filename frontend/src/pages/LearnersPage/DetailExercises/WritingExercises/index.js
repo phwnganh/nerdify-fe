@@ -1,8 +1,8 @@
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import ButtonCustom from "../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../components/Typography";
-import CardCustom from "../../../components/Card";
-import InputCustom from "../../../components/Input";
+import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
+import ButtonCustom from "../../../../components/Button";
+import { TextCustom, TitleCustom } from "../../../../components/Typography";
+import CardCustom from "../../../../components/Card";
+import InputCustom from "../../../../components/Input";
 import { Input } from "antd";
 export default function WritingExercises() {
   const writingContent = [
