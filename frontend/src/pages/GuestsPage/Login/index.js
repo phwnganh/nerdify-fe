@@ -2,26 +2,46 @@ import React from "react";
 import { Form, Checkbox } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
-import {
-  GoogleOutlined,
-  FacebookOutlined,
-  UserOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import loginImage from "../../../assets/loginImage.png";
-import CLIENT_URI from "../../../routers";
+import { CLIENT_URI, EMAIL_REGEX, SERVER_URI } from "../../../constants";
+import { authService } from "../../../services";
+import { useAuth } from "../../../hooks";
+import { signin } from "../../../hooks/auth/reducers";
 
-const LoginPage = () => {
+export const LoginPage = () => {
+  const { dispatch } = useAuth();
+  const navigate = useNavigate();
+
+  const onLoginWithGoogle = () => {
+    window.open(`${SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
+  };
+
   const onLogin = (values) => {
     const data = {
       email: values.email,
       password: values.password,
       remember: values.remember,
     };
-    console.log("Success:", values);
-    // call api
+    authService
+      .login(data)
+      .then((resp) => {
+        console.log(resp);
+        dispatch(
+          signin({
+            user: {
+              id: resp.data.id,
+              email: resp.data.email,
+              fullName: resp.data.fullName,
+              role: resp.data.role,
+            },
+          })
+        );
+        window.location.href = CLIENT_URI.HOME_PAGE;
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -76,13 +96,10 @@ const LoginPage = () => {
               type="password"
               name="password"
               rules={[
-                { required: true, message: "Vui bạn đăng nhập mật khẩu" },
-                { min: 8, message: "Mật khẩu phải ít nhất 8 kí tự" },
                 {
-                  pattern:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  pattern: EMAIL_REGEX,
                   message:
-                    "Mật khẩu phải có ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
                 },
               ]}
             >
@@ -124,13 +141,9 @@ const LoginPage = () => {
               <span>Hoặc đăng nhập với</span>
               <ButtonCustom
                 type="primary"
-                shape="circle"
-                icon={<FacebookOutlined />}
-              />
-              <ButtonCustom
-                type="primary"
                 icon={<GoogleOutlined />}
                 shape="circle"
+                onClick={() => onLoginWithGoogle()}
               />
             </div>
             {/* register link */}

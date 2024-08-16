@@ -3,12 +3,12 @@ import Navbar from "../components/Header";
 import Footer from "../components/Footer";
 import { Divider } from "antd";
 
-const GuestLayout = ({ children }) => {
+export const GuestLayout = ({ children }) => {
   return (
     <div style={styles.container}>
       <Navbar />
       <div style={styles.content}>{children}</div>
-      <Divider />
+      <Divider style={{ margin: 0 }} />
       <Footer />
     </div>
   );

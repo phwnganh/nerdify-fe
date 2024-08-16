@@ -1,29 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
-import {
-  GoogleOutlined,
-  FacebookOutlined,
-  UserOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
+import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import registerImage from "../../../assets/registerImage.png";
-import CLIENT_URI from "../../../routers";
+import { authService } from "../../../services";
+import { CLIENT_URI, EMAIL_REGEX } from "../../../constants";
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
+  const [messageResp, setMessageResp] = useState({
+    type: "",
+    message: "",
+  });
   const onRegister = (values) => {
     const data = {
-      firstName: values.firstName,
-      lastName: values.lastName,
+      fullName: values.fullName,
       email: values.email,
       password: values.password,
       confirmPassword: values.confirmPassword,
     };
     console.log("Success:", values);
-    // call api
+    authService
+      .register(data)
+      .then((resp) => {
+        setMessageResp({
+          type: "success",
+          message: resp.data.message,
+        });
+      })
+      .catch((err) => {
+        setMessageResp({
+          type: "error",
+          message:
+            err.response.data.message ||
+            err.message ||
+            "Đăng ký tài khoản không thành công",
+        });
+      });
   };
 
   return (
@@ -45,47 +60,24 @@ const RegisterPage = () => {
             style={{ width: "100%" }}
             onFinish={onRegister}
           >
-            {/* input first name and last name */}
-            <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                width: "100%",
-              }}
+            {/* input full name */}
+            <Form.Item
+              name="fullName"
+              label="Họ và Tên"
+              rules={[
+                { min: 2, message: "Tên phải có ít nhất 2 kí tự" },
+                {
+                  required: true,
+                  message: "Vui lòng nhập tên của bạn",
+                },
+                {
+                  pattern: /^[\p{L} ]+$/u,
+                  message: "Tên phải là chuỗi các ký tự",
+                },
+              ]}
             >
-              <Form.Item
-                name="firstName"
-                label="Tên"
-                style={{ width: "50%" }}
-                rules={[
-                  { min: 2, message: "Tên phải có ít nhất 2 kí tự" },
-                  {
-                    required: true,
-                    message: "Vui lòng nhập tên của bạn",
-                  },
-                  {
-                    pattern: /^[\p{L} ]+$/u,
-                    message: "Tên phải là chuỗi các ký tự",
-                  },
-                ]}
-              >
-                <InputCustom placeholder="Nhập tên của bạn" />
-              </Form.Item>
-              <Form.Item
-                name="lastName"
-                label="Họ"
-                style={{ width: "50%" }}
-                rules={[
-                  { required: true, message: "Vui lòng nhập họ của bạn" },
-                  {
-                    type: /^[\p{L} ]+$/u,
-                    message: "Họ phải là chuỗi các ký tự",
-                  },
-                ]}
-              >
-                <InputCustom placeholder="Nhập họ của bạn" />
-              </Form.Item>
-            </div>
+              <InputCustom placeholder="Nhập tên của bạn" />
+            </Form.Item>
 
             {/* input email */}
             <Form.Item
@@ -108,13 +100,10 @@ const RegisterPage = () => {
               type="password"
               name="password"
               rules={[
-                { required: true, message: "Vui bạn đăng nhập mật khẩu" },
-                { min: 8, message: "Mật khẩu phải ít nhất 8 kí tự" },
                 {
-                  pattern:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  pattern: EMAIL_REGEX,
                   message:
-                    "Mật khẩu phải có ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
                 },
               ]}
             >
@@ -176,11 +165,6 @@ const RegisterPage = () => {
             {/* social login */}
             <div style={{ justifyContent: "space-between" }}>
               <span>Hoặc đăng ký với</span>
-              <ButtonCustom
-                type="primary"
-                shape="circle"
-                icon={<FacebookOutlined />}
-              />
               <ButtonCustom
                 type="primary"
                 icon={<GoogleOutlined />}
