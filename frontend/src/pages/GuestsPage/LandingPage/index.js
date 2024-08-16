@@ -11,8 +11,12 @@ import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import CardCustom from "../../../components/Card";
+import { useNavigate } from "react-router-dom";
+import { CLIENT_URI } from "../../../constants";
+
 const { Meta } = Card;
 export const LandingPage = () => {
+  const navigate = useNavigate();
   const skills = [
     {
       img: listening,
@@ -214,7 +218,7 @@ export const LandingPage = () => {
                     alt="example"
                     src={sample}
                     height={150}
-                    style={{objectFit: 'cover'}}
+                    style={{ objectFit: "cover" }}
                     // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                   />
                 }
@@ -229,7 +233,7 @@ export const LandingPage = () => {
                 <ButtonCustom
                   buttonType="primary"
                   style={{ width: "100%" }}
-                  // onClick={() => navigate(CLIENT_URI.LOGIN)}
+                  onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
                 >
                   Bắt đầu
                 </ButtonCustom>
@@ -250,12 +254,12 @@ export const LandingPage = () => {
           renderItem={(item) => (
             <List.Item>
               <CardCustom
-                 cover={
+                cover={
                   <img
                     alt="example"
                     src={sample}
                     height={150}
-                    style={{objectFit: 'cover'}}
+                    style={{ objectFit: "cover" }}
                     // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                   />
                 }
