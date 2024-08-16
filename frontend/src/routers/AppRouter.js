@@ -13,6 +13,7 @@ import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningEx
 import WritingExercises from "../pages/LearnersPage/DetailExercises/WritingExercises";
 import VocabularyExercises from "../pages/LearnersPage/DetailExercises/VocabularyExercises";
 import GrammarExercises from "../pages/LearnersPage/DetailExercises/GrammarExercises";
+import CheckpointQuiz from "../pages/LearnersPage/DetailExercises/CheckpointQuiz";
 
 const LearnersRoute = ({children}) => {
       const role = UserRole();
@@ -45,7 +46,7 @@ const LearnersRoute = ({children}) => {
           },
           {
             path: CLIENT_URI.LEVEL_DETAIL,
-            element: <ViewLevelDetail />,
+            element: <CheckpointQuiz />,
           },
           {
             path: CLIENT_URI.LOGIN,
