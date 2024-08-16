@@ -1,11 +1,6 @@
-import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
-import CLIENT_URI from ".";
-import UserRole from "../hooks/userRole";
+import { Outlet } from "react-router-dom";
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
-import RegisterPage from "../pages/GuestsPage/Register";
-import LoginPage from "../pages/GuestsPage/Login";
-import GuestLayout from "../layouts/GuestLayout";
 import { HomePage } from "../pages/LearnersPage/HomePage";
 import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
 import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExercises";
@@ -13,24 +8,25 @@ import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningEx
 import WritingExercises from "../pages/LearnersPage/DetailExercises/WritingExercises";
 import VocabularyExercises from "../pages/LearnersPage/DetailExercises/VocabularyExercises";
 import GrammarExercises from "../pages/LearnersPage/DetailExercises/GrammarExercises";
+import { CLIENT_URI } from "../constants";
+import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
+import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
+import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
+import FlashCard from "../pages/LearnersPage/FlashCard";
+import CreateFlashCard from "../pages/LearnersPage/FlashCard/create-flash-card";
 
-const LearnersRoute = ({children}) => {
-      const role = UserRole();
-      return role === "learner" ? children : <Navigate to={CLIENT_URI.LANDING_PAGE} />
-    }
-    
-    const AdminRoute = ({children}) => {
-      const role = UserRole();
-      return role === "admin" ? children : <Navigate to={CLIENT_URI.LANDING_PAGE} />
-    }
-    
-    const GuestRoute = ({children}) => {
-      const role = UserRole();
-      return !role ? children : <Navigate to={CLIENT_URI.LANDING_PAGE} />
-    }
-    
-    export const router = createBrowserRouter([
-      // Guest urls
+
+export const routes = [
+  // Guest urls
+  {
+    element: (
+      <GuestGuard>
+        <GuestLayout>
+          <Outlet />
+        </GuestLayout>
+      </GuestGuard>
+    ),
+    children: [
       {
         element: (
           <GuestLayout>
@@ -60,16 +56,68 @@ const LearnersRoute = ({children}) => {
             ),
           },
         ],
+
       },
-    
-      // Learner urls
       {
-        path: CLIENT_URI.ONE_EXERCISE,
-        element: (
-          <LearnersRoute>
-            
-          </LearnersRoute>
-        )
-      }
-      // Admin urls
-    ]);
+        path: CLIENT_URI.LEVEL_DETAIL,
+        element: <ListeningExercise />,
+      },
+      {
+        path: CLIENT_URI.LOGIN,
+        element: <LoginPage />,
+      },
+      {
+        path: CLIENT_URI.REGISTER,
+        element: <RegisterPage />,
+      },
+      {
+        path: CLIENT_URI.VERIFY_EMAIL,
+        element: <VerifyEmailPage />,
+      },
+
+      {
+        path: CLIENT_URI.FLASH_CARD,
+        element: <FlashCard />,
+      },
+      {
+        path: CLIENT_URI.CREATE_FLASH_CARD,
+        element: <CreateFlashCard />,
+      },
+      {
+        path: CLIENT_URI.HOME_PAGE,
+        element: <HomePage />,
+      },
+    ],
+  },
+
+  // Learner urls
+  {
+    element: (
+      <LearnerGuard>
+        <LearnerLayout>
+          <Outlet />
+        </LearnerLayout>
+      </LearnerGuard>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.HOME_PAGE,
+        element: <HomePage />,
+      },
+    ],
+  },
+
+  // Admin urls
+  {
+    element: (
+      <AdminGuard>
+        <AdminLayout>
+          <Outlet />
+        </AdminLayout>
+      </AdminGuard>
+    ),
+    children: [],
+  },
+];
+
+export default routes;
