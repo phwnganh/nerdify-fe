@@ -9,6 +9,8 @@ import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
 import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
+import FlashCard from "../pages/LearnersPage/FlashCard";
+import CreateFlashCard from "../pages/LearnersPage/FlashCard/create-flash-card";
 
 export const routes = [
   // Guest urls
@@ -40,6 +42,19 @@ export const routes = [
       {
         path: CLIENT_URI.VERIFY_EMAIL,
         element: <VerifyEmailPage />,
+      },
+
+      {
+        path: CLIENT_URI.FLASH_CARD,
+        element: <FlashCard />,
+      },
+      {
+        path: CLIENT_URI.CREATE_FLASH_CARD,
+        element: <CreateFlashCard />,
+      },
+      {
+        path: CLIENT_URI.HOME_PAGE,
+        element: <HomePage />,
       },
     ],
   },

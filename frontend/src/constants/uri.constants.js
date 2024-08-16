@@ -40,7 +40,8 @@ export const CLIENT_URI = {
   LEVEL_DETAIL: "/level-detail",
   ONE_EXERCISE: "/one-exercise",
   PROFILE: "/personal-profile",
-
+  FLASH_CARD: "/flash-card",
+  CREATE_FLASH_CARD: "/create-flash-card",
   // ADMIN
   DASHBOARD: "/dashboard",
 };
