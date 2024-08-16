@@ -15,7 +15,6 @@ import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
 import FlashCard from "../pages/LearnersPage/FlashCard";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/create-flash-card";
 
-
 export const routes = [
   // Guest urls
   {
@@ -28,16 +27,11 @@ export const routes = [
     ),
     children: [
       {
-        element: (
-          <GuestLayout>
-            <Outlet />
-          </GuestLayout>
-        ),
         children: [
           {
             path: CLIENT_URI.LANDING_PAGE,
             // element: <LandingPage />,
-            element: <LandingPage/>,
+            element: <LandingPage />,
           },
           {
             path: CLIENT_URI.LEVEL_DETAIL,
@@ -45,18 +39,13 @@ export const routes = [
           },
           {
             path: CLIENT_URI.LOGIN,
-            element: (
-                <LoginPage/>
-            ),
+            element: <LoginPage />,
           },
           {
             path: CLIENT_URI.REGISTER,
-            element: (
-                <RegisterPage/>
-            ),
+            element: <RegisterPage />,
           },
         ],
-
       },
       {
         path: CLIENT_URI.LEVEL_DETAIL,
