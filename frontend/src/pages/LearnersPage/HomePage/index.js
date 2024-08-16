@@ -53,7 +53,7 @@ export const HomePage = () => {
             </p>
           </Col>
           <Col>
-            <img src={homepageImg} alt="homepage" style={{ width: "100px" }} />
+            <img src={homepageImg} alt="homepage" style={{ width: "200px" }} />
           </Col>
         </Row>
       </div>

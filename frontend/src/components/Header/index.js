@@ -7,7 +7,7 @@ import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
 import logo from "../../assets/logo.png";
 import { useNavigate, useLocation } from "react-router-dom";
-import CLIENT_URI from "../../routers";
+import { CLIENT_URI } from "../../constants/uri.constants";
 const { Header } = Layout;
 
 export default function Navbar() {
@@ -15,14 +15,17 @@ export default function Navbar() {
   const [selectedKey, setSelectedKey] = useState("home");
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const location = useLocation()
+  const location = useLocation();
   useEffect(() => {
-    if(location.pathname === CLIENT_URI.LEVEL_DETAIL || location.pathname === CLIENT_URI.ONE_EXERCISE){
-      setSelectedKey("practices")
-    }else if(location.pathname === CLIENT_URI.LANDING_PAGE){
-      setSelectedKey("home")
+    if (
+      location.pathname === CLIENT_URI.LEVEL_DETAIL ||
+      location.pathname === CLIENT_URI.ONE_EXERCISE
+    ) {
+      setSelectedKey("practices");
+    } else if (location.pathname === CLIENT_URI.LANDING_PAGE) {
+      setSelectedKey("home");
     }
-  }, [location.pathname])
+  }, [location.pathname]);
   const handleMenuClick = (e) => {
     setSelectedKey(e.key);
     console.log(e.key);
@@ -64,7 +67,10 @@ export default function Navbar() {
             selectedKey={selectedKey}
             onClick={handleMenuClick}
           >
-            <MenuItem key="home" onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}>
+            <MenuItem
+              key="home"
+              onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}
+            >
               TRANG CHỦ
             </MenuItem>
             <MenuItem
@@ -73,7 +79,15 @@ export default function Navbar() {
             >
               LUYỆN TẬP
             </MenuItem>
-            <MenuItem key="flashcards">FLASHCARD</MenuItem>
+            <MenuItem
+              key="flashcards"
+              onClick={() => {
+                console.log(CLIENT_URI.FLASH_CARD);
+                navigate(CLIENT_URI.FLASH_CARD);
+              }}
+            >
+              FLASHCARD
+            </MenuItem>
             <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
             <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
