@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardCustom from "../../../components/Card";
 import {
   TitleCustom,
@@ -17,7 +17,11 @@ import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+import { useNavigate } from "react-router-dom";
+import { CLIENT_URI } from "../../../constants";
+import ModalRequireToLogin from "../../GuestsPage/ModalRequireToLogin";
 export default function ViewLevelDetail() {
+  const navigate = useNavigate();
   const phases = [
     {
       name: "Phase 1",
@@ -139,9 +143,17 @@ export default function ViewLevelDetail() {
     },
   ];
   const [activePhase, setActivePhase] = useState(phases[0].name);
+
+  const [open, setOpen] = useState(false);
+
   const handlePhaseClick = (phase) => {
     setActivePhase(phase);
   };
+
+  useEffect(() => {
+    setOpen(open);
+  }, [open]);
+  console.log("open" + open);
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
@@ -202,6 +214,9 @@ export default function ViewLevelDetail() {
               key={index}
               bordered={true}
               style={{ marginBottom: 20 }}
+              onClick={() => {
+                setOpen(!open);
+              }}
             >
               <Row gutter={[16, 16]}>
                 <Col md={12}>
@@ -220,6 +235,8 @@ export default function ViewLevelDetail() {
               </Row>
             </CardCustom>
           ))}
+
+        <ModalRequireToLogin open={open} />
       </div>
     </div>
   );

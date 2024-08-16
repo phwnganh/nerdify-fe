@@ -5,9 +5,6 @@ import { HomePage } from "../pages/LearnersPage/HomePage";
 import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
 import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExercises";
 import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningExercises";
-import WritingExercises from "../pages/LearnersPage/DetailExercises/WritingExercises";
-import VocabularyExercises from "../pages/LearnersPage/DetailExercises/VocabularyExercises";
-import GrammarExercises from "../pages/LearnersPage/DetailExercises/GrammarExercises";
 import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
@@ -27,29 +24,12 @@ export const routes = [
     ),
     children: [
       {
-        children: [
-          {
-            path: CLIENT_URI.LANDING_PAGE,
-            // element: <LandingPage />,
-            element: <LandingPage />,
-          },
-          {
-            path: CLIENT_URI.LEVEL_DETAIL,
-            element: <ViewLevelDetail />,
-          },
-          {
-            path: CLIENT_URI.LOGIN,
-            element: <LoginPage />,
-          },
-          {
-            path: CLIENT_URI.REGISTER,
-            element: <RegisterPage />,
-          },
-        ],
+        path: CLIENT_URI.LANDING_PAGE,
+        element: <LandingPage />,
       },
       {
         path: CLIENT_URI.LEVEL_DETAIL,
-        element: <ListeningExercise />,
+        element: <ViewLevelDetail />,
       },
       {
         path: CLIENT_URI.LOGIN,
@@ -63,18 +43,19 @@ export const routes = [
         path: CLIENT_URI.VERIFY_EMAIL,
         element: <VerifyEmailPage />,
       },
-
+      // test giao diện
       {
         path: CLIENT_URI.FLASH_CARD,
         element: <FlashCard />,
+        // element: <ModalRequireToLogin />,
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
       },
       {
-        path: CLIENT_URI.HOME_PAGE,
-        element: <HomePage />,
+        path: CLIENT_URI.Le,
+        element: <CreateFlashCard />,
       },
     ],
   },
