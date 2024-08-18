@@ -5,9 +5,9 @@ import { CLIENT_URI, ROLES } from "../constants";
 export const GuestGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
 
-  if (!isInitialized) {
-    return <>loading...</>;
-  }
+  // if (!isInitialized) {
+  //   return <>loading...</>;
+  // }
 
   if (isAuthenticated) {
     if (user?.role === ROLES.ADMIN_ROLE) {

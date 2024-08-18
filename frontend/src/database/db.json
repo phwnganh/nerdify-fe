@@ -1,0 +1,133 @@
+
+{
+  "exercises": [
+    {
+      "id": 1,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Was kostet der Pullover?",
+              "questionImage": ["../src/assets/listeningExercises/1_1.png", "../src/assets/listeningExercises/1_2.png", "../src/assets/listeningExercises/1_3.png"],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                }, {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                }, {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
+              ]
+            }, {
+              "id": 2,
+              "question": "Was kostet der Pullover?",
+              "questionImage": ["../src/assets/listeningExercises/2_1.png", "../src//assets/listeningExercises/2_2.png", "../src/assets/listeningExercises/2_3.png"],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                }, 
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                }, {
+                  "id": "C",
+                  "text":"Neunzehn Euro fünfundneunzig Cent."
+                }
+              ]
+            }, {
+              "id": 3,
+              "question":"Was kostet der Pullover?",
+              "questionImage": ["../src/assets/listeningExercises/3_1.png", "../src/assets/listeningExercises/3_2.png", "../src/assets/listeningExercises/3_3.png"],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                }, {
+                  "id": "B",
+                  "text":"Fünfundneunzig Euro."
+                }, {
+                  "id": "C",
+                  "text":"Neunzehn Euro fünfundneunzig Cent."
+                }
+              ]
+            }
+          ]
+        }, {
+          "id": 2,
+          "partName": "Phần 2: Kreuzen Sie an: Richtig oder Falsch. Sie hören jeden Text einmal.",
+          "questions": [
+            {
+              "id": 4,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                }, {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            }, {
+              "id": 5,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                }, {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            }
+          ]
+        }, {
+          "id": 3,
+          "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Die Nummer ist:",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "11833"
+                }, {
+                  "id": "B",
+                  "text": "11883"
+                }, {
+                  "id": "C",
+                  "text": "12833"
+                }
+              ]
+            }, {
+              "id": 7,
+              "question": "Wo genau treffen sich die Männer?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "20 Minuten"
+                }, {
+                  "id": "B",
+                  "text": "2 Minuten"
+                }, {
+                  "id": "C",
+                  "text": "10 Minuten"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+
+    }
+  ]
+}

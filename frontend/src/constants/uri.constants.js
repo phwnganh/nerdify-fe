@@ -1,5 +1,5 @@
 const DOMAIN = process.env.REACT_APP_ROOT_API;
-
+const TEST_DOMAIN = process.env.REACT_APP_MOCK_API;
 const API_PREFIXES = {
   AUTH: "/api/auth",
   PAYMENT: "/api/payment",
@@ -14,9 +14,14 @@ const URI_AUTH_SERVICE = {
   VERIFY_EMAIL: API_PREFIXES.AUTH + "/verify-email",
   SEND_ACTIVATION: API_PREFIXES.AUTH + "/send-activation",
 
-  CURRENT_USER: API_PREFIXES.AUTH + "/current-user",
+  // CURRENT_USER: API_PREFIXES.AUTH + "/current-user",
   LOGOUT: API_PREFIXES.AUTH + "/logout",
   TOKEN: API_PREFIXES.AUTH + "/token",
+
+}
+
+const URI_EXERCISES_SERVICE = {
+  GET_LISTENING_EXERCISES: TEST_DOMAIN + "/exercises"
 };
 
 const URI_PAYMENT_SERVICE = {};
@@ -25,6 +30,7 @@ export const SERVER_URI = {
   DOMAIN: DOMAIN,
   AUTH_SERVICE: URI_AUTH_SERVICE,
   PAYMENT_SERVICE: URI_PAYMENT_SERVICE,
+  EXERCISES_SERVICE: URI_EXERCISES_SERVICE
 };
 
 export const CLIENT_URI = {

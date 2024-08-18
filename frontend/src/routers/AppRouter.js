@@ -28,11 +28,6 @@ export const routes = [
     ),
     children: [
       {
-        element: (
-          <GuestLayout>
-            <Outlet />
-          </GuestLayout>
-        ),
         children: [
           {
             path: CLIENT_URI.LANDING_PAGE,
@@ -41,7 +36,7 @@ export const routes = [
           },
           {
             path: CLIENT_URI.LEVEL_DETAIL,
-            element: <ViewLevelDetail />,
+            element: <ListeningExercise />,
           },
           {
             path: CLIENT_URI.LOGIN,
