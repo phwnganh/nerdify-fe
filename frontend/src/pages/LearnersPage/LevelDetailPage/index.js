@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardCustom from "../../../components/Card";
 import {
   TitleCustom,
@@ -17,138 +17,35 @@ import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+
 export default function ViewLevelDetail() {
-  const phases = [
-    {
-      name: "Phase 1",
-      exercises: [
-        {
-          id: 1,
-          title: "Bài tập nghe 1",
-          exerciseType: "listening",
-          exerciseImage: listening,
-        },
-        {
-          id: 2,
-          title: "Bài tập đọc 1",
-          exerciseType: "reading",
-          exerciseImage: reading,
-        },
-        {
-          id: 3,
-          title: "Bài tập từ vựng 1",
-          exerciseType: "vocabulary",
-          exerciseImage: vocabulary,
-        },
-        {
-          id: 4,
-          title: "Checkpoint Quiz",
-          exerciseType: "quiz",
-        },
-      ],
-    },
-    {
-      name: "Phase 2",
-      exercises: [
-        {
-          id: 1,
-          title: "Bài tập ngữ pháp 1",
-          exerciseType: "grammar",
-          exerciseImage: grammar,
-        },
-        {
-          id: 2,
-          title: "Bài tập từ vựng 1",
-          exerciseType: "vocabulary",
-          exerciseImage: vocabulary,
-        },
-        {
-          id: 3,
-          title: "Checkpoint Quiz",
-          exerciseType: "quiz",
-        },
-      ],
-    },
-    {
-      name: "Phase 3",
-      exercises: [
-        {
-          id: 1,
-          title: "Bài tập nghe 1",
-          exerciseType: "listening",
-          exerciseImage: listening,
-        },
-        {
-          id: 2,
-          title: "Bài tập ngữ pháp 1",
-          exerciseType: "grammar",
-          exerciseImage: grammar,
-        },
-        {
-          id: 3,
-          title: "Bài tập đọc 2",
-          exerciseType: "reading",
-          exerciseImage: reading,
-        },
-        {
-          id: 4,
-          title: "Checkpoint Quiz",
-          exerciseType: "quiz",
-        },
-      ],
-    },
-    {
-      name: "Phase 4",
-      exercises: [
-        {
-          id: 1,
-          title: "Bài tập nghe 1",
-          exerciseType: "listening",
-          exerciseImage: listening,
-        },
-        {
-          id: 2,
-          title: "Bài tập ngữ pháp 1",
-          exerciseType: "grammar",
-          exerciseImage: grammar,
-        },
-        {
-          id: 3,
-          title: "Bài tập đọc 1",
-          exerciseType: "reading",
-          exerciseImage: reading,
-        },
-        {
-          id: 4,
-          title: "Bài tập ngữ pháp 2",
-          exerciseType: "grammar",
-          exerciseImage: grammar,
-        },
-        {
-          id: 5,
-          title: "Bài tập đọc 2",
-          exerciseType: "reading",
-          exerciseImage: reading,
-        },
-        {
-          id: 6,
-          title: "Checkpoint Quiz",
-          exerciseType: "quiz",
-        },
-      ],
-    },
-  ];
-  const [activePhase, setActivePhase] = useState(phases[0].name);
+  const [phases, setPhases] = useState([]);
+  const [activePhase, setActivePhase] = useState("");
+
+  useEffect(() => {
+    fetch('http://localhost:9999/phases?_embed=exercises')
+      .then(response => response.json())
+      .then(res => {
+        console.log("embed: ", res);
+        setPhases(res);
+        if (res.length > 0) {
+          setActivePhase(res[0].name); 
+        }
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   const handlePhaseClick = (phase) => {
     setActivePhase(phase);
   };
+
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
       <CardCustom bordered={false} style={{ maxWidth: 1000, margin: "auto" }}>
         <Row gutter={[16, 16]}>
           <Col md={12}>
-            <img src={a1} alt="" srcset="" width={"50%"} />
+            <img src={a1} alt="" srcSet="" width={"50%"} />
           </Col>
           <Col md={12}>
             <TitleCustom level={2}>Bài tập trình độ A1</TitleCustom>
@@ -186,7 +83,7 @@ export default function ViewLevelDetail() {
               width: "100%",
               height: 50,
               marginRight: 16,
-              backgroundColor: activePhase === phase.name ? "ff855d" : "ffa751",
+              backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
             }}
             onClick={() => handlePhaseClick(phase.name)}
           >
@@ -194,33 +91,44 @@ export default function ViewLevelDetail() {
           </ButtonCustom>
         ))}
       </ScrollablePhaseDiv>
-      <div style={{ marginTop: "16px" }}>
-        {phases
-          .find((phase) => phase.name === activePhase)
-          .exercises.map((exercise, index) => (
-            <CardCustom
-              key={index}
-              bordered={true}
-              style={{ marginBottom: 20 }}
-            >
-              <Row gutter={[16, 16]}>
-                <Col md={12}>
-                  <img
-                    src={exercise.exerciseImage}
-                    alt=""
-                    srcset=""
-                    width={"50%"}
-                  />
-                </Col>
-                <Col md={12}>
-                  <TitleCustom level={4} style={{ textAlign: "center" }}>
-                    {exercise.title}
-                  </TitleCustom>
-                </Col>
-              </Row>
-            </CardCustom>
-          ))}
-      </div>
+      {activePhase && (
+        <div style={{ marginTop: "16px" }}>
+          {phases
+            .find((phase) => phase.name === activePhase)
+            ?.exercises.map((exercise, index) => (
+              <CardCustom
+                key={index}
+                bordered={true}
+                style={{ marginBottom: 20 }}
+              >
+                <Row gutter={[16, 16]}>
+                  <Col md={12}>
+                    <img
+                      src={
+                        exercise.exerciseType === "listening"
+                          ? listening
+                          : exercise.exerciseType === "reading"
+                          ? reading
+                          : exercise.exerciseType === "vocabulary"
+                          ? vocabulary
+                          : exercise.exerciseType === "grammar"
+                          ? grammar
+                          : writing
+                      }
+                      alt=""
+                      width={"50%"}
+                    />
+                  </Col>
+                  <Col md={12}>
+                    <TitleCustom level={4} style={{ textAlign: "center" }}>
+                      {exercise.title}
+                    </TitleCustom>
+                  </Col>
+                </Row>
+              </CardCustom>
+            ))}
+        </div>
+      )}
     </div>
   );
 }

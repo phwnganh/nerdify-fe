@@ -18,29 +18,29 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // useEffect(() => {
-  //   const initializeAuth = async () => {
-  //     try {
-  //       const response = await getCurrentUser();
-  //       dispatch(
-  //         initialize({
-  //           user: response.data.user,
-  //           isAuthenticated: true,
-  //         })
-  //       );
-  //     } catch (error) {
-  //       console.log("error from AuthProvider", error);
-  //       dispatch(
-  //         initialize({
-  //           user: null,
-  //           isAuthenticated: false,
-  //         })
-  //       );
-  //     }
-  //   };
+  useEffect(() => {
+    const initializeAuth = async () => {
+      try {
+        const response = await getCurrentUser();
+        dispatch(
+          initialize({
+            user: response.data.user,
+            isAuthenticated: true,
+          })
+        );
+      } catch (error) {
+        console.log("error from AuthProvider", error);
+        dispatch(
+          initialize({
+            user: null,
+            isAuthenticated: false,
+          })
+        );
+      }
+    };
 
-  //   initializeAuth();
-  // }, []);
+    initializeAuth();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

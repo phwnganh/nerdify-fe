@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { TextCustom } from "../../../../components/Typography";
+import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { Col, Row } from "antd";
 import ButtonCustom from "../../../../components/Button";
-export default function ListeningExercises() {
+import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
+export default function ListeningExercise() {
   const [exercises, setExercises] = useState([]);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
 
@@ -11,7 +12,7 @@ export default function ListeningExercises() {
       .then((response) => response.json())
       .then((data) => {
         setExercises(data);
-        console.log("exercise: ", data);
+        console.log("exercise: ", data.title);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -32,7 +33,9 @@ export default function ListeningExercises() {
   const currentPart = exercises[0].parts[currentPartIndex];
 
   return (
-    <div>
+    <div style={{padding: '24px'}}>
+      <BreadCrumbHome/>
+      <TitleCustom level={2} style={{fontWeight: 'bold'}}>{exercises[0].title}</TitleCustom>
       <TextCustom style={{ color: "red", fontWeight: "bold" }}>
         {currentPart.partName}
       </TextCustom>

@@ -1,8 +1,12 @@
 
+
 {
   "exercises": [
     {
       "id": 1,
+      "exerciseType": "listening",
+      "phaseId": 1,
+      "title": "Bài tập nghe 1",
       "parts": [
         {
           "id": 1,
@@ -11,7 +15,7 @@
             {
               "id": 1,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["../src/assets/listeningExercises/1_1.png", "../src/assets/listeningExercises/1_2.png", "../src/assets/listeningExercises/1_3.png"],
+              "questionImage": ["../assets/listeningExercises/1_1.png", "../assets/listeningExercises/1_2.png", "../assets/listeningExercises/1_3.png"],
               "options": [
                 {
                   "id": "A",
@@ -27,7 +31,7 @@
             }, {
               "id": 2,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["../src/assets/listeningExercises/2_1.png", "../src//assets/listeningExercises/2_2.png", "../src/assets/listeningExercises/2_3.png"],
+              "questionImage": ["../assets/listeningExercises/2_1.png", "../assets/listeningExercises/2_2.png", "../assets/listeningExercises/2_3.png"],
               "options": [
                 {
                   "id": "A",
@@ -44,7 +48,7 @@
             }, {
               "id": 3,
               "question":"Was kostet der Pullover?",
-              "questionImage": ["../src/assets/listeningExercises/3_1.png", "../src/assets/listeningExercises/3_2.png", "../src/assets/listeningExercises/3_3.png"],
+              "questionImage": ["../assets/listeningExercises/3_1.png", "../assets/listeningExercises/3_2.png", "../assets/listeningExercises/3_3.png"],
               "options": [
                 {
                   "id": "A",
@@ -128,6 +132,66 @@
         }
       ]
 
+    }, {
+      "id": 2,
+      "exerciseType": "reading",
+      "title": "Bài tập đọc 1",
+      "phaseId": 1
+    }, {
+      "id": 3,
+      "title": "Bài tập từ vựng 1",
+      "exerciseType": "vocabulary",
+      "phaseId": 1
+    }, {
+      "id": 4,
+      "title": "Checkpoint Quiz",
+      "exerciseType": "quiz",
+      "phaseId": 1
+    }, {
+      "id": 5,
+      "title": "Bài tập ngữ pháp 1",
+      "exerciseType": "grammar",
+      "phaseId": 2
+    }, {
+      "id": 6,
+      "title": "Bài tập từ vựng 2",
+      "exerciseType": "vocabulary",
+      "phaseId": 2
+    }, {
+      "id": 7,
+      "title": "Checkpoint Quiz",
+      "exerciseType": "quiz",
+      "phaseId": 2
+    }, {
+      "id": 8,
+      "title": "Bài tập nghe 3",
+      "exerciseType": "listening",
+      "phaseId": 3
+    }, {
+      "id": 9,
+      "title": "Bài tập ngữ pháp 3",
+      "exerciseType": "grammar",
+      "phaseId": 3
+    }, {
+      "id": 10,
+      "title": "Bài tập đọc 3",
+          "exerciseType": "reading",
+          "phaseId": 3
+    }
+  ], 
+  "phases": [
+    {
+      "id": 1,
+      "name": "Phase 1",
+      "exercises": [1,2,3,4]
+    }, {
+      "id": 2,
+      "name": "Phase 2",
+      "exercises": [5,6,7]
+    }, {
+      "id": 3,
+      "name": "Phase 3",
+      "exercises": [8,9,10]
     }
   ]
 }

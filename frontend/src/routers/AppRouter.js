@@ -36,7 +36,7 @@ export const routes = [
           },
           {
             path: CLIENT_URI.LEVEL_DETAIL,
-            element: <ListeningExercise />,
+            element: <ViewLevelDetail/>,
           },
           {
             path: CLIENT_URI.LOGIN,
@@ -55,7 +55,7 @@ export const routes = [
       },
       {
         path: CLIENT_URI.LEVEL_DETAIL,
-        element: <ListeningExercise />,
+        element: <ViewLevelDetail />,
       },
       {
         path: CLIENT_URI.LOGIN,
