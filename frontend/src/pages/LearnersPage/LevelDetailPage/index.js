@@ -17,28 +17,37 @@ import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-
+import { useNavigate } from "react-router-dom";
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
-    fetch('http://localhost:9999/phases?_embed=exercises')
-      .then(response => response.json())
-      .then(res => {
-        console.log("embed: ", res);
-        setPhases(res);
-        if (res.length > 0) {
-          setActivePhase(res[0].name); 
-        }
+    fetch("http://localhost:9999/phases")
+      .then((response) => response.json())
+      .then((phases) => {
+        const fetchExercises = phases.map((phase) =>
+          fetch(`http://localhost:9999/exercises?phaseId=${phase.id}`)
+            .then((res) => res.json())
+            .then((exercises) => ({ ...phase, exercises }))
+        );
+        Promise.all(fetchExercises).then((phaseWithExercises) => {
+          setPhases(phaseWithExercises);
+          if (phaseWithExercises.length > 0) {
+            setActivePhase(phaseWithExercises[0].name);
+          }
+        });
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }, []);
 
   const handlePhaseClick = (phase) => {
     setActivePhase(phase);
   };
 
+  const handleExerciseClick = (exerciseType, exerciseId) => {
+    navigate(`/one-exercise/${exerciseType}/${exerciseId}`);
+  };
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
@@ -83,7 +92,8 @@ export default function ViewLevelDetail() {
               width: "100%",
               height: 50,
               marginRight: 16,
-              backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+              backgroundColor:
+                activePhase === phase.name ? "#ff855d" : "#ffa751",
             }}
             onClick={() => handlePhaseClick(phase.name)}
           >
@@ -99,7 +109,8 @@ export default function ViewLevelDetail() {
               <CardCustom
                 key={index}
                 bordered={true}
-                style={{ marginBottom: 20 }}
+                style={{ marginBottom: 20, cursor: "pointer" }}
+                onClick={() => handleExerciseClick(exercise.exerciseType, exercise.id)}
               >
                 <Row gutter={[16, 16]}>
                   <Col md={12}>

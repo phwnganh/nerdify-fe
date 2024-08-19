@@ -1,6 +1,26 @@
-
-
 {
+  "phases": [
+    {
+      "id": 1,
+      "name": "Phase 1",
+      "exercises": [1, 2, 3, 7]
+    },
+    {
+      "id": 2,
+      "name": "Phase 2",
+      "exercises": [4, 5, 6]
+    }
+  ],
+  "levels": [
+    {
+      "id": 1,
+      "title": "Bài tập trình độ A1",
+      "learners": 10,
+      "phasesNum": 2,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "phases": [1,2]
+    }
+  ],
   "exercises": [
     {
       "id": 1,
@@ -15,55 +35,36 @@
             {
               "id": 1,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["../assets/listeningExercises/1_1.png", "../assets/listeningExercises/1_2.png", "../assets/listeningExercises/1_3.png"],
+              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
               "options": [
-                {
-                  "id": "A",
-                  "text": "Dreißig Euro."
-                }, {
-                  "id": "B",
-                  "text": "Fünfundneunzig Euro."
-                }, {
-                  "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
-                }
+                { "id": "A", "text": "Dreißig Euro." },
+                { "id": "B", "text": "Fünfundneunzig Euro." },
+                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
               ]
-            }, {
+            },
+            {
               "id": 2,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["../assets/listeningExercises/2_1.png", "../assets/listeningExercises/2_2.png", "../assets/listeningExercises/2_3.png"],
+              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
               "options": [
-                {
-                  "id": "A",
-                  "text": "Dreißig Euro."
-                }, 
-                {
-                  "id": "B",
-                  "text": "Fünfundneunzig Euro."
-                }, {
-                  "id": "C",
-                  "text":"Neunzehn Euro fünfundneunzig Cent."
-                }
+                { "id": "A", "text": "Dreißig Euro." },
+                { "id": "B", "text": "Fünfundneunzig Euro." },
+                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
               ]
-            }, {
+            },
+            {
               "id": 3,
-              "question":"Was kostet der Pullover?",
-              "questionImage": ["../assets/listeningExercises/3_1.png", "../assets/listeningExercises/3_2.png", "../assets/listeningExercises/3_3.png"],
+              "question": "Was kostet der Pullover?",
+              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
               "options": [
-                {
-                  "id": "A",
-                  "text": "Dreißig Euro."
-                }, {
-                  "id": "B",
-                  "text":"Fünfundneunzig Euro."
-                }, {
-                  "id": "C",
-                  "text":"Neunzehn Euro fünfundneunzig Cent."
-                }
+                { "id": "A", "text": "Dreißig Euro." },
+                { "id": "B", "text": "Fünfundneunzig Euro." },
+                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
               ]
             }
           ]
-        }, {
+        },
+        {
           "id": 2,
           "partName": "Phần 2: Kreuzen Sie an: Richtig oder Falsch. Sie hören jeden Text einmal.",
           "questions": [
@@ -71,29 +72,21 @@
               "id": 4,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                {
-                  "id": "A",
-                  "text": "Richtig"
-                }, {
-                  "id": "B",
-                  "text": "Falsch"
-                }
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
               ]
-            }, {
+            },
+            {
               "id": 5,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                {
-                  "id": "A",
-                  "text": "Richtig"
-                }, {
-                  "id": "B",
-                  "text": "Falsch"
-                }
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
               ]
             }
           ]
-        }, {
+        },
+        {
           "id": 3,
           "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
           "questions": [
@@ -101,97 +94,212 @@
               "id": 6,
               "question": "Die Nummer ist:",
               "options": [
-                {
-                  "id": "A",
-                  "text": "11833"
-                }, {
-                  "id": "B",
-                  "text": "11883"
-                }, {
-                  "id": "C",
-                  "text": "12833"
-                }
+                { "id": "A", "text": "11833" },
+                { "id": "B", "text": "11883" },
+                { "id": "C", "text": "12833" }
               ]
-            }, {
+            },
+            {
               "id": 7,
               "question": "Wo genau treffen sich die Männer?",
               "options": [
+                { "id": "A", "text": "20 Minuten" },
+                { "id": "B", "text": "2 Minuten" },
+                { "id": "C", "text": "10 Minuten" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "exerciseType": "reading",
+      "title": "Bài tập đọc 1",
+      "phaseId": 1,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Lesen Sie die beiden Texte und die Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Lis Zug kommt nach halb eins an.",
+              "questionParagraph": "Hallo Li\n danke für deine Mail. Dein Zug kommt hier in Hannover um 12.36 Uhr an. Ich bin ab 12.15 Uhr im Hauptbahnhof und warte auf dich vor der Auskunft.\nDu kannst mich den ganzen Vormittag auf meinem Handy (++49 173 62 205 59) erreichen.\nDeine \nKarin",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 2,
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 3,
+              "question": "Ralf hatte am letzten Wochenende Geburtstag.",
+              "questionParagraph": "Liebe Carmen, \nam kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \nRalf",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 4,
+              "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 5,
+              "question": "Die Party findet draußen statt.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Lesen Sie die Texte und die Aufgaben 6 bis 10. Wo finden Sie Informationen? Kreuzen Sie an: a, b oder c",
+          "questions": [
+            {
+              "id": 6,
+              "questionImage": ["demo_part2_1", "demo_part2_2"],
+              "options": [
                 {
                   "id": "A",
-                  "text": "20 Minuten"
-                }, {
+                  "text": "www.openair.de"
+                },
+                {
                   "id": "B",
-                  "text": "2 Minuten"
-                }, {
-                  "id": "C",
-                  "text": "10 Minuten"
+                  "text": "www.dwd.de"
                 }
               ]
             }
           ]
         }
       ]
-
-    }, {
-      "id": 2,
-      "exerciseType": "reading",
-      "title": "Bài tập đọc 1",
-      "phaseId": 1
-    }, {
+    },
+    {
       "id": 3,
       "title": "Bài tập từ vựng 1",
       "exerciseType": "vocabulary",
       "phaseId": 1
-    }, {
+    },
+    {
       "id": 4,
       "title": "Checkpoint Quiz",
       "exerciseType": "quiz",
-      "phaseId": 1
-    }, {
+      "phaseId": 2
+    },
+    {
       "id": 5,
       "title": "Bài tập ngữ pháp 1",
       "exerciseType": "grammar",
       "phaseId": 2
-    }, {
+    },
+    {
       "id": 6,
       "title": "Bài tập từ vựng 2",
       "exerciseType": "vocabulary",
       "phaseId": 2
-    }, {
-      "id": 7,
-      "title": "Checkpoint Quiz",
-      "exerciseType": "quiz",
-      "phaseId": 2
-    }, {
-      "id": 8,
-      "title": "Bài tập nghe 3",
-      "exerciseType": "listening",
-      "phaseId": 3
-    }, {
-      "id": 9,
-      "title": "Bài tập ngữ pháp 3",
-      "exerciseType": "grammar",
-      "phaseId": 3
-    }, {
-      "id": 10,
-      "title": "Bài tập đọc 3",
-          "exerciseType": "reading",
-          "phaseId": 3
-    }
-  ], 
-  "phases": [
+    },
     {
-      "id": 1,
-      "name": "Phase 1",
-      "exercises": [1,2,3,4]
-    }, {
-      "id": 2,
-      "name": "Phase 2",
-      "exercises": [5,6,7]
-    }, {
-      "id": 3,
-      "name": "Phase 3",
-      "exercises": [8,9,10]
+      "id": 7,
+      "title": "QUIZ KẾT THÚC PHASE 1",
+      "exerciseType": "quiz",
+      "phaseId": 1,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 2,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 3,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 4,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "questions": [
+            {
+              "id": 5,
+              "question": "Lis Zug kommt nach halb eins an.",
+              "questionImage": "",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            },
+            {
+              "id": 6,
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "options": [
+                { "id": "A", "text": "Richtig" },
+                { "id": "B", "text": "Falsch" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Was kostet der Pullover?",
+              "questionImage": [
+                "../assets/listeningExercises/1_1.png",
+                "../assets/listeningExercises/1_2.png",
+                "../assets/listeningExercises/1_3.png"
+              ],
+              "options": [
+                { "id": "A", "text": "Dreißig Euro." },
+                { "id": "B", "text": "Fünfundneunzig Euro." },
+                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
