@@ -3,12 +3,20 @@
     {
       "id": 1,
       "name": "Phase 1",
+      "levelId": 1,
       "exercises": [1, 2, 3, 7]
     },
     {
       "id": 2,
       "name": "Phase 2",
+      "levelId": 1,
       "exercises": [4, 5, 6]
+    },
+    {
+      "id": 3,
+      "name": "Final Exam",
+      "levelId": 1,
+      "examId": 1
     }
   ],
   "levels": [
@@ -18,7 +26,7 @@
       "learners": 10,
       "phasesNum": 2,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [1,2]
+      "phases": [1, 2, 3]
     }
   ],
   "exercises": [
@@ -195,7 +203,7 @@
       "phaseId": 1
     },
     {
-      "id": 4,
+      "id": 6,
       "title": "Checkpoint Quiz",
       "exerciseType": "quiz",
       "phaseId": 2
@@ -207,9 +215,9 @@
       "phaseId": 2
     },
     {
-      "id": 6,
-      "title": "Bài tập từ vựng 2",
-      "exerciseType": "vocabulary",
+      "id": 4,
+      "title": "Bài tập nghe 2",
+      "exerciseType": "listening",
       "phaseId": 2
     },
     {
@@ -300,6 +308,438 @@
           ]
         }
       ]
+    }
+  ],
+  "finalexam": [
+    {
+      "id": 1,
+      "levelId": 1,
+      "title": "Bài kiểm tra kết thúc trình độ A1",
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "A"
+            }, {
+              "id": 2,
+              "answer": "A"
+            }, {
+              "id": 3,
+              "answer": "A"
+            }, {
+              "id": 4,
+              "answer": "A"
+            },
+            {
+              "id": 5,
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Lis Zug kommt nach halb eins an.",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                }, {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "question": "Ralf hatte am letzten Wochenende Geburtstag.",
+              "questionParagraph": "Liebe Carmen, \n am kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \n Ralf",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "question": "Die Party findet draußen statt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ]
+            }
+          ], 
+          "answers": [
+            {
+              "id": 6,
+              "answer": "A"
+            }, {
+              "id": 7,
+              "answer": "B"
+            }, {
+              "id": 8,
+              "answer": "B"
+            }, {
+              "id": 9,
+              "answer": "B"
+            }, {
+              "id": 10,
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_1_3"
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_2_2"
+                }, {
+                  "id": "C",
+                  "image": "demo_2_3"
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_2_3"
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_2_3"
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_2_3"
+                }
+              ]
+            }
+          ], 
+          "answers": [
+            {
+              "id": 11,
+              "answer": "A"
+            }, {
+              "id": 12,
+              "answer": "C"
+            }, {
+              "id": 13,
+              "answer": "C"
+            }, {
+              "id": 14,
+              "answer": "C"
+            }, {
+              "id": 15,
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "questions": [
+            {
+              "id": 16,
+              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": ["du", "Ich"]
+                },
+                {
+                  "id": "B",
+                  "text": ["Sie", "Ich"]
+                },
+                {
+                  "id": "C",
+                  "text": ["du", "Sie"]
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": ["Sie", "Ich"]
+                },
+                {
+                  "id": "B",
+                  "text": ["ihr", "Wir"]
+                },
+                {
+                  "id": "C",
+                  "text": ["du", "Ich"]
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "question": "Marie, kommst ______ bitte? Nein,_____ habe keine Zeit.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": ["du", "ich"]
+                },
+                {
+                  "id": "B",
+                  "text": ["du", "Er"]
+                },
+                {
+                  "id": "C",
+                  "text": ["ich", "ich"]
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "question": "Der Schrank ist teuer. ________ kommt aus Italien.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Du"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Er"
+                }
+              ]
+            }
+          ], 
+          "answers": [
+            {
+              "id": 16,
+              "answer": "B"
+            }, {
+              "id": 17,
+              "answer": "A"
+            }, {
+              "id": 18,
+              "answer": "B"
+            }, {
+              "id": 19,
+              "answer": "A"
+            }, {
+              "id": 20,
+              "answer": "C"
+            }
+          ]
+        }
+      ],
+      "trophy": "a1_trophy"
+    },
+    {
+      "id": 2,
+      "levelId": 2,
+      "title": "Bài kiểm tra kết thúc trình độ A2"
     }
   ]
 }

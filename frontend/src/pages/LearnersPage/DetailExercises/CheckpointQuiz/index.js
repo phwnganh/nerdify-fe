@@ -34,6 +34,7 @@ export default function CheckpointQuiz() {
       .toString()
       .padStart(2, "0")}`;
   }
+
   const quizContents = [
     {
       id: 1,
