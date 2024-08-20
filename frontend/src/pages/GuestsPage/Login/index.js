@@ -95,13 +95,13 @@ export const LoginPage = () => {
               label="Mật khẩu"
               type="password"
               name="password"
-              rules={[
-                {
-                  pattern: EMAIL_REGEX,
-                  message:
-                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
-                },
-              ]}
+              // rules={[
+              //   {
+              //     pattern: EMAIL_REGEX,
+              //     message:
+              //       "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+              //   },
+              // ]}
             >
               <InputCustom
                 type="password"

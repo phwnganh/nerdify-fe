@@ -10,7 +10,8 @@ import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
 import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
 import FlashCard from "../pages/LearnersPage/FlashCard";
-import CreateFlashCard from "../pages/LearnersPage/FlashCard/create-flash-card";
+import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
+import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 
 export const routes = [
   // Guest urls
@@ -24,6 +25,7 @@ export const routes = [
     ),
     children: [
       {
+<<<<<<< HEAD
         path: CLIENT_URI.LANDING_PAGE,
         element: <LandingPage />,
       },
@@ -31,6 +33,43 @@ export const routes = [
         path: CLIENT_URI.LEVEL_DETAIL,
         element: <ViewLevelDetail />,
       },
+=======
+        children: [
+          {
+            path: CLIENT_URI.LANDING_PAGE,
+            // element: <LandingPage />,
+            element: <LandingPage/>,
+          },
+          {
+            path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+            element: <ExerciseDetail/>,
+          },
+          {
+            path: CLIENT_URI.LOGIN,
+            element: (
+                <LoginPage/>
+            ),
+          },
+          {
+            path: CLIENT_URI.REGISTER,
+            element: (
+                <RegisterPage/>
+            ),
+          },
+          {
+            path: CLIENT_URI.LEVEL_DETAIL,
+            element: (
+              <ViewLevelDetail/>
+            )
+          }
+        ],
+
+      },
+      // {
+      //   path: CLIENT_URI.LEVEL_DETAIL,
+      //   element: <ViewLevelDetail />,
+      // },
+>>>>>>> develop_frontend
       {
         path: CLIENT_URI.LOGIN,
         element: <LoginPage />,
@@ -51,7 +90,7 @@ export const routes = [
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
-        element: <CreateFlashCard />,
+        element: <CreateFlashCard/>,
       },
       {
         path: CLIENT_URI.Le,
@@ -74,6 +113,10 @@ export const routes = [
         path: CLIENT_URI.HOME_PAGE,
         element: <HomePage />,
       },
+      // {
+      //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseId`,
+      //   element: <ExerciseDetail />,
+      // },
     ],
   },
 
