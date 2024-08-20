@@ -2,9 +2,6 @@ import { Outlet } from "react-router-dom";
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { HomePage } from "../pages/LearnersPage/HomePage";
-import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
-import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExercises";
-import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningExercises";
 import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
@@ -25,51 +22,34 @@ export const routes = [
     ),
     children: [
       {
-<<<<<<< HEAD
-        path: CLIENT_URI.LANDING_PAGE,
-        element: <LandingPage />,
-      },
-      {
-        path: CLIENT_URI.LEVEL_DETAIL,
-        element: <ViewLevelDetail />,
-      },
-=======
         children: [
           {
             path: CLIENT_URI.LANDING_PAGE,
             // element: <LandingPage />,
-            element: <LandingPage/>,
+            element: <LandingPage />,
           },
           {
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-            element: <ExerciseDetail/>,
+            element: <ExerciseDetail />,
           },
           {
             path: CLIENT_URI.LOGIN,
-            element: (
-                <LoginPage/>
-            ),
+            element: <LoginPage />,
           },
           {
             path: CLIENT_URI.REGISTER,
-            element: (
-                <RegisterPage/>
-            ),
+            element: <RegisterPage />,
           },
           {
             path: CLIENT_URI.LEVEL_DETAIL,
-            element: (
-              <ViewLevelDetail/>
-            )
-          }
+            element: <ViewLevelDetail />,
+          },
         ],
-
       },
       // {
       //   path: CLIENT_URI.LEVEL_DETAIL,
       //   element: <ViewLevelDetail />,
       // },
->>>>>>> develop_frontend
       {
         path: CLIENT_URI.LOGIN,
         element: <LoginPage />,
@@ -90,7 +70,7 @@ export const routes = [
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
-        element: <CreateFlashCard/>,
+        element: <CreateFlashCard />,
       },
       {
         path: CLIENT_URI.Le,

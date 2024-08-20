@@ -11,15 +11,13 @@ import reading from "../../../assets/exercisesSkill/reading.png";
 import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
 import writing from "../../../assets/exercisesSkill/writing.png";
 import grammar from "../../../assets/exercisesSkill/grammar.png";
-import { Affix, Col, Row } from "antd";
-import Icon from "@ant-design/icons/lib/components/Icon";
+import { Col, Row } from "antd";
 import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 import { useNavigate } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants";
-import ModalRequireToLogin from "../../GuestsPage/ModalRequireToLogin";
+
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
