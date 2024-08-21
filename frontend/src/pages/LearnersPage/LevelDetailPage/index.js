@@ -16,15 +16,26 @@ import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
-  const [open, setOpen] = useState(false);
+  const { courseId } = useParams();
+  const [course, setCourse] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetch("http://localhost:9999/phases")
+    fetch(`http://localhost:9999/levels/${courseId}`)
+      .then((response) => response.json())
+      .then((course) => {
+        setCourse(course);
+      })
+      .catch((err) => console.error(err));
+  }, [courseId]);
+
+  useEffect(() => {
+    fetch(`http://localhost:9999/phases?levelId=${courseId}`)
       .then((response) => response.json())
       .then((phases) => {
         const fetchExercises = phases.map((phase) =>
@@ -42,7 +53,7 @@ export default function ViewLevelDetail() {
         });
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [courseId]);
 
   const handlePhaseClick = (phase) => {
     setActivePhase(phase);
@@ -51,11 +62,6 @@ export default function ViewLevelDetail() {
   const handleExerciseClick = (exerciseType, exerciseId) => {
     navigate(`/one-exercise/${exerciseType}/${exerciseId}`);
   };
-
-  useEffect(() => {
-    setOpen(open);
-  }, [open]);
-  console.log("open" + open);
 
   const renderContent = () => {
     const selectedPhase = phases.find((phase) => phase.name === activePhase);
@@ -124,7 +130,7 @@ export default function ViewLevelDetail() {
             <img src={a1} alt="" srcSet="" width={"50%"} />
           </Col>
           <Col md={12}>
-            <TitleCustom level={2}>Bài tập trình độ A1</TitleCustom>
+            <TitleCustom level={2}>{course?.title}</TitleCustom>
             <div
               style={{
                 display: "flex",
@@ -133,18 +139,13 @@ export default function ViewLevelDetail() {
               }}
             >
               <UserAddOutlined style={{ marginRight: 8 }}></UserAddOutlined>
-              <TextCustom>10 người học</TextCustom>
+              <TextCustom>{course?.learners} người học</TextCustom>
               <BarChartOutlined
                 style={{ marginLeft: 70, marginRight: 8 }}
               ></BarChartOutlined>
-              <TextCustom>10 phase</TextCustom>
+              <TextCustom>{course?.phasesNum} giai đoạn</TextCustom>
             </div>
-            <ParagraphCustom>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit,
-              quas, illum voluptates hic impedit molestias velit labore ipsa
-              unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi
-              numquam, dignissimos distinctio.
-            </ParagraphCustom>
+            <ParagraphCustom>{course?.description}</ParagraphCustom>
           </Col>
         </Row>
       </CardCustom>

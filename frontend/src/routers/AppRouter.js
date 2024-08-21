@@ -42,7 +42,7 @@ export const routes = [
             element: <RegisterPage />,
           },
           {
-            path: CLIENT_URI.LEVEL_DETAIL,
+            path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
             element: <ViewLevelDetail />,
           },
           {
@@ -75,10 +75,6 @@ export const routes = [
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
-        element: <CreateFlashCard />,
-      },
-      {
-        path: CLIENT_URI.Le,
         element: <CreateFlashCard />,
       },
     ],
