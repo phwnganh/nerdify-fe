@@ -9,6 +9,7 @@ import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
 import FlashCard from "../pages/LearnersPage/FlashCard";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
+import FinalExam from "../pages/LearnersPage/FinalExam";
 
 export const routes = [
   // Guest urls
@@ -43,6 +44,10 @@ export const routes = [
           {
             path: CLIENT_URI.LEVEL_DETAIL,
             element: <ViewLevelDetail />,
+          },
+          {
+            path: CLIENT_URI.FINAL_EXAM,
+            element: <FinalExam />,
           },
         ],
       },

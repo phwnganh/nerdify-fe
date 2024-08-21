@@ -41,6 +41,7 @@ export const CLIENT_URI = {
   HOME_PAGE: "/home",
   LEVEL_DETAIL: "/level-detail",
   ONE_EXERCISE: "/one-exercise",
+  FINAL_EXAM: "/final-exam",
   PROFILE: "/personal-profile",
   FLASH_CARD: "/flash-card",
   CREATE_FLASH_CARD: "/create-flash-card",

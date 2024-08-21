@@ -16,3 +16,15 @@ export const ScrollablePhaseDiv = styled.div`
     background-color: transparent; /* Scrollbar track color */
   }
 `;
+
+export const ButtonToDoExam = styled.button`
+  color: #FFFFFF;
+  background-color: #be6004;
+  border-color: #be6004;
+  border-radius: 12px;
+  border-width: 20px;
+`;
+
+export const BackgroundCard = styled.div`
+  bo
+`

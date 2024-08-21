@@ -14,10 +14,10 @@ import grammar from "../../../assets/exercisesSkill/grammar.png";
 import { Col, Row } from "antd";
 import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
-import { ScrollablePhaseDiv } from "./styled";
+import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 import { useNavigate } from "react-router-dom";
-
+import { CLIENT_URI } from "../../../constants/uri.constants";
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
@@ -34,6 +34,8 @@ export default function ViewLevelDetail() {
         );
         Promise.all(fetchExercises).then((phaseWithExercises) => {
           setPhases(phaseWithExercises);
+          console.log("result: ", phaseWithExercises);
+
           if (phaseWithExercises.length > 0) {
             setActivePhase(phaseWithExercises[0].name);
           }
@@ -54,6 +56,65 @@ export default function ViewLevelDetail() {
     setOpen(open);
   }, [open]);
   console.log("open" + open);
+
+  const renderContent = () => {
+    const selectedPhase = phases.find((phase) => phase.name === activePhase);
+    if (selectedPhase?.name === "Final Exam") {
+      return (
+        <CardCustom
+          bordered={true}
+          style={{
+            marginTop: 20,
+            textAlign: "center",
+            backgroundColor: "#EAA68D",
+          }}
+        >
+          <ParagraphCustom style={{ color: "#FFFFFF" }}>
+            Bạn cần hoàn thành final exam để được nhận cúp
+          </ParagraphCustom>
+          <ButtonToDoExam onClick={() => navigate(CLIENT_URI.FINAL_EXAM)}>
+            Vào làm bài
+          </ButtonToDoExam>
+        </CardCustom>
+      );
+    } else if (selectedPhase) {
+      return selectedPhase.exercises.map((exercise, index) => (
+        <CardCustom
+          key={index}
+          bordered={true}
+          style={{ marginBottom: 20, cursor: "pointer" }}
+          onClick={() =>
+            handleExerciseClick(exercise.exerciseType, exercise.id)
+          }
+        >
+          <Row gutter={[16, 16]}>
+            <Col md={12}>
+              <img
+                src={
+                  exercise.exerciseType === "listening"
+                    ? listening
+                    : exercise.exerciseType === "reading"
+                    ? reading
+                    : exercise.exerciseType === "vocabulary"
+                    ? vocabulary
+                    : exercise.exerciseType === "grammar"
+                    ? grammar
+                    : writing
+                }
+                alt=""
+                width={"50%"}
+              />
+            </Col>
+            <Col md={12}>
+              <TitleCustom level={4} style={{ textAlign: "center" }}>
+                {exercise.title}
+              </TitleCustom>
+            </Col>
+          </Row>
+        </CardCustom>
+      ));
+    }
+  };
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
@@ -108,45 +169,7 @@ export default function ViewLevelDetail() {
         ))}
       </ScrollablePhaseDiv>
       {activePhase && (
-        <div style={{ marginTop: "16px" }}>
-          {phases
-            .find((phase) => phase.name === activePhase)
-            ?.exercises.map((exercise, index) => (
-              <CardCustom
-                key={index}
-                bordered={true}
-                style={{ marginBottom: 20, cursor: "pointer" }}
-                onClick={() =>
-                  handleExerciseClick(exercise.exerciseType, exercise.id)
-                }
-              >
-                <Row gutter={[16, 16]}>
-                  <Col md={12}>
-                    <img
-                      src={
-                        exercise.exerciseType === "listening"
-                          ? listening
-                          : exercise.exerciseType === "reading"
-                          ? reading
-                          : exercise.exerciseType === "vocabulary"
-                          ? vocabulary
-                          : exercise.exerciseType === "grammar"
-                          ? grammar
-                          : writing
-                      }
-                      alt=""
-                      width={"50%"}
-                    />
-                  </Col>
-                  <Col md={12}>
-                    <TitleCustom level={4} style={{ textAlign: "center" }}>
-                      {exercise.title}
-                    </TitleCustom>
-                  </Col>
-                </Row>
-              </CardCustom>
-            ))}
-        </div>
+        <div style={{ marginTop: "16px" }}>{renderContent()}</div>
       )}
     </div>
   );
