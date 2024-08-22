@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import { Col, Row } from "antd";
+import { Col, Row, message } from "antd"; // Import 'message' for notifications
 import ButtonCustom from "../../../../components/Button";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { useParams } from "react-router-dom";
@@ -17,7 +17,9 @@ import demo3_3 from '../../../../assets/listeningExercises/3_3.png';
 export default function ListeningExercise() {
   const [exercises, setExercises] = useState(null);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const {exerciseType, exerciseId} = useParams();
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const { exerciseType, exerciseId } = useParams();
+
   const imagesArr = {
     demo1_1,
     demo1_2,
@@ -29,16 +31,26 @@ export default function ListeningExercise() {
     demo3_2,
     demo3_3,
   };
+
   useEffect(() => {
-    fetch(`http://localhost:9999/exercises?type=${exerciseType}&id=${exerciseId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => console.error("error", err));
+    if (exerciseId) {
+      fetch(`http://localhost:9999/exercises/${exerciseId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            setExercises(data);
+          }
+        })
+        .catch((err) => console.error("Error fetching exercise data", err));
+    }
   }, [exerciseType, exerciseId]);
+
+  const handleOptionSelect = (questionId, optionId) => {
+    setSelectedAnswers((prevSelected) => ({
+      ...prevSelected,
+      [questionId]: optionId,
+    }));
+  };
 
   const handleNextPart = () => {
     if (exercises && currentPartIndex < exercises.parts.length - 1) {
@@ -48,6 +60,25 @@ export default function ListeningExercise() {
 
   const handlePreviousPart = () => {
     setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleSubmit = () => {
+    fetch(`http://localhost:9999/exercises/${exerciseId}/submit`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ selectedAnswers }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        message.success("Nộp bài thành công!"); // Show success message
+        console.log("Submission successful", data);
+      })
+      .catch((err) => {
+        console.error("Submission error", err);
+        message.error("Nộp bài thất bại. Vui lòng thử lại."); // Show error message if submission fails
+      });
   };
 
   if (!exercises?.parts) {
@@ -87,7 +118,16 @@ export default function ListeningExercise() {
             <Row style={{ textAlign: "center", marginTop: "10px" }}>
               {question.options.map((option) => (
                 <Col key={option.id} span={8}>
-                  <ButtonCustom buttonType="primary">
+                  <ButtonCustom
+                    buttonType="primary"
+                    onClick={() => handleOptionSelect(question.id, option.id)}
+                    style={{
+                      backgroundColor:
+                        selectedAnswers[question.id] === option.id
+                          ? "blue"
+                          : undefined,
+                    }}
+                  >
                     {option.id}. {option.text}
                   </ButtonCustom>
                 </Col>
@@ -98,7 +138,7 @@ export default function ListeningExercise() {
       ))}
 
       <div style={{ textAlign: "center", paddingTop: "50px" }}>
-      <ButtonCustom
+        <ButtonCustom
           buttonType="secondary"
           style={{ marginRight: "100px", padding: "23px" }}
           onClick={handlePreviousPart}
@@ -117,6 +157,7 @@ export default function ListeningExercise() {
         <ButtonCustom
           buttonType="secondary"
           style={{ marginLeft: "23px", padding: "23px" }}
+          onClick={handleSubmit}
         >
           Nộp bài
         </ButtonCustom>
