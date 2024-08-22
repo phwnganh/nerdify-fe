@@ -17,14 +17,20 @@
       "name": "Final Exam",
       "levelId": 1,
       "examId": 1
+    }, {
+      "id": 4,
+      "name": "Phase 1",
+      "levelId": 2,
+      "exercise": [8,9,10],
+      "examId": 2
     }
   ],
   "levels": [
     {
       "id": 1,
       "title": "Bài tập trình độ A1",
+      "levelImage": "a1",
       "learners": 10,
-      "phasesNum": 2,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
       "phases": [1, 2, 3],
       "finalexams": [1]
@@ -32,10 +38,10 @@
     {
       "id": 2,
       "title": "Bài tập trình độ A2",
+      "levelImage": "a2",
       "learners": 10,
-      "phasesNum": 2,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [1, 2, 3],
+      "phases": [4],
       "finalexams": [2]
     }
   ],
@@ -213,10 +219,37 @@
       "phaseId": 1
     },
     {
-      "id": 6,
-      "title": "Checkpoint Quiz",
-      "exerciseType": "quiz",
-      "phaseId": 2
+      "id": 4,
+      "title": "Bài tập viết 1",
+      "exerciseType": "writing",
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Tìm các từ sai chính tả, các câu sai ngữ pháp và các từ không săp xếp đúng trật tự trong câu, tối thiểu ",
+          "error": "3 lỗi",
+          "paragraph": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "answers": [
+            {
+              "id": 1,
+              "answer": "von",
+              "explanation": "von thành aus (khi nói về nơi xuất xứ)"
+            }, {
+              "id": 2,
+              "answer": "sprechen",
+              "explanation": "sprechen thành spreche (chia động từ đúng ngôi thứ nhất số ít)"
+            }, {
+              "id": 3,
+              "answer": "bißchen",
+              "explanation": "bißchen thành bisschen (chính tả mới)"
+            }
+          ]
+        }, {
+          "id": 2,
+          "partName": "Phần 2: Viết thành đoạn văn hoàn chỉnh",
+          "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."
+        }
+      ]
     },
     {
       "id": 5,
@@ -225,7 +258,7 @@
       "phaseId": 2
     },
     {
-      "id": 4,
+      "id": 6,
       "title": "Bài tập nghe 2",
       "exerciseType": "listening",
       "phaseId": 2
@@ -318,6 +351,20 @@
           ]
         }
       ]
+    }, {
+      "id": 8,
+      "title": "Bài tập nghe 3",
+      "exerciseType": "listening",
+      "phaseId": 4
+    }, {
+      "id": 9,
+      "title": "Bài tập đọc 3",
+      "exerciseType": "reading",
+      "phaseId": 4
+    }, {
+      "id": 10,
+      "title": "QUIZ KẾT THÚC PHASE 1",
+      "phaseId": 4
     }
   ],
   "finalexam": [

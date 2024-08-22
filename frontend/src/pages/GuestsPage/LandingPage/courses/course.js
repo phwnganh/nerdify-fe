@@ -4,15 +4,20 @@ import ButtonCustom from "../../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants";
 import { ReadOutlined } from "@ant-design/icons";
-
+import a1 from '../../../../assets/levelImage/a1.png';
+import a2 from '../../../../assets/levelImage/a2.png'
 export const Course = ({ course }) => {
+  const levelImgArr = {
+    a1: a1,
+    a2: a2
+  }
   const navigate = useNavigate();
   return (
     <CardCustom
       cover={
         <img
           alt="example"
-          src={sample}
+          src={levelImgArr[course.levelImage]}
           height={150}
           style={{ objectFit: "cover" }}
         />
