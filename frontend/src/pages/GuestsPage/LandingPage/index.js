@@ -11,8 +11,12 @@ import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import CardCustom from "../../../components/Card";
+import { useNavigate } from "react-router-dom";
+import { Courses } from "./courses/coursesList";
+
 const { Meta } = Card;
 export const LandingPage = () => {
+  const navigate = useNavigate();
   const skills = [
     {
       img: listening,
@@ -200,6 +204,11 @@ export const LandingPage = () => {
       {/* Khoa hoc */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC</h2>
+        <Courses />
+      </div>
+      {/* Blog */}
+      <div>
+        <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
         <List
           grid={{
             gutter: 16,
@@ -214,48 +223,7 @@ export const LandingPage = () => {
                     alt="example"
                     src={sample}
                     height={150}
-                    style={{objectFit: 'cover'}}
-                    // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
-              >
-                <Meta
-                  // avatar={<Avatar src={sample} />}
-                  title={item.title}
-                  // description={"This is the description"}
-                />
-                <p>Title content</p>
-
-                <ButtonCustom
-                  buttonType="primary"
-                  style={{ width: "100%" }}
-                  // onClick={() => navigate(CLIENT_URI.LOGIN)}
-                >
-                  Bắt đầu
-                </ButtonCustom>
-              </CardCustom>
-            </List.Item>
-          )}
-        />
-      </div>
-      {/* Blog */}
-      <div>
-        <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
-        <List
-          grid={{
-            gutter: 16,
-            column: 4,
-          }}
-          dataSource={course}
-          renderItem={(item) => (
-            <List.Item>
-              <CardCustom
-                 cover={
-                  <img
-                    alt="example"
-                    src={sample}
-                    height={150}
-                    style={{objectFit: 'cover'}}
+                    style={{ objectFit: "cover" }}
                     // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                   />
                 }

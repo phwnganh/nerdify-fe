@@ -6,7 +6,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
 import logo from "../../assets/logo.png";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../constants/uri.constants";
 const { Header } = Layout;
 
@@ -16,11 +16,10 @@ export default function Navbar() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
+  const {courseId} = useParams();
   useEffect(() => {
     if (
-      location.pathname === CLIENT_URI.LEVEL_DETAIL ||
-      location.pathname === CLIENT_URI.ONE_EXERCISE
-    ) {
+      location.pathname === CLIENT_URI.LEVEL_DETAIL    ) {
       setSelectedKey("practices");
     } else if (location.pathname === CLIENT_URI.LANDING_PAGE) {
       setSelectedKey("home");
@@ -75,7 +74,7 @@ export default function Navbar() {
             </MenuItem>
             <MenuItem
               key="practices"
-              onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
+              onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/${courseId}`)}
             >
               LUYỆN TẬP
             </MenuItem>

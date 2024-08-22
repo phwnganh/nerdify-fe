@@ -2,12 +2,6 @@ import { Outlet } from "react-router-dom";
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { HomePage } from "../pages/LearnersPage/HomePage";
-import ModalRequireToLogin from "../pages/GuestsPage/ModalRequireToLogin";
-import ReadingExercises from "../pages/LearnersPage/DetailExercises/ReadingExercises";
-import ListeningExercise from "../pages/LearnersPage/DetailExercises/ListeningExercises";
-import WritingExercises from "../pages/LearnersPage/DetailExercises/WritingExercises";
-import VocabularyExercises from "../pages/LearnersPage/DetailExercises/VocabularyExercises";
-import GrammarExercises from "../pages/LearnersPage/DetailExercises/GrammarExercises";
 import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
@@ -15,7 +9,7 @@ import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
 import FlashCard from "../pages/LearnersPage/FlashCard";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
-import FinalExam from '../pages/LearnersPage/FinalExam'
+import FinalExam from "../pages/LearnersPage/FinalExam";
 
 export const routes = [
   // Guest urls
@@ -33,37 +27,29 @@ export const routes = [
           {
             path: CLIENT_URI.LANDING_PAGE,
             // element: <LandingPage />,
-            element: <LandingPage/>,
+            element: <LandingPage />,
           },
           {
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-            element: <ExerciseDetail/>,
+            element: <ExerciseDetail />,
           },
           {
             path: CLIENT_URI.LOGIN,
-            element: (
-                <LoginPage/>
-            ),
+            element: <LoginPage />,
           },
           {
             path: CLIENT_URI.REGISTER,
-            element: (
-                <RegisterPage/>
-            ),
+            element: <RegisterPage />,
           },
           {
-            path: CLIENT_URI.LEVEL_DETAIL,
-            element: (
-              <ViewLevelDetail/>
-            )
-          }, {
+            path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+            element: <ViewLevelDetail />,
+          },
+          {
             path: CLIENT_URI.FINAL_EXAM,
-            element: (
-              <FinalExam/>
-            )
-          }
+            element: <FinalExam />,
+          },
         ],
-
       },
       // {
       //   path: CLIENT_URI.LEVEL_DETAIL,
@@ -81,18 +67,15 @@ export const routes = [
         path: CLIENT_URI.VERIFY_EMAIL,
         element: <VerifyEmailPage />,
       },
-
+      // test giao diện
       {
         path: CLIENT_URI.FLASH_CARD,
         element: <FlashCard />,
+        // element: <ModalRequireToLogin />,
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
-        element: <CreateFlashCard/>,
-      },
-      {
-        path: CLIENT_URI.HOME_PAGE,
-        element: <HomePage />,
+        element: <CreateFlashCard />,
       },
     ],
   },
