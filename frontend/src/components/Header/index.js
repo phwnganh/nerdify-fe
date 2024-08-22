@@ -16,11 +16,10 @@ export default function Navbar() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
-  const {courseId} = useParams();
+  const { courseId } = useParams();
   useEffect(() => {
-    if (
-      location.pathname === CLIENT_URI.LEVEL_DETAIL    ) {
-      setSelectedKey("practices");
+    if (location.pathname === CLIENT_URI.FLASH_CARD) {
+      setSelectedKey("flashcards");
     } else if (location.pathname === CLIENT_URI.LANDING_PAGE) {
       setSelectedKey("home");
     }
@@ -72,12 +71,12 @@ export default function Navbar() {
             >
               TRANG CHỦ
             </MenuItem>
-            <MenuItem
+            {/* <MenuItem
               key="practices"
               onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/${courseId}`)}
             >
               LUYỆN TẬP
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
               key="flashcards"
               onClick={() => {
