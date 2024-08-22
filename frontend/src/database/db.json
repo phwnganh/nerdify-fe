@@ -213,10 +213,37 @@
       "phaseId": 1
     },
     {
-      "id": 6,
-      "title": "Checkpoint Quiz",
-      "exerciseType": "quiz",
-      "phaseId": 2
+      "id": 4,
+      "title": "Bài tập viết 1",
+      "exerciseType": "writing",
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Tìm các từ sai chính tả, các câu sai ngữ pháp và các từ không săp xếp đúng trật tự trong câu, tối thiểu ",
+          "error": "3 lỗi",
+          "paragraph": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "answers": [
+            {
+              "id": 1,
+              "answer": "von",
+              "explanation": "von thành aus (khi nói về nơi xuất xứ)"
+            }, {
+              "id": 2,
+              "answer": "sprechen",
+              "explanation": "sprechen thành spreche (chia động từ đúng ngôi thứ nhất số ít)"
+            }, {
+              "id": 3,
+              "answer": "bißchen",
+              "explanation": "bißchen thành bisschen (chính tả mới)"
+            }
+          ]
+        }, {
+          "id": 2,
+          "partName": "Phần 2: Viết thành đoạn văn hoàn chỉnh",
+          "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."
+        }
+      ]
     },
     {
       "id": 5,
@@ -225,7 +252,7 @@
       "phaseId": 2
     },
     {
-      "id": 4,
+      "id": 6,
       "title": "Bài tập nghe 2",
       "exerciseType": "listening",
       "phaseId": 2
