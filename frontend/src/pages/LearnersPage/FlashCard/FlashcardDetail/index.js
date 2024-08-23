@@ -8,6 +8,7 @@ import {
   FolderFilled,
   FolderOpenFilled,
   FolderOutlined,
+  FullscreenExitOutlined,
   FullscreenOutlined,
   LeftOutlined,
   RightOutlined,
@@ -29,7 +30,8 @@ export default function FlashCardDetail() {
   const [flashcard, setFlashcard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
-  
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
   useEffect(() => {
     fetch(`http://localhost:9999/flashcard/${flashcardId}`)
       .then((data) => data.json())
@@ -89,16 +91,20 @@ export default function FlashCardDetail() {
     setIsFlipped(!isFlipped);
   };
 
+  const toggleFullScreen = () => {
+    setIsFullScreen(!isFullScreen);
+  };
+
   const handleSpeak = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(utterance);
   };
   return (
     <div style={{ padding: "24px" }}>
-      <div style={{marginLeft: 235}}>
-      <BreadCrumbHome/>
+      <div style={{ marginLeft: 235 }}>
+        <BreadCrumbHome />
       </div>
-      
+
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <TitleCustom level={2}>{flashcard?.title}</TitleCustom>
         <Dropdown menu={{ items }} trigger={["click"]}>
@@ -137,112 +143,99 @@ export default function FlashCardDetail() {
         </ButtonCustom>
       </div>
       <Container>
-        <ReactCardFlip flipDirection="horizontal" isFlipped={isFlipped}>
-          <Flashcard onClick={toggleFlashcard}>
-            <Row justify={"end"}>
-              <Col>
-                <Button
-                  icon={<SoundOutlined />}
-                  shape="circle"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleSpeak(flashcard?.cards[currentIndex]?.terms);
-                  }}
-                ></Button>
-              </Col>
-            </Row>
-            <div style={{ margin: "40px 0", textAlign: "center" }}>
-              <TextCustom>{flashcard?.cards[currentIndex]?.terms}</TextCustom>
-            </div>
-            <Row justify={"space-around"} align={"middle"}>
-              <Col>
-                <Button
-                  icon={<LeftOutlined />}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePrevious();
-                  }}
-                  shape="circle"
-                ></Button>
-              </Col>
-              <Col>{`${currentIndex + 1}/${flashcard?.cards?.length}`}</Col>
-              <Col>
-                <Button
-                  icon={<RightOutlined />}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNext();
-                  }}
-                  shape="circle"
-                ></Button>
-              </Col>
-            </Row>
-            <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-              <Col style={{ marginRight: "20px" }}>
-                <Button icon={<ShareAltOutlined />} shape="circle"></Button>
-              </Col>
-              <Col>
-                <Button icon={<FullscreenOutlined />} shape="circle"></Button>
-              </Col>
-            </Row>
-          </Flashcard>
-
-          <FlashcardFlipped onClick={toggleFlashcard}>
-            <Row justify={"end"}>
-              <Col>
-                <Button
-                  icon={<SoundOutlined />}
-                  shape="circle"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleSpeak(flashcard?.cards[currentIndex]?.definitions);
-                  }}
-                ></Button>
-              </Col>
-            </Row>
-            <div style={{ margin: "40px 0", textAlign: "center" }}>
-              <TextCustom>
-                {flashcard?.cards[currentIndex]?.definitions}
-              </TextCustom>
-            </div>
-            <Row justify={"space-around"} align={"middle"}>
-              <Col>
-                <Button
-                  icon={<LeftOutlined />}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePrevious();
-                  }}
-                  shape="circle"
-                ></Button>
-              </Col>
-              <Col>{`${currentIndex + 1}/${flashcard?.cards?.length}`}</Col>
-              <Col>
-                <Button
-                  icon={<RightOutlined />}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNext();
-                  }}
-                  shape="circle"
-                ></Button>
-              </Col>
-            </Row>
-            <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-              <Col style={{ marginRight: "20px" }}>
-                <Button icon={<ShareAltOutlined />} shape="circle"></Button>
-              </Col>
-              <Col>
-                <Button icon={<FullscreenOutlined />} shape="circle"></Button>
-              </Col>
-            </Row>
-          </FlashcardFlipped>
-        </ReactCardFlip>
+        <div
+          style={{
+            backgroundColor: "#e0e0e0",
+            padding: "20px",
+            borderRadius: "8px",
+            textAlign: "center",
+            cursor: "pointer",
+            transition: "transform 0.6s",
+            width: isFullScreen ? "70vw" : "auto",
+            height: isFullScreen ? "30vh" : "auto",
+            top: isFullScreen ? "0" : "auto",
+            left: isFullScreen ? "0" : "auto",
+            overflow: "hidden",
+          }}
+          onClick={toggleFlashcard}
+        >
+          <Row justify={"end"}>
+            <Col>
+              <Button
+                icon={<SoundOutlined />}
+                shape="circle"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSpeak(flashcard?.cards[currentIndex].terms);
+                }}
+              ></Button>
+            </Col>
+          </Row>
+          <div style={{ margin: "40px 0" }}>
+            <TextCustom>
+              {isFlipped
+                ? flashcard?.cards[currentIndex].definitions
+                : flashcard?.cards[currentIndex].terms}
+            </TextCustom>
+          </div>
+          <Row justify={"space-around"} align={"middle"}>
+            <Col>
+              <Button
+                icon={<LeftOutlined />}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevious();
+                }}
+                shape="circle"
+              ></Button>
+            </Col>
+            <Col>{`${currentIndex + 1}/${flashcard?.cards.length}`}</Col>
+            <Col>
+              <Button
+                icon={<RightOutlined />}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                shape="circle"
+              ></Button>
+            </Col>
+          </Row>
+          <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
+            <Col style={{ marginRight: "20px" }}>
+              <Button icon={<ShareAltOutlined />} shape="circle"></Button>
+            </Col>
+            <Col>
+              <Button
+                icon={
+                  isFullScreen ? (
+                    <FullscreenExitOutlined />
+                  ) : (
+                    <FullscreenOutlined />
+                  )
+                }
+                shape="circle"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleFullScreen();
+                }}
+              ></Button>
+            </Col>
+          </Row>
+        </div>
 
         <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-          <Button icon={<EditOutlined />} shape="circle" style={{marginRight: '20px'}}></Button>
+          <Button
+            icon={<EditOutlined />}
+            shape="circle"
+            style={{ marginRight: "20px" }}
+          ></Button>
           <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
-            <Button icon={<FolderOutlined />} shape="circle" style={{marginRight: '10px'}}></Button>
+            <Button
+              icon={<FolderOutlined />}
+              shape="circle"
+              style={{ marginRight: "10px" }}
+            ></Button>
           </Dropdown>
         </Row>
         <div style={{ marginTop: "20px", textAlign: "center" }}>
