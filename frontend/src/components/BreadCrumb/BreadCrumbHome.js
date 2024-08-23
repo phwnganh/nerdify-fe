@@ -30,6 +30,29 @@ export default function BreadCrumbHome() {
         { path: `/level-detail/${storedCourseId}`, label: "Trình độ" },
         { path: location.pathname, label: `Bài tập ${exerciseType}` }, // Display exercise type
       ]);
+    }else if(location.pathname === "/flash-card"){
+      setBreadCrumb([
+        {
+          path: '/', label: "Trang chủ"
+        }, {
+          path: location.pathname,
+          label: 'Flashcard'
+        }
+      ])
+    }else if(location.pathname.startsWith("/flash-card")){
+      setBreadCrumb([
+        {
+          path: '/', 
+          label: "Trang chủ"
+        },
+        {
+          path: '/flash-card',
+          label: 'Các bộ flashcards'
+        }, {
+          path: location.pathname,
+          label: 'Flashcard'
+        }
+      ])
     }
   }, [location.pathname, exerciseType, courseId]);
 
