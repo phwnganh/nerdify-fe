@@ -45,8 +45,6 @@ export default function ViewLevelDetail() {
         );
         Promise.all(fetchExercises).then((phaseWithExercises) => {
           setPhases(phaseWithExercises);
-          console.log("result: ", phaseWithExercises);
-
           if (phaseWithExercises.length > 0) {
             setActivePhase(phaseWithExercises[0].name);
           }

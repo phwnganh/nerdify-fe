@@ -182,6 +182,28 @@
                 { "id": "B", "text": "Falsch" }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "B"
+            },
+            {
+              "id": 2,
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "answer": "B"
+            },
+            {
+              "id": 5,
+              "answer": "A"
+            }
           ]
         },
         {
@@ -201,6 +223,12 @@
                   "text": "www.dwd.de"
                 }
               ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 6,
+              "answer": "B"
             }
           ]
         }
@@ -228,17 +256,20 @@
               "id": 1,
               "answer": "von",
               "explanation": "von thành aus (khi nói về nơi xuất xứ)"
-            }, {
+            },
+            {
               "id": 2,
               "answer": "sprechen",
               "explanation": "sprechen thành spreche (chia động từ đúng ngôi thứ nhất số ít)"
-            }, {
+            },
+            {
               "id": 3,
               "answer": "bißchen",
               "explanation": "bißchen thành bisschen (chính tả mới)"
             }
           ]
-        }, {
+        },
+        {
           "id": 2,
           "partName": "Phần 2: Viết thành đoạn văn hoàn chỉnh",
           "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."

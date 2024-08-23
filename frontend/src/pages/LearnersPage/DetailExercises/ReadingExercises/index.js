@@ -1,134 +1,22 @@
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import demo_1 from "../../../../assets/readingExercises/demo_2.png";
-import demo_3 from "../../../../assets/readingExercises/demo_3.png";
-import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
-import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
-import { Col, Row } from "antd";
-import ButtonCustom from "../../../../components/Button";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import { QuestionsList } from "./questions/questionsList";
+import NavigateButton from "./navigateButton";
+
 export default function ReadingExercises() {
+  const { exerciseType, exerciseId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [exercises, setExercises] = useState(null);
-  const {exerciseType, exerciseId} = useParams();
-  //   const readingContent = [
-  //     {
-  //       id: 1,
-  //       parts: [
-  //         {
-  //           id: 1,
-  //           partName: `Phần 1: Lesen Sie die beiden Texte und di Aufgaben 1 bis 5. Kreuzen Sie
-  //         an: Richtig oder Falsch`,
-  //           questions: [
-  //             {
-  //               id: 1,
-  //               question: `
-  // Lis Zug kommt nach halb eins an.`,
-  //               questionImage: demo_1,
-  //               options: [
-  //                 {
-  //                   id: "A",
-  //                   text: "Richtig",
-  //                 },
-  //                 {
-  //                   id: "B",
-  //                   text: "Falsch",
-  //                 },
-  //               ],
-  //             },
-  //             {
-  //               id: 2,
-  //               question: `
-  // Karin wartet den ganzen Vormittag vor der Auskunft.`,
-  //               //   questionImage: demo_1,
-  //               options: [
-  //                 {
-  //                   id: "A",
-  //                   text: "Richtig",
-  //                 },
-  //                 {
-  //                   id: "B",
-  //                   text: "Falsch",
-  //                 },
-  //               ],
-  //             },
-  //             {
-  //               id: 3,
-  //               question: `
-  // Ralf hatte am letzten Wochenende Geburtstag.`,
-  //               questionImage: demo_3,
-  //               options: [
-  //                 {
-  //                   id: "A",
-  //                   text: "Richtig",
-  //                 },
-  //                 {
-  //                   id: "B",
-  //                   text: "Falsch",
-  //                 },
-  //               ],
-  //             },
-  //             {
-  //               id: 4,
-  //               question: `
-  //             Ralf hat nur zwei oder drei Leute eingeladen..`,
-  //               options: [
-  //                 {
-  //                   id: "A",
-  //                   text: "Richtig",
-  //                 },
-  //                 {
-  //                   id: "B",
-  //                   text: "Falsch",
-  //                 },
-  //               ],
-  //             },
-  //             {
-  //               id: 5,
-  //               question: `
-
-  //     Die Party findet draußen statt.`,
-  //               options: [
-  //                 {
-  //                   id: "A",
-  //                   text: "Richtig",
-  //                 },
-  //                 {
-  //                   id: "B",
-  //                   text: "Falsch",
-  //                 },
-  //               ],
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           id: 2,
-  //           partName: `Phần 2: Lesen Sie die Texte und die Aufgaben 6 bis 10.
-  // Wo finden Sie Informationen? Kreuzen Sie an: a, b oder c`,
-  //           questions: [
-  //             {
-  //               id: 6,
-  //               questionImage: [demo_part2_1, demo_part2_2],
-  //               options: [
-  //                   {
-  //                         id: "A",
-  //                         text: "www.openair.de"
-  //                   },
-  //                   {
-  //                         id: "B",
-  //                         text: "www.dwd.de"
-  //                   }
-  //               ]
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //   ];
+  const [timeLeft, setTimeLeft] = useState(20 * 60);
+  const [userAnswers, setUserAnswers] = useState({});
+  const [userScore, setUserScore] = useState(-1);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/exercises?type=${exerciseType}&id=${exerciseId}`)
+    fetch(
+      `http://localhost:9999/exercises?exerciseType=${exerciseType}&id=${exerciseId}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -138,96 +26,105 @@ export default function ReadingExercises() {
       .catch((err) => console.error("error", err));
   }, [exerciseType, exerciseId]);
 
-  const handleNextPart = () => {
-   if(exercises && currentPartIndex < exercises.parts.length - 1){
-    setCurrentPartIndex(currentPartIndex + 1);
-   }
-  };
+  useEffect(() => {
+    if (userScore !== -1) return;
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime > 0) {
+          return prevTime - 1;
+        } else {
+          clearInterval(timer);
+          handleSubmit();
+          return 0;
+        }
+      });
+    }, 1000);
 
-  if(!exercises?.parts){
-    return <div>Loading...</div>
-  }
+    return () => clearInterval(timer);
+  }, [timeLeft]);
+
+  const handleNextPart = () => {
+    if (exercises && currentPartIndex < exercises.parts.length - 1) {
+      setCurrentPartIndex(currentPartIndex + 1);
+    }
+  };
 
   const handlePreviousPart = () => {
     setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
-  const imgArr = {
-    demo_part2_1,
-    demo_part2_2
+  const handleSelectOptions = (questionId, optionId) => {
+    setUserAnswers((prev) => ({
+      ...prev,
+      [questionId]: optionId,
+    }));
+  };
+
+  const handleSubmit = () => {
+    let score = 0;
+    exercises.parts.map((part) => {
+      return {
+        questions: part.questions.map((question) => {
+          const userAnswer = userAnswers[question.id];
+          // const correctAnswers = part.answers[question.id]?.answer;
+          const correctAnswers = part.answers.find(
+            (answer) => answer.id === question.id
+          )?.answer;
+          const isCorrect = userAnswer === correctAnswers;
+          if (isCorrect) {
+            score++;
+          }
+        }),
+      };
+    });
+    setUserScore(score);
+  };
+
+  if (!exercises?.parts) {
+    return <div>Loading...</div>;
   }
 
   const currentPart = exercises.parts[currentPartIndex];
+  console.log(currentPart);
+
+  console.log(exercises);
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
-      <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercises.title}
-      </TitleCustom>
-      <div>
-        <TextCustom style={{ color: "red", fontWeight: "bold" }}>
-          {currentPart.partName}
-        </TextCustom>
-        {currentPart.questions.map(
-          (question, index) => (
-            <div key={question.id}>
-              <div style={{ textAlign: "center", paddingTop: "24px" }}>
-              {question.questionParagraph && (
-              <p>{question.questionParagraph}</p>
-            )}
-            {question.questionImage && (
-              <div>
-                {question.questionImage.map((img, imgIndex) => (
-                  <img
-                    key={imgIndex}
-                    src={imgArr[img]}
-                    style={{ width: "100px", marginRight: "10px" }}
-                  />
-                ))}
-              </div>
-            )}
-              </div>
-              <TextCustom style={{ paddingTop: "12px" }}>
-                Câu {question.id}: {question.question}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-around",
-                    paddingTop: "12px",
-                  }}
-                >
-                  {question.options.map((option) => (
-                    <ButtonCustom key={option.id} buttonType="primary">
-                      {option.id}. {option.text}
-                    </ButtonCustom>
-                  ))}
-                </div>
-              </TextCustom>
-            </div>
-          )
-        )}
-      </div>
-      <div style={{ textAlign: "center", paddingTop: "50px" }}>
-        <ButtonCustom
-          buttonType="secondary"
-          style={{ marginRight: "100px", padding: "23px" }}
-          onClick={handlePreviousPart}
-          disabled={currentPartIndex === 0}
-        >
-          Phần trước
-        </ButtonCustom>
-        <ButtonCustom
-          buttonType="secondary"
-          style={{ marginRight: "100px", padding: "23px" }}
-          onClick={handleNextPart}
-          disabled={currentPartIndex === exercises.parts.length - 1}
-        >
-          Phần tiếp theo
-        </ButtonCustom>
-        <ButtonCustom buttonType="secondary" style={{ padding: "23px" }}>
-          Nộp bài
-        </ButtonCustom>
-      </div>
+      {!(userScore > -1) ? (
+        <>
+          <QuestionsList
+            exercises={exercises}
+            currentPart={currentPart}
+            timeLeft={timeLeft}
+            onSelect={handleSelectOptions}
+            userAnswers={userAnswers}
+          />
+          <NavigateButton
+            currentPartIndex={currentPartIndex}
+            totalParts={exercises.parts.length}
+            onPrevious={handlePreviousPart}
+            onNext={handleNextPart}
+            onSubmit={handleSubmit}
+          />
+        </>
+      ) : (
+        <>
+          <QuestionsList
+            exercises={exercises}
+            currentPart={currentPart}
+            timeLeft={timeLeft}
+            userAnswers={userAnswers}
+            userScore={userScore}
+          />
+          <NavigateButton
+            currentPartIndex={currentPartIndex}
+            totalParts={exercises.parts.length}
+            onPrevious={handlePreviousPart}
+            onNext={handleNextPart}
+          />
+        </>
+      )}
     </div>
   );
 }

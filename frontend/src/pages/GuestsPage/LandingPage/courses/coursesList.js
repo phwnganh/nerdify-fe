@@ -15,7 +15,6 @@ export const Courses = () => {
   }, []);
   return (
     <div>
-      <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC</h2>
       <List
         grid={{
           gutter: 16,

@@ -28,7 +28,7 @@ export default function Navbar() {
   }, [location.pathname]);
   const handleMenuClick = (e) => {
     setSelectedKey(e.key);
-    console.log(e.key);
+    // console.log(e.key);
   };
 
   const handleSearchClick = () => {
@@ -75,14 +75,13 @@ export default function Navbar() {
             </MenuItem>
             <MenuItem
               key="practices"
-              onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
+              onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/1`)}
             >
               LUYỆN TẬP
             </MenuItem>
             <MenuItem
               key="flashcards"
               onClick={() => {
-                console.log(CLIENT_URI.FLASH_CARD);
                 navigate(CLIENT_URI.FLASH_CARD);
               }}
             >
