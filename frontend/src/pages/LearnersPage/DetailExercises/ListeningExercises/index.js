@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import { Col, Row, message } from "antd"; // Import 'message' for notifications
+import { Col, Row, message } from "antd";
 import ButtonCustom from "../../../../components/Button";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { useParams } from "react-router-dom";
@@ -18,6 +18,7 @@ export default function ListeningExercise() {
   const [exercises, setExercises] = useState(null);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [submittedAnswers, setSubmittedAnswers] = useState({});
   const { exerciseType, exerciseId } = useParams();
 
   const imagesArr = {
@@ -72,12 +73,13 @@ export default function ListeningExercise() {
     })
       .then((res) => res.json())
       .then((data) => {
-        message.success("Nộp bài thành công!"); // Show success message
+        setSubmittedAnswers(selectedAnswers);
+        message.success("Nộp bài thành công!");
         console.log("Submission successful", data);
       })
       .catch((err) => {
         console.error("Submission error", err);
-        message.error("Nộp bài thất bại. Vui lòng thử lại."); // Show error message if submission fails
+        message.error("Nộp bài thất bại. Vui lòng thử lại.");
       });
   };
 
@@ -116,22 +118,25 @@ export default function ListeningExercise() {
                 ))}
             </Row>
             <Row style={{ textAlign: "center", marginTop: "10px" }}>
-              {question.options.map((option) => (
-                <Col key={option.id} span={8}>
-                  <ButtonCustom
-                    buttonType="primary"
-                    onClick={() => handleOptionSelect(question.id, option.id)}
-                    style={{
-                      backgroundColor:
-                        selectedAnswers[question.id] === option.id
-                          ? "blue"
-                          : undefined,
-                    }}
-                  >
-                    {option.id}. {option.text}
-                  </ButtonCustom>
-                </Col>
-              ))}
+              {question.options.map((option) => {
+                const isSelected = selectedAnswers[question.id] === option.id;
+                const isSubmitted = submittedAnswers[question.id] === option.id;
+                return (
+                  <Col key={option.id} span={8}>
+                    <ButtonCustom
+                      buttonType="primary"
+                      onClick={() => handleOptionSelect(question.id, option.id)}
+                      style={{
+                        backgroundColor: isSelected ? "blue" : undefined,
+                        fontWeight: isSubmitted ? "bold" : "normal",
+                      }}
+                      disabled={Object.keys(submittedAnswers).length > 0}
+                    >
+                      {option.id}. {option.text}
+                    </ButtonCustom>
+                  </Col>
+                );
+              })}
             </Row>
           </div>
         </div>
@@ -142,7 +147,7 @@ export default function ListeningExercise() {
           buttonType="secondary"
           style={{ marginRight: "100px", padding: "23px" }}
           onClick={handlePreviousPart}
-          disabled={currentPartIndex === 0}
+          disabled={currentPartIndex === 0 || Object.keys(submittedAnswers).length > 0}
         >
           Phần trước
         </ButtonCustom>
@@ -150,7 +155,7 @@ export default function ListeningExercise() {
           buttonType="secondary"
           style={{ marginRight: "100px", padding: "23px" }}
           onClick={handleNextPart}
-          disabled={currentPartIndex === exercises.parts.length - 1}
+          disabled={currentPartIndex === exercises.parts.length - 1 || Object.keys(submittedAnswers).length > 0}
         >
           Next
         </ButtonCustom>
@@ -158,6 +163,7 @@ export default function ListeningExercise() {
           buttonType="secondary"
           style={{ marginLeft: "23px", padding: "23px" }}
           onClick={handleSubmit}
+          disabled={Object.keys(submittedAnswers).length > 0}
         >
           Nộp bài
         </ButtonCustom>
