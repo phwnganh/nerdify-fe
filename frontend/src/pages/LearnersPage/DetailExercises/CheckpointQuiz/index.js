@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 
 import { QuestionsList } from "../ReadingExercises/questions/questionsList";
 import NavigateButton from "../ReadingExercises/navigateButton";
+import { TextCustom } from "../../../../components/Typography";
 
 export default function ReadingExercises() {
   const { exerciseType, exerciseId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [exercises, setExercises] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(20 * 60);
+  const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
 
@@ -60,6 +61,14 @@ export default function ReadingExercises() {
     }));
   };
 
+  const formattedTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
   const handleSubmit = () => {
     let score = 0;
     exercises.parts.map((part) => {
@@ -94,6 +103,14 @@ export default function ReadingExercises() {
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
+      <div style={{ textAlign: "center" }}>
+        <TextCustom>
+          Thời gian làm bài:{" "}
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            {formattedTime(timeLeft)}
+          </span>
+        </TextCustom>
+      </div>
       {!(userScore > -1) ? (
         <>
           <QuestionsList
@@ -109,6 +126,7 @@ export default function ReadingExercises() {
             onPrevious={handlePreviousPart}
             onNext={handleNextPart}
             onSubmit={handleSubmit}
+            isCheckpointQuiz={true}
           />
         </>
       ) : (
@@ -127,6 +145,7 @@ export default function ReadingExercises() {
             onPrevious={handlePreviousPart}
             onNext={handleNextPart}
             mark={mark}
+            isCheckpointQuiz={true}
           />
         </>
       )}

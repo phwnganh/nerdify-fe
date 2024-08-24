@@ -7,6 +7,8 @@ export default function NavigateButton({
   onNext,
   onSubmit,
   mark,
+  isCheckpointQuiz,
+  onRetry,
 }) {
   return (
     <div style={{ textAlign: "center", paddingTop: "50px" }}>
@@ -36,30 +38,27 @@ export default function NavigateButton({
         </ButtonCustom>
       ) : (
         <>
-          {mark > 80 / 100 ? (
+          {isCheckpointQuiz && mark < 50 ? (
             <>
               <ButtonCustom
                 buttonType="secondary"
                 style={{ marginRight: "100px", padding: "23px" }}
-              >
-                Go to next level
-              </ButtonCustom>
-            </>
-          ) : (
-            <>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ marginRight: "100px", padding: "23px" }}
+                onClick={onRetry}
               >
                 Làm lại bài kiểm tra
               </ButtonCustom>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ marginRight: "100px", padding: "23px" }}
-              >
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px" }}>
                 Quay về luyện tập
               </ButtonCustom>
             </>
+          ) : isCheckpointQuiz && mark >= 50 ? (
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px" }}>
+              Chuyển sang phase tiếp theo
+            </ButtonCustom>
+          ) : (
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px" }}>
+              Chuyển sang phase tiếp theo
+            </ButtonCustom>
           )}
         </>
       )}

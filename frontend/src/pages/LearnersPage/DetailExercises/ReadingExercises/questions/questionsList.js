@@ -8,15 +8,9 @@ export const QuestionsList = ({
   onSelect,
   userAnswers,
   userScore,
-  mark,
+  mark
 }) => {
-  const formattedTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-  };
+
 
   return (
     <div>
@@ -34,20 +28,13 @@ export const QuestionsList = ({
                 (acc, part) => acc + part.questions.length,
                 0
               )}{" "}
-              ({mark}%) (Need 80% to pass)
+              ({mark}%)
             </span>
           </TextCustom>
         </div>
       )}
 
-      <div style={{ textAlign: "center" }}>
-        <TextCustom>
-          Thời gian làm bài:{" "}
-          <span style={{ color: "red", fontWeight: "bold" }}>
-            {formattedTime(timeLeft)}
-          </span>
-        </TextCustom>
-      </div>
+
 
       <div>
         <TextCustom style={{ color: "red", fontWeight: "bold" }}>
