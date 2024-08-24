@@ -203,7 +203,7 @@ export const LandingPage = () => {
       </Row>
       {/* Khoa hoc */}
       <div>
-        <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC</h2>
+        <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC </h2>
         <Courses />
       </div>
       {/* Blog */}
