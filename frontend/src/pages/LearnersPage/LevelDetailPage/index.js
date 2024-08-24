@@ -18,12 +18,15 @@ import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
+import a2 from "../../../assets/levelImage/a2.png";
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
   const { courseId } = useParams();
   const [course, setCourse] = useState(null);
   const navigate = useNavigate();
+
+  const imgLevelArr = { a1: a1, a2: a2 };
 
   useEffect(() => {
     fetch(`http://localhost:9999/levels/${courseId}`)
@@ -125,7 +128,12 @@ export default function ViewLevelDetail() {
       <CardCustom bordered={false} style={{ maxWidth: 1000, margin: "auto" }}>
         <Row gutter={[16, 16]}>
           <Col md={12}>
-            <img src={a1} alt="" srcSet="" width={"50%"} />
+            <img
+              src={imgLevelArr[course?.levelImage]}
+              alt=""
+              srcSet=""
+              width={"50%"}
+            />
           </Col>
           <Col md={12}>
             <TitleCustom level={2}>{course?.title}</TitleCustom>
