@@ -17,11 +17,12 @@
       "name": "Final Exam",
       "levelId": 1,
       "examId": 1
-    }, {
+    },
+    {
       "id": 4,
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [8,9,10],
+      "exercise": [8, 9, 10],
       "examId": 2
     }
   ],
@@ -336,6 +337,24 @@
                 { "id": "B", "text": "Falsch" }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "B"
+            },
+            {
+              "id": 2,
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "answer": "B"
+            }
           ]
         },
         {
@@ -359,6 +378,16 @@
                 { "id": "B", "text": "Falsch" }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 5,
+              "answer": "B"
+            },
+            {
+              "id": 6,
+              "answer": "B"
+            }
           ]
         },
         {
@@ -379,20 +408,29 @@
                 { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 7,
+              "answer": "C"
+            }
           ]
         }
       ]
-    }, {
+    },
+    {
       "id": 8,
       "title": "Bài tập nghe 3",
       "exerciseType": "listening",
       "phaseId": 4
-    }, {
+    },
+    {
       "id": 9,
       "title": "Bài tập đọc 3",
       "exerciseType": "reading",
       "phaseId": 4
-    }, {
+    },
+    {
       "id": 10,
       "title": "QUIZ KẾT THÚC PHASE 1",
       "phaseId": 4

@@ -8,6 +8,7 @@ export const QuestionsList = ({
   onSelect,
   userAnswers,
   userScore,
+  mark,
 }) => {
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -32,7 +33,8 @@ export const QuestionsList = ({
               {exercises.parts.reduce(
                 (acc, part) => acc + part.questions.length,
                 0
-              )}
+              )}{" "}
+              ({mark}%) (Need 80% to pass)
             </span>
           </TextCustom>
         </div>

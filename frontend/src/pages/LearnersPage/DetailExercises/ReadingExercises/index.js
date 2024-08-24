@@ -85,9 +85,6 @@ export default function ReadingExercises() {
   }
 
   const currentPart = exercises.parts[currentPartIndex];
-  console.log(currentPart);
-
-  console.log(exercises);
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />

@@ -6,6 +6,7 @@ export default function NavigateButton({
   onPrevious,
   onNext,
   onSubmit,
+  mark,
 }) {
   return (
     <div style={{ textAlign: "center", paddingTop: "50px" }}>
@@ -35,18 +36,31 @@ export default function NavigateButton({
         </ButtonCustom>
       ) : (
         <>
-          <ButtonCustom
-            buttonType="secondary"
-            style={{ marginRight: "100px", padding: "23px" }}
-          >
-            Làm lại bài kiểm tra
-          </ButtonCustom>
-          <ButtonCustom
-            buttonType="secondary"
-            style={{ marginRight: "100px", padding: "23px" }}
-          >
-            Quay về luyện tập
-          </ButtonCustom>
+          {mark > 80 / 100 ? (
+            <>
+              <ButtonCustom
+                buttonType="secondary"
+                style={{ marginRight: "100px", padding: "23px" }}
+              >
+                Go to next level
+              </ButtonCustom>
+            </>
+          ) : (
+            <>
+              <ButtonCustom
+                buttonType="secondary"
+                style={{ marginRight: "100px", padding: "23px" }}
+              >
+                Làm lại bài kiểm tra
+              </ButtonCustom>
+              <ButtonCustom
+                buttonType="secondary"
+                style={{ marginRight: "100px", padding: "23px" }}
+              >
+                Quay về luyện tập
+              </ButtonCustom>
+            </>
+          )}
         </>
       )}
     </div>

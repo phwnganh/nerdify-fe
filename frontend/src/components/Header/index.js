@@ -16,10 +16,9 @@ export default function Navbar() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
-  const {courseId} = useParams();
+  const { courseId } = useParams();
   useEffect(() => {
-    if (
-      location.pathname === CLIENT_URI.LEVEL_DETAIL    ) {
+    if (location.pathname === CLIENT_URI.LEVEL_DETAIL) {
       setSelectedKey("practices");
     } else if (location.pathname === CLIENT_URI.LANDING_PAGE) {
       setSelectedKey("home");
@@ -74,11 +73,7 @@ export default function Navbar() {
             </MenuItem>
             <MenuItem
               key="practices"
-<<<<<<< HEAD
               onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/1`)}
-=======
-              onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/${courseId}`)}
->>>>>>> b43f98a2f72e71c7f35b243b54c1bfbc689db7a8
             >
               LUYỆN TẬP
             </MenuItem>
