@@ -1,192 +1,181 @@
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import demo_1 from "../../../../assets/readingExercises/demo_2.png";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
 import demo_1_2 from "../../../../assets/vocabExercises/1_2.png";
 import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
+import { ParagraphCustom, TextCustom } from "../../../../components/Typography";
 import { Col, Row } from "antd";
 import ButtonCustom from "../../../../components/Button";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function CheckpointQuiz() {
+export default function ReadingExercises() {
+  const { exerciseType, exerciseId } = useParams();
+  const [currentPartIndex, setCurrentPartIndex] = useState(0);
+  const [currentResultPartIndex, setCurrentResultPartIndex] = useState(0);
+  const [exercises, setExercises] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
-  const navigate = useNavigate();
+  const [userAnswers, setUserAnswers] = useState({});
+  const [userScore, setUserScore] = useState(-1);
+  const [examResults, setExamResults] = useState(null);
+  const imgArrVocab = [
+    demo_1_1,
+    demo_1_2,
+    demo_1_3,
+    demo_2_1,
+    demo_2_2,
+    demo_2_3,
+  ];
   useEffect(() => {
+    fetch(
+      `http://localhost:9999/exercises?exerciseType=${exerciseType}&id=${exerciseId}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.length > 0) {
+          setExercises(data[0]);
+        }
+      })
+      .catch((err) => console.error("error", err));
+  }, [exerciseType, exerciseId]);
+
+  useEffect(() => {
+    if (examResults) return;
     const timer = setInterval(() => {
-      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+      setTimeLeft((prevTime) => {
+        if (prevTime > 0) {
+          return prevTime - 1;
+        } else {
+          clearInterval(timer);
+          handleSubmit();
+          return 0;
+        }
+      });
     }, 1000);
 
-    if (timeLeft === 0) {
-      clearInterval(timer);
-    }
-
     return () => clearInterval(timer);
-  }, [timeLeft, navigate]);
+  }, [timeLeft]);
 
-  const formattedTime = time => {
+  const handleNextPart = () => {
+    if (exercises && currentPartIndex < exercises.parts.length - 1) {
+      setCurrentPartIndex(currentPartIndex + 1);
+    }
+  };
+
+  const handlePreviousPart = () => {
+    setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleNextResultPart = () => {
+    if (exercises && currentResultPartIndex < exercises.parts.length - 1) {
+      setCurrentResultPartIndex(currentResultPartIndex + 1);
+    }
+  };
+
+  const handlePreviousResultPart = () => {
+    setCurrentResultPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleSelectOptions = (questionId, optionId) => {
+    setUserAnswers({
+      ...userAnswers,
+      [questionId]: optionId,
+    });
+  };
+
+  const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
+  };
+
+  const handleSubmit = () => {
+    let score = 0;
+    const results = exercises.parts.map((part) => {
+      return {
+        ...part,
+        questions: part.questions.map((question) => {
+          const userAnswer = userAnswers[question.id];
+          // const correctAnswers = part.answers[question.id]?.answer;
+          const correctAnswers = part.answers.find(
+            (answer) => answer.id === question.id
+          )?.answer;
+          const isCorrect = userAnswer === correctAnswers;
+          if (isCorrect) {
+            score++;
+          }
+          return {
+            ...question,
+            userAnswer,
+            correctAnswers,
+            isCorrect,
+          };
+        }),
+      };
+    });
+    setExamResults(results);
+    setUserScore(score);
+  };
+
+  if (!exercises?.parts) {
+    return <div>Loading...</div>;
   }
 
-  const quizContents = [
-    {
-      id: 1,
-      parts: [
-        {
-          id: 1,
-          partName: `Phần 1: Nghe`,
-          questions: [
-            {
-              id: 1,
-              question: `Die Kunden sollen die Weihnachtsfeier besuchen.`,
-              options: [
-                { id: "A", text: "Richtig" },
-                { id: "B", text: "Falsch" },
-              ],
-            },
-            {
-              id: 2,
-              question: `Die Kunden sollen die Weihnachtsfeier besuchen.`,
-              options: [
-                { id: "A", text: "Richtig" },
-                { id: "B", text: "Falsch" },
-              ],
-            },
-            {
-              id: 3,
-              question: `Die Kunden sollen die Weihnachtsfeier besuchen.`,
-              options: [
-                { id: "A", text: "Richtig" },
-                { id: "B", text: "Falsch" },
-              ],
-            },
-            {
-              id: 4,
-              question: `Die Kunden sollen die Weihnachtsfeier besuchen.`,
-              options: [
-                { id: "A", text: "Richtig" },
-                { id: "B", text: "Falsch" },
-              ],
-            },
-          ],
-        },
-        {
-          id: 2,
-          partName: `Phần 2: Đọc`,
-          questions: [
-            {
-              id: 5,
-              question: `Lis Zug kommt nach halb eins an.`,
-              questionImage: demo_1,
-              options: [
-                { id: "A", text: "Richtig" },
-                { id: "B", text: "Falsch" },
-              ],
-            },
-            {
-              id: 6,
-              question: `Karin wartet den ganzen Vormittag vor der Auskunft.`,
-              options: [
-                { id: "A", text: "Richtig" },
-                { id: "B", text: "Falsch" },
-              ],
-            },
-          ],
-        },
-        {
-          id: 3,
-          partName: `Phần 3: Từ vựng`,
-          questions: [
-            {
-              id: 7,
-              question: `Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.`,
-              options: [
-                { id: "A", image: demo_1_1 },
-                { id: "B", image: demo_1_2 },
-                { id: "C", image: demo_1_3 },
-              ],
-            },
-            {
-              id: 8,
-              question: `Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.`,
-              options: [
-                { id: "A", image: demo_2_1 },
-                { id: "B", image: demo_2_2 },
-                { id: "C", image: demo_2_3 },
-              ],
-            },
-          ],
-        },
-        {
-          id: 4,
-          partName: `Phần 4: Ngữ pháp`,
-          questions: [
-            {
-              id: 9,
-              question: `Ergänzen Sie die Pronomen. Haben ___ Zeit?`,
-              options: [
-                { id: "A", text: `Er` },
-                { id: "B", text: `Sie` },
-                { id: "C", text: `Es` },
-              ],
-            },
-            {
-              id: 10,
-              question: `Hallo, Anna, woher kommst ___ ? ___ komme aus New York.`,
-              options: [
-                { id: "A", text: [`du`, `Ich`] },
-                { id: "B", text: [`Sie`, `Ich`] },
-                { id: "C", text: [`du`, `Sie`] },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  const currentPart = exercises.parts[currentPartIndex];
+  const currentResultPart = examResults?.[currentResultPartIndex];
+  const mark = (
+    (userScore /
+      exercises.parts.reduce((acc, part) => acc + part.questions.length, 0)) *
+    100
+  ).toFixed(2);
 
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
-      <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        QUIZ KẾT THÚC PHASE 1
-      </TitleCustom>
-      <div style={{textAlign: 'center'}}>
-      <TextCustom>Thời gian làm bài: <span style={{color: 'red', fontWeight: 'bold'}}>{formattedTime(timeLeft)}</span></TextCustom>
+      <div style={{ textAlign: "center" }}>
+        <TextCustom>
+          Thời gian làm bài:{" "}
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            {formattedTime(timeLeft)}
+          </span>
+        </TextCustom>
       </div>
-      
-      {quizContents[0].parts.map((part) => (
-        <div key={part.id}>
+
+      {!examResults ? (
+        <div>
           <TextCustom
-            style={{ paddingTop: "20px", fontWeight: "bold", color: "red" }}
+            style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}
           >
-            {part.partName}
+            {currentPart.partName}
           </TextCustom>
-          {part.questions.map((question) => (
+          {currentPart.questions.map((question, index) => (
             <div key={question.id}>
               <TextCustom style={{ paddingTop: "20px" }}>
                 Câu {question.id}: {question.question}
               </TextCustom>
-              {question.questionImage && (
-                <img
-                  src={question.questionImage}
-                  alt={`Question ${question.id}`}
-                  width={"50%"}
-                  style={{ margin: "20px 0" }}
-                />
+              {question.questionParagraph && (
+                <ParagraphCustom>{question.questionParagraph}</ParagraphCustom>
               )}
               <div style={{ marginTop: "20px" }}>
                 <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
                   {question.options.map((option, index) => (
                     <Col key={index} span={8}>
-                      <ButtonCustom buttonType="primary">
+                      <ButtonCustom
+                        buttonType="primary"
+                        onClick={() =>
+                          handleSelectOptions(question.id, option.id)
+                        }
+                        style={{
+                          backgroundColor:
+                            userAnswers[question.id] === option.id
+                              ? "#ff855d"
+                              : "",
+                        }}
+                      >
                         {option.image ? (
                           <span>{option.id}</span>
                         ) : (
@@ -202,7 +191,6 @@ export default function CheckpointQuiz() {
                     </Col>
                   ))}
                 </Row>
-                {/* Display images in a row if they exist */}
                 {question.options.some((option) => option.image) && (
                   <Row
                     gutter={[16, 16]}
@@ -212,7 +200,10 @@ export default function CheckpointQuiz() {
                       .filter((option) => option.image)
                       .map((option, index) => (
                         <Col key={index} span={8}>
-                          <img src={option.image} style={{ width: "50%" }} />
+                          <img
+                            src={imgArrVocab[index]}
+                            style={{ width: "50%" }}
+                          />
                         </Col>
                       ))}
                   </Row>
@@ -220,8 +211,167 @@ export default function CheckpointQuiz() {
               </div>
             </div>
           ))}
+          <div style={{ textAlign: "center", paddingTop: "50px" }}>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handlePreviousPart}
+              disabled={currentPartIndex === 0}
+            >
+              Phần trước
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handleNextPart}
+              disabled={currentPartIndex === exercises.parts.length - 1}
+            >
+              Phần tiếp theo
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px" }}
+              onClick={handleSubmit}
+            >
+              Nộp bài
+            </ButtonCustom>
+          </div>
         </div>
-      ))}
+      ) : (
+        <div>
+          <div style={{ textAlign: "center" }}>
+            <TextCustom style={{ textAlign: "center" }}>
+              Điểm:&nbsp;
+              <span style={{ color: "red" }}>
+                {userScore}/
+                {exercises.parts.reduce(
+                  (acc, part) => acc + part.questions.length,
+                  0
+                )}
+              </span>
+              <span
+                style={{ color: "red", marginLeft: "10px", fontWeight: "bold" }}
+              >
+                ({mark}%)
+              </span>
+            </TextCustom>
+          </div>
+          <div>
+            <TextCustom
+              style={{
+                color: "red",
+                fontWeight: "bold",
+                paddingTop: "20px",
+              }}
+            >
+              {currentResultPart.partName}
+            </TextCustom>
+            {currentResultPart.questions.map((question) => (
+              <div key={question.id}>
+                <TextCustom style={{ paddingTop: "24px" }}>
+                  Câu {question.id}: {question.question}
+                </TextCustom>
+                <div style={{ marginTop: "20px" }}>
+                  <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+                    {question.options.map((option, index) => {
+                      const isCorrectOption =
+                        option.id === question.correctAnswers;
+                      const isUserSelected = option.id === question.userAnswer;
+                      const backgroundColor = isCorrectOption
+                        ? "#5FD855"
+                        : isUserSelected && !question.isCorrect
+                        ? "red"
+                        : "";
+
+                      return (
+                        <Col key={index} span={8}>
+                          <ButtonCustom
+                            buttonType="primary"
+                            style={{ backgroundColor }}
+                            disabled
+                          >
+                            {option.image ? (
+                              <span>{option.id}</span>
+                            ) : (
+                              <div>
+                                <span>
+                                  {Array.isArray(option.text)
+                                    ? `${option.id}. ${option.text.join(" - ")}`
+                                    : `${option.id}. ${option.text}`}
+                                </span>
+                              </div>
+                            )}
+                          </ButtonCustom>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                  {question.options.some((option) => option.image) && (
+                    <Row
+                      gutter={[16, 16]}
+                      style={{ marginTop: "20px", textAlign: "center" }}
+                    >
+                      {question.options
+                        .filter((option) => option.image)
+                        .map((option, index) => (
+                          <Col key={index} span={8}>
+                            <img
+                              src={imgArrVocab[index]}
+                              style={{ width: "50%" }}
+                            />
+                          </Col>
+                        ))}
+                    </Row>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", paddingTop: "50px" }}>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handlePreviousResultPart}
+              disabled={currentResultPartIndex === 0}
+            >
+              Phần trước
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handleNextResultPart}
+              disabled={currentResultPartIndex === examResults.length - 1}
+            >
+              Phần tiếp theo
+            </ButtonCustom>
+            {userScore < 5 && mark < 50 ? (
+              <>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ marginRight: "100px", padding: "23px" }}
+                >
+                  Làm lại bài kiểm tra
+                </ButtonCustom>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ marginRight: "100px", padding: "23px" }}
+                >
+                  Quay về luyện tập
+                </ButtonCustom>
+              </>
+            ) : (
+              <>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ marginRight: "100px", padding: "23px" }}
+                >
+                  Nhận cúp
+                </ButtonCustom>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

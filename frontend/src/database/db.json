@@ -17,11 +17,12 @@
       "name": "Final Exam",
       "levelId": 1,
       "examId": 1
-    }, {
+    },
+    {
       "id": 4,
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [8,9,10],
+      "exercise": [8, 9, 10],
       "examId": 2
     }
   ],
@@ -188,6 +189,33 @@
                 { "id": "B", "text": "Falsch" }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "A",
+              "answerDetail": "Richtig"
+            },
+            {
+              "id": 2,
+              "answer": "B",
+              "answerDetail": "Falsch"
+            },
+            {
+              "id": 3,
+              "answer": "B",
+              "answerDetail": "Falsch"
+            },
+            {
+              "id": 4,
+              "answer": "B",
+              "answerDetail": "Falsch"
+            },
+            {
+              "id": 5,
+              "answer": "A",
+              "answerDetail": "Richtig"
+            }
           ]
         },
         {
@@ -207,6 +235,13 @@
                   "text": "www.dwd.de"
                 }
               ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 6,
+              "answer": "B",
+              "answerDetail": "www.dwd.de"
             }
           ]
         }
@@ -234,17 +269,20 @@
               "id": 1,
               "answer": "von",
               "explanation": "von thành aus (khi nói về nơi xuất xứ)"
-            }, {
+            },
+            {
               "id": 2,
               "answer": "sprechen",
               "explanation": "sprechen thành spreche (chia động từ đúng ngôi thứ nhất số ít)"
-            }, {
+            },
+            {
               "id": 3,
               "answer": "bißchen",
               "explanation": "bißchen thành bisschen (chính tả mới)"
             }
           ]
-        }, {
+        },
+        {
           "id": 2,
           "partName": "Phần 2: Viết thành đoạn văn hoàn chỉnh",
           "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."
@@ -305,6 +343,24 @@
                 { "id": "B", "text": "Falsch" }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "B"
+            },
+            {
+              "id": 2,
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "answer": "B"
+            }
           ]
         },
         {
@@ -314,7 +370,7 @@
             {
               "id": 5,
               "question": "Lis Zug kommt nach halb eins an.",
-              "questionImage": "",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
               "options": [
                 { "id": "A", "text": "Richtig" },
                 { "id": "B", "text": "Falsch" }
@@ -328,6 +384,16 @@
                 { "id": "B", "text": "Falsch" }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 5,
+              "answer": "B"
+            },
+            {
+              "id": 6,
+              "answer": "B"
+            }
           ]
         },
         {
@@ -336,32 +402,108 @@
           "questions": [
             {
               "id": 7,
-              "question": "Was kostet der Pullover?",
-              "questionImage": [
-                "../assets/listeningExercises/1_1.png",
-                "../assets/listeningExercises/1_2.png",
-                "../assets/listeningExercises/1_3.png"
-              ],
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
               "options": [
-                { "id": "A", "text": "Dreißig Euro." },
-                { "id": "B", "text": "Fünfundneunzig Euro." },
-                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
+                { "id": "A", "image": "demo_1_1" },
+                { "id": "B", "image": "demo_1_2" },
+                { "id": "C", "image": "demo_1_3" }
               ]
+            },
+            {
+              "id": 8,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_2_3"
+                }
+              ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 7,
+              "answer": "A"
+            }, {
+              "id": 8,
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "questions": [
+            {
+              "id": 8,
+              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": ["du", "Ich"]
+                },
+                {
+                  "id": "B",
+                  "text": ["Sie", "Ich"]
+                },
+                {
+                  "id": "C",
+                  "text": ["du", "Sie"]
+                }
+              ]
+            }
+          ], 
+          "answers": [
+            {
+              "id": 9,
+              "answer": "B"
+            }, {
+              "id": 10,
+              "answer": "A"
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "id": 8,
       "title": "Bài tập nghe 3",
       "exerciseType": "listening",
       "phaseId": 4
-    }, {
+    },
+    {
       "id": 9,
       "title": "Bài tập đọc 3",
       "exerciseType": "reading",
       "phaseId": 4
-    }, {
+    },
+    {
       "id": 10,
       "title": "QUIZ KẾT THÚC PHASE 1",
       "phaseId": 4

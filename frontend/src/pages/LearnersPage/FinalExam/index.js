@@ -6,11 +6,8 @@ import {
   TextCustom,
   TitleCustom,
 } from "../../../components/Typography";
-import { useNavigate, useParams } from "react-router-dom";
 import { Col, Row } from "antd";
 import ButtonCustom from "../../../components/Button";
-import demo_1 from "../../../assets/readingExercises/demo_1.png";
-import demo_3 from "../../../assets/readingExercises/demo_3.png";
 import demo_1_1 from "../../../assets/vocabExercises/1_1.png";
 import demo_1_2 from "../../../assets/vocabExercises/1_2.png";
 import demo_1_3 from "../../../assets/vocabExercises/1_3.png";
@@ -136,6 +133,12 @@ export default function FinalExam() {
     clearInterval(window.timer);
   };
 
+  const mark = (
+    (userScore /
+      exam.parts.reduce((acc, part) => acc + part.questions.length, 0)) *
+    100
+  ).toFixed(2);
+
   return (
     <div>
       {!hasStarted && <StartExamModal onStart={handleStart}></StartExamModal>}
@@ -250,17 +253,20 @@ export default function FinalExam() {
             </div>
           ) : (
             <div>
-              <div style={{textAlign: 'center'}}>
-              <TextCustom style={{ textAlign: "center" }}>
-                Điểm:&nbsp;
-                <span style={{ color: "red" }}>
-                  {userScore}/
-                  {exam.parts.reduce(
-                    (acc, part) => acc + part.questions.length,
-                    0
-                  )}
-                </span>
-              </TextCustom>
+              <div style={{ textAlign: "center" }}>
+                <TextCustom style={{ textAlign: "center" }}>
+                  Điểm:&nbsp;
+                  <span style={{ color: "red" }}>
+                    {userScore}/
+                    {exam.parts.reduce(
+                      (acc, part) => acc + part.questions.length,
+                      0
+                    )}
+                  </span>
+                  <span style={{ color: "red", marginLeft: "10px", fontWeight: 'bold' }}>
+                    ({mark}%)
+                  </span>
+                </TextCustom>
               </div>
 
               <div>
@@ -354,14 +360,31 @@ export default function FinalExam() {
                 >
                   Phần tiếp theo
                 </ButtonCustom>
-                {
-                  userScore < 12 ? (<>
-                    <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }}>Làm lại bài kiểm tra</ButtonCustom>
-                    <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }}>Quay về luyện tập</ButtonCustom>
-                  </>) : (<>
-                    <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }}>Nhận cúp</ButtonCustom>
-                  </>)
-                }
+                {(userScore < 12 && mark < 60) ? (
+                  <>
+                    <ButtonCustom
+                      buttonType="secondary"
+                      style={{ marginRight: "100px", padding: "23px" }}
+                    >
+                      Làm lại bài kiểm tra
+                    </ButtonCustom>
+                    <ButtonCustom
+                      buttonType="secondary"
+                      style={{ marginRight: "100px", padding: "23px" }}
+                    >
+                      Quay về luyện tập
+                    </ButtonCustom>
+                  </>
+                ) : (
+                  <>
+                    <ButtonCustom
+                      buttonType="secondary"
+                      style={{ marginRight: "100px", padding: "23px" }}
+                    >
+                      Nhận cúp
+                    </ButtonCustom>
+                  </>
+                )}
               </div>
             </div>
           )}
