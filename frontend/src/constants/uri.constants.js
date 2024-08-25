@@ -43,6 +43,7 @@ export const CLIENT_URI = {
   PROFILE: "/personal-profile",
   FLASH_CARD: "/flash-card",
   CREATE_FLASH_CARD: "/create-flash-card",
+  EDIT_FLASH_CARD: "/edit-flash-card",
   // ADMIN
   DASHBOARD: "/dashboard",
 };
