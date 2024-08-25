@@ -133,6 +133,12 @@ export default function FinalExam() {
     clearInterval(window.timer);
   };
 
+  const mark = (
+    (userScore /
+      exam.parts.reduce((acc, part) => acc + part.questions.length, 0)) *
+    100
+  ).toFixed(2);
+
   return (
     <div>
       {!hasStarted && <StartExamModal onStart={handleStart}></StartExamModal>}
@@ -257,6 +263,9 @@ export default function FinalExam() {
                       0
                     )}
                   </span>
+                  <span style={{ color: "red", marginLeft: "10px", fontWeight: 'bold' }}>
+                    ({mark}%)
+                  </span>
                 </TextCustom>
               </div>
 
@@ -351,7 +360,7 @@ export default function FinalExam() {
                 >
                   Phần tiếp theo
                 </ButtonCustom>
-                {userScore < 12 ? (
+                {(userScore < 12 && mark < 60) ? (
                   <>
                     <ButtonCustom
                       buttonType="secondary"

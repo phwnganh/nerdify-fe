@@ -193,23 +193,28 @@
           "answers": [
             {
               "id": 1,
-              "answer": "B"
+              "answer": "A",
+              "answerDetail": "Richtig"
             },
             {
               "id": 2,
-              "answer": "B"
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 3,
-              "answer": "A"
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 4,
-              "answer": "B"
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 5,
-              "answer": "A"
+              "answer": "A",
+              "answerDetail": "Richtig"
             }
           ]
         },
@@ -235,7 +240,8 @@
           "answers": [
             {
               "id": 6,
-              "answer": "B"
+              "answer": "B",
+              "answerDetail": "www.dwd.de"
             }
           ]
         }
@@ -364,7 +370,7 @@
             {
               "id": 5,
               "question": "Lis Zug kommt nach halb eins an.",
-              "questionImage": "",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
               "options": [
                 { "id": "A", "text": "Richtig" },
                 { "id": "B", "text": "Falsch" }
@@ -396,23 +402,90 @@
           "questions": [
             {
               "id": 7,
-              "question": "Was kostet der Pullover?",
-              "questionImage": [
-                "../assets/listeningExercises/1_1.png",
-                "../assets/listeningExercises/1_2.png",
-                "../assets/listeningExercises/1_3.png"
-              ],
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
               "options": [
-                { "id": "A", "text": "Dreißig Euro." },
-                { "id": "B", "text": "Fünfundneunzig Euro." },
-                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
+                { "id": "A", "image": "demo_1_1" },
+                { "id": "B", "image": "demo_1_2" },
+                { "id": "C", "image": "demo_1_3" }
+              ]
+            },
+            {
+              "id": 8,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "image": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_2_3"
+                }
               ]
             }
           ],
           "answers": [
             {
               "id": 7,
+              "answer": "A"
+            }, {
+              "id": 8,
               "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "questions": [
+            {
+              "id": 8,
+              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": ["du", "Ich"]
+                },
+                {
+                  "id": "B",
+                  "text": ["Sie", "Ich"]
+                },
+                {
+                  "id": "C",
+                  "text": ["du", "Sie"]
+                }
+              ]
+            }
+          ], 
+          "answers": [
+            {
+              "id": 9,
+              "answer": "B"
+            }, {
+              "id": 10,
+              "answer": "A"
             }
           ]
         }
