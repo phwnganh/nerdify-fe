@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import registerImage from "../../../assets/registerImage.png";
 import { authService } from "../../../services";
-import { CLIENT_URI, EMAIL_REGEX } from "../../../constants";
+import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
 
 export const RegisterPage = () => {
   const [messageResp, setMessageResp] = useState({
@@ -101,7 +101,7 @@ export const RegisterPage = () => {
               name="password"
               rules={[
                 {
-                  pattern: EMAIL_REGEX,
+                  pattern: PASSWORD_REGEX,
                   message:
                     "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
                 },

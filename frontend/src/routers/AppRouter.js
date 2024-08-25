@@ -6,10 +6,12 @@ import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
 import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
-import FlashCard from "../pages/LearnersPage/FlashCard";
+import FlashCard from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
+import FlashcardList from "../pages/LearnersPage/FlashCard";
+import FlashCardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 
 export const routes = [
   // Guest urls
@@ -70,13 +72,17 @@ export const routes = [
       // test giao diện
       {
         path: CLIENT_URI.FLASH_CARD,
-        element: <FlashCard />,
+        element: <FlashcardList />,
         // element: <ModalRequireToLogin />,
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
       },
+      {
+        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+        element: <FlashCardDetail/>
+      }
     ],
   },
 

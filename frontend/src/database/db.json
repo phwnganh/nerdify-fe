@@ -884,5 +884,80 @@
       "levelId": 2,
       "title": "Bài kiểm tra kết thúc trình độ A2"
     }
+  ],
+  "flashcard": [
+    {
+      "id": 1,
+      "title": "Animals",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "cards": [
+        {
+          "id": 1,
+          "terms": "cat",
+          "definitions": "a small animal with fur, four legs, a tail, and claws, usually kept as a pet or for catching mice"
+        }, {
+          "id": 2,
+          "terms": "dog",
+          "definitions": "a common animal with four legs, especially kept by people as a pet or to hunt or guard things"
+        }, {
+          "id": 3,
+          "terms": "goat",
+          "definitions": "an animal related to sheep that usually has horns and a beard. Goats live wild on mountains or are kept on farms to provide milk, meat, wool, etc"
+        }, {
+          "id": 4,
+          "terms": "human",
+          "definitions": "being, relating to, or belonging to a person or to people as opposed to animals"
+        }, {
+          "id": 5,
+          "terms": "pig",
+          "definitions": "a large pink, brown, or black farm animal with short legs and a curved tail, kept for its meat"
+        }, {
+          "id": 6,
+          "terms": "frog",
+          "definitions": "a small animal that has smooth skin, lives in water and on land, has long powerful back legs with which it jumps from place to place, has no tail, and is usually greenish-brown in colour"
+        }
+      ]
+    }, {
+      "id": 2,
+      "title": "Study",
+      "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "cards": [
+        {
+          "id": 1,
+          "terms": "pen",
+          "definitions": "a long, thin object used for writing or drawing with ink"
+        }, {
+          "id": 2,
+          "terms": "board",
+          "definitions": "a thin, flat piece of cut wood or other hard material, often used for a particular purpose"
+        }, {
+          "id": 3,
+          "terms": "notebook",
+          "definitions": "a book of plain paper or paper with lines, for writing on"
+        }
+      ]
+    }, {
+      "id": 3,
+      "title": "Technology",
+      "cards":[
+        {
+          "id": 1,
+          "terms": "camera",
+          "definitions": "a device for taking photographs or making films or television programmes"
+        }, {
+          "id": 2,
+          "terms": "phone",
+          "definitions": "a device that uses either a system of wires along which electrical signals are sent or a system of radio signals to make it possible for you to speak to someone in another place who has a similar device"
+        }, {
+          "id": 3,
+          "terms": "laptop",
+          "definitions": "a computer that is small enough to be carried around easily and is flat when closed"
+        }, {
+          "id": 4,
+          "terms": "adapter",
+          "definitions": "a type of plug that makes it possible to connect two or more pieces of equipment to the same electrical supply"
+        }
+      ]
+    }
   ]
 }

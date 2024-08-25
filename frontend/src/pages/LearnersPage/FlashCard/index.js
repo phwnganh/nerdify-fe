@@ -1,65 +1,60 @@
-import React from "react";
-import { Button, Dropdown } from "antd";
-import { FileOutlined, FolderOutlined } from "@ant-design/icons";
-import { CLIENT_URI } from "../../../constants/uri.constants";
+import { useEffect, useState } from "react";
+import { TextCustom, TitleCustom } from "../../../components/Typography";
+import { SearchOutlined } from "@ant-design/icons";
+import InputCustom from "../../../components/Input";
+import { Col, Row } from "antd";
+import CardCustom from "../../../components/Card";
+import ButtonCustom from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-
-export default function FlashCard() {
+import { CLIENT_URI } from "../../../constants";
+import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+export default function FlashcardList() {
+  const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
-  const items = [
-    {
-      key: "1",
-      label: (
-        <div onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}>
-          Tạo folder mới
-        </div>
-      ),
-      icon: <FolderOutlined />,
-    },
-    {
-      key: "2",
-      label: (
-        <div onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}>
-          Tạo học phần mới
-        </div>
-      ),
-      icon: <FileOutlined />,
-    },
-  ];
-  return (
-    <div
-      style={{
-        padding: "24px",
-      }}
-    >
-      <Dropdown
-        menu={{
-          items,
-        }}
-        trigger={"click"}
-      >
-        <Button
-          style={{
-            background: "rgb(13 164 184 / 87%)",
-            color: "white",
-            width: "200px",
-            margin: "20px",
-          }}
-        >
-          Tạo bộ flashcard mới
-        </Button>
-      </Dropdown>
+  useEffect(() => {
+    fetch("http://localhost:9999/flashcard")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("flashcards: ", data);
+        setFlashcards(data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
-      <Button
-        style={{
-          background: "#088d2b",
-          color: "white",
-          width: "200px",
-          margin: "20px",
-        }}
-      >
-        Kiểm tra
-      </Button>
+  const handleViewFlashcardDetail = (id) => {
+    navigate(`${CLIENT_URI.FLASH_CARD}/${id}`)
+  }
+  return (
+    <div style={{ padding: "24px" }}>
+      <BreadCrumbHome/>
+      <TitleCustom level={2}>Chọn bộ flashcard để học</TitleCustom>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <InputCustom
+          placeholder="Tìm kiếm flashcard"
+          //     onChange={handleInputChange}
+          //     value={inputValue}
+          style={{
+            width: "300px",
+          }}
+          suffix={<SearchOutlined />}
+        />
+      </div>
+      <Row gutter={[24, 24]}>
+        {flashcards?.map((flashcard, index) => (
+          <Col span={12} style={{marginTop: '20px'}}>
+            <CardCustom>
+              <div style={{}}>
+                <TitleCustom level={4}>{flashcard?.title}</TitleCustom>
+                <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
+              </div>
+              <div style={{marginTop: '10px'}}>
+              <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?.id)}>Xem chi tiết</ButtonCustom>
+                
+              </div>
+            </CardCustom>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }
