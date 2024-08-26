@@ -18,6 +18,7 @@ export default function ReadingExercises() {
   const [userScore, setUserScore] = useState(-1);
   const [exerciseResults, setExerciseResults] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
+  
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?exerciseType=${exerciseType}&id=${exerciseId}`
@@ -323,7 +324,7 @@ export default function ReadingExercises() {
                   buttonType="secondary"
                   style={{ padding: "23px" }}
                 >
-                  Chuyển sang phase tiếp theo
+                  Chuyển sang bài tập tiếp theo
                 </ButtonCustom>
               </div>
             </div>

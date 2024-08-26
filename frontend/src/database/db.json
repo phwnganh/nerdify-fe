@@ -52,6 +52,7 @@
       "exerciseType": "listening",
       "phaseId": 1,
       "title": "Bài tập nghe 1",
+      "transcript": "Nummer 1: \n Kunde: Entschuldigung, was kostet dieser Pullover jetzt? Da steht 30 Prozent billiger. Verkäuferin: Einen Moment bitte... neunzehnfünfundneunzig.\n Kunde: 19,95 Euro? \n Verkäuferin: Ja, Euro natürlich.\n Kunde: Hm, ... ok, den nehme ich.\n Nummer 2: \n Passant: Ach, entschuldigen Sie bitte. Passantin: Ja bitte.\n Passant: Haben Sie eine Uhr? ...\n Wie spät ist es bitte?\n Passantin: Ja - jetzt ist es gleich 5 Uhr.\n Passant: Was, schon 5. Vielen Dank, Wiedersehen.\n Nummer 3: \n Kellner: Was wünschen Sie bitte? Gast: Ich hätte gern die Salatplatte und ein ...\n Kellner: Entschuldigung, die Salatplatte ist leider aus, aber die Bratwurst kann ich Ihnen empfehlen ... ganz frisch heute. Gast: Nein danke ... ich esse kein Fleisch. Gibt es etwas ohne Fleisch? \n ...\n Kellner: Ja nicht mehr viel: Fisch oder... Pommes. \n Gast: Fisch... hm... Tja, dann wohl die Pommes.",
       "parts": [
         {
           "id": 1,
@@ -87,6 +88,23 @@
                 { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "C",
+              "answerDetail": "Khách hàng hỏi giá của chiếc áo len, được giảm giá 30%. Người bán xác nhận rằng giá đã giảm là 19,95 Euro. Trong câu hỏi trắc nghiệm, tùy chọn C (19,95 €) là câu trả lời đúng vì nó khớp với giá được đề cập trong hộp thoại."
+            },
+            {
+              "id": 2,
+              "answer": "B",
+              "answerDetail": "Người qua đường hỏi giờ, và người phụ nữ trả lời là 'gleich 5 Uhr', nghĩa là gần 5 giờ. Trong câu hỏi trắc nghiệm, phương án B (Gleich 5 Uhr) là câu trả lời đúng vì nó phản ánh đúng thời gian được đưa ra trong đoạn hội thoại."
+            },
+            {
+              "id": 3,
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. Người phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). Trong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            }
           ]
         },
         {
@@ -108,6 +126,18 @@
                 { "id": "A", "text": "Richtig" },
                 { "id": "B", "text": "Falsch" }
               ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 4,
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 5,
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
             }
           ]
         },
@@ -132,6 +162,18 @@
                 { "id": "B", "text": "2 Minuten" },
                 { "id": "C", "text": "10 Minuten" }
               ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 6,
+              "answer": "C",
+              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
+            },
+            {
+              "id": 7,
+              "answer": "A",
+              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
             }
           ]
         }
@@ -432,7 +474,8 @@
             {
               "id": 7,
               "answer": "A"
-            }, {
+            },
+            {
               "id": 8,
               "answer": "C"
             }
@@ -478,12 +521,13 @@
                 }
               ]
             }
-          ], 
+          ],
           "answers": [
             {
               "id": 9,
               "answer": "B"
-            }, {
+            },
+            {
               "id": 10,
               "answer": "A"
             }
