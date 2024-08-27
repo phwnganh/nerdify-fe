@@ -93,8 +93,50 @@ export default function ReadingExercises() {
       .padStart(2, "0")}`;
   };
 
+  const totalQuestions = exercises?.parts.reduce(
+    (acc, part) => acc + part.questions.length,
+    0
+  );
   const handleSubmit = () => {
     let score = 0;
+
+    const submissionDate = new Date().toISOString();
+    const questionsArray = exercises?.parts.flatMap((part) =>
+      part.questions.map((question) => {
+        const userAnswer = userAnswers[question.id];
+        const correctAnswer = part.answers.find(
+          (answer) => answer.id === question.id
+        )?.answer;
+        const isCorrect = userAnswer === correctAnswer;
+        if (isCorrect) {
+          score++;
+        }
+        return {
+          questionId: question.id,
+          userAnswer,
+          correctAnswer,
+          isCorrect,
+        };
+      })
+    );
+
+    const submissionData = {
+      submissionDate: submissionDate,
+      score: `${score}/${totalQuestions}`,
+      submissionAnswers: questionsArray,
+      exerciseId: exercises.id,
+    };
+
+    fetch("http://localhost:9999/checkpointQuizSubmission", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("quiz test: ", data))
+      .catch((err) => console.log(err));
     const results = exercises.parts.map((part) => {
       return {
         ...part,
@@ -105,9 +147,6 @@ export default function ReadingExercises() {
             (answer) => answer.id === question.id
           )?.answer;
           const isCorrect = userAnswer === correctAnswers;
-          if (isCorrect) {
-            score++;
-          }
           return {
             ...question,
             userAnswer,
