@@ -26,7 +26,8 @@ export default function EditFlashCard() {
         setFlashcard(data);
       })
       .catch((err) => console.error(err));
-  }, [flashcardId, form]);
+  }, [flashcardId]);
+
   console.log(flashcard?.cards);
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -47,19 +48,27 @@ export default function EditFlashCard() {
         response.json();
         messageApi.open({
           type: "success",
-          content: "Tạo flash card thành công",
+          content: "Chỉnh sửa thành công",
         });
       })
       .catch((err) => {
         console.log(err);
         messageApi.open({
           type: "error",
-          content: "Tạo flash card thất bại",
+          content: "Chỉnh sửa thất bại",
         });
       })
       .then((data) => {
         console.log("duoc roi");
       });
+  };
+
+  const handleFlashCard = () => {
+    const cards = form.getFieldValue("cards");
+    cards.forEach((card) => {
+      card.id = cards.indexOf(card) + 1;
+    });
+    // JSON.stringify(form.getFieldsValue());
   };
 
   if (!flashcard) {
@@ -74,6 +83,7 @@ export default function EditFlashCard() {
         <Form
           form={form}
           onFinish={handleSubmit}
+          scrollToFirstError
           initialValues={{
             title: flashcard.title,
             description: flashcard.description,
@@ -88,6 +98,10 @@ export default function EditFlashCard() {
                   {
                     required: true,
                     message: "Vui lòng nhập tiêu đề",
+                  },
+                  {
+                    max: 20,
+                    message: "Tiêu đề không quá 20 ký tự",
                   },
                 ]}
               >
@@ -120,8 +134,9 @@ export default function EditFlashCard() {
                   type="primary"
                   htmlType="submit"
                   style={{ padding: "20px 50px", background: "#ffa751" }}
+                  onClick={handleFlashCard}
                 >
-                  Chỉnh sửa
+                  Thêm mới
                 </Button>
               </Form.Item>
             </Col>
@@ -137,7 +152,6 @@ export default function EditFlashCard() {
                   margin: "auto",
                 }}
               >
-                {console.log(fields)}
                 {fields.map((field) => (
                   <Card
                     style={{ background: "rgb(227 224 224)" }}
@@ -146,23 +160,27 @@ export default function EditFlashCard() {
                     key={field.key}
                     extra={
                       <div>
-                        <MenuOutlined onClick={() => move(field.name)} />
+                        <MenuOutlined onClick={() => move()} />
                         &ensp;
-                        <DeleteOutlined onClick={() => remove(field.name)} />
+                        <DeleteOutlined
+                          onClick={() => {
+                            remove(field.name);
+                            // setCardIdCounter(cardIdCounter - 1);/
+                          }}
+                        />
                       </div>
                     }
                   >
                     <div>
                       <Row style={{ alignItems: "center" }}>
-                        <Form.Item name={[field.name, "id"]} noStyle>
-                          <Input value={field.name + 1} type="hidden" />
-                        </Form.Item>
-
                         <Col span={9} style={{ margin: "10px" }}>
                           <Form.Item
                             name={[field.name, "terms"]}
                             rules={[
-                              { required: true, message: "Please input term!" },
+                              {
+                                required: true,
+                                message: "Làm ơn nhập thuật ngữ!",
+                              },
                             ]}
                             noStyle
                           >
@@ -183,7 +201,7 @@ export default function EditFlashCard() {
                             rules={[
                               {
                                 required: true,
-                                message: "Please input definition!",
+                                message: "Làm ơn nhập định nghĩa!",
                               },
                             ]}
                             noStyle
@@ -223,6 +241,8 @@ export default function EditFlashCard() {
                   type="dashed"
                   onClick={() => {
                     add();
+                    // add({ id: cardIdCounter + 1 });
+                    // setCardIdCounter(cardIdCounter + 1);
                     // console.log(fields);
                   }}
                   block
@@ -234,13 +254,13 @@ export default function EditFlashCard() {
             )}
           </Form.List>
 
-          {/* <Form.Item noStyle shouldUpdate>
+          <Form.Item noStyle shouldUpdate>
             {() => (
               <Typography>
                 <pre>{JSON.stringify(form.getFieldsValue(), null, 2)}</pre>
               </Typography>
             )}
-          </Form.Item> */}
+          </Form.Item>
         </Form>
       </div>
     </>

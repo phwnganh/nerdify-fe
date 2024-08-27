@@ -229,6 +229,9 @@ export default function FlashCardDetail() {
             icon={<EditOutlined />}
             shape="circle"
             style={{ marginRight: "20px" }}
+            onClick={() =>
+              navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)
+            }
           ></Button>
           <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
             <Button

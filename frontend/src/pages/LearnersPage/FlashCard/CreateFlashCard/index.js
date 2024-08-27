@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Col,
@@ -12,7 +12,7 @@ import {
   message,
 } from "antd";
 
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 export default function CreateFlashCard() {
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -24,25 +24,50 @@ export default function CreateFlashCard() {
 
   const [messageApi, contextHolder] = message.useMessage();
 
-  const success = () => {
-    messageApi.open({
-      type: "success",
-      content: "Tạo flash card thành công",
-    });
+  const handleSubmit = () => {
+    fetch(`http://localhost:9999/flashcard`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form.getFieldsValue()),
+    })
+      .then((response) => {
+        response.json();
+        messageApi.open({
+          type: "success",
+          content: "Tạo flash card thành công",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        messageApi.open({
+          type: "error",
+          content: "Tạo flash card thất bại",
+        });
+      })
+      .then(() => {
+        console.log("duoc roi");
+      });
   };
 
+  const handleFlashCard = () => {
+    const cards = form.getFieldValue("cards");
+    cards.forEach((card) => {
+      card.id = cards.indexOf(card) + 1;
+    });
+    // JSON.stringify(form.getFieldsValue());
+  };
   return (
     <>
       {contextHolder}
       <div style={{ width: "60%" }}>
         <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI !!</h1>
-
         <Form
           form={form}
-          initialValues={{
-            items: [{}],
-          }}
-          onFinish={success}
+          onFinish={handleSubmit}
+          scrollToFirstError
+          initialValues={{ cards: [{}] }}
         >
           <Row>
             <Col span={12}>
@@ -53,27 +78,24 @@ export default function CreateFlashCard() {
                     required: true,
                     message: "Vui lòng nhập tiêu đề",
                   },
+                  {
+                    max: 20,
+                    message: "Tiêu đề không quá 20 ký tự",
+                  },
                 ]}
               >
-                <Input
+                <Input.TextArea
+                  autoSize={{ minRows: 0, maxRows: 4 }}
                   placeholder="Nhập tiêu đề"
-                  // variant="borderless"
-                  style={{
-                    fontWeight: "600",
-                    // background: "rgb(195 195 195)",
-                    padding: "10px",
-                  }}
+                  style={{ fontWeight: "600", padding: "10px" }}
                 />
               </Form.Item>
 
               <Form.Item name="description">
-                <Input
-                  placeholder="Nhập mô tả" // variant="borderless"
-                  style={{
-                    fontWeight: "600",
-                    // background: "rgb(195 195 195)",
-                    padding: "10px",
-                  }}
+                <Input.TextArea
+                  autoSize={{ minRows: 0, maxRows: 4 }}
+                  placeholder="Nhập mô tả"
+                  style={{ fontWeight: "600", padding: "10px" }}
                 />
               </Form.Item>
             </Col>
@@ -90,28 +112,22 @@ export default function CreateFlashCard() {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  style={{
-                    padding: "20px 50px",
-                    background: "#ffa751",
-                  }}
-                  onClick={() => {
-                    console.log(form.getFieldsValue());
-                  }}
+                  style={{ padding: "20px 50px", background: "#ffa751" }}
+                  onClick={handleFlashCard}
                 >
-                  Tạo và ôn luyện
+                  Thêm mới
                 </Button>
               </Form.Item>
             </Col>
           </Row>
 
-          <Form.List name="items">
-            {(fields, { add, remove }) => (
+          <Form.List name="cards">
+            {(fields, { add, remove, move }) => (
               <div
                 style={{
                   display: "flex",
-                  rowGap: 16,
                   flexDirection: "column",
-                  // width: "80%",
+                  rowGap: 16,
                   margin: "auto",
                 }}
               >
@@ -122,68 +138,76 @@ export default function CreateFlashCard() {
                     title={`Thẻ ${field.name + 1}`}
                     key={field.key}
                     extra={
-                      <DeleteOutlined
-                        onClick={() => {
-                          remove(field.name);
-                        }}
-                      />
+                      <div>
+                        <MenuOutlined onClick={() => move()} />
+                        &ensp;
+                        <DeleteOutlined
+                          onClick={() => {
+                            remove(field.name);
+                            // setCardIdCounter(cardIdCounter - 1);/
+                          }}
+                        />
+                      </div>
                     }
                   >
-                    <div
-                      style={
-                        {
-                          // background: "rgb(236 236 236)",
-                          // width: ""
-                          // borderRadius: "7px",
-                        }
-                      }
-                    >
+                    <div>
                       <Row style={{ alignItems: "center" }}>
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Input
-                            placeholder="Thuật ngữ"
-                            variant="borderless"
-                            size="large"
-                            name="term"
-                            style={{
-                              fontWeight: "600",
-                              background: "rgb(214 214 214)",
-                            }}
-                          />
+                          <Form.Item
+                            name={[field.name, "terms"]}
+                            rules={[
+                              {
+                                required: true,
+                                message: "Làm ơn nhập thuật ngữ!",
+                              },
+                            ]}
+                            noStyle
+                          >
+                            <Input.TextArea
+                              autoSize={{ minRows: 0, maxRows: 3 }}
+                              placeholder="Thuật ngữ"
+                              style={{
+                                fontWeight: "600",
+                                background: "rgb(214 214 214)",
+                              }}
+                            />
+                          </Form.Item>
                         </Col>
+
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Input
-                            placeholder="Định nghĩa"
-                            variant="filled"
-                            size="large"
-                            name="definition"
-                            style={{
-                              fontWeight: "600",
-                              background: "rgb(214 214 214)",
-                            }}
-                          />
+                          <Form.Item
+                            name={[field.name, "definitions"]}
+                            rules={[
+                              {
+                                required: true,
+                                message: "Làm ơn nhập định nghĩa!",
+                              },
+                            ]}
+                            noStyle
+                          >
+                            <Input.TextArea
+                              autoSize={{ minRows: 0, maxRows: 4 }}
+                              placeholder="Định nghĩa"
+                              style={{
+                                fontWeight: "600",
+                                background: "rgb(214 214 214)",
+                              }}
+                            />
+                          </Form.Item>
                         </Col>
                         <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
                           <Form.Item
+                            name={[field.name, "fileList"]}
                             valuePropName="fileList"
                             getValueFromEvent={normFile}
                           >
                             <Upload action="/upload.do" listType="picture-card">
                               <button
-                                style={{
-                                  border: 0,
-                                  background: "none",
-                                }}
+                                style={{ border: 0, background: "none" }}
                                 type="button"
                               >
                                 <PlusOutlined />
-                                <div
-                                  style={{
-                                    marginTop: 8,
-                                  }}
-                                >
-                                  Upload
-                                </div>
+                                <div style={{ marginTop: 8 }}>Upload</div>
                               </button>
                             </Upload>
                           </Form.Item>
@@ -192,22 +216,30 @@ export default function CreateFlashCard() {
                     </div>
                   </Card>
                 ))}
-
-                <Button type="dashed" onClick={() => add()} block>
+                <Button
+                  type="dashed"
+                  onClick={() => {
+                    add();
+                    // add({ id: cardIdCounter + 1 });
+                    // setCardIdCounter(cardIdCounter + 1);
+                    // console.log(fields);
+                  }}
+                  block
+                >
                   Thêm thẻ ghi nhớ
                 </Button>
                 <br />
               </div>
             )}
           </Form.List>
-          {/* 
-        <Form.Item noStyle shouldUpdate>
-          {() => (
-            <Typography>
-              <pre>{JSON.stringify(form.getFieldsValue(), null, 2)}</pre>
-            </Typography>
-          )}
-        </Form.Item> */}
+
+          <Form.Item noStyle shouldUpdate>
+            {() => (
+              <Typography>
+                <pre>{JSON.stringify(form.getFieldsValue(), null, 2)}</pre>
+              </Typography>
+            )}
+          </Form.Item>
         </Form>
       </div>
     </>
