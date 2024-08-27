@@ -5,12 +5,12 @@ import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
-import demo_1_1 from '../../../../assets/vocabExercises/1_1.png';
-import demo_1_2 from '../../../../assets/vocabExercises/1_2.png';
-import demo_1_3 from '../../../../assets/vocabExercises/1_3.png';
-import demo_2_1 from '../../../../assets/vocabExercises/2_1.png';
-import demo_2_2 from '../../../../assets/vocabExercises/2_2.png';
-import demo_2_3 from '../../../../assets/vocabExercises/2_3.png';
+import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
+import demo_1_2 from "../../../../assets/vocabExercises/1_2.png";
+import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
+import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
+import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
+import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
 
 export default function VocabularyExercises() {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
@@ -25,6 +25,9 @@ export default function VocabularyExercises() {
   const [submittedPart2, setSubmittedPart2] = useState({});
   const [inputValuePart3, setInputValuePart3] = useState({});
   const [submittedPart3, setsubmittedPart3] = useState({});
+  const [userScore, setUserScore] = useState(0);
+  const [part2andPart3Submitted, setPart2andPart3Submitted] = useState(false);
+  const [submittedPart1, setSubmittedPart1] = useState(false);
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
@@ -43,25 +46,34 @@ export default function VocabularyExercises() {
     demo_1_3: demo_1_3,
     demo_2_1: demo_2_1,
     demo_2_2: demo_2_2,
-    demo_2_3: demo_2_3
-  }
+    demo_2_3: demo_2_3,
+  };
   const handleResetSelections = () => {
     setSelectedQuestion(null);
     setSelectedAnswer(null);
   };
 
   const checkMatch = (question, answer) => {
-    if (question && answer) {
-      if (question.id === answer.id) {
-        setCorrectPairs((prev) => [...prev, question.id]);
-        handleResetSelections();
-      } else {
-        setTimeout(() => {
+    if(!submittedPart1 && question && answer){
+      if (question && answer) {
+        if (question.id === answer.id) {
+          setCorrectPairs((prev) => [...prev, question.id]);
+          setUserScore((prevScore) => prevScore++);
           handleResetSelections();
-        }, 500);
+        } else {
+          setTimeout(() => {
+            handleResetSelections();
+          }, 500);
+        }
       }
     }
   };
+
+  const handleSubmitPart1 = () => {
+    setSubmittedPart1(true);
+    setUserScore(prevScore => prevScore + 1); 
+    setPart2andPart3Submitted(true);
+  }
 
   const handleSelectQuestion = (question) => {
     setSelectedQuestion(question);
@@ -105,7 +117,8 @@ export default function VocabularyExercises() {
 
   const renderPart1 = (part) => {
     return (
-      <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
+      <>
+            <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
         <Col span={12}>
           {shuffleQuestions.map((question) => (
             <Row key={question.id} align="middle">
@@ -118,9 +131,9 @@ export default function VocabularyExercises() {
                   onClick={() => handleSelectQuestion(question)}
                   style={{
                     backgroundColor: correctPairs.includes(question.id)
-                      ? "green"
+                      ? "#5FD855"
                       : selectedQuestion?.id === question.id
-                      ? "blue"
+                      ? "#A8703E"
                       : "",
                   }}
                 >
@@ -142,9 +155,9 @@ export default function VocabularyExercises() {
                   onClick={() => handleSelectAnswers(answer)}
                   style={{
                     backgroundColor: correctPairs.includes(answer.id)
-                      ? "green"
+                      ? "#5FD855"
                       : selectedAnswer?.id === answer.id
-                      ? "blue"
+                      ? "#A8703E"
                       : "",
                   }}
                 >
@@ -155,6 +168,13 @@ export default function VocabularyExercises() {
           ))}
         </Col>
       </Row>
+      <Row align={"bottom"} justify={"end"} style={{marginTop: '30px'}}>
+      <ButtonCustom buttonType="secondary" onClick={handleSubmitPart1}>
+          Check đáp án
+        </ButtonCustom>
+      </Row>
+      </>
+
     );
   };
 
@@ -166,19 +186,25 @@ export default function VocabularyExercises() {
   };
 
   const handleSubmitPart2 = () => {
+    let scorePart2 = 0;
     const updatedSubmittedPart2 = {};
     exercises.parts[currentPartIndex].questions.forEach((question) => {
       const correctAnswer = question.options.find(
         (option) => option.id === question.answer
       );
       const userAnswer = selectedAnswersPart2[question.id];
-
+      const isCorrect = userAnswer === correctAnswer.id;
+      if (isCorrect) {
+        scorePart2++;
+      }
       updatedSubmittedPart2[question.id] = {
-        isCorrect: userAnswer === correctAnswer.id,
+        isCorrect: isCorrect,
         selectedAnswer: userAnswer,
       };
     });
     setSubmittedPart2(updatedSubmittedPart2);
+    setUserScore((prevScore) => prevScore + scorePart2);
+    setPart2andPart3Submitted(true);
   };
 
   const renderPart2 = (part) => {
@@ -211,7 +237,7 @@ export default function VocabularyExercises() {
                         ? "red"
                         : ""
                       : isUserSelected
-                      ? "#ff855d"
+                      ? "#A8703E"
                       : "";
 
                     return (
@@ -232,7 +258,7 @@ export default function VocabularyExercises() {
                           {option.id}
                         </ButtonCustom>
                         <img
-                          src={vocabImg[option.optionImage] }
+                          src={vocabImg[option.optionImage]}
                           alt={`Option ${option.id}`}
                           style={{ width: "50%" }}
                         />
@@ -261,66 +287,93 @@ export default function VocabularyExercises() {
   };
 
   const handleSubmitPart3 = () => {
+    let scorePart3 = 0;
     const updatedSubmittedPart3 = {};
     const correctAnswers = exercises.parts[currentPartIndex]?.answers || [];
-  
+
     correctAnswers.forEach((correctAnswer, index) => {
       const userAnswer = inputValuePart3[index];
+      const isCorrect =
+        userAnswer?.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      if (isCorrect) {
+        scorePart3++;
+      }
       updatedSubmittedPart3[index] = {
-        isCorrect:
-          userAnswer?.trim().toLowerCase() === correctAnswer.trim().toLowerCase(),
+        isCorrect: isCorrect,
         selectedAnswer: userAnswer,
       };
     });
-  
+
     setsubmittedPart3(updatedSubmittedPart3);
+    setUserScore((prevScore) => prevScore + scorePart3);
+    setPart2andPart3Submitted(true);
   };
-  
-  
-  
 
   const renderPart3 = (part) => {
     const months = Array(12).fill("");
-  
+
     return (
-      <div style={{marginLeft: '80px', marginRight: '80px'}}>
-      <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
-        <Col span={24}>
-          <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-            {months.map((_, index) => {
-              const isSubmitted = submittedPart3[index];
-              const borderColor =
-                isSubmitted && isSubmitted.isCorrect ? "green" : isSubmitted ? "red" : "";
-              return (
-                <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
-                  {index === 0 ? (
-                    <InputCustom
-                      placeholder="Januar"
-                      readOnly
-                      style={{ backgroundColor: "#D9D9D9", borderColor: borderColor }}
-                    />
-                  ) : (
-                    <InputCustom
-                      placeholder={index === 1 ? "Feb..." : ""}
-                      onChange={(e) => handleInputChangePart3(index, e.target.value)}
-                      style={{ borderColor: borderColor }}
-                    />
-                  )}
-                </Col>
-              );
-            })}
-          </Row>
-        </Col>
-      </Row>
-      <Row align={"bottom"} justify={"end"}>
-        <ButtonCustom buttonType="secondary" onClick={handleSubmitPart3}>
-          Check đáp án
-        </ButtonCustom>
+      <div style={{ marginLeft: "80px", marginRight: "80px" }}>
+        <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
+          <Col span={24}>
+            <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
+              {months.map((_, index) => {
+                const isSubmitted = submittedPart3[index];
+                const borderColor =
+                  isSubmitted && isSubmitted.isCorrect
+                    ? "#5FD855"
+                    : isSubmitted
+                    ? "red"
+                    : "";
+                const textColor =
+                  isSubmitted && isSubmitted.isCorrect
+                    ? "#5FD855"
+                    : isSubmitted
+                    ? "red"
+                    : "";
+                return (
+                  <>
+                    <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
+                      {index === 0 ? (
+                        <>
+                          <InputCustom
+                            placeholder="Januar"
+                            readOnly
+                            style={{ backgroundColor: "#D9D9D9" }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <InputCustom
+                            placeholder={index === 1 ? "Feb..." : ""}
+                            onChange={(e) =>
+                              handleInputChangePart3(index, e.target.value)
+                            }
+                            style={{ borderColor: borderColor }}
+                            disabled={isSubmitted}
+                          />
+                          {isSubmitted && (
+                            <TextCustom style={{ color: textColor }}>
+                              {part?.answers[index]}
+                            </TextCustom>
+                          )}
+                        </>
+                      )}
+                    </Col>
+                  </>
+                );
+              })}
+            </Row>
+          </Col>
+        </Row>
+        <Row align={"bottom"} justify={"end"}>
+          <ButtonCustom buttonType="secondary" onClick={handleSubmitPart3}>
+            Check đáp án
+          </ButtonCustom>
         </Row>
       </div>
     );
   };
-  
 
   const renderPart = () => {
     const currentPart = exercises.parts[currentPartIndex];
@@ -343,6 +396,18 @@ export default function VocabularyExercises() {
     return <div>Loading...</div>;
   }
 
+  const totalQuestions = exercises?.parts.reduce((acc, part) => {
+    if (part.questions) {
+      return acc + part.questions.length;
+    }
+    if (part.answers) {
+      return acc + part.answers.length - 1;
+    }
+    return acc;
+  }, 0);
+  const mark = ((userScore / totalQuestions) * 100).toFixed(2);
+  
+
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
@@ -352,6 +417,23 @@ export default function VocabularyExercises() {
       >
         {exercises?.title}
       </TitleCustom>
+
+      {part2andPart3Submitted && (
+        <div style={{ textAlign: "center" }}>
+          <TextCustom style={{ textAlign: "center" }}>
+            Điểm:&nbsp;
+            <span style={{ color: "red" }}>
+              {userScore}/{totalQuestions}
+            </span>
+            <span
+              style={{ color: "red", marginLeft: "10px", fontWeight: "bold" }}
+            >
+              ({mark}%)
+            </span>
+          </TextCustom>
+        </div>
+      )}
+
       <div>
         <TextCustom
           style={{ color: "red", fontWeight: "bold", paddingLeft: "40px" }}
@@ -376,6 +458,12 @@ export default function VocabularyExercises() {
           disabled={currentPartIndex === exercises.parts.length - 1}
         >
           Phần tiếp theo
+        </ButtonCustom>
+        <ButtonCustom
+          buttonType="secondary"
+          style={{ padding: "23px", marginLeft: "100px" }}
+        >
+          Chuyển sang bài tập tiếp theo
         </ButtonCustom>
       </div>
     </div>

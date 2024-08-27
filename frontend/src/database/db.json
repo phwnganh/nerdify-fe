@@ -4,13 +4,22 @@
       "id": 1,
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [1, 2, 3, 7]
+      "exercises": [
+        1,
+        2,
+        3,
+        7
+      ]
     },
     {
       "id": 2,
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [4, 5, 6]
+      "exercises": [
+        4,
+        5,
+        6
+      ]
     },
     {
       "id": 3,
@@ -22,7 +31,11 @@
       "id": 4,
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [8, 9, 10],
+      "exercise": [
+        8,
+        9,
+        10
+      ],
       "examId": 2
     }
   ],
@@ -33,8 +46,12 @@
       "levelImage": "a1",
       "learners": 10,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [1, 2, 3],
-      "finalexams": [1]
+      "phases": [
+        1,
+        2,
+        3
+      ],
+      "finalexams": 1
     },
     {
       "id": 2,
@@ -42,8 +59,10 @@
       "levelImage": "a2",
       "learners": 10,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [4],
-      "finalexams": [2]
+      "phases": [
+        4
+      ],
+      "finalexams": 2
     }
   ],
   "exercises": [
@@ -61,31 +80,70 @@
             {
               "id": 1,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
+              "questionImage": [
+                "demo1_1",
+                "demo1_2",
+                "demo1_3"
+              ],
               "options": [
-                { "id": "A", "text": "Dreißig Euro." },
-                { "id": "B", "text": "Fünfundneunzig Euro." },
-                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                },
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                },
+                {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
               ]
             },
             {
               "id": 2,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
+              "questionImage": [
+                "demo2_1",
+                "demo2_2",
+                "demo2_3"
+              ],
               "options": [
-                { "id": "A", "text": "Dreißig Euro." },
-                { "id": "B", "text": "Fünfundneunzig Euro." },
-                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                },
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                },
+                {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
               ]
             },
             {
               "id": 3,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
+              "questionImage": [
+                "demo3_1",
+                "demo3_2",
+                "demo3_3"
+              ],
               "options": [
-                { "id": "A", "text": "Dreißig Euro." },
-                { "id": "B", "text": "Fünfundneunzig Euro." },
-                { "id": "C", "text": "Neunzehn Euro fünfundneunzig Cent." }
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                },
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                },
+                {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
               ]
             }
           ],
@@ -115,16 +173,28 @@
               "id": 4,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 5,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             }
           ],
@@ -149,18 +219,36 @@
               "id": 6,
               "question": "Die Nummer ist:",
               "options": [
-                { "id": "A", "text": "11833" },
-                { "id": "B", "text": "11883" },
-                { "id": "C", "text": "12833" }
+                {
+                  "id": "A",
+                  "text": "11833"
+                },
+                {
+                  "id": "B",
+                  "text": "11883"
+                },
+                {
+                  "id": "C",
+                  "text": "12833"
+                }
               ]
             },
             {
               "id": 7,
               "question": "Wo genau treffen sich die Männer?",
               "options": [
-                { "id": "A", "text": "20 Minuten" },
-                { "id": "B", "text": "2 Minuten" },
-                { "id": "C", "text": "10 Minuten" }
+                {
+                  "id": "A",
+                  "text": "20 Minuten"
+                },
+                {
+                  "id": "B",
+                  "text": "2 Minuten"
+                },
+                {
+                  "id": "C",
+                  "text": "10 Minuten"
+                }
               ]
             }
           ],
@@ -194,16 +282,28 @@
               "question": "Lis Zug kommt nach halb eins an.",
               "questionParagraph": "Hallo Li\n danke für deine Mail. Dein Zug kommt hier in Hannover um 12.36 Uhr an. Ich bin ab 12.15 Uhr im Hauptbahnhof und warte auf dich vor der Auskunft.\nDu kannst mich den ganzen Vormittag auf meinem Handy (++49 173 62 205 59) erreichen.\nDeine \nKarin",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 2,
               "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
@@ -211,24 +311,42 @@
               "question": "Ralf hatte am letzten Wochenende Geburtstag.",
               "questionParagraph": "Liebe Carmen, \nam kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \nRalf",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 4,
               "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 5,
               "question": "Die Party findet draußen statt.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             }
           ],
@@ -266,7 +384,10 @@
           "questions": [
             {
               "id": 6,
-              "questionImage": ["demo_part2_1", "demo_part2_2"],
+              "questionImage": [
+                "demo_part2_1",
+                "demo_part2_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -561,7 +682,12 @@
               "name": "___ ist Programmierer."
             }
           ],
-          "correctAnswers": ["Sie", "Sie", "du", "Er"]
+          "correctAnswers": [
+            "Sie",
+            "Sie",
+            "du",
+            "Er"
+          ]
         },
         {
           "id": 2,
@@ -589,10 +715,23 @@
             }
           ],
           "correctAnswers": [
-            ["er", "sie", "sie"],
-            ["du", "Ich"],
-            ["ihr", "Wir"],
-            ["Sie", "Ich"]
+            [
+              "er",
+              "sie",
+              "sie"
+            ],
+            [
+              "du",
+              "Ich"
+            ],
+            [
+              "ihr",
+              "Wir"
+            ],
+            [
+              "Sie",
+              "Ich"
+            ]
           ]
         },
         {
@@ -616,7 +755,18 @@
               "name": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit."
             }
           ],
-          "correctAnswers": ["Sie", "sie", ["Sie", "Ich"], ["du", "ich"]]
+          "correctAnswers": [
+            "Sie",
+            "sie",
+            [
+              "Sie",
+              "Ich"
+            ],
+            [
+              "du",
+              "ich"
+            ]
+          ]
         }
       ]
     },
@@ -633,7 +783,11 @@
             {
               "id": 1,
               "question": "Wo wollen die Freundinnen die Party machen?",
-              "questionImage": ["demo02_1_1", "demo02_1_2", "demo02_1_3"],
+              "questionImage": [
+                "demo02_1_1",
+                "demo02_1_2",
+                "demo02_1_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -652,7 +806,11 @@
             {
               "id": 2,
               "question": "Wann wollen sie sich treffen?",
-              "questionImage": ["demo02_2_1", "demo02_2_2", "demo02_2_3"],
+              "questionImage": [
+                "demo02_2_1",
+                "demo02_2_2",
+                "demo02_2_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -720,32 +878,56 @@
               "id": 1,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 2,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 3,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 4,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             }
           ],
@@ -777,16 +959,28 @@
               "question": "Lis Zug kommt nach halb eins an.",
               "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             },
             {
               "id": 6,
               "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
               "options": [
-                { "id": "A", "text": "Richtig" },
-                { "id": "B", "text": "Falsch" }
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
               ]
             }
           ],
@@ -809,9 +1003,18 @@
               "id": 7,
               "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
               "options": [
-                { "id": "A", "image": "demo_1_1" },
-                { "id": "B", "image": "demo_1_2" },
-                { "id": "C", "image": "demo_1_3" }
+                {
+                  "id": "A",
+                  "image": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "image": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "image": "demo_1_3"
+                }
               ]
             },
             {
@@ -872,15 +1075,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ]
             }
@@ -1266,15 +1478,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ]
             },
@@ -1284,15 +1505,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["ihr", "Wir"]
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 }
               ]
             },
@@ -1302,15 +1532,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "ich"]
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["du", "Er"]
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["ich", "ich"]
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
                 }
               ]
             },
@@ -1363,6 +1602,52 @@
       "id": 2,
       "levelId": 2,
       "title": "Bài kiểm tra kết thúc trình độ A2"
+    }
+  ],
+  "readingExercisesSubmission": [
+    {
+      "id": "cb4c",
+      "submissionDate": "2024-08-27T16:16:13.846Z",
+      "score": "3/6",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "quesionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "quesionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": 2
     }
   ]
 }

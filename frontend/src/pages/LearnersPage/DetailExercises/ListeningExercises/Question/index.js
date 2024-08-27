@@ -61,9 +61,7 @@ export default function QuestionLayout({
             </Row>
             <Row style={{ textAlign: "center", marginTop: "10px" }}>
               {question.options.map((option) => {
-                const isCorrectOption = exerciseResults
-                  ? option.id === question.correctAnswer
-                  : false;
+                const isCorrectOption = exerciseResults &&  option.id === question.correctAnswer
                 const isUserSelected =
                   option.id === selectedAnswers[question.id];
                 const backgroundColor = exerciseResults
@@ -73,7 +71,7 @@ export default function QuestionLayout({
                     ? "red"
                     : ""
                   : isUserSelected
-                  ? "#ff855d"
+                  ? "#A8703E"
                   : "";
                 return (
                   <Col key={option.id} span={8}>

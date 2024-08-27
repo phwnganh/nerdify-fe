@@ -29,13 +29,6 @@ export default function ListeningExercise() {
       .catch((err) => console.error("Error fetching exercise data", err));
   }, [exerciseType, exerciseId]);
 
-  useEffect(() => {
-    setSelectedAnswers({});
-    setUserScore(-1);
-    setExerciseResults(null);
-    setCurrentPartIndex(0);
-    setCurrentResultPartIndex(0);
-  }, [exerciseId])
 
   const handleOptionSelect = (questionId, optionId) => {
     setSelectedAnswers((prevAnswers) => ({

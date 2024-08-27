@@ -15,10 +15,10 @@ export default function ReadingExercises() {
   const [currentResultPartIndex, setCurrentResultPartIndex] = useState(0);
   const [exercises, setExercises] = useState(null);
   const [userAnswers, setUserAnswers] = useState({});
-  const [userScore, setUserScore] = useState(-1);
+  const [userScore, setUserScore] = useState(0);
   const [exerciseResults, setExerciseResults] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-  
+
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
@@ -62,8 +62,53 @@ export default function ReadingExercises() {
     });
   };
 
+  const totalQuestions = exercises?.parts.reduce(
+    (acc, part) => acc + part.questions.length,
+    0
+  );
+  const mark = ((userScore / totalQuestions) * 100).toFixed(2);
   const handleSubmit = () => {
     let score = 0;
+    const submissionDate = new Date().toISOString();
+
+    const questionsArray = exercises.parts.flatMap((part) =>
+      part.questions.map((question) => {
+        const userAnswer = userAnswers[question.id];
+        const correctAnswer = part.answers.find(
+          (answer) => answer.id === question.id
+        )?.answer;
+        const isCorrect = userAnswer === correctAnswer;
+
+        if (isCorrect) {
+          score++;
+        }
+        return {
+          quesionId: question.id,
+          userAnswer,
+          correctAnswer,
+          isCorrect,
+        };
+      })
+    );
+
+    const submissionData = {
+      submissionDate: submissionDate,
+      score: `${score}/${totalQuestions}`,
+      submissionAnswers: questionsArray,
+      exerciseId: exercises.id,
+    };
+
+    fetch("http://localhost:9999/readingExercisesSubmission", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("saved: ", data))
+      .catch((err) => console.log(err));
+
     const results = exercises.parts.map((part) => {
       return {
         ...part,
@@ -76,9 +121,6 @@ export default function ReadingExercises() {
             (answer) => answer.id === question.id
           )?.answer;
           const isCorrect = userAnswer === correctAnswer;
-          if (isCorrect) {
-            score++;
-          }
           return {
             ...question,
             userAnswer,
@@ -109,11 +151,6 @@ export default function ReadingExercises() {
 
   const currentPart = exercises?.parts[currentPartIndex];
   const scoreResultCurrentPart = exerciseResults?.[currentResultPartIndex];
-  const totalQuestions = exercises?.parts.reduce(
-    (acc, part) => acc + part.questions.length,
-    0
-  );
-  const mark = (userScore / totalQuestions) * 100;
 
   return (
     <div style={{ padding: "24px" }}>
@@ -164,7 +201,7 @@ export default function ReadingExercises() {
                         style={{
                           backgroundColor:
                             userAnswers[question.id] === option.id
-                              ? "#ff855d"
+                              ? "#A8703E"
                               : "",
                         }}
                       >
@@ -214,7 +251,13 @@ export default function ReadingExercises() {
                     0
                   )}
                 </span>
-                <span style={{ color: "red", marginLeft: "10px", fontWeight: 'bold' }}>
+                <span
+                  style={{
+                    color: "red",
+                    marginLeft: "10px",
+                    fontWeight: "bold",
+                  }}
+                >
                   ({mark}%)
                 </span>
               </TextCustom>

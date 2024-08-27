@@ -172,7 +172,7 @@ export default function ReadingExercises() {
                         style={{
                           backgroundColor:
                             userAnswers[question.id] === option.id
-                              ? "#ff855d"
+                              ? "#A8703E"
                               : "",
                         }}
                       >

@@ -186,7 +186,7 @@ export default function FinalExam() {
                             style={{
                               backgroundColor:
                                 userAnswers[question.id] === option.id
-                                  ? "#ff855d"
+                                  ? "#A8703E"
                                   : "",
                             }}
                           >
