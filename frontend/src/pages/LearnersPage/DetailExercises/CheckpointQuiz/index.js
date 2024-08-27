@@ -30,7 +30,7 @@ export default function ReadingExercises() {
   ];
   useEffect(() => {
     fetch(
-      `http://localhost:9999/exercises?exerciseType=${exerciseType}&id=${exerciseId}`
+      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -15,7 +15,7 @@ export default function WritingExercises() {
   const navigate = useNavigate();
   useEffect(() => {
     fetch(
-      `http://localhost:9999/exercises?type=${exerciseType}&id=${exerciseId}`
+      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -125,7 +125,7 @@ export default function WritingExercises() {
                                   : "red",
                               }}
                             >
-                              {exerciseResults[part.id][index].explanation}
+                              Đáp án chi tiết: {exerciseResults[part.id][index].explanation}
                             </TextCustom>
                           )}
                         </div>

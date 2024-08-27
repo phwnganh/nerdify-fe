@@ -13,12 +13,12 @@ export default function ListeningExercise() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
   const [exerciseResults, setExerciseResults] = useState(null);
-  const { exerciseType, exerciseId } = useParams();
+  const { exerciseType, exerciseId} = useParams();
   const {TabPane} = Tabs;
 
   useEffect(() => {
     fetch(
-      `http://localhost:9999/exercises?exerciseType=${exerciseType}&id=${exerciseId}`
+      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -28,6 +28,14 @@ export default function ListeningExercise() {
       })
       .catch((err) => console.error("Error fetching exercise data", err));
   }, [exerciseType, exerciseId]);
+
+  useEffect(() => {
+    setSelectedAnswers({});
+    setUserScore(-1);
+    setExerciseResults(null);
+    setCurrentPartIndex(0);
+    setCurrentResultPartIndex(0);
+  }, [exerciseId])
 
   const handleOptionSelect = (questionId, optionId) => {
     setSelectedAnswers((prevAnswers) => ({
