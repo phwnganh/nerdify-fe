@@ -98,7 +98,7 @@ export default function ReadingExercises() {
       exerciseId: exercises.id,
     };
 
-    fetch("http://localhost:9999/readingExercisesSubmission", {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

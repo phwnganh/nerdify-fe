@@ -1604,7 +1604,7 @@
       "title": "Bài kiểm tra kết thúc trình độ A2"
     }
   ],
-  "readingExercisesSubmission": [
+  "exercisesSubmission": [
     {
       "id": "cb4c",
       "submissionDate": "2024-08-27T16:16:13.846Z",
@@ -1648,6 +1648,50 @@
         }
       ],
       "exerciseId": 2
+    },
+    {
+      "id": "3684",
+      "submissionDate": "2024-08-28T02:20:11.352Z",
+      "score": "1/6",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "quesionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
     }
   ],
   "checkpointQuizSubmission": [
