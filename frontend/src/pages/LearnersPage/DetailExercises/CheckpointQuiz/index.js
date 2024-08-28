@@ -101,6 +101,7 @@ export default function ReadingExercises() {
     let score = 0;
 
     const submissionDate = new Date().toISOString();
+      const conditionStatus = score >=5 ? "passed" : "not pass"
     const questionsArray = exercises?.parts.flatMap((part) =>
       part.questions.map((question) => {
         const userAnswer = userAnswers[question.id];
@@ -111,11 +112,12 @@ export default function ReadingExercises() {
         if (isCorrect) {
           score++;
         }
+      
         return {
           questionId: question.id,
           userAnswer,
           correctAnswer,
-          isCorrect,
+          isCorrect
         };
       })
     );
@@ -124,6 +126,7 @@ export default function ReadingExercises() {
       submissionDate: submissionDate,
       score: `${score}/${totalQuestions}`,
       submissionAnswers: questionsArray,
+      conditionStatus: conditionStatus,
       exerciseId: exercises.id,
     };
 

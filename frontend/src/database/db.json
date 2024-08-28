@@ -1692,12 +1692,50 @@
         }
       ],
       "exerciseId": "2"
+    },
+    {
+      "id": "78d4",
+      "submissionDate": "2024-08-28T03:02:26.842Z",
+      "score": "0/6",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
     }
   ],
   "checkpointQuizSubmission": [
     {
-      "id": "3a45",
-      "submissionDate": "2024-08-27T17:07:54.414Z",
+      "id": "e729",
+      "submissionDate": "2024-08-28T09:26:16.563Z",
       "score": "3/10",
       "submissionAnswers": [
         {
@@ -1708,9 +1746,9 @@
         },
         {
           "questionId": 2,
-          "userAnswer": "A",
+          "userAnswer": "B",
           "correctAnswer": "B",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 3,
@@ -1720,15 +1758,15 @@
         },
         {
           "questionId": 4,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 5,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 6,
@@ -1750,17 +1788,18 @@
         },
         {
           "questionId": 9,
-          "userAnswer": "C",
+          "userAnswer": "B",
           "correctAnswer": "B",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 10,
-          "userAnswer": "B",
+          "userAnswer": "C",
           "correctAnswer": "A",
           "isCorrect": false
         }
       ],
+      "conditionStatus": "not pass",
       "exerciseId": "7"
     }
   ]
