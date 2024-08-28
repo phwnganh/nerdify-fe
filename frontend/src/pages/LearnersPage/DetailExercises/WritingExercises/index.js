@@ -6,13 +6,15 @@ import InputCustom from "../../../../components/Input";
 import { Col, Input, Row } from "antd";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import {CLIENT_URI} from '../../../../constants/uri.constants'
+import { CLIENT_URI } from "../../../../constants/uri.constants";
+
 export default function WritingExercises() {
   const [exercise, setExercise] = useState(null);
   const { exerciseType, exerciseId } = useParams();
   const [userAnswers, setUserAnswers] = useState({});
   const [exerciseResults, setExerciseResults] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
@@ -41,19 +43,61 @@ export default function WritingExercises() {
   };
 
   const handleSubmit = () => {
-    let score = 0;
-    let totalQuestions = 0;
+    const submissionDate = new Date().toISOString();
+    let correctCount = 0;
+    const questionsArray = [];
+    exercise.parts.forEach((part) => {
+      part.answers?.forEach((correctAnswer) => {
+        const userResponse =
+          userAnswers[part.id] && userAnswers[part.id][correctAnswer.id];
+        const isCorrect = userResponse?.trim() === correctAnswer.answer.trim();
+        if (isCorrect) {
+          correctCount++;
+        }
+          questionsArray.push({
+            userResponse,
+            correctAnswer: correctAnswer.answer,
+            isCorrect,
+            questionId: correctAnswer.id,
+          });
+
+      });
+    });
+
+    // const score = Math.round((correctCount / questionsArray.length) * 100);
+
+    const submissionData = {
+      submissionDate,
+      score: `${correctCount}/4`,
+      submissionAnswers: questionsArray,
+      exerciseId,
+    };
+
+    fetch("http://localhost:9999/exercisesSubmission", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("writing submission: ", data);
+      })
+      .catch((err) => console.log(err));
+
     let results = {};
+
     exercise.parts.forEach((part) => {
       if (part.answers) {
-        totalQuestions += part.answers.length;
-        const userResponses = Object.values(userAnswers[part.id] || {});
+        results[part.id] = part.answers.map((correctAnswer, index) => {
+          const userResponse =
+            userAnswers[part.id] && userAnswers[part.id][correctAnswer.id];
+          const isCorrect =
+            userResponse?.trim() === correctAnswer.answer.trim();
+          console.log("useranswer: ", userAnswers[part.id][correctAnswer.id]);
+          console.log("is correct: ", isCorrect);
 
-        results[part.id] = part.answers.map((correctAnswer) => {
-          const isCorrect = userResponses.includes(correctAnswer.answer);
-          if (isCorrect) {
-            score++;
-          }
           return {
             ...correctAnswer,
             isCorrect,
@@ -64,8 +108,9 @@ export default function WritingExercises() {
         const isCorrect = userAnswer.trim() === part.answer.trim();
         results[part.id] = [{ isCorrect }];
       }
-      setExerciseResults(results);
     });
+
+    setExerciseResults(results);
   };
 
   return (
@@ -97,7 +142,7 @@ export default function WritingExercises() {
                             style={{
                               marginBottom: "20px",
                               borderColor:
-                              exerciseResults &&
+                                exerciseResults &&
                                 exerciseResults[part.id][index].isCorrect
                                   ? "#5FD855"
                                   : exerciseResults &&
@@ -125,7 +170,8 @@ export default function WritingExercises() {
                                   : "red",
                               }}
                             >
-                              Đáp án chi tiết: {exerciseResults[part.id][index].explanation}
+                              Đáp án chi tiết:{" "}
+                              {exerciseResults[part.id][index].explanation}
                             </TextCustom>
                           )}
                         </div>
@@ -141,9 +187,10 @@ export default function WritingExercises() {
                 style={{
                   marginTop: "16px",
                   borderColor:
-                  exerciseResults && exerciseResults[part.id][0].isCorrect
+                    exerciseResults && exerciseResults[part.id][0].isCorrect
                       ? "#5FD855"
-                      : exerciseResults && !exerciseResults[part.id][0].isCorrect
+                      : exerciseResults &&
+                        !exerciseResults[part.id][0].isCorrect
                       ? "red"
                       : "",
                 }}
@@ -155,15 +202,24 @@ export default function WritingExercises() {
         ))}
       </div>
       <div style={{ textAlign: "center", paddingTop: "50px" }}>
-        {!exerciseResults && <ButtonCustom
-          buttonType="secondary"
-          onClick={handleSubmit}
-          style={{ marginRight: "100px", padding: "23px" }}
-          disabled={!!exerciseResults}
-        >
-          Nộp bài
-        </ButtonCustom>}
-        {exerciseResults && <ButtonCustom buttonType="secondary" onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}>Chuyển sang bài tập tiếp theo</ButtonCustom>}
+        {!exerciseResults && (
+          <ButtonCustom
+            buttonType="secondary"
+            onClick={handleSubmit}
+            style={{ marginRight: "100px", padding: "23px" }}
+            disabled={!!exerciseResults}
+          >
+            Nộp bài
+          </ButtonCustom>
+        )}
+        {exerciseResults && (
+          <ButtonCustom
+            buttonType="secondary"
+            onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
+          >
+            Chuyển sang bài tập tiếp theo
+          </ButtonCustom>
+        )}
       </div>
     </div>
   );
