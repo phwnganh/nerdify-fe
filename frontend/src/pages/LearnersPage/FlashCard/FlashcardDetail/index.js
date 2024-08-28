@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Carousel, Col, Dropdown, List, Row } from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Dropdown, List, Row } from "antd";
 import {
-  AudioOutlined,
   EditOutlined,
   FileOutlined,
   FolderAddFilled,
-  FolderFilled,
   FolderOpenFilled,
   FolderOutlined,
   FullscreenExitOutlined,
@@ -14,16 +12,16 @@ import {
   RightOutlined,
   ShareAltOutlined,
   SoundOutlined,
-  SyncOutlined,
 } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import CardCustom from "../../../../components/Card";
-import ReactCardFlip from "react-card-flip";
-import { Container, Flashcard, FlashcardFlipped } from "./styled";
+
+import { Container } from "./styled";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
+import ModalCustom from "../../../../components/Modal";
+import InputCustom from "../../../../components/Input";
 export default function FlashCardDetail() {
   const navigate = useNavigate();
   const { flashcardId } = useParams();
@@ -31,6 +29,22 @@ export default function FlashCardDetail() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
+
+  // flashcard test modal
+  const [open, setOpen] = useState(false);
+  const [numberOfCard, setNumberOfCard] = useState("");
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleOk = () => {
+    setOpen(false);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     fetch(`http://localhost:9999/flashcard/${flashcardId}`)
@@ -99,11 +113,51 @@ export default function FlashCardDetail() {
     const utterance = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(utterance);
   };
+
+  //just number no text
+  const handleChange = (e) => {
+    const { value: inputValue } = e.target;
+    const reg = /^-?\d*(\.\d*)?$/;
+    if (reg.test(inputValue) || inputValue === "" || inputValue === "-") {
+      // if input > total cards then
+      inputValue > flashcard?.cards.length
+        ? setNumberOfCard(flashcard?.cards.length)
+        : setNumberOfCard(inputValue);
+    }
+    console.log(numberOfCard);
+  };
   return (
     <div style={{ padding: "24px" }}>
       <div style={{ marginLeft: 235 }}>
         <BreadCrumbHome />
       </div>
+
+      <ModalCustom
+        title="Nhập số lượng câu"
+        // visible={isModalVisible}
+        open={open}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        width={400}
+        footer={[
+          <ButtonCustom key="submit" buttonType="primary" onClick={handleOk}>
+            Bắt đầu làm bài
+          </ButtonCustom>,
+        ]}
+        centered
+      >
+        <TextCustom
+          style={{ display: "flex", alignItems: "center", type: "number" }}
+        >
+          Số lượng câu hỏi : &nbsp;
+          <InputCustom
+            style={{ width: "90px", textAlign: "center", padding: "0" }}
+            value={numberOfCard}
+            onChange={handleChange}
+            addonAfter={`/ ${flashcard?.cards.length}`}
+          />
+        </TextCustom>
+      </ModalCustom>
 
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <TitleCustom level={2}>{flashcard?.title}</TitleCustom>
@@ -127,6 +181,7 @@ export default function FlashCardDetail() {
             width: "200px",
             margin: "20px",
           }}
+          onClick={showModal}
         >
           Kiểm tra
         </ButtonCustom>

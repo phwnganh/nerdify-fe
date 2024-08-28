@@ -6,7 +6,6 @@ import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
 import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
-import FlashCard from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
