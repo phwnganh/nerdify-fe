@@ -18,7 +18,7 @@ export default function ReadingExercises() {
   const [userScore, setUserScore] = useState(0);
   const [exerciseResults, setExerciseResults] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-
+  const [mark, setMark] = useState(0);
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
@@ -62,11 +62,6 @@ export default function ReadingExercises() {
     });
   };
 
-  const totalQuestions = exercises?.parts.reduce(
-    (acc, part) => acc + part.questions.length,
-    0
-  );
-  const mark = ((userScore / totalQuestions) * 100).toFixed(2);
   const handleSubmit = () => {
     let score = 0;
     const submissionDate = new Date().toISOString();
@@ -91,9 +86,16 @@ export default function ReadingExercises() {
       })
     );
 
+    const totalQuestions = exercises.parts.reduce(
+      (acc, part) => acc + part.questions.length,
+      0
+    );
+    const markValue = ((score / totalQuestions) * 100).toFixed(2);
+    setMark(markValue);
+
     const submissionData = {
       submissionDate: submissionDate,
-      score: `${score}/${totalQuestions}`,
+      score: `${markValue}%`,
       submissionAnswers: questionsArray,
       exerciseId: exercises.id,
     };
@@ -106,7 +108,9 @@ export default function ReadingExercises() {
       body: JSON.stringify(submissionData),
     })
       .then((res) => res.json())
-      .then((data) => console.log("saved: ", data))
+      .then((data) => {
+        console.log("saved: ", data);
+      })
       .catch((err) => console.log(err));
 
     const results = exercises.parts.map((part) => {
@@ -131,6 +135,7 @@ export default function ReadingExercises() {
         }),
       };
     });
+
     setExerciseResults(results);
     setUserScore(score);
   };

@@ -1606,9 +1606,9 @@
   ],
   "exercisesSubmission": [
     {
-      "id": "cb4c",
-      "submissionDate": "2024-08-27T16:16:13.846Z",
-      "score": "3/6",
+      "id": "ae49",
+      "submissionDate": "2024-08-28T18:24:00.768Z",
+      "score": "66.67%",
       "submissionAnswers": [
         {
           "quesionId": 1,
@@ -1624,9 +1624,9 @@
         },
         {
           "quesionId": 3,
-          "userAnswer": "A",
+          "userAnswer": "B",
           "correctAnswer": "B",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "quesionId": 4,
@@ -1645,216 +1645,9 @@
           "userAnswer": "B",
           "correctAnswer": "B",
           "isCorrect": true
-        }
-      ],
-      "exerciseId": 2
-    },
-    {
-      "id": "3684",
-      "submissionDate": "2024-08-28T02:20:11.352Z",
-      "score": "1/6",
-      "submissionAnswers": [
-        {
-          "quesionId": 1,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 2,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "quesionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 4,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 5,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 6,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
         }
       ],
       "exerciseId": "2"
-    },
-    {
-      "id": "78d4",
-      "submissionDate": "2024-08-28T03:02:26.842Z",
-      "score": "0/6",
-      "submissionAnswers": [
-        {
-          "quesionId": 1,
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 2,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 3,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 4,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 5,
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "quesionId": 6,
-          "correctAnswer": "B",
-          "isCorrect": false
-        }
-      ],
-      "exerciseId": "2"
-    },
-    {
-      "id": "35df",
-      "submissionDate": "2024-08-28T10:14:26.217Z",
-      "score": "2/7",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        }
-      ],
-      "exerciseId": "1"
-    },
-    {
-      "id": "790b",
-      "submissionDate": "2024-08-28T10:15:13.527Z",
-      "score": "4/7",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "C",
-          "correctAnswer": "C",
-          "isCorrect": true
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "B",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        }
-      ],
-      "exerciseId": "1"
-    },
-    {
-      "id": "d942",
-      "submissionDate": "2024-08-28T17:07:53.196Z",
-      "score": "2/4",
-      "submissionAnswers": [
-        {
-          "userResponse": "von",
-          "correctAnswer": "von",
-          "isCorrect": true,
-          "questionId": 1
-        },
-        {
-          "userResponse": "sprechen",
-          "correctAnswer": "sprechen",
-          "isCorrect": true,
-          "questionId": 2
-        },
-        {
-          "userResponse": "biBchen",
-          "correctAnswer": "bißchen",
-          "isCorrect": false,
-          "questionId": 3
-        }
-      ],
-      "exerciseId": "4"
     }
   ],
   "checkpointQuizSubmission": [
@@ -2060,6 +1853,75 @@
           "userAnswer": "A",
           "correctAnswer": "A",
           "isCorrect": true
+        }
+      ],
+      "conditionStatus": "passed",
+      "exerciseId": "7"
+    },
+    {
+      "id": "032d",
+      "submissionDate": "2024-08-28T18:23:32.385Z",
+      "score": "50.00%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
         }
       ],
       "conditionStatus": "passed",

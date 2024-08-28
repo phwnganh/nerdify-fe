@@ -20,6 +20,7 @@ export default function ReadingExercises() {
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
   const [examResults, setExamResults] = useState(null);
+  const [mark, setMark] = useState(0);
   const imgArrVocab = [
     demo_1_1,
     demo_1_2,
@@ -111,6 +112,12 @@ export default function ReadingExercises() {
         if (isCorrect) {
           score++;
         }
+
+        const totalQuestions = exercises.parts.reduce(
+          (acc, part) => acc + part.questions.length,
+          0
+        );
+
       
         return {
           questionId: question.id,
@@ -122,10 +129,12 @@ export default function ReadingExercises() {
     );
 
     const conditionStatus = score >=5 ? "passed" : "not pass"
+    const markValue = ((score / totalQuestions) * 100).toFixed(2);
+    setMark(markValue);
 
     const submissionData = {
       submissionDate: submissionDate,
-      score: `${score}/${totalQuestions}`,
+      score: `${markValue}%`,
       submissionAnswers: questionsArray,
       conditionStatus: conditionStatus,
       exerciseId: exercises.id,
@@ -170,11 +179,6 @@ export default function ReadingExercises() {
 
   const currentPart = exercises.parts[currentPartIndex];
   const currentResultPart = examResults?.[currentResultPartIndex];
-  const mark = (
-    (userScore /
-      exercises.parts.reduce((acc, part) => acc + part.questions.length, 0)) *
-    100
-  ).toFixed(2);
 
   return (
     <div style={{ padding: "24px" }}>

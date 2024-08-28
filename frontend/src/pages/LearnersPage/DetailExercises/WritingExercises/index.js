@@ -64,11 +64,11 @@ export default function WritingExercises() {
       });
     });
 
-    // const score = Math.round((correctCount / questionsArray.length) * 100);
+    const score = Math.round((correctCount / questionsArray.length) * 100);
 
     const submissionData = {
       submissionDate,
-      score: `${correctCount}/4`,
+      score: `${score}%`,
       submissionAnswers: questionsArray,
       exerciseId,
     };
