@@ -101,7 +101,6 @@ export default function ReadingExercises() {
     let score = 0;
 
     const submissionDate = new Date().toISOString();
-      const conditionStatus = score >=5 ? "passed" : "not pass"
     const questionsArray = exercises?.parts.flatMap((part) =>
       part.questions.map((question) => {
         const userAnswer = userAnswers[question.id];
@@ -121,6 +120,8 @@ export default function ReadingExercises() {
         };
       })
     );
+
+    const conditionStatus = score >=5 ? "passed" : "not pass"
 
     const submissionData = {
       submissionDate: submissionDate,
