@@ -1648,6 +1648,243 @@
         }
       ],
       "exerciseId": "2"
+    },
+    {
+      "id": "bc26",
+      "submissionDate": "2024-08-28T18:26:47.803Z",
+      "score": "57.14%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1"
+    },
+    {
+      "id": "731b",
+      "submissionDate": "2024-08-29T03:10:17.614Z",
+      "score": 1,
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": [
+            "Sie"
+          ],
+          "correctAnswer": [
+            "Sie"
+          ],
+          "isCorrect": true
+        },
+        {
+          "questionId": 1,
+          "userAnswer": [
+            null
+          ],
+          "correctAnswer": [
+            "Sie"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": [
+            null
+          ],
+          "correctAnswer": [
+            "du"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": [
+            null
+          ],
+          "correctAnswer": [
+            "Er"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": [
+            null,
+            null,
+            null
+          ],
+          "correctAnswer": [
+            "er",
+            "sie",
+            "sie"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": [
+            null,
+            null
+          ],
+          "correctAnswer": [
+            "du",
+            "Ich"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": [
+            null,
+            null
+          ],
+          "correctAnswer": [
+            "ihr",
+            "Wir"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": [
+            null,
+            null
+          ],
+          "correctAnswer": [
+            "Sie",
+            "Ich"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": [
+            null
+          ],
+          "correctAnswer": [
+            "Sie"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": [
+            null
+          ],
+          "correctAnswer": [
+            "sie"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": [
+            null,
+            null
+          ],
+          "correctAnswer": [
+            "Sie",
+            "Ich"
+          ],
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": [
+            null,
+            null
+          ],
+          "correctAnswer": [
+            "du",
+            "ich"
+          ],
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "5"
+    },
+    {
+      "id": "d5db",
+      "submissionDate": "2024-08-29T03:11:15.714Z",
+      "score": "14.29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1"
     }
   ],
   "checkpointQuizSubmission": [
@@ -1926,6 +2163,135 @@
       ],
       "conditionStatus": "passed",
       "exerciseId": "7"
+    }
+  ],
+  "finalExamSubmission": [
+    {
+      "id": "ffbe",
+      "submissionDate": "2024-08-29T16:13:45.367Z",
+      "score": "55.00%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "passed",
+      "examId": "1"
     }
   ]
 }

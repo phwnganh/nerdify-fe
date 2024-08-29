@@ -14,6 +14,7 @@ export default function ListeningExercise() {
   const [userScore, setUserScore] = useState(-1);
   const [exerciseResults, setExerciseResults] = useState(null);
   const { exerciseType, exerciseId } = useParams();
+  const [mark, setMark] = useState(0);
   const { TabPane } = Tabs;
 
   const videoRef = useRef(null);
@@ -83,9 +84,11 @@ export default function ListeningExercise() {
         };
       })
     );
+    const markValue = ((score / totalQuestions) * 100).toFixed(2);
+    setMark(markValue);
     const submissionData = {
       submissionDate: submissionDate,
-      score: `${score}/${totalQuestions}`,
+      score: `${markValue}%`,
       submissionAnswers: questionsArray,
       exerciseId: exercises.id,
     };
@@ -94,7 +97,7 @@ export default function ListeningExercise() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(submissionData)
+      body: JSON.stringify(submissionData),
     })
       .then((res) => res.json())
       .then((data) => console.log("lis data: ", data))
@@ -132,8 +135,6 @@ export default function ListeningExercise() {
 
   const currentPart = exercises.parts[currentPartIndex];
   const currentResultPart = exerciseResults?.[currentResultPartIndex];
-
-  const mark = ((userScore / totalQuestions) * 100).toFixed(2);
 
   const handleTabChange = (key) => {};
 
