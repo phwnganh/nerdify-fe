@@ -24,7 +24,7 @@ export default function FinalExam() {
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(0);
   const [examResults, setExamResults] = useState(null);
-
+  const [mark, setMark] = useState(0);
   const currentPart = exam.parts?.[currentPartIndex];
   const scoreResultCurrentPart = examResults?.[currentResultPartIndex];
   const imgArrVocab = [
@@ -107,6 +107,52 @@ export default function FinalExam() {
 
   const handleSubmit = () => {
     let score = 0;
+
+    const submissionDate = new Date().toISOString();
+    const questionsArray = exam?.parts.flatMap((part) =>
+      part.questions.map((question) => {
+        const userAnswer = userAnswers[question.id];
+        const correctAnswer = part.answers.find(
+          (answer) => answer.id === question.id
+        )?.answer;
+        const isCorrect = userAnswer === correctAnswer;
+        if (isCorrect) {
+          score++;
+        }
+
+        return {
+          questionId: question.id,
+          userAnswer,
+          correctAnswer,
+          isCorrect,
+        };
+      })
+    );
+    const totalQuestions = exam.parts.reduce(
+      (acc, part) => acc + part.questions.length,
+      0
+    );
+    const conditionStatus = score >= 6 ? "passed" : "not pass";
+    const markValue = ((score / totalQuestions) * 100).toFixed(2);
+    setMark(markValue);
+
+    const submissionData = {
+      submissionDate: submissionDate,
+      score: `${markValue}%`,
+      submissionAnswers: questionsArray,
+      conditionStatus: conditionStatus,
+      examId: exam.id,
+    };
+
+    fetch("http://localhost:9999/finalExamSubmission", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("final exam: ", data));
     const results = exam.parts.map((part) => {
       return {
         ...part,
@@ -180,7 +226,7 @@ export default function FinalExam() {
                             style={{
                               backgroundColor:
                                 userAnswers[question.id] === option.id
-                                  ? "#ff855d"
+                                  ? "#A8703E"
                                   : "",
                             }}
                           >
@@ -256,6 +302,15 @@ export default function FinalExam() {
                       (acc, part) => acc + part.questions.length,
                       0
                     )}
+                  </span>
+                  <span
+                    style={{
+                      color: "red",
+                      marginLeft: "10px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ({mark}%)
                   </span>
                 </TextCustom>
               </div>
@@ -351,7 +406,7 @@ export default function FinalExam() {
                 >
                   Phần tiếp theo
                 </ButtonCustom>
-                {userScore < 12 ? (
+                {userScore < 12 && mark < 60 ? (
                   <>
                     <ButtonCustom
                       buttonType="secondary"

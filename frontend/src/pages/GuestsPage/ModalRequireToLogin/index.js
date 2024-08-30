@@ -3,7 +3,7 @@ import ButtonCustom from "../../../components/Button";
 import ModalCustom from "../../../components/Modal";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants";
-export default function ModalRequireToLogin(open) {
+export default function ModalRequireToLogin({ open, onClose }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -32,6 +32,7 @@ export default function ModalRequireToLogin(open) {
             }}
             onClick={() => {
               navigate(CLIENT_URI.LOGIN);
+              onClose();
             }}
             closable={true}
           >
@@ -45,8 +46,9 @@ export default function ModalRequireToLogin(open) {
               width: "150px",
             }}
             onClick={() => {
-              setIsOpen(false);
-              //   navigate(CLIENT_URI.LANDING_PAGE);
+              onClose();
+              navigate(CLIENT_URI.LANDING_PAGE);
+              
             }}
           >
             Để sau

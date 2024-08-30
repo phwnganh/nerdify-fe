@@ -1,22 +1,37 @@
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { QuestionsList } from "../ReadingExercises/questions/questionsList";
-import NavigateButton from "../ReadingExercises/navigateButton";
-import { TextCustom } from "../../../../components/Typography";
+import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
+import demo_1_2 from "../../../../assets/vocabExercises/1_2.png";
+import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
+import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
+import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
+import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
+import { ParagraphCustom, TextCustom } from "../../../../components/Typography";
+import { Col, Row } from "antd";
+import ButtonCustom from "../../../../components/Button";
 
 export default function ReadingExercises() {
   const { exerciseType, exerciseId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
+  const [currentResultPartIndex, setCurrentResultPartIndex] = useState(0);
   const [exercises, setExercises] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
-
+  const [examResults, setExamResults] = useState(null);
+  const [mark, setMark] = useState(0);
+  const imgArrVocab = [
+    demo_1_1,
+    demo_1_2,
+    demo_1_3,
+    demo_2_1,
+    demo_2_2,
+    demo_2_3,
+  ];
   useEffect(() => {
     fetch(
-      `http://localhost:9999/exercises?exerciseType=${exerciseType}&id=${exerciseId}`
+      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -28,7 +43,7 @@ export default function ReadingExercises() {
   }, [exerciseType, exerciseId]);
 
   useEffect(() => {
-    if (userScore !== -1) return;
+    if (examResults) return;
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime > 0) {
@@ -54,11 +69,21 @@ export default function ReadingExercises() {
     setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
+  const handleNextResultPart = () => {
+    if (exercises && currentResultPartIndex < exercises.parts.length - 1) {
+      setCurrentResultPartIndex(currentResultPartIndex + 1);
+    }
+  };
+
+  const handlePreviousResultPart = () => {
+    setCurrentResultPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
   const handleSelectOptions = (questionId, optionId) => {
-    setUserAnswers((prev) => ({
-      ...prev,
+    setUserAnswers({
+      ...userAnswers,
       [questionId]: optionId,
-    }));
+    });
   };
 
   const formattedTime = (time) => {
@@ -69,10 +94,65 @@ export default function ReadingExercises() {
       .padStart(2, "0")}`;
   };
 
+  const totalQuestions = exercises?.parts.reduce(
+    (acc, part) => acc + part.questions.length,
+    0
+  );
   const handleSubmit = () => {
     let score = 0;
-    exercises.parts.map((part) => {
+
+    const submissionDate = new Date().toISOString();
+    const questionsArray = exercises?.parts.flatMap((part) =>
+      part.questions.map((question) => {
+        const userAnswer = userAnswers[question.id];
+        const correctAnswer = part.answers.find(
+          (answer) => answer.id === question.id
+        )?.answer;
+        const isCorrect = userAnswer === correctAnswer;
+        if (isCorrect) {
+          score++;
+        }
+
+        const totalQuestions = exercises.parts.reduce(
+          (acc, part) => acc + part.questions.length,
+          0
+        );
+
+      
+        return {
+          questionId: question.id,
+          userAnswer,
+          correctAnswer,
+          isCorrect
+        };
+      })
+    );
+
+    const conditionStatus = score >=5 ? "passed" : "not pass"
+    const markValue = ((score / totalQuestions) * 100).toFixed(2);
+    setMark(markValue);
+
+    const submissionData = {
+      submissionDate: submissionDate,
+      score: `${markValue}%`,
+      submissionAnswers: questionsArray,
+      conditionStatus: conditionStatus,
+      exerciseId: exercises.id,
+    };
+
+    fetch("http://localhost:9999/checkpointQuizSubmission", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("quiz test: ", data))
+      .catch((err) => console.log(err));
+    const results = exercises.parts.map((part) => {
       return {
+        ...part,
         questions: part.questions.map((question) => {
           const userAnswer = userAnswers[question.id];
           // const correctAnswers = part.answers[question.id]?.answer;
@@ -80,12 +160,16 @@ export default function ReadingExercises() {
             (answer) => answer.id === question.id
           )?.answer;
           const isCorrect = userAnswer === correctAnswers;
-          if (isCorrect) {
-            score++;
-          }
+          return {
+            ...question,
+            userAnswer,
+            correctAnswers,
+            isCorrect,
+          };
         }),
       };
     });
+    setExamResults(results);
     setUserScore(score);
   };
 
@@ -94,11 +178,7 @@ export default function ReadingExercises() {
   }
 
   const currentPart = exercises.parts[currentPartIndex];
-  const mark = (
-    (userScore /
-      exercises.parts.reduce((acc, part) => acc + part.questions.length, 0)) *
-    100
-  ).toFixed(2);
+  const currentResultPart = examResults?.[currentResultPartIndex];
 
   return (
     <div style={{ padding: "24px" }}>
@@ -111,43 +191,233 @@ export default function ReadingExercises() {
           </span>
         </TextCustom>
       </div>
-      {!(userScore > -1) ? (
-        <>
-          <QuestionsList
-            exercises={exercises}
-            currentPart={currentPart}
-            timeLeft={timeLeft}
-            onSelect={handleSelectOptions}
-            userAnswers={userAnswers}
-          />
-          <NavigateButton
-            currentPartIndex={currentPartIndex}
-            totalParts={exercises.parts.length}
-            onPrevious={handlePreviousPart}
-            onNext={handleNextPart}
-            onSubmit={handleSubmit}
-            isCheckpointQuiz={true}
-          />
-        </>
+
+      {!examResults ? (
+        <div>
+          <TextCustom
+            style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}
+          >
+            {currentPart.partName}
+          </TextCustom>
+          {currentPart.questions.map((question, index) => (
+            <div key={question.id}>
+              <TextCustom style={{ paddingTop: "20px" }}>
+                Câu {question.id}: {question.question}
+              </TextCustom>
+              {question.questionParagraph && (
+                <ParagraphCustom>{question.questionParagraph}</ParagraphCustom>
+              )}
+              <div style={{ marginTop: "20px" }}>
+                <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+                  {question.options.map((option, index) => (
+                    <Col key={index} span={8}>
+                      <ButtonCustom
+                        buttonType="primary"
+                        onClick={() =>
+                          handleSelectOptions(question.id, option.id)
+                        }
+                        style={{
+                          backgroundColor:
+                            userAnswers[question.id] === option.id
+                              ? "#A8703E"
+                              : "",
+                        }}
+                      >
+                        {option.image ? (
+                          <span>{option.id}</span>
+                        ) : (
+                          <div>
+                            <span>
+                              {Array.isArray(option.text)
+                                ? `${option.id}. ${option.text.join(" - ")}`
+                                : `${option.id}. ${option.text}`}
+                            </span>
+                          </div>
+                        )}
+                      </ButtonCustom>
+                    </Col>
+                  ))}
+                </Row>
+                {question.options.some((option) => option.image) && (
+                  <Row
+                    gutter={[16, 16]}
+                    style={{ marginTop: "20px", textAlign: "center" }}
+                  >
+                    {question.options
+                      .filter((option) => option.image)
+                      .map((option, index) => (
+                        <Col key={index} span={8}>
+                          <img
+                            src={imgArrVocab[index]}
+                            style={{ width: "50%" }}
+                          />
+                        </Col>
+                      ))}
+                  </Row>
+                )}
+              </div>
+            </div>
+          ))}
+          <div style={{ textAlign: "center", paddingTop: "50px" }}>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handlePreviousPart}
+              disabled={currentPartIndex === 0}
+            >
+              Phần trước
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handleNextPart}
+              disabled={currentPartIndex === exercises.parts.length - 1}
+            >
+              Phần tiếp theo
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px" }}
+              onClick={handleSubmit}
+            >
+              Nộp bài
+            </ButtonCustom>
+          </div>
+        </div>
       ) : (
-        <>
-          <QuestionsList
-            exercises={exercises}
-            currentPart={currentPart}
-            timeLeft={timeLeft}
-            userAnswers={userAnswers}
-            userScore={userScore}
-            mark={mark}
-          />
-          <NavigateButton
-            currentPartIndex={currentPartIndex}
-            totalParts={exercises.parts.length}
-            onPrevious={handlePreviousPart}
-            onNext={handleNextPart}
-            mark={mark}
-            isCheckpointQuiz={true}
-          />
-        </>
+        <div>
+          <div style={{ textAlign: "center" }}>
+            <TextCustom style={{ textAlign: "center" }}>
+              Điểm:&nbsp;
+              <span style={{ color: "red" }}>
+                {userScore}/
+                {exercises.parts.reduce(
+                  (acc, part) => acc + part.questions.length,
+                  0
+                )}
+              </span>
+              <span
+                style={{ color: "red", marginLeft: "10px", fontWeight: "bold" }}
+              >
+                ({mark}%)
+              </span>
+            </TextCustom>
+          </div>
+          <div>
+            <TextCustom
+              style={{
+                color: "red",
+                fontWeight: "bold",
+                paddingTop: "20px",
+              }}
+            >
+              {currentResultPart.partName}
+            </TextCustom>
+            {currentResultPart.questions.map((question) => (
+              <div key={question.id}>
+                <TextCustom style={{ paddingTop: "24px" }}>
+                  Câu {question.id}: {question.question}
+                </TextCustom>
+                <div style={{ marginTop: "20px" }}>
+                  <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+                    {question.options.map((option, index) => {
+                      const isCorrectOption =
+                        option.id === question.correctAnswers;
+                      const isUserSelected = option.id === question.userAnswer;
+                      const backgroundColor = isCorrectOption
+                        ? "#5FD855"
+                        : isUserSelected && !question.isCorrect
+                        ? "red"
+                        : "";
+
+                      return (
+                        <Col key={index} span={8}>
+                          <ButtonCustom
+                            buttonType="primary"
+                            style={{ backgroundColor }}
+                            disabled
+                          >
+                            {option.image ? (
+                              <span>{option.id}</span>
+                            ) : (
+                              <div>
+                                <span>
+                                  {Array.isArray(option.text)
+                                    ? `${option.id}. ${option.text.join(" - ")}`
+                                    : `${option.id}. ${option.text}`}
+                                </span>
+                              </div>
+                            )}
+                          </ButtonCustom>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                  {question.options.some((option) => option.image) && (
+                    <Row
+                      gutter={[16, 16]}
+                      style={{ marginTop: "20px", textAlign: "center" }}
+                    >
+                      {question.options
+                        .filter((option) => option.image)
+                        .map((option, index) => (
+                          <Col key={index} span={8}>
+                            <img
+                              src={imgArrVocab[index]}
+                              style={{ width: "50%" }}
+                            />
+                          </Col>
+                        ))}
+                    </Row>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", paddingTop: "50px" }}>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handlePreviousResultPart}
+              disabled={currentResultPartIndex === 0}
+            >
+              Phần trước
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ marginRight: "100px", padding: "23px" }}
+              onClick={handleNextResultPart}
+              disabled={currentResultPartIndex === examResults.length - 1}
+            >
+              Phần tiếp theo
+            </ButtonCustom>
+            {userScore < 5 && mark < 50 ? (
+              <>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ marginRight: "100px", padding: "23px" }}
+                >
+                  Làm lại bài kiểm tra
+                </ButtonCustom>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ marginRight: "100px", padding: "23px" }}
+                >
+                  Quay về luyện tập
+                </ButtonCustom>
+              </>
+            ) : (
+              <>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ marginRight: "100px", padding: "23px" }}
+                >
+                  Nhận cúp
+                </ButtonCustom>
+              </>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

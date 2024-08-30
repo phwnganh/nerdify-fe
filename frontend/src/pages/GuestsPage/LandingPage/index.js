@@ -43,20 +43,6 @@ export const LandingPage = () => {
     "Bộ từ vựng flashcard theo chủ đề",
   ];
 
-  const course = [
-    {
-      title: "Bài tập trình độ A1",
-    },
-    {
-      title: "Title 2",
-    },
-    {
-      title: "Title 3",
-    },
-    {
-      title: "Title 4",
-    },
-  ];
 
   const feedbacks = [
     {
@@ -209,33 +195,7 @@ export const LandingPage = () => {
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
-        <List
-          grid={{
-            gutter: 16,
-            column: 4,
-          }}
-          dataSource={course}
-          renderItem={(item) => (
-            <List.Item>
-              <CardCustom
-                cover={
-                  <img
-                    alt="example"
-                    src={sample}
-                    height={150}
-                    style={{ objectFit: "cover" }}
-                    // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
-              >
-                <p>
-                  Title content da sd asd fadgasd sadf g hd dsfs dr rwg dfg rs
-                  tgfdg etd gfd gret dfg
-                </p>
-              </CardCustom>
-            </List.Item>
-          )}
-        />
+
       </div>
       {/* Feedback */}
       <div>
