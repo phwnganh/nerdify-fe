@@ -1,34 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { Col, Dropdown, Layout, Menu, Row, Tabs } from "antd";
-import MenuBar from "../Menu";
-import InputCustom from "../Input";
+import MenuBar from "../../Menu";
+import InputCustom from "../../Input";
 import { BellOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
-import ButtonCustom from "../Button";
-import MenuItem from "../Menu/MenuItem";
-import logo from "../../assets/logo.png";
+import MenuItem from "../../Menu/MenuItem/index";
+import logo from "../../../assets/logo.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import { CLIENT_URI } from "../../constants/uri.constants";
-import { useAuth } from "../../hooks";
-import { ROLES } from "../../constants";
-import ModalRequireToLogin from "../../pages/GuestsPage/ModalRequireToLogin";
+import { CLIENT_URI } from "../../../constants/uri.constants";
+import { authService } from "../../../services";
+import { signout } from "../../../hooks/auth/reducers";
 const { Header } = Layout;
 
-export default function Navbar() {
+export default function LearnerHeader() {
   const navigate = useNavigate();
-  const [selectedKey, setSelectedKey] = useState("home");
+  const [selectedKey, setSelectedKey] = useState("course");
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
   const { courseId } = useParams();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const handleLogout = () => {
+    authService.logout().then(() => {
+      signout();
+      window.location.reload();
+    });
+  };
+  const userMenu = (
+    <Menu>
+      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.PROFILE)}>
+        Xem Trang Cá Nhân
+      </Menu.Item>
+      <Menu.Item key="logout" onClick={handleLogout}>
+        Đăng Xuất
+      </Menu.Item>
+    </Menu>
+  );
   useEffect(() => {
-    if (location.pathname === CLIENT_URI.LANDING_PAGE) {
-      setSelectedKey("home");
+    if (location.pathname === CLIENT_URI.COURSE_PAGE) {
+      setSelectedKey("course");
+    } else if (location.pathname === CLIENT_URI.FLASH_CARD) {
+      setSelectedKey("flashcards");
     }
   }, [location.pathname]);
   const handleMenuClick = (e) => {
     setSelectedKey(e.key);
-    // console.log(e.key);
+    console.log(e.key);
   };
 
   const handleSearchClick = () => {
@@ -37,10 +52,6 @@ export default function Navbar() {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
   };
   return (
     <Header
@@ -72,15 +83,17 @@ export default function Navbar() {
             onClick={handleMenuClick}
           >
             <MenuItem
-              key="home"
-              onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}
+              key="course"
+              onClick={() => navigate(CLIENT_URI.COURSE_PAGE)}
             >
-              TRANG CHỦ
+              KHÓA HỌC
             </MenuItem>
             <MenuItem
               key="flashcards"
               onClick={() => {
-                setIsModalVisible(true);
+                  console.log("navigate to flashcard successfully");
+                  
+                navigate(CLIENT_URI.FLASH_CARD);
               }}
             >
               FLASHCARD
@@ -122,23 +135,14 @@ export default function Navbar() {
               />
             )}
           </div>
-
-          <ButtonCustom
-            buttonType="primary"
-            style={{ marginRight: "10px" }}
-            onClick={() => navigate(CLIENT_URI.LOGIN)}
-          >
-            ĐĂNG NHẬP
-          </ButtonCustom>
-          <ButtonCustom
-            buttonType="secondary"
-            onClick={() => navigate(CLIENT_URI.REGISTER)}
-          >
-            ĐĂNG KÝ
-          </ButtonCustom>
+          <BellOutlined
+            style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }}
+          />
+          <Dropdown overlay={userMenu} trigger={["click"]}>
+            <UserOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
+          </Dropdown>
         </Col>
       </Row>
-      {isModalVisible && (<ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal}/>)}
     </Header>
   );
 }

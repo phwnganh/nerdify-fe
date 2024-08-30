@@ -4,19 +4,26 @@ import ButtonCustom from "../../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants";
 import { ReadOutlined } from "@ant-design/icons";
-import a1 from '../../../../assets/levelImage/a1.png';
-import a2 from '../../../../assets/levelImage/a2.png'
+import a1 from "../../../../assets/levelImage/a1.png";
+import a2 from "../../../../assets/levelImage/a2.png";
+import { useState } from "react";
+import ModalRequireToLogin from "../../ModalRequireToLogin";
+
 export const Course = ({ course }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
   const levelImgArr = {
     a1: a1,
-    a2: a2
-  }
+    a2: a2,
+  };
   const navigate = useNavigate();
   return (
     <CardCustom
       cover={
         <img
-          alt="example"
           src={levelImgArr[course.levelImage]}
           height={150}
           style={{ objectFit: "cover" }}
@@ -31,7 +38,7 @@ export const Course = ({ course }) => {
         >
           <ReadOutlined style={{ fontSize: "25px" }} />
           <span style={{ marginLeft: "8px" }}>
-            {course.phases.length} phase
+            {course.phases.length} Phase
           </span>
         </div>
 
@@ -39,18 +46,17 @@ export const Course = ({ course }) => {
           style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}
         >
           <ReadOutlined style={{ fontSize: "25px" }} />
-          <span style={{ marginLeft: "8px" }}>
-            {course.finalexams.length} final exam
-          </span>
+          <span style={{ marginLeft: "8px" }}>1 Final Exam</span>
         </div>
       </div>
       <ButtonCustom
         buttonType="primary"
         style={{ width: "100%" }}
-        onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/${course.id}`)}
+        onClick={() => setIsModalVisible(true)}
       >
         Bắt đầu
       </ButtonCustom>
+      {isModalVisible && (<ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal}/>)}
     </CardCustom>
   );
 };
