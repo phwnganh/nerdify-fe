@@ -179,7 +179,7 @@ export default function EditFlashCard() {
                             rules={[
                               {
                                 required: true,
-                                message: "Làm ơn nhập thuật ngữ!",
+                                message: "Vui lòng nhập thuật ngữ!",
                               },
                             ]}
                             noStyle
@@ -201,7 +201,7 @@ export default function EditFlashCard() {
                             rules={[
                               {
                                 required: true,
-                                message: "Làm ơn nhập định nghĩa!",
+                                message: "Vui lòng nhập định nghĩa!",
                               },
                             ]}
                             noStyle

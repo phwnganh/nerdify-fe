@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Checkbox } from "antd";
+import { Form, Checkbox, Input } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -86,7 +86,7 @@ export const LoginPage = () => {
                 },
               ]}
             >
-              <InputCustom placeholder="Email" prefix={<UserOutlined />} />
+              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} />
             </Form.Item>
 
             {/* input password */}
@@ -103,9 +103,9 @@ export const LoginPage = () => {
                 },
               ]}
             >
-              <InputCustom
+              <Input.Password
                 type="password"
-                placeholder="Password"
+                placeholder="Nhập mật khẩu"
                 prefix={<LockOutlined />}
               />
             </Form.Item>

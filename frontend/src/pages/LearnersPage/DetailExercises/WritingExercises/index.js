@@ -73,7 +73,7 @@ export default function WritingExercises() {
       exerciseId,
     };
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch("http://localhost:9999/writingExercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

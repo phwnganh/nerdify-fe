@@ -105,6 +105,11 @@ export default function FinalExam() {
     });
   };
 
+  const totalQuestions = exam.parts.reduce(
+    (acc, part) => acc + part.questions.length,
+    0
+  );
+
   const handleSubmit = () => {
     let score = 0;
 
@@ -128,11 +133,8 @@ export default function FinalExam() {
         };
       })
     );
-    const totalQuestions = exam.parts.reduce(
-      (acc, part) => acc + part.questions.length,
-      0
-    );
-    const conditionStatus = score >= 6 ? "passed" : "not pass";
+
+    const conditionStatus = score >= 12 ? "passed" : "not pass";
     const markValue = ((score / totalQuestions) * 100).toFixed(2);
     setMark(markValue);
 
@@ -162,9 +164,6 @@ export default function FinalExam() {
             (answer) => answer.id === question.id
           )?.answer;
           const isCorrect = userAnswer === correctAnswers;
-          if (isCorrect) {
-            score++;
-          }
           return {
             ...question,
             userAnswer,

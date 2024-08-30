@@ -12,7 +12,6 @@ export default function GrammarExercises() {
   const [results, setResults] = useState(null);
   const { exerciseType, exerciseId } = useParams();
   const [userScore, setUserScore] = useState(0);
-  const [totalQuestions, setTotalQuestions] = useState(0);
   const [mark, setMark] = useState(0);
 
   useEffect(() => {
@@ -37,16 +36,19 @@ export default function GrammarExercises() {
     }));
   };
 
+  const totalQuestions = grammarContents?.questions?.reduce(
+    (acc, question) => acc + question?.questionDetail.length,
+    0
+  );
+
   const handleSubmit = () => {
     let score = 0;
-    let totalQuestions = 0;
     const newResults = {};
     const submissionAnswers = [];
 
     grammarContents.questions.forEach((question) => {
       question.questionDetail.forEach((detail, detailIndex) => {
         const correctAnswer = question.correctAnswers[detailIndex];
-        totalQuestions++;
         if (Array.isArray(correctAnswer)) {
           const userAnswerArray = correctAnswer.map(
             (_, subIndex) =>
@@ -94,7 +96,6 @@ export default function GrammarExercises() {
     const mark = ((score / totalQuestions) * 100).toFixed(2);
     setResults(newResults);
     setUserScore(score);
-    setTotalQuestions(totalQuestions);
     setMark(mark);
 
     const submissionData = {
@@ -104,7 +105,7 @@ export default function GrammarExercises() {
       exerciseId: exerciseId,
     };
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch("http://localhost:9999/grammarExercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -116,32 +117,35 @@ export default function GrammarExercises() {
   const renderQuestionDetail = (questionDetail, questionId) => {
     return questionDetail.map((detail, detailIndex) => (
       <div key={detailIndex} style={{ margin: "10px 0" }}>
+        <span>{detailIndex + 1}. </span>
         {Array.isArray(detail.name)
           ? detail.name.map((quest, subIndex) => (
               <div key={subIndex} style={{ marginBottom: "10px" }}>
                 {quest.split("___").map((text, i) => (
-                  <span key={i}>
-                    {i > 0 && (
-                      <InputCustom
-                        style={{ width: "150px", marginRight: "8px" }}
-                        value={
-                          userAnswers[
-                            `${questionId}-${detailIndex}-${subIndex}`
-                          ] || ""
-                        }
-                        onChange={(e) =>
-                          handleInputChange(
-                            questionId,
-                            detailIndex,
-                            subIndex,
-                            e.target.value
-                          )
-                        }
-                        disabled={results !== null}
-                      />
-                    )}
-                    {text}
-                  </span>
+                  <>
+                    <span key={i}>
+                      {i > 0 && (
+                        <InputCustom
+                          style={{ width: "150px", marginRight: "8px" }}
+                          value={
+                            userAnswers[
+                              `${questionId}-${detailIndex}-${subIndex}`
+                            ] || ""
+                          }
+                          onChange={(e) =>
+                            handleInputChange(
+                              questionId,
+                              detailIndex,
+                              subIndex,
+                              e.target.value
+                            )
+                          }
+                          disabled={results !== null}
+                        />
+                      )}
+                      {text}
+                    </span>
+                  </>
                 ))}
               </div>
             ))
