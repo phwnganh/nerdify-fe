@@ -1,8 +1,7 @@
 import axios from "axios";
-import { SERVER_URI } from "../constants";
-
+import { AUTH_SERVER_URI } from "./GuestService/url";
 const client = axios.create({
-  baseURL: SERVER_URI.DOMAIN,
+  baseURL: AUTH_SERVER_URI.DOMAIN,
   withCredentials: true,
   timeout: 10000,
   timeoutErrorMessage: "The connection has timed out",

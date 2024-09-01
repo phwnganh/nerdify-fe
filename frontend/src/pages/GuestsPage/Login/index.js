@@ -6,17 +6,18 @@ import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import loginImage from "../../../assets/loginImage.png";
-import { CLIENT_URI, PASSWORD_REGEX, SERVER_URI } from "../../../constants";
-import { authService } from "../../../services";
+import { CLIENT_URI, PASSWORD_REGEX} from "../../../constants";
 import { useAuth } from "../../../hooks";
+import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
+import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
   const navigate = useNavigate();
 
   const onLoginWithGoogle = () => {
-    window.open(`${SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
+    window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
   };
 
   const onLogin = (values) => {
@@ -25,8 +26,7 @@ export const LoginPage = () => {
       password: values.password,
       remember: values.remember,
     };
-    authService
-      .login(data)
+    login(data)
       .then((resp) => {
         dispatch(
           signin({

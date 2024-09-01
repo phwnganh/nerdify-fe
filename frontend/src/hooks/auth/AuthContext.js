@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { initialize, reducer } from "./reducers";
-import { getCurrentUser } from "../../services/authService";
+import { getCurrentUser } from "../../services/GuestService/index.js";
 
 const initialState = {
   isInitialized: false,
