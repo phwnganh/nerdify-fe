@@ -135,7 +135,7 @@ export default function EditFlashCard() {
                   style={{ padding: "20px 50px", background: "#ffa751" }}
                   onClick={handleFlashCard}
                 >
-                  Thêm mới
+                  Lưu
                 </Button>
               </Form.Item>
             </Col>
@@ -253,13 +253,6 @@ export default function EditFlashCard() {
             )}
           </Form.List>
 
-          <Form.Item noStyle shouldUpdate>
-            {() => (
-              <Typography>
-                <pre>{JSON.stringify(form.getFieldsValue(), null, 2)}</pre>
-              </Typography>
-            )}
-          </Form.Item>
         </Form>
       </div>
     </>

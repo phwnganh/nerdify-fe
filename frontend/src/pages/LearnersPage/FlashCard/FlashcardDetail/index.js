@@ -227,7 +227,11 @@ export default function FlashCardDetail() {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].terms);
+                  handleSpeak(
+                    isFlipped
+                      ? flashcard?.cards[currentIndex].definitions
+                      : flashcard?.cards[currentIndex].terms
+                  );
                 }}
               ></Button>
             </Col>

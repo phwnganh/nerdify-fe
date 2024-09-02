@@ -11,9 +11,8 @@ export const GuestGuard = ({ children }) => {
 
   if (isAuthenticated) {
     if (user?.role === ROLES.LEARNER_ROLE) {
-      return <Navigate to={CLIENT_URI.HOME_PAGE} replace />;
+      return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
     }
-    return <Navigate to={CLIENT_URI.HOME_PAGE} replace />;
   }
 
   return <>{children}</>;

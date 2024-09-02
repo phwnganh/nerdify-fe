@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Col, Layout, Row, Tabs } from "antd";
+import { Col, Dropdown, Layout, Menu, Row, Tabs } from "antd";
 import MenuBar from "../Menu";
 import InputCustom from "../Input";
-import { SearchOutlined } from "@ant-design/icons";
+import { BellOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
 import logo from "../../assets/logo.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../constants/uri.constants";
+import { useAuth } from "../../hooks";
+import { ROLES } from "../../constants";
+import ModalRequireToLogin from "../../pages/GuestsPage/ModalRequireToLogin";
 const { Header } = Layout;
 
 export default function Navbar() {
@@ -17,10 +20,8 @@ export default function Navbar() {
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
   const { courseId } = useParams();
+  const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
-    if (location.pathname === CLIENT_URI.FLASH_CARD) {
-      setSelectedKey("flashcards");
-    }
     if (location.pathname === CLIENT_URI.LEVEL_DETAIL) {
       setSelectedKey("practices");
     } else if (location.pathname === CLIENT_URI.LANDING_PAGE) {
@@ -38,6 +39,10 @@ export default function Navbar() {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
   };
   return (
     <Header
@@ -74,16 +79,16 @@ export default function Navbar() {
             >
               TRANG CHỦ
             </MenuItem>
-            {/* <MenuItem
+            <MenuItem
               key="practices"
               onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/1`)}
             >
               LUYỆN TẬP
-            </MenuItem> */}
+            </MenuItem>
             <MenuItem
               key="flashcards"
               onClick={() => {
-                navigate(CLIENT_URI.FLASH_CARD);
+                setIsModalVisible(true);
               }}
             >
               FLASHCARD
@@ -125,6 +130,7 @@ export default function Navbar() {
               />
             )}
           </div>
+
           <ButtonCustom
             buttonType="primary"
             style={{ marginRight: "10px" }}
@@ -140,6 +146,7 @@ export default function Navbar() {
           </ButtonCustom>
         </Col>
       </Row>
+      {isModalVisible && (<ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal}/>)}
     </Header>
   );
 }

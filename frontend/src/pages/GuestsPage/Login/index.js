@@ -6,7 +6,7 @@ import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import loginImage from "../../../assets/loginImage.png";
-import { CLIENT_URI, EMAIL_REGEX, SERVER_URI } from "../../../constants";
+import { CLIENT_URI, PASSWORD_REGEX, SERVER_URI } from "../../../constants";
 import { authService } from "../../../services";
 import { useAuth } from "../../../hooks";
 import { signin } from "../../../hooks/auth/reducers";
@@ -28,7 +28,6 @@ export const LoginPage = () => {
     authService
       .login(data)
       .then((resp) => {
-        console.log(resp);
         dispatch(
           signin({
             user: {
@@ -39,7 +38,7 @@ export const LoginPage = () => {
             },
           })
         );
-        window.location.href = CLIENT_URI.HOME_PAGE;
+        navigate(() => CLIENT_URI.COURSE_PAGE);
       })
       .catch((err) => {});
   };
@@ -95,13 +94,14 @@ export const LoginPage = () => {
               label="Mật khẩu"
               type="password"
               name="password"
-              // rules={[
-              //   {
-              //     pattern: EMAIL_REGEX,
-              //     message:
-              //       "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
-              //   },
-              // ]}
+              style={{ width: "100%" }}
+              rules={[
+                {
+                  pattern: PASSWORD_REGEX,
+                  message:
+                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                },
+              ]}
             >
               <InputCustom
                 type="password"
@@ -192,6 +192,7 @@ const style = {
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
+    width: "80%",
     margin: "auto",
   },
 };

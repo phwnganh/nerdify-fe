@@ -76,7 +76,10 @@ export const RegisterPage = () => {
                 },
               ]}
             >
-              <InputCustom placeholder="Nhập tên của bạn" />
+              <InputCustom
+                placeholder="Nhập tên của bạn"
+                prefix={<UserOutlined />}
+              />
             </Form.Item>
 
             {/* input email */}
@@ -230,6 +233,7 @@ const style = {
     flexDirection: "column",
     alignItems: "center",
     margin: "auto",
+    width: "80%",
   },
 };
 

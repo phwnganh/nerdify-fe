@@ -36,7 +36,7 @@ export const CLIENT_URI = {
   VERIFY_EMAIL: "/verify-email/:emailToken",
   MODAL_REQUIRE_TO_LOGIN: "/modal-require-to-login",
   // LEARNER
-  HOME_PAGE: "/home",
+  COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
   ONE_EXERCISE: "/one-exercise",
   FINAL_EXAM: "/final-exam",
