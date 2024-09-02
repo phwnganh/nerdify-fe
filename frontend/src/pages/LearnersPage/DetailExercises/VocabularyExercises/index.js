@@ -16,18 +16,12 @@ export default function VocabularyExercises() {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [exercises, setExercises] = useState(null);
   const { exerciseId, exerciseType } = useParams();
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [correctPairs, setCorrectPairs] = useState([]);
-  const [shuffledAnswers, setShuffledAnswers] = useState([]);
+  const [shuffledMatchedQuestions, setShuffledMatchedQuestions] = useState([]);
   const [shuffleQuestions, setShuffleQuestions] = useState([]);
   const [selectedAnswersPart2, setSelectedAnswersPart2] = useState({});
-  const [submittedPart2, setSubmittedPart2] = useState({});
   const [inputValuePart3, setInputValuePart3] = useState({});
-  const [submittedPart3, setsubmittedPart3] = useState({});
   const [userScore, setUserScore] = useState(0);
-  const [part2andPart3Submitted, setPart2andPart3Submitted] = useState(false);
-  const [submittedPart1, setSubmittedPart1] = useState(false);
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
@@ -48,42 +42,6 @@ export default function VocabularyExercises() {
     demo_2_2: demo_2_2,
     demo_2_3: demo_2_3,
   };
-  const handleResetSelections = () => {
-    setSelectedQuestion(null);
-    setSelectedAnswer(null);
-  };
-
-  const checkMatch = (question, answer) => {
-    if(!submittedPart1 && question && answer){
-      if (question && answer) {
-        if (question.id === answer.id) {
-          setCorrectPairs((prev) => [...prev, question.id]);
-          setUserScore((prevScore) => prevScore++);
-          handleResetSelections();
-        } else {
-          setTimeout(() => {
-            handleResetSelections();
-          }, 500);
-        }
-      }
-    }
-  };
-
-  const handleSubmitPart1 = () => {
-    setSubmittedPart1(true);
-    setUserScore(prevScore => prevScore + 1); 
-    setPart2andPart3Submitted(true);
-  }
-
-  const handleSelectQuestion = (question) => {
-    setSelectedQuestion(question);
-    checkMatch(question, selectedAnswer);
-  };
-
-  const handleSelectAnswers = (answer) => {
-    setSelectedAnswer(answer);
-    checkMatch(selectedQuestion, answer);
-  };
 
   const handleNextPart = () => {
     if (exercises && currentPartIndex < exercises.parts.length - 1) {
@@ -99,7 +57,7 @@ export default function VocabularyExercises() {
     if (exercises) {
       const currentPart = exercises.parts[currentPartIndex];
       if (currentPart && currentPart.partType === "type_1") {
-        setShuffledAnswers(shuffleArray(currentPart.answers));
+        setShuffledMatchedQuestions(shuffleArray(currentPart.questions));
         setShuffleQuestions(shuffleArray(currentPart.questions));
       }
     }
@@ -118,63 +76,37 @@ export default function VocabularyExercises() {
   const renderPart1 = (part) => {
     return (
       <>
-            <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
-        <Col span={12}>
-          {shuffleQuestions.map((question) => (
-            <Row key={question.id} align="middle">
-              <Col
-                span={12}
-                style={{ paddingBottom: "24px", paddingLeft: "12px" }}
-              >
-                <ButtonCustom
-                  buttonType="primary"
-                  onClick={() => handleSelectQuestion(question)}
-                  style={{
-                    backgroundColor: correctPairs.includes(question.id)
-                      ? "#5FD855"
-                      : selectedQuestion?.id === question.id
-                      ? "#A8703E"
-                      : "",
-                  }}
+        <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
+          <Col span={12}>
+            {shuffleQuestions.map((question) => (
+              <Row key={question.id} align="middle">
+                <Col
+                  span={12}
+                  style={{ paddingBottom: "24px", paddingLeft: "12px" }}
                 >
-                  {question.question}
-                </ButtonCustom>
-              </Col>
-            </Row>
-          ))}
-        </Col>
-        <Col span={12}>
-          {shuffledAnswers.map((answer) => (
-            <Row key={answer.id} align="middle">
-              <Col
-                span={12}
-                style={{ paddingBottom: "24px", paddingLeft: "12px" }}
-              >
-                <ButtonCustom
-                  buttonType="primary"
-                  onClick={() => handleSelectAnswers(answer)}
-                  style={{
-                    backgroundColor: correctPairs.includes(answer.id)
-                      ? "#5FD855"
-                      : selectedAnswer?.id === answer.id
-                      ? "#A8703E"
-                      : "",
-                  }}
+                  <ButtonCustom buttonType="primary" style={{}}>
+                    {question.question}
+                  </ButtonCustom>
+                </Col>
+              </Row>
+            ))}
+          </Col>
+          <Col span={12}>
+            {shuffledMatchedQuestions.map((matchedQuestion) => (
+              <Row key={matchedQuestion.id} align="middle">
+                <Col
+                  span={12}
+                  style={{ paddingBottom: "24px", paddingLeft: "12px" }}
                 >
-                  {answer?.answer}
-                </ButtonCustom>
-              </Col>
-            </Row>
-          ))}
-        </Col>
-      </Row>
-      <Row align={"bottom"} justify={"end"} style={{marginTop: '30px'}}>
-      <ButtonCustom buttonType="secondary" onClick={handleSubmitPart1}>
-          Check đáp án
-        </ButtonCustom>
-      </Row>
+                  <ButtonCustom buttonType="primary" style={{}}>
+                    {matchedQuestion?.matchedQuestion}
+                  </ButtonCustom>
+                </Col>
+              </Row>
+            ))}
+          </Col>
+        </Row>
       </>
-
     );
   };
 
@@ -183,28 +115,6 @@ export default function VocabularyExercises() {
       ...prev,
       [questionId]: optionId,
     }));
-  };
-
-  const handleSubmitPart2 = () => {
-    let scorePart2 = 0;
-    const updatedSubmittedPart2 = {};
-    exercises.parts[currentPartIndex].questions.forEach((question) => {
-      const correctAnswer = question.options.find(
-        (option) => option.id === question.answer
-      );
-      const userAnswer = selectedAnswersPart2[question.id];
-      const isCorrect = userAnswer === correctAnswer.id;
-      if (isCorrect) {
-        scorePart2++;
-      }
-      updatedSubmittedPart2[question.id] = {
-        isCorrect: isCorrect,
-        selectedAnswer: userAnswer,
-      };
-    });
-    setSubmittedPart2(updatedSubmittedPart2);
-    setUserScore((prevScore) => prevScore + scorePart2);
-    setPart2andPart3Submitted(true);
   };
 
   const renderPart2 = (part) => {
@@ -227,19 +137,6 @@ export default function VocabularyExercises() {
                 </TextCustom>
                 <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
                   {question.options.map((option) => {
-                    const isCorrectOption = option.id === question.answer;
-                    const isUserSelected =
-                      option.id === selectedAnswersPart2[question.id];
-                    const backgroundColor = submittedPart2[question.id]
-                      ? isCorrectOption
-                        ? "#5FD855"
-                        : isUserSelected
-                        ? "red"
-                        : ""
-                      : isUserSelected
-                      ? "#A8703E"
-                      : "";
-
                     return (
                       <Col
                         span={8}
@@ -248,12 +145,7 @@ export default function VocabularyExercises() {
                       >
                         <ButtonCustom
                           buttonType="primary"
-                          onClick={() =>
-                            !submittedPart2[question.id] &&
-                            handleSelectAnswersPart2(question.id, option.id)
-                          }
-                          style={{ backgroundColor }}
-                          disabled={!!submittedPart2[question.id]}
+                          style={{}}
                         >
                           {option.id}
                         </ButtonCustom>
@@ -270,11 +162,6 @@ export default function VocabularyExercises() {
             </Row>
           );
         })}
-        <Row align={"bottom"} justify="end" style={{ marginTop: "30px" }}>
-          <ButtonCustom buttonType="secondary" onClick={handleSubmitPart2}>
-            Check đáp án
-          </ButtonCustom>
-        </Row>
       </div>
     );
   };
@@ -286,51 +173,16 @@ export default function VocabularyExercises() {
     }));
   };
 
-  const handleSubmitPart3 = () => {
-    let scorePart3 = 0;
-    const updatedSubmittedPart3 = {};
-    const correctAnswers = exercises.parts[currentPartIndex]?.answers || [];
-
-    correctAnswers.forEach((correctAnswer, index) => {
-      const userAnswer = inputValuePart3[index];
-      const isCorrect =
-        userAnswer?.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
-      if (isCorrect) {
-        scorePart3++;
-      }
-      updatedSubmittedPart3[index] = {
-        isCorrect: isCorrect,
-        selectedAnswer: userAnswer,
-      };
-    });
-
-    setsubmittedPart3(updatedSubmittedPart3);
-    setUserScore((prevScore) => prevScore + scorePart3);
-    setPart2andPart3Submitted(true);
-  };
-
   const renderPart3 = (part) => {
     const months = Array(12).fill("");
 
     return (
       <div style={{ marginLeft: "80px", marginRight: "80px" }}>
+        <TitleCustom level={5}>{part?.questions}</TitleCustom>
         <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
           <Col span={24}>
             <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
               {months.map((_, index) => {
-                const isSubmitted = submittedPart3[index];
-                const borderColor =
-                  isSubmitted && isSubmitted.isCorrect
-                    ? "#5FD855"
-                    : isSubmitted
-                    ? "red"
-                    : "";
-                const textColor =
-                  isSubmitted && isSubmitted.isCorrect
-                    ? "#5FD855"
-                    : isSubmitted
-                    ? "red"
-                    : "";
                 return (
                   <>
                     <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
@@ -349,14 +201,8 @@ export default function VocabularyExercises() {
                             onChange={(e) =>
                               handleInputChangePart3(index, e.target.value)
                             }
-                            style={{ borderColor: borderColor }}
-                            disabled={isSubmitted}
+                            style={{}}
                           />
-                          {isSubmitted && (
-                            <TextCustom style={{ color: textColor }}>
-                              {part?.answers[index]}
-                            </TextCustom>
-                          )}
                         </>
                       )}
                     </Col>
@@ -365,11 +211,6 @@ export default function VocabularyExercises() {
               })}
             </Row>
           </Col>
-        </Row>
-        <Row align={"bottom"} justify={"end"}>
-          <ButtonCustom buttonType="secondary" onClick={handleSubmitPart3}>
-            Check đáp án
-          </ButtonCustom>
         </Row>
       </div>
     );
@@ -396,17 +237,8 @@ export default function VocabularyExercises() {
     return <div>Loading...</div>;
   }
 
-  const totalQuestions = exercises?.parts.reduce((acc, part) => {
-    if (part.questions) {
-      return acc + part.questions.length;
-    }
-    if (part.answers) {
-      return acc + part.answers.length - 1;
-    }
-    return acc;
-  }, 0);
-  const mark = ((userScore / totalQuestions) * 100).toFixed(2);
-  
+ 
+  // const mark = ((userScore / totalQuestions) * 100).toFixed(2);
 
   return (
     <div style={{ padding: "24px" }}>
@@ -418,7 +250,9 @@ export default function VocabularyExercises() {
         {exercises?.title}
       </TitleCustom>
 
-      {part2andPart3Submitted && (
+    {/* sau khi nop bai */}
+
+      {/* { && (
         <div style={{ textAlign: "center" }}>
           <TextCustom style={{ textAlign: "center" }}>
             Điểm:&nbsp;
@@ -432,7 +266,7 @@ export default function VocabularyExercises() {
             </span>
           </TextCustom>
         </div>
-      )}
+      )} */}
 
       <div>
         <TextCustom
@@ -458,6 +292,12 @@ export default function VocabularyExercises() {
           disabled={currentPartIndex === exercises.parts.length - 1}
         >
           Phần tiếp theo
+        </ButtonCustom>
+        <ButtonCustom
+          buttonType="secondary"
+          style={{ padding: "23px", marginLeft: "100px" }}
+        >
+          Nộp bài
         </ButtonCustom>
         <ButtonCustom
           buttonType="secondary"
