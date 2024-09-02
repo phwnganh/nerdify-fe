@@ -1,13 +1,17 @@
-import { Button, Card, Col, message, Row } from "antd";
+import { Card, Col, Progress, Row } from "antd";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import ButtonCustom from "../../../../components/Button";
+import { CLIENT_URI } from "../../../../constants/uri.constants";
 
 export const TestFlashCard = () => {
-  const { flashcardId } = useParams();
+  const navigate = useNavigate();
+  const { flashcardId, numberOfCard } = useParams();
   const [flashcard, setFlashcard] = useState(null);
+
   const [questions, setQuestions] = useState([]);
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [score, setScore] = useState(-1);
+  const [userAnswers, setUserAnswers] = useState({});
+  const [userScore, setUserScore] = useState(-1);
 
   useEffect(() => {
     fetch(`http://localhost:9999/flashcard/${flashcardId}`)
@@ -16,85 +20,136 @@ export const TestFlashCard = () => {
         const flashcardClone = JSON.parse(JSON.stringify(data));
         setFlashcard(flashcardClone);
 
-        const questionArray = flashcardClone.cards.map((questionCard) => {
-          const remainingCards = flashcardClone.cards.filter(
-            (card) => card.id !== questionCard.id
-          );
-          const shuffledIncorrectCards = remainingCards
-            .sort(() => Math.random() - 0.5)
-            .slice(0, 3);
-          const options = [
-            {
-              id: questionCard.id,
-              definition: questionCard.definitions,
-              isCorrect: true,
-            },
-            ...shuffledIncorrectCards.map((card) => ({
-              id: card.id,
-              definition: card.definitions,
-              isCorrect: false,
-            })),
-          ].sort(() => Math.random() - 0.5);
-          return {
-            term: questionCard.terms,
-            options,
-          };
-        });
+        const questionArray = flashcardClone.cards
+          .slice(0, numberOfCard)
+          .map((questionCard) => {
+            const remainingCards = flashcardClone.cards.filter(
+              (card) => card.id !== questionCard.id
+            );
+            const shuffledIncorrectCards = remainingCards
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 3);
+            const options = [
+              {
+                id: questionCard.id,
+                definition: questionCard.definitions,
+                isCorrect: true,
+              },
+              ...shuffledIncorrectCards.map((card) => ({
+                id: card.id,
+                definition: card.definitions,
+                isCorrect: false,
+              })),
+            ].sort(() => Math.random() - 0.5);
+            return {
+              term: questionCard.terms,
+              options,
+            };
+          });
 
         setQuestions(questionArray);
+        console.log(questionArray);
       })
       .catch((err) => console.error(err));
-  }, [flashcardId]);
+  }, [flashcardId, numberOfCard]);
 
-  const handleAnswerChange = (questionIndex, answerId) => {
-    if (score === -1) {
-      setSelectedAnswers((prevState) => ({
-        ...prevState,
-        [questionIndex]: answerId,
-      }));
-    }
+  const handleSelectOptions = (questionId, optionId) => {
+    setUserAnswers((prevState) => ({
+      ...prevState,
+      [questionId]: optionId,
+    }));
   };
 
-  const checkAnswers = () => {
-    let correctCount = 0;
+  const handleSubmit = () => {
+    let score = 0;
     questions.forEach((question, index) => {
-      const selectedOption = question.options.find(
-        (option) => option.id === selectedAnswers[index]
+      const userAnswer = question.options.find(
+        (option) => option.id === userAnswers[index]
       );
-      if (selectedOption && selectedOption.isCorrect) {
-        correctCount++;
+      if (userAnswer && userAnswer.isCorrect) {
+        score++;
       }
     });
-
-    setScore(correctCount);
-    message.success(`You scored ${correctCount} out of ${questions.length}`);
+    setUserScore(score);
   };
 
-  const getAnswerStyle = (questionIndex, optionId, isCorrect) => {
-    if (score === -1) {
-      return selectedAnswers[questionIndex] === optionId
-        ? { backgroundColor: "#327BFA", color: "#fff" }
+  const getAnswerStyle = (questionId, optionId, isCorrect) => {
+    if (userScore === -1) {
+      return userAnswers[questionId] === optionId
+        ? { backgroundColor: "#5FD855", color: "#fff" }
         : {};
     } else {
-      if (selectedAnswers[questionIndex] === optionId) {
+      if (userAnswers[questionId] === optionId) {
         return isCorrect
-          ? { backgroundColor: "#327BFA", color: "#fff" }
+          ? { backgroundColor: "#5FD855", color: "#fff" }
           : { backgroundColor: "#FA3232", color: "#fff" };
       } else if (isCorrect) {
-        return { backgroundColor: "#327BFA", color: "#fff" };
+        return { backgroundColor: "#5FD855", color: "#fff" };
       }
       return {};
     }
   };
 
+  const totalQuestions = questions.length;
+  const mark = (userScore / totalQuestions) * 100;
+
+  const showFullText = (e) => {
+    e.target.style = "";
+    e.target.style.wordBreak = "keep-all";
+  };
+
+  const showShortText = (e) => {
+    e.target.style =
+      " overflow: hidden; text-overflow: ellipsis; white-space: nowrap;";
+  };
+  console.log(userAnswers);
   return (
-    <div style={{ width: "80%" }}>
-      <h1>{flashcard?.title}</h1>
-      {questions.map((question, questionIndex) => (
-        <Card key={questionIndex} style={{ marginBottom: "20px" }}>
-          <div className="card-body">
-            <div className="question-header">
-              <h2>Câu {questionIndex + 1}:</h2>
+    <div style={{ width: "70%" }}>
+      <div
+        className="title"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <h1>{flashcard?.title}</h1>
+        {userScore > -1 && (
+          <div style={{ display: "flex" }}>
+            <h2 style={{ width: "101%", padding: "10px" }}>
+              Trả lời đúng: {userScore} / {questions.length}
+            </h2>
+
+            <Progress
+              style={{ display: "flex", justifyContent: "end" }}
+              percent={mark.toFixed(2)}
+              percentPosition={{ align: "end", type: "inner" }}
+              size={[200, 30]}
+              strokeColor="#5FD855"
+            />
+          </div>
+        )}
+      </div>
+
+      {questions.map((question, questionId) => (
+        <Card
+          key={questionId}
+          style={{ marginBottom: "30px", backgroundColor: "#DEDEDE" }}
+        >
+          <div className="card-body" style={{ paddingLeft: "50px" }}>
+            <div
+              className="question-header"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <h2 style={{ marginTop: "0" }}>Câu {questionId + 1}:</h2>
+              {userScore > -1 && (
+                <text>
+                  {userAnswers[questionId] &&
+                  question.options.find(
+                    (option) =>
+                      option.isCorrect && option.id === userAnswers[questionId]
+                  )
+                    ? 1
+                    : 0}
+                  /1
+                </text>
+              )}
             </div>
             <div className="question">{question.term}</div>
 
@@ -131,14 +186,18 @@ export const TestFlashCard = () => {
                       alignItems: "center",
                       columnGap: "10px",
                       border: "1px solid #d9d9d9",
-                      cursor: score === -1 ? "pointer" : "default",
+                      backgroundColor: "#fff",
+                      cursor: userScore === -1 ? "pointer" : "default",
                       ...getAnswerStyle(
-                        questionIndex,
+                        questionId,
                         option.id,
                         option.isCorrect
                       ),
                     }}
-                    onClick={() => handleAnswerChange(questionIndex, option.id)}
+                    onClick={() => {
+                      userScore > -1 ||
+                        handleSelectOptions(questionId, option.id);
+                    }}
                   >
                     <span
                       style={{
@@ -160,7 +219,11 @@ export const TestFlashCard = () => {
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         whiteSpace: "nowrap",
+
+                        // height: "20px",
                       }}
+                      onMouseOver={showFullText}
+                      onMouseOut={showShortText}
                     >
                       {option.definition}
                     </div>
@@ -171,21 +234,34 @@ export const TestFlashCard = () => {
           </div>
         </Card>
       ))}
-      {score > -1 || (
-        <Button
-          type="primary"
-          onClick={checkAnswers}
-          style={{ display: "block", margin: "20px auto" }}
+      {userScore > -1 || (
+        <ButtonCustom
+          buttonType="secondary"
+          onClick={handleSubmit}
+          style={{ display: "flex", padding: "23px", margin: "20px auto" }}
         >
           Nộp bài
-        </Button>
+        </ButtonCustom>
       )}
-
-      {score > -1 && (
-        <div style={{ marginTop: "20px" }}>
-          <h2>
-            Điểm: {score} / {questions.length}
-          </h2>
+      {userScore > -1 && (
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <ButtonCustom
+            buttonType="secondary"
+            style={{ display: "flex", padding: "23px", margin: "20px auto" }}
+            onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}/${flashcardId}`)}
+          >
+            Quay về flashcard
+          </ButtonCustom>
+          <ButtonCustom
+            buttonType="secondary"
+            style={{ display: "flex", padding: "23px", margin: "20px auto" }}
+            onClick={() => {
+              setUserScore(-1);
+              setUserAnswers({});
+            }}
+          >
+            Làm lại bài kiểm tra
+          </ButtonCustom>
         </div>
       )}
     </div>

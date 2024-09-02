@@ -89,7 +89,7 @@ export const routes = [
         element: <EditFlashCard />,
       },
       {
-        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCards`,
+        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
         element: <TestFlashCard />,
       },
     ],
