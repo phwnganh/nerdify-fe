@@ -12,6 +12,7 @@ import FinalExam from "../pages/LearnersPage/FinalExam";
 import FlashcardList from "../pages/LearnersPage/FlashCard";
 import FlashCardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
+import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
 
 export const routes = [
   // Guest urls
@@ -86,6 +87,10 @@ export const routes = [
       {
         path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
         element: <EditFlashCard />,
+      },
+      {
+        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCards`,
+        element: <TestFlashCard />,
       },
     ],
   },

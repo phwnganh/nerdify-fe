@@ -44,6 +44,7 @@ export const CLIENT_URI = {
   FLASH_CARD: "/flash-card",
   CREATE_FLASH_CARD: "/create-flash-card",
   EDIT_FLASH_CARD: "/edit-flash-card",
+  TEST_FLASH_CARD: "/test-flash-card",
   // ADMIN
   DASHBOARD: "/dashboard",
 };

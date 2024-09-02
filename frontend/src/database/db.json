@@ -75,6 +75,7 @@
       "exerciseType": "listening",
       "phaseId": 1,
       "title": "Bài tập nghe 1",
+      "transcript": "Nummer 1: \n Kunde: Entschuldigung, was kostet dieser Pullover jetzt? Da steht 30 Prozent billiger. Verkäuferin: Einen Moment bitte... neunzehnfünfundneunzig.\n Kunde: 19,95 Euro? \n Verkäuferin: Ja, Euro natürlich.\n Kunde: Hm, ... ok, den nehme ich.\n Nummer 2: \n Passant: Ach, entschuldigen Sie bitte. Passantin: Ja bitte.\n Passant: Haben Sie eine Uhr? ...\n Wie spät ist es bitte?\n Passantin: Ja - jetzt ist es gleich 5 Uhr.\n Passant: Was, schon 5. Vielen Dank, Wiedersehen.\n Nummer 3: \n Kellner: Was wünschen Sie bitte? Gast: Ich hätte gern die Salatplatte und ein ...\n Kellner: Entschuldigung, die Salatplatte ist leider aus, aber die Bratwurst kann ich Ihnen empfehlen ... ganz frisch heute. Gast: Nein danke ... ich esse kein Fleisch. Gibt es etwas ohne Fleisch? \n ...\n Kellner: Ja nicht mehr viel: Fisch oder... Pommes. \n Gast: Fisch... hm... Tja, dann wohl die Pommes.",
       "parts": [
         {
           "id": 1,
@@ -149,6 +150,23 @@
                 }
               ]
             }
+          ],
+          "answers": [
+            {
+              "id": 1,
+              "answer": "C",
+              "answerDetail": "Khách hàng hỏi giá của chiếc áo len, được giảm giá 30%. Người bán xác nhận rằng giá đã giảm là 19,95 Euro. Trong câu hỏi trắc nghiệm, tùy chọn C (19,95 €) là câu trả lời đúng vì nó khớp với giá được đề cập trong hộp thoại."
+            },
+            {
+              "id": 2,
+              "answer": "B",
+              "answerDetail": "Người qua đường hỏi giờ, và người phụ nữ trả lời là 'gleich 5 Uhr', nghĩa là gần 5 giờ. Trong câu hỏi trắc nghiệm, phương án B (Gleich 5 Uhr) là câu trả lời đúng vì nó phản ánh đúng thời gian được đưa ra trong đoạn hội thoại."
+            },
+            {
+              "id": 3,
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. Người phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). Trong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            }
           ]
         },
         {
@@ -182,6 +200,18 @@
                   "text": "Falsch"
                 }
               ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 4,
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 5,
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
             }
           ]
         },
@@ -224,6 +254,18 @@
                   "text": "10 Minuten"
                 }
               ]
+            }
+          ],
+          "answers": [
+            {
+              "id": 6,
+              "answer": "C",
+              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
+            },
+            {
+              "id": 7,
+              "answer": "A",
+              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
             }
           ]
         }
@@ -315,23 +357,28 @@
           "answers": [
             {
               "id": 1,
-              "answer": "B"
+              "answer": "A",
+              "answerDetail": "Richtig"
             },
             {
               "id": 2,
-              "answer": "B"
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 3,
-              "answer": "A"
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 4,
-              "answer": "B"
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 5,
-              "answer": "A"
+              "answer": "A",
+              "answerDetail": "Richtig"
             }
           ]
         },
@@ -360,7 +407,8 @@
           "answers": [
             {
               "id": 6,
-              "answer": "B"
+              "answer": "B",
+              "answerDetail": "www.dwd.de"
             }
           ]
         }
@@ -380,7 +428,7 @@
       "parts": [
         {
           "id": 1,
-          "partName": "Phần 1: Tìm các từ sai chính tả, các câu sai ngữ pháp và các từ không săp xếp đúng trật tự trong câu, tối thiểu ",
+          "partName": "Phần 1: Tìm và sửa các lỗi chính tả, ngữ pháp và từ theo thứ tự từ trái sang phải trong đoạn văn, tối thiểu ",
           "error": "3 lỗi",
           "paragraph": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
           "answers": [
@@ -513,7 +561,7 @@
             {
               "id": 5,
               "question": "Lis Zug kommt nach halb eins an.",
-              "questionImage": "",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
               "options": [
                 {
                   "id": "A",
@@ -557,12 +605,7 @@
           "questions": [
             {
               "id": 7,
-              "question": "Was kostet der Pullover?",
-              "questionImage": [
-                "../assets/listeningExercises/1_1.png",
-                "../assets/listeningExercises/1_2.png",
-                "../assets/listeningExercises/1_3.png"
-              ],
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
               "options": [
                 {
                   "id": "A",
@@ -582,6 +625,10 @@
           "answers": [
             {
               "id": 7,
+              "answer": "A"
+            },
+            {
+              "id": 8,
               "answer": "C"
             }
           ]
@@ -1088,32 +1135,34 @@
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
       "cards": [
         {
-          "id": "1",
+          "id": 1,
           "terms": "human",
           "definitions": "being, relating to, or belonging to a person or to people as opposed to animals"
         },
         {
-          "id": "2",
+          "id": 2,
           "terms": "pig",
           "definitions": "a large pink, brown, or black farm animal with short legs and a curved tail, kept for its meat"
         },
         {
-          "id": "3",
+          "id": 3,
           "terms": "frog",
           "definitions": "a small animal that has smooth skin, lives in water and on land, has long powerful back legs with which it jumps from place to place, has no tail, and is usually greenish-brown in colour"
         },
         {
-          "id": "4",
+          "id": 4,
           "terms": "4",
-          "definitions": "4"
+          "definitions": "four"
         },
         {
           "terms": "5",
-          "definitions": "5"
+          "definitions": "five",
+          "id": 5
         },
         {
           "terms": "6",
-          "definitions": "6"
+          "definitions": "six",
+          "id": 6
         }
       ],
       "id": "1"
@@ -1186,8 +1235,18 @@
         },
         {
           "terms": "4",
-          "definitions": "5",
+          "definitions": "4",
           "id": 4
+        },
+        {
+          "terms": "5",
+          "definitions": "5",
+          "id": 5
+        },
+        {
+          "terms": "6",
+          "definitions": "6",
+          "id": 6
         }
       ],
       "id": "a16f"
@@ -1215,6 +1274,22 @@
           "terms": "4",
           "definitions": "4",
           "id": 4
+        }
+      ]
+    },
+    {
+      "id": "27fe",
+      "title": "Room",
+      "cards": [
+        {
+          "terms": "living room",
+          "definitions": "the room in a house or apartment that is used for relaxing in and entertaining guests",
+          "id": 1
+        },
+        {
+          "terms": "bedroom",
+          "definitions": "a room used for sleeping in",
+          "id": 2
         }
       ]
     }

@@ -28,7 +28,6 @@ export default function EditFlashCard() {
       .catch((err) => console.error(err));
   }, [flashcardId]);
 
-  console.log(flashcard?.cards);
   const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
