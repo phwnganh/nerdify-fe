@@ -171,13 +171,16 @@ export const TestFlashCard = () => {
           </div>
         </Card>
       ))}
-      <Button
-        type="primary"
-        onClick={checkAnswers}
-        style={{ display: "block", margin: "20px auto" }}
-      >
-        Nộp bài
-      </Button>
+      {score > -1 || (
+        <Button
+          type="primary"
+          onClick={checkAnswers}
+          style={{ display: "block", margin: "20px auto" }}
+        >
+          Nộp bài
+        </Button>
+      )}
+
       {score > -1 && (
         <div style={{ marginTop: "20px" }}>
           <h2>
