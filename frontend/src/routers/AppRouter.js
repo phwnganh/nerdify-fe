@@ -58,27 +58,6 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-      {
-        path: CLIENT_URI.FLASH_CARD,
-        element: <FlashcardList />,
-        // element: <ModalRequireToLogin />,
-      },
-      {
-        path: CLIENT_URI.CREATE_FLASH_CARD,
-        element: <CreateFlashCard />,
-      },
-      {
-        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-        element: <FlashCardDetail />,
-      },
-      {
-        path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
-        element: <EditFlashCard />,
-      },
-      {
-        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
-        element: <TestFlashCard />,
-      },
     ],
   },
 
@@ -127,6 +106,10 @@ export const routes = [
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
+      },
+      {
+        path: CLIENT_URI.TEST_FLASH_CARD,
+        element: <TestFlashCard />,
       },
 
       // {
