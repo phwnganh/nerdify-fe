@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { verifyEmail } from "../../../services/authService";
 import { useNavigate, useParams } from "react-router-dom";
 import { Result, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-
+import { verifyEmail } from "../../../services/GuestService";
 export const VerifyEmailPage = () => {
   const navigate = useNavigate();
   const { emailToken } = useParams();

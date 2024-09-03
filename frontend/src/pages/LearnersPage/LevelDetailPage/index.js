@@ -61,7 +61,7 @@ export default function ViewLevelDetail() {
   };
 
   const handleExerciseClick = (exerciseType, exerciseId) => {
-    navigate(`/one-exercise/${exerciseType}/${exerciseId}`);
+    navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`);
   };
 
   const renderContent = () => {

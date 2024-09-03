@@ -7,7 +7,7 @@ import MenuItem from "../../Menu/MenuItem/index";
 import logo from "../../../assets/logo.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
-import { authService } from "../../../services";
+import { logout } from "../../../services/GuestService";
 import { signout } from "../../../hooks/auth/reducers";
 const { Header } = Layout;
 
@@ -17,16 +17,15 @@ export default function LearnerHeader() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
-  const { courseId } = useParams();
   const handleLogout = () => {
-    authService.logout().then(() => {
+    logout().then(() => {
       signout();
       window.location.reload();
     });
   };
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.PROFILE)}>
+      <Menu.Item key="profile" onClick={() => navigate(`${CLIENT_URI.PROFILE}`)}>
         Xem Trang Cá Nhân
       </Menu.Item>
       <Menu.Item key="logout" onClick={handleLogout}>

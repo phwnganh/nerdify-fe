@@ -80,12 +80,6 @@ export default function Navbar() {
               TRANG CHỦ
             </MenuItem>
             <MenuItem
-              key="practices"
-              onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/1`)}
-            >
-              LUYỆN TẬP
-            </MenuItem>
-            <MenuItem
               key="flashcards"
               onClick={() => {
                 setIsModalVisible(true);

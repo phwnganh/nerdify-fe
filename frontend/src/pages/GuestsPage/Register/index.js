@@ -6,9 +6,8 @@ import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import registerImage from "../../../assets/registerImage.png";
-import { authService } from "../../../services";
 import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
-
+import { register } from "../../../services/GuestService";
 export const RegisterPage = () => {
   const [messageResp, setMessageResp] = useState({
     type: "",
@@ -22,8 +21,7 @@ export const RegisterPage = () => {
       confirmPassword: values.confirmPassword,
     };
     console.log("Success:", values);
-    authService
-      .register(data)
+    register(data)
       .then((resp) => {
         setMessageResp({
           type: "success",
@@ -124,7 +122,7 @@ export const RegisterPage = () => {
               name="confirmPassword"
               dependencies={["password"]}
               rules={[
-                { required: true, message: "Vui là nhập mật khẩu" },
+                { required: true, message: "Vui lòng nhập mật khẩu" },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
                     if (!value || getFieldValue("password") === value) {

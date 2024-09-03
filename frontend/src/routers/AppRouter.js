@@ -12,6 +12,9 @@ import FlashcardList from "../pages/LearnersPage/FlashCard";
 import CoursePage from "../pages/LearnersPage/CoursePage";
 import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
+import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
+import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
+import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
 
 export const routes = [
@@ -111,11 +114,18 @@ export const routes = [
         path: CLIENT_URI.TEST_FLASH_CARD,
         element: <TestFlashCard />,
       },
-
-      // {
-      //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseId`,
-      //   element: <ExerciseDetail />,
-      // },
+      {
+        path: `${CLIENT_URI.PROFILE}`,
+        element: <ViewPersonalProfile />,
+      },
+      {
+        path: CLIENT_URI.EDIT_PROFILE,
+        element: <EditPersonalProfile />,
+      },
+      {
+        path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
+        element: <ViewResultsDetail />,
+      },
     ],
   },
 
