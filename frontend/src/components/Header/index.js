@@ -90,6 +90,12 @@ export default function Navbar() {
             <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
             <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
+            <MenuItem
+              key="premium"
+              onClick={() => navigate(CLIENT_URI.PREMIUM)}
+            >
+              PREMIUM
+            </MenuItem>
           </MenuBar>
         </Col>
 
@@ -140,7 +146,9 @@ export default function Navbar() {
           </ButtonCustom>
         </Col>
       </Row>
-      {isModalVisible && (<ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal}/>)}
+      {isModalVisible && (
+        <ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal} />
+      )}
     </Header>
   );
 }

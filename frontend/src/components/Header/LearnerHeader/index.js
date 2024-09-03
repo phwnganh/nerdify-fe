@@ -25,7 +25,10 @@ export default function LearnerHeader() {
   };
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" onClick={() => navigate(`${CLIENT_URI.PROFILE}`)}>
+      <Menu.Item
+        key="profile"
+        onClick={() => navigate(`${CLIENT_URI.PROFILE}`)}
+      >
         Xem Trang Cá Nhân
       </Menu.Item>
       <Menu.Item key="logout" onClick={handleLogout}>
@@ -90,8 +93,8 @@ export default function LearnerHeader() {
             <MenuItem
               key="flashcards"
               onClick={() => {
-                  console.log("navigate to flashcard successfully");
-                  
+                console.log("navigate to flashcard successfully");
+
                 navigate(CLIENT_URI.FLASH_CARD);
               }}
             >

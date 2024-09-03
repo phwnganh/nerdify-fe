@@ -16,6 +16,7 @@ import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
+import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 
 export const routes = [
   // Guest urls
@@ -61,6 +62,10 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
+      {
+        path: CLIENT_URI.PREMIUM,
+        element: <PremiumPage />,
+      },
     ],
   },
 
