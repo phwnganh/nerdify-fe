@@ -56,7 +56,9 @@ export const Course = ({ course }) => {
       >
         Bắt đầu
       </ButtonCustom>
-      {isModalVisible && (<ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal}/>)}
+      {isModalVisible && (
+        <ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal} />
+      )}
     </CardCustom>
   );
 };

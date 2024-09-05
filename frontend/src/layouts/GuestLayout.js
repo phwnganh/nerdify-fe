@@ -25,6 +25,9 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+
+    // paddingLeft: "20px",
+    // paddingRight: "20px",
   },
 };
 

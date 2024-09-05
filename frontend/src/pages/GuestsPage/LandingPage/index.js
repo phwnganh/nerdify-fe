@@ -43,7 +43,6 @@ export const LandingPage = () => {
     "Bộ từ vựng flashcard theo chủ đề",
   ];
 
-
   const feedbacks = [
     {
       name: "Tuan",
@@ -69,9 +68,17 @@ export const LandingPage = () => {
         "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 2,
     },
+    {
+      name: "Tuan5",
+      content:
+        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      stars: 5,
+    },
   ];
+
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      {/* Banner */}
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
@@ -142,6 +149,7 @@ export const LandingPage = () => {
         </Col>
       </Row>
 
+      {/* Skills */}
       <Row style={{ marginTop: "100px" }}>
         {skills.map((skill) => (
           <Col
@@ -159,6 +167,7 @@ export const LandingPage = () => {
         ))}
       </Row>
 
+      {/* Benefit */}
       <Row style={{ marginTop: "100px" }}>
         <Col span={8}>
           <img src={landingPageImg3} alt="Landing page 3" />
@@ -187,50 +196,77 @@ export const LandingPage = () => {
           </ButtonCustom>
         </Col>
       </Row>
+
       {/* Khoa hoc */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC </h2>
-        <Courses />
+        <div
+          style={{
+            // display: "flex",
+            // justifyContent: "center",
+            marginLeft: "8px",
+            marginRight: "8px",
+          }}
+        >
+          <Courses />
+        </div>
       </div>
+
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
-
       </div>
-      {/* Feedback */}
+
+      {/* Feedback - think about carousel */}
       <div>
-        <h2 style={{ fontSize: "40px", textAlign: "center" }}>FEEDBACK</h2>
-        <List
-          grid={{
-            gutter: 16,
-            column: 4,
+        <h2
+          style={{
+            fontSize: "40px",
+            textAlign: "center",
           }}
-          dataSource={feedbacks}
-          renderItem={(item) => (
-            <List.Item>
-              <Card style={{ width: "330px" }}>
-                <Row>
-                  <Col span={4}>
-                    <Avatar src={sample} size={42} />
-                  </Col>
-                  <Col>
-                    <Row>
-                      <b>{item.name}</b>
-                    </Row>
-                    <Row>
-                      {Array.from({ length: item.stars }).map((_, index) => (
-                        <StarFilled
-                          style={{ color: "#FFCC33", fontSize: "20px" }}
-                        />
-                      ))}
-                    </Row>
-                  </Col>
-                </Row>
-                <p>{item.content}</p>
-              </Card>
-            </List.Item>
-          )}
-        />
+        >
+          FEEDBACK
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginLeft: "8px",
+            marginRight: "8px",
+          }}
+        >
+          <List
+            grid={{
+              gutter: 16,
+              column: 4,
+            }}
+            dataSource={feedbacks}
+            renderItem={(item) => (
+              <List.Item>
+                <Card style={{ width: "330px" }}>
+                  <Row>
+                    <Col span={4}>
+                      <Avatar src={sample} size={42} />
+                    </Col>
+                    <Col>
+                      <Row>
+                        <b>{item.name}</b>
+                      </Row>
+                      <Row>
+                        {Array.from({ length: item.stars }).map((_, index) => (
+                          <StarFilled
+                            style={{ color: "#FFCC33", fontSize: "20px" }}
+                          />
+                        ))}
+                      </Row>
+                    </Col>
+                  </Row>
+                  <p>{item.content}</p>
+                </Card>
+              </List.Item>
+            )}
+          />
+        </div>
       </div>
 
       <div

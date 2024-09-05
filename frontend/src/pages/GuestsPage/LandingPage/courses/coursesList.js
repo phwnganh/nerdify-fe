@@ -16,6 +16,7 @@ export const Courses = () => {
   return (
     <div>
       <List
+        // style={{ display: "flex", justifyContent: "center" }}
         grid={{
           gutter: 16,
           column: 4,
