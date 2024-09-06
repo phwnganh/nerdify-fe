@@ -116,7 +116,7 @@ export const routes = [
         element: <CreateFlashCard />,
       },
       {
-        path: CLIENT_URI.TEST_FLASH_CARD,
+        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
         element: <TestFlashCard />,
       },
       {

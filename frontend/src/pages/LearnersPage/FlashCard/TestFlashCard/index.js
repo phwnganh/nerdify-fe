@@ -24,9 +24,10 @@ export const TestFlashCard = () => {
           .slice(0, numberOfCard)
           .map((questionCard) => {
             const remainingCards = flashcardClone.cards.filter(
+              // not include correct definition
               (card) => card.id !== questionCard.id
             );
-            const shuffledIncorrectCards = remainingCards
+            const shuffledIncorrectCards = remainingCards // random 3 incorrect definitions in same flashcard
               .sort(() => Math.random() - 0.5)
               .slice(0, 3);
             const options = [
@@ -118,7 +119,7 @@ export const TestFlashCard = () => {
 
             <Progress
               style={{ display: "flex", justifyContent: "end" }}
-              percent={mark.toFixed(2)}
+              percent={mark - Math.floor(mark) !== 0 ? mark.toFixed(2) : mark}
               percentPosition={{ align: "end", type: "inner" }}
               size={[200, 30]}
               strokeColor="#5FD855"
