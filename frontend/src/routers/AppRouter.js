@@ -15,6 +15,7 @@ import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
 import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
+import Payment from "../pages/LearnersPage/Payment";
 export const routes = [
   // Guest urls
   {
@@ -40,6 +41,22 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
+          {
+            path: CLIENT_URI.FLASH_CARD,
+            element: <FlashcardList />,
+          },
+          {
+            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+            element: <FlashcardDetail />,
+          },
+          {
+            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+            element: <FlashcardDetail />,
+          },
+          {
+            path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+            element: <ViewLevelDetail />,
+          },
         ],
       },
       // {
@@ -58,7 +75,10 @@ export const routes = [
         path: CLIENT_URI.VERIFY_EMAIL,
         element: <VerifyEmailPage />,
       },
-      // test giao diện
+      {
+        path: CLIENT_URI.PAYMENT,
+        element: <Payment />,
+      },
     ],
   },
 
