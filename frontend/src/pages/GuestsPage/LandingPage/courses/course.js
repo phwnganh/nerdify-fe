@@ -52,7 +52,10 @@ export const Course = ({ course }) => {
       <ButtonCustom
         buttonType="primary"
         style={{ width: "100%" }}
-        onClick={() => setIsModalVisible(true)}
+        onClick={() => {
+          // setIsModalVisible(true)
+          navigate(navigate(CLIENT_URI.LEVEL_DETAIL + `/${course.id}`))
+        }}
       >
         Bắt đầu
       </ButtonCustom>

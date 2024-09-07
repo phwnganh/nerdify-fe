@@ -18,6 +18,7 @@ import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
 import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 
+import Payment from "../pages/LearnersPage/Payment";
 export const routes = [
   // Guest urls
   {
@@ -43,6 +44,22 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
+          {
+            path: CLIENT_URI.FLASH_CARD,
+            element: <FlashcardList />,
+          },
+          {
+            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+            element: <FlashcardDetail />,
+          },
+          {
+            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+            element: <FlashcardDetail />,
+          },
+          {
+            path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+            element: <ViewLevelDetail />,
+          },
         ],
       },
       // {
@@ -65,6 +82,10 @@ export const routes = [
       {
         path: CLIENT_URI.PREMIUM,
         element: <PremiumPage />,
+      },
+      {
+        path: CLIENT_URI.PAYMENT,
+        element: <Payment />,
       },
     ],
   },
