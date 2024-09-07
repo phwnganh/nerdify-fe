@@ -6,7 +6,7 @@ import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import loginImage from "../../../assets/loginImage.png";
-import { CLIENT_URI, PASSWORD_REGEX} from "../../../constants";
+import { CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
 import { useAuth } from "../../../hooks";
 import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
@@ -38,6 +38,12 @@ export const LoginPage = () => {
             },
           })
         );
+        // if user click on premium modal, we will redirect to premium page
+        if (localStorage.getItem("isPremium")) {
+          navigate(CLIENT_URI.PREMIUM);
+          localStorage.removeItem("isPremium");
+          return;
+        }
         navigate(() => CLIENT_URI.COURSE_PAGE);
       })
       .catch((err) => {});

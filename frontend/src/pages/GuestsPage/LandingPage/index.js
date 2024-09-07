@@ -10,13 +10,10 @@ import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
-import CardCustom from "../../../components/Card";
-import { useNavigate } from "react-router-dom";
 import { Courses } from "./courses/coursesList";
+import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
 
-const { Meta } = Card;
 export const LandingPage = () => {
-  const navigate = useNavigate();
   const skills = [
     {
       img: listening,
@@ -42,7 +39,6 @@ export const LandingPage = () => {
     "Được giáo viên chữa bài viết cẩn thận",
     "Bộ từ vựng flashcard theo chủ đề",
   ];
-
 
   const feedbacks = [
     {
@@ -72,6 +68,7 @@ export const LandingPage = () => {
   ];
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <ModalPremium />
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
@@ -195,7 +192,6 @@ export const LandingPage = () => {
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
-
       </div>
       {/* Feedback */}
       <div>

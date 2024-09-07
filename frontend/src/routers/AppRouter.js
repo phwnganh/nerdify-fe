@@ -51,10 +51,7 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-      {
-        path: CLIENT_URI.PREMIUM,
-        element: <PremiumPage />,
-      },
+
       {
         path: CLIENT_URI.PAYMENT,
         element: <Payment />,
@@ -123,6 +120,10 @@ export const routes = [
       {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
         element: <ViewResultsDetail />,
+      },
+      {
+        path: CLIENT_URI.PREMIUM,
+        element: <PremiumPage />,
       },
     ],
   },

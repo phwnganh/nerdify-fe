@@ -103,6 +103,12 @@ export default function LearnerHeader() {
             <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
             <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
+            <MenuItem
+              key="premium"
+              onClick={() => navigate(CLIENT_URI.PREMIUM)}
+            >
+              PREMIUM
+            </MenuItem>
           </MenuBar>
         </Col>
 
