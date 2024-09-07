@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Row, List } from "antd";
 import CourseList from "./CourseList";
 
-export default function CoursePage(){
+export default function CoursePage() {
   const [course, setCourse] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function CoursePage(){
   }, []);
 
   return (
-    <div style={{ padding: "40px" }}>
+    <div style={{ padding: "40px", width: "80%" }}>
       <h2
         style={{
           fontSize: "40px",
@@ -39,4 +39,4 @@ export default function CoursePage(){
       />
     </div>
   );
-};
+}

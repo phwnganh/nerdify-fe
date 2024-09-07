@@ -30,42 +30,14 @@ export const routes = [
       </GuestGuard>
     ),
     children: [
-      {
-        children: [
-          {
-            path: CLIENT_URI.LANDING_PAGE,
-            element: <LandingPage />,
-          },
-          {
-            path: CLIENT_URI.LOGIN,
-            element: <LoginPage />,
-          },
-          {
-            path: CLIENT_URI.REGISTER,
-            element: <RegisterPage />,
-          },
-          {
-            path: CLIENT_URI.FLASH_CARD,
-            element: <FlashcardList />,
-          },
-          {
-            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-            element: <FlashcardDetail />,
-          },
-          {
-            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-            element: <FlashcardDetail />,
-          },
-          {
-            path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
-            element: <ViewLevelDetail />,
-          },
-        ],
-      },
       // {
       //   path: CLIENT_URI.LEVEL_DETAIL,
       //   element: <ViewLevelDetail />,
       // },
+      {
+        path: CLIENT_URI.LANDING_PAGE,
+        element: <LandingPage />,
+      },
       {
         path: CLIENT_URI.LOGIN,
         element: <LoginPage />,
