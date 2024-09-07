@@ -4,13 +4,22 @@
       "id": "1",
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [1, 2, 3, 7]
+      "exercises": [
+        1,
+        2,
+        3,
+        7
+      ]
     },
     {
       "id": "2",
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [4, 5, 6]
+      "exercises": [
+        4,
+        5,
+        6
+      ]
     },
     {
       "id": "3",
@@ -22,7 +31,11 @@
       "id": "4",
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [8, 9, 10],
+      "exercise": [
+        8,
+        9,
+        10
+      ],
       "examId": 2
     }
   ],
@@ -33,8 +46,14 @@
       "levelImage": "a1",
       "learners": 10,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [1, 2, 3],
-      "finalexams": [1]
+      "phases": [
+        1,
+        2,
+        3
+      ],
+      "finalexams": [
+        1
+      ]
     },
     {
       "id": "2",
@@ -42,8 +61,12 @@
       "levelImage": "a2",
       "learners": 10,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [4],
-      "finalexams": [2]
+      "phases": [
+        4
+      ],
+      "finalexams": [
+        2
+      ]
     }
   ],
   "exercises": [
@@ -61,7 +84,11 @@
             {
               "id": 1,
               "question": "Was kostet der Pullover?",
-              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
+              "questionImage": [
+                "demo1_1",
+                "demo1_2",
+                "demo1_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -75,60 +102,57 @@
                   "id": "C",
                   "text": "Neunzehn Euro fünfundneunzig Cent."
                 }
-              ]
-            },
-            {
-              "id": 2,
-              "question": "Was kostet der Pullover?",
-              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Dreißig Euro."
-                },
-                {
-                  "id": "B",
-                  "text": "Fünfundneunzig Euro."
-                },
-                {
-                  "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
-                }
-              ]
-            },
-            {
-              "id": 3,
-              "question": "Was kostet der Pullover?",
-              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Dreißig Euro."
-                },
-                {
-                  "id": "B",
-                  "text": "Fünfundneunzig Euro."
-                },
-                {
-                  "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
-                }
-              ]
-            }
-          ],
-          "answers": [
-            {
-              "id": 1,
+              ],
               "answer": "C",
               "answerDetail": "Khách hàng hỏi giá của chiếc áo len, được giảm giá 30%. Người bán xác nhận rằng giá đã giảm là 19,95 Euro. Trong câu hỏi trắc nghiệm, tùy chọn C (19,95 €) là câu trả lời đúng vì nó khớp với giá được đề cập trong hộp thoại."
             },
             {
               "id": 2,
+              "question": "Was kostet der Pullover?",
+              "questionImage": [
+                "demo2_1",
+                "demo2_2",
+                "demo2_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                },
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                },
+                {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
+              ],
               "answer": "B",
               "answerDetail": "Người qua đường hỏi giờ, và người phụ nữ trả lời là 'gleich 5 Uhr', nghĩa là gần 5 giờ. Trong câu hỏi trắc nghiệm, phương án B (Gleich 5 Uhr) là câu trả lời đúng vì nó phản ánh đúng thời gian được đưa ra trong đoạn hội thoại."
             },
             {
               "id": 3,
+              "question": "Was kostet der Pullover?",
+              "questionImage": [
+                "demo3_1",
+                "demo3_2",
+                "demo3_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                },
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                },
+                {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
+              ],
               "answer": "A",
               "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. Người phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). Trong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
             }
@@ -150,7 +174,9 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
             },
             {
               "id": 5,
@@ -164,17 +190,7 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
-            }
-          ],
-          "answers": [
-            {
-              "id": 4,
-              "answer": "B",
-              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
-            },
-            {
-              "id": 5,
+              ],
               "answer": "B",
               "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
             }
@@ -200,7 +216,9 @@
                   "id": "C",
                   "text": "12833"
                 }
-              ]
+              ],
+              "answer": "C",
+              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
             },
             {
               "id": 7,
@@ -218,17 +236,7 @@
                   "id": "C",
                   "text": "10 Minuten"
                 }
-              ]
-            }
-          ],
-          "answers": [
-            {
-              "id": 6,
-              "answer": "C",
-              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
-            },
-            {
-              "id": 7,
+              ],
               "answer": "A",
               "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
             }
@@ -259,7 +267,9 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "A",
+              "answerDetail": "Richtig"
             },
             {
               "id": 2,
@@ -273,7 +283,9 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 3,
@@ -288,7 +300,9 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 4,
@@ -302,7 +316,9 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "B",
+              "answerDetail": "Falsch"
             },
             {
               "id": 5,
@@ -316,32 +332,7 @@
                   "id": "B",
                   "text": "Falsch"
                 }
-              ]
-            }
-          ],
-          "answers": [
-            {
-              "id": 1,
-              "answer": "A",
-              "answerDetail": "Richtig"
-            },
-            {
-              "id": 2,
-              "answer": "B",
-              "answerDetail": "Falsch"
-            },
-            {
-              "id": 3,
-              "answer": "B",
-              "answerDetail": "Falsch"
-            },
-            {
-              "id": 4,
-              "answer": "B",
-              "answerDetail": "Falsch"
-            },
-            {
-              "id": 5,
+              ],
               "answer": "A",
               "answerDetail": "Richtig"
             }
@@ -353,7 +344,10 @@
           "questions": [
             {
               "id": 6,
-              "questionImage": ["demo_part2_1", "demo_part2_2"],
+              "questionImage": [
+                "demo_part2_1",
+                "demo_part2_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -363,12 +357,7 @@
                   "id": "B",
                   "text": "www.dwd.de"
                 }
-              ]
-            }
-          ],
-          "answers": [
-            {
-              "id": 6,
+              ],
               "answer": "B",
               "answerDetail": "www.dwd.de"
             }
@@ -390,148 +379,146 @@
             {
               "id": 1,
               "question": "die Woche",
-              "matchedQuestion": "tuần"
+              "matchedQuestion": "tuần",
+              "answer": [
+                "die Woche",
+                "tuần"
+              ]
             },
             {
               "id": 2,
               "question": "Montag",
-              "matchedQuestion": "Thứ hai"
+              "matchedQuestion": "Thứ hai",
+              "answer": [
+                "Montag",
+                "Thứ hai"
+              ]
             },
             {
               "id": 3,
               "question": "Dienstag",
-              "matchedQuestion": "Thứ ba"
+              "matchedQuestion": "Thứ ba",
+              "answer": [
+                "Dienstag",
+                "Thứ ba"
+              ]
             },
             {
               "id": 4,
               "question": "Mittwoch",
-              "matchedQuestion": "Thứ Tư"
+              "matchedQuestion": "Thứ Tư",
+              "answer": [
+                "Mittwoch",
+                "Thứ Tư"
+              ]
             },
             {
               "id": 5,
               "question": "Donnerstag",
-              "matchedQuestion": "Thứ năm"
+              "matchedQuestion": "Thứ năm",
+              "answer": [
+                "Donnerstag",
+                "Thứ năm"
+              ]
             },
             {
               "id": 6,
               "question": "Freitag",
-              "matchedQuestion": "Thứ sáu"
+              "matchedQuestion": "Thứ sáu",
+              "answer": [
+                "Freitag",
+                "Thứ sáu"
+              ]
             },
             {
               "id": 7,
               "question": "Samstag",
-              "matchedQuestion": "Thứ bảy"
+              "matchedQuestion": "Thứ bảy",
+              "answer": [
+                "Samstag",
+                "Thứ bảy"
+              ]
             },
             {
               "id": 8,
               "question": "Sonntag",
-              "matchedQuestion": "Chủ nhật"
+              "matchedQuestion": "Chủ nhật",
+              "answer": [
+                "Sonntag",
+                "Chủ nhật"
+              ]
             },
             {
               "id": 9,
               "question": "der Frühling",
-              "matchedQuestion": "mùa xuân"
+              "matchedQuestion": "mùa xuân",
+              "answer": [
+                "der Frühling",
+                "mùa xuân"
+              ]
             },
             {
               "id": 10,
               "question": "der Sommer",
-              "matchedQuestion": "mùa hè"
+              "matchedQuestion": "mùa hè",
+              "answer": [
+                "der Sommer",
+                "mùa hè"
+              ]
             },
             {
               "id": 11,
               "question": "der Herbst",
-              "matchedQuestion": "mùa thu"
+              "matchedQuestion": "mùa thu",
+              "answer": [
+                "der Herbst",
+                "mùa thu"
+              ]
             },
             {
               "id": 12,
               "question": "der Winter",
-              "matchedQuestion": "mùa đông"
+              "matchedQuestion": "mùa đông",
+              "answer": [
+                "der Winter",
+                "mùa đông"
+              ]
             },
             {
               "id": 13,
               "question": "der Tag",
-              "matchedQuestion": "ngày"
+              "matchedQuestion": "ngày",
+              "answer": [
+                "der Tag",
+                "ngày"
+              ]
             },
             {
               "id": 14,
               "question": "der Morgen",
-              "matchedQuestion": "buổi sáng(từ 6-10 giờ)"
+              "matchedQuestion": "buổi sáng(từ 6-10 giờ)",
+              "answer": [
+                "der Morgen",
+                "buổi sáng(từ 6-10 giờ)"
+              ]
             },
             {
               "id": 15,
               "question": "der Vormittag",
-              "matchedQuestion": "buổi sáng(từ 10-12 giờ)"
+              "matchedQuestion": "buổi sáng(từ 10-12 giờ)",
+              "answer": [
+                "der Vormittag",
+                "buổi sáng(từ 10-12 giờ)"
+              ]
             },
             {
               "id": 16,
               "question": "der Mittag",
-              "matchedQuestion": "giữa trưa"
-            }
-          ],
-          "answers": [
-            {
-              "id": 1,
-              "answer": ["die Woche", "tuần"]
-            },
-            {
-              "id": 2,
-              "answer": ["Montag", "Thứ hai"]
-            },
-            {
-              "id": 3,
-              "answer": ["Dienstag", "Thứ ba"]
-            },
-            {
-              "id": 4,
-              "answer": ["Mittwoch", "Thứ Tư"]
-            },
-            {
-              "id": 5,
-              "answer": ["Donnerstag", "Thứ năm"]
-            },
-            {
-              "id": 6,
-              "answer": ["Freitag", "Thứ sáu"]
-            },
-            {
-              "id": 7,
-              "answer": ["Samstag", "Thứ bảy"]
-            },
-            {
-              "id": 8,
-              "answer": ["Sonntag", "Chủ nhật"]
-            },
-            {
-              "id": 9,
-              "answer": ["der Frühling", "mùa xuân"]
-            },
-            {
-              "id": 10,
-              "answer": ["der Sommer", "mùa hè"]
-            },
-            {
-              "id": 11,
-              "answer": ["der Herbst", "mùa thu"]
-            },
-            {
-              "id": 12,
-              "answer": ["der Winter", "mùa đông"]
-            },
-            {
-              "id": 13,
-              "answer": ["der Tag", "ngày"]
-            },
-            {
-              "id": 14,
-              "answer": ["der Morgen", "buổi sáng(từ 6-10 giờ)"]
-            },
-            {
-              "id": 15,
-              "answer": ["der Vormittag", "buổi sáng(từ 10-12 giờ)"]
-            },
-            {
-              "id": 16,
-              "answer": ["der Mittag", "giữa trưa"]
+              "matchedQuestion": "giữa trưa",
+              "answer": [
+                "der Mittag",
+                "giữa trưa"
+              ]
             }
           ]
         },
@@ -542,7 +529,7 @@
           "questions": [
             {
               "id": 6,
-              "questionText": "Es ist gleich 14 Uhr.",
+              "question": "Es ist gleich 14 Uhr.",
               "options": [
                 {
                   "id": "A",
@@ -561,7 +548,7 @@
             },
             {
               "id": 7,
-              "questionText": "Es ist genau 14 Uhr.",
+              "question": "Es ist genau 14 Uhr.",
               "options": [
                 {
                   "id": "A",
@@ -584,20 +571,55 @@
           "id": 3,
           "partName": "Phần 3: Schreiben Sie die Monatsnamen.",
           "partType": "type_3",
-          "questions": "Schreiben Sie die Monatsnamen",
-          "answers": [
-            "Januar",
-            "Februar",
-            "März",
-            "April",
-            "Mai",
-            "Juni",
-            "Juli",
-            "August",
-            "September",
-            "Oktober",
-            "November",
-            "Dezember"
+          "questions": [
+            {
+              "id": 1,
+              "answer": "Januar"
+            },
+            {
+              "id": 2,
+              "answer": "Februar"
+            },
+            {
+              "id": 3,
+              "answer": "März"
+            },
+            {
+              "id": 4,
+              "answer": "April"
+            },
+            {
+              "id": 5,
+              "answer": "Mai"
+            },
+            {
+              "id": 6,
+              "answer": "Juni"
+            },
+            {
+              "id": 7,
+              "answer": "Juli"
+            },
+            {
+              "id": 8,
+              "answer": "August"
+            },
+            {
+              "id": 9,
+              "answer": "September"
+            },
+            {
+              "id": 10,
+              "answer": "Oktober"
+            },
+            {
+              "id": 11,
+              "answer": "November"
+            },
+            {
+              "id": 12,
+              "answer": "Dezember"
+            }
           ]
         }
       ]
@@ -613,7 +635,7 @@
           "partName": "Phần 1: Tìm và sửa các lỗi chính tả, ngữ pháp và từ theo thứ tự từ trái sang phải trong đoạn văn, tối thiểu ",
           "error": "3 lỗi",
           "paragraph": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
-          "answers": [
+          "questions": [
             {
               "id": 1,
               "answer": "von",
@@ -646,30 +668,33 @@
       "questions": [
         {
           "id": 1,
-          "questionText": "Ergänzen Sie die Pronomen.",
+          "question": "Ergänzen Sie die Pronomen.",
           "questionDetail": [
             {
               "id": 1,
-              "name": "___ sprechen Deutsch."
+              "name": "___ sprechen Deutsch.",
+              "answer": "Sie"
             },
             {
               "id": 2,
-              "name": "Haben ___ Zeit?"
+              "name": "Haben ___ Zeit?",
+              "answer": "Sie"
             },
             {
               "id": 3,
-              "name": "Hilfst ___ mir?"
+              "name": "Hilfst ___ mir?",
+              "answer": "du"
             },
             {
               "id": 4,
-              "name": "___ ist Programmierer."
+              "name": "___ ist Programmierer.",
+              "answer": "Er"
             }
-          ],
-          "correctAnswers": ["Sie", "Sie", "du", "Er"]
+          ]
         },
         {
           "id": 2,
-          "questionText": "Ergänzen Sie die Pronomen.",
+          "question": "Ergänzen Sie die Pronomen.",
           "questionDetail": [
             {
               "id": 1,
@@ -677,50 +702,70 @@
                 "Das ist Herr Gupta, ___ kommt aus Indien.",
                 "Das ist Frau Kioka, ___ kommt aus Japan.",
                 "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "answer": [
+                "er",
+                "sie",
+                "sie"
               ]
             },
             {
               "id": 2,
-              "name": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York."
+              "name": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "answer": [
+                "du",
+                "Ich"
+              ]
             },
             {
               "id": 3,
-              "name": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt."
+              "name": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "answer": [
+                "ihr",
+                "Wir"
+              ]
             },
             {
               "id": 4,
-              "name": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger."
+              "name": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "answer": [
+                "Sie",
+                "Ich"
+              ]
             }
-          ],
-          "correctAnswers": [
-            ["er", "sie", "sie"],
-            ["du", "Ich"],
-            ["ihr", "Wir"],
-            ["Sie", "Ich"]
           ]
         },
         {
           "id": 3,
-          "questionText": "Ergänzen Sie die Pronomen.",
+          "question": "Ergänzen Sie die Pronomen.",
           "questionDetail": [
             {
               "id": 1,
-              "name": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst."
+              "name": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "answer": "Sie"
             },
             {
               "id": 2,
-              "name": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien."
+              "name": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "answer": "sie"
             },
             {
               "id": 3,
-              "name": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank."
+              "name": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "answer": [
+                "Sie",
+                "Ich"
+              ]
             },
             {
               "id": 4,
-              "name": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit."
+              "name": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "answer": [
+                "du",
+                "ich"
+              ]
             }
-          ],
-          "correctAnswers": ["Sie", "sie", ["Sie", "Ich"], ["du", "ich"]]
+          ]
         }
       ]
     },
@@ -737,7 +782,11 @@
             {
               "id": 1,
               "question": "Wo wollen die Freundinnen die Party machen?",
-              "questionImage": ["demo02_1_1", "demo02_1_2", "demo02_1_3"],
+              "questionImage": [
+                "demo02_1_1",
+                "demo02_1_2",
+                "demo02_1_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -756,7 +805,11 @@
             {
               "id": 2,
               "question": "Wann wollen sie sich treffen?",
-              "questionImage": ["demo02_2_1", "demo02_2_2", "demo02_2_3"],
+              "questionImage": [
+                "demo02_2_1",
+                "demo02_2_2",
+                "demo02_2_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -1021,15 +1074,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ]
             }
@@ -1415,15 +1477,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ]
             },
@@ -1433,15 +1504,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["ihr", "Wir"]
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 }
               ]
             },
@@ -1451,15 +1531,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "ich"]
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["du", "Er"]
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["ich", "ich"]
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
                 }
               ]
             },
@@ -1721,6 +1810,56 @@
       ],
       "exerciseId": "1",
       "userId": 1
+    },
+    {
+      "id": "a8d6",
+      "submissionDate": "2024-09-07T18:03:10.468Z",
+      "score": "28.57%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1"
     }
   ],
   "readingExercisesSubmission": [
@@ -1903,6 +2042,50 @@
       ],
       "exerciseId": "2",
       "userId": 1
+    },
+    {
+      "id": "0bd7",
+      "submissionDate": "2024-09-07T18:04:44.469Z",
+      "score": "33.33%",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "quesionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "quesionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
     }
   ],
   "writingExercisesSubmission": [],
@@ -2316,6 +2499,36 @@
       "phone": "",
       "dob": "",
       "avatar": ""
+    }
+  ],
+  "package": [
+    {
+      "id": "1",
+      "packageName": "6 tháng",
+      "price": 299000,
+      "duration": 6
+    },
+    {
+      "id": "2",
+      "packageName": "1 năm",
+      "price": 499000,
+      "duration": 12
+    }
+  ],
+  "transaction": [
+    {
+      "id": "1",
+      "packageId": 1,
+      "startDate": "",
+      "endDate": "",
+      "discount": 0
+    },
+    {
+      "id": "2",
+      "packageId": 2,
+      "startDate": "",
+      "endDate": "",
+      "discount": 0.15
     }
   ]
 }

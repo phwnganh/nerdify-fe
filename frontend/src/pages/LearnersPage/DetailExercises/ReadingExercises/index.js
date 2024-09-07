@@ -69,9 +69,7 @@ export default function ReadingExercises() {
     const questionsArray = exercises.parts.flatMap((part) =>
       part.questions.map((question) => {
         const userAnswer = userAnswers[question.id];
-        const correctAnswer = part.answers.find(
-          (answer) => answer.id === question.id
-        )?.answer;
+        const correctAnswer = question?.answer;
         const isCorrect = userAnswer === correctAnswer;
 
         if (isCorrect) {
@@ -118,12 +116,8 @@ export default function ReadingExercises() {
         ...part,
         questions: part.questions.map((question) => {
           const userAnswer = userAnswers[question.id];
-          const answerDetail = part.answers.find(
-            (answer) => answer.id === question.id
-          )?.answerDetail;
-          const correctAnswer = part.answers.find(
-            (answer) => answer.id === question.id
-          )?.answer;
+          const answerDetail = question?.answerDetail;
+          const correctAnswer = question?.answer;
           const isCorrect = userAnswer === correctAnswer;
           return {
             ...question,
