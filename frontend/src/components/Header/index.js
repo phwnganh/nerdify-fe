@@ -92,6 +92,12 @@ export default function Navbar() {
             <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
             <MenuItem
               key="payment"
+              onClick={() => navigate(CLIENT_URI.BILLINFO)}
+            >
+              THANH TOÁN
+            </MenuItem>
+            <MenuItem
+              key="payment"
               onClick={() => navigate(CLIENT_URI.PAYMENT)}
             >
               THANH TOÁN

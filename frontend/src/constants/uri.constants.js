@@ -19,6 +19,7 @@ export const CLIENT_URI = {
   PAYMENT: "/payment",
   TEST_FLASH_CARD: "/test-flash-card",
   PREMIUM: "/premium",
+  BILLINFO: "/bill-info",
   // ADMIN
   DASHBOARD: "/dashboard",
 };

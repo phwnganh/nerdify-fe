@@ -106,6 +106,9 @@ export default function VocabularyExercises() {
             ))}
           </Col>
         </Row>
+        <Row justify={"end"}>
+          <ButtonCustom buttonType="secondary">Nộp bài</ButtonCustom>
+        </Row>
       </>
     );
   };
@@ -143,10 +146,7 @@ export default function VocabularyExercises() {
                         key={option.id}
                         style={{ textAlign: "center" }}
                       >
-                        <ButtonCustom
-                          buttonType="primary"
-                          style={{}}
-                        >
+                        <ButtonCustom buttonType="primary" style={{}}>
                           {option.id}
                         </ButtonCustom>
                         <img
@@ -162,6 +162,9 @@ export default function VocabularyExercises() {
             </Row>
           );
         })}
+        <Row justify={"end"}>
+          <ButtonCustom buttonType="secondary">Nộp bài</ButtonCustom>
+        </Row>
       </div>
     );
   };
@@ -174,43 +177,43 @@ export default function VocabularyExercises() {
   };
 
   const renderPart3 = (part) => {
-    const months = Array(12).fill("");
+    const { questions } = part;
 
     return (
       <div style={{ marginLeft: "80px", marginRight: "80px" }}>
-        <TitleCustom level={5}>{part?.questions}</TitleCustom>
         <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
           <Col span={24}>
             <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-              {months.map((_, index) => {
+              {questions.map((question, index) => {
                 return (
-                  <>
-                    <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
-                      {index === 0 ? (
-                        <>
-                          <InputCustom
-                            placeholder="Januar"
-                            readOnly
-                            style={{ backgroundColor: "#D9D9D9" }}
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <InputCustom
-                            placeholder={index === 1 ? "Feb..." : ""}
-                            onChange={(e) =>
-                              handleInputChangePart3(index, e.target.value)
-                            }
-                            style={{}}
-                          />
-                        </>
-                      )}
-                    </Col>
-                  </>
+                  <Col
+                    span={6}
+                    key={question.id}
+                    style={{ paddingBottom: "24px" }}
+                  >
+                    {index === 0 ? (
+                      <InputCustom
+                        placeholder="Januar"
+                        readOnly
+                        style={{ backgroundColor: "#D9D9D9" }}
+                      />
+                    ) : (
+                      <InputCustom
+                        placeholder={index === 1 ? "Feb..." : ""}
+                        onChange={(e) =>
+                          handleInputChangePart3(index, e.target.value)
+                        }
+                        style={{}}
+                      />
+                    )}
+                  </Col>
                 );
               })}
             </Row>
           </Col>
+        </Row>
+        <Row justify={"end"}>
+          <ButtonCustom buttonType="secondary">Nộp bài</ButtonCustom>
         </Row>
       </div>
     );
@@ -237,7 +240,6 @@ export default function VocabularyExercises() {
     return <div>Loading...</div>;
   }
 
- 
   // const mark = ((userScore / totalQuestions) * 100).toFixed(2);
 
   return (
@@ -250,7 +252,7 @@ export default function VocabularyExercises() {
         {exercises?.title}
       </TitleCustom>
 
-    {/* sau khi nop bai */}
+      {/* sau khi nop bai */}
 
       {/* { && (
         <div style={{ textAlign: "center" }}>
@@ -297,7 +299,7 @@ export default function VocabularyExercises() {
           buttonType="secondary"
           style={{ padding: "23px", marginLeft: "100px" }}
         >
-          Nộp bài
+          Hoàn thành
         </ButtonCustom>
         <ButtonCustom
           buttonType="secondary"

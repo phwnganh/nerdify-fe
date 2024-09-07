@@ -63,71 +63,69 @@ export default function ListeningExercise() {
     (acc, part) => acc + part.questions.length,
     0
   );
-  const handleSubmit = () => {
-    let score = 0;
-    const submissionDate = new Date().toISOString();
-    const questionsArray = exercises?.parts.flatMap((part) =>
-      part.questions.map((question) => {
-        const userAnswer = selectedAnswers[question.id];
-        const correctAnswer = part.answers.find(
-          (answer) => answer.id === question.id
-        )?.answer;
-        const isCorrect = userAnswer === correctAnswer;
-        if (isCorrect) {
-          score++;
-        }
-        return {
-          questionId: question.id,
-          userAnswer,
-          correctAnswer,
-          isCorrect,
-        };
-      })
-    );
-    const markValue = ((score / totalQuestions) * 100).toFixed(2);
-    setMark(markValue);
-    const submissionData = {
-      submissionDate: submissionDate,
-      score: `${markValue}%`,
-      submissionAnswers: questionsArray,
-      exerciseId: exercises.id,
-    };
-    fetch("http://localhost:9999/listeningExercisesSubmission", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("lis data: ", data))
-      .catch((err) => console.log(err));
+  // const handleSubmit = () => {
+  //   let score = 0;
+  //   const submissionDate = new Date().toISOString();
+  //   const questionsArray = exercises?.parts.flatMap((part) =>
+  //     part.questions.map((question) => {
+  //       const userAnswer = selectedAnswers[question.id];
+  //       const correctAnswer = question?.answer;
+  //       const isCorrect = userAnswer === correctAnswer;
+  //       if (isCorrect) {
+  //         score++;
+  //       }
+  //       return {
+  //         questionId: question.id,
+  //         userAnswer,
+  //         correctAnswer,
+  //         isCorrect,
+  //       };
+  //     })
+  //   );
+  //   const markValue = ((score / totalQuestions) * 100).toFixed(2);
+  //   setMark(markValue);
+  //   const submissionData = {
+  //     submissionDate: submissionDate,
+  //     score: `${markValue}%`,
+  //     submissionAnswers: questionsArray,
+  //     exerciseId: exercises.id,
+  //   };
+  //   fetch("http://localhost:9999/listeningExercisesSubmission", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(submissionData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log("lis data: ", data))
+  //     .catch((err) => console.log(err));
 
-    const results = exercises.parts.map((part) => {
-      return {
-        ...part,
-        questions: part.questions.map((question) => {
-          const userAnswer = selectedAnswers[question.id];
-          const answerDetail = part.answers.find(
-            (answer) => answer.id === question.id
-          )?.answerDetail;
-          const correctAnswer = part.answers.find(
-            (answer) => answer.id === question.id
-          )?.answer;
-          const isCorrect = userAnswer === correctAnswer;
-          return {
-            ...question,
-            userAnswer,
-            correctAnswer,
-            isCorrect,
-            answerDetail,
-          };
-        }),
-      };
-    });
-    setExerciseResults(results);
-    setUserScore(score);
-  };
+  //   const results = exercises.parts.map((part) => {
+  //     return {
+  //       ...part,
+  //       questions: part.questions.map((question) => {
+  //         const userAnswer = selectedAnswers[question.id];
+  //         const answerDetail = question?.answerDetail;
+  //         const correctAnswer = question?.answer;
+  //         const isCorrect = userAnswer === correctAnswer;
+  //         return {
+  //           ...question,
+  //           userAnswer,
+  //           correctAnswer,
+  //           isCorrect,
+  //           answerDetail,
+  //         };
+  //       }),
+  //     };
+  //   });
+  //   setExerciseResults(results);
+  //   setUserScore(score);
+  // };
+
+  const handleSubmit = () => {
+    
+  }
 
   if (!exercises?.parts) {
     return <div>Loading...</div>;

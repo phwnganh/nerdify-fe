@@ -19,6 +19,7 @@ import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
 import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 
 import Payment from "../pages/LearnersPage/Payment";
+import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 export const routes = [
   // Guest urls
   {
@@ -55,6 +56,10 @@ export const routes = [
       {
         path: CLIENT_URI.PAYMENT,
         element: <Payment />,
+      },
+      {
+        path: CLIENT_URI.BILLINFO,
+        element: <BillInfo />,
       },
     ],
   },
