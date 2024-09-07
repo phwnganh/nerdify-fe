@@ -1,24 +1,32 @@
+// 1. React and hooks
 import React, { useEffect, useState } from "react";
+
+// 2. Third-party libraries
+import { Col, Row } from "antd";
+import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
+import { useNavigate, useParams } from "react-router-dom";
+
+// 3. Custom components
 import CardCustom from "../../../components/Card";
-import {
-  TitleCustom,
-  TextCustom,
-  ParagraphCustom,
-} from "../../../components/Typography";
+import { TitleCustom, TextCustom, ParagraphCustom } from "../../../components/Typography";
+import ButtonCustom from "../../../components/Button";
+import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+
+// 4. Styled components
+import { ButtonToDoExam, ScrollablePhaseDiv, ButtonPhase } from "./styled";
+
+// 5. Static assets (images)
 import a1 from "../../../assets/levelImage/a1.png";
+import a2 from "../../../assets/levelImage/a2.png";
 import listening from "../../../assets/exercisesSkill/listening.png";
 import reading from "../../../assets/exercisesSkill/reading.png";
 import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
 import writing from "../../../assets/exercisesSkill/writing.png";
 import grammar from "../../../assets/exercisesSkill/grammar.png";
-import { Col, Row } from "antd";
-import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
-import ButtonCustom from "../../../components/Button";
-import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import { useNavigate, useParams } from "react-router-dom";
+
+// 6. Constants
 import { CLIENT_URI } from "../../../constants/uri.constants";
-import a2 from "../../../assets/levelImage/a2.png";
+
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
@@ -44,7 +52,7 @@ export default function ViewLevelDetail() {
         const fetchExercises = phases.map((phase) =>
           fetch(`http://localhost:9999/exercises?phaseId=${phase.id}`)
             .then((res) => res.json())
-            .then((exercises) => ({ ...phase, exercises }))
+            .then((exercises) => ({ ...phase, exercises })),
         );
         Promise.all(fetchExercises).then((phaseWithExercises) => {
           setPhases(phaseWithExercises);
@@ -68,32 +76,32 @@ export default function ViewLevelDetail() {
     const selectedPhase = phases.find((phase) => phase.name === activePhase);
     if (selectedPhase?.name === "Final Exam") {
       return (
-        <CardCustom
-          bordered={true}
+        //Final Exam card here
+        <div
           style={{
-            marginTop: 20,
-            textAlign: "center",
-            backgroundColor: "#EAA68D",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          <ParagraphCustom style={{ color: "#FFFFFF" }}>
-            Bạn cần hoàn thành final exam để được nhận cúp
-          </ParagraphCustom>
-          <ButtonToDoExam onClick={() => navigate(CLIENT_URI.FINAL_EXAM)}>
-            Vào làm bài
-          </ButtonToDoExam>
-        </CardCustom>
+          <CardCustom
+            bordered={true}
+            style={{
+              // width: "50%",
+              marginTop: 20,
+              marginBottom: 20,
+              textAlign: "center",
+              backgroundColor: "#EAA68D",
+            }}
+          >
+            <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
+            <ButtonToDoExam onClick={() => navigate(CLIENT_URI.FINAL_EXAM)}>Vào làm bài</ButtonToDoExam>
+          </CardCustom>
+        </div>
       );
     } else if (selectedPhase) {
       return selectedPhase.exercises.map((exercise, index) => (
-        <CardCustom
-          key={index}
-          bordered={true}
-          style={{ marginBottom: 20, cursor: "pointer" }}
-          onClick={() =>
-            handleExerciseClick(exercise.exerciseType, exercise.id)
-          }
-        >
+        // CardCustom is a custom component của mỗi phase - chỉnh sửa style : width, margin, backgroundColor
+        <CardCustom key={index} bordered={true} style={{ marginBottom: 20, cursor: "pointer", width: "800px" }} onClick={() => handleExerciseClick(exercise.exerciseType, exercise.id)}>
           <Row gutter={[16, 16]}>
             <Col md={12}>
               <img
@@ -123,61 +131,71 @@ export default function ViewLevelDetail() {
     }
   };
   return (
-    <div style={{ padding: "24px" }}>
-      <BreadCrumbHome />
-      <CardCustom bordered={false} style={{ maxWidth: 1000, margin: "auto" }}>
-        <Row gutter={[16, 16]}>
-          <Col md={12}>
-            <img
-              src={imgLevelArr[course?.levelImage]}
-              alt=""
-              srcSet=""
-              width={"50%"}
-            />
-          </Col>
-          <Col md={12}>
-            <TitleCustom level={2}>{course?.title}</TitleCustom>
+    //top right bottom left
+    <div style={{ padding: "50px 10px 20px 10px" }}>
+      <div style={{ marginBottom: 16 }}>
+        <BreadCrumbHome />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ maxWidth: 1000, margin: "auto" }}>
+          <CardCustom bordered={false}>
+            <Row gutter={[16, 16]}>
+              <Col md={12}>
+                <img src={imgLevelArr[course?.levelImage]} alt="" srcSet="" width={"50%"} height="auto" />
+              </Col>
+              <Col md={12}>
+                <TitleCustom level={2}>{course?.title}</TitleCustom>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: 16,
+                  }}
+                >
+                  <UserAddOutlined style={{ marginRight: 8, color: "#9a9a9a" }}></UserAddOutlined>
+                  <TextCustom>{course?.learners} người học</TextCustom>
+                  <BarChartOutlined style={{ marginLeft: 70, marginRight: 8, color: "#9a9a9a" }}></BarChartOutlined>
+                  <TextCustom>{course?.phasesNum} giai đoạn</TextCustom>
+                </div>
+                <ParagraphCustom>{course?.description}</ParagraphCustom>
+              </Col>
+            </Row>
+          </CardCustom>
+        </div>
+
+        <div
+          style={{
+            width: "100%",
+          }}
+        >
+          <ScrollablePhaseDiv>
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
-                marginBottom: 16,
+                justifyContent: "center",
               }}
             >
-              <UserAddOutlined style={{ marginRight: 8 }}></UserAddOutlined>
-              <TextCustom>{course?.learners} người học</TextCustom>
-              <BarChartOutlined
-                style={{ marginLeft: 70, marginRight: 8 }}
-              ></BarChartOutlined>
-              <TextCustom>{course?.phasesNum} giai đoạn</TextCustom>
+              {phases.map((phase, index) => (
+                <ButtonPhase
+                  key={index}
+                  // buttonType="primary"
+                  style={{
+                    // display: "inline-block",
+                    // width: "30%",
+                    // height: 150,
+                    backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+                  }}
+                  onClick={() => handlePhaseClick(phase.name)}
+                >
+                  {phase.name}
+                </ButtonPhase>
+              ))}
             </div>
-            <ParagraphCustom>{course?.description}</ParagraphCustom>
-          </Col>
-        </Row>
-      </CardCustom>
+          </ScrollablePhaseDiv>
+        </div>
 
-      <ScrollablePhaseDiv>
-        {phases.map((phase, index) => (
-          <ButtonCustom
-            key={index}
-            buttonType="primary"
-            style={{
-              display: "inline-block",
-              width: "100%",
-              height: 50,
-              marginRight: 16,
-              backgroundColor:
-                activePhase === phase.name ? "#ff855d" : "#ffa751",
-            }}
-            onClick={() => handlePhaseClick(phase.name)}
-          >
-            {phase.name}
-          </ButtonCustom>
-        ))}
-      </ScrollablePhaseDiv>
-      {activePhase && (
-        <div style={{ marginTop: "16px" }}>{renderContent()}</div>
-      )}
+        <div>{activePhase && <div style={{ marginTop: "16px" }}>{renderContent()}</div>}</div>
+      </div>
     </div>
   );
 }

@@ -57,6 +57,11 @@ export const routes = [
             path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
             element: <ViewLevelDetail />,
           },
+          // ===== test =====
+          {
+            path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+            element: <ExerciseDetail />,
+          },
         ],
       },
       // {
@@ -104,10 +109,10 @@ export const routes = [
         path: CLIENT_URI.FINAL_EXAM,
         element: <FinalExam />,
       },
-      {
-        path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-        element: <ExerciseDetail />,
-      },
+      // {
+      //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+      //   element: <ExerciseDetail />,
+      // },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
