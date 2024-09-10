@@ -16,6 +16,7 @@ import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import Payment from "../pages/LearnersPage/Payment";
+import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 export const routes = [
   // Guest urls
   {
@@ -50,14 +51,9 @@ export const routes = [
             element: <FlashcardDetail />,
           },
           {
-            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-            element: <FlashcardDetail />,
-          },
-          {
             path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
             element: <ViewLevelDetail />,
           },
-          // ===== test =====
           {
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
             element: <ExerciseDetail />,
@@ -84,6 +80,10 @@ export const routes = [
         path: CLIENT_URI.PAYMENT,
         element: <Payment />,
       },
+      {
+        path: CLIENT_URI.BILLINFO,
+        element: <BillInfo />,
+      },
     ],
   },
 
@@ -101,10 +101,10 @@ export const routes = [
         path: CLIENT_URI.COURSE_PAGE,
         element: <CoursePage />,
       },
-      {
-        path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
-        element: <ViewLevelDetail />,
-      },
+      // {
+      //   path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+      //   element: <ViewLevelDetail />,
+      // },
       {
         path: CLIENT_URI.FINAL_EXAM,
         element: <FinalExam />,
