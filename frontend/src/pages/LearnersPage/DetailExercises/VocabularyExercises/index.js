@@ -5,6 +5,7 @@ import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
+import { PART_TYPE } from "../../../../constants";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
@@ -552,13 +553,13 @@ export default function VocabularyExercises() {
   const renderPart = () => {
     const currentPart = exercises.parts[currentPartIndex];
     switch (currentPart.partType) {
-      case "type_1":
+      case PART_TYPE.MATCHING:
         return renderPart1(currentPart);
 
-      case "type_2":
+      case PART_TYPE.MULTIPLE_CHOICE:
         return renderPart2(currentPart);
 
-      case "type_3":
+      case PART_TYPE.FILL_IN_THE_BLANK:
         return renderPart3(currentPart);
 
       default:
