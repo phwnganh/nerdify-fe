@@ -1,18 +1,22 @@
-import { Input } from "antd";
+import { useEffect, useState } from "react";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
-import InputCustom from "../../../../components/Input";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import ButtonCustom from "../../../../components/Button";
+import { Row, Input } from "antd";
 
 export default function GrammarExercises() {
-  const [grammarContents, setGrammarContents] = useState({});
-  const [userAnswers, setUserAnswers] = useState({});
-  const [results, setResults] = useState(null);
   const { exerciseType, exerciseId } = useParams();
+  const [currentPartIndex, setCurrentPartIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState({});
+  const [partResults, setPartResults] = useState({
+    part1: null,
+    part2: null,
+    part3: null,
+  });
+  const [exercises, setExercises] = useState(null);
   const [userScore, setUserScore] = useState(0);
-  const [mark, setMark] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -20,233 +24,195 @@ export default function GrammarExercises() {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.length === 0) return;
-        setGrammarContents(data[0]);
+        if (data && data.length > 0) {
+          setExercises(data[0]);
+        }
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [exerciseId, exerciseType]);
+      .catch((err) => console.error("error", err));
+  }, [exerciseType, exerciseId]);
 
-  const handleInputChange = (questionId, detailIndex, subIndex, value) => {
-    const key = `${questionId}-${detailIndex}-${subIndex}`;
-    setUserAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [key]: value,
+  const handleInputChange = (questionId, inputIndex, value) => {
+    setUserAnswers((prev) => ({
+      ...prev,
+      [questionId]: {
+        ...prev[questionId],
+        [inputIndex]: value,
+      },
     }));
   };
 
-  const totalQuestions = grammarContents?.questions?.reduce(
-    (acc, question) => acc + question?.questionDetail.length,
-    0
-  );
-
-  const handleSubmit = () => {
-    let score = 0;
-    const newResults = {};
-    const submissionAnswers = [];
-
-    grammarContents.questions.forEach((question) => {
-      question.questionDetail.forEach((detail, detailIndex) => {
-        const correctAnswer = question.correctAnswers[detailIndex];
-        if (Array.isArray(correctAnswer)) {
-          const userAnswerArray = correctAnswer.map(
-            (_, subIndex) =>
-              userAnswers[`${question.id}-${detailIndex}-${subIndex}`]
-          );
-          const isCorrect = correctAnswer.every(
-            (ans, subIndex) =>
-              ans.toLowerCase() ===
-              (userAnswerArray[subIndex] || "").toLowerCase()
-          );
-          if (isCorrect) {
-            score++;
-          }
-          newResults[`${question.id}-${detailIndex}`] = {
-            isCorrect,
-            correctAnswer,
-          };
-
-          submissionAnswers.push({
-            questionId: question.id,
-            userAnswer: userAnswerArray,
-            correctAnswer: correctAnswer,
-            isCorrect: isCorrect,
-          });
-        } else {
-          const userAnswer = userAnswers[`${question.id}-${detailIndex}-0`];
-          const isCorrect =
-            correctAnswer.toLowerCase() === (userAnswer || "").toLowerCase();
-          if (isCorrect) {
-            score++;
-          }
-          newResults[`${question.id}-${detailIndex}`] = {
-            isCorrect,
-            correctAnswer,
-          };
-          submissionAnswers.push({
-            questionId: question.id,
-            userAnswer: [userAnswer],
-            correctAnswer: [correctAnswer],
-            isCorrect: isCorrect,
-          });
-        }
-      });
+  const handleSubmitPart = (partType, partData) => {
+    const results = partData.map((question) => {
+      const userAnswerString = userAnswers[question.id]?.[0] || '';
+      const correctAnswer = question.answer;
+  
+      const normalizedUserAnswer = userAnswerString
+        .split(',')
+        .map(ans => ans.trim().toLowerCase());
+  
+      const normalizedCorrectAnswer = Array.isArray(correctAnswer)
+        ? correctAnswer.map(ans => ans.toLowerCase())
+        : [correctAnswer.toLowerCase()];
+  
+      const isCorrect = normalizedUserAnswer.every(ans => normalizedCorrectAnswer.includes(ans));
+  
+      return {
+        ...question,
+        userAnswer: userAnswerString,
+        correctAnswer: normalizedCorrectAnswer.join(', '),
+        isCorrect,
+      };
     });
-    const mark = ((score / totalQuestions) * 100).toFixed(2);
-    setResults(newResults);
-    setUserScore(score);
-    setMark(mark);
+  
+    return results;
+  };
+  
 
-    const submissionData = {
-      submissionDate: new Date().toISOString(),
-      score: score,
-      submissionAnswers: submissionAnswers,
-      exerciseId: exerciseId,
-    };
-
-    fetch("http://localhost:9999/grammarExercisesSubmission", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
+  const handleCompleted = () => {
+    const allResults = exercises.parts.map((part, index) => {
+      return handleSubmitPart(`part${index + 1}`, part.questions);
     });
+
+    const totalScore =
+      (allResults
+        .flat()
+        .filter((result) => result.isCorrect).length /
+        allResults.flat().length) *
+      100;
+
+    setUserScore(Math.round(totalScore));
+
+    const newPartResults = allResults.reduce((acc, result, index) => {
+      acc[`part${index + 1}`] = result;
+      return acc;
+    }, {});
+
+    setPartResults(newPartResults);
+    setIsCompleted(true);
   };
 
-  const renderQuestionDetail = (questionDetail, questionId) => {
-    return questionDetail.map((detail, detailIndex) => (
-      <div key={detailIndex} style={{ margin: "10px 0" }}>
-        <span>{detailIndex + 1}. </span>
-        {Array.isArray(detail.name)
-          ? detail.name.map((quest, subIndex) => (
-              <div key={subIndex} style={{ marginBottom: "10px" }}>
-                {quest.split("___").map((text, i) => (
-                  <>
-                    <span key={i}>
-                      {i > 0 && (
-                        <InputCustom
-                          style={{ width: "150px", marginRight: "8px" }}
-                          value={
-                            userAnswers[
-                              `${questionId}-${detailIndex}-${subIndex}`
-                            ] || ""
-                          }
-                          onChange={(e) =>
-                            handleInputChange(
-                              questionId,
-                              detailIndex,
-                              subIndex,
-                              e.target.value
-                            )
-                          }
-                          disabled={results !== null}
-                        />
-                      )}
-                      {text}
-                    </span>
-                  </>
-                ))}
+  const renderPart = (currentPart) => {
+    return (
+      <>
+        {currentPart.questions.map((question) => {
+          const questionText = Array.isArray(question.question)
+            ? question.question.join(' ') 
+            : question.question; 
+  
+          return (
+            <div key={question.id} style={{ marginBottom: "20px" }}>
+              <TextCustom>{questionText}</TextCustom>
+              <div style={{ marginBottom: "16px" }}>
+                <Input
+                  value={userAnswers[question.id]?.[0] || ""}
+                  onChange={(e) =>
+                    handleInputChange(question.id, 0, e.target.value)
+                  }
+                  disabled={isCompleted}
+                />
               </div>
-            ))
-          : detail.name.split("___").map((text, i) => (
-              <span key={i}>
-                {i > 0 && (
-                  <InputCustom
-                    style={{ width: "150px", marginRight: "8px" }}
-                    value={userAnswers[`${questionId}-${detailIndex}-0`] || ""}
-                    onChange={(e) =>
-                      handleInputChange(
-                        questionId,
-                        detailIndex,
-                        0,
-                        e.target.value
-                      )
-                    }
-                    disabled={results !== null}
-                  />
-                )}
-                {text}
-              </span>
-            ))}
-        {results && (
-          <div
-            style={{
-              marginTop: "5px",
-              color: results[`${questionId}-${detailIndex}`]?.isCorrect
-                ? "#5FD855"
-                : "red",
-            }}
-          >
-            {results[`${questionId}-${detailIndex}`]?.isCorrect
-              ? "Đúng"
-              : `Đáp án chi tiết: ${
-                  Array.isArray(
-                    results[`${questionId}-${detailIndex}`]?.correctAnswer
-                  )
-                    ? results[
-                        `${questionId}-${detailIndex}`
-                      ]?.correctAnswer.join(", ")
-                    : results[`${questionId}-${detailIndex}`]?.correctAnswer
-                }`}
-          </div>
-        )}
-      </div>
-    ));
+  
+              {isCompleted && (
+                <>
+                  <TextCustom style={{ color: "green", display: "block" }}>
+                    Câu trả lời của bạn: {userAnswers[question.id]?.[0]}
+                  </TextCustom>
+  
+                  <TextCustom style={{ color: "blue", display: "block" }}>
+                  Đáp án:{" "}
+                  {Array.isArray(question.answer)
+                    ? question.answer.join(", ")
+                    : question.answer}
+                </TextCustom>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </>
+    );
   };
+  
+
+  const handleRetry = () => {
+    setUserAnswers({});
+    setPartResults({
+      part1: null,
+      part2: null,
+      part3: null,
+    });
+    setUserScore(0);
+    setIsCompleted(false);
+    setCurrentPartIndex(0);
+  };
+
+  if (!exercises?.parts) return <div>Loading...</div>;
+
+  const currentPart = exercises?.parts[currentPartIndex];
 
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {grammarContents.title}
+        {exercises.title}
       </TitleCustom>
-      {results && (
-        <div style={{ textAlign: "center" }}>
-          <TextCustom style={{ textAlign: "center" }}>
-            Điểm:&nbsp;
-            <span style={{ color: "red" }}>
-              {userScore}/{totalQuestions}
-            </span>
-            <span
-              style={{ color: "red", marginLeft: "10px", fontWeight: "bold" }}
-            >
-              ({mark}%)
-            </span>
-          </TextCustom>
-        </div>
-      )}
-      {grammarContents.questions?.map((question) => (
-        <div key={question.id}>
-          <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
-            {question.id}. {question.questionText}
-          </TextCustom>
-          <div style={{ marginTop: "20px", marginBottom: "40px" }}>
-            {renderQuestionDetail(question.questionDetail, question.id)}
-          </div>
-        </div>
-      ))}
-      {!results ? (
-        <ButtonCustom
-          buttonType="secondary"
-          style={{ padding: "23px" }}
-          onClick={handleSubmit}
-        >
-          Nộp bài
-        </ButtonCustom>
-      ) : (
-        <>
-          <ButtonCustom buttonType="secondary" style={{ padding: "23px" }}>
-            Làm lại bài tập
+      <div style={{ textAlign: "center" }}>
+        {isCompleted && (
+          <>
+            <TextCustom>Điểm: </TextCustom>
+            <span style={{ color: "red" }}>{userScore}%</span>
+          </>
+        )}
+      </div>
+      <div>
+        <TextCustom style={{ color: "red", fontWeight: "bold" }}>
+          {currentPart.partName}
+        </TextCustom>
+        {renderPart(currentPart)}
+        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+          <ButtonCustom
+            buttonType="secondary"
+            style={{ padding: "23px" }}
+            onClick={() => setCurrentPartIndex((prev) => prev - 1)}
+            disabled={currentPartIndex === 0}
+          >
+            Phần trước
           </ButtonCustom>
           <ButtonCustom
             buttonType="secondary"
-            style={{ padding: "23px", marginLeft: "100px" }}
+            style={{ padding: "23px", marginLeft: "30px" }}
+            onClick={() => setCurrentPartIndex((prev) => prev + 1)}
+            disabled={currentPartIndex === exercises.parts.length - 1}
           >
-            Chuyển sang bài tập tiếp theo
+            Phần tiếp theo
           </ButtonCustom>
-        </>
-      )}
+          {isCompleted ? (
+            <>
+              <ButtonCustom
+                buttonType="secondary"
+                style={{ padding: "23px", marginLeft: "30px" }}
+                onClick={handleRetry}
+              >
+                Làm lại bài tập này
+              </ButtonCustom>
+              <ButtonCustom
+                buttonType="secondary"
+                style={{ padding: "23px", marginLeft: "30px" }}
+              >
+                Chuyển sang bài tập khác
+              </ButtonCustom>
+            </>
+          ) : (
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              onClick={handleCompleted}
+            >
+              Hoàn thành
+            </ButtonCustom>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

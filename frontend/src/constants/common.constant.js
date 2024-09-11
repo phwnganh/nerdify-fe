@@ -6,3 +6,18 @@ export const USERNAME_REGEX =
 export const ACCESS_TOKEN_KEY_COOKIE = "access_token";
 
 export const ROLES = { ADMIN_ROLE: "admin", LEARNER_ROLE: "learner" };
+
+export const EXERCISE_TYPE = {
+  LISTENING: "listening",
+  READING: "reading",
+  GRAMMAR: "grammar",
+  VOCABULARY: "vocabulary",
+  WRITING: "writing",
+  QUIZ: "quiz"
+}
+
+export const PART_TYPE = {
+  FILL_IN_THE_BLANK: "fill_in_the_blank",
+  MULTIPLE_CHOICE: "multiple_choice",
+  MATCHING: "matching"
+}

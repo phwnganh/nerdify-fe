@@ -49,19 +49,21 @@ export const routes = [
           {
             path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
             element: <FlashcardDetail />,
+            
           },
-             {
-        path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
-        element: <ViewLevelDetail />,
-      },
-      {
-          path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-          element: <ExerciseDetail />,
-        },
+          {
+              path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+              element: <ViewLevelDetail />,
+            },
+            {
+                path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+                element: <ExerciseDetail />,
+              },
           // {
           //   path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
           //   element: <ViewLevelDetail />,
           // },
+          
         ],
       },
       // {
