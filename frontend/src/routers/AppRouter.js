@@ -4,13 +4,19 @@ import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
-import { LoginPage, RegisterPage, VerifyEmailPage } from "../pages/GuestsPage";
+import {
+  ForgotPasswordPage,
+  LoginPage,
+  RegisterPage,
+  ResetPasswordPage,
+  VerifyEmailPage,
+} from "../pages/GuestsPage";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
-import FlashcardList from '../pages/LearnersPage/FlashCard'
-import CoursePage from '../pages/LearnersPage/CoursePage'
-import FlashcardDetail from '../pages/LearnersPage/FlashCard/FlashcardDetail';
+import FlashcardList from "../pages/LearnersPage/FlashCard";
+import CoursePage from "../pages/LearnersPage/CoursePage";
+import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
 import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
@@ -58,6 +64,14 @@ export const routes = [
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
             element: <ExerciseDetail />,
           },
+          {
+            path: CLIENT_URI.FORGOT_PASSWORD,
+            element: <ForgotPasswordPage />,
+          },
+          {
+            path: CLIENT_URI.RESET_PASSWORD,
+            element: <ResetPasswordPage />,
+          },
         ],
       },
       // {
@@ -78,13 +92,12 @@ export const routes = [
       },
       {
         path: CLIENT_URI.PAYMENT,
-        element: <Payment/>
+        element: <Payment />,
       },
       {
         path: CLIENT_URI.BILLINFO,
-        element: <BillInfo/>
-      }
-
+        element: <BillInfo />,
+      },
     ],
   },
 
@@ -136,16 +149,16 @@ export const routes = [
       },
       {
         path: `${CLIENT_URI.PROFILE}`,
-        element: <ViewPersonalProfile/>
+        element: <ViewPersonalProfile />,
       },
       {
         path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile/>
-      }, 
+        element: <EditPersonalProfile />,
+      },
       {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
-        element: <ViewResultsDetail/>
-      }
+        element: <ViewResultsDetail />,
+      },
     ],
   },
 
