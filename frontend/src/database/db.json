@@ -2096,6 +2096,159 @@
         }
       ],
       "exerciseId": "2"
+    },
+    {
+      "id": "5048",
+      "submissionDate": "2024-09-10T17:40:04.855Z",
+      "score": "0.00%",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
+    },
+    {
+      "id": "4a54",
+      "submissionDate": "2024-09-11T00:19:38.337Z",
+      "score": "0.00%",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
+    },
+    {
+      "id": "d06a",
+      "submissionDate": "2024-09-11T00:19:51.729Z",
+      "score": "0.00%",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
+    },
+    {
+      "id": "3285",
+      "submissionDate": "2024-09-11T04:02:38.331Z",
+      "score": "0.00%",
+      "submissionAnswers": [
+        {
+          "quesionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "quesionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
     }
   ],
   "writingExercisesSubmission": [],
