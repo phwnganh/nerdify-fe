@@ -2215,6 +2215,52 @@
         }
       ],
       "exerciseId": "2"
+    },
+    {
+      "id": "8c12",
+      "submissionDate": "2024-09-13T01:34:07.836Z",
+      "score": "0%",
+      "submissionParts": {
+        "part1": {
+          "submissionAnswers": [
+            {
+              "correctAnswer": "A",
+              "questionId": 1,
+              "isCorrect": false
+            },
+            {
+              "correctAnswer": "B",
+              "questionId": 2,
+              "isCorrect": false
+            },
+            {
+              "correctAnswer": "B",
+              "questionId": 3,
+              "isCorrect": false
+            },
+            {
+              "correctAnswer": "B",
+              "questionId": 4,
+              "isCorrect": false
+            },
+            {
+              "correctAnswer": "A",
+              "questionId": 5,
+              "isCorrect": false
+            }
+          ]
+        },
+        "part2": {
+          "submissionAnswers": [
+            {
+              "correctAnswer": "B",
+              "questionId": 6,
+              "isCorrect": false
+            }
+          ]
+        }
+      },
+      "exerciseId": "2"
     }
   ],
   "writingExercisesSubmission": [],

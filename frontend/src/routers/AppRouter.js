@@ -17,9 +17,6 @@ import FinalExam from "../pages/LearnersPage/FinalExam";
 import FlashcardList from "../pages/LearnersPage/FlashCard";
 import CoursePage from "../pages/LearnersPage/CoursePage";
 import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
-import FlashcardList from "../pages/LearnersPage/FlashCard";
-import CoursePage from "../pages/LearnersPage/CoursePage";
-import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
 import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
@@ -166,12 +163,9 @@ export const routes = [
       {
         path: `${CLIENT_URI.PROFILE}`,
         element: <ViewPersonalProfile />,
-        element: <ViewPersonalProfile />,
       },
       {
         path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile />,
-      },
         element: <EditPersonalProfile />,
       },
       {

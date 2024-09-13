@@ -118,12 +118,10 @@ export default function ReadingExercises() {
         <>
           {currentPart.partDetail.map((detail, detailIndex) => (
             <div key={detailIndex}>
-              <TextCustom style={{ }}>
-                {detail.questionParagraph}
-              </TextCustom>
+              <TextCustom style={{}}>{detail.questionParagraph}</TextCustom>
               {detail.questions.map((question) => (
                 <div key={question.id}>
-                  <TextCustom style={{fontWeight: 'bold'}}>
+                  <TextCustom style={{ fontWeight: "bold" }}>
                     Câu {question.id}: {question.question}
                   </TextCustom>
                   <div
@@ -208,7 +206,7 @@ export default function ReadingExercises() {
         <>
           {currentPart.questions.map((question) => (
             <div key={question.id}>
-              <TextCustom style={{fontWeight: 'bold'}}>
+              <TextCustom style={{ fontWeight: "bold" }}>
                 Câu {question.id}: {question.question}
               </TextCustom>
               {Array.isArray(question.questionImage) &&
