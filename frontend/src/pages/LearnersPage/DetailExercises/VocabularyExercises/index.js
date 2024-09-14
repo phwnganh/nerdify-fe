@@ -109,8 +109,13 @@ export default function VocabularyExercises() {
     setAvailablePairs((prev) => ({
       ...prev,
       question: selectedQuestionId,
-      matchQuestion: "",
     }));
+    if (availablePairs.matchQuestion) {
+      handlePairSelectionPart1({
+        question: availablePairs.question,
+        matchQuestion: selectedQuestionId,
+      });
+    }
   };
 
   //when select match question, set match question to available pairs.
