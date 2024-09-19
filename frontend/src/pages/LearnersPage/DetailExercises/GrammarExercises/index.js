@@ -14,12 +14,8 @@ export default function GrammarExercises() {
   const [userScore, setUserScore] = useState(0);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-  const [partResults, setPartResults] = useState({
-    part1: null,
-    part2: null,
-    part3: null
-  })
-
+  const [exerciseResults, setExerciseResults] = useState({});
+  const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
     fetch(
       `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
@@ -35,16 +31,14 @@ export default function GrammarExercises() {
       });
   }, [exerciseId, exerciseType]);
 
-  const handleInputChange = (
-    partKey,
-    questionIndex,
-    subQuestionIndex,
-    value
-  ) => {
-    setUserAnswers({
-      ...userAnswers,
-      [`${partKey}-${questionIndex}-${subQuestionIndex}`]: value,
-    });
+  const handleInputChange = (partId, questionId, inputIndex, value) => {
+    const key = `${partId}-${questionId}-${inputIndex}`;
+    console.log("input key: ", key);
+
+    setUserAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [key]: value, // Gán giá trị người dùng nhập vào trạng thái
+    }));
   };
 
   const handleToggleAnswerDetail = (questionId) => {
@@ -65,26 +59,43 @@ export default function GrammarExercises() {
             <div style={{ marginTop: "20px" }}>
               {Array.isArray(question.question) ? (
                 question.question.map((subQuestion, subIndex) => (
-                  <div key={subIndex} style={{ marginBottom: "10px" }}>
+                  <div
+                    key={`${partKey}-${question.id}-${subIndex}`}
+                    style={{ marginBottom: "10px" }}
+                  >
                     {subQuestion.includes("___") ? (
                       subQuestion.split("___").map((text, i) => (
-                        <span key={i}>
+                        <span
+                          key={`${partKey}-${question.id}-${subIndex}-${i}`}
+                        >
                           {i > 0 && (
                             <InputCustom
-                              style={{ width: "150px", marginRight: "8px" }}
+                              style={{
+                                width: "150px",
+                                marginRight: "8px",
+                                borderColor: isCompleted
+                                  ? userAnswers[
+                                      `${partKey}-${question.id}-${subIndex}`
+                                    ]?.toLowerCase() ===
+                                    question.answer?.toString()?.toLowerCase()
+                                    ? "green"
+                                    : "red"
+                                  : "",
+                              }}
                               value={
                                 userAnswers[
-                                  `${partKey}-${index}-${subIndex}`
+                                  `${partKey}-${question.id}-${subIndex}`
                                 ] || ""
                               }
                               onChange={(e) =>
                                 handleInputChange(
                                   partKey,
-                                  index,
+                                  question.id,
                                   subIndex,
                                   e.target.value
                                 )
                               }
+                              disabled={isCompleted}
                             />
                           )}
                           {text}
@@ -93,18 +104,42 @@ export default function GrammarExercises() {
                     ) : (
                       <span>{subQuestion}</span>
                     )}
+                    {isCompleted &&
+                      userAnswers[`${partKey}-${question.id}-${subIndex}`] !==
+                        question.answer && (
+                        <TextCustom>Đáp án: {question.answer}</TextCustom>
+                      )}
                   </div>
                 ))
               ) : question.question.includes("___") ? (
                 question.question.split("___").map((text, i) => (
-                  <span key={i}>
+                  <span key={`${partKey}-${index}-${i}`}>
                     {i > 0 && (
                       <InputCustom
-                        style={{ width: "150px", marginRight: "8px" }}
-                        value={userAnswers[`${partKey}-${index}-0`] || ""}
-                        onChange={(e) =>
-                          handleInputChange(partKey, index, 0, e.target.value)
+                        style={{
+                          width: "150px",
+                          marginRight: "8px",
+                          borderColor: isCompleted
+                            ? userAnswers[
+                                `${partKey}-${question.id}-${i}`
+                              ]?.toLowerCase() ===
+                              question.answer?.toString()?.toLowerCase()
+                              ? "green"
+                              : "red"
+                            : "",
+                        }}
+                        value={
+                          userAnswers[`${partKey}-${question.id}-${i}`] || ""
                         }
+                        onChange={(e) =>
+                          handleInputChange(
+                            partKey,
+                            question.id,
+                            i,
+                            e.target.value
+                          )
+                        }
+                        disabled={isCompleted}
                       />
                     )}
                     {text}
@@ -113,26 +148,101 @@ export default function GrammarExercises() {
               ) : (
                 <span>{question.question}</span>
               )}
+              {isCompleted &&
+                userAnswers[`${partKey}-${question.id}-0`] !==
+                  question.answer && (
+                  <TextCustom>Đáp án: {question.answer}</TextCustom>
+                )}
+              {isCompleted && (
+                <>
+                  <ButtonCustom
+                    buttonType="primary"
+                    onClick={() => handleToggleAnswerDetail(question.id)}
+                  >
+                    Đáp án chi tiết
+                  </ButtonCustom>
+                  {toggleAnswerDetail[question.id] && (
+                    <TextCustom style={{ color: "blue" }}>
+                      {question.answerDetail}
+                    </TextCustom>
+                  )}
+                </>
+              )}
             </div>
           </div>
         ))}
-        <Row justify={"end"}>
-        {!partResults[`part${currentPartIndex + 1}`] && (
-              <ButtonCustom
-                buttonType="secondary"
-                // onClick={() =>
-                //   handleSubmitPart(
-                //     `part${currentPartIndex + 1}`,
-                //     currentPart.questions
-                //   )
-                // }
-              >
-                Nộp bài
-              </ButtonCustom>
-            )}
-        </Row>
       </div>
     );
+  };
+
+  const totalQuestions = exercises?.parts?.reduce(
+    (acc, part) => acc + part.questions.length,
+    0
+  );
+  const handleSubmit = () => {
+    let score = 0;
+    const submissionDate = new Date().toISOString();
+    const submissionAnswers = [];
+
+    exercises.parts.forEach((part) => {
+      part.questions.forEach((question) => {
+        const questionId = question.id;
+        const correctAnswers = Array.isArray(question.answer)
+          ? question.answer
+          : [question.answer];
+
+        const userAnswer = correctAnswers.map((_, index) => {
+          const key = `${part.id}-${question.id}-${index}`;
+          console.log("user answer key: ", key);
+          return userAnswers[key] || "";
+        });
+
+        const isCorrect = userAnswer.every((answer, index) => {
+          const correctAnswer = correctAnswers[index];
+          return (
+            answer?.toString().toLowerCase() ===
+            correctAnswer?.toString().toLowerCase()
+          );
+        });
+
+        if (isCorrect) {
+          score++;
+        }
+
+        submissionAnswers.push({
+          questionId: questionId,
+          userAnswer: userAnswer.join(", "),
+          correctAnswer: correctAnswers.join(", "),
+          isCorrect: isCorrect,
+        });
+      });
+    });
+
+    const markValue = Math.round((score / totalQuestions) * 100);
+    setUserScore(markValue);
+    setIsCompleted(true);
+
+    const submissionData = {
+      exerciseId: exercises.id,
+      submissionDate: submissionDate,
+      score: `${markValue}%`,
+      submissionAnswers: submissionAnswers,
+    };
+
+    fetch("http://localhost:9999/exercisesSubmission", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("grammar result: ", data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // Ensure exercises is set and has parts before trying to access them
@@ -144,13 +254,21 @@ export default function GrammarExercises() {
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
         {exercises?.title || "Loading..."}
       </TitleCustom>
+      <div style={{ textAlign: "center" }}>
+        {isCompleted && (
+          <>
+            <TextCustom>Điểm: </TextCustom>
+            <span style={{ color: "red" }}>{userScore}%</span>
+          </>
+        )}
+      </div>
       {currentPart && (
         <>
           <TextCustom style={{ color: "red", fontWeight: "bold" }}>
             {currentPart.partName}
           </TextCustom>
           {currentPart.partType === PART_TYPE.FILL_IN_THE_BLANK &&
-            renderPart(currentPart, `part${currentPartIndex + 1}`)}
+            renderPart(currentPart, currentPartIndex + 1)}
         </>
       )}
       <div style={{ textAlign: "center", paddingTop: "50px" }}>
@@ -172,13 +290,34 @@ export default function GrammarExercises() {
         >
           Phần tiếp theo
         </ButtonCustom>
-        <ButtonCustom
-          buttonType="secondary"
-          style={{ padding: "23px", marginLeft: "30px" }}
-          // onClick={handleSubmit}
-        >
-          Hoàn thành
-        </ButtonCustom>
+        {isCompleted ? (
+          <>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              // onClick={handleRetry}
+            >
+              Làm lại bài tập này
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              // onClick={handleNextExercise}
+            >
+              Chuyển sang bài tập tiếp theo
+            </ButtonCustom>
+          </>
+        ) : (
+          <>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              onClick={handleSubmit}
+            >
+              Nộp bài
+            </ButtonCustom>
+          </>
+        )}
       </div>
     </div>
   );

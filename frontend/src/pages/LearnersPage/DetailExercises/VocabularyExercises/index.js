@@ -255,48 +255,6 @@ export default function VocabularyExercises() {
     }));
   };
 
-  //display result of current part
-  const handleSubmitPart = () => {
-    const currentPart = exercises.parts[currentPartIndex];
-    switch (currentPart.partType) {
-      case PART_TYPE.MATCHING:
-        setPartResults((prev) => ({
-          ...prev,
-          part1: markPart1(exercises.parts[0]),
-        }));
-        break;
-
-      case PART_TYPE.MULTIPLE_CHOICE:
-        setPartResults((prev) => ({
-          ...prev,
-          part2: markPart2(exercises.parts[1]),
-        }));
-        break;
-
-      case PART_TYPE.FILL_IN_THE_BLANK:
-        setPartResults((prev) => ({
-          ...prev,
-          part3: markPart3(exercises.parts[2]),
-        }));
-        break;
-
-      default:
-        return;
-    }
-  };
-  // submit part if not finish all part
-  const submitPart = () => {
-    return (
-      userScore > -1 || (
-        <Row justify={"end"}>
-          <ButtonCustom buttonType="secondary" onClick={handleSubmitPart}>
-            Nộp bài
-          </ButtonCustom>
-        </Row>
-      )
-    );
-  };
-
   const renderPart1 = (part) => {
     return (
       <>
@@ -402,7 +360,7 @@ export default function VocabularyExercises() {
             </Radio.Group>
           </Col>
         </Row>
-        {submitPart()}
+
         {/* Display Selected Pairs */}
         <div style={{ marginTop: "30px" }}>
           <TitleCustom level={4}>Selected Pairs:</TitleCustom>
@@ -556,7 +514,6 @@ export default function VocabularyExercises() {
             </>
           );
         })}
-        {submitPart()}
       </div>
     );
   };
@@ -607,7 +564,6 @@ export default function VocabularyExercises() {
             </Row>
           </Col>
         </Row>
-        {submitPart()}
       </div>
     );
   };
