@@ -434,7 +434,7 @@ export default function VocabularyExercises() {
               >
                 <Col span={24} style={{ paddingBottom: "24px" }}>
                   <TextCustom style={{ fontWeight: "bold" }}>
-                    {question.questionText}
+                    Câu {question.id}: {question.question}
                   </TextCustom>
                   <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
                     {question.options.map((option) => {
@@ -518,8 +518,8 @@ export default function VocabularyExercises() {
     );
   };
 
-  const renderPart3 = (exercise) => {
-    const { questions } = exercise;
+  const renderPart3 = (part) => {
+    const { questions } = part;
 
     return (
       <div style={{ marginLeft: "80px", marginRight: "80px" }}>
@@ -661,7 +661,7 @@ export default function VocabularyExercises() {
             style={{ padding: "23px", marginLeft: "100px" }}
             onClick={handleSubmit}
           >
-            Hoàn thành
+            Nộp bài
           </ButtonCustom>
         )}
       </div>
