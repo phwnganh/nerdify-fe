@@ -1009,16 +1009,6 @@
               ],
               "answer": "B"
             }
-          ],
-          "answers": [
-            {
-              "id": 3,
-              "answer": "A"
-            },
-            {
-              "id": 4,
-              "answer": "B"
-            }
           ]
         },
         {
@@ -1069,15 +1059,15 @@
               "options": [
                 {
                   "id": "A",
-                  "image": "demo_1_1"
+                  "optionImage": "demo_1_1"
                 },
                 {
                   "id": "B",
-                  "image": "demo_1_2"
+                  "optionImage": "demo_1_2"
                 },
                 {
                   "id": "C",
-                  "image": "demo_1_3"
+                  "optionImage": "demo_1_3"
                 }
               ],
               "answer": "A"
@@ -1088,15 +1078,15 @@
               "options": [
                 {
                   "id": "A",
-                  "image": "demo_2_1"
+                  "optionImage": "demo_2_1"
                 },
                 {
                   "id": "B",
-                  "image": "demo_2_2"
+                  "optionImage": "demo_2_2"
                 },
                 {
                   "id": "C",
-                  "image": "demo_2_3"
+                  "optionImage": "demo_2_3"
                 }
               ],
               "answer": "C"
