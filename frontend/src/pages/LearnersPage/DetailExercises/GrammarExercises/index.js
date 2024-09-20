@@ -15,6 +15,7 @@ export default function GrammarExercises() {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [exerciseResults, setExerciseResults] = useState({});
+  const [answerStatus, setAnswerStatus] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
     fetch(
@@ -34,7 +35,7 @@ export default function GrammarExercises() {
   const handleInputChange = (partId, questionId, inputIndex, value) => {
     const key = `${partId}-${questionId}-${inputIndex}`;
     console.log("input key: ", key);
-    
+
     setUserAnswers((prevAnswers) => ({
       ...prevAnswers,
       [key]: value, // Gán giá trị người dùng nhập vào trạng thái
@@ -59,10 +60,15 @@ export default function GrammarExercises() {
             <div style={{ marginTop: "20px" }}>
               {Array.isArray(question.question) ? (
                 question.question.map((subQuestion, subIndex) => (
-                  <div key={`${partKey}-${question.id}-${subIndex}`} style={{ marginBottom: "10px" }}>
+                  <div
+                    key={`${partKey}-${question.id}-${subIndex}`}
+                    style={{ marginBottom: "10px" }}
+                  >
                     {subQuestion.includes("___") ? (
                       subQuestion.split("___").map((text, i) => (
-                        <span key={`${partKey}-${question.id}-${subIndex}-${i}`}>
+                        <span
+                          key={`${partKey}-${question.id}-${subIndex}-${i}`}
+                        >
                           {i > 0 && (
                             <InputCustom
                               style={{
@@ -71,7 +77,8 @@ export default function GrammarExercises() {
                                 borderColor: isCompleted
                                   ? userAnswers[
                                       `${partKey}-${question.id}-${subIndex}`
-                                    ]?.toLowerCase() === question.answer?.toString()?.toLowerCase()
+                                    ]?.toLowerCase() ===
+                                    question.answer?.toString()?.toLowerCase()
                                     ? "green"
                                     : "red"
                                   : "",
@@ -98,11 +105,6 @@ export default function GrammarExercises() {
                     ) : (
                       <span>{subQuestion}</span>
                     )}
-                    {isCompleted &&
-                      userAnswers[`${partKey}-${question.id}-${subIndex}`] !==
-                        question.answer && (
-                        <TextCustom>Đáp án: {question.answer}</TextCustom>
-                      )}
                   </div>
                 ))
               ) : question.question.includes("___") ? (
@@ -114,7 +116,9 @@ export default function GrammarExercises() {
                           width: "150px",
                           marginRight: "8px",
                           borderColor: isCompleted
-                            ? userAnswers[`${partKey}-${question.id}-${i}`]?.toLowerCase() ===
+                            ? userAnswers[
+                                `${partKey}-${question.id}-${i}`
+                              ]?.toLowerCase() ===
                               question.answer?.toString()?.toLowerCase()
                               ? "green"
                               : "red"
@@ -143,7 +147,14 @@ export default function GrammarExercises() {
               {isCompleted &&
                 userAnswers[`${partKey}-${question.id}-0`] !==
                   question.answer && (
-                  <TextCustom>Đáp án: {question.answer}</TextCustom>
+                  <div>
+                    <TextCustom style={{ color: "red" }}>
+                      Đáp án:{" "}
+                      {Array.isArray(question.answer)
+                        ? question.answer.join(" - ")
+                        : question.answer}
+                    </TextCustom>
+                  </div>
                 )}
               {isCompleted && (
                 <>
@@ -175,7 +186,7 @@ export default function GrammarExercises() {
     let score = 0;
     const submissionDate = new Date().toISOString();
     const submissionAnswers = [];
-
+    const newAnswerStatus = {};
     exercises.parts.forEach((part) => {
       part.questions.forEach((question) => {
         const questionId = question.id;
@@ -184,21 +195,19 @@ export default function GrammarExercises() {
           : [question.answer];
 
         const userAnswer = correctAnswers.map((_, index) => {
-          
-          
-          const key = `${part.id}-${question.id}-${index}`;
+          const key = `${part.id}-${question.id}-${index + 1}`;
           console.log("user answer key: ", key);
           return userAnswers[key] || "";
         });
-
-        const isCorrect = userAnswer.every(
-          (answer, index) =>
-          {
-            const correctAnswer = correctAnswers[index];
-            return answer?.toString().toLowerCase() === correctAnswer?.toString().toLowerCase();
-          }
-        );
-
+        
+        const isCorrect = userAnswer.every((answer, index) => {
+          const correctAnswer = correctAnswers[index];
+          return (
+            answer?.toString().toLowerCase() ===
+            correctAnswer?.toString().toLowerCase()
+          );
+        });
+        newAnswerStatus[question.id] = isCorrect ? "correct" : "incorrect"
         if (isCorrect) {
           score++;
         }
@@ -215,7 +224,7 @@ export default function GrammarExercises() {
     const markValue = Math.round((score / totalQuestions) * 100);
     setUserScore(markValue);
     setIsCompleted(true);
-
+    setAnswerStatus(newAnswerStatus);
     const submissionData = {
       exerciseId: exercises.id,
       submissionDate: submissionDate,

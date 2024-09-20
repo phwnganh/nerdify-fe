@@ -56,14 +56,14 @@ export const routes = [
             path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
             element: <FlashcardDetail />,
           },
-                {
-        path: CLIENT_URI.CREATE_FLASH_CARD,
-        element: <CreateFlashCard />,
-      },
-            {
-        path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
-        element: <EditFlashCard />,
-      },
+          {
+            path: CLIENT_URI.CREATE_FLASH_CARD,
+            element: <CreateFlashCard />,
+          },
+          {
+            path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
+            element: <EditFlashCard />,
+          },
 
           {
             path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
@@ -72,6 +72,10 @@ export const routes = [
           {
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
             element: <ExerciseDetail />,
+          },
+          {
+            path: CLIENT_URI.FINAL_EXAM,
+            element: <FinalExam />,
           },
           {
             path: CLIENT_URI.FORGOT_PASSWORD,
@@ -128,10 +132,10 @@ export const routes = [
       //   path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
       //   element: <ViewLevelDetail />,
       // },
-      {
-        path: CLIENT_URI.FINAL_EXAM,
-        element: <FinalExam />,
-      },
+      // {
+      //   path: CLIENT_URI.FINAL_EXAM,
+      //   element: <FinalExam />,
+      // },
       // {
       //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
       //   element: <ExerciseDetail />,
