@@ -167,7 +167,8 @@ export default function WritingExercises() {
           });
         });
       } else if (part.partType === PART_TYPE.WRITE_PARAGRAPH) {
-        const userAnswer = userAnswers[part.id]?.[0]?.trim() || "";
+        const userAnswer =
+          userAnswers[`paragraph_${part.id}`]?.[0]?.trim() || "";
         const correctAnswer = part.answer.trim();
         const isCorrect = userAnswer === correctAnswer;
         newAnswerStatus[`paragraph_${part.id}`] = isCorrect
@@ -217,7 +218,7 @@ export default function WritingExercises() {
     <div style={{ padding: "30px", marginLeft: "70px", marginRight: "70px" }}>
       <BreadCrumbHome />
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercise.title}
+        {exercise?.title}
       </TitleCustom>
       <div style={{ textAlign: "center" }}>
         {isCompleted && (

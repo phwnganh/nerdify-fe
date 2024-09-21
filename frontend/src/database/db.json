@@ -4,26 +4,36 @@
       "id": "1",
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [1, 2, 3, 7]
+      "exercises": [1, 2, 3, 7],
+      "isNew": false
     },
     {
       "id": "2",
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [4, 5, 6]
+      "exercises": [4, 5, 6],
+      "isNew": false
     },
     {
       "id": "3",
       "name": "Final Exam",
       "levelId": 1,
-      "examId": 1
+      "examId": 1,
+      "isNew": true
     },
     {
       "id": "4",
       "name": "Phase 1",
       "levelId": 2,
       "exercise": [8, 9, 10],
-      "examId": 2
+      "isNew": true
+    },
+    {
+      "id": "5",
+      "name": "Final Exam",
+      "levelId": 2,
+      "examId": 2,
+      "isNew": true
     }
   ],
   "levels": [
@@ -387,7 +397,9 @@
             }
           ]
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "63%"
     },
     {
       "id": "3",
@@ -735,7 +747,9 @@
             }
           ]
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "17%"
     },
     {
       "id": "6",
@@ -1671,6 +1685,579 @@
         }
       ],
       "exerciseId": "2"
+    },
+    {
+      "id": "6e76",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-20T11:01:09.090Z",
+      "score": "25%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "du, ich",
+          "correctAnswer": "du, ich",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "9bf3",
+      "submissionDate": "2024-09-20T11:10:51.391Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
+    },
+    {
+      "id": "2816",
+      "submissionDate": "2024-09-20T13:02:49.449Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "spre",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "bißchen",
+          "correctAnswer": "bißchen",
+          "isCorrect": true
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "9697",
+      "submissionDate": "2024-09-20T13:04:47.823Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "spre",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "0758",
+      "submissionDate": "2024-09-20T13:39:17.587Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "fff",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "0a83",
+      "submissionDate": "2024-09-20T13:39:37.953Z",
+      "score": "25%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "",
+          "correctAnswer": "von",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "c737",
+      "submissionDate": "2024-09-20T15:08:07.609Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "6d29",
+      "submissionDate": "2024-09-20T15:09:27.235Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "81c3",
+      "submissionDate": "2024-09-20T15:13:45.071Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "0ac2",
+      "submissionDate": "2024-09-20T15:15:33.647Z",
+      "score": "63%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "58ab",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-21T09:58:33.157Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "du, ich",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
     }
   ],
   "finalExamSubmission": [

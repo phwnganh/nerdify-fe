@@ -26,6 +26,7 @@ import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
+import LearningProgress from "../pages/LearnersPage/LearningProgress";
 export const routes = [
   // Guest urls
   {
@@ -67,7 +68,10 @@ export const routes = [
             path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
             element: <EditFlashCard />,
           },
-
+          {
+            path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
+            element: <TestFlashCard />,
+          },
           {
             path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
             element: <ViewLevelDetail />,
@@ -88,6 +92,10 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
+          {
+            path: CLIENT_URI.LEARNING_PROGRESS,
+            element: <LearningProgress/>
+          }
         ],
       },
       // {
@@ -169,10 +177,10 @@ export const routes = [
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
       },
-      {
-        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
-        element: <TestFlashCard />,
-      },
+      // {
+      //   path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
+      //   element: <TestFlashCard />,
+      // },
       {
         path: `${CLIENT_URI.PROFILE}`,
         element: <ViewPersonalProfile />,

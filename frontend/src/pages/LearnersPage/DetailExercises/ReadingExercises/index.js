@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
@@ -38,20 +38,20 @@ export default function ReadingExercises() {
       .catch((err) => console.error("error", err));
   }, [exerciseType, exerciseId]);
 
-  const handleSelectOptions = (questionId, optionId) => {
+  const handleSelectOptions = useCallback((questionId, optionId) => {
     setUserAnswers((prev) => ({
       ...prev,
       [questionId]: optionId,
     }));
-  };
+  }, []);
 
   //function toggle answer detail/explanation
-  const handleToggleAnswerDetail = (questionId) => {
+  const handleToggleAnswerDetail = useCallback((questionId) => {
     setToggleAnswerDetail((prevState) => ({
       ...prevState,
       [questionId]: !prevState[questionId],
     }));
-  };
+  }, []);
 
   //function hien thi cau hoi va ket qua sau khi nop bai
   const renderPart = (currentPart) => {
@@ -129,19 +129,20 @@ export default function ReadingExercises() {
     );
   };
 
-  const handleRetry = () => {
+  const handleRetry = useCallback(() => {
     setUserAnswers({});
     setExerciseResults({});
     setUserScore(0);
     setIsCompleted(false);
     setCurrentPartIndex(0);
-  };
-  const totalQuestions = exercises?.parts.reduce(
-    (acc, part) => acc + part.questions.length,
-    0
+  }, []);
+  const totalQuestions = useMemo(
+    () =>
+      exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0),
+    [exercises]
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     let score = 0;
     const submissionDate = new Date().toISOString();
     const partResultsData = {};
@@ -180,7 +181,30 @@ export default function ReadingExercises() {
       score: `${markValue}%`,
       submissionAnswers: submissionAnswers,
       exerciseId: exercises?.id,
+      isCompleted: true,
     };
+
+    fetch(
+      `http://localhost:9999/exercises/${exercises?.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          isCompleted: true,
+          score: `${markValue}%`,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
@@ -195,7 +219,7 @@ export default function ReadingExercises() {
       .catch((err) => {
         console.log("err", err);
       });
-  };
+  }, [userAnswers, totalQuestions, exercises]);
 
   if (!exercises?.parts) return <div>Loading...</div>;
 

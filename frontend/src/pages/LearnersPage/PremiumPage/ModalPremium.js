@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ButtonCustom from "../../../components/Button";
 import { CheckSquareTwoTone } from "@ant-design/icons";
 import ModalCustom from "../../../components/Modal";
-
+import {setStorage} from "../../../library/storage";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants";
 
@@ -10,7 +10,7 @@ export const ModalPremium = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);
   const navigate = useNavigate();
   const handleOk = () => {
-    localStorage.setItem("isPremium", "true");
+    setStorage("isPremium", "true");
     setIsModalVisible(false);
   };
 

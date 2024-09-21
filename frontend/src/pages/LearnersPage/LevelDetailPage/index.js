@@ -11,14 +11,20 @@ import reading from "../../../assets/exercisesSkill/reading.png";
 import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
 import writing from "../../../assets/exercisesSkill/writing.png";
 import grammar from "../../../assets/exercisesSkill/grammar.png";
+import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 import { Col, Row } from "antd";
-import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
+import {
+  BarChartOutlined,
+  CheckOutlined,
+  UserAddOutlined,
+} from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import a2 from "../../../assets/levelImage/a2.png";
+import { EXERCISE_TYPE } from "../../../constants/common.constant";
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
@@ -98,24 +104,39 @@ export default function ViewLevelDetail() {
             <Col md={12}>
               <img
                 src={
-                  exercise.exerciseType === "listening"
+                  exercise.exerciseType === EXERCISE_TYPE.LISTENING
                     ? listening
-                    : exercise.exerciseType === "reading"
+                    : exercise.exerciseType === EXERCISE_TYPE.READING
                     ? reading
-                    : exercise.exerciseType === "vocabulary"
+                    : exercise.exerciseType === EXERCISE_TYPE.VOCABULARY
                     ? vocabulary
-                    : exercise.exerciseType === "grammar"
+                    : exercise.exerciseType === EXERCISE_TYPE.GRAMMAR
                     ? grammar
-                    : writing
+                    : exercise.exerciseType === EXERCISE_TYPE.WRITING
+                    ? writing
+                    : quiz
                 }
                 alt=""
                 width={"50%"}
               />
             </Col>
             <Col md={12}>
-              <TitleCustom level={4} style={{ textAlign: "center" }}>
-                {exercise.title}
-              </TitleCustom>
+              {exercise?.isCompleted ? (
+                <div style={{ textAlign: "center" }}>
+                  <TitleCustom level={4}>{exercise?.title}</TitleCustom>
+                  <CheckOutlined style={{ color: "green" }} />
+                  &nbsp;
+                  <TextCustom style={{ color: "green" }}>
+                    {exercise?.score}
+                  </TextCustom>
+                </div>
+              ) : (
+                <>
+                  <TitleCustom level={4} style={{ textAlign: "center" }}>
+                    {exercise.title}
+                  </TitleCustom>
+                </>
+              )}
             </Col>
           </Row>
         </CardCustom>
