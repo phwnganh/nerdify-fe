@@ -4,7 +4,7 @@ import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo1.png";
 import registerImage from "../../../assets/registerImage.png";
 import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
 import { register } from "../../../services/GuestService";

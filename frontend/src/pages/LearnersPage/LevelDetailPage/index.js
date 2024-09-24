@@ -70,9 +70,15 @@ export default function ViewLevelDetail() {
     navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`);
   };
 
+  const handleFinalExamClick = (examId) => {
+    navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`);
+  };
+
   const renderContent = () => {
     const selectedPhase = phases.find((phase) => phase.name === activePhase);
     if (selectedPhase?.name === "Final Exam") {
+      const examId = selectedPhase?.examId;
+
       return (
         <CardCustom
           bordered={true}
@@ -85,7 +91,8 @@ export default function ViewLevelDetail() {
           <ParagraphCustom style={{ color: "#FFFFFF" }}>
             Bạn cần hoàn thành final exam để được nhận cúp
           </ParagraphCustom>
-          <ButtonToDoExam onClick={() => navigate(CLIENT_URI.FINAL_EXAM)}>
+          {/* Fix: Ensure the function is passed, not invoked */}
+          <ButtonToDoExam onClick={() => handleFinalExamClick(examId)}>
             Vào làm bài
           </ButtonToDoExam>
         </CardCustom>

@@ -15,7 +15,7 @@ import demo_2_1 from "../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../assets/vocabExercises/2_3.png";
 import { PART_TYPE } from "../../../constants";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
   const [exam, setExam] = useState([]);
@@ -26,6 +26,8 @@ export default function FinalExam() {
   const [mark, setMark] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const navigate = useNavigate();
+  const {examId} = useParams();
+  
   const imgArrVocab = [
     demo_1_1,
     demo_1_2,
@@ -40,7 +42,7 @@ export default function FinalExam() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9999/finalexam/1`)
+    fetch(`http://localhost:9999/finalexam/${examId}`)
       .then((res) => res.json())
       .then((res) => {
         setExam(res);
@@ -102,7 +104,7 @@ export default function FinalExam() {
   const renderAllParts = (part) => {
     return part.questions.map((question, index) => (
       <div key={question.id}>
-        <TextCustom style={{ paddingTop: "20px", fontWeight: 'bold' }}>
+        <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
           Câu {question.id}: {question.question}
         </TextCustom>
         {question.questionParagraph && (
@@ -179,8 +181,8 @@ export default function FinalExam() {
     setUserScore(0);
     setIsCompleted(false);
     setCurrentPartIndex(0);
-    setTimeLeft(20*60);
-  }
+    setTimeLeft(20 * 60);
+  };
 
   const handleSubmit = () => {
     let score = 0;
@@ -214,6 +216,7 @@ export default function FinalExam() {
       score: `${markValue}%`,
       submissionAnswers: questionsArray,
       conditionStatus: conditionStatus,
+      isCompleted:true,
       examId: exam.id,
     };
 
@@ -286,6 +289,7 @@ export default function FinalExam() {
                 <ButtonCustom
                   buttonType="secondary"
                   style={{ padding: "23px" }}
+                  disabled={!(currentPartIndex === exam.parts.length - 1)}
                   onClick={handleSubmit}
                 >
                   Nộp bài

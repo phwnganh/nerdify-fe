@@ -5,7 +5,7 @@ import InputCustom from "../Input";
 import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../constants/uri.constants";
 

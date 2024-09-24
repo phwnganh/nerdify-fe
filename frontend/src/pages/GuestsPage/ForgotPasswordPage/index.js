@@ -4,7 +4,7 @@ import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo1.png";
 import loginImage from "../../../assets/loginImage.png";
 import { CLIENT_URI } from "../../../constants";
 import { forgotPassword } from "../../../services/GuestService";

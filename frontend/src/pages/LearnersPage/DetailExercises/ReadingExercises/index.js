@@ -285,6 +285,7 @@ export default function ReadingExercises() {
                 buttonType="secondary"
                 style={{ padding: "23px", marginLeft: "30px" }}
                 onClick={handleSubmit}
+                disabled={!(currentPartIndex === exercises.parts.length - 1)}
               >
                 Nộp bài
               </ButtonCustom>

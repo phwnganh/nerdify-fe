@@ -89,7 +89,7 @@ export default function LearningProgress() {
               {level.phases.map(
                 (phase, phaseIndex) =>
                   // Properly wrap the condition and the elements inside parentheses
-                  phase.isNew === false && (
+                  phase.isNew === false && phase?.name !== "Final Exam" && (
                     <Col span={12} key={phaseIndex}>
                       <CardCustom
                         title={`${level.levelTitle}`}
@@ -135,7 +135,7 @@ export default function LearningProgress() {
               {level.phases.map(
                 (phase, phaseIndex) =>
                   // Properly wrap the condition and the elements inside parentheses
-                  phase.isNew === true && (
+                  phase.isNew === true && phase?.name !== "Final Exam" && (
                     <Col span={12} key={phaseIndex}>
                       <CardCustom
                         title={`${level.levelTitle}`}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 import {
   FacebookOutlined,
   MailOutlined,
@@ -16,13 +16,13 @@ export default function Footer() {
           {/* <Col> */}
           <img
             src={logo}
-            alt="Deustch Nerd"
+            alt="Deutsch Nerd"
             style={{ width: "100px", height: "50px" }}
           />
           {/* </Col>
           <Col> */}
           <p style={{ paddingLeft: "2px" }}>
-            Chào mừng đến với Deustch Nerd, là nơi bạn học tiếng Đức online!
+            Chào mừng đến với Deutsch Nerd, là nơi bạn học tiếng Đức online!
             Chúng tôi tận tâm cung cấp các nguồn tài nguyên chất lượng hàng đầu
             và hỗ trợ đặc biệt để giúp bạn đạt được mục tiêu học ngôn ngữ của
             mình.
@@ -46,16 +46,16 @@ export default function Footer() {
       <Col span={6}>
         <TitleCustom level={5}>Liên hệ</TitleCustom>
         <p>
-          <PhoneOutlined /> 0943206786
+          <PhoneOutlined /> 0867980329
         </p>
         <p>
-          <FacebookOutlined /> <a href="#">Deustch Nerd</a>
+          <FacebookOutlined /> <a href="https://www.facebook.com/deutschnerd">Deutsch Nerd</a>
         </p>
         <p>
-          <TikTokOutlined /> <a href="#">Deustch Nerd</a>
+          <TikTokOutlined /> <a href="https://www.facebook.com/deutschnerd">Deutsch Nerd</a>
         </p>
         <p>
-          <MailOutlined /> <a href="#">deustchnerd@gg.edu.vn</a>
+          <MailOutlined /> <a href="#">deutschnerd.2024@gmail.com</a>
         </p>
       </Col>
     </Row>

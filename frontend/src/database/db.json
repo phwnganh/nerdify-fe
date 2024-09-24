@@ -18,8 +18,7 @@
       "id": "3",
       "name": "Final Exam",
       "levelId": 1,
-      "examId": 1,
-      "isNew": true
+      "examId": 1
     },
     {
       "id": "4",
@@ -32,8 +31,7 @@
       "id": "5",
       "name": "Final Exam",
       "levelId": 2,
-      "examId": 2,
-      "isNew": true
+      "examId": 2
     }
   ],
   "levels": [
@@ -647,7 +645,9 @@
           "partType": "write_paragraph",
           "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "50%"
     },
     {
       "id": "5",
@@ -2258,6 +2258,153 @@
         }
       ],
       "isCompleted": true
+    },
+    {
+      "id": "a5c0",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-24T15:28:36.272Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "5caa",
+      "submissionDate": "2024-09-24T15:35:36.441Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "25d4",
+      "submissionDate": "2024-09-24T15:36:19.128Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
     }
   ],
   "finalExamSubmission": [

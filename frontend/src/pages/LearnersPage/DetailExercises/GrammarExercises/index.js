@@ -269,6 +269,13 @@ export default function GrammarExercises() {
     [exercises, currentPartIndex]
   );
 
+  const handleRetry = useCallback(() => {
+    setUserScore(0);
+    setCurrentPartIndex(0);
+    setUserAnswers({});
+    setIsCompleted(false);
+  }, [])
+
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
@@ -316,7 +323,7 @@ export default function GrammarExercises() {
             <ButtonCustom
               buttonType="secondary"
               style={{ padding: "23px", marginLeft: "30px" }}
-              // onClick={handleRetry}
+              onClick={handleRetry}
             >
               Làm lại bài tập này
             </ButtonCustom>
@@ -334,6 +341,7 @@ export default function GrammarExercises() {
               buttonType="secondary"
               style={{ padding: "23px", marginLeft: "30px" }}
               onClick={handleSubmit}
+              disabled={!(currentPartIndex === exercises?.parts?.length - 1)}
             >
               Nộp bài
             </ButtonCustom>

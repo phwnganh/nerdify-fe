@@ -81,7 +81,7 @@ export const routes = [
             element: <ExerciseDetail />,
           },
           {
-            path: CLIENT_URI.FINAL_EXAM,
+            path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
             element: <FinalExam />,
           },
           {
