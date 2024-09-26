@@ -14,7 +14,8 @@ import demo_1_3 from "../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../assets/vocabExercises/2_3.png";
-import { PART_TYPE } from "../../../constants";
+
+import { CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
@@ -26,8 +27,8 @@ export default function FinalExam() {
   const [mark, setMark] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const navigate = useNavigate();
-  const {examId} = useParams();
-  
+  const { examId } = useParams();
+
   const imgArrVocab = [
     demo_1_1,
     demo_1_2,
@@ -216,7 +217,7 @@ export default function FinalExam() {
       score: `${markValue}%`,
       submissionAnswers: questionsArray,
       conditionStatus: conditionStatus,
-      isCompleted:true,
+      isCompleted: true,
       examId: exam.id,
     };
 
@@ -231,6 +232,12 @@ export default function FinalExam() {
       .then((data) => console.log("final exam: ", data));
     setUserScore(score);
     clearInterval(window.timer);
+  };
+
+  const handleAchieveTrophy = () => {
+    navigate(CLIENT_URI.TROPHY, {
+      state: { trophy: exam?.trophy, title: exam?.title },
+    });
   };
   const currentPart = exam.parts?.[currentPartIndex];
   return (
@@ -318,6 +325,7 @@ export default function FinalExam() {
                       <ButtonCustom
                         buttonType="secondary"
                         style={{ marginRight: "100px", padding: "23px" }}
+                        onClick={handleAchieveTrophy}
                       >
                         Nhận cúp
                       </ButtonCustom>
