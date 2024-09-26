@@ -167,7 +167,8 @@ export default function WritingExercises() {
           });
         });
       } else if (part.partType === PART_TYPE.WRITE_PARAGRAPH) {
-        const userAnswer = userAnswers[part.id]?.[0]?.trim() || "";
+        const userAnswer =
+          userAnswers[`paragraph_${part.id}`]?.[0]?.trim() || "";
         const correctAnswer = part.answer.trim();
         const isCorrect = userAnswer === correctAnswer;
         newAnswerStatus[`paragraph_${part.id}`] = isCorrect
@@ -196,8 +197,27 @@ export default function WritingExercises() {
       submissionDate,
       score: `${score}%`,
       submissionAnswers: questionsArray,
+      isCompleted: true,
       exerciseId,
     };
+
+    fetch(`http://localhost:9999/exercises/${exercise?.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        isCompleted: true,
+        score: `${score}%`,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
@@ -213,11 +233,19 @@ export default function WritingExercises() {
       .catch((err) => console.log(err));
   };
 
+  const handleRetry = () => {
+    setUserAnswers({});
+    setExerciseResults(null);
+    setAnswerStatus({});
+    setIsCompleted(false);
+    setUserScore(0);
+  };
+
   return (
     <div style={{ padding: "30px", marginLeft: "70px", marginRight: "70px" }}>
       <BreadCrumbHome />
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercise.title}
+        {exercise?.title}
       </TitleCustom>
       <div style={{ textAlign: "center" }}>
         {isCompleted && (
@@ -251,13 +279,23 @@ export default function WritingExercises() {
             Nộp bài
           </ButtonCustom>
         )}
-        {exerciseResults && (
-          <ButtonCustom
-            buttonType="secondary"
-            onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
-          >
-            Chuyển sang bài tập tiếp theo
-          </ButtonCustom>
+        {isCompleted && (
+          <>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              onClick={handleRetry}
+            >
+              Làm lại bài tập này
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
+            >
+              Chuyển sang bài tập tiếp theo
+            </ButtonCustom>
+          </>
         )}
       </div>
     </div>

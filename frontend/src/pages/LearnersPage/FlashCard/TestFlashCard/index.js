@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
+import CardCustom from "../../../../components/Card";
 
 export const TestFlashCard = () => {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ export const TestFlashCard = () => {
   const getAnswerStyle = (questionId, optionId, isCorrect) => {
     if (userScore === -1) {
       return userAnswers[questionId] === optionId
-        ? { backgroundColor: "#5FD855", color: "#fff" }
+        ? { backgroundColor: "#A8703E", color: "#fff" }
         : {};
     } else {
       if (userAnswers[questionId] === optionId) {
@@ -129,7 +130,7 @@ export const TestFlashCard = () => {
       </div>
 
       {questions.map((question, questionId) => (
-        <Card
+        <CardCustom
           key={questionId}
           style={{ marginBottom: "30px", backgroundColor: "#DEDEDE" }}
         >
@@ -233,7 +234,7 @@ export const TestFlashCard = () => {
               </Row>
             </div>
           </div>
-        </Card>
+        </CardCustom>
       ))}
       {userScore > -1 || (
         <ButtonCustom

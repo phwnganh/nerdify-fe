@@ -95,7 +95,7 @@ export const LandingPage = () => {
           >
             HỌC THỬ MIỄN PHÍ
           </ButtonCustom>
-          <Row>
+          {/* <Row>
             <Col span={6}>
               <p
                 style={{
@@ -122,7 +122,7 @@ export const LandingPage = () => {
               </p>
               <b style={{ fontSize: "20px" }}>Học viên</b>
             </Col>
-          </Row>
+          </Row> */}
         </Col>
         <Col span={8}>
           <img
@@ -245,7 +245,7 @@ export const LandingPage = () => {
             fontWeight: "600",
           }}
         >
-          Đăng ký ngay để nhận ưu đãi lên đến 50%
+          Đăng ký ngay để nhận ưu đãi lên đến 30%
         </p>
         <ButtonCustom
           buttonType="primary"

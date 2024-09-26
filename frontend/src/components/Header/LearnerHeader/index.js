@@ -4,7 +4,7 @@ import MenuBar from "../../Menu";
 import InputCustom from "../../Input";
 import { BellOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
 import MenuItem from "../../Menu/MenuItem/index";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo1.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import { logout } from "../../../services/GuestService";
@@ -102,7 +102,6 @@ export default function LearnerHeader() {
             </MenuItem>
             <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-            <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
             <MenuItem
               key="premium"
               onClick={() => navigate(CLIENT_URI.PREMIUM)}

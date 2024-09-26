@@ -11,14 +11,20 @@ import reading from "../../../assets/exercisesSkill/reading.png";
 import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
 import writing from "../../../assets/exercisesSkill/writing.png";
 import grammar from "../../../assets/exercisesSkill/grammar.png";
+import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 import { Col, Row } from "antd";
-import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
+import {
+  BarChartOutlined,
+  CheckOutlined,
+  UserAddOutlined,
+} from "@ant-design/icons";
 import ButtonCustom from "../../../components/Button";
 import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import a2 from "../../../assets/levelImage/a2.png";
+import { EXERCISE_TYPE } from "../../../constants/common.constant";
 export default function ViewLevelDetail() {
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
@@ -64,9 +70,15 @@ export default function ViewLevelDetail() {
     navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`);
   };
 
+  const handleFinalExamClick = (examId) => {
+    navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`);
+  };
+
   const renderContent = () => {
     const selectedPhase = phases.find((phase) => phase.name === activePhase);
     if (selectedPhase?.name === "Final Exam") {
+      const examId = selectedPhase?.examId;
+
       return (
         <CardCustom
           bordered={true}
@@ -79,7 +91,8 @@ export default function ViewLevelDetail() {
           <ParagraphCustom style={{ color: "#FFFFFF" }}>
             Bạn cần hoàn thành final exam để được nhận cúp
           </ParagraphCustom>
-          <ButtonToDoExam onClick={() => navigate(CLIENT_URI.FINAL_EXAM)}>
+          {/* Fix: Ensure the function is passed, not invoked */}
+          <ButtonToDoExam onClick={() => handleFinalExamClick(examId)}>
             Vào làm bài
           </ButtonToDoExam>
         </CardCustom>
@@ -98,24 +111,39 @@ export default function ViewLevelDetail() {
             <Col md={12}>
               <img
                 src={
-                  exercise.exerciseType === "listening"
+                  exercise.exerciseType === EXERCISE_TYPE.LISTENING
                     ? listening
-                    : exercise.exerciseType === "reading"
+                    : exercise.exerciseType === EXERCISE_TYPE.READING
                     ? reading
-                    : exercise.exerciseType === "vocabulary"
+                    : exercise.exerciseType === EXERCISE_TYPE.VOCABULARY
                     ? vocabulary
-                    : exercise.exerciseType === "grammar"
+                    : exercise.exerciseType === EXERCISE_TYPE.GRAMMAR
                     ? grammar
-                    : writing
+                    : exercise.exerciseType === EXERCISE_TYPE.WRITING
+                    ? writing
+                    : quiz
                 }
                 alt=""
                 width={"50%"}
               />
             </Col>
             <Col md={12}>
-              <TitleCustom level={4} style={{ textAlign: "center" }}>
-                {exercise.title}
-              </TitleCustom>
+              {exercise?.isCompleted ? (
+                <div style={{ textAlign: "center" }}>
+                  <TitleCustom level={4}>{exercise?.title}</TitleCustom>
+                  <CheckOutlined style={{ color: "green" }} />
+                  &nbsp;
+                  <TextCustom style={{ color: "green" }}>
+                    {exercise?.score}
+                  </TextCustom>
+                </div>
+              ) : (
+                <>
+                  <TitleCustom level={4} style={{ textAlign: "center" }}>
+                    {exercise.title}
+                  </TitleCustom>
+                </>
+              )}
             </Col>
           </Row>
         </CardCustom>

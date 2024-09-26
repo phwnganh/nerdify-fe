@@ -5,7 +5,7 @@ import InputCustom from "../Input";
 import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../constants/uri.constants";
 
@@ -87,20 +87,13 @@ export default function Navbar() {
             >
               FLASHCARD
             </MenuItem>
-            <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
+            <MenuItem key="learning-progress" onClick={() => {navigate(CLIENT_URI.LEARNING_PROGRESS)}}>TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-            <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
             <MenuItem
               key="payment"
-              onClick={() => navigate(CLIENT_URI.BILLINFO)}
+              onClick={() => navigate(CLIENT_URI.PREMIUM)}
             >
-              THANH TOÁN
-            </MenuItem>
-            <MenuItem
-              key="payment"
-              onClick={() => navigate(CLIENT_URI.PAYMENT)}
-            >
-              THANH TOÁN
+              GÓI PREMIUM
             </MenuItem>
           </MenuBar>
         </Col>
