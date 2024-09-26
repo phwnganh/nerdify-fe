@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
@@ -36,37 +36,36 @@ export default function GrammarExercises() {
       ...prev,
       [questionId]: {
         ...prev[questionId],
-        [inputIndex]: value,
+        [inputIndex]: value,  
       },
     }));
   };
+  
 
   const handleSubmitPart = (partType, partData) => {
     const results = partData.map((question) => {
-      const userAnswerString = userAnswers[question.id]?.[0] || '';
-      const correctAnswer = question.answer;
+      const userAnswerArray = userAnswers[question.id] || {};
+      let correctAnswers = question.answer;
   
-      const normalizedUserAnswer = userAnswerString
-        .split(',')
-        .map(ans => ans.trim().toLowerCase());
+      if (!Array.isArray(correctAnswers)) {
+        correctAnswers = [correctAnswers];
+      }
   
-      const normalizedCorrectAnswer = Array.isArray(correctAnswer)
-        ? correctAnswer.map(ans => ans.toLowerCase())
-        : [correctAnswer.toLowerCase()];
-  
-      const isCorrect = normalizedUserAnswer.every(ans => normalizedCorrectAnswer.includes(ans));
+      const isCorrect = correctAnswers.every((correctAnswer, index) => {
+        const userAnswer = userAnswerArray[index] || ''; 
+        return userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase();
+      });
   
       return {
         ...question,
-        userAnswer: userAnswerString,
-        correctAnswer: normalizedCorrectAnswer.join(', '),
-        isCorrect,
+        userAnswer: Object.values(userAnswerArray).join(", "), 
+        correctAnswer: correctAnswers.join(", "), 
+        isCorrect, 
       };
     });
   
     return results;
   };
-  
 
   const handleCompleted = () => {
     const allResults = exercises.parts.map((part, index) => {
@@ -89,41 +88,84 @@ export default function GrammarExercises() {
 
     setPartResults(newPartResults);
     setIsCompleted(true);
+    const submissionParts = allResults.map((partResult, index) => ({
+      partName: exercises.parts[index].partName,
+      questions: partResult.map((result) => ({
+        question: result.question,
+        userAnswer: result.userAnswer,
+        correctAnswer: result.correctAnswer,
+        isCorrect: result.isCorrect,
+      })),
+    }));
+  
+    const submissionData = {
+      submissionDate: new Date().toISOString(),  
+      score: `${Math.round(totalScore)}%`,  
+      submissionParts, 
+      exerciseId,  
+    };
+    fetch(`http://localhost:9999/grammarExercisesSubmission`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submissionData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Submission completed: ", data);
+        setIsCompleted(true);
+      })
+      .catch((err) => console.error("Error submitting exercise", err));
   };
 
   const renderPart = (currentPart) => {
     return (
       <>
-        {currentPart.questions.map((question) => {
-          const questionText = Array.isArray(question.question)
-            ? question.question.join(' ') 
-            : question.question; 
+        {currentPart.questions.map((question, questionIndex) => {
+          const questionTextArray = Array.isArray(question.question)
+            ? question.question
+            : [question.question];
   
           return (
             <div key={question.id} style={{ marginBottom: "20px" }}>
-              <TextCustom>{questionText}</TextCustom>
-              <div style={{ marginBottom: "16px" }}>
-                <Input
-                  value={userAnswers[question.id]?.[0] || ""}
-                  onChange={(e) =>
-                    handleInputChange(question.id, 0, e.target.value)
-                  }
-                  disabled={isCompleted}
-                />
-              </div>
+              <TextCustom>
+                {questionTextArray.map((text, questionPartIndex) => (
+                  <span key={questionPartIndex}>
+                    {text.split("___").map((part, partIndex) => (
+                      <React.Fragment key={partIndex}>
+                        {part}
+                        {partIndex < text.split("___").length - 1 && (
+                          <Input
+                            value={userAnswers[question.id]?.[partIndex] || ""}
+                            onChange={(e) =>
+                              handleInputChange(question.id, partIndex, e.target.value)
+                            }
+                            disabled={isCompleted}
+                            style={{ width: "50px", margin: "0 5px" }}
+                          />
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </span>
+                ))}
+              </TextCustom>
   
               {isCompleted && (
                 <>
                   <TextCustom style={{ color: "green", display: "block" }}>
-                    Câu trả lời của bạn: {userAnswers[question.id]?.[0]}
+                    Câu trả lời của bạn:{" "}
+                    {userAnswers[question.id]
+                      ? Object.values(userAnswers[question.id]).join(", ")
+                      : ""}
                   </TextCustom>
   
                   <TextCustom style={{ color: "blue", display: "block" }}>
-                  Đáp án:{" "}
-                  {Array.isArray(question.answer)
-                    ? question.answer.join(", ")
-                    : question.answer}
-                </TextCustom>
+                    Đáp án:{" "}
+                    {Array.isArray(question.answer)
+                      ? question.answer.join(", ")
+                      : question.answer}
+                  </TextCustom>
                 </>
               )}
             </div>
@@ -132,7 +174,6 @@ export default function GrammarExercises() {
       </>
     );
   };
-  
 
   const handleRetry = () => {
     setUserAnswers({});

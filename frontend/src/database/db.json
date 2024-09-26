@@ -2528,6 +2528,501 @@
       },
       "exerciseId": "5",
       "id": 9
+    },
+    {
+      "submissionDate": "2024-09-15T13:37:57.968Z",
+      "score": "17%",
+      "submissionParts": [
+        {
+          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "___ sprechen Deutsch.",
+              "userAnswer": "sie",
+              "correctAnswer": "Sie",
+              "isCorrect": true
+            },
+            {
+              "question": "Haben ___ Zeit?",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hilfst ___ mir?",
+              "userAnswer": "",
+              "correctAnswer": "du",
+              "isCorrect": false
+            },
+            {
+              "question": "___ ist Programmierer.",
+              "userAnswer": "",
+              "correctAnswer": "Er",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "userAnswer": "",
+              "correctAnswer": "er, sie, sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "userAnswer": "du, ich",
+              "correctAnswer": "du, Ich",
+              "isCorrect": true
+            },
+            {
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "userAnswer": "",
+              "correctAnswer": "ihr, Wir",
+              "isCorrect": false
+            },
+            {
+              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "userAnswer": "",
+              "correctAnswer": "sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "userAnswer": "",
+              "correctAnswer": "du, ich",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "exerciseId": "5",
+      "id": 10
+    },
+    {
+      "submissionDate": "2024-09-15T14:07:03.436Z",
+      "score": "25%",
+      "submissionParts": [
+        {
+          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "___ sprechen Deutsch.",
+              "userAnswer": "sie",
+              "correctAnswer": "Sie",
+              "isCorrect": true
+            },
+            {
+              "question": "Haben ___ Zeit?",
+              "userAnswer": "sie",
+              "correctAnswer": "Sie",
+              "isCorrect": true
+            },
+            {
+              "question": "Hilfst ___ mir?",
+              "userAnswer": "",
+              "correctAnswer": "du",
+              "isCorrect": false
+            },
+            {
+              "question": "___ ist Programmierer.",
+              "userAnswer": "",
+              "correctAnswer": "Er",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "userAnswer": "",
+              "correctAnswer": "er, sie, sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "userAnswer": "du, ich",
+              "correctAnswer": "du, Ich",
+              "isCorrect": true
+            },
+            {
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "userAnswer": "",
+              "correctAnswer": "ihr, Wir",
+              "isCorrect": false
+            },
+            {
+              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "userAnswer": "",
+              "correctAnswer": "sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "userAnswer": "",
+              "correctAnswer": "du, ich",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "exerciseId": "5",
+      "id": 11
+    },
+    {
+      "submissionDate": "2024-09-15T14:49:51.337Z",
+      "score": "8%",
+      "submissionParts": [
+        {
+          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "___ sprechen Deutsch.",
+              "userAnswer": "sie",
+              "correctAnswer": "Sie",
+              "isCorrect": true
+            },
+            {
+              "question": "Haben ___ Zeit?",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hilfst ___ mir?",
+              "userAnswer": "",
+              "correctAnswer": "du",
+              "isCorrect": false
+            },
+            {
+              "question": "___ ist Programmierer.",
+              "userAnswer": "",
+              "correctAnswer": "Er",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "userAnswer": "",
+              "correctAnswer": "er, sie, sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "userAnswer": "",
+              "correctAnswer": "du, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "userAnswer": "",
+              "correctAnswer": "ihr, Wir",
+              "isCorrect": false
+            },
+            {
+              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "userAnswer": "",
+              "correctAnswer": "sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "userAnswer": "",
+              "correctAnswer": "du, ich",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "exerciseId": "5",
+      "id": 12
+    },
+    {
+      "submissionDate": "2024-09-15T14:52:08.978Z",
+      "score": "0%",
+      "submissionParts": [
+        {
+          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "___ sprechen Deutsch.",
+              "userAnswer": "ss",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Haben ___ Zeit?",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hilfst ___ mir?",
+              "userAnswer": "",
+              "correctAnswer": "du",
+              "isCorrect": false
+            },
+            {
+              "question": "___ ist Programmierer.",
+              "userAnswer": "",
+              "correctAnswer": "Er",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "userAnswer": "",
+              "correctAnswer": "er, sie, sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "userAnswer": "sd",
+              "correctAnswer": "du, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "userAnswer": "sd",
+              "correctAnswer": "ihr, Wir",
+              "isCorrect": false
+            },
+            {
+              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "userAnswer": "",
+              "correctAnswer": "sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "userAnswer": "sd",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "userAnswer": "sd",
+              "correctAnswer": "du, ich",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "exerciseId": "5",
+      "id": 13
+    },
+    {
+      "submissionDate": "2024-09-15T14:54:11.787Z",
+      "score": "0%",
+      "submissionParts": [
+        {
+          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "___ sprechen Deutsch.",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Haben ___ Zeit?",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hilfst ___ mir?",
+              "userAnswer": "",
+              "correctAnswer": "du",
+              "isCorrect": false
+            },
+            {
+              "question": "___ ist Programmierer.",
+              "userAnswer": "",
+              "correctAnswer": "Er",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "userAnswer": "",
+              "correctAnswer": "er, sie, sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "userAnswer": "",
+              "correctAnswer": "du, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "userAnswer": "",
+              "correctAnswer": "ihr, Wir",
+              "isCorrect": false
+            },
+            {
+              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
+          "questions": [
+            {
+              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "userAnswer": "",
+              "correctAnswer": "Sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "userAnswer": "",
+              "correctAnswer": "sie",
+              "isCorrect": false
+            },
+            {
+              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "userAnswer": "",
+              "correctAnswer": "Sie, Ich",
+              "isCorrect": false
+            },
+            {
+              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "userAnswer": "",
+              "correctAnswer": "du, ich",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "exerciseId": "5",
+      "id": 14
     }
   ],
   "listeningExercisesSubmission": [
@@ -3115,6 +3610,13 @@
       "submissionParts": {},
       "exerciseId": "2",
       "id": "ML4h_HN"
+    },
+    {
+      "submissionDate": "2024-09-15T14:57:17.010Z",
+      "score": "0%",
+      "submissionParts": {},
+      "exerciseId": "2",
+      "id": "ChwWQvR"
     }
   ],
   "writingExercisesSubmission": [],
