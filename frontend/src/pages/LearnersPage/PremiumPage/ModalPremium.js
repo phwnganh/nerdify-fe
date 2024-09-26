@@ -16,7 +16,6 @@ export const ModalPremium = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    navigate(CLIENT_URI.PREMIUM);
   };
 
   return (
