@@ -13,7 +13,7 @@ export default function ListeningExercises() {
   const [exercises, setExercises] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [userScore, setUserScore] = useState(0);
-  const [isCompleted, setIsCompleted] = useState(false); // Trạng thái hoàn thành
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -50,6 +50,15 @@ export default function ListeningExercises() {
             <TextCustom style={{ fontWeight: "bold" }}>
               Câu {question.id}: {question.question}
             </TextCustom>
+
+            {/* Thêm thẻ âm thanh */}
+            {question.audioUrl && (
+              <audio controls style={{ marginTop: "20px", width: "100%" }}>
+                <source src={question.audioUrl} type="audio/mp3" />
+                Trình duyệt của bạn không hỗ trợ phần tử audio.
+              </audio>
+            )}
+
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               {question.options.map((option) => {
                 const userSelected = userAnswers[question.id] === option.id;
@@ -80,6 +89,7 @@ export default function ListeningExercises() {
                 );
               })}
             </div>
+
             {isCompleted && (
               <>
                 <ButtonCustom
@@ -249,7 +259,6 @@ export default function ListeningExercises() {
               <ButtonCustom
                 buttonType="secondary"
                 style={{ padding: "23px", marginLeft: "30px" }}
-                // onClick={handleNextExercise}
               >
                 Chuyển sang bài tập tiếp theo
               </ButtonCustom>
@@ -259,7 +268,7 @@ export default function ListeningExercises() {
               buttonType="secondary"
               style={{ padding: "23px", marginLeft: "30px" }}
               onClick={handleSubmit}
-              disabled={currentPartIndex !== exercises.parts.length - 1} // Nút nộp bài chỉ được kích hoạt khi ở phần cuối
+              disabled={currentPartIndex !== exercises.parts.length - 1}
             >
               Nộp bài
             </ButtonCustom>
