@@ -552,7 +552,7 @@ export default function VocabularyExercises() {
                         <Radio.Button
                           value={ques.id}
                           style={{
-                            backgroundColor: "#ffa751",
+                            backgroundColor: "#ff855d",
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
@@ -585,7 +585,7 @@ export default function VocabularyExercises() {
                         <Radio.Button
                           value={matchQues.id}
                           style={{
-                            backgroundColor: "#ffa751",
+                            backgroundColor: "#ff855d",
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
@@ -792,7 +792,11 @@ export default function VocabularyExercises() {
                   >
                     <InputCustom
                       //if first question => value = answer and disabled
-                      value={question.id === 1 ? question.answer : ""}
+                      value={
+                        question.id === 1
+                          ? question.answer
+                          : inputValuePart3[question.id]
+                      }
                       onChange={(e) =>
                         handleInputChangePart3(question.id, e.target.value)
                       }
