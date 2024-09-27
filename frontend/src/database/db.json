@@ -264,7 +264,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "14%"
+      "score": "43%"
     },
     {
       "id": "2",
@@ -2888,6 +2888,94 @@
           "questionId": 7,
           "correctAnswer": "A",
           "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "b29b",
+      "submissionDate": "2024-09-27T14:44:54.204Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "d34b",
+      "submissionDate": "2024-09-27T15:33:04.421Z",
+      "score": "43%",
+      "submissionAnswers": [
+        {
+          "questionId": "1",
+          "userAnswer": "A"
+        },
+        {
+          "questionId": "2",
+          "userAnswer": "B"
+        },
+        {
+          "questionId": "3",
+          "userAnswer": "C"
+        },
+        {
+          "questionId": "4",
+          "userAnswer": "B"
+        },
+        {
+          "questionId": "5",
+          "userAnswer": "B"
+        },
+        {
+          "questionId": "6",
+          "userAnswer": "B"
+        },
+        {
+          "questionId": "7",
+          "userAnswer": "C"
         }
       ],
       "exerciseId": "1",
