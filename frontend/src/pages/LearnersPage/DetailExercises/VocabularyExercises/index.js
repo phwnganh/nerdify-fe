@@ -308,7 +308,7 @@ export default function VocabularyExercises() {
 
     const submissionData = {
       submissionDate: submissionDate,
-      score: ` ${userScore}%`,
+      score: ` ${score}%`,
       submissionAnswers: [
         ...submissionAnswersPart1,
         ...submissionAnswersPart2,
