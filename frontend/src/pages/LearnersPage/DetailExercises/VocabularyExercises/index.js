@@ -154,15 +154,15 @@ export default function VocabularyExercises() {
   const markPart1 = (exercise) => {
     let score = 0;
     let n = 1;
-    while (selectedPairsPart1[n]) {
+    while (n <= Object.keys(selectedPairsPart1).length) {
       if (selectedPairsPart1[n] === n) {
         score++;
       }
       n++;
     }
-
     return score;
   };
+
   const handleSelectAnswersPart2 = (questionId, optionId) => {
     setSelectedAnswersPart2((prev) => ({
       ...prev,
@@ -304,7 +304,7 @@ export default function VocabularyExercises() {
       markPart2(exercises.parts[1]) +
       markPart3(exercises.parts[2]);
 
-    setUserScore(score === -1 ? 0 : score);
+    setUserScore(score);
 
     const submissionData = {
       submissionDate: submissionDate,
