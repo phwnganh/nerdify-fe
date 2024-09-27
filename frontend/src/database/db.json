@@ -264,7 +264,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "43%"
+      "score": 57
     },
     {
       "id": "2",
@@ -2976,6 +2976,57 @@
         {
           "questionId": "7",
           "userAnswer": "C"
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "2727",
+      "submissionDate": "2024-09-27T17:32:20.075Z",
+      "score": 57,
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
         }
       ],
       "exerciseId": "1",

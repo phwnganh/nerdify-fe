@@ -86,29 +86,37 @@ export default function ListeningExercise() {
 
   const handleSubmit = useCallback(() => {
     let correctAnswers = 0;
+    const submissionAnswers = [];
+  
     exercises.parts.forEach(part => {
       part.questions.forEach(question => {
-        if (userAnswers[question.id] === question.answer) {
+        const userAnswer = userAnswers[question.id];
+        const isCorrect = userAnswer === question.answer;
+        if (isCorrect) {
           correctAnswers++;
         }
+        submissionAnswers.push({
+          questionId: question.id,
+          userAnswer,
+          correctAnswer: question.answer,
+          isCorrect
+        });
       });
     });
+  
     const calculatedScore = Math.round((correctAnswers / totalQuestions) * 100);
     setScore(calculatedScore);
     setIsSubmitted(true);
-
+  
     // Save submission to server
     const submissionData = {
       submissionDate: new Date().toISOString(),
-      score: `${calculatedScore}%`,
-      submissionAnswers: Object.entries(userAnswers).map(([questionId, answerId]) => ({
-        questionId,
-        userAnswer: answerId,
-      })),
+      score: calculatedScore,
+      submissionAnswers,
       exerciseId: exercises.id,
       isCompleted: true,
     };
-
+  
     fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
@@ -119,7 +127,7 @@ export default function ListeningExercise() {
       .then((res) => res.json())
       .then((data) => console.log("Submission saved:", data))
       .catch((err) => console.error("Error saving submission:", err));
-
+  
     // Update exercise completion status
     fetch(`http://localhost:9999/exercises/${exercises.id}`, {
       method: "PATCH",
@@ -128,7 +136,7 @@ export default function ListeningExercise() {
       },
       body: JSON.stringify({
         isCompleted: true,
-        score: `${calculatedScore}%`,
+        score: calculatedScore,
       }),
     })
       .then((res) => res.json())
