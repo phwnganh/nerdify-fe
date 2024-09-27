@@ -3509,6 +3509,136 @@
       ],
       "conditionStatus": "not pass",
       "examId": "1"
+    },
+    {
+      "id": "d0af",
+      "submissionDate": "2024-09-25T16:37:00.311Z",
+      "score": "100%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "passed",
+      "isCompleted": true,
+      "examId": "1"
     }
   ],
   "users": [
@@ -3561,6 +3691,45 @@
       "startDate": "",
       "endDate": "",
       "discount": 0.15
+    },
+    {
+      "id": "03de",
+      "packageId": "1",
+      "startDate": "26/09/2024",
+      "endDate": "26/03/2025",
+      "discount": 0
+    },
+    {
+      "id": "2fb9",
+      "packageId": "2",
+      "startDate": "26/09/2024",
+      "endDate": "26/09/2025",
+      "discount": 0
+    },
+    {
+      "id": "1165",
+      "packageId": "1",
+      "startDate": "26/09/2024",
+      "endDate": "26/03/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "f386",
+      "packageId": "1",
+      "startDate": "26/09/2024",
+      "endDate": "26/03/2025",
+      "discount": 0.15,
+      "totalPrice": 254150,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    },
+    {
+      "id": "2db4",
+      "packageId": "2",
+      "startDate": "26/09/2024",
+      "endDate": "26/09/2025",
+      "discount": 0.15,
+      "totalPrice": 499000,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 1 NĂM"
     }
   ]
 }

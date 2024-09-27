@@ -27,6 +27,7 @@ import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
+import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 export const routes = [
   // Guest urls
   {
@@ -94,8 +95,16 @@ export const routes = [
           },
           {
             path: CLIENT_URI.LEARNING_PROGRESS,
-            element: <LearningProgress/>
-          }
+            element: <LearningProgress />,
+          },
+          {
+            path: CLIENT_URI.TROPHY,
+            element: <TakeATrophy />,
+          },
+          {
+            path: CLIENT_URI.PREMIUM,
+            element: <PremiumPage />,
+          },
         ],
       },
       // {
@@ -121,13 +130,14 @@ export const routes = [
       // test giao diện
 
       {
-        path: CLIENT_URI.PAYMENT,
+        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
         element: <Payment />,
       },
       {
-        path: CLIENT_URI.BILLINFO,
+        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
         element: <BillInfo />,
       },
+
     ],
   },
 
@@ -193,10 +203,10 @@ export const routes = [
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
         element: <ViewResultsDetail />,
       },
-      {
-        path: CLIENT_URI.PREMIUM,
-        element: <PremiumPage />,
-      },
+      // {
+      //   path: CLIENT_URI.PREMIUM,
+      //   element: <PremiumPage />,
+      // },
     ],
   },
 
