@@ -909,7 +909,7 @@ export default function VocabularyExercises() {
         {renderPart()}
       </div>
 
-      <div style={{ textAlign: "center", paddingTop: "50px", width: "894px" }}>
+      <div style={{ textAlign: "center", paddingTop: "50px" }}>
         <ButtonCustom
           buttonType="secondary"
           style={{ marginRight: "100px", padding: "23px" }}
