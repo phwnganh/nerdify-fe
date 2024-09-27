@@ -7,8 +7,6 @@ import GrammarExercises from "./GrammarExercises";
 import CheckpointQuiz from "./CheckpointQuiz";
 export default function ExerciseDetail() {
   const { exerciseType, exerciseId } = useParams();
-  console.log("Exercise Type:", exerciseType);
-  console.log("exercise id: ", exerciseId);
 
   const renderExercises = () => {
     switch (exerciseType) {

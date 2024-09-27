@@ -153,13 +153,21 @@ export default function VocabularyExercises() {
 
   const markPart1 = (exercise) => {
     let score = 0;
-    let n = 1;
-    while (n <= Object.keys(selectedPairsPart1).length) {
-      if (selectedPairsPart1[n] === n) {
+
+    // Get the keys of the selectedPairsPart1 object
+    const keys = Object.keys(selectedPairsPart1);
+
+    // Iterate over each key
+    for (let key of keys) {
+      // Convert the key to a number to compare with its value
+      const index = parseInt(key, 10);
+
+      // Check if the value matches its key
+      if (selectedPairsPart1[key] === index) {
         score++;
       }
-      n++;
     }
+
     return score;
   };
 
@@ -305,6 +313,24 @@ export default function VocabularyExercises() {
       markPart3(exercises.parts[2]);
 
     setUserScore(score);
+
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        isCompleted: true,
+        score: `${score}%`,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     const submissionData = {
       submissionDate: submissionDate,
@@ -493,6 +519,7 @@ export default function VocabularyExercises() {
                   ))}
                 </Radio.Group>
               </Col>
+              <Col span={4}></Col>
             </Row>
 
             {/* Display Selected Pairs */}
@@ -530,7 +557,7 @@ export default function VocabularyExercises() {
             </div>
           </>
         )}
-        {/*   */}
+
         {userScore > -1 && (
           <>
             <Row
@@ -608,15 +635,12 @@ export default function VocabularyExercises() {
                 </Radio.Group>
               </Col>
 
-              <Col>
+              <Col span={4}>
                 {Object.entries(selectedPairsPart1).map(
                   ([questionId, matchQuestionId]) => {
                     const questionText = questions.find(
                       (q) => q.id === parseInt(questionId)
                     )?.question;
-                    const matchQuestionText = questions.find(
-                      (m) => m.id === parseInt(matchQuestionId)
-                    )?.matchedQuestion;
 
                     return (
                       <Row
@@ -653,7 +677,7 @@ export default function VocabularyExercises() {
                               >
                                 Đáp án:
                                 <br />
-                                {questionText} -
+                                {questionText} -{" "}
                                 {
                                   questions.find(
                                     (m) => m.id === parseInt(questionId)
@@ -885,7 +909,7 @@ export default function VocabularyExercises() {
         {renderPart()}
       </div>
 
-      <div style={{ textAlign: "center", paddingTop: "50px" }}>
+      <div style={{ textAlign: "center", paddingTop: "50px", width: "894px" }}>
         <ButtonCustom
           buttonType="secondary"
           style={{ marginRight: "100px", padding: "23px" }}
