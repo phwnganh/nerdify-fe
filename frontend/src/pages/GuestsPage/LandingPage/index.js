@@ -69,13 +69,13 @@ export const LandingPage = () => {
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
-            Học tiếng đức
+            Học tiếng Đức
             <br />
             trực tuyến hiệu quả
             <br />
             cùng các bài tập
             <br />
-            theo trình độ
+            theo trình độ.
           </h2>
           <p style={{ fontSize: "20px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ButtonCustom
