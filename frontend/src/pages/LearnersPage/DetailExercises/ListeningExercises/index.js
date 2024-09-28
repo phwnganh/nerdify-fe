@@ -57,16 +57,14 @@ export default function ListeningExercise() {
     part2_ques7,
     part2_ques8,
     part3_ques11,
-    part3_ques12
-  }
+    part3_ques12,
+  };
   const { TabPane } = Tabs;
 
   const videoRef = useRef(null);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
-    )
+    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -166,24 +164,19 @@ export default function ListeningExercise() {
       <>
         {currentPart.questions.map((question) => (
           <div key={question.id}>
-            <TextCustom style={{ paddingTop: "100px", fontWeight: 'bold' }}>
+            <TextCustom style={{ paddingTop: "100px", fontWeight: "bold" }}>
               Câu {question.id}: {question.question}
             </TextCustom>
             <audio controls style={{ marginTop: "20px", width: "100%" }}>
-            <source src={audioArr[question.audioUrl]} type="audio/mp3" />
-            Trình duyệt của bạn không hỗ trợ phần tử audio.
-          </audio>
+              <source src={audioArr[question.audioUrl]} type="audio/mp3" />
+              Trình duyệt của bạn không hỗ trợ phần tử audio.
+            </audio>
             <div style={{ marginTop: "20px" }}>
               <Row style={{ textAlign: "center" }}>
                 {question.questionImage &&
                   question.questionImage.map((image, index) => (
                     <Col key={index} span={8}>
-                      <img
-                        src={imagesArr[image]}
-                        width={"80%"}
-                        style={{ marginBottom: "12px" }}
-                        alt={`Question ${question.id}`}
-                      />
+                      <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
                     </Col>
                   ))}
               </Row>
@@ -223,17 +216,10 @@ export default function ListeningExercise() {
             </div>
             {partResults[`part${currentPartIndex + 1}`] && (
               <>
-                <ButtonCustom
-                  buttonType="primary"
-                  onClick={() => handleToggleAnswerDetail(question.id)}
-                >
+                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && (
-                  <TextCustom style={{ color: "blue" }}>
-                    {question.answerDetail}
-                  </TextCustom>
-                )}
+                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
               </>
             )}
           </div>
@@ -304,33 +290,16 @@ export default function ListeningExercise() {
               </TextCustom>
             </div>
           )} */}
-          <TextCustom style={{ color: "red", fontWeight: "bold" }}>
-            {currentPart.partName}
-          </TextCustom>
-          {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE &&
-            renderPart(currentPart, `part${currentPartIndex + 1}`)}
+          <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
+          {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart, `part${currentPartIndex + 1}`)}
           <div style={{ textAlign: "center", paddingTop: "50px" }}>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px" }}
-              onClick={handlePreviousPart}
-              disabled={currentPartIndex === 0}
-            >
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={handlePreviousPart} disabled={currentPartIndex === 0}>
               Phần trước
             </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px", marginLeft: "30px" }}
-              onClick={handleNextPart}
-              disabled={currentPartIndex === exercises.parts.length - 1}
-            >
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleNextPart} disabled={currentPartIndex === exercises.parts.length - 1}>
               Phần tiếp theo
             </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px", marginLeft: "30px" }}
-              onClick={handleCompleted}
-            >
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleCompleted}>
               Hoàn thành
             </ButtonCustom>
           </div>

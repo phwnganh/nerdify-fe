@@ -31,9 +31,7 @@ export default function ReadingExercises() {
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
-    fetch(
-      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
-    )
+    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -84,13 +82,9 @@ export default function ReadingExercises() {
 
     console.log("results: ", results);
 
-    const partScore =
-      (results.filter((result) => result.isCorrect).length / results.length) *
-      100;
+    const partScore = (results.filter((result) => result.isCorrect).length / results.length) * 100;
 
-    const completedParts =
-      Object.keys(partResults).filter((key) => partResults[key] !== null)
-        .length + 1;
+    const completedParts = Object.keys(partResults).filter((key) => partResults[key] !== null).length + 1;
     const totalScore = Object.keys(partResults).reduce((acc, key) => {
       const part = partResults[key];
       if (part) {
@@ -118,48 +112,26 @@ export default function ReadingExercises() {
         <>
           {currentPart.partDetail.map((detail, detailIndex) => (
             <div key={detailIndex}>
-              <TextCustom style={{ }}>
-                {detail.questionParagraph}
-              </TextCustom>
+              <TextCustom style={{}}>{detail.questionParagraph}</TextCustom>
               {detail.questions.map((question) => (
                 <div key={question.id}>
-                  <TextCustom style={{fontWeight: 'bold'}}>
+                  <TextCustom style={{ fontWeight: "bold" }}>
                     Câu {question.id}: {question.question}
                   </TextCustom>
-                  <div
-                    style={{ display: "flex", justifyContent: "space-around" }}
-                  >
+                  <div style={{ display: "flex", justifyContent: "space-around" }}>
                     {question.options.map((option) => {
-                      const userSelected =
-                        userAnswers[question.id] === option.id;
-                      const partResultsData =
-                        partResults[`part${currentPartIndex + 1}`];
-                      const isCorrect = partResultsData
-                        ? partResultsData.find(
-                            (result) => result.id === question.id
-                          )?.correctAnswer === option.id
-                        : false;
+                      const userSelected = userAnswers[question.id] === option.id;
+                      const partResultsData = partResults[`part${currentPartIndex + 1}`];
+                      const isCorrect = partResultsData ? partResultsData.find((result) => result.id === question.id)?.correctAnswer === option.id : false;
 
                       let backgroundColor = userSelected ? "#A8703E" : "";
 
                       if (partResultsData) {
-                        backgroundColor = isCorrect
-                          ? "#5FD855"
-                          : userSelected
-                          ? "red"
-                          : "";
+                        backgroundColor = isCorrect ? "#5FD855" : userSelected ? "red" : "";
                       }
 
                       return (
-                        <ButtonCustom
-                          key={option.id}
-                          buttonType="primary"
-                          onClick={() =>
-                            handleSelectOptions(question.id, option.id)
-                          }
-                          style={{ backgroundColor }}
-                          disabled={!!partResultsData}
-                        >
+                        <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={!!partResultsData}>
                           {option.text}
                         </ButtonCustom>
                       );
@@ -167,17 +139,10 @@ export default function ReadingExercises() {
                   </div>
                   {partResults[`part${currentPartIndex + 1}`] && (
                     <>
-                      <ButtonCustom
-                        buttonType="primary"
-                        onClick={() => handleToggleAnswerDetail(question.id)}
-                      >
+                      <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                         Đáp án chi tiết
                       </ButtonCustom>
-                      {toggleAnswerDetail[question.id] && (
-                        <TextCustom style={{ color: "blue" }}>
-                          {question.answerDetail}
-                        </TextCustom>
-                      )}
+                      {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
                     </>
                   )}
                 </div>
@@ -186,15 +151,7 @@ export default function ReadingExercises() {
           ))}
           <Row justify="end">
             {!partResults[`part${currentPartIndex + 1}`] && (
-              <ButtonCustom
-                buttonType="secondary"
-                onClick={() =>
-                  handleSubmitPart(
-                    `part${currentPartIndex + 1}`,
-                    currentPart.partDetail
-                  )
-                }
-              >
+              <ButtonCustom buttonType="secondary" onClick={() => handleSubmitPart(`part${currentPartIndex + 1}`, currentPart.partDetail)}>
                 Nộp bài
               </ButtonCustom>
             )}
@@ -208,55 +165,28 @@ export default function ReadingExercises() {
         <>
           {currentPart.questions.map((question) => (
             <div key={question.id}>
-              <TextCustom style={{fontWeight: 'bold'}}>
+              <TextCustom style={{ fontWeight: "bold" }}>
                 Câu {question.id}: {question.question}
               </TextCustom>
-              {Array.isArray(question.questionImage) &&
-              question.questionImage.length > 0 ? (
-                question.questionImage.map((image, index) => (
-                  <img
-                    key={index}
-                    src={imgReadingArr[image]}
-                    alt="question-part"
-                  />
-                ))
+              {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
+                question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} alt="question-part" />)
               ) : question.questionImage ? (
-                <img
-                  src={imgReadingArr[question.questionImage]}
-                  alt="question-part"
-                />
+                <img src={imgReadingArr[question.questionImage]} alt="question-part" />
               ) : null}
               <div style={{ display: "flex", justifyContent: "space-around" }}>
                 {question.options.map((option) => {
                   const userSelected = userAnswers[question.id] === option.id;
-                  const partResultsData =
-                    partResults[`part${currentPartIndex + 1}`];
-                  const isCorrect = partResultsData
-                    ? partResultsData.find(
-                        (result) => result.id === question.id
-                      )?.correctAnswer === option.id
-                    : false;
+                  const partResultsData = partResults[`part${currentPartIndex + 1}`];
+                  const isCorrect = partResultsData ? partResultsData.find((result) => result.id === question.id)?.correctAnswer === option.id : false;
 
                   let backgroundColor = userSelected ? "#A8703E" : "";
 
                   if (partResultsData) {
-                    backgroundColor = isCorrect
-                      ? "#5FD855"
-                      : userSelected
-                      ? "red"
-                      : "";
+                    backgroundColor = isCorrect ? "#5FD855" : userSelected ? "red" : "";
                   }
 
                   return (
-                    <ButtonCustom
-                      key={option.id}
-                      buttonType="primary"
-                      onClick={() =>
-                        handleSelectOptions(question.id, option.id)
-                      }
-                      style={{ backgroundColor }}
-                      disabled={!!partResultsData}
-                    >
+                    <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={!!partResultsData}>
                       {option.text}
                     </ButtonCustom>
                   );
@@ -264,32 +194,17 @@ export default function ReadingExercises() {
               </div>
               {partResults[`part${currentPartIndex + 1}`] && (
                 <>
-                  <ButtonCustom
-                    buttonType="primary"
-                    onClick={() => handleToggleAnswerDetail(question.id)}
-                  >
+                  <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                     Đáp án chi tiết
                   </ButtonCustom>
-                  {toggleAnswerDetail[question.id] && (
-                    <TextCustom style={{ color: "blue" }}>
-                      {question.answerDetail}
-                    </TextCustom>
-                  )}
+                  {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
                 </>
               )}
             </div>
           ))}
           <Row justify="end">
             {!partResults[`part${currentPartIndex + 1}`] && (
-              <ButtonCustom
-                buttonType="secondary"
-                onClick={() =>
-                  handleSubmitPart(
-                    `part${currentPartIndex + 1}`,
-                    currentPart.questions
-                  )
-                }
-              >
+              <ButtonCustom buttonType="secondary" onClick={() => handleSubmitPart(`part${currentPartIndex + 1}`, currentPart.questions)}>
                 Nộp bài
               </ButtonCustom>
             )}
@@ -367,18 +282,10 @@ export default function ReadingExercises() {
         )}
       </div>
       <div>
-        <TextCustom style={{ color: "red", fontWeight: "bold" }}>
-          {currentPart.partName}
-        </TextCustom>
-        {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE &&
-          renderPart(currentPart, `part${currentPartIndex + 1}`)}
+        <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
+        {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart, `part${currentPartIndex + 1}`)}
         <div style={{ textAlign: "center", paddingTop: "50px" }}>
-          <ButtonCustom
-            buttonType="secondary"
-            style={{ padding: "23px" }}
-            onClick={() => setCurrentPartIndex((prev) => prev - 1)}
-            disabled={currentPartIndex === 0}
-          >
+          <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => prev - 1)} disabled={currentPartIndex === 0}>
             Phần trước
           </ButtonCustom>
           <ButtonCustom
@@ -391,11 +298,7 @@ export default function ReadingExercises() {
           </ButtonCustom>
           {isCompleted ? (
             <>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "23px", marginLeft: "30px" }}
-                onClick={handleRetry}
-              >
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
                 Làm lại bài tập này
               </ButtonCustom>
               <ButtonCustom
@@ -408,11 +311,7 @@ export default function ReadingExercises() {
             </>
           ) : (
             <>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "23px", marginLeft: "30px" }}
-                onClick={handleCompleted}
-              >
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleCompleted}>
                 Hoàn thành
               </ButtonCustom>
             </>

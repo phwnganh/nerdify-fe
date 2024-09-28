@@ -37,10 +37,7 @@ export default function ListeningResults() {
 
   // Function to go to the next part in the exercise
   const handleNextPart = () => {
-    if (
-      exerciseResults &&
-      currentPartIndex < exerciseResults.exercise.parts.length - 1
-    ) {
+    if (exerciseResults && currentPartIndex < exerciseResults.exercise.parts.length - 1) {
       setCurrentPartIndex((prevIndex) => prevIndex + 1); // Increment the current part index
     }
   };
@@ -53,16 +50,12 @@ export default function ListeningResults() {
   // Fetch exercise submission data
   useEffect(() => {
     const fetchListeningSubmissionData = async () => {
-      const submissionsResponse = await fetch(
-        `http://localhost:9999/listeningExercisesSubmission?id=${submissionId}&userId=1`
-      ); // Fetch submission data based on submissionId and userId
+      const submissionsResponse = await fetch(`http://localhost:9999/listeningExercisesSubmission?id=${submissionId}&userId=1`); // Fetch submission data based on submissionId and userId
       const exercisesResponse = await fetch(`http://localhost:9999/exercises`); // Fetch all exercises
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
       const joinedData = submissions.map((submission) => {
-        const exercise = exercises.find(
-          (exercise) => exercise.id === submission.exerciseId
-        ); // Find the exercise related to the submission
+        const exercise = exercises.find((exercise) => exercise.id === submission.exerciseId); // Find the exercise related to the submission
         return { ...submission, exercise };
       });
       setExerciseResults(joinedData[0]); // Set the exercise result
@@ -105,27 +98,18 @@ export default function ListeningResults() {
                     <div style={{ textAlign: "center" }}>
                       <TextCustom style={{ textAlign: "center" }}>
                         Điểm: &nbsp;
-                        <span style={{ color: "red" }}>
-                          {exerciseResults.score}
-                        </span>
+                        <span style={{ color: "red" }}>{exerciseResults.score}</span>
                       </TextCustom>
                     </div>
 
                     {/* Display part name */}
-                    <TextCustom style={{ color: "red", fontWeight: "bold" }}>
-                      {currentPart.partName}
-                    </TextCustom>
+                    <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
 
                     {/* Display each question */}
                     <div>
                       {currentPart.questions.map((question) => {
-                        const userAnswer =
-                          exerciseResults.submissionAnswers.find(
-                            (ans) => ans.questionId === question.id
-                          ); // Find the user's answer for the question
-                        const correctAnswer = currentPart.answers.find(
-                          (answer) => answer.id === question.id
-                        ); // Find the correct answer
+                        const userAnswer = exerciseResults.submissionAnswers.find((ans) => ans.questionId === question.id); // Find the user's answer for the question
+                        const correctAnswer = currentPart.answers.find((answer) => answer.id === question.id); // Find the correct answer
                         const isCorrect = userAnswer?.isCorrect; // Check if the user's answer is correct
 
                         return (
@@ -168,11 +152,7 @@ export default function ListeningResults() {
                                       : "transparent"; // Default background
                                   return (
                                     <Col key={option.id} span={8}>
-                                      <ButtonCustom
-                                        buttonType="primary"
-                                        style={{ backgroundColor }}
-                                        disabled
-                                      >
+                                      <ButtonCustom buttonType="primary" style={{ backgroundColor }} disabled>
                                         {option.id}. {option.text}
                                       </ButtonCustom>
                                     </Col>
@@ -187,12 +167,7 @@ export default function ListeningResults() {
                                   marginBottom: "20px",
                                 }}
                               >
-                                <ButtonCustom
-                                  buttonType="primary"
-                                  onClick={() =>
-                                    handleToggleAnswerDetail(question.id)
-                                  }
-                                >
+                                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                                   Đáp án chi tiết
                                 </ButtonCustom>
                               </Row>
@@ -200,9 +175,7 @@ export default function ListeningResults() {
                               {/* Show detailed answer explanation if toggled */}
                               {isAnswerDetail[question.id] && correctAnswer && (
                                 <div style={{ paddingLeft: "20px" }}>
-                                  <TextCustom>
-                                    Đáp án đúng: {userAnswer?.correctAnswer}
-                                  </TextCustom>
+                                  <TextCustom>Đáp án đúng: {userAnswer?.correctAnswer}</TextCustom>
                                   <div>
                                     <TextCustom>
                                       Lời giải:{" "}
@@ -249,10 +222,7 @@ export default function ListeningResults() {
                           marginLeft: "23px",
                         }}
                         onClick={handleNextPart}
-                        disabled={
-                          currentPartIndex ===
-                          exerciseResults.exercise.parts.length - 1
-                        }
+                        disabled={currentPartIndex === exerciseResults.exercise.parts.length - 1}
                       >
                         Phần sau
                       </ButtonCustom>

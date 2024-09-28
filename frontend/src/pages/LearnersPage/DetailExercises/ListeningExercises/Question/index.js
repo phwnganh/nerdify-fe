@@ -23,12 +23,7 @@ const imagesArr = {
   demo3_2,
   demo3_3,
 };
-export default function QuestionLayout({
-  part,
-  selectedAnswers,
-  handleOptionSelect,
-  exerciseResults,
-}) {
+export default function QuestionLayout({ part, selectedAnswers, handleOptionSelect, exerciseResults }) {
   const [isAnswerDetail, setIsAnswerDetail] = useState({});
   const handleToggleAnswerDetail = (questionId) => {
     setIsAnswerDetail((prevState) => ({
@@ -42,9 +37,7 @@ export default function QuestionLayout({
     <>
       {part.partType === PART_TYPE.MULTIPLE_CHOICE && (
         <>
-          <TextCustom style={{ color: "red", fontWeight: "bold" }}>
-            {part.partName}
-          </TextCustom>
+          <TextCustom style={{ color: "red", fontWeight: "bold" }}>{part.partName}</TextCustom>
           {part.questions.map((question) => (
             <div key={question.id}>
               <TextCustom style={{ paddingTop: "100px" }}>
@@ -55,39 +48,20 @@ export default function QuestionLayout({
                   {question.questionImage &&
                     question.questionImage.map((image, index) => (
                       <Col key={index} span={8}>
-                        <img
-                          src={imagesArr[image]}
-                          width={"80%"}
-                          style={{ marginBottom: "12px" }}
-                          alt={`Question ${question.id}`}
-                        />
+                        <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
                       </Col>
                     ))}
                 </Row>
                 <Row style={{ textAlign: "center", marginTop: "10px" }}>
                   {question.options.map((option) => {
-                    const isCorrectOption =
-                      exerciseResults && option.id === question.correctAnswer;
-                    const isUserSelected =
-                      option.id === selectedAnswers[question.id];
-                    const backgroundColor = exerciseResults
-                      ? isCorrectOption
-                        ? "#5FD855"
-                        : isUserSelected && !question.isCorrect
-                        ? "red"
-                        : ""
-                      : isUserSelected
-                      ? "#A8703E"
-                      : "";
+                    const isCorrectOption = exerciseResults && option.id === question.correctAnswer;
+                    const isUserSelected = option.id === selectedAnswers[question.id];
+                    const backgroundColor = exerciseResults ? (isCorrectOption ? "#5FD855" : isUserSelected && !question.isCorrect ? "red" : "") : isUserSelected ? "#A8703E" : "";
                     return (
                       <Col key={option.id} span={8}>
                         <ButtonCustom
                           buttonType="primary"
-                          onClick={() =>
-                            exerciseResults
-                              ? null
-                              : handleOptionSelect(question.id, option.id)
-                          }
+                          onClick={() => (exerciseResults ? null : handleOptionSelect(question.id, option.id))}
                           style={{ backgroundColor }}
                           disabled={!!exerciseResults}
                         >
@@ -99,10 +73,7 @@ export default function QuestionLayout({
                 </Row>
                 {exerciseResults && (
                   <Row style={{ marginTop: "20px", marginBottom: "20px" }}>
-                    <ButtonCustom
-                      buttonType="primary"
-                      onClick={() => handleToggleAnswerDetail(question.id)}
-                    >
+                    <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                       Đáp án chi tiết
                     </ButtonCustom>
                   </Row>
@@ -110,15 +81,10 @@ export default function QuestionLayout({
 
                 {exerciseResults && isAnswerDetail[question.id] && (
                   <div style={{ paddingLeft: "20px" }}>
-                    <TextCustom>
-                      Đáp án đúng: {question.correctAnswer}
-                    </TextCustom>
+                    <TextCustom>Đáp án đúng: {question.correctAnswer}</TextCustom>
                     <div>
                       <TextCustom>
-                        Lời giải:{" "}
-                        <span style={{ color: "blue" }}>
-                          {question.answerDetail}
-                        </span>
+                        Lời giải: <span style={{ color: "blue" }}>{question.answerDetail}</span>
                       </TextCustom>
                     </div>
                   </div>
@@ -128,10 +94,7 @@ export default function QuestionLayout({
           ))}
           <div style={{ padding: "24px" }}>
             <Row justify={"end"}>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "20px", marginLeft: "20px" }}
-              >
+              <ButtonCustom buttonType="secondary" style={{ padding: "20px", marginLeft: "20px" }}>
                 Nộp bài
               </ButtonCustom>
             </Row>
