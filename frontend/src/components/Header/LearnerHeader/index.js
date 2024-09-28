@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Col, Dropdown, Layout, Menu, Row } from "antd";
+import { Layout, Dropdown, Menu } from "antd";
 import { BellOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
-import { useNavigate, useLocation } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import MenuBar from "../../Menu";
 import InputCustom from "../../Input";
 import MenuItem from "../../Menu/MenuItem";
@@ -15,26 +14,12 @@ const { Header } = Layout;
 
 export default function LearnerHeader() {
   const navigate = useNavigate();
-  const location = useLocation();
-
   const [selectedKey, setSelectedKey] = useState("course");
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  // Handle route changes and update selected menu item
-  useEffect(() => {
-    if (location.pathname === CLIENT_URI.COURSE_PAGE) {
-      setSelectedKey("course");
-    } else if (location.pathname === CLIENT_URI.FLASH_CARD) {
-      setSelectedKey("flashcards");
-    }
-  }, [location.pathname]);
-
-  // Handlers
   const handleMenuClick = (e) => setSelectedKey(e.key);
-
   const handleSearchClick = () => setSearchVisible(true);
-
   const handleInputChange = (e) => setInputValue(e.target.value);
 
   const handleLogout = () => {
@@ -44,7 +29,6 @@ export default function LearnerHeader() {
     });
   };
 
-  // User dropdown menu
   const userMenu = (
     <Menu>
       <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.PROFILE)}>
@@ -56,28 +40,38 @@ export default function LearnerHeader() {
     </Menu>
   );
 
-  // Styles
   const headerStyle = {
     background: "#fff",
-    padding: "0 50px",
-    display: "flex",
-    alignItems: "center",
-    position: "fixed", // Makes the header fixed
+    position: "fixed",
     width: "100%",
     zIndex: 1000,
     top: 0,
+    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+    height: "100px",
+    display: "flex",
+    alignItems: "center",
+  };
+
+  const containerStyle = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    width: "100%",
+    padding: "0 16px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexWrap: "nowrap",
   };
 
   const logoStyle = {
-    width: "100px",
-    height: "50px",
-    paddingTop: "15px",
+    width: "150px",
+    height: "auto",
   };
 
-  const buttonGroupStyle = {
+  const menuStyle = {
+    flexGrow: 1,
     display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
+    justifyContent: "center",
   };
 
   const searchContainerStyle = {
@@ -86,50 +80,60 @@ export default function LearnerHeader() {
     paddingRight: "10px",
   };
 
+  const buttonGroupStyle = {
+    display: "flex",
+    alignItems: "center",
+  };
+
   return (
-    <Header style={headerStyle}>
-      <Row align="middle" justify="space-between" style={{ width: "100%" }}>
-        {/* Logo */}
-        <Col flex="50px">
-          <div className="logo">
+    <>
+      <Header style={headerStyle}>
+        <div style={containerStyle}>
+          {/* Logo */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100px" }}>
             <img src={logo} alt="Deutsch Nerd" style={logoStyle} />
           </div>
-        </Col>
 
-        {/* Menu */}
-        <Col flex="auto">
-          <MenuBar mode="horizontal" style={{ display: "flex", justifyContent: "center" }} selectedKey={selectedKey} onClick={handleMenuClick}>
-            <MenuItem key="course" onClick={() => navigate(CLIENT_URI.COURSE_PAGE)}>
-              KHÓA HỌC
-            </MenuItem>
-            <MenuItem key="flashcards" onClick={() => navigate(CLIENT_URI.FLASH_CARD)}>
-              FLASHCARD
-            </MenuItem>
-            <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
-            <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-            <MenuItem key="premium" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
-              PREMIUM
-            </MenuItem>
-          </MenuBar>
-        </Col>
-
-        {/* Search and User Actions */}
-        <Col flex="300px" style={buttonGroupStyle}>
-          {/* Search */}
-          <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
-            <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
-            {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
+          {/* Menu */}
+          <div style={menuStyle}>
+            <MenuBar
+              mode="horizontal"
+              selectedKey={selectedKey}
+              onClick={handleMenuClick}
+              style={{
+                lineHeight: "64px",
+                borderBottom: "none",
+              }}
+            >
+              <MenuItem key="course" onClick={() => navigate(CLIENT_URI.COURSE_PAGE)}>
+                KHÓA HỌC
+              </MenuItem>
+              <MenuItem key="flashcards" onClick={() => navigate(CLIENT_URI.FLASH_CARD)}>
+                FLASHCARD
+              </MenuItem>
+              <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
+              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
+              <MenuItem key="premium" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
+                PREMIUM
+              </MenuItem>
+            </MenuBar>
           </div>
 
-          {/* Notification Icon */}
-          <BellOutlined style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }} />
+          {/* Search and User Actions */}
+          <div style={buttonGroupStyle}>
+            <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
+              <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
+              {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
+            </div>
 
-          {/* User Dropdown */}
-          <Dropdown overlay={userMenu} trigger={["click"]}>
-            <UserOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
-          </Dropdown>
-        </Col>
-      </Row>
-    </Header>
+            <BellOutlined style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }} />
+
+            <Dropdown overlay={userMenu} trigger={["click"]}>
+              <UserOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
+            </Dropdown>
+          </div>
+        </div>
+      </Header>
+    </>
   );
 }

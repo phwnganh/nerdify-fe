@@ -23,7 +23,7 @@ export default function CoursePage() {
           marginBottom: "40px",
         }}
       >
-        KHÓA HỌC
+        DS Bài Tập
       </h2>
       <List
         grid={{

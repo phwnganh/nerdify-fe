@@ -5,35 +5,44 @@ import Footer from "../components/Footer";
 
 // LearnerLayout Component
 export const LearnerLayout = ({ children }) => {
-  // Styles
-  const styles = {
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      minHeight: "100vh",
-    },
-    content: {
-      flex: 1,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      paddingTop: "80px",
-    },
-  };
-
   return (
-    <div style={styles.container}>
-      {/* Fixed LearnerHeader */}
-      <LearnerHeader />
+    <>
+      {/* Main Container */}
+      <div style={{ minHeight: "100vh", width: "100%" }}>
+        {/* Fixed LearnerHeader */}
+        <LearnerHeader />
 
-      {/* Main Content */}
-      <div style={styles.content}>{children}</div>
+        {/* Content Area */}
+        <div style={styles.container}>
+          <div style={styles.content}>{children}</div>
 
-      {/* Divider and Footer */}
-      <Divider style={{ margin: 0 }} />
-      <Footer />
-    </div>
+          {/* Divider and Footer */}
+          <Divider style={{ marginBottom: 5 }} />
+          <Footer />
+        </div>
+      </div>
+    </>
   );
+};
+
+// Styles
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    width: "100%",
+    paddingTop: "80px",
+    boxSizing: "border-box",
+    overflowX: "hidden",
+  },
+  content: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
 };
 
 export default LearnerLayout;
