@@ -100,7 +100,6 @@ export default function VocabularyExercises() {
   //when select question, set question to available pairs and clear match question
   const onChangeQues = (e) => {
     const selectedQuestionId = e.target.value;
-
     setAvailablePairs((prev) => ({
       ...prev,
       question: selectedQuestionId,
@@ -430,7 +429,10 @@ export default function VocabularyExercises() {
                         <Radio.Button
                           value={ques.id}
                           style={{
-                            backgroundColor: "#ffa751",
+                            backgroundColor:
+                              availablePairs.question === ques.id
+                                ? "#A8703E"
+                                : "#ffa751",
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
@@ -480,7 +482,10 @@ export default function VocabularyExercises() {
                         <Radio.Button
                           value={matchQues.id}
                           style={{
-                            backgroundColor: "#ffa751",
+                            backgroundColor:
+                              availablePairs.matchQuestion === matchQues.id
+                                ? "#A8703E"
+                                : "#ffa751",
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
@@ -889,12 +894,7 @@ export default function VocabularyExercises() {
           <TextCustom style={{ textAlign: "center" }}>
             Điểm:&nbsp;
             <span style={{ color: "red" }}>
-              {userScore}/{totalQuestions}
-            </span>
-            <span
-              style={{ color: "red", marginLeft: "10px", fontWeight: "bold" }}
-            >
-              {/* ({mark}%) */}
+              {Math.round((userScore / totalQuestions) * 100)}%
             </span>
           </TextCustom>
         </div>

@@ -435,7 +435,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "38%"
+      "score": "0%"
     },
     {
       "id": "3",
@@ -696,7 +696,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "0%"
+      "score": "2%"
     },
     {
       "id": "4",
@@ -6635,6 +6635,632 @@
           "userAnswer": "Freitag - no answer",
           "correctAnswer": "Freitag - Thứ sáu",
           "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "no answer",
+          "correctAnswer": "Februar"
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3"
+    },
+    {
+      "id": "6512",
+      "submissionDate": "2024-09-28T11:46:05.238Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "51f0",
+      "submissionDate": "2024-09-28T11:46:10.969Z",
+      "score": " 0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - no answer",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - no answer",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "no answer",
+          "correctAnswer": "Februar"
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3"
+    },
+    {
+      "id": "a7e9",
+      "submissionDate": "2024-09-28T11:57:28.274Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "c6cb",
+      "submissionDate": "2024-09-28T11:57:31.650Z",
+      "score": " 0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - mùa đông",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - Thứ ba",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - mùa xuân",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - buổi sáng(từ 6-10 giờ)",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - Thứ bảy",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - buổi sáng(từ 10-12 giờ)",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - Thứ hai",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - ngày",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - Thứ Tư",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - mùa hè",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - Thứ sáu",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "no answer",
+          "correctAnswer": "Februar"
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3"
+    },
+    {
+      "id": "cde7",
+      "submissionDate": "2024-09-28T11:58:30.905Z",
+      "score": " 2%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - Thứ hai",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - no answer",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - Thứ sáu",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": true
         },
         {
           "questionId": 7,
