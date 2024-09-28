@@ -33,7 +33,7 @@ export const LandingPage = () => {
     },
   ];
 
-  const benefit = ["Bài tập 4 kỹ năng đầy đủ theo trình độ", "Bài tập từ vựng và ngữ pháp theo trình độ", "Được giáo viên chữa bài viết cẩn thận", "Bộ từ vựng flashcard theo chủ đề"];
+  const benefit = ["Bài tập 4 kỹ năng đầy đủ theo trình độ.", "Bài tập từ vựng và ngữ pháp theo trình độ.", "Được giáo viên chữa bài viết cẩn thận.", "Bộ từ vựng flashcard theo chủ đề."];
 
   const feedbacks = [
     {
@@ -89,34 +89,6 @@ export const LandingPage = () => {
           >
             HỌC THỬ MIỄN PHÍ
           </ButtonCustom>
-          {/* <Row>
-            <Col span={6}>
-              <p
-                style={{
-                  fontSize: "22px",
-                  margin: "10px 0px",
-                  color: "#F3D512",
-                  fontWeight: "700",
-                }}
-              >
-                1000+
-              </p>
-              <b style={{ fontSize: "20px" }}>Bài tập</b>
-            </Col>
-            <Col span={6}>
-              <p
-                style={{
-                  fontSize: "22px",
-                  margin: "10px 0px",
-                  color: "#467AE2",
-                  fontWeight: "700",
-                }}
-              >
-                5000+
-              </p>
-              <b style={{ fontSize: "20px" }}>Học viên</b>
-            </Col>
-          </Row> */}
         </Col>
         <Col span={8}>
           <img
@@ -157,7 +129,7 @@ export const LandingPage = () => {
           <img src={landingPageImg3} alt="Landing page 3" />
         </Col>
         <Col span={16}>
-          <h2 style={{ textAlign: "center", fontSize: "40px" }}>Trang Web cung cấp</h2>
+          <h2 style={{ textAlign: "center", fontSize: "40px" }}>Trang Web Cung Cấp</h2>
           <p style={{ fontSize: "25px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ul style={{ listStyleType: "none", padding: "0px" }}>
             {benefit.map((b) => (
@@ -178,11 +150,11 @@ export const LandingPage = () => {
 
       {/* Khoa hoc */}
       <div>
-        <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC </h2>
+        <div>
+          <h2 style={{ fontSize: "40px", textAlign: "center" }}>DS BÀI TẬP THEO TRÌNH ĐỘ</h2>
+        </div>
         <div
           style={{
-            // display: "flex",
-            // justifyContent: "center",
             marginLeft: "8px",
             marginRight: "8px",
           }}
