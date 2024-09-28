@@ -1,5 +1,4 @@
 import CardCustom from "../../../../components/Card";
-import sample from "../../../../assets/landingPage/sample.png";
 import ButtonCustom from "../../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants";
@@ -27,6 +26,7 @@ export const Course = ({ course }) => {
           src={levelImgArr[course.levelImage]}
           height={150}
           style={{ objectFit: "cover" }}
+          alt=""
         />
       }
     >
@@ -54,7 +54,7 @@ export const Course = ({ course }) => {
         style={{ width: "100%" }}
         onClick={() => {
           // setIsModalVisible(true)
-          navigate(navigate(CLIENT_URI.LEVEL_DETAIL + `/${course.id}`))
+          navigate(navigate(CLIENT_URI.LEVEL_DETAIL + `/${course.id}`));
         }}
       >
         Bắt đầu

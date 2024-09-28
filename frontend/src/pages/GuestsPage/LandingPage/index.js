@@ -10,13 +10,10 @@ import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
-import CardCustom from "../../../components/Card";
-import { useNavigate } from "react-router-dom";
 import { Courses } from "./courses/coursesList";
+import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
 
-const { Meta } = Card;
 export const LandingPage = () => {
-  const navigate = useNavigate();
   const skills = [
     {
       img: listening,
@@ -36,49 +33,39 @@ export const LandingPage = () => {
     },
   ];
 
-  const benefit = [
-    "Bài tập 4 kỹ năng đầy đủ theo trình độ",
-    "Bài tập từ vựng và ngữ pháp theo trình độ",
-    "Được giáo viên chữa bài viết cẩn thận",
-    "Bộ từ vựng flashcard theo chủ đề",
-  ];
+  const benefit = ["Bài tập 4 kỹ năng đầy đủ theo trình độ", "Bài tập từ vựng và ngữ pháp theo trình độ", "Được giáo viên chữa bài viết cẩn thận", "Bộ từ vựng flashcard theo chủ đề"];
 
   const feedbacks = [
     {
       name: "Tuan",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 5,
     },
     {
       name: "Tuan2",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 4,
     },
     {
       name: "Tuan3",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 3,
     },
     {
       name: "Tuan4",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 2,
     },
     {
       name: "Tuan5",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 5,
     },
   ];
 
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-      {/* Banner */}
+      <ModalPremium />
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
@@ -90,10 +77,7 @@ export const LandingPage = () => {
             <br />
             theo trình độ
           </h2>
-          <p style={{ fontSize: "20px", color: "grey" }}>
-            Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng,
-            ngữ pháp theo trình độ.
-          </p>
+          <p style={{ fontSize: "20px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ButtonCustom
             buttonType="primary"
             style={{
@@ -105,7 +89,7 @@ export const LandingPage = () => {
           >
             HỌC THỬ MIỄN PHÍ
           </ButtonCustom>
-          <Row>
+          {/* <Row>
             <Col span={6}>
               <p
                 style={{
@@ -132,7 +116,7 @@ export const LandingPage = () => {
               </p>
               <b style={{ fontSize: "20px" }}>Học viên</b>
             </Col>
-          </Row>
+          </Row> */}
         </Col>
         <Col span={8}>
           <img
@@ -173,13 +157,8 @@ export const LandingPage = () => {
           <img src={landingPageImg3} alt="Landing page 3" />
         </Col>
         <Col span={16}>
-          <h2 style={{ textAlign: "center", fontSize: "40px" }}>
-            Trang Web cung cấp
-          </h2>
-          <p style={{ fontSize: "25px", color: "grey" }}>
-            Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng,
-            ngữ pháp theo trình độ.
-          </p>
+          <h2 style={{ textAlign: "center", fontSize: "40px" }}>Trang Web cung cấp</h2>
+          <p style={{ fontSize: "25px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ul style={{ listStyleType: "none", padding: "0px" }}>
             {benefit.map((b) => (
               <li style={{ fontSize: "20px", margin: "10px 0px" }}>
@@ -254,9 +233,7 @@ export const LandingPage = () => {
                       </Row>
                       <Row>
                         {Array.from({ length: item.stars }).map((_, index) => (
-                          <StarFilled
-                            style={{ color: "#FFCC33", fontSize: "20px" }}
-                          />
+                          <StarFilled style={{ color: "#FFCC33", fontSize: "20px" }} />
                         ))}
                       </Row>
                     </Col>
@@ -285,7 +262,7 @@ export const LandingPage = () => {
             fontWeight: "600",
           }}
         >
-          Đăng ký ngay để nhận ưu đãi lên đến 50%
+          Đăng ký ngay để nhận ưu đãi lên đến 30%
         </p>
         <ButtonCustom
           buttonType="primary"

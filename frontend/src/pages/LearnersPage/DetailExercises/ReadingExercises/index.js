@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { PART_TYPE } from "../../../../constants";
-import { Row } from "antd";
 import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
 import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
 import demo_part3_1 from "../../../../assets/readingExercises/demo_part3_1.png";
@@ -21,11 +20,7 @@ export default function ReadingExercises() {
   const { exerciseType, exerciseId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
-  const [partResults, setPartResults] = useState({
-    part1: null,
-    part2: null,
-    part3: null,
-  });
+  const [exerciseResults, setExerciseResults] = useState({});
   const [exercises, setExercises] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [userScore, setUserScore] = useState(0);
@@ -41,214 +36,144 @@ export default function ReadingExercises() {
       .catch((err) => console.error("error", err));
   }, [exerciseType, exerciseId]);
 
-  const handleSelectOptions = (questionId, optionId) => {
+  const handleSelectOptions = useCallback((questionId, optionId) => {
     setUserAnswers((prev) => ({
       ...prev,
       [questionId]: optionId,
     }));
-  };
+  }, []);
 
-  const handleToggleAnswerDetail = (questionId) => {
+  //function toggle answer detail/explanation
+  const handleToggleAnswerDetail = useCallback((questionId) => {
     setToggleAnswerDetail((prevState) => ({
       ...prevState,
       [questionId]: !prevState[questionId],
     }));
-  };
+  }, []);
 
-  const handleSubmitPart = (partType, partData) => {
-    console.log("partData: ", partData);
-    let questions = [];
-
-    if (Array.isArray(partData) && partData[0]?.questions) {
-      questions = partData.flatMap((detail) => detail.questions);
-    } else {
-      questions = Array.isArray(partData) ? partData : [partData];
-    }
-
-    console.log("Extracted questions: ", questions);
-    const results = questions.map((question) => {
-      const userAnswer = userAnswers[question.id];
-      const correctAnswer = question?.answer;
-      const isCorrect = userAnswer === correctAnswer;
-
-      return {
-        ...question,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
-        answerDetail: question?.answerDetail,
-      };
-    });
-
-    console.log("results: ", results);
-
-    const partScore = (results.filter((result) => result.isCorrect).length / results.length) * 100;
-
-    const completedParts = Object.keys(partResults).filter((key) => partResults[key] !== null).length + 1;
-    const totalScore = Object.keys(partResults).reduce((acc, key) => {
-      const part = partResults[key];
-      if (part) {
-        const correctAnswers = part.filter((result) => result.isCorrect).length;
-        const totalQuestions = part.length;
-        return acc + (correctAnswers / totalQuestions) * 100;
-      }
-      return acc;
-    }, partScore);
-
-    // Tính điểm tích lũy trung bình
-    const newCumulativeScore = Math.round(totalScore / completedParts);
-    console.log(`Updated cumulative score: ${newCumulativeScore}`);
-    setUserScore(newCumulativeScore);
-
-    setPartResults((prev) => ({
-      ...prev,
-      [partType]: results,
-    }));
-  };
-
+  //function hien thi cau hoi va ket qua sau khi nop bai
   const renderPart = (currentPart) => {
-    if (Array.isArray(currentPart?.partDetail)) {
-      return (
-        <>
-          {currentPart.partDetail.map((detail, detailIndex) => (
-            <div key={detailIndex}>
-              <TextCustom style={{}}>{detail.questionParagraph}</TextCustom>
-              {detail.questions.map((question) => (
-                <div key={question.id}>
-                  <TextCustom style={{ fontWeight: "bold" }}>
-                    Câu {question.id}: {question.question}
-                  </TextCustom>
-                  <div style={{ display: "flex", justifyContent: "space-around" }}>
-                    {question.options.map((option) => {
-                      const userSelected = userAnswers[question.id] === option.id;
-                      const partResultsData = partResults[`part${currentPartIndex + 1}`];
-                      const isCorrect = partResultsData ? partResultsData.find((result) => result.id === question.id)?.correctAnswer === option.id : false;
+    return (
+      <>
+        {currentPart.questions.map((question) => (
+          <div key={question.id}>
+            <TextCustom style={{ fontWeight: "bold" }}>
+              Câu {question.id}: {question.question}
+            </TextCustom>
+            {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
+              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} alt="question-part" />)
+            ) : question.questionImage ? (
+              <img src={imgReadingArr[question.questionImage]} alt="question-part" />
+            ) : null}
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+              {question.options.map((option) => {
+                const userSelected = userAnswers[question.id] === option.id;
+                const correctAnswer = question?.answer;
 
-                      let backgroundColor = userSelected ? "#A8703E" : "";
+                const isCorrect = option.id === correctAnswer;
+                const isUserSelectedWrong = userSelected && !isCorrect;
 
-                      if (partResultsData) {
-                        backgroundColor = isCorrect ? "#5FD855" : userSelected ? "red" : "";
-                      }
+                let backgroundColor = userSelected ? "#A8703E" : "";
 
-                      return (
-                        <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={!!partResultsData}>
-                          {option.text}
-                        </ButtonCustom>
-                      );
-                    })}
-                  </div>
-                  {partResults[`part${currentPartIndex + 1}`] && (
-                    <>
-                      <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
-                        Đáp án chi tiết
-                      </ButtonCustom>
-                      {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          ))}
-          <Row justify="end">
-            {!partResults[`part${currentPartIndex + 1}`] && (
-              <ButtonCustom buttonType="secondary" onClick={() => handleSubmitPart(`part${currentPartIndex + 1}`, currentPart.partDetail)}>
-                Nộp bài
-              </ButtonCustom>
-            )}
-          </Row>
-        </>
-      );
-    }
-
-    if (Array.isArray(currentPart?.questions)) {
-      return (
-        <>
-          {currentPart.questions.map((question) => (
-            <div key={question.id}>
-              <TextCustom style={{ fontWeight: "bold" }}>
-                Câu {question.id}: {question.question}
-              </TextCustom>
-              {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
-                question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} alt="question-part" />)
-              ) : question.questionImage ? (
-                <img src={imgReadingArr[question.questionImage]} alt="question-part" />
-              ) : null}
-              <div style={{ display: "flex", justifyContent: "space-around" }}>
-                {question.options.map((option) => {
-                  const userSelected = userAnswers[question.id] === option.id;
-                  const partResultsData = partResults[`part${currentPartIndex + 1}`];
-                  const isCorrect = partResultsData ? partResultsData.find((result) => result.id === question.id)?.correctAnswer === option.id : false;
-
-                  let backgroundColor = userSelected ? "#A8703E" : "";
-
-                  if (partResultsData) {
-                    backgroundColor = isCorrect ? "#5FD855" : userSelected ? "red" : "";
+                if (isCompleted) {
+                  if (isCorrect) {
+                    backgroundColor = "#5FD855";
+                  } else if (isUserSelectedWrong) {
+                    backgroundColor = "red";
                   }
+                }
 
-                  return (
-                    <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={!!partResultsData}>
-                      {option.text}
-                    </ButtonCustom>
-                  );
-                })}
-              </div>
-              {partResults[`part${currentPartIndex + 1}`] && (
-                <>
-                  <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
-                    Đáp án chi tiết
+                return (
+                  <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isCompleted}>
+                    {option.text}
                   </ButtonCustom>
-                  {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
-                </>
-              )}
+                );
+              })}
             </div>
-          ))}
-          <Row justify="end">
-            {!partResults[`part${currentPartIndex + 1}`] && (
-              <ButtonCustom buttonType="secondary" onClick={() => handleSubmitPart(`part${currentPartIndex + 1}`, currentPart.questions)}>
-                Nộp bài
-              </ButtonCustom>
+            {isCompleted && (
+              <>
+                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
+                  Đáp án chi tiết
+                </ButtonCustom>
+                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
+              </>
             )}
-          </Row>
-        </>
-      );
-    }
-    return null;
+          </div>
+        ))}
+      </>
+    );
   };
 
-  const handleRetry = () => {
+  const handleRetry = useCallback(() => {
     setUserAnswers({});
-    setPartResults({
-      part1: null,
-      part2: null,
-      part3: null,
-    });
+    setExerciseResults({});
     setUserScore(0);
     setIsCompleted(false);
     setCurrentPartIndex(0);
-  };
+  }, []);
+  const totalQuestions = useMemo(() => exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0), [exercises]);
 
-  const handleCompleted = () => {
-    const submissionParts = Object.keys(partResults).reduce((acc, partKey) => {
-      const partData = partResults[partKey]?.map((result) => ({
-        userAnswer: result.userAnswer,
-        correctAnswer: result.correctAnswer,
-        questionId: result.id,
-        isCorrect: result.isCorrect,
-      }));
-      if (partData) {
-        acc[partKey] = { submissionAnswers: partData };
-      }
-      return acc;
-    }, {});
+  const handleSubmit = useCallback(() => {
+    let score = 0;
+    const submissionDate = new Date().toISOString();
+    const partResultsData = {};
+    const submissionAnswers = exercises?.parts.flatMap((part, index) =>
+      part?.questions?.map((question) => {
+        const userAnswer = userAnswers[question.id];
+        const correctAnswer = question?.answer;
 
+        const isCorrect = userAnswer === correctAnswer;
+        if (!partResultsData[`part${index + 1}`]) {
+          partResultsData[`part${index + 1}`] = [];
+        }
+        partResultsData[`part${index + 1}`].push({
+          questionId: question.id,
+          userAnswer,
+          correctAnswer,
+          isCorrect,
+        });
+        if (isCorrect) {
+          score++;
+        }
+        return {
+          questionId: question.id,
+          userAnswer,
+          correctAnswer,
+          isCorrect,
+        };
+      }),
+    );
+    const markValue = Math.round((score / totalQuestions) * 100);
+    setUserScore(markValue);
+    setIsCompleted(true);
+    setExerciseResults(partResultsData);
     const submissionData = {
-      submissionDate: new Date().toISOString(),
-      score: `${userScore}%`,
-      submissionParts,
-      exerciseId,
+      submissionDate: submissionDate,
+      score: `${markValue}%`,
+      submissionAnswers: submissionAnswers,
+      exerciseId: exercises?.id,
+      isCompleted: true,
     };
 
-    fetch(`http://localhost:9999/readingExercisesSubmission`, {
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        isCompleted: true,
+        score: `${markValue}%`,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -257,11 +182,12 @@ export default function ReadingExercises() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Submission completed: ", data);
-        setIsCompleted(true);
+        console.log("data: ", data);
       })
-      .catch((err) => console.error("Error submitting exercise", err));
-  };
+      .catch((err) => {
+        console.log("err", err);
+      });
+  }, [userAnswers, totalQuestions, exercises]);
 
   if (!exercises?.parts) return <div>Loading...</div>;
 
@@ -311,8 +237,8 @@ export default function ReadingExercises() {
             </>
           ) : (
             <>
-              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleCompleted}>
-                Hoàn thành
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={!(currentPartIndex === exercises.parts.length - 1)}>
+                Nộp bài
               </ButtonCustom>
             </>
           )}

@@ -113,10 +113,6 @@ export default function ReadingExercises() {
           score++;
         }
 
-        const totalQuestions = exercises.parts.reduce(
-          (acc, part) => acc + part.questions.length,
-          0
-        );
 
       
         return {

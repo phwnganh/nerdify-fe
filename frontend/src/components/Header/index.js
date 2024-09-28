@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Col, Dropdown, Layout, Menu, Row, Tabs } from "antd";
+import { Col, Layout, Row } from "antd";
 import MenuBar from "../Menu";
 import InputCustom from "../Input";
-import { BellOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo1.png";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../constants/uri.constants";
-import { useAuth } from "../../hooks";
-import { ROLES } from "../../constants";
+
 import ModalRequireToLogin from "../../pages/GuestsPage/ModalRequireToLogin";
 const { Header } = Layout;
 
@@ -19,7 +18,6 @@ export default function Navbar() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
-  const { courseId } = useParams();
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
     if (location.pathname === CLIENT_URI.LEVEL_DETAIL) {
@@ -28,6 +26,7 @@ export default function Navbar() {
       setSelectedKey("home");
     }
   }, [location.pathname]);
+
   const handleMenuClick = (e) => {
     setSelectedKey(e.key);
     // console.log(e.key);
@@ -82,16 +81,20 @@ export default function Navbar() {
             <MenuItem
               key="flashcards"
               onClick={() => {
-                navigate(CLIENT_URI.FLASH_CARD)
+                navigate(CLIENT_URI.FLASH_CARD);
                 // setIsModalVisible(true);
               }}
             >
               FLASHCARD
             </MenuItem>
-            <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
+            <MenuItem key="learning-progress" onClick={() => {navigate(CLIENT_URI.LEARNING_PROGRESS)}}>TIẾN ĐỘ HỌC TẬP</MenuItem>
             <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-            <MenuItem key="forum">DIỄN ĐÀN TRỰC TUYẾN</MenuItem>
-            <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.BILLINFO)}>THANH TOÁN</MenuItem>
+            <MenuItem
+              key="payment"
+              onClick={() => navigate(CLIENT_URI.PREMIUM)}
+            >
+              GÓI PREMIUM
+            </MenuItem>
           </MenuBar>
         </Col>
 
@@ -142,7 +145,9 @@ export default function Navbar() {
           </ButtonCustom>
         </Col>
       </Row>
-      {isModalVisible && (<ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal}/>)}
+      {isModalVisible && (
+        <ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal} />
+      )}
     </Header>
   );
 }
