@@ -223,6 +223,10 @@ export default function VocabularyExercises() {
     return `${questionText} - ${matchQuestionText || "no answer"}`;
   };
 
+  const totalQuestions =
+  exercises.parts.reduce((total, part) => total + part.questions.length, 0) -
+  1;
+
   //submit all part and calculate score
   const handleSubmit = () => {
     let score = 0;
@@ -320,7 +324,7 @@ export default function VocabularyExercises() {
       },
       body: JSON.stringify({
         isCompleted: true,
-        score: `${score}%`,
+        score: `${Math.round((score/totalQuestions) * 100)}%`,
       }),
     })
       .then((res) => res.json())
@@ -333,7 +337,7 @@ export default function VocabularyExercises() {
 
     const submissionData = {
       submissionDate: submissionDate,
-      score: ` ${score}%`,
+      score: `${Math.round((score/totalQuestions) * 100)}%`,
       submissionAnswers: [
         ...submissionAnswersPart1,
         ...submissionAnswersPart2,
@@ -360,9 +364,7 @@ export default function VocabularyExercises() {
     handleAnswerPart1();
   };
 
-  const totalQuestions =
-    exercises.parts.reduce((total, part) => total + part.questions.length, 0) -
-    1;
+
 
   //redo exercises
   const handleDoAgain = () => {
