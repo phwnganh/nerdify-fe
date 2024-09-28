@@ -1,11 +1,11 @@
 import React from "react";
-import { authService } from "../services";
-import Navbar from "../components/Header";
 import { Divider } from "antd";
-import Footer from "../components/Footer";
 import LearnerHeader from "../components/Header/LearnerHeader";
+import Footer from "../components/Footer";
 
+// LearnerLayout Component
 export const LearnerLayout = ({ children }) => {
+  // Styles
   const styles = {
     container: {
       display: "flex",
@@ -17,13 +17,19 @@ export const LearnerLayout = ({ children }) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      paddingTop: "80px",
     },
   };
 
   return (
     <div style={styles.container}>
+      {/* Fixed LearnerHeader */}
       <LearnerHeader />
+
+      {/* Main Content */}
       <div style={styles.content}>{children}</div>
+
+      {/* Divider and Footer */}
       <Divider style={{ margin: 0 }} />
       <Footer />
     </div>

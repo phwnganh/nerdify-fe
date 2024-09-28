@@ -10,8 +10,6 @@ import moment from "moment";
 
 const { Content } = Layout;
 
-
-
 export const PremiumPage = () => {
   const [packages, setPackages] = useState([]);
   const navigate = useNavigate();
@@ -26,21 +24,24 @@ export const PremiumPage = () => {
       packageId,
       startDate,
       endDate,
-      discount: 0.15
-    }
+      discount: 0.15,
+    };
 
     fetch(`http://localhost:9999/transaction`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newTransaction)
-    }).then(res => res.json()).then(data => {
-      navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`)
-    }).catch(err => {
-      console.error(err);
+      body: JSON.stringify(newTransaction),
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
     <>
       <Content
@@ -72,24 +73,12 @@ export const PremiumPage = () => {
         <div>
           <TitleCustom level={2}>VUI LÒNG CHỌN CÁC GÓI DƯỚI ĐÂY</TitleCustom>
           <CardCustom bordered={false}>
-            <Radio.Group
-              style={{ display: "flex", justifyContent: "space-evenly" }}
-            >
+            <Radio.Group style={{ display: "flex", justifyContent: "space-evenly" }}>
               {packages.map((pack) => (
-                <CardCustom
-                  key={pack.name}
-                  title={pack.packageName}
-                  bordered={true}
-                  style={{ marginBottom: "16px", border: "1px solid" }}
-                >
+                <CardCustom key={pack.name} title={pack.packageName} bordered={true} style={{ marginBottom: "16px", border: "1px solid" }}>
                   <TitleCustom level={4}>{pack.price?.toLocaleString("vi-VN")} VNĐ</TitleCustom>
                   <TextCustom>Thời hạn: {pack.duration} tháng</TextCustom>
-                  <ButtonCustom
-                    type="primary"
-                    style={{ marginTop: "16px" }}
-                    block
-                    onClick={() => handleRedirectToBill(pack.id, pack.duration)}
-                  >
+                  <ButtonCustom type="primary" style={{ marginTop: "16px" }} block onClick={() => handleRedirectToBill(pack.id, pack.duration)}>
                     Chọn ngay
                   </ButtonCustom>
                 </CardCustom>

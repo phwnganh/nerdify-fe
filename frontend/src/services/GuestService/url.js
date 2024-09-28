@@ -18,7 +18,6 @@ const URI_AUTH_SERVICE = {
   TOKEN: API_PREFIXES.AUTH + "/token",
 };
 
-
 export const AUTH_SERVER_URI = {
   DOMAIN: DOMAIN,
   AUTH_SERVICE: URI_AUTH_SERVICE,
