@@ -44,13 +44,13 @@ export default function Footer() {
             <PhoneOutlined /> 0867980329
           </p>
           <p>
-            <FacebookOutlined />{" "}
+            <FacebookOutlined />
             <a href="https://www.facebook.com/deutschnerd" target="_blank" rel="noopener noreferrer">
               Deutsch Nerd
             </a>
           </p>
           <p>
-            <TikTokOutlined />{" "}
+            <TikTokOutlined />
             <a href="https://www.facebook.com/deutschnerd" target="_blank" rel="noopener noreferrer">
               Deutsch Nerd
             </a>
