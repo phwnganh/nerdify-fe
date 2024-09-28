@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // 2. Third-party libraries
 import { Col, Row } from "antd";
-import { BarChartOutlined, UserAddOutlined } from "@ant-design/icons";
+import { BarChartOutlined, UserAddOutlined, CheckOutlined } from "@ant-design/icons"; // Cleaned up duplicate imports
 import { useNavigate, useParams } from "react-router-dom";
 
 // 3. Custom components
@@ -24,95 +24,81 @@ import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
 import writing from "../../../assets/exercisesSkill/writing.png";
 import grammar from "../../../assets/exercisesSkill/grammar.png";
 import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
-import { Col, Row } from "antd";
-import { BarChartOutlined, CheckOutlined, UserAddOutlined } from "@ant-design/icons";
-import ButtonCustom from "../../../components/Button";
-import { ButtonToDoExam, ScrollablePhaseDiv } from "./styled";
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import { useNavigate, useParams } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants/uri.constants";
-import a2 from "../../../assets/levelImage/a2.png";
-import { EXERCISE_TYPE } from "../../../constants/common.constant";
+
+// Constants
+import { CLIENT_URI } from "../../../constants/uri.constants"; // URI constants for navigation
+import { EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
+
 export default function ViewLevelDetail() {
+  // State for storing phases, active phase, course, etc.
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
-  const { courseId } = useParams();
+  const { courseId } = useParams(); // Getting courseId from the URL params
   const [course, setCourse] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to programmatically navigate
 
-  const imgLevelArr = { a1: a1, a2: a2 };
+  const imgLevelArr = { a1: a1, a2: a2 }; // Mapping images for course levels
 
+  // Fetch course details based on courseId
   useEffect(() => {
     fetch(`http://localhost:9999/levels/${courseId}`)
       .then((response) => response.json())
       .then((course) => {
         setCourse(course);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err)); // Handle error for course fetch
   }, [courseId]);
 
+  // Fetch phases and their respective exercises
   useEffect(() => {
     fetch(`http://localhost:9999/phases?levelId=${courseId}`)
       .then((response) => response.json())
       .then((phases) => {
+        // Fetch exercises for each phase
         const fetchExercises = phases.map((phase) =>
           fetch(`http://localhost:9999/exercises?phaseId=${phase.id}`)
             .then((res) => res.json())
             .then((exercises) => ({ ...phase, exercises })),
         );
+
+        // Wait for all exercises to be fetched before setting the state
         Promise.all(fetchExercises).then((phaseWithExercises) => {
           setPhases(phaseWithExercises);
           if (phaseWithExercises.length > 0) {
-            setActivePhase(phaseWithExercises[0].name);
+            setActivePhase(phaseWithExercises[0].name); // Set default active phase
           }
         });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err)); // Handle error for phases fetch
   }, [courseId]);
 
+  // Handle when a user clicks on a phase
   const handlePhaseClick = (phase) => {
-    setActivePhase(phase);
+    setActivePhase(phase); // Set the clicked phase as the active phase
   };
 
+  // Handle when a user clicks on an exercise
   const handleExerciseClick = (exerciseType, exerciseId) => {
-    navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`);
+    navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`); // Navigate to the exercise page
   };
 
+  // Handle when a user clicks on the final exam
   const handleFinalExamClick = (examId) => {
-    navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`);
+    navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`); // Navigate to the final exam page
   };
 
+  // Render the content for the selected phase
   const renderContent = () => {
     const selectedPhase = phases.find((phase) => phase.name === activePhase);
+
+    // Check if the selected phase is the Final Exam
     if (selectedPhase?.name === "Final Exam") {
       const examId = selectedPhase?.examId;
-
       return (
-        //Final Exam card here
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {/* <CardCustom
-            bordered={true}
-            style={{
-              // width: "50%",
-              marginTop: 20,
-              marginBottom: 20,
-              textAlign: "center",
-              backgroundColor: "#EAA68D",
-            }}
-          >
-            <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
-            <ButtonToDoExam onClick={() => navigate(CLIENT_URI.FINAL_EXAM)}>Vào làm bài</ButtonToDoExam>
-          </CardCustom>
-        </div> */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <CardCustom
             bordered={true}
             style={{
-              // width: "50%",
               marginTop: 20,
               marginBottom: 20,
               textAlign: "center",
@@ -120,17 +106,18 @@ export default function ViewLevelDetail() {
             }}
           >
             <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
-            {/* Fix: Ensure the function is passed, not invoked */}
+            {/* Fixed: Pass the function, not invoke it */}
             <ButtonToDoExam onClick={() => handleFinalExamClick(examId)}>Vào làm bài</ButtonToDoExam>
           </CardCustom>
         </div>
       );
     } else if (selectedPhase) {
+      // Render exercises for the selected phase
       return selectedPhase.exercises.map((exercise, index) => (
-        // CardCustom is a custom component của mỗi phase - chỉnh sửa style : width, margin, backgroundColor
         <CardCustom key={index} bordered={true} style={{ marginBottom: 20, cursor: "pointer", width: "800px" }} onClick={() => handleExerciseClick(exercise.exerciseType, exercise.id)}>
           <Row gutter={[16, 16]}>
             <Col md={12}>
+              {/* Conditional image based on exercise type */}
               <img
                 src={
                   exercise.exerciseType === EXERCISE_TYPE.LISTENING
@@ -153,8 +140,7 @@ export default function ViewLevelDetail() {
               {exercise?.isCompleted ? (
                 <div style={{ textAlign: "center" }}>
                   <TitleCustom level={4}>{exercise?.title}</TitleCustom>
-                  <CheckOutlined style={{ color: "green" }} />
-                  &nbsp;
+                  <CheckOutlined style={{ color: "green" }} /> &nbsp;
                   <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
                 </div>
               ) : (
@@ -170,18 +156,20 @@ export default function ViewLevelDetail() {
       ));
     }
   };
+
   return (
-    //top right bottom left
     <div style={{ padding: "50px 10px 20px 10px" }}>
       <div style={{ marginBottom: 16 }}>
         <BreadCrumbHome />
       </div>
+
+      {/* Main content area */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ maxWidth: 1000, margin: "auto" }}>
           <CardCustom bordered={false}>
             <Row gutter={[16, 16]}>
               <Col md={12}>
-                <img src={imgLevelArr[course?.levelImage]} alt="" srcSet="" width={"50%"} height="auto" />
+                <img src={imgLevelArr[course?.levelImage]} alt="" width={"50%"} height="auto" />
               </Col>
               <Col md={12}>
                 <TitleCustom level={2}>{course?.title}</TitleCustom>
@@ -192,9 +180,9 @@ export default function ViewLevelDetail() {
                     marginBottom: 16,
                   }}
                 >
-                  <UserAddOutlined style={{ marginRight: 8, color: "#9a9a9a" }}></UserAddOutlined>
+                  <UserAddOutlined style={{ marginRight: 8, color: "#9a9a9a" }} />
                   <TextCustom>{course?.learners} người học</TextCustom>
-                  <BarChartOutlined style={{ marginLeft: 70, marginRight: 8, color: "#9a9a9a" }}></BarChartOutlined>
+                  <BarChartOutlined style={{ marginLeft: 70, marginRight: 8, color: "#9a9a9a" }} />
                   <TextCustom>{course?.phasesNum} giai đoạn</TextCustom>
                 </div>
                 <ParagraphCustom>{course?.description}</ParagraphCustom>
@@ -203,26 +191,14 @@ export default function ViewLevelDetail() {
           </CardCustom>
         </div>
 
-        <div
-          style={{
-            width: "100%",
-          }}
-        >
+        {/* Phase buttons */}
+        <div style={{ width: "100%" }}>
           <ScrollablePhaseDiv>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+            <div style={{ display: "flex", justifyContent: "center" }}>
               {phases.map((phase, index) => (
                 <ButtonPhase
                   key={index}
-                  // buttonType="primary"
                   style={{
-                    // display: "inline-block",
-                    // width: "30%",
-                    // height: 150,
                     backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
                   }}
                   onClick={() => handlePhaseClick(phase.name)}
@@ -234,6 +210,7 @@ export default function ViewLevelDetail() {
           </ScrollablePhaseDiv>
         </div>
 
+        {/* Render content for the active phase */}
         <div>{activePhase && <div style={{ marginTop: "16px" }}>{renderContent()}</div>}</div>
       </div>
     </div>
