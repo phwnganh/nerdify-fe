@@ -120,7 +120,7 @@ export default function ListeningExercise() {
     // Save submission to server
     const submissionData = {
       submissionDate: new Date().toISOString(),
-      score: calculatedScore,
+      score: `${calculatedScore}%`,
       submissionAnswers,
       exerciseId: exercises.id,
       isCompleted: true,
@@ -145,7 +145,7 @@ export default function ListeningExercise() {
       },
       body: JSON.stringify({
         isCompleted: true,
-        score: calculatedScore,
+        score: `${calculatedScore}%`,
       }),
     })
       .then((res) => res.json())
