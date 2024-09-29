@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row, List } from "antd";
+import { List } from "antd";
 import CourseList from "./CourseList";
 
 export default function CoursePage() {
@@ -11,32 +11,45 @@ export default function CoursePage() {
       .then((data) => {
         setCourse(data);
       })
-      .catch((err) => console.err(err));
+      .catch((err) => console.error(err));
   }, []);
 
   return (
-    <div style={{ padding: "40px", width: "80%" }}>
-      <h2
+    <>
+      <div
         style={{
-          fontSize: "40px",
-          textAlign: "center",
-          marginBottom: "40px",
+          maxWidth: "calc(100vw - 40px)",
+          margin: "0 auto",
+          padding: "40px 20px",
         }}
       >
-        DS Bài Tập
-      </h2>
-      <List
-        grid={{
-          gutter: 24,
-          column: 3,
-        }}
-        dataSource={course}
-        renderItem={(course) => (
-          <List.Item>
-            <CourseList course={course} />
-          </List.Item>
-        )}
-      />
-    </div>
+        <h2
+          style={{
+            fontSize: "40px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          DS Bài Tập
+        </h2>
+        <List
+          grid={{
+            gutter: 24, // Khoảng cách giữa các thẻ
+            column: 3,
+          }}
+          dataSource={course}
+          renderItem={(course) => (
+            <List.Item
+              style={{
+                width: "400px", // Độ rộng cố định của thẻ card
+                margin: "0 auto", // Đảm bảo card được căn giữa nếu có khoảng trống
+              }}
+            >
+              <CourseList course={course} />
+            </List.Item>
+          )}
+        />
+      </div>
+    </>
   );
 }
