@@ -40,6 +40,7 @@ export default function FlashCardDetail() {
 
   const handleOk = () => {
     setOpen(false);
+    navigate(`${CLIENT_URI.TEST_FLASH_CARD}/${flashcardId}/${numberOfCard}`);
   };
 
   const handleCancel = () => {
@@ -52,6 +53,7 @@ export default function FlashCardDetail() {
       .then((data) => setFlashcard(data))
       .catch((err) => console.error(err));
   }, [flashcardId]);
+
   const items = [
     {
       key: "1",
@@ -115,17 +117,15 @@ export default function FlashCardDetail() {
   };
 
   //just number no text
-  const handleChange = (e) => {
+  const handleOnChange = (e) => {
+    //validate quantity
     const { value: inputValue } = e.target;
     const reg = /^-?\d*(\.\d*)?$/;
     if (reg.test(inputValue) || inputValue === "" || inputValue === "-") {
-      // if input > total cards then
-      inputValue > flashcard?.cards.length
-        ? setNumberOfCard(flashcard?.cards.length)
-        : setNumberOfCard(inputValue);
+      setNumberOfCard(inputValue);
     }
-    console.log(numberOfCard);
   };
+
   return (
     <div style={{ padding: "24px" }}>
       <div style={{ marginLeft: 235 }}>
@@ -140,7 +140,14 @@ export default function FlashCardDetail() {
         onCancel={handleCancel}
         width={400}
         footer={[
-          <ButtonCustom key="submit" buttonType="primary" onClick={handleOk}>
+          <ButtonCustom
+            key="submit"
+            buttonType="primary"
+            onClick={handleOk}
+            disabled={
+              !(numberOfCard > 0 && numberOfCard <= flashcard?.cards.length)
+            }
+          >
             Bắt đầu làm bài
           </ButtonCustom>,
         ]}
@@ -151,9 +158,8 @@ export default function FlashCardDetail() {
         >
           Số lượng câu hỏi : &nbsp;
           <InputCustom
+            onChange={handleOnChange}
             style={{ width: "90px", textAlign: "center", padding: "0" }}
-            value={numberOfCard}
-            onChange={handleChange}
             addonAfter={`/ ${flashcard?.cards.length}`}
           />
         </TextCustom>

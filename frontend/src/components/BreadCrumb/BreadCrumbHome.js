@@ -7,17 +7,22 @@ export default function BreadCrumbHome() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { exerciseType, courseId } = useParams();
+  const { exerciseType, courseId, flashcardId } = useParams();
 
   useEffect(() => {
     if (courseId) {
       setStorage("courseId", courseId);
     }
+    if(flashcardId){
+      setStorage("flashcardId", flashcardId);
+    }
     console.log("courseId:", storedCourseId);
-  }, [courseId]);
+    console.log("flashcardId", stotedFlashcardId);
+    
+  }, [courseId, flashcardId]);
 
   const storedCourseId = courseId || getStorage("courseId");
-
+  const stotedFlashcardId = flashcardId || getStorage("flashcardId");
   useEffect(() => {
     if (location.pathname.startsWith("/level-detail")) {
       setBreadCrumb([
@@ -56,16 +61,24 @@ export default function BreadCrumbHome() {
           label: "Flashcard",
         },
       ]);
+    }else if(location.pathname === "/create-flash-card"){
+      setBreadCrumb([
+        {
+          path: '/',
+          label: "Trang chủ"
+        }, {
+          path: `/flash-card/${stotedFlashcardId}`,
+          label: "Flashcard"
+        }, {
+          path: location.pathname,
+          label: "Tạo flashcard mới"
+        }
+      ])
     }
-  }, [location.pathname, exerciseType, courseId]);
+  }, [location.pathname, exerciseType]);
 
   const handleClick = (path) => {
-    if (path === "/flashcards") {
-      setBreadCrumb([
-        { path: "/", label: "Home" },
-        { path: "/flashcards", label: "Flashcards" },
-      ]);
-    }
+    
     navigate(path);
   };
 

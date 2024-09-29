@@ -9,7 +9,8 @@
         2,
         3,
         7
-      ]
+      ],
+      "isNew": false
     },
     {
       "id": "2",
@@ -19,7 +20,8 @@
         4,
         5,
         6
-      ]
+      ],
+      "isNew": false
     },
     {
       "id": "3",
@@ -36,6 +38,12 @@
         9,
         10
       ],
+      "isNew": true
+    },
+    {
+      "id": "5",
+      "name": "Final Exam",
+      "levelId": 2,
       "examId": 2
     }
   ],
@@ -264,100 +272,97 @@
       "parts": [
         {
           "id": 1,
-          "partName": "Phần 1: Lesen Sie die beiden Texte und die Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "partName": "Phần 1.1: Lesen Sie die beiden Texte und die Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
           "partType": "multiple_choice",
-          "partDetail": [
+          "questionParagraph": "Hallo Li\n danke für deine Mail. Dein Zug kommt hier in Hannover um 12.36 Uhr an. Ich bin ab 12.15 Uhr im Hauptbahnhof und warte auf dich vor der Auskunft.\nDu kannst mich den ganzen Vormittag auf meinem Handy (++49 173 62 205 59) erreichen.\nDeine \nKarin",
+          "questions": [
             {
               "id": 1,
-              "questionParagraph": "Hallo Li\n danke für deine Mail. Dein Zug kommt hier in Hannover um 12.36 Uhr an. Ich bin ab 12.15 Uhr im Hauptbahnhof und warte auf dich vor der Auskunft.\nDu kannst mich den ganzen Vormittag auf meinem Handy (++49 173 62 205 59) erreichen.\nDeine \nKarin",
-              "questions": [
+              "question": "Lis Zug kommt nach halb eins an.",
+              "options": [
                 {
-                  "id": 1,
-                  "question": "Lis Zug kommt nach halb eins an.",
-                  "options": [
-                    {
-                      "id": "A",
-                      "text": "Richtig"
-                    },
-                    {
-                      "id": "B",
-                      "text": "Falsch"
-                    }
-                  ],
-                  "answer": "A",
-                  "answerDetail": "Richtig"
+                  "id": "A",
+                  "text": "Richtig"
                 },
                 {
-                  "id": 2,
-                  "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
-                  "options": [
-                    {
-                      "id": "A",
-                      "text": "Richtig"
-                    },
-                    {
-                      "id": "B",
-                      "text": "Falsch"
-                    }
-                  ],
-                  "answer": "B",
-                  "answerDetail": "Falsch"
+                  "id": "B",
+                  "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "A",
+              "answerDetail": "Richtig"
             },
             {
               "id": 2,
-              "questionParagraph": "Liebe Carmen, \nam kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \nRalf",
-              "questions": [
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "options": [
                 {
-                  "id": 3,
-                  "question": "Ralf hatte am letzten Wochenende Geburtstag.",
-                  "options": [
-                    {
-                      "id": "A",
-                      "text": "Richtig"
-                    },
-                    {
-                      "id": "B",
-                      "text": "Falsch"
-                    }
-                  ],
-                  "answer": "B",
-                  "answerDetail": "Falsch"
+                  "id": "A",
+                  "text": "Richtig"
                 },
                 {
-                  "id": 4,
-                  "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
-                  "options": [
-                    {
-                      "id": "A",
-                      "text": "Richtig"
-                    },
-                    {
-                      "id": "B",
-                      "text": "Falsch"
-                    }
-                  ],
-                  "answer": "B",
-                  "answerDetail": "Falsch"
-                },
-                {
-                  "id": 5,
-                  "question": "Die Party findet draußen statt.",
-                  "options": [
-                    {
-                      "id": "A",
-                      "text": "Richtig"
-                    },
-                    {
-                      "id": "B",
-                      "text": "Falsch"
-                    }
-                  ],
-                  "answer": "A",
-                  "answerDetail": "Richtig"
+                  "id": "B",
+                  "text": "Falsch"
                 }
-              ]
+              ],
+              "answer": "B",
+              "answerDetail": "Falsch"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 1.2: Lesen Sie die beiden Texte und die Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "partType": "multiple_choice",
+          "questionParagraph": "Liebe Carmen, \nam kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \nRalf",
+          "questions": [
+            {
+              "id": 3,
+              "question": "Ralf hatte am letzten Wochenende Geburtstag.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Falsch"
+            },
+            {
+              "id": 4,
+              "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Falsch"
+            },
+            {
+              "id": 5,
+              "question": "Die Party findet draußen statt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Richtig"
             }
           ]
         },
@@ -428,7 +433,9 @@
             }
           ]
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "63%"
     },
     {
       "id": "3",
@@ -697,9 +704,8 @@
       "parts": [
         {
           "id": 1,
-          "partName": "Phần 1: Tìm và sửa các lỗi chính tả, ngữ pháp và từ theo thứ tự từ trái sang phải trong đoạn văn, tối thiểu ",
+          "partName": "Phần 1: Tìm và sửa các lỗi chính tả, ngữ pháp và từ theo thứ tự từ trái sang phải trong đoạn văn",
           "partType": "fill_in_the_blank",
-          "error": "3 lỗi",
           "paragraph": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
           "questions": [
             {
@@ -722,10 +728,12 @@
         {
           "id": 2,
           "partName": "Phần 2: Viết thành đoạn văn hoàn chỉnh",
-          "partType": "fill_in_the_blank",
+          "partType": "write_paragraph",
           "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "50%"
     },
     {
       "id": "5",
@@ -741,22 +749,26 @@
             {
               "id": 1,
               "question": "___ sprechen Deutsch.",
-              "answer": "Sie"
+              "answer": "Sie",
+              "answerDetail": "Động từ 'sprechen' (nói) được chia ở ngôi số nhiều hoặc ngôi lịch sự. Trong tiếng Đức, nếu chủ ngữ là 'Sie' (viết hoa), thì động từ sẽ ở dạng số nhiều bất kể là 'Sie' chỉ một người hay nhiều người, vì đó là cách lịch sự."
             },
             {
               "id": 2,
               "question": "Haben ___ Zeit?",
-              "answer": "Sie"
+              "answer": "Sie",
+              "answerDetail": "Đây là cách nói lịch sự khi hỏi ai đó 'bạn' hoặc 'ngài' trong ngữ cảnh trang trọng.'Sie' trong trường hợp này là đại từ nhân xưng ngôi thứ hai số nhiều hoặc số ít (khi dùng để chỉ một cá nhân) mang tính trang trọng. Cấu trúc câu hỏi 'Haben Sie Zeit?' là một câu hỏi đúng ngữ pháp trong tiếng Đức khi muốn hỏi người khác (trong ngữ cảnh lịch sự) rằng họ có thời gian không."
             },
             {
               "id": 3,
               "question": "Hilfst ___ mir?",
-              "answer": "du"
+              "answer": "du",
+              "answerDetail": "Động từ 'helfen' (giúp đỡ) luôn yêu cầu tân ngữ ở cách Dativ (cách gián tiếp). Đại từ nhân xưng 'du' (bạn) khi ở cách Dativ sẽ biến thành 'dir'."
             },
             {
               "id": 4,
               "question": "___ ist Programmierer.",
-              "answer": "Er"
+              "answer": "Er",
+              "answerDetail": "'Er' là đại từ nhân xưng cho ngôi thứ ba số ít, giống đực (nam giới). Câu 'Er ist Programmierer' có nghĩa là 'Anh ấy là lập trình viên."
             }
           ]
         },
@@ -776,7 +788,8 @@
                 "er",
                 "sie",
                 "sie"
-              ]
+              ],
+              "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. Câu này giới thiệu Herr Gupta, là nam giới. Trong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. 'Das ist Frau Kioka, sie kommt aus Japan.'. Tương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. 'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. Ở câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. Khi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
             },
             {
               "id": 6,
@@ -784,7 +797,8 @@
               "answer": [
                 "du",
                 "Ich"
-              ]
+              ],
+              "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
             },
             {
               "id": 7,
@@ -792,7 +806,8 @@
               "answer": [
                 "ihr",
                 "Wir"
-              ]
+              ],
+              "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
             },
             {
               "id": 8,
@@ -837,7 +852,9 @@
             }
           ]
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "8%"
     },
     {
       "id": "6",
@@ -1006,16 +1023,6 @@
               ],
               "answer": "B"
             }
-          ],
-          "answers": [
-            {
-              "id": 3,
-              "answer": "A"
-            },
-            {
-              "id": 4,
-              "answer": "B"
-            }
           ]
         },
         {
@@ -1066,15 +1073,15 @@
               "options": [
                 {
                   "id": "A",
-                  "image": "demo_1_1"
+                  "optionImage": "demo_1_1"
                 },
                 {
                   "id": "B",
-                  "image": "demo_1_2"
+                  "optionImage": "demo_1_2"
                 },
                 {
                   "id": "C",
-                  "image": "demo_1_3"
+                  "optionImage": "demo_1_3"
                 }
               ],
               "answer": "A"
@@ -1085,15 +1092,15 @@
               "options": [
                 {
                   "id": "A",
-                  "image": "demo_2_1"
+                  "optionImage": "demo_2_1"
                 },
                 {
                   "id": "B",
-                  "image": "demo_2_2"
+                  "optionImage": "demo_2_2"
                 },
                 {
                   "id": "C",
-                  "image": "demo_2_3"
+                  "optionImage": "demo_2_3"
                 }
               ],
               "answer": "C"
@@ -1183,6 +1190,7 @@
         {
           "id": 1,
           "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
           "questions": [
             {
               "id": 1,
@@ -1264,6 +1272,7 @@
         {
           "id": 2,
           "partName": "Phần 2: Đọc",
+          "partType": "multiple_choice",
           "questions": [
             {
               "id": 6,
@@ -1284,6 +1293,7 @@
             {
               "id": 7,
               "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
               "options": [
                 {
                   "id": "A",
@@ -1315,6 +1325,7 @@
             {
               "id": 9,
               "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
+              "questionParagraph": "Liebe Carmen, \n am kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \n Ralf",
               "options": [
                 {
                   "id": "A",
@@ -1330,6 +1341,7 @@
             {
               "id": 10,
               "question": "Die Party findet draußen statt.",
+              "questionParagraph": "Liebe Carmen, \n am kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. Ich freue mich sehr auf dich! \n Bis zum Wochenende \n Ralf",
               "options": [
                 {
                   "id": "A",
@@ -1347,6 +1359,7 @@
         {
           "id": 3,
           "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
           "questions": [
             {
               "id": 11,
@@ -1448,6 +1461,7 @@
         {
           "id": 4,
           "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
           "questions": [
             {
               "id": 16,
@@ -1586,6 +1600,7 @@
     {
       "title": "Animals",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "level": "A1",
       "cards": [
         {
           "id": 1,
@@ -1623,6 +1638,7 @@
     {
       "id": "2",
       "title": "Study",
+      "level": "A1",
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
       "cards": [
         {
@@ -1645,6 +1661,7 @@
     {
       "id": "3",
       "title": "Technology",
+      "level": "A1",
       "cards": [
         {
           "id": 1,
@@ -1670,6 +1687,7 @@
     },
     {
       "title": "test1",
+      "level": "A1",
       "cards": [
         {
           "terms": "1",
@@ -1690,6 +1708,16 @@
           "terms": "4",
           "definitions": "le",
           "id": 4
+        },
+        {
+          "terms": "5",
+          "definitions": "5",
+          "id": 5
+        },
+        {
+          "terms": "6",
+          "definitions": "6",
+          "id": 6
         }
       ],
       "id": "a16f"
@@ -1723,6 +1751,7 @@
     {
       "id": "27fe",
       "title": "Room",
+      "level": "A1",
       "cards": [
         {
           "terms": "living room",
@@ -1735,1306 +1764,30 @@
           "id": 2
         }
       ]
+    },
+    {
+      "title": "duy khanh",
+      "description": "khánh",
+      "cards": [
+        {
+          "terms": "khanh",
+          "definitions": "khanh",
+          "id": 1
+        }
+      ],
+      "id": "85dd"
     }
   ],
-  "grammarExercisesSubmission": [
+  "exercisesSubmission": [
     {
-      "submissionDate": "2024-09-10T18:29:20.537Z",
-      "score": "8%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "Sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": {
-                "0": "va"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": {
-                "0": "s"
-              },
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": {
-                "0": "a"
-              },
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "á",
-                "1": "da",
-                "2": "đa"
-              },
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "sss"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": {
-                "0": "sss"
-              },
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": {
-                "0": "sss"
-              },
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": {
-                "0": "ss"
-              },
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 1
-    },
-    {
-      "submissionDate": "2024-09-10T18:30:21.817Z",
-      "score": "25%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "Sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": {
-                "0": "Sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": {
-                "0": "du"
-              },
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 2
-    },
-    {
-      "submissionDate": "2024-09-10T18:32:44.273Z",
-      "score": "0%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 3
-    },
-    {
-      "submissionDate": "2024-09-10T18:34:45.369Z",
-      "score": "17%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "Sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": {
-                "0": "sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 4
-    },
-    {
-      "submissionDate": "2024-09-10T18:35:07.185Z",
-      "score": "8%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 5
-    },
-    {
-      "submissionDate": "2024-09-10T18:35:20.505Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "5",
-      "id": 6
-    },
-    {
-      "submissionDate": "2024-09-10T18:37:11.977Z",
-      "score": "8%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "Sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 7
-    },
-    {
-      "submissionDate": "2024-09-10T18:38:19.328Z",
-      "score": "8%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 8
-    },
-    {
-      "submissionDate": "2024-09-10T18:38:56.848Z",
-      "score": "8%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": {
-                "0": "sie"
-              },
-              "correctAnswer": "Sie",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "Sie",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "du",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "Er",
-              "questionId": 4,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": [
-                "er",
-                "sie",
-                "sie"
-              ],
-              "questionId": 5,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "Ich"
-              ],
-              "questionId": 6,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "ihr",
-                "Wir"
-              ],
-              "questionId": 7,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "Sie",
-              "questionId": 9,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "sie",
-              "questionId": 10,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "Sie",
-                "Ich"
-              ],
-              "questionId": 11,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": [
-                "du",
-                "ich"
-              ],
-              "questionId": 12,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "5",
-      "id": 9
-    },
-    {
-      "submissionDate": "2024-09-15T13:37:57.968Z",
-      "score": "17%",
-      "submissionParts": [
-        {
-          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "___ sprechen Deutsch.",
-              "userAnswer": "sie",
-              "correctAnswer": "Sie",
-              "isCorrect": true
-            },
-            {
-              "question": "Haben ___ Zeit?",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hilfst ___ mir?",
-              "userAnswer": "",
-              "correctAnswer": "du",
-              "isCorrect": false
-            },
-            {
-              "question": "___ ist Programmierer.",
-              "userAnswer": "",
-              "correctAnswer": "Er",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "userAnswer": "",
-              "correctAnswer": "er, sie, sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "userAnswer": "du, ich",
-              "correctAnswer": "du, Ich",
-              "isCorrect": true
-            },
-            {
-              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "userAnswer": "",
-              "correctAnswer": "ihr, Wir",
-              "isCorrect": false
-            },
-            {
-              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
-              "userAnswer": "",
-              "correctAnswer": "sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "userAnswer": "",
-              "correctAnswer": "du, ich",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "exerciseId": "5",
-      "id": 10
-    },
-    {
-      "submissionDate": "2024-09-15T14:07:03.436Z",
-      "score": "25%",
-      "submissionParts": [
-        {
-          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "___ sprechen Deutsch.",
-              "userAnswer": "sie",
-              "correctAnswer": "Sie",
-              "isCorrect": true
-            },
-            {
-              "question": "Haben ___ Zeit?",
-              "userAnswer": "sie",
-              "correctAnswer": "Sie",
-              "isCorrect": true
-            },
-            {
-              "question": "Hilfst ___ mir?",
-              "userAnswer": "",
-              "correctAnswer": "du",
-              "isCorrect": false
-            },
-            {
-              "question": "___ ist Programmierer.",
-              "userAnswer": "",
-              "correctAnswer": "Er",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "userAnswer": "",
-              "correctAnswer": "er, sie, sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "userAnswer": "du, ich",
-              "correctAnswer": "du, Ich",
-              "isCorrect": true
-            },
-            {
-              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "userAnswer": "",
-              "correctAnswer": "ihr, Wir",
-              "isCorrect": false
-            },
-            {
-              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
-              "userAnswer": "",
-              "correctAnswer": "sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "userAnswer": "",
-              "correctAnswer": "du, ich",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "exerciseId": "5",
-      "id": 11
-    },
-    {
-      "submissionDate": "2024-09-15T14:49:51.337Z",
-      "score": "8%",
-      "submissionParts": [
-        {
-          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "___ sprechen Deutsch.",
-              "userAnswer": "sie",
-              "correctAnswer": "Sie",
-              "isCorrect": true
-            },
-            {
-              "question": "Haben ___ Zeit?",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hilfst ___ mir?",
-              "userAnswer": "",
-              "correctAnswer": "du",
-              "isCorrect": false
-            },
-            {
-              "question": "___ ist Programmierer.",
-              "userAnswer": "",
-              "correctAnswer": "Er",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "userAnswer": "",
-              "correctAnswer": "er, sie, sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "userAnswer": "",
-              "correctAnswer": "du, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "userAnswer": "",
-              "correctAnswer": "ihr, Wir",
-              "isCorrect": false
-            },
-            {
-              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
-              "userAnswer": "",
-              "correctAnswer": "sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "userAnswer": "",
-              "correctAnswer": "du, ich",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "exerciseId": "5",
-      "id": 12
-    },
-    {
-      "submissionDate": "2024-09-15T14:52:08.978Z",
-      "score": "0%",
-      "submissionParts": [
-        {
-          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "___ sprechen Deutsch.",
-              "userAnswer": "ss",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Haben ___ Zeit?",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hilfst ___ mir?",
-              "userAnswer": "",
-              "correctAnswer": "du",
-              "isCorrect": false
-            },
-            {
-              "question": "___ ist Programmierer.",
-              "userAnswer": "",
-              "correctAnswer": "Er",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "userAnswer": "",
-              "correctAnswer": "er, sie, sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "userAnswer": "sd",
-              "correctAnswer": "du, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "userAnswer": "sd",
-              "correctAnswer": "ihr, Wir",
-              "isCorrect": false
-            },
-            {
-              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
-              "userAnswer": "",
-              "correctAnswer": "sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "userAnswer": "sd",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "userAnswer": "sd",
-              "correctAnswer": "du, ich",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "exerciseId": "5",
-      "id": 13
-    },
-    {
-      "submissionDate": "2024-09-15T14:54:11.787Z",
-      "score": "0%",
-      "submissionParts": [
-        {
-          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "___ sprechen Deutsch.",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Haben ___ Zeit?",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hilfst ___ mir?",
-              "userAnswer": "",
-              "correctAnswer": "du",
-              "isCorrect": false
-            },
-            {
-              "question": "___ ist Programmierer.",
-              "userAnswer": "",
-              "correctAnswer": "Er",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "userAnswer": "",
-              "correctAnswer": "er, sie, sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "userAnswer": "",
-              "correctAnswer": "du, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "userAnswer": "",
-              "correctAnswer": "ihr, Wir",
-              "isCorrect": false
-            },
-            {
-              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
-          "questions": [
-            {
-              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
-              "userAnswer": "",
-              "correctAnswer": "Sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
-              "userAnswer": "",
-              "correctAnswer": "sie",
-              "isCorrect": false
-            },
-            {
-              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "userAnswer": "",
-              "correctAnswer": "Sie, Ich",
-              "isCorrect": false
-            },
-            {
-              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "userAnswer": "",
-              "correctAnswer": "du, ich",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "exerciseId": "5",
-      "id": 14
-    }
-  ],
-  "listeningExercisesSubmission": [
-    {
-      "id": "93cb",
-      "submissionDate": "2024-08-30T15:23:43.855Z",
-      "score": "42.86%",
+      "id": "f9bb",
+      "submissionDate": "2024-09-18T10:37:46.325Z",
+      "score": "63%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "A",
-          "correctAnswer": "C",
+          "userAnswer": "B",
+          "correctAnswer": "A",
           "isCorrect": false
         },
         {
@@ -3045,592 +1798,133 @@
         },
         {
           "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "A",
+          "userAnswer": "B",
+          "correctAnswer": "B",
           "isCorrect": true
         },
         {
           "questionId": 4,
-          "userAnswer": "A",
+          "userAnswer": "B",
           "correctAnswer": "B",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 5,
-          "userAnswer": "A",
-          "correctAnswer": "B",
+          "userAnswer": "B",
+          "correctAnswer": "A",
           "isCorrect": false
         },
         {
           "questionId": 6,
           "userAnswer": "B",
-          "correctAnswer": "C",
-          "isCorrect": false
+          "correctAnswer": "B",
+          "isCorrect": true
         },
         {
           "questionId": 7,
-          "userAnswer": "A",
+          "userAnswer": "B",
           "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
           "isCorrect": true
         }
       ],
-      "exerciseId": "1",
-      "userId": 1
+      "exerciseId": "2"
     },
     {
-      "id": "a8d6",
-      "submissionDate": "2024-09-07T18:03:10.468Z",
-      "score": "28.57%",
+      "id": "6e76",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-20T11:01:09.090Z",
+      "score": "25%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "A",
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
           "isCorrect": true
         },
         {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
           "questionId": 4,
-          "userAnswer": "A",
-          "correctAnswer": "B",
+          "userAnswer": "",
+          "correctAnswer": "Er",
           "isCorrect": false
         },
         {
           "questionId": 5,
-          "userAnswer": "A",
-          "correctAnswer": "B",
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
           "isCorrect": false
         },
         {
           "questionId": 6,
-          "userAnswer": "A",
-          "correctAnswer": "C",
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
           "isCorrect": false
         },
         {
           "questionId": 7,
-          "userAnswer": "A",
-          "correctAnswer": "A",
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "du, ich",
+          "correctAnswer": "du, ich",
           "isCorrect": true
         }
-      ],
-      "exerciseId": "1"
-    }
-  ],
-  "readingExercisesSubmission": [
-    {
-      "id": "0ba4",
-      "submissionDate": "2024-09-09T16:04:00.254Z",
-      "score": "30%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": true
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 6,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 7,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2"
+      ]
     },
     {
-      "id": "4a13",
-      "submissionDate": "2024-09-09T16:12:55.826Z",
-      "score": "30%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": true
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 6,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 7,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2"
-    },
-    {
-      "id": "b2b4",
-      "submissionDate": "2024-09-09T16:13:02.135Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2"
-    },
-    {
-      "id": "4650",
-      "submissionDate": "2024-09-10T04:18:48.206Z",
-      "score": "30%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": true
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 6,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 7,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2"
-    },
-    {
-      "submissionDate": "2024-09-10T15:33:23.406Z",
-      "score": "63%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 6,
-              "isCorrect": true
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 7,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2",
-      "id": "N4oDWXU"
-    },
-    {
-      "submissionDate": "2024-09-10T15:40:38.508Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "Lh7x8VG"
-    },
-    {
-      "submissionDate": "2024-09-13T17:20:36.045Z",
-      "score": "63%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 6,
-              "isCorrect": true
-            }
-          ]
-        },
-        "part3": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "A",
-              "correctAnswer": "A",
-              "questionId": 7,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "A",
-              "correctAnswer": "B",
-              "questionId": 8,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2",
-      "id": "BJyTIUT"
-    },
-    {
-      "submissionDate": "2024-09-13T17:20:56.301Z",
-      "score": "60%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "userAnswer": "B",
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": true
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2",
-      "id": "RqrpvF2"
-    },
-    {
-      "submissionDate": "2024-09-13T17:21:12.140Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "sFz6IHg"
-    },
-    {
-      "submissionDate": "2024-09-13T17:21:47.828Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "tmBDwC3"
-    },
-    {
-      "submissionDate": "2024-09-13T17:22:36.620Z",
-      "score": "10%",
-      "submissionParts": {
-        "part1": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "A",
-              "questionId": 1,
-              "isCorrect": false
-            },
-            {
-              "userAnswer": "B",
-              "correctAnswer": "B",
-              "questionId": 2,
-              "isCorrect": true
-            },
-            {
-              "correctAnswer": "B",
-              "questionId": 3,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "B",
-              "questionId": 4,
-              "isCorrect": false
-            },
-            {
-              "correctAnswer": "A",
-              "questionId": 5,
-              "isCorrect": false
-            }
-          ]
-        },
-        "part2": {
-          "submissionAnswers": [
-            {
-              "correctAnswer": "B",
-              "questionId": 6,
-              "isCorrect": false
-            }
-          ]
-        }
-      },
-      "exerciseId": "2",
-      "id": "oyG6qpv"
-    },
-    {
-      "submissionDate": "2024-09-13T17:23:05.116Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "PFw-mV7"
-    },
-    {
-      "submissionDate": "2024-09-13T17:23:38.068Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "1khOL5J"
-    },
-    {
-      "submissionDate": "2024-09-13T17:23:40.115Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "P7Q7sP7"
-    },
-    {
-      "submissionDate": "2024-09-13T17:23:54.939Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "ML4h_HN"
-    },
-    {
-      "submissionDate": "2024-09-15T14:57:17.010Z",
-      "score": "0%",
-      "submissionParts": {},
-      "exerciseId": "2",
-      "id": "ChwWQvR"
-    }
-  ],
-  "writingExercisesSubmission": [],
-  "checkpointQuizSubmission": [
-    {
-      "id": "ae1d",
-      "submissionDate": "2024-08-30T10:48:57.530Z",
-      "score": "30.00%",
+      "id": "9bf3",
+      "submissionDate": "2024-09-20T11:10:51.391Z",
+      "score": "38%",
       "submissionAnswers": [
         {
           "questionId": 1,
           "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
+          "correctAnswer": "A",
+          "isCorrect": true
         },
         {
           "questionId": 2,
@@ -3641,8 +1935,8 @@
         {
           "questionId": 3,
           "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
+          "correctAnswer": "B",
+          "isCorrect": false
         },
         {
           "questionId": 4,
@@ -3653,8 +1947,8 @@
         {
           "questionId": 5,
           "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
+          "correctAnswer": "A",
+          "isCorrect": true
         },
         {
           "questionId": 6,
@@ -3671,58 +1965,173 @@
         {
           "questionId": 8,
           "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
         }
       ],
-      "conditionStatus": "not pass",
-      "exerciseId": "7"
+      "exerciseId": "2"
     },
     {
-      "id": "4a05",
-      "submissionDate": "2024-08-30T10:49:15.570Z",
-      "score": "70.00%",
+      "id": "2816",
+      "submissionDate": "2024-09-20T13:02:49.449Z",
+      "score": "50%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
         },
         {
           "questionId": 2,
-          "userAnswer": "B",
-          "correctAnswer": "B",
+          "userAnswer": "spre",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "bißchen",
+          "correctAnswer": "bißchen",
+          "isCorrect": true
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "9697",
+      "submissionDate": "2024-09-20T13:04:47.823Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "spre",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "0758",
+      "submissionDate": "2024-09-20T13:39:17.587Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
           "isCorrect": true
         },
         {
           "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "fff",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "0a83",
+      "submissionDate": "2024-09-20T13:39:37.953Z",
+      "score": "25%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "",
+          "correctAnswer": "von",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "c737",
+      "submissionDate": "2024-09-20T15:08:07.609Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
           "userAnswer": "A",
           "correctAnswer": "A",
           "isCorrect": true
         },
         {
-          "questionId": 4,
-          "userAnswer": "B",
+          "questionId": 2,
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
         },
         {
           "questionId": 5,
-          "userAnswer": "B",
-          "correctAnswer": "B",
+          "userAnswer": "A",
+          "correctAnswer": "A",
           "isCorrect": true
         },
         {
@@ -3739,32 +2148,581 @@
         },
         {
           "questionId": 8,
-          "userAnswer": "C",
-          "correctAnswer": "C",
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "6d29",
+      "submissionDate": "2024-09-20T15:09:27.235Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
           "isCorrect": true
         },
         {
-          "questionId": 9,
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "81c3",
+      "submissionDate": "2024-09-20T15:13:45.071Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "0ac2",
+      "submissionDate": "2024-09-20T15:15:33.647Z",
+      "score": "63%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
           "userAnswer": "B",
           "correctAnswer": "B",
           "isCorrect": true
         },
         {
-          "questionId": 10,
-          "userAnswer": "C",
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
           "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "58ab",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-21T09:58:33.157Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "du, ich",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
           "isCorrect": false
         }
       ],
-      "conditionStatus": "passed",
-      "exerciseId": "7"
+      "isCompleted": true
+    },
+    {
+      "id": "a5c0",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-24T15:28:36.272Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "5caa",
+      "submissionDate": "2024-09-24T15:35:36.441Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "25d4",
+      "submissionDate": "2024-09-24T15:36:19.128Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "exerciseId": "5",
+      "submissionDate": "2024-09-26T01:41:47.135Z",
+      "score": "8%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "sis, , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "id": "msGncG2"
+    },
+    {
+      "exerciseId": "5",
+      "submissionDate": "2024-09-26T03:21:38.307Z",
+      "score": "8%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "da",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "id": "ty7_NeD"
     }
   ],
   "finalExamSubmission": [
     {
-      "id": "e743",
-      "submissionDate": "2024-08-30T10:45:05.982Z",
-      "score": "60.00%",
+      "id": "082a",
+      "submissionDate": "2024-09-20T06:11:22.859Z",
+      "score": "55%",
       "submissionAnswers": [
         {
           "questionId": 1,
@@ -3780,9 +2738,9 @@
         },
         {
           "questionId": 3,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 4,
@@ -3834,33 +2792,33 @@
         },
         {
           "questionId": 12,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 13,
-          "userAnswer": "A",
+          "userAnswer": "B",
           "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 14,
-          "userAnswer": "A",
+          "userAnswer": "B",
           "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 15,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 16,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 17,
@@ -3870,13 +2828,142 @@
         },
         {
           "questionId": 18,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "examId": "1"
+    },
+    {
+      "id": "d2eb",
+      "submissionDate": "2024-09-20T06:21:18.216Z",
+      "score": "40%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
           "userAnswer": "B",
           "correctAnswer": "B",
           "isCorrect": true
         },
         {
-          "questionId": 19,
+          "questionId": 8,
           "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "C",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "C",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "C",
           "correctAnswer": "A",
           "isCorrect": false
         },
@@ -3887,73 +2974,172 @@
           "isCorrect": true
         }
       ],
-      "conditionStatus": "passed",
+      "conditionStatus": "not pass",
       "examId": "1"
     },
     {
-      "id": "3418",
-      "submissionDate": "2024-08-30T10:46:31.071Z",
-      "score": "35.00%",
+      "id": "4459",
+      "submissionDate": "2024-09-20T06:24:24.342Z",
+      "score": "0%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 2,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 3,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 4,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 5,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 6,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 7,
-          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 8,
-          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 9,
-          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 10,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "examId": "1"
+    },
+    {
+      "id": "7ee3",
+      "submissionDate": "2024-09-20T06:31:04.960Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "A",
+          "isCorrect": false
         },
         {
           "questionId": 11,

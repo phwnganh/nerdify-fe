@@ -13,6 +13,7 @@ import {
 } from "antd";
 
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
+import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 export default function CreateFlashCard() {
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -61,8 +62,10 @@ export default function CreateFlashCard() {
   return (
     <>
       {contextHolder}
+      
       <div style={{ width: "60%" }}>
-        <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI !!</h1>
+      <BreadCrumbHome/>
+        <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI</h1>
         <Form
           form={form}
           onFinish={handleSubmit}
@@ -158,7 +161,7 @@ export default function CreateFlashCard() {
                             rules={[
                               {
                                 required: true,
-                                message: "Làm ơn nhập thuật ngữ!",
+                                message: "Vui lòng nhập thuật ngữ!",
                               },
                             ]}
                             noStyle
@@ -180,7 +183,7 @@ export default function CreateFlashCard() {
                             rules={[
                               {
                                 required: true,
-                                message: "Làm ơn nhập định nghĩa!",
+                                message: "Vui lòng nhập định nghĩa!",
                               },
                             ]}
                             noStyle

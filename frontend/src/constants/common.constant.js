@@ -19,5 +19,6 @@ export const EXERCISE_TYPE = {
 export const PART_TYPE = {
   FILL_IN_THE_BLANK: "fill_in_the_blank",
   MULTIPLE_CHOICE: "multiple_choice",
-  MATCHING: "matching"
+  MATCHING: "matching",
+  WRITE_PARAGRAPH: "write_paragraph"
 }

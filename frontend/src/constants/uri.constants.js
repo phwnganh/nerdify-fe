@@ -5,6 +5,7 @@ export const CLIENT_URI = {
   REGISTER: "/register",
   FORGOT_PASSWORD: "/forgot-password",
   VERIFY_EMAIL: "/verify-email/:emailToken",
+  RESET_PASSWORD: "/reset-password/:resetToken",
   // LEARNER
   COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
@@ -17,7 +18,11 @@ export const CLIENT_URI = {
   CREATE_FLASH_CARD: "/create-flash-card",
   EDIT_FLASH_CARD: "/edit-flash-card",
   PAYMENT: "/payment",
+  TEST_FLASH_CARD: "/test-flash-card",
+  PREMIUM: "/premium",
   BILLINFO: "/bill-info",
+  LEARNING_PROGRESS: "/learning-progress",
   // ADMIN
   DASHBOARD: "/dashboard",
+  SIDEBAR: "/sidebar"
 };
