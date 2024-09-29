@@ -30,19 +30,19 @@ export default function CoursePage() {
             marginBottom: "40px",
           }}
         >
-          DS Bài Tập
+          DS Bài Tập Theo Trình Độ
         </h2>
         <List
           grid={{
-            gutter: 24, // Khoảng cách giữa các thẻ
+            gutter: 24,
             column: 3,
           }}
           dataSource={course}
           renderItem={(course) => (
             <List.Item
               style={{
-                width: "400px", // Độ rộng cố định của thẻ card
-                margin: "0 auto", // Đảm bảo card được căn giữa nếu có khoảng trống
+                width: "400px",
+                margin: "0 auto",
               }}
             >
               <CourseList course={course} />
