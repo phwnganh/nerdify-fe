@@ -14,6 +14,20 @@ export const GuestLayout = ({ children }) => {
         {/* Content Area */}
         <div style={styles.container}>
           <div style={styles.content}>{children}</div>
+          {/* <div
+            style={{
+              marginTop: "100px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              // flexDirection: "column",
+
+              paddingLeft: "150px",
+              paddingRight: "150px",
+            }}
+          >
+            <div>{children}</div>
+          </div> */}
           <Divider style={{ marginBottom: 5 }} />
           <Footer />
         </div>

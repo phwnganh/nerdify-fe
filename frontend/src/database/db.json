@@ -71,19 +71,21 @@
               "id": 1,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques1",
-              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
               "options": [
                 {
                   "id": "A",
-                  "text": "Dreißig Euro."
+                  "text": "Dreißig Euro.",
+                  "optionImage": "demo1_1"
                 },
                 {
                   "id": "B",
-                  "text": "Fünfundneunzig Euro."
+                  "text": "Fünfundneunzig Euro.",
+                  "optionImage": "demo_1_2"
                 },
                 {
                   "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                  "text": "Neunzehn Euro fünfundneunzig Cent.",
+                  "optionImage": "demo_1_3"
                 }
               ],
               "answer": "C",
@@ -93,19 +95,21 @@
               "id": 2,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques2",
-              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
               "options": [
                 {
                   "id": "A",
-                  "text": "Dreißig Euro."
+                  "text": "Dreißig Euro.",
+                  "optionImage": "demo_2_1"
                 },
                 {
                   "id": "B",
-                  "text": "Fünfundneunzig Euro."
+                  "text": "Fünfundneunzig Euro.",
+                  "optionImage": "demo_2_2"
                 },
                 {
                   "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                  "text": "Neunzehn Euro fünfundneunzig Cent.",
+                  "optionImage": "demo_2_3"
                 }
               ],
               "answer": "B",
@@ -115,115 +119,25 @@
               "id": 3,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques3",
-              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
               "options": [
                 {
                   "id": "A",
-                  "text": "Dreißig Euro."
+                  "text": "Dreißig Euro.",
+                  "optionImage": "demo3_1"
                 },
                 {
                   "id": "B",
-                  "text": "Fünfundneunzig Euro."
+                  "text": "Fünfundneunzig Euro.",
+                  "optionImage": "demo3_2"
                 },
                 {
                   "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                  "text": "Neunzehn Euro fünfundneunzig Cent.",
+                  "optionImage": "demo3_3"
                 }
               ],
               "answer": "A",
               "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. Người phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). Trong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "partName": "Phần 2: Kreuzen Sie an: Richtig oder Falsch. Sie hören jeden Text einmal.",
-          "partType": "multiple_choice",
-          "transcript": "Nummer 7\n Liebe Kunden, zu Weihnachten bieten wir Ihnen Superpreise an ... z. B. erstklassiger italienischer Weißwein für 12 Euro 78 die Flasche oder exklusiver argentinischer Rotwein für 9 Euro 68. Besuchen Sie uns im 3. Stock. Frohe Weihnachten. \nNummer 8 \nLiebe Fahrgäste. Wir sind kurz vor Würzburg. Sicherlich haben Sie schon Hunger. An der nächsten Raststätte halten wir für eine Stunde. Wir treffen uns wieder um halb eins am Bus, aber bitte pünktlich sein.\nNummer 9 \nLiebe Fahrgäste! Bitte beachten Sie. Das ist ein außerplanmäßiger Halt. Bitte hier nicht aussteigen. In ein paar Minuten erreichen wir den Bahnhof Bonn Bad Godesberg. \nNummer 10 \nHerr Stefan Janda gebucht auf dem Flug LH 737 nach Warschau, wird zum Schalter F7 gebeten. Der Flug wird in ein paar Minuten geschlossen. Herr Janda gebucht nach Warschau bitte nach F7.",
-          "questions": [
-            {
-              "id": 4,
-              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
-              "audioUrl": "part2_ques7",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Richtig"
-                },
-                {
-                  "id": "B",
-                  "text": "Falsch"
-                }
-              ],
-              "answer": "B",
-              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
-            },
-            {
-              "id": 5,
-              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
-              "audioUrl": "part2_ques8",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "Richtig"
-                },
-                {
-                  "id": "B",
-                  "text": "Falsch"
-                }
-              ],
-              "answer": "B",
-              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
-          "partType": "multiple_choice",
-          "transcript": "Nummer 11 \nTelefonansagedienst der deutschen Tele- kom. Die Rufnummer des Teilnehmers hat sich geändert. Bitte rufen Sie die Telefon- Auskunft an unter 11 8 33. \nNummer 12 \nHallo Jan, hier ist Boris. Du, ich bin noch im Zug. Du holst mich doch vom Bahnhof ab? Ich warte an der Information auf dich. \nNummer 13 \nMensch Jan, du Penner, hier noch mal Boris. Ich bin jetzt am Bahnhof. Und du? Wo bist du denn? Ich warte schon über 20 Minuten auf dich. Zehn Minuten Zeit hast du noch... bis 2, dann nehme ich ein Taxi. \nNummer 14 \nGuten Tag, hier Rogalla. Wir können am Samstag leider nicht zu Ihnen kommen. Am Sonntag haben wir aber Zeit. Rufen Sie uns doch bitte zurück, ob Ihnen das passt. Danke. \nNummer 15 \nHallo Alex. Walter hier. Kannst du schnell mal rüberkommen? Mein Computer hat einen Fehler. Ich kann nichts drucken. Melde dich doch bitte gleich, wenn du nach Hause kommst.",
-          "questions": [
-            {
-              "id": 6,
-              "question": "Die Nummer ist:",
-              "audioUrl": "part3_ques11",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "11833"
-                },
-                {
-                  "id": "B",
-                  "text": "11883"
-                },
-                {
-                  "id": "C",
-                  "text": "12833"
-                }
-              ],
-              "answer": "C",
-              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
-            },
-            {
-              "id": 7,
-              "question": "Wo genau treffen sich die Männer?",
-              "audioUrl": "part3_ques12",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "20 Minuten"
-                },
-                {
-                  "id": "B",
-                  "text": "2 Minuten"
-                },
-                {
-                  "id": "C",
-                  "text": "10 Minuten"
-                }
-              ],
-              "answer": "A",
-              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
             }
           ]
         }

@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Col, Row, Tabs } from "antd";
-import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
+import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import ButtonCustom from "../../../../components/Button";
 import { PART_TYPE } from "../../../../constants";
 
@@ -160,33 +160,115 @@ export default function ListeningExercise() {
     setCurrentPartIndex(0);
   }, []);
 
+  // const renderPart = (currentPart) => {
+  //   return (
+  //     <>
+  //       {currentPart.questions.map((question) => (
+  //         <div key={question.id} style={{ marginBottom: "40px" }}>
+  //           {/* Câu hỏi */}
+  //           <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
+  //             Câu {question.id}: {question.question}
+  //           </TextCustom>
+
+  //           {/* Audio */}
+  //           <audio controls style={{ marginTop: "20px", width: "100%" }}>
+  //             <source src={audioArr[question.audioUrl]} type="audio/mp3" />
+  //             Trình duyệt của bạn không hỗ trợ phần tử audio.
+  //           </audio>
+
+  //           {/* Image của các đáp án */}
+  //           <div style={{ marginTop: "20px" }}>
+  //             <Row style={{ textAlign: "center" }}>
+  //               {question.questionImage &&
+  //                 question.questionImage.map((image, index) => (
+  //                   <Col key={index} span={8}>
+  //                     {/* Hình ảnh của mỗi đáp án */}
+  //                     <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
+  //                   </Col>
+  //                 ))}
+  //             </Row>
+
+  //             {/* Các đáp án (button) */}
+  //             <Row style={{ textAlign: "center", marginTop: "10px" }}>
+  //               {question.options.map((option) => {
+  //                 const isUserSelected = option.id === userAnswers[question.id];
+  //                 const isCorrectAnswer = option.id === question.answer;
+
+  //                 let backgroundColor = isUserSelected ? "#A8703E" : "";
+  //                 if (isSubmitted) {
+  //                   if (isCorrectAnswer) {
+  //                     backgroundColor = "#5FD855";
+  //                   } else if (isUserSelected && !isCorrectAnswer) {
+  //                     backgroundColor = "red";
+  //                   }
+  //                 }
+
+  //                 return (
+  //                   <Col key={option.id} span={8} style={{ padding: "0 10px" }}>
+  //                     <ButtonCustom
+  //                       buttonType="primary"
+  //                       onClick={() => handleSelectOptions(question.id, option.id)}
+  //                       style={{
+  //                         backgroundColor,
+  //                         width: "100%", // Đảm bảo nút chiếm toàn bộ chiều rộng của cột
+  //                       }}
+  //                       disabled={isSubmitted}
+  //                     >
+  //                       {option.id}. {option.text}
+  //                     </ButtonCustom>
+  //                   </Col>
+  //                 );
+  //               })}
+  //             </Row>
+  //           </div>
+
+  //           {/* Đáp án chi tiết */}
+  //           {isSubmitted && (
+  //             <>
+  //               <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)} style={{ marginTop: "20px" }}>
+  //                 Đáp án chi tiết
+  //               </ButtonCustom>
+  //               {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue", marginTop: "10px" }}>{question.answerDetail}</TextCustom>}
+  //             </>
+  //           )}
+  //         </div>
+  //       ))}
+  //     </>
+  //   );
+  // };
+
   const renderPart = (currentPart) => {
     return (
       <>
         {currentPart.questions.map((question) => (
-          <div key={question.id}>
-            <TextCustom style={{ paddingTop: "100px", fontWeight: "bold" }}>
+          <div key={question.id} style={{ marginBottom: "40px" }}>
+            {/* Câu hỏi */}
+            <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
               Câu {question.id}: {question.question}
             </TextCustom>
-            <audio controls style={{ marginTop: "20px", width: "100%" }}>
-              <source src={audioArr[question.audioUrl]} type="audio/mp3" />
-              Trình duyệt của bạn không hỗ trợ phần tử audio.
-            </audio>
+
+            {/* Audio */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "center",
+              }}
+            >
+              <audio controls style={{ marginTop: "20px", width: "50%" }}>
+                <source src={audioArr[question.audioUrl]} type="audio/mp3" />
+                Trình duyệt của bạn không hỗ trợ phần tử audio.
+              </audio>
+            </div>
+
+            {/* Hình ảnh và các đáp án nằm ngang */}
             <div style={{ marginTop: "20px" }}>
-              <Row style={{ textAlign: "center" }}>
-                {question.questionImage &&
-                  question.questionImage.map((image, index) => (
-                    <Col key={index} span={8}>
-                      <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
-                    </Col>
-                  ))}
-              </Row>
-              <Row style={{ textAlign: "center", marginTop: "10px" }}>
-                {question.options.map((option) => {
+              <Row justify="center" style={{ textAlign: "center", marginTop: "10px" }}>
+                {question.options.map((option, index) => {
                   const isUserSelected = option.id === userAnswers[question.id];
                   const isCorrectAnswer = option.id === question.answer;
-                  let backgroundColor = isUserSelected ? "#A8703E" : "";
 
+                  let backgroundColor = isUserSelected ? "#A8703E" : "";
                   if (isSubmitted) {
                     if (isCorrectAnswer) {
                       backgroundColor = "#5FD855";
@@ -196,21 +278,66 @@ export default function ListeningExercise() {
                   }
 
                   return (
-                    <Col key={option.id} span={8}>
-                      <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isSubmitted}>
-                        {option.id}. {option.text}
-                      </ButtonCustom>
+                    <Col key={option.id} span={24} style={{ padding: "10px" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "start",
+                          padding: "10px",
+                          borderRadius: "8px",
+                        }}
+                      >
+                        {/* Khung ảnh cố định */}
+                        <div
+                          style={{
+                            height: "100px",
+                            width: "100px",
+                            overflow: "hidden",
+                            marginRight: "12px", // Khoảng cách giữa img và btn
+                          }}
+                        >
+                          {question.questionImage && question.questionImage[index] && (
+                            <img
+                              src={imagesArr[question.questionImage[index]]}
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                              }}
+                              alt={`Question ${question.id} option ${option.id}`}
+                            />
+                          )}
+                        </div>
+                        {/* Đáp án (button) */}
+                        <ButtonCustom
+                          buttonType="primary"
+                          onClick={() => handleSelectOptions(question.id, option.id)}
+                          style={{
+                            backgroundColor,
+                            width: "auto",
+                            whiteSpace: "nowrap",
+                            padding: "8px 16px",
+                            textAlign: "center",
+                          }}
+                          disabled={isSubmitted}
+                        >
+                          {option.id}. {option.text}
+                        </ButtonCustom>
+                      </div>
                     </Col>
                   );
                 })}
               </Row>
             </div>
+
+            {/* Đáp án chi tiết */}
             {isSubmitted && (
               <>
-                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
+                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)} style={{ marginTop: "20px" }}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
+                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue", marginTop: "10px" }}>{question.answerDetail}</TextCustom>}
               </>
             )}
           </div>
@@ -230,59 +357,63 @@ export default function ListeningExercise() {
   const currentPart = exercises.parts[currentPartIndex];
 
   return (
-    <div style={{ padding: "24px" }}>
-      <BreadCrumbHome />
-      <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercises.title}
-      </TitleCustom>
-
-      <Tabs defaultActiveKey="1" onChange={handleTabChange}>
-        <TabPane tab="Questions and Answers" key="questionsAnswers">
-          {isSubmitted && (
-            <div style={{ textAlign: "center" }}>
-              <TextCustom>
-                Điểm: <span style={{ color: "red" }}>{score}%</span>
-              </TextCustom>
-            </div>
-          )}
-          <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
-          {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart)}
-          <div style={{ textAlign: "center", paddingTop: "50px" }}>
-            <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => Math.max(prev - 1, 0))} disabled={currentPartIndex === 0}>
-              Phần trước
-            </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px", marginLeft: "30px" }}
-              onClick={() => setCurrentPartIndex((prev) => Math.min(prev + 1, exercises.parts.length - 1))}
-              disabled={currentPartIndex === exercises.parts.length - 1}
-            >
-              Phần tiếp theo
-            </ButtonCustom>
-            {isSubmitted ? (
-              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
-                Làm lại bài tập này
-              </ButtonCustom>
-            ) : (
-              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={currentPartIndex !== exercises.parts.length - 1}>
-                Nộp bài
-              </ButtonCustom>
+    <div style={{ paddingTop: "40px" }}>
+      {/* Container có độ rộng là 100% - 5px */}
+      <div style={{ width: "calc(100% - 50px)", margin: "0 auto" }}>
+        <BreadCrumbHome />
+        <TitleCustom level={2} style={{ fontWeight: "bold" }}>
+          {exercises.title}
+        </TitleCustom>
+        <Tabs defaultActiveKey="1" onChange={handleTabChange}>
+          <TabPane tab="Questions and Answers" key="questionsAnswers">
+            {isSubmitted && (
+              <div style={{ textAlign: "center" }}>
+                <TextCustom>
+                  Điểm: <span style={{ color: "red" }}>{score}%</span>
+                </TextCustom>
+              </div>
             )}
-          </div>
-        </TabPane>
-        <TabPane tab="Transcripts" key="transcripts">
-          {isSubmitted ? (
-            exercises?.parts?.map((part, index) => (
-              <React.Fragment key={index}>
-                <TextCustom>{part?.partName}</TextCustom>
-                <TextCustom>{part?.transcript}</TextCustom>
-              </React.Fragment>
-            ))
-          ) : (
-            <div>Bạn phải hoàn thành bài tập này</div>
-          )}
-        </TabPane>
-      </Tabs>
+            {/* partName:  */}
+            <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
+
+            {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart)}
+            <div style={{ textAlign: "center", paddingTop: "50px" }}>
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => Math.max(prev - 1, 0))} disabled={currentPartIndex === 0}>
+                Phần trước
+              </ButtonCustom>
+              <ButtonCustom
+                buttonType="secondary"
+                style={{ padding: "23px", marginLeft: "30px" }}
+                onClick={() => setCurrentPartIndex((prev) => Math.min(prev + 1, exercises.parts.length - 1))}
+                disabled={currentPartIndex === exercises.parts.length - 1}
+              >
+                Phần tiếp theo
+              </ButtonCustom>
+              {isSubmitted ? (
+                <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
+                  Làm lại bài tập này
+                </ButtonCustom>
+              ) : (
+                <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={currentPartIndex !== exercises.parts.length - 1}>
+                  Nộp bài
+                </ButtonCustom>
+              )}
+            </div>
+          </TabPane>
+          <TabPane tab="Transcripts" key="transcripts">
+            {isSubmitted ? (
+              exercises?.parts?.map((part, index) => (
+                <React.Fragment key={index}>
+                  <TextCustom>{part?.partName}</TextCustom>
+                  <TextCustom>{part?.transcript}</TextCustom>
+                </React.Fragment>
+              ))
+            ) : (
+              <div>Bạn phải hoàn thành bài tập này</div>
+            )}
+          </TabPane>
+        </Tabs>
+      </div>
     </div>
   );
 }
