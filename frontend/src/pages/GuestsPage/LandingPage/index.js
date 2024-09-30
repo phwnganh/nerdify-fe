@@ -33,39 +33,36 @@ export const LandingPage = () => {
     },
   ];
 
-  const benefit = [
-    "Bài tập 4 kỹ năng đầy đủ theo trình độ",
-    "Bài tập từ vựng và ngữ pháp theo trình độ",
-    "Được giáo viên chữa bài viết cẩn thận",
-    "Bộ từ vựng flashcard theo chủ đề",
-  ];
+  const benefit = ["Bài tập 4 kỹ năng đầy đủ theo trình độ", "Bài tập từ vựng và ngữ pháp theo trình độ", "Được giáo viên chữa bài viết cẩn thận", "Bộ từ vựng flashcard theo chủ đề"];
 
   const feedbacks = [
     {
       name: "Tuan",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 5,
     },
     {
       name: "Tuan2",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 4,
     },
     {
       name: "Tuan3",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 3,
     },
     {
       name: "Tuan4",
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
       stars: 2,
     },
+    {
+      name: "Tuan5",
+      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      stars: 5,
+    },
   ];
+
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <ModalPremium />
@@ -80,10 +77,7 @@ export const LandingPage = () => {
             <br />
             theo trình độ
           </h2>
-          <p style={{ fontSize: "20px", color: "grey" }}>
-            Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng,
-            ngữ pháp theo trình độ.
-          </p>
+          <p style={{ fontSize: "20px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ButtonCustom
             buttonType="primary"
             style={{
@@ -139,6 +133,7 @@ export const LandingPage = () => {
         </Col>
       </Row>
 
+      {/* Skills */}
       <Row style={{ marginTop: "100px" }}>
         {skills.map((skill) => (
           <Col
@@ -156,18 +151,14 @@ export const LandingPage = () => {
         ))}
       </Row>
 
+      {/* Benefit */}
       <Row style={{ marginTop: "100px" }}>
         <Col span={8}>
           <img src={landingPageImg3} alt="Landing page 3" />
         </Col>
         <Col span={16}>
-          <h2 style={{ textAlign: "center", fontSize: "40px" }}>
-            Trang Web cung cấp
-          </h2>
-          <p style={{ fontSize: "25px", color: "grey" }}>
-            Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng,
-            ngữ pháp theo trình độ.
-          </p>
+          <h2 style={{ textAlign: "center", fontSize: "40px" }}>Trang Web cung cấp</h2>
+          <p style={{ fontSize: "25px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ul style={{ listStyleType: "none", padding: "0px" }}>
             {benefit.map((b) => (
               <li style={{ fontSize: "20px", margin: "10px 0px" }}>
@@ -184,49 +175,75 @@ export const LandingPage = () => {
           </ButtonCustom>
         </Col>
       </Row>
+
       {/* Khoa hoc */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>KHÓA HỌC </h2>
-        <Courses />
+        <div
+          style={{
+            // display: "flex",
+            // justifyContent: "center",
+            marginLeft: "8px",
+            marginRight: "8px",
+          }}
+        >
+          <Courses />
+        </div>
       </div>
+
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
       </div>
-      {/* Feedback */}
+
+      {/* Feedback - think about carousel */}
       <div>
-        <h2 style={{ fontSize: "40px", textAlign: "center" }}>FEEDBACK</h2>
-        <List
-          grid={{
-            gutter: 16,
-            column: 4,
+        <h2
+          style={{
+            fontSize: "40px",
+            textAlign: "center",
           }}
-          dataSource={feedbacks}
-          renderItem={(item) => (
-            <List.Item>
-              <Card style={{ width: "330px" }}>
-                <Row>
-                  <Col span={4}>
-                    <Avatar src={sample} size={42} />
-                  </Col>
-                  <Col>
-                    <Row>
-                      <b>{item.name}</b>
-                    </Row>
-                    <Row>
-                      {Array.from({ length: item.stars }).map((_, index) => (
-                        <StarFilled
-                          style={{ color: "#FFCC33", fontSize: "20px" }}
-                        />
-                      ))}
-                    </Row>
-                  </Col>
-                </Row>
-                <p>{item.content}</p>
-              </Card>
-            </List.Item>
-          )}
-        />
+        >
+          FEEDBACK
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginLeft: "8px",
+            marginRight: "8px",
+          }}
+        >
+          <List
+            grid={{
+              gutter: 16,
+              column: 4,
+            }}
+            dataSource={feedbacks}
+            renderItem={(item) => (
+              <List.Item>
+                <Card style={{ width: "330px" }}>
+                  <Row>
+                    <Col span={4}>
+                      <Avatar src={sample} size={42} />
+                    </Col>
+                    <Col>
+                      <Row>
+                        <b>{item.name}</b>
+                      </Row>
+                      <Row>
+                        {Array.from({ length: item.stars }).map((_, index) => (
+                          <StarFilled style={{ color: "#FFCC33", fontSize: "20px" }} />
+                        ))}
+                      </Row>
+                    </Col>
+                  </Row>
+                  <p>{item.content}</p>
+                </Card>
+              </List.Item>
+            )}
+          />
+        </div>
       </div>
 
       <div

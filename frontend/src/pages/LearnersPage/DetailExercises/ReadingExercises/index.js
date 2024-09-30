@@ -8,6 +8,7 @@ import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
 import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
 import demo_part3_1 from "../../../../assets/readingExercises/demo_part3_1.png";
 import demo_part3_2 from "../../../../assets/readingExercises/demo_part3_2.png";
+import { Col, Row } from "antd";
 
 const imgReadingArr = {
   demo_part2_1,
@@ -26,9 +27,7 @@ export default function ReadingExercises() {
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
-    fetch(
-      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
-    )
+    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -57,25 +56,17 @@ export default function ReadingExercises() {
   const renderPart = (currentPart) => {
     return (
       <>
+        {currentPart?.questionParagraph && <div>{currentPart?.questionParagraph}</div>}
         {currentPart.questions.map((question) => (
           <div key={question.id}>
             <TextCustom style={{ fontWeight: "bold" }}>
               Câu {question.id}: {question.question}
             </TextCustom>
-            {Array.isArray(question.questionImage) &&
-            question.questionImage.length > 0 ? (
-              question.questionImage.map((image, index) => (
-                <img
-                  key={index}
-                  src={imgReadingArr[image]}
-                  alt="question-part"
-                />
-              ))
+
+            {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
+              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} style={{padding: '10px'}} alt="question-part" />)
             ) : question.questionImage ? (
-              <img
-                src={imgReadingArr[question.questionImage]}
-                alt="question-part"
-              />
+              <img src={imgReadingArr[question.questionImage]} alt="question-part" style={{padding: '20px'}}/>
             ) : null}
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               {question.options.map((option) => {
@@ -96,31 +87,21 @@ export default function ReadingExercises() {
                 }
 
                 return (
-                  <ButtonCustom
-                    key={option.id}
-                    buttonType="primary"
-                    onClick={() => handleSelectOptions(question.id, option.id)}
-                    style={{ backgroundColor }}
-                    disabled={isCompleted}
-                  >
+                  <div style={{padding: '20px'}}>
+                  <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isCompleted}>
                     {option.text}
                   </ButtonCustom>
+                  </div>
+                  
                 );
               })}
             </div>
             {isCompleted && (
               <>
-                <ButtonCustom
-                  buttonType="primary"
-                  onClick={() => handleToggleAnswerDetail(question.id)}
-                >
+                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && (
-                  <TextCustom style={{ color: "blue" }}>
-                    {question.answerDetail}
-                  </TextCustom>
-                )}
+                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
               </>
             )}
           </div>
@@ -136,11 +117,7 @@ export default function ReadingExercises() {
     setIsCompleted(false);
     setCurrentPartIndex(0);
   }, []);
-  const totalQuestions = useMemo(
-    () =>
-      exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0),
-    [exercises]
-  );
+  const totalQuestions = useMemo(() => exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0), [exercises]);
 
   const handleSubmit = useCallback(() => {
     let score = 0;
@@ -170,7 +147,7 @@ export default function ReadingExercises() {
           correctAnswer,
           isCorrect,
         };
-      })
+      }),
     );
     const markValue = Math.round((score / totalQuestions) * 100);
     setUserScore(markValue);
@@ -184,19 +161,16 @@ export default function ReadingExercises() {
       isCompleted: true,
     };
 
-    fetch(
-      `http://localhost:9999/exercises/${exercises?.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          isCompleted: true,
-          score: `${markValue}%`,
-        }),
-      }
-    )
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        isCompleted: true,
+        score: `${markValue}%`,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -240,18 +214,10 @@ export default function ReadingExercises() {
         )}
       </div>
       <div>
-        <TextCustom style={{ color: "red", fontWeight: "bold" }}>
-          {currentPart.partName}
-        </TextCustom>
-        {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE &&
-          renderPart(currentPart, `part${currentPartIndex + 1}`)}
+        <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
+        {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart, `part${currentPartIndex + 1}`)}
         <div style={{ textAlign: "center", paddingTop: "50px" }}>
-          <ButtonCustom
-            buttonType="secondary"
-            style={{ padding: "23px" }}
-            onClick={() => setCurrentPartIndex((prev) => prev - 1)}
-            disabled={currentPartIndex === 0}
-          >
+          <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => prev - 1)} disabled={currentPartIndex === 0}>
             Phần trước
           </ButtonCustom>
           <ButtonCustom
@@ -264,11 +230,7 @@ export default function ReadingExercises() {
           </ButtonCustom>
           {isCompleted ? (
             <>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "23px", marginLeft: "30px" }}
-                onClick={handleRetry}
-              >
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
                 Làm lại bài tập này
               </ButtonCustom>
               <ButtonCustom
@@ -281,12 +243,7 @@ export default function ReadingExercises() {
             </>
           ) : (
             <>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "23px", marginLeft: "30px" }}
-                onClick={handleSubmit}
-                disabled={!(currentPartIndex === exercises.parts.length - 1)}
-              >
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={!(currentPartIndex === exercises.parts.length - 1)}>
                 Nộp bài
               </ButtonCustom>
             </>

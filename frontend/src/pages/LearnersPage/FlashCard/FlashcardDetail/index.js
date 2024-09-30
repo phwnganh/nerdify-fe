@@ -192,16 +192,6 @@ export default function FlashCardDetail() {
           Kiểm tra
         </ButtonCustom>
 
-        <ButtonCustom
-          style={{
-            backgroundColor: "#ffe259",
-            color: "white",
-            width: "200px",
-            margin: "20px",
-          }}
-        >
-          Quản lý thư mục
-        </ButtonCustom>
       </div>
       <Container>
         <div

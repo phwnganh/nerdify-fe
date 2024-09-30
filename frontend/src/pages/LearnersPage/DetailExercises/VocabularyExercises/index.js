@@ -531,7 +531,7 @@ export default function VocabularyExercises() {
 
             {/* Display Selected Pairs */}
 
-            <div style={{ marginTop: "30px" }}>
+            {/* <div style={{ marginTop: "30px" }}>
               <TitleCustom level={4}>Selected Pairs:</TitleCustom>
               {Object.entries(selectedPairsPart1).map(
                 ([questionId, matchQuestionId]) => {
@@ -561,7 +561,7 @@ export default function VocabularyExercises() {
                   );
                 }
               )}
-            </div>
+            </div> */}
           </>
         )}
 

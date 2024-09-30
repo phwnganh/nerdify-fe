@@ -262,7 +262,9 @@
             }
           ]
         }
-      ]
+      ],
+      "isCompleted": true,
+      "score": "29%"
     },
     {
       "id": "2",
@@ -435,7 +437,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "63%"
+      "score": "38%"
     },
     {
       "id": "3",
@@ -696,7 +698,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "10%"
+      "score": "14%"
     },
     {
       "id": "4",
@@ -2562,149 +2564,129 @@
       "exerciseId": "4"
     },
     {
-      "id": "08c1",
-      "submissionDate": "2024-09-27T21:19:35.320Z",
-      "score": "0%",
+      "id": "7cd9",
+      "submissionDate": "2024-09-28T14:08:36.332Z",
+      "score": "38%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
         },
         {
           "questionId": 2,
+          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 3,
-          "correctAnswer": "A",
+          "userAnswer": "A",
+          "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 4,
+          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 5,
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
         },
         {
           "questionId": 6,
+          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 7,
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "771d",
+      "submissionDate": "2024-09-28T14:10:58.988Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
           "correctAnswer": "C",
           "isCorrect": false
         },
         {
-          "questionId": 9,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "correctAnswer": "A",
-          "isCorrect": false
-        }
-      ],
-      "exerciseId": "7",
-      "isCompleted": true
-    },
-    {
-      "id": "96be",
-      "submissionDate": "2024-09-27T21:20:44.796Z",
-      "score": "50%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
           "questionId": 2,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 3,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 4,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "B",
-          "correctAnswer": "A",
           "isCorrect": false
         },
         {
-          "questionId": 8,
-          "userAnswer": "B",
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
           "correctAnswer": "C",
           "isCorrect": false
         },
         {
-          "questionId": 9,
-          "userAnswer": "C",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "C",
+          "questionId": 7,
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
+          "isCorrect": true
         }
       ],
-      "exerciseId": "7",
+      "exerciseId": "1",
       "isCompleted": true
     },
     {
-      "id": "e87e",
-      "submissionDate": "2024-09-28T10:57:05.459Z",
-      "score": "100%",
+      "id": "1570",
+      "submissionDate": "2024-09-30T02:55:31.617Z",
+      "score": "29%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
         },
         {
           "questionId": 2,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 3,
@@ -2720,53 +2702,34 @@
         },
         {
           "questionId": 5,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 6,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
         },
         {
           "questionId": 7,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "C",
-          "correctAnswer": "C",
-          "isCorrect": true
-        },
-        {
-          "questionId": 9,
           "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": true
+          "isCorrect": false
         }
       ],
-      "conditionStatus": "passed",
-      "exerciseId": "7",
+      "exerciseId": "1",
       "isCompleted": true
     },
     {
-      "id": "c31f",
-      "submissionDate": "2024-09-28T14:01:28.068Z",
-      "score": "10%",
+      "id": "c164",
+      "submissionDate": "2024-09-30T03:11:35.939Z",
+      "score": "14%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "die Woche - no answer",
+          "userAnswer": "die Woche - Thứ Tư",
           "correctAnswer": "die Woche - tuần",
           "isCorrect": false
         },
@@ -2820,9 +2783,9 @@
         },
         {
           "questionId": 10,
-          "userAnswer": "der Sommer - no answer",
+          "userAnswer": "der Sommer - mùa hè",
           "correctAnswer": "der Sommer - mùa hè",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 11,

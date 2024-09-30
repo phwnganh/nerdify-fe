@@ -4,13 +4,7 @@ import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
-import {
-  ForgotPasswordPage,
-  LoginPage,
-  RegisterPage,
-  ResetPasswordPage,
-  VerifyEmailPage,
-} from "../pages/GuestsPage";
+import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
@@ -137,7 +131,6 @@ export const routes = [
         path: `${CLIENT_URI.BILLINFO}/:transactionId`,
         element: <BillInfo />,
       },
-
     ],
   },
 
