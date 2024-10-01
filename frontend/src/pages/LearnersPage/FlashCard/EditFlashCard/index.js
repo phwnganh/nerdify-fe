@@ -12,6 +12,7 @@ import {
 } from "antd";
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
+import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 
 export default function EditFlashCard() {
   const { flashcardId } = useParams();
@@ -78,7 +79,8 @@ export default function EditFlashCard() {
     <>
       {contextHolder}
       <div style={{ width: "60%" }}>
-        <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI !!</h1>
+        <BreadCrumbHome/>
+        <h1 style={{ textAlign: "center" }}>CHỈNH SỬA HỌC PHẦN</h1>
         <Form
           form={form}
           onFinish={handleSubmit}

@@ -19,6 +19,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
+    marginTop: "100px"
   },
   content: {
     flex: 1,

@@ -5,6 +5,7 @@ import { CLIENT_URI } from "../../../../constants";
 import { ReadOutlined } from "@ant-design/icons";
 import a1 from "../../../../assets/levelImage/a1.png";
 import a2 from "../../../../assets/levelImage/a2.png";
+import b1 from '../../../../assets/levelImage/b1.png';
 import { useState } from "react";
 import ModalRequireToLogin from "../../ModalRequireToLogin";
 
@@ -17,6 +18,7 @@ export const Course = ({ course }) => {
   const levelImgArr = {
     a1: a1,
     a2: a2,
+    b1: b1
   };
   const navigate = useNavigate();
   return (
@@ -38,7 +40,7 @@ export const Course = ({ course }) => {
         >
           <ReadOutlined style={{ fontSize: "25px" }} />
           <span style={{ marginLeft: "8px" }}>
-            {course.phases.length} Phase
+            {course?.phases?.length} Phase
           </span>
         </div>
 

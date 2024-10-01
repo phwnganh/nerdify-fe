@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import StartExamModal from "./ModalBeforeDoingExam";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import {
-  ParagraphCustom,
-  TextCustom,
-  TitleCustom,
-} from "../../../components/Typography";
+import { ParagraphCustom, TextCustom, TitleCustom } from "../../../components/Typography";
 import { Col, Row } from "antd";
 import ButtonCustom from "../../../components/Button";
 import demo_1_1 from "../../../assets/vocabExercises/1_1.png";
@@ -14,6 +10,8 @@ import demo_1_3 from "../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../assets/vocabExercises/2_3.png";
+
+import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
 import { CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
@@ -29,14 +27,11 @@ export default function FinalExam() {
   const navigate = useNavigate();
   const { examId } = useParams();
 
-  const imgArrVocab = [
-    demo_1_1,
-    demo_1_2,
-    demo_1_3,
-    demo_2_1,
-    demo_2_2,
-    demo_2_3,
-  ];
+  const imgArrVocab = [demo_1_1, demo_1_2, demo_1_3, demo_2_1, demo_2_2, demo_2_3];
+
+  const audioArr = {
+    part2_ques7,
+  };
 
   const handleStart = () => {
     setHasStarted(true);
@@ -71,9 +66,7 @@ export default function FinalExam() {
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
   const handleNextPart = () => {
@@ -97,10 +90,7 @@ export default function FinalExam() {
     });
   };
 
-  const totalQuestions = exam.parts.reduce(
-    (acc, part) => acc + part.questions.length,
-    0
-  );
+  const totalQuestions = exam.parts.reduce((acc, part) => acc + part.questions.length, 0);
 
   const renderAllParts = (part) => {
     return part.questions.map((question, index) => (
@@ -109,7 +99,21 @@ export default function FinalExam() {
           Câu {question.id}: {question.question}
         </TextCustom>
         {question.questionParagraph && (
-          <ParagraphCustom>{question.questionParagraph}</ParagraphCustom>
+          <ParagraphCustom>
+            {question?.questionParagraph.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </ParagraphCustom>
+        )}
+
+        {question?.audioUrl && (
+          <audio controls style={{ marginTop: "20px", width: "100%" }}>
+            <source src={audioArr[question?.audioUrl]} type="audio/mp3" />
+            Trình duyệt của bạn không hỗ trợ phần tử audio.
+          </audio>
         )}
         <div style={{ marginTop: "20px" }}>
           <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
@@ -142,11 +146,7 @@ export default function FinalExam() {
                       <span>{option.id}</span>
                     ) : (
                       <div>
-                        <span>
-                          {Array.isArray(option.text)
-                            ? `${option.id}. ${option.text.join(" - ")}`
-                            : `${option.id}. ${option.text}`}
-                        </span>
+                        <span>{Array.isArray(option.text) ? `${option.id}. ${option.text.join(" - ")}` : `${option.id}. ${option.text}`}</span>
                       </div>
                     )}
                   </ButtonCustom>
@@ -156,18 +156,12 @@ export default function FinalExam() {
           </Row>
 
           {question.options.some((option) => option.optionImage) && (
-            <Row
-              gutter={[16, 16]}
-              style={{ marginTop: "20px", textAlign: "center" }}
-            >
+            <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
               {question.options
                 .filter((option) => option.optionImage)
                 .map((option, optionIndex) => (
                   <Col key={optionIndex} span={8}>
-                    <img
-                      src={imgArrVocab[optionIndex]}
-                      style={{ width: "50%" }}
-                    />
+                    <img src={imgArrVocab[optionIndex]} style={{ width: "50%" }} />
                   </Col>
                 ))}
             </Row>
@@ -204,7 +198,7 @@ export default function FinalExam() {
           correctAnswer,
           isCorrect,
         };
-      })
+      }),
     );
 
     const conditionStatus = score >= 12 ? "passed" : "not pass";
@@ -251,19 +245,12 @@ export default function FinalExam() {
           </TitleCustom>
           <div style={{ textAlign: "center" }}>
             <TextCustom>
-              Thời gian làm bài:{" "}
-              <span style={{ color: "red", fontWeight: "bold" }}>
-                {formattedTime(timeLeft)}
-              </span>
+              Thời gian làm bài: <span style={{ color: "red", fontWeight: "bold" }}>{formattedTime(timeLeft)}</span>
             </TextCustom>
           </div>
 
           <div>
-            <TextCustom
-              style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}
-            >
-              {currentPart.partName}
-            </TextCustom>
+            <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}>{currentPart.partName}</TextCustom>
             {isCompleted && (
               <div style={{ textAlign: "center" }}>
                 <TextCustom style={{ textAlign: "center" }}>
@@ -273,60 +260,32 @@ export default function FinalExam() {
               </div>
             )}
 
-            {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE &&
-              renderAllParts(currentPart, `part${currentPartIndex + 1}`)}
+            {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderAllParts(currentPart, `part${currentPartIndex + 1}`)}
             <div style={{ textAlign: "center", paddingTop: "50px" }}>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ marginRight: "100px", padding: "23px" }}
-                onClick={handlePreviousPart}
-                disabled={currentPartIndex === 0}
-              >
+              <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handlePreviousPart} disabled={currentPartIndex === 0}>
                 Phần trước
               </ButtonCustom>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ marginRight: "100px", padding: "23px" }}
-                onClick={handleNextPart}
-                disabled={currentPartIndex === exam.parts.length - 1}
-              >
+              <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleNextPart} disabled={currentPartIndex === exam.parts.length - 1}>
                 Phần tiếp theo
               </ButtonCustom>
               {!isCompleted ? (
-                <ButtonCustom
-                  buttonType="secondary"
-                  style={{ padding: "23px" }}
-                  disabled={!(currentPartIndex === exam.parts.length - 1)}
-                  onClick={handleSubmit}
-                >
+                <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} disabled={!(currentPartIndex === exam.parts.length - 1)} onClick={handleSubmit}>
                   Nộp bài
                 </ButtonCustom>
               ) : (
                 <>
                   {mark < 60 ? (
                     <>
-                      <ButtonCustom
-                        buttonType="secondary"
-                        style={{ marginRight: "100px", padding: "23px" }}
-                        onClick={handleRetry}
-                      >
+                      <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleRetry}>
                         Làm lại bài kiểm tra
                       </ButtonCustom>
-                      <ButtonCustom
-                        buttonType="secondary"
-                        style={{ marginRight: "100px", padding: "23px" }}
-                        onClick={() => navigate(-1)}
-                      >
+                      <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={() => navigate(-1)}>
                         Quay về luyện tập
                       </ButtonCustom>
                     </>
                   ) : (
                     <>
-                      <ButtonCustom
-                        buttonType="secondary"
-                        style={{ marginRight: "100px", padding: "23px" }}
-                        onClick={handleAchieveTrophy}
-                      >
+                      <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleAchieveTrophy}>
                         Nhận cúp
                       </ButtonCustom>
                     </>
