@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { Col, Row } from "antd";
-import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
-import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
+// import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
+// import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
 import ButtonCustom from "../../../../components/Button";
 export default function ReadingResults() {
   const [exerciseResults, setExerciseResults] = useState(null);
   const { submissionId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [isAnswerDetail, setIsAnswerDetail] = useState({});
-  const imgReadingArr = {
-    demo_part2_1,
-    demo_part2_2,
-  };
+  // const imgReadingArr = {
+  //   demo_part2_1,
+  //   demo_part2_2,
+  // };
   const handleNextPart = () => {
     if (exerciseResults && currentPartIndex < exerciseResults.exercise.parts.length - 1) {
       setCurrentPartIndex((prevIndex) => prevIndex + 1);
@@ -75,7 +75,7 @@ export default function ReadingResults() {
                   <div key={question.id}>
                     <div style={{ marginTop: "20px" }}>
                       <Row style={{ textAlign: "center" }}>
-                        {question.questionParagraph && <p>{question.questionParagraph}</p>}
+                        {/* {question.questionParagraph && <p>{question.questionParagraph}</p>}
                         {question.questionImage && (
                           <div>
                             {question.questionImage && (
@@ -93,7 +93,7 @@ export default function ReadingResults() {
                               </div>
                             )}
                           </div>
-                        )}
+                        )} */}
                         <TextCustom style={{ paddingTop: "20px" }}>
                           Câu {question.id}: {question.question}
                           <div

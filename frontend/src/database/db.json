@@ -203,7 +203,7 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+              "answerDetail": " Câu hỏi đang hỏi về con trai của bà Hegers, và nhìn vào hình, ta thấy có ba biển hiệu cho các lớp học khác nhau: \n 9. Klasse (lớp 9), 3. Klasse (lớp 3), và 4. Klasse (lớp 4). \n Để trả lời câu này, ta cần chọn đúng lớp mà con trai của bà ấy đang học."
             },
             {
               "id": 5,
@@ -536,17 +536,92 @@
             {
               "id": 6,
               "questionImage": [
-                "demo_part2_3",
-                "demo_part2_4"
+                "demo_part2_6_1",
+                "demo_part2_6_2"
               ],
               "options": [
                 {
                   "id": "A",
-                  "text": "www.openair.de"
+                  "text": "www.schiff-ruedesheim.de"
                 },
                 {
                   "id": "B",
-                  "text": "www.dwd.de"
+                  "text": "www.bingen-ruedesheimer.de"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            },
+            {
+              "id": 7,
+              "questionImage": [
+                "demo_part2_7_1",
+                "demo_part2_7_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.sprachenfuchs.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.eviva.com"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            }, 
+            {
+              "id": 8,
+              "questionImage": [
+                "demo_part2_8_1",
+                "demo_part2_8_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.DER.com"
+                },
+                {
+                  "id": "B",
+                  "text": "www.RED.com"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            },
+            {
+              "id": 9,
+              "questionImage": [
+                "demo_part2_9_1",
+                "demo_part2_9_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.bodensee.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.rottenmeier.de"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            }, {
+              "id": 10,
+              "questionImage": [
+                "demo_part2_10_1",
+                "demo_part2_10_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.reiseauskunft.bahn.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.reiseauskunft.bahn.de"
                 }
               ],
               "answer": "B",
@@ -560,7 +635,7 @@
           "partType": "multiple_choice",
           "questions": [
             {
-              "id": 7,
+              "id": 11,
               "question": "In der Sprachschule. In der Sprachschule können Sie etwas zu essen kaufen.",
               "questionImage": "demo_part3_1",
               "options": [
@@ -577,7 +652,7 @@
               "answerDetail": "Câu hỏi đang hỏi liệu bạn có thể mua đồ ăn ở trường ngôn ngữ hay không. \nTrong văn bản, trường ngôn ngữ cung cấp một gói bữa sáng (bao gồm bánh mì và đồ uống) với giá 2 Euro trong giờ nghỉ, vì vậy bạn có thể mua đồ ăn ở đó."
             },
             {
-              "id": 8,
+              "id": 12,
               "question": "An der Post. Es ist Samstagnachmittag. Sie können auf der Post. Briefmarken kaufen.",
               "questionImage": "demo_part3_2",
               "options": [
@@ -591,6 +666,57 @@
                 }
               ],
               "answer": "B",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            },
+            {
+              "id": 13,
+              "question": "Am Bahnhof. Sie können hier Zigaretten rauchen.",
+              "questionImage": "demo_part3_3",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            },
+            {
+              "id": 14,
+              "question": "Eingang Restaurant. Heute Abend können Sie in diesem Restaurant tanzen.",
+              "questionImage": "demo_part3_4",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            },
+            {
+              "id": 15,
+              "question": "An der Haltestelle. Von 23 Uhr bis 1 Uhr fährt kein Bus.",
+              "questionImage": "demo_part3_5",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
               "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
             }
           ]
