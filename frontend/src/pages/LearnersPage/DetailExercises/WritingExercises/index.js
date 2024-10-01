@@ -4,7 +4,7 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import { Col, Input, Row } from "antd";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { PART_TYPE } from "../../../../constants";
@@ -13,7 +13,6 @@ export default function WritingExercises() {
   const [exercise, setExercise] = useState(null);
   const { exerciseType, exerciseId } = useParams();
   const [userAnswers, setUserAnswers] = useState({});
-  const [exerciseResults, setExerciseResults] = useState(null);
   const [answerStatus, setAnswerStatus] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [userScore, setUserScore] = useState(0);
@@ -21,9 +20,7 @@ export default function WritingExercises() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(
-      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
-    )
+    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -67,47 +64,43 @@ export default function WritingExercises() {
             <Col span={15}>
               {part?.questions?.map((question, index) => (
                 <>
-                  <div style={{ marginBottom: "20px" }} key={question.id}>
+                  <div style={{ paddingBottom: "5px", marginTop: "10px" }} key={question.id}>
                     <InputCustom
                       key={question.id}
                       style={{
-                        marginBottom: "20px",
-                        borderColor:
-                          isCompleted && answerStatus[question.id] === "correct"
-                            ? "#5FD855"
-                            : isCompleted &&
-                              answerStatus[question.id] === "incorrect"
-                            ? "red"
-                            : "",
+                        marginBottom: "10px",
+                        borderColor: isCompleted && answerStatus[question.id] === "correct" ? "#5FD855" : isCompleted && answerStatus[question.id] === "incorrect" ? "red" : "",
                       }}
                       placeholder={`Điền lỗi thứ ${index + 1} tại đây`}
                       autoSize={{ minRows: 1, maxRows: 5 }}
-                      onChange={(e) =>
-                        handleInputChange(part.id, question.id, e.target.value)
-                      }
+                      value={userAnswers[part.id]?.[question.id] || ""}
+                      onChange={(e) => handleInputChange(part.id, question.id, e.target.value)}
+                      disabled={isCompleted}
                     />
                   </div>
                   {isCompleted && (
                     <>
-                      <TextCustom style={{ color: "red" }}>
-                        {question.answer}
-                      </TextCustom>
+                      <TextCustom style={{ color: "red" }}>{question.answer}</TextCustom>
                     </>
                   )}
                   {isCompleted && (
-                    <>
-                      <ButtonCustom
-                        buttonType="primary"
-                        onClick={() => handleToggleAnswerDetail(question.id)}
-                      >
+                    <div style={{ paddingTop: "20px" }}>
+                      <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                         Đáp án chi tiết
                       </ButtonCustom>
                       {toggleAnswerDetail[question.id] && (
-                        <TextCustom style={{ color: "blue" }}>
-                          {question.explanation}
-                        </TextCustom>
+                        <div>
+                          <TextCustom style={{ color: "blue" }}>
+                            {question?.explanation.split("\n").map((line, index) => (
+                              <React.Fragment key={index}>
+                                {line}
+                                <br />
+                              </React.Fragment>
+                            ))}
+                          </TextCustom>
+                        </div>
                       )}
-                    </>
+                    </div>
                   )}
                 </>
               ))}
@@ -125,18 +118,11 @@ export default function WritingExercises() {
         autoSize={{ minRows: 10, maxRows: 15 }}
         style={{
           marginTop: "16px",
-          borderColor:
-            isCompleted && answerStatus[`paragraph_${part.id}`] === "correct"
-              ? "#5FD855"
-              : isCompleted &&
-                answerStatus[`paragraph_${part.id}`] === "incorrect"
-              ? "red"
-              : "",
+          borderColor: isCompleted && answerStatus[`paragraph_${part.id}`] === "correct" ? "#5FD855" : isCompleted && answerStatus[`paragraph_${part.id}`] === "incorrect" ? "red" : "",
         }}
-        disabled={!!exerciseResults}
-        onChange={(e) =>
-          handleInputChange(`paragraph_${part.id}`, 0, e.target.value)
-        }
+        value={userAnswers[`paragraph_${part.id}`]?.[0] || ""}
+        disabled={isCompleted}
+        onChange={(e) => handleInputChange(`paragraph_${part.id}`, 0, e.target.value)}
       ></Input.TextArea>
     );
   };
@@ -167,13 +153,10 @@ export default function WritingExercises() {
           });
         });
       } else if (part.partType === PART_TYPE.WRITE_PARAGRAPH) {
-        const userAnswer =
-          userAnswers[`paragraph_${part.id}`]?.[0]?.trim() || "";
+        const userAnswer = userAnswers[`paragraph_${part.id}`]?.[0]?.trim() || "";
         const correctAnswer = part.answer.trim();
         const isCorrect = userAnswer === correctAnswer;
-        newAnswerStatus[`paragraph_${part.id}`] = isCorrect
-          ? "correct"
-          : "incorrect";
+        newAnswerStatus[`paragraph_${part.id}`] = isCorrect ? "correct" : "incorrect";
         if (isCorrect) {
           console.log("new answer status 2: ", newAnswerStatus);
 
@@ -235,7 +218,6 @@ export default function WritingExercises() {
 
   const handleRetry = () => {
     setUserAnswers({});
-    setExerciseResults(null);
     setAnswerStatus({});
     setIsCompleted(false);
     setUserScore(0);
@@ -258,11 +240,7 @@ export default function WritingExercises() {
       <div>
         {exercise.parts?.map((part, index) => (
           <>
-            <TextCustom
-              style={{ color: "red", fontWeight: "bold", paddingTop: "16px" }}
-            >
-              {part.partName}
-            </TextCustom>
+            <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "16px" }}>{part.partName}</TextCustom>
             {part.partType === PART_TYPE.FILL_IN_THE_BLANK && renderPart1(part)}
             {part.partType === PART_TYPE.WRITE_PARAGRAPH && renderPart2(part)}
           </>
@@ -270,29 +248,16 @@ export default function WritingExercises() {
       </div>
       <div style={{ textAlign: "center", paddingTop: "50px" }}>
         {!isCompleted && (
-          <ButtonCustom
-            buttonType="secondary"
-            onClick={handleSubmit}
-            style={{ marginRight: "100px", padding: "23px" }}
-            disabled={!!isCompleted}
-          >
+          <ButtonCustom buttonType="secondary" onClick={handleSubmit} style={{ marginRight: "100px", padding: "23px" }} disabled={!!isCompleted}>
             Nộp bài
           </ButtonCustom>
         )}
         {isCompleted && (
           <>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px", marginLeft: "30px" }}
-              onClick={handleRetry}
-            >
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
               Làm lại bài tập này
             </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px", marginLeft: "30px" }}
-              onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}
-            >
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={() => navigate(CLIENT_URI.LEVEL_DETAIL)}>
               Chuyển sang bài tập tiếp theo
             </ButtonCustom>
           </>

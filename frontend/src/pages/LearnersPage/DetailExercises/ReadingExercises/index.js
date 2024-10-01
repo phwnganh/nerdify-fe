@@ -1,19 +1,44 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { PART_TYPE } from "../../../../constants";
-import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
-import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
+import demo_part2_6_1 from "../../../../assets/readingExercises/demo_part2_6_1.png";
+import demo_part2_6_2 from "../../../../assets/readingExercises/demo_part2_6_2.png";
+import demo_part2_7_1 from "../../../../assets/readingExercises/demo_part2_7_1.png";
+import demo_part2_7_2 from "../../../../assets/readingExercises/demo_part2_7_2.png";
+import demo_part2_8_1 from "../../../../assets/readingExercises/demo_part2_8_1.png";
+import demo_part2_8_2 from "../../../../assets/readingExercises/demo_part2_8_2.png";
+import demo_part2_9_1 from "../../../../assets/readingExercises/demo_part2_9_1.png";
+import demo_part2_9_2 from "../../../../assets/readingExercises/demo_part2_9_2.png";
+import demo_part2_10_1 from "../../../../assets/readingExercises/demo_part2_10_1.png";
+import demo_part2_10_2 from "../../../../assets/readingExercises/demo_part2_10_2.png";
+
 import demo_part3_1 from "../../../../assets/readingExercises/demo_part3_1.png";
 import demo_part3_2 from "../../../../assets/readingExercises/demo_part3_2.png";
+import demo_part3_3 from '../../../../assets/readingExercises/demo_part3_3.png';
+import demo_part3_4 from '../../../../assets/readingExercises/demo_part3_4.png';
+import demo_part3_5 from '../../../../assets/readingExercises/demo_part3_5.png';
+
+import { Col, Row } from "antd";
 
 const imgReadingArr = {
-  demo_part2_1,
-  demo_part2_2,
+  demo_part2_6_1,
+  demo_part2_6_2,
+  demo_part2_7_1,
+  demo_part2_7_2,
+  demo_part2_8_1,
+  demo_part2_8_2,
+  demo_part2_9_1,
+  demo_part2_9_2,
+  demo_part2_10_1,
+  demo_part2_10_2,
   demo_part3_1,
   demo_part3_2,
+  demo_part3_3,
+  demo_part3_4,
+  demo_part3_5
 };
 
 export default function ReadingExercises() {
@@ -55,15 +80,26 @@ export default function ReadingExercises() {
   const renderPart = (currentPart) => {
     return (
       <>
+        {currentPart?.questionParagraph && (
+          <div>
+            {currentPart?.questionParagraph.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </div>
+        )}
         {currentPart.questions.map((question) => (
           <div key={question.id}>
             <TextCustom style={{ fontWeight: "bold" }}>
               Câu {question.id}: {question.question}
             </TextCustom>
+
             {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
-              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} alt="question-part" />)
+              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} style={{ padding: "10px" }} alt="question-part" />)
             ) : question.questionImage ? (
-              <img src={imgReadingArr[question.questionImage]} alt="question-part" />
+              <img src={imgReadingArr[question.questionImage]} alt="question-part" style={{ padding: "20px" }} />
             ) : null}
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               {question.options.map((option) => {
@@ -84,19 +120,32 @@ export default function ReadingExercises() {
                 }
 
                 return (
-                  <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isCompleted}>
-                    {option.text}
-                  </ButtonCustom>
+                  <div style={{ padding: "20px" }}>
+                    <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isCompleted}>
+                      {option.text}
+                    </ButtonCustom>
+                  </div>
                 );
               })}
             </div>
             {isCompleted && (
-              <>
+              <div style={{ padding: "20px" }}>
                 <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
-              </>
+                {toggleAnswerDetail[question.id] && (
+                  <div>
+                    <TextCustom style={{ color: "blue" }}>
+                      {question?.answerDetail.split("\n").map((line, index) => (
+                        <React.Fragment key={index}>
+                          {line}
+                          <br />
+                        </React.Fragment>
+                      ))}
+                    </TextCustom>
+                  </div>
+                )}
+              </div>
             )}
           </div>
         ))}
