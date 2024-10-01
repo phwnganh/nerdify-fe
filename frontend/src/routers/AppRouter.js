@@ -131,6 +131,10 @@ export const routes = [
         path: `${CLIENT_URI.BILLINFO}/:transactionId`,
         element: <BillInfo />,
       },
+      {
+        path: CLIENT_URI.EDIT_PROFILE,
+        element: <EditPersonalProfile/>
+      }
     ],
   },
 

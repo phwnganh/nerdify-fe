@@ -2,6 +2,7 @@ import { Avatar, Col, DatePicker, Form, Input, Radio, Row, Upload } from "antd";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
+import Sidebar from "../../../../components/Sidebar";
 import { EditOutlined, UploadOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import moment from "moment";
@@ -78,26 +79,19 @@ export default function EditPersonalProfile() {
     }
   };
   return (
-    <div style={{ padding: "30px" }}>
-      <CardCustom title="Chỉnh sửa trang cá nhân">
-        {/* Cover Photo with Avatar */}
-        <CardCustom
-          style={{
-            backgroundSize: "cover",
-            marginBottom: 20,
-          }}
-        >
-          <Row gutter={16}>
-            {/* Avatar Upload */}
-            <Col span={24} style={{ textAlign: "center", marginBottom: 20 }}>
-              {/* Placeholder for Avatar */}
+    <div style={{ display: 'flex' }}>
+      <Sidebar />
+      <div style={{ flex: 1, padding: "30px", backgroundColor: "#f0f2f5" }}>
+        <CardCustom title="CHỈNH SỬA THÔNG TIN CÁ NHÂN" style={{ backgroundColor: "white" }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+            <div style={{ position: 'relative' }}>
               <Avatar
                 size={100}
-                style={{ backgroundColor: "#ffeb3b" }}
-                icon={<img src={avatarPhoto || "avatar-url"} />}
+                style={{ backgroundColor: "#ffd54f" }}
+                icon={<img src={avatarPhoto || "avatar-url"} alt="avatar" />}
               />
               <Upload
-                showUploadList={false} // Hide the default upload list
+                showUploadList={false}
                 onChange={handleAvatarPhotoChange}
               >
                 <ButtonCustom
@@ -106,13 +100,13 @@ export default function EditPersonalProfile() {
                   icon={<EditOutlined />}
                   style={{
                     position: "absolute",
-                    right: "calc(50% - 60px)",
-                    top: "20px",
+                    right: -10,
+                    bottom: 0,
                   }}
                 />
               </Upload>
-            </Col>
-          </Row>
+            </div>
+          </div>
 
           <Form
             form={form}
@@ -122,11 +116,11 @@ export default function EditPersonalProfile() {
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item label="Họ tên" name="fullname">
-                  <InputCustom placeholder="Họ tên"></InputCustom>
+                  <InputCustom placeholder="Họ tên" />
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Giới tính" name={"gender"}>
+                <Form.Item label="Giới tính" name="gender">
                   <Radio.Group>
                     <Radio value="male">Nam</Radio>
                     <Radio value="female">Nữ</Radio>
@@ -134,7 +128,7 @@ export default function EditPersonalProfile() {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Ngày sinh" name={"dob"}>
+                <Form.Item label="Ngày sinh" name="dob">
                   <DatePicker
                     style={{ width: "100%" }}
                     placeholder="Ngày sinh"
@@ -142,40 +136,34 @@ export default function EditPersonalProfile() {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Điện thoại" name={"phone"}>
+                <Form.Item label="Điện thoại" name="phone">
                   <InputCustom placeholder="Điện thoại" />
                 </Form.Item>
               </Col>
-              <Col span={12}>
-                <Form.Item label="Email hiện tại" name={"email"}>
+              <Col span={24}>
+                <Form.Item label="Email hiện tại" name="email">
                   <InputCustom placeholder="Email hiện tại" disabled />
                 </Form.Item>
               </Col>
             </Row>
-            <Row justify="center" style={{ marginTop: 20 }}>
+            <Row justify="start" style={{ marginTop: 20 }}>
               <ButtonCustom
                 type="primary"
-                style={{ marginRight: 10 }}
-                htmlType="submit"
+                style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }}
               >
-                Cập nhật
+                Hủy
               </ButtonCustom>
-              <ButtonCustom type="danger">Xóa tài khoản</ButtonCustom>
+              <ButtonCustom
+                type="primary"
+                htmlType="submit"
+                style={{ backgroundColor: "#dc3545", borderColor: "#dc3545" }}
+              >
+                Lưu
+              </ButtonCustom>
             </Row>
           </Form>
         </CardCustom>
-
-        {/* Subscription and Payment Section */}
-        <div style={{ backgroundColor: "#f0f0f0", padding: 20 }}>
-          <div>Gói đăng ký và thanh toán</div>
-          <div>Trạng thái tài khoản: Freemium</div>
-          <ButtonCustom type="primary" style={{ marginTop: 10 }}>
-            Nâng cấp Premium
-          </ButtonCustom>
-        </div>
-
-        {/* Update and Delete Account Buttons */}
-      </CardCustom>
+      </div>
     </div>
   );
 }
