@@ -1,38 +1,43 @@
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Col, Row } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { ParagraphCustom, TextCustom, TitleCustom } from "../../../../components/Typography";
+import ButtonCustom from "../../../../components/Button";
+import { CLIENT_URI } from "../../../../constants";
+
+// Import images
 import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
 import demo_1_2 from "../../../../assets/vocabExercises/1_2.png";
 import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
-import { ParagraphCustom, TextCustom } from "../../../../components/Typography";
-import { Col, Row } from "antd";
-import ButtonCustom from "../../../../components/Button";
+
+import part2_ques7 from "../../../../assets/listeningExercises/teil 2-07.mp3";
+import part2_ques8 from "../../../../assets/listeningExercises/teil 2-08.mp3";
+import part2_ques9 from "../../../../assets/listeningExercises/teil 2-09.mp3";
 
 export default function ReadingExercises() {
   const { exerciseType, exerciseId } = useParams();
+  const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [currentResultPartIndex, setCurrentResultPartIndex] = useState(0);
   const [exercises, setExercises] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
-  const [examResults, setExamResults] = useState(null);
-  const [mark, setMark] = useState(0);
-  const imgArrVocab = [
-    demo_1_1,
-    demo_1_2,
-    demo_1_3,
-    demo_2_1,
-    demo_2_2,
-    demo_2_3,
-  ];
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
+  const [conditionStatus, setConditionStatus] = useState("");
+  const imgArrVocab = [demo_1_1, demo_1_2, demo_1_3, demo_2_1, demo_2_2, demo_2_3];
+  const audioArr = {
+    part2_ques7,
+    part2_ques8,
+    part2_ques9,
+  };
+
   useEffect(() => {
-    fetch(
-      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
-    )
+    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -43,7 +48,7 @@ export default function ReadingExercises() {
   }, [exerciseType, exerciseId]);
 
   useEffect(() => {
-    if (examResults) return;
+    if (isCompleted) return;
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime > 0) {
@@ -57,86 +62,82 @@ export default function ReadingExercises() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, isCompleted]);
 
-  const handleNextPart = () => {
-    if (exercises && currentPartIndex < exercises.parts.length - 1) {
-      setCurrentPartIndex(currentPartIndex + 1);
-    }
-  };
-
-  const handlePreviousPart = () => {
-    setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  const handleNextResultPart = () => {
-    if (exercises && currentResultPartIndex < exercises.parts.length - 1) {
-      setCurrentResultPartIndex(currentResultPartIndex + 1);
-    }
-  };
-
-  const handlePreviousResultPart = () => {
-    setCurrentResultPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  const handleSelectOptions = (questionId, optionId) => {
-    setUserAnswers({
-      ...userAnswers,
+  const handleSelectOptions = useCallback((questionId, optionId) => {
+    setUserAnswers((prev) => ({
+      ...prev,
       [questionId]: optionId,
-    });
-  };
+    }));
+  }, []);
+
 
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const totalQuestions = exercises?.parts.reduce(
-    (acc, part) => acc + part.questions.length,
-    0
+  const totalQuestions = useMemo(
+    () => exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0),
+    [exercises]
   );
-  const handleSubmit = () => {
-    let score = 0;
 
+  const handleSubmit = useCallback(() => {
+    let score = 0;
     const submissionDate = new Date().toISOString();
     const questionsArray = exercises?.parts.flatMap((part) =>
       part.questions.map((question) => {
         const userAnswer = userAnswers[question.id];
-        const correctAnswer = part.answers.find(
-          (answer) => answer.id === question.id
-        )?.answer;
+        const correctAnswer = question?.answer;
         const isCorrect = userAnswer === correctAnswer;
         if (isCorrect) {
           score++;
         }
-
-
-      
         return {
           questionId: question.id,
           userAnswer,
           correctAnswer,
-          isCorrect
+          isCorrect,
         };
       })
     );
-
-    const conditionStatus = score >=5 ? "passed" : "not pass"
-    const markValue = ((score / totalQuestions) * 100).toFixed(2);
-    setMark(markValue);
-
+  
+    const markValue = Math.round((score / totalQuestions) * 100);
+    const newConditionStatus = markValue >= 50 ? "passed" : "not pass";
+    setConditionStatus(newConditionStatus);
+    setUserScore(markValue);
+    setIsCompleted(true);
+  
     const submissionData = {
       submissionDate: submissionDate,
       score: `${markValue}%`,
       submissionAnswers: questionsArray,
-      conditionStatus: conditionStatus,
+      conditionStatus: newConditionStatus,
       exerciseId: exercises.id,
+      isCompleted: true,
     };
-
-    fetch("http://localhost:9999/checkpointQuizSubmission", {
+  
+    fetch(`http://localhost:9999/exercises/${exercises.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        isCompleted: true,
+        score: `${markValue}%`,
+        conditionStatus: newConditionStatus,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -144,277 +145,202 @@ export default function ReadingExercises() {
       body: JSON.stringify(submissionData),
     })
       .then((res) => res.json())
-      .then((data) => console.log("quiz test: ", data))
-      .catch((err) => console.log(err));
-    const results = exercises.parts.map((part) => {
-      return {
-        ...part,
-        questions: part.questions.map((question) => {
-          const userAnswer = userAnswers[question.id];
-          // const correctAnswers = part.answers[question.id]?.answer;
-          const correctAnswers = part.answers.find(
-            (answer) => answer.id === question.id
-          )?.answer;
-          const isCorrect = userAnswer === correctAnswers;
-          return {
-            ...question,
-            userAnswer,
-            correctAnswers,
-            isCorrect,
-          };
-        }),
-      };
-    });
-    setExamResults(results);
-    setUserScore(score);
-  };
+      .then((data) => {
+        console.log("data: ", data);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  }, [exercises, userAnswers, totalQuestions]);
+
+  const handleRetry = useCallback(() => {
+    setUserAnswers({});
+    setUserScore(-1);
+    setIsCompleted(false);
+    setCurrentPartIndex(0);
+    setTimeLeft(15 * 60);
+    setConditionStatus("");
+  }, []);
+
+
+  const renderPart = (part) => (
+    <>
+      {part.questions.map((question) => (
+        <div key={question.id}>
+          <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
+            Câu {question.id}: {question.question}
+          </TextCustom>
+          {question.questionParagraph && (
+            <ParagraphCustom>{question?.questionParagraph.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}</ParagraphCustom>
+          )}
+          {question?.audioUrl && (
+            <audio controls style={{ marginTop: "20px", width: "100%" }}>
+            <source src={audioArr[question?.audioUrl]} type="audio/mp3" />
+            Trình duyệt của bạn không hỗ trợ phần tử audio.
+          </audio>
+          )}
+          <div style={{ marginTop: "20px" }}>
+            <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+              {question.options.map((option, index) => {
+                const userSelected = userAnswers[question.id] === option.id;
+                const correctAnswer = question?.answer;
+                const isCorrect = option.id === correctAnswer;
+                const isUserSelectedWrong = userSelected && !isCorrect;
+
+                let backgroundColor = userSelected ? "#A8703E" : "";
+
+                if (isCompleted) {
+                  if (isCorrect) {
+                    backgroundColor = "#5FD855";
+                  } else if (isUserSelectedWrong) {
+                    backgroundColor = "red";
+                  }
+                }
+
+                return (
+                  <Col key={index} span={8}>
+                    <ButtonCustom
+                      buttonType="primary"
+                      onClick={() => handleSelectOptions(question.id, option.id)}
+                      style={{ 
+                        backgroundColor,
+                        
+                      }}
+                      disabled={isCompleted}
+                    >
+                      {option.optionImage ? (
+                        <span>{option.id}</span>
+                      ) : (
+                        <div>
+                          <span>
+                            {Array.isArray(option.text)
+                              ? `${option.id}. ${option.text.join(" - ")}`
+                              : `${option.id}. ${option.text}`}
+                          </span>
+                        </div>
+                      )}
+                    </ButtonCustom>
+                  </Col>
+                );
+              })}
+            </Row>
+            {question.options.some((option) => option.optionImage) && (
+              <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
+                {question.options
+                  .filter((option) => option.optionImage)
+                  .map((option, index) => (
+                    <Col key={index} span={8}>
+                      <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option.id}`} />
+                    </Col>
+                  ))}
+              </Row>
+            )}
+          </div>
+        </div>
+      ))}
+    </>
+  );
 
   if (!exercises?.parts) {
     return <div>Loading...</div>;
   }
 
   const currentPart = exercises.parts[currentPartIndex];
-  const currentResultPart = examResults?.[currentResultPartIndex];
 
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome />
+      <TitleCustom level={2} style={{ fontWeight: "bold" }}>
+        {exercises.title}
+      </TitleCustom>
       <div style={{ textAlign: "center" }}>
-        <TextCustom>
-          Thời gian làm bài:{" "}
-          <span style={{ color: "red", fontWeight: "bold" }}>
-            {formattedTime(timeLeft)}
-          </span>
-        </TextCustom>
+        {!isCompleted ? (
+          <TextCustom>
+            Thời gian làm bài:{" "}
+            <span style={{ color: "red", fontWeight: "bold" }}>{formattedTime(timeLeft)}</span>
+          </TextCustom>
+        ) : (
+          <>
+            <TextCustom>
+              Điểm: <span style={{ color: "red" }}>{userScore}%</span>
+            </TextCustom>
+            {/* <TextCustom>
+              Kết quả: <span style={{ color: conditionStatus === "passed" ? "green" : "red" }}>
+                {conditionStatus === "passed" ? "Đạt" : "Không đạt"}
+              </span>
+            </TextCustom> */}
+          </>
+        )}
       </div>
 
-      {!examResults ? (
-        <div>
-          <TextCustom
-            style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}
+      <div>
+        <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}>
+          {currentPart.partName}
+        </TextCustom>
+        {renderPart(currentPart)}
+        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+          <ButtonCustom
+            buttonType="secondary"
+            style={{ padding: "23px" }}
+            onClick={() => setCurrentPartIndex((prev) => prev - 1)}
+            disabled={currentPartIndex === 0}
           >
-            {currentPart.partName}
-          </TextCustom>
-          {currentPart.questions.map((question, index) => (
-            <div key={question.id}>
-              <TextCustom style={{ paddingTop: "20px" }}>
-                Câu {question.id}: {question.question}
-              </TextCustom>
-              {question.questionParagraph && (
-                <ParagraphCustom>{question.questionParagraph}</ParagraphCustom>
-              )}
-              <div style={{ marginTop: "20px" }}>
-                <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
-                  {question.options.map((option, index) => (
-                    <Col key={index} span={8}>
-                      <ButtonCustom
-                        buttonType="primary"
-                        onClick={() =>
-                          handleSelectOptions(question.id, option.id)
-                        }
-                        style={{
-                          backgroundColor:
-                            userAnswers[question.id] === option.id
-                              ? "#A8703E"
-                              : "",
-                        }}
-                      >
-                        {option.image ? (
-                          <span>{option.id}</span>
-                        ) : (
-                          <div>
-                            <span>
-                              {Array.isArray(option.text)
-                                ? `${option.id}. ${option.text.join(" - ")}`
-                                : `${option.id}. ${option.text}`}
-                            </span>
-                          </div>
-                        )}
-                      </ButtonCustom>
-                    </Col>
-                  ))}
-                </Row>
-                {question.options.some((option) => option.image) && (
-                  <Row
-                    gutter={[16, 16]}
-                    style={{ marginTop: "20px", textAlign: "center" }}
+            Phần trước
+          </ButtonCustom>
+          <ButtonCustom
+            buttonType="secondary"
+            style={{ padding: "23px", marginLeft: "30px" }}
+            onClick={() => setCurrentPartIndex((prev) => prev + 1)}
+            disabled={currentPartIndex === exercises.parts.length - 1}
+          >
+            Phần tiếp theo
+          </ButtonCustom>
+          {isCompleted ? (
+            <>
+              {conditionStatus === "not pass" ? (
+                <>
+                  <ButtonCustom
+                    buttonType="secondary"
+                    style={{ padding: "23px", marginLeft: "30px" }}
+                    onClick={handleRetry}
                   >
-                    {question.options
-                      .filter((option) => option.image)
-                      .map((option, index) => (
-                        <Col key={index} span={8}>
-                          <img
-                            src={imgArrVocab[index]}
-                            style={{ width: "50%" }}
-                          />
-                        </Col>
-                      ))}
-                  </Row>
-                )}
-              </div>
-            </div>
-          ))}
-          <div style={{ textAlign: "center", paddingTop: "50px" }}>
+                    Làm lại bài tập này
+                  </ButtonCustom>
+                  <ButtonCustom
+                    buttonType="secondary"
+                    style={{ padding: "23px", marginLeft: "30px" }}
+                    onClick={() => navigate(-1)}
+                  >
+                    Quay về luyện tập
+                  </ButtonCustom>
+                </>
+              ) : (
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ padding: "23px", marginLeft: "30px" }}
+                  // onClick={handleAchieveTrophy}
+                >
+                  Chuyển sang phase tiếp theo
+                </ButtonCustom>
+              )}
+            </>
+          ) : (
             <ButtonCustom
               buttonType="secondary"
-              style={{ marginRight: "100px", padding: "23px" }}
-              onClick={handlePreviousPart}
-              disabled={currentPartIndex === 0}
-            >
-              Phần trước
-            </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ marginRight: "100px", padding: "23px" }}
-              onClick={handleNextPart}
-              disabled={currentPartIndex === exercises.parts.length - 1}
-            >
-              Phần tiếp theo
-            </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ padding: "23px" }}
+              style={{ padding: "23px", marginLeft: "30px" }}
               onClick={handleSubmit}
+              disabled={!(currentPartIndex === exercises.parts.length - 1)}
             >
               Nộp bài
             </ButtonCustom>
-          </div>
+          )}
         </div>
-      ) : (
-        <div>
-          <div style={{ textAlign: "center" }}>
-            <TextCustom style={{ textAlign: "center" }}>
-              Điểm:&nbsp;
-              <span style={{ color: "red" }}>
-                {userScore}/
-                {exercises.parts.reduce(
-                  (acc, part) => acc + part.questions.length,
-                  0
-                )}
-              </span>
-              <span
-                style={{ color: "red", marginLeft: "10px", fontWeight: "bold" }}
-              >
-                ({mark}%)
-              </span>
-            </TextCustom>
-          </div>
-          <div>
-            <TextCustom
-              style={{
-                color: "red",
-                fontWeight: "bold",
-                paddingTop: "20px",
-              }}
-            >
-              {currentResultPart.partName}
-            </TextCustom>
-            {currentResultPart.questions.map((question) => (
-              <div key={question.id}>
-                <TextCustom style={{ paddingTop: "24px" }}>
-                  Câu {question.id}: {question.question}
-                </TextCustom>
-                <div style={{ marginTop: "20px" }}>
-                  <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
-                    {question.options.map((option, index) => {
-                      const isCorrectOption =
-                        option.id === question.correctAnswers;
-                      const isUserSelected = option.id === question.userAnswer;
-                      const backgroundColor = isCorrectOption
-                        ? "#5FD855"
-                        : isUserSelected && !question.isCorrect
-                        ? "red"
-                        : "";
-
-                      return (
-                        <Col key={index} span={8}>
-                          <ButtonCustom
-                            buttonType="primary"
-                            style={{ backgroundColor }}
-                            disabled
-                          >
-                            {option.image ? (
-                              <span>{option.id}</span>
-                            ) : (
-                              <div>
-                                <span>
-                                  {Array.isArray(option.text)
-                                    ? `${option.id}. ${option.text.join(" - ")}`
-                                    : `${option.id}. ${option.text}`}
-                                </span>
-                              </div>
-                            )}
-                          </ButtonCustom>
-                        </Col>
-                      );
-                    })}
-                  </Row>
-                  {question.options.some((option) => option.image) && (
-                    <Row
-                      gutter={[16, 16]}
-                      style={{ marginTop: "20px", textAlign: "center" }}
-                    >
-                      {question.options
-                        .filter((option) => option.image)
-                        .map((option, index) => (
-                          <Col key={index} span={8}>
-                            <img
-                              src={imgArrVocab[index]}
-                              style={{ width: "50%" }}
-                            />
-                          </Col>
-                        ))}
-                    </Row>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{ textAlign: "center", paddingTop: "50px" }}>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ marginRight: "100px", padding: "23px" }}
-              onClick={handlePreviousResultPart}
-              disabled={currentResultPartIndex === 0}
-            >
-              Phần trước
-            </ButtonCustom>
-            <ButtonCustom
-              buttonType="secondary"
-              style={{ marginRight: "100px", padding: "23px" }}
-              onClick={handleNextResultPart}
-              disabled={currentResultPartIndex === examResults.length - 1}
-            >
-              Phần tiếp theo
-            </ButtonCustom>
-            {userScore < 5 && mark < 50 ? (
-              <>
-                <ButtonCustom
-                  buttonType="secondary"
-                  style={{ marginRight: "100px", padding: "23px" }}
-                >
-                  Làm lại bài kiểm tra
-                </ButtonCustom>
-                <ButtonCustom
-                  buttonType="secondary"
-                  style={{ marginRight: "100px", padding: "23px" }}
-                >
-                  Quay về luyện tập
-                </ButtonCustom>
-              </>
-            ) : (
-              <>
-                <ButtonCustom
-                  buttonType="secondary"
-                  style={{ marginRight: "100px", padding: "23px" }}
-                >
-                  Nhận cúp
-                </ButtonCustom>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

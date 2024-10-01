@@ -9,6 +9,9 @@ import speaking from "../../../assets/landingPage/speaking.png";
 import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
+import beginner from "../../../assets/landingPage/beginner.jpg";
+import vocabularyTip from "../../../assets/landingPage/tiphoctuvunghieuqua.png";
+import certificate from "../../../assets/landingPage/BI-QUYET-DAT-DIEM-CAO-TRONG-PHAN-THI-VIET-TIENG-DUC-TELC-B1-1-min-scaled.jpg";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import { Courses } from "./courses/coursesList";
 import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
@@ -37,29 +40,50 @@ export const LandingPage = () => {
 
   const feedbacks = [
     {
-      name: "Tuan",
-      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      name: "Bài tập rất hữu ích và thực tế",
+      content: "Các bài tập trong giáo trình giúp tôi rèn luyện tốt ngữ pháp và từ vựng. Phương pháp học rất trực quan, đặc biệt là phần bài tập nghe, giúp tôi tự tin hơn khi nói tiếng Đức.",
       stars: 5,
     },
     {
-      name: "Tuan2",
-      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
-      stars: 4,
-    },
-    {
-      name: "Tuan3",
-      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
-      stars: 3,
-    },
-    {
-      name: "Tuan4",
-      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
-      stars: 2,
-    },
-    {
-      name: "Tuan5",
-      content: "Lorem ipsum dolor sit amet consectetur. Enim pharetra fermentum faucibus tortor nulla viverra tellus pretium vitae. Vel consectetur",
+      name: "Giáo trình chất lượng cao",
+      content:
+        "Tôi rất thích cách bài tập được thiết kế theo chủ đề và bám sát thực tiễn. Điều này giúp tôi không chỉ học tiếng Đức mà còn hiểu thêm về văn hóa Đức. Các bài tập từ vựng phong phú và có độ khó tăng dần rất hợp lý.",
       stars: 5,
+    },
+    {
+      name: "Phù hợp cho người mới bắt đầu",
+      content:
+        "Tôi là người mới bắt đầu học tiếng Đức, và giáo trình này thực sự rất dễ tiếp cận. Các bài tập từ cơ bản đến nâng cao giúp tôi theo kịp tiến độ và không cảm thấy quá khó khăn khi mới học.",
+      stars: 5,
+    },
+    {
+      name: "Bài tập phong phú và đa dạng",
+      content:
+        "Tôi rất ấn tượng với sự đa dạng của bài tập trong giáo trình tiếng Đức này. Các dạng bài khác nhau như trắc nghiệm, điền từ, và bài tập luyện nói giúp tôi có cái nhìn toàn diện và cải thiện mọi kỹ năng tiếng Đức.",
+      stars: 5,
+    },
+    {
+      name: "Hỗ trợ tốt cho việc tự học",
+      content: "Bài tập trong giáo trình rất tốt cho những ai tự học tiếng Đức như tôi. Các bài tập có phần gợi ý và đáp án kèm theo, giúp tôi tự kiểm tra được kiến thức của mình.",
+      stars: 5,
+    },
+  ];
+
+  const blog = [
+    {
+      title: "Hướng Dẫn Học Tiếng Đức Cho Người Mới Bắt Đầu",
+      image: beginner,
+      description: "Blog cung cấp lộ trình học tiếng Đức cơ bản, bao gồm các bước khởi đầu từ việc làm quen với bảng chữ cái, phát âm và ngữ pháp nền tảng.",
+    },
+    {
+      title: "10 Cách Học Từ Vựng Tiếng Đức Hiệu Quả",
+      image: vocabularyTip,
+      description: "Bài viết chia sẻ những phương pháp ghi nhớ từ vựng tiếng Đức nhanh chóng và dễ dàng, phù hợp cho mọi trình độ học viên.",
+    },
+    {
+      title: "Bí Quyết Đạt Điểm Cao Trong Kỳ Thi Chứng Chỉ Tiếng Đức",
+      image: certificate,
+      description: "Chia sẻ kinh nghiệm ôn tập và làm bài thi các chứng chỉ tiếng Đức phổ biến như Goethe, TELC, TestDaF để đạt kết quả cao.",
     },
   ];
 
@@ -150,9 +174,7 @@ export const LandingPage = () => {
 
       {/* Khoa hoc */}
       <div>
-        <div>
-          <h2 style={{ fontSize: "40px", textAlign: "center" }}>DS BÀI TẬP THEO TRÌNH ĐỘ</h2>
-        </div>
+        <h2 style={{ fontSize: "40px", textAlign: "center" }}>CÁC BÀI TẬP THEO TRÌNH ĐỘ </h2>
         <div
           style={{
             marginLeft: "8px",
@@ -166,6 +188,19 @@ export const LandingPage = () => {
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
+        <List
+          grid={{ gutter: 16, column: 3 }}
+          dataSource={blog}
+          renderItem={(item) => (
+            <List.Item>
+              <div style={{ border: "1px solid #e8e8e8", borderRadius: "4px", padding: "16px", textAlign: "center" }}>
+                <img src={item.image} alt={item.title} style={{ width: "100%", height: "150px", objectFit: "cover", marginBottom: "16px" }} />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </List.Item>
+          )}
+        />
       </div>
 
       {/* Feedback - think about carousel */}
@@ -188,14 +223,14 @@ export const LandingPage = () => {
         >
           <List
             grid={{
-              gutter: 16,
-              column: 4,
+              gutter: 16, // Adjust the space between cards
+              column: 3, // Set the number of columns to 3 (like the image)
             }}
             dataSource={feedbacks}
             renderItem={(item) => (
               <List.Item>
-                <Card style={{ width: "330px" }}>
-                  <Row>
+                <Card style={{ width: "330px", textAlign: "center" }}>
+                  <Row gutter={[16, 16]} justify="center" align="middle">
                     <Col span={4}>
                       <Avatar src={sample} size={42} />
                     </Col>
@@ -205,7 +240,10 @@ export const LandingPage = () => {
                       </Row>
                       <Row>
                         {Array.from({ length: item.stars }).map((_, index) => (
-                          <StarFilled style={{ color: "#FFCC33", fontSize: "20px" }} />
+                          <StarFilled
+                            key={index} // Added key to each StarFilled component
+                            style={{ color: "#FFCC33", fontSize: "20px" }}
+                          />
                         ))}
                       </Row>
                     </Col>

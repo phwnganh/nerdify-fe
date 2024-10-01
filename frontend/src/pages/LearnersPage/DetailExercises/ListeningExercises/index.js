@@ -16,16 +16,44 @@ import demo2_3 from "../../../../assets/listeningExercises/2_3.png";
 import demo3_1 from "../../../../assets/listeningExercises/3_1.png";
 import demo3_2 from "../../../../assets/listeningExercises/3_2.png";
 import demo3_3 from "../../../../assets/listeningExercises/3_3.png";
+import demo4_1 from "../../../../assets/listeningExercises/4_1.png";
+import demo4_2 from "../../../../assets/listeningExercises/4_2.png";
+import demo4_3 from "../../../../assets/listeningExercises/4_3.png";
+import demo5_1 from "../../../../assets/listeningExercises/5_1.png";
+import demo5_2 from "../../../../assets/listeningExercises/5_2.png";
+import demo5_3 from "../../../../assets/listeningExercises/5_3.png";
+import demo02_1_1 from "../../../../assets/listeningExercises/2_1_1.png";
+import demo02_1_2 from "../../../../assets/listeningExercises/2_1_2.png";
+import demo02_1_3 from "../../../../assets/listeningExercises/2_1_3.png";
+import demo02_2_1 from "../../../../assets/listeningExercises/2_2_1.png";
+import demo02_2_2 from "../../../../assets/listeningExercises/2_2_2.png";
+import demo02_2_3 from "../../../../assets/listeningExercises/2_2_3.png";
+import demo02_3_1 from "../../../../assets/listeningExercises/2_3_1.png";
+import demo02_3_2 from "../../../../assets/listeningExercises/2_3_2.png";
+import demo02_3_3 from "../../../../assets/listeningExercises/2_3_3.png";
+import demo02_4_1 from "../../../../assets/listeningExercises/2_4_1.png";
+import demo02_4_2 from "../../../../assets/listeningExercises/2_4_2.png";
+import demo02_4_3 from "../../../../assets/listeningExercises/2_4_3.png";
+import demo02_5_1 from "../../../../assets/listeningExercises/2_5_1.png";
+import demo02_5_2 from "../../../../assets/listeningExercises/2_5_2.png";
+import demo02_5_3 from "../../../../assets/listeningExercises/2_5_3.png";
+import demo02_6_1 from "../../../../assets/listeningExercises/2_6_1.png";
+import demo02_6_2 from "../../../../assets/listeningExercises/2_6_2.png";
+import demo02_6_3 from "../../../../assets/listeningExercises/2_6_3.png";
 import part1_ques1 from "../../../../assets/listeningExercises/teil 1-01.mp3";
 import part1_ques2 from "../../../../assets/listeningExercises/teil 1-02.mp3";
 import part1_ques3 from "../../../../assets/listeningExercises/teil 1-03.mp3";
+import part1_ques4 from "../../../../assets/listeningExercises/teil 1-04.mp3";
+import part1_ques5 from "../../../../assets/listeningExercises/teil 1-05.mp3";
 import part2_ques7 from "../../../../assets/listeningExercises/teil 2-07.mp3";
 import part2_ques8 from "../../../../assets/listeningExercises/teil 2-08.mp3";
 import part2_ques9 from "../../../../assets/listeningExercises/teil 2-09.mp3";
+import part2_ques10 from "../../../../assets/listeningExercises/teil 2-10.mp3";
 import part3_ques11 from "../../../../assets/listeningExercises/teil 3-11.mp3";
 import part3_ques12 from "../../../../assets/listeningExercises/teil 3-12.mp3";
 import part3_ques13 from "../../../../assets/listeningExercises/teil 3-13.mp3";
-
+import part3_ques14 from "../../../../assets/listeningExercises/teil 3-14.mp3";
+import part3_ques15 from "../../../../assets/listeningExercises/teil 3-15.mp3";
 const imagesArr = {
   demo1_1,
   demo1_2,
@@ -36,18 +64,47 @@ const imagesArr = {
   demo3_1,
   demo3_2,
   demo3_3,
+  demo4_1,
+  demo4_2,
+  demo4_3,
+  demo5_1,
+  demo5_2,
+  demo5_3,
+  demo02_1_1,
+  demo02_1_2,
+  demo02_1_3,
+  demo02_2_1,
+  demo02_2_2,
+  demo02_2_3,
+  demo02_3_1,
+  demo02_3_2,
+  demo02_3_3,
+  demo02_4_1,
+  demo02_4_2,
+  demo02_4_3,
+  demo02_5_1,
+  demo02_5_2,
+  demo02_5_3,
+  demo02_6_1,
+  demo02_6_2,
+  demo02_6_3,
 };
 
 const audioArr = {
   part1_ques1,
   part1_ques2,
   part1_ques3,
+  part1_ques4,
+  part1_ques5,
   part2_ques7,
   part2_ques8,
   part2_ques9,
+  part2_ques10,
   part3_ques11,
   part3_ques12,
   part3_ques13,
+  part3_ques14,
+  part3_ques15,
 };
 
 const { TabPane } = Tabs;
@@ -333,12 +390,23 @@ export default function ListeningExercise() {
 
             {/* Đáp án chi tiết */}
             {isSubmitted && (
-              <>
-                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)} style={{ marginTop: "20px" }}>
+              <div style={{ padding: "20px" }}>
+                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue", marginTop: "10px" }}>{question.answerDetail}</TextCustom>}
-              </>
+                {toggleAnswerDetail[question.id] && (
+                  <div>
+                    <TextCustom style={{ color: "blue" }}>
+                      {question?.answerDetail.split("\n").map((line, index) => (
+                        <React.Fragment key={index}>
+                          {line}
+                          <br />
+                        </React.Fragment>
+                      ))}
+                    </TextCustom>
+                  </div>
+                )}
+              </div>
             )}
           </div>
         ))}
@@ -373,39 +441,24 @@ export default function ListeningExercise() {
                 </TextCustom>
               </div>
             )}
-            {/* partName:  */}
-            <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
-
-            {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart)}
-            <div style={{ textAlign: "center", paddingTop: "50px" }}>
-              <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => Math.max(prev - 1, 0))} disabled={currentPartIndex === 0}>
-                Phần trước
-              </ButtonCustom>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "23px", marginLeft: "30px" }}
-                onClick={() => setCurrentPartIndex((prev) => Math.min(prev + 1, exercises.parts.length - 1))}
-                disabled={currentPartIndex === exercises.parts.length - 1}
-              >
-                Phần tiếp theo
-              </ButtonCustom>
-              {isSubmitted ? (
-                <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
-                  Làm lại bài tập này
-                </ButtonCustom>
-              ) : (
-                <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={currentPartIndex !== exercises.parts.length - 1}>
-                  Nộp bài
-                </ButtonCustom>
-              )}
-            </div>
           </TabPane>
           <TabPane tab="Transcripts" key="transcripts">
             {isSubmitted ? (
               exercises?.parts?.map((part, index) => (
                 <React.Fragment key={index}>
-                  <TextCustom>{part?.partName}</TextCustom>
-                  <TextCustom>{part?.transcript}</TextCustom>
+                  <div>
+                    <TextCustom style={{ fontWeight: "bold" }}>{part?.partName}</TextCustom>
+                  </div>
+                  <div>
+                    <TextCustom>
+                      {part?.transcript.split("\n").map((line, index) => (
+                        <React.Fragment key={index}>
+                          {line}
+                          <br />
+                        </React.Fragment>
+                      ))}
+                    </TextCustom>
+                  </div>
                 </React.Fragment>
               ))
             ) : (

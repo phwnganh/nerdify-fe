@@ -16,7 +16,6 @@ export const ModalPremium = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    navigate(CLIENT_URI.PREMIUM);
   };
 
   return (
@@ -26,6 +25,12 @@ export const ModalPremium = () => {
           <h1 style={{ textAlign: "center" }}>Nâng cấp tài khoản với các gói Premium</h1>
           <h2 style={{ width: "450px", margin: "auto" }}>
             <CheckSquareTwoTone /> Mở khóa tất cả các phase của khóa học <br /> <CheckSquareTwoTone /> Luyện bài tập nói
+            <br />
+            <CheckSquareTwoTone /> Tạo bộ flashcard mới(nhiều nhất là 50 từ)
+            <br />
+            <CheckSquareTwoTone />
+            Viết bài luận và được giáo viên chấm chữa cẩn thận
+            <br />
           </h2>
         </div>
         <div style={{ display: "inline-grid", width: "100%" }}>

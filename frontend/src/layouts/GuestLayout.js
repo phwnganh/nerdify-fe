@@ -42,10 +42,13 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-    width: "100%",
-    paddingTop: "80px",
-    boxSizing: "border-box",
-    overflowX: "hidden",
+
+    // width: "100%",
+    // paddingTop: "80px",
+    // boxSizing: "border-box",
+    // overflowX: "hidden",
+
+    marginTop: "100px",
   },
   content: {
     flex: 1,

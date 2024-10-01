@@ -54,7 +54,7 @@ export const LoginPage = () => {
       <div style={style.leftSide}>
         <img
           src={loginImage}
-          alt="Deustch Nerd"
+          alt="Deutsch Nerd"
           style={{
             width: "100%",
             height: "100%",
@@ -67,11 +67,11 @@ export const LoginPage = () => {
         <div style={style.formLogin}>
           <img
             src={logo}
-            alt="Deustch Nerd"
+            alt="Deutsch Nerd"
             style={{ width: "100px", height: "50px" }}
           />
           <span style={{ fontSize: "30px", fontWeight: "bold" }}>
-            Chào mừng đến với Deustch Nerd
+            Chào mừng đến với Deutsch Nerd
           </span>
           <span>Đăng nhập để tiếp tục</span>
           <Form

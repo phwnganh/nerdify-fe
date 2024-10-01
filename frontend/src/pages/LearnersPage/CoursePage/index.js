@@ -30,7 +30,7 @@ export default function CoursePage() {
             marginBottom: "40px",
           }}
         >
-          DS Bài Tập Theo Trình Độ
+          CÁC BÀI TẬP THEO TRÌNH ĐỘ
         </h2>
         <List
           grid={{

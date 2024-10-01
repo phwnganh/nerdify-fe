@@ -74,6 +74,19 @@ export default function BreadCrumbHome() {
           label: "Tạo flashcard mới"
         }
       ])
+    }else if(location.pathname.startsWith("/edit-flash-card")){
+      setBreadCrumb([
+        {
+          path: '/',
+          label: "Trang chủ"
+        }, {
+          path: `/flash-card/${stotedFlashcardId}`,
+          label: "Flashcard"
+        },  {
+          path: location.pathname,
+          label: "Chỉnh sửa flashcard"
+        }
+      ])
     }
   }, [location.pathname, exerciseType]);
 
