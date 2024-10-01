@@ -1,12 +1,13 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
+import LoadingSpin from "../components/Spinning";
 
 export const AdminGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
 
   if (!isInitialized) {
-    return <>loading...</>;
+    return <LoadingSpin/>;
   }
 
   if (isAuthenticated) {

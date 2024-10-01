@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Typography, Card, Radio, List } from "antd";
 import ButtonCustom from "../../../components/Button";
-import { AudioOutlined, ReadOutlined } from "@ant-design/icons";
+import { AudioOutlined, BookOutlined, EditOutlined, ReadOutlined } from "@ant-design/icons";
 import CardCustom from "../../../components/Card";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants";
@@ -63,6 +63,16 @@ export const PremiumPage = () => {
               <List.Item>
                 <h2>
                   <AudioOutlined /> &nbsp; Mở bài tập luyện nói
+                </h2>
+              </List.Item>
+              <List.Item>
+                <h2>
+                  <BookOutlined/> &nbsp; Tạo bộ flashcard mới(nhiều nhất là 50 từ)
+                </h2>
+              </List.Item>
+              <List.Item>
+                <h2>
+                  <EditOutlined /> &nbsp; Viết bài luận và được giáo viên chấm chữa cẩn thận
                 </h2>
               </List.Item>
             </List>

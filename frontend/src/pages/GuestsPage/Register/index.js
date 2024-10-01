@@ -45,11 +45,11 @@ export const RegisterPage = () => {
         <div style={style.formLogin}>
           <img
             src={logo}
-            alt="Deustch Nerd"
+            alt="Deutsch Nerd"
             style={{ width: "100px", height: "50px" }}
           />
           <span style={{ fontSize: "30px", fontWeight: "bold" }}>
-            Chào mừng đến với Deustch Nerd
+            Chào mừng đến với Deutsch Nerd
           </span>
           <span>Đăng ký tài khoản mới của bạn tại đây</span>
           <Form
@@ -183,7 +183,7 @@ export const RegisterPage = () => {
       <div style={style.rightSide}>
         <img
           src={registerImage}
-          alt="Deustch Nerd"
+          alt="Deutsch Nerd"
           style={{
             width: "100%",
             height: "100%",

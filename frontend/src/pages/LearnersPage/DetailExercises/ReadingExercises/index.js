@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
@@ -56,7 +56,16 @@ export default function ReadingExercises() {
   const renderPart = (currentPart) => {
     return (
       <>
-        {currentPart?.questionParagraph && <div>{currentPart?.questionParagraph}</div>}
+        {currentPart?.questionParagraph && (
+          <div>
+            {currentPart?.questionParagraph.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </div>
+        )}
         {currentPart.questions.map((question) => (
           <div key={question.id}>
             <TextCustom style={{ fontWeight: "bold" }}>
@@ -64,9 +73,9 @@ export default function ReadingExercises() {
             </TextCustom>
 
             {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
-              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} style={{padding: '10px'}} alt="question-part" />)
+              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} style={{ padding: "10px" }} alt="question-part" />)
             ) : question.questionImage ? (
-              <img src={imgReadingArr[question.questionImage]} alt="question-part" style={{padding: '20px'}}/>
+              <img src={imgReadingArr[question.questionImage]} alt="question-part" style={{ padding: "20px" }} />
             ) : null}
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               {question.options.map((option) => {
@@ -87,22 +96,32 @@ export default function ReadingExercises() {
                 }
 
                 return (
-                  <div style={{padding: '20px'}}>
-                  <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isCompleted}>
-                    {option.text}
-                  </ButtonCustom>
+                  <div style={{ padding: "20px" }}>
+                    <ButtonCustom key={option.id} buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isCompleted}>
+                      {option.text}
+                    </ButtonCustom>
                   </div>
-                  
                 );
               })}
             </div>
             {isCompleted && (
-              <>
+              <div style={{ padding: "20px" }}>
                 <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue" }}>{question.answerDetail}</TextCustom>}
-              </>
+                {toggleAnswerDetail[question.id] && (
+                  <div>
+                    <TextCustom style={{ color: "blue" }}>
+                      {question?.answerDetail.split("\n").map((line, index) => (
+                        <React.Fragment key={index}>
+                          {line}
+                          <br />
+                        </React.Fragment>
+                      ))}
+                    </TextCustom>
+                  </div>
+                )}
+              </div>
             )}
           </div>
         ))}
