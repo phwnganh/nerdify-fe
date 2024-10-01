@@ -1,15 +1,17 @@
+import React, { useEffect, useState } from "react";
 import { Avatar, Col, DatePicker, Form, Input, Radio, Row, Upload } from "antd";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar";
-import { EditOutlined, UploadOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { EditOutlined } from "@ant-design/icons";
 import moment from "moment";
+
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
   const [user, setUser] = useState([]);
+
   useEffect(() => {
     fetch(`http://localhost:9999/users/1`)
       .then((res) => res.json())
@@ -18,33 +20,13 @@ export default function EditPersonalProfile() {
         form.setFieldsValue({
           fullname: res.fullname,
           gender: res.gender,
-          dob: res.dob ? moment(res.dob) : null,
+          dob: res.dob ? moment(res.dob, "YYYY-MM-DD") : null,
           phone: res.phone,
-          password: res.password,
           email: res.email,
         });
       })
       .catch((err) => console.log(err));
-    // const fetchCurrentUser = async () => {
-    //   try {
-    //     const getData = await getCurrentUser();
-    //     const res = getData?.data?.user;
-    //     setUser(res);
-    //     form.setFieldsValue({
-    //       fullname: res?.fullName,
-    //       gender: res?.gender,
-    //       dob: res?.dateOfBirth,
-    //       phone: res?.phone,
-    //       email: res?.email,
-    //     });
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // fetchCurrentUser();
-  }, []);
-
-
+  }, [form]);
 
   const handleChangeInformation = (values) => {
     const updatedUserData = {
@@ -65,35 +47,30 @@ export default function EditPersonalProfile() {
         form.setFieldsValue({
           fullname: res.fullname,
           gender: res.gender,
-          dob: res.dob ? moment(res.dob) : null,
+          dob: res.dob ? moment(res.dob, "YYYY-MM-DD") : null,
           phone: res.phone,
           email: res.email,
         });
         console.log(res);
       });
   };
+
   const handleAvatarPhotoChange = (info) => {
     if (info.file.status === "done") {
       const newAvatarPhotoUrl = URL.createObjectURL(info.file.originFileObj);
       setAvatarPhoto(newAvatarPhotoUrl);
     }
   };
+
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <Sidebar />
       <div style={{ flex: 1, padding: "30px", backgroundColor: "#f0f2f5" }}>
         <CardCustom title="CHỈNH SỬA THÔNG TIN CÁ NHÂN" style={{ backgroundColor: "white" }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-            <div style={{ position: 'relative' }}>
-              <Avatar
-                size={100}
-                style={{ backgroundColor: "#ffd54f" }}
-                icon={<img src={avatarPhoto || "avatar-url"} alt="avatar" />}
-              />
-              <Upload
-                showUploadList={false}
-                onChange={handleAvatarPhotoChange}
-              >
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+            <div style={{ position: "relative" }}>
+              <Avatar size={100} style={{ backgroundColor: "#ffd54f" }} icon={<img src={avatarPhoto || "avatar-url"} alt="avatar" />} />
+              <Upload showUploadList={false} onChange={handleAvatarPhotoChange}>
                 <ButtonCustom
                   buttonType="primary"
                   shape="circle"
@@ -108,11 +85,7 @@ export default function EditPersonalProfile() {
             </div>
           </div>
 
-          <Form
-            form={form}
-            layout="vertical"
-            onFinish={handleChangeInformation}
-          >
+          <Form form={form} layout="vertical" onFinish={handleChangeInformation}>
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item label="Họ tên" name="fullname">
@@ -132,9 +105,14 @@ export default function EditPersonalProfile() {
                   <DatePicker
                     style={{ width: "100%" }}
                     placeholder="Ngày sinh"
+                    format="DD/MM/YYYY"
+                    disabledDate={(current) => current && current > moment().endOf("day")} // Chặn ngày trong tương lai
+                    showToday={false}
+                    inputReadOnly={true} // Không cho phép nhập bằng tay
                   />
                 </Form.Item>
               </Col>
+
               <Col span={12}>
                 <Form.Item label="Điện thoại" name="phone">
                   <InputCustom placeholder="Điện thoại" />
@@ -147,17 +125,10 @@ export default function EditPersonalProfile() {
               </Col>
             </Row>
             <Row justify="start" style={{ marginTop: 20 }}>
-              <ButtonCustom
-                type="primary"
-                style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }}
-              >
+              <ButtonCustom type="primary" style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }}>
                 Hủy
               </ButtonCustom>
-              <ButtonCustom
-                type="primary"
-                htmlType="submit"
-                style={{ backgroundColor: "#dc3545", borderColor: "#dc3545" }}
-              >
+              <ButtonCustom type="primary" htmlType="submit" style={{ backgroundColor: "#dc3545", borderColor: "#dc3545" }}>
                 Lưu
               </ButtonCustom>
             </Row>
