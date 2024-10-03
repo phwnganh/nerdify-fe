@@ -10,6 +10,8 @@ import {
   Card,
   Space,
   message,
+  Dropdown,
+  Menu,
 } from "antd";
 
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
@@ -24,8 +26,10 @@ export default function CreateFlashCard() {
   const [form] = Form.useForm();
 
   const [messageApi, contextHolder] = message.useMessage();
+  const [selectedLevel, setSelectedLevel] = useState(null);
 
   const handleSubmit = () => {
+    
     fetch(`http://localhost:9999/flashcard`, {
       method: "POST",
       headers: {
@@ -52,6 +56,11 @@ export default function CreateFlashCard() {
       });
   };
 
+  const handleSelectLevel = key => {
+    setSelectedLevel(key);
+    form.setFieldValue("level", key);
+  }
+
   const handleFlashCard = () => {
     const cards = form.getFieldValue("cards");
     cards.forEach((card) => {
@@ -59,6 +68,25 @@ export default function CreateFlashCard() {
     });
     // JSON.stringify(form.getFieldsValue());
   };
+
+  const items = [
+    {
+      key: "A1",
+      label: (
+        <div>A1</div>
+      )
+    }, {
+      key: "A2",
+      label: (
+        <div>A2</div>
+      )
+    }, {
+      key: "B1",
+      label: (
+        <div>B1</div>
+      )
+    }
+  ]
   return (
     <>
       {contextHolder}
@@ -70,7 +98,7 @@ export default function CreateFlashCard() {
           form={form}
           onFinish={handleSubmit}
           scrollToFirstError
-          initialValues={{ cards: [{}] }}
+          initialValues={{ cards: [{}], level: null }}
         >
           <Row>
             <Col span={12}>
@@ -101,6 +129,12 @@ export default function CreateFlashCard() {
                   style={{ fontWeight: "600", padding: "10px" }}
                 />
               </Form.Item>
+              <Form.Item name="level" rules={[{ message: "Vui lòng chọn trình độ", required: true}]}>
+              <Dropdown menu={{items, onClick: e => handleSelectLevel(e.key)}} trigger={["click"]}>
+                <Button shape="default" style={{marginRight: '10px', padding: '20px', paddingLeft: '60px', paddingRight: '60px', marginBottom: '20px'}}>{selectedLevel || "Chọn trình độ"}</Button>
+              </Dropdown>
+              </Form.Item>
+             
             </Col>
             <Col
               span={12}

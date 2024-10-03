@@ -44,7 +44,8 @@ export default function FlashcardList() {
           <Col span={12} style={{marginTop: '20px'}}>
             <CardCustom>
               <div style={{}}>
-                <TitleCustom level={4}>{flashcard?.title}</TitleCustom>
+                <TitleCustom level={3}>{flashcard?.title}</TitleCustom>
+                <TitleCustom level={5}>Trình độ {flashcard?.level}</TitleCustom>
                 <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
               </div>
               <div style={{marginTop: '10px'}}>

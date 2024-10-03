@@ -167,6 +167,9 @@ export default function FlashCardDetail() {
 
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <TitleCustom level={2}>{flashcard?.title}</TitleCustom>
+        <div style={{textAlign: 'center', marginBottom: '10px'}}>
+        <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
+        </div>
         <Dropdown menu={{ items }} trigger={["click"]}>
           <ButtonCustom
             style={{
