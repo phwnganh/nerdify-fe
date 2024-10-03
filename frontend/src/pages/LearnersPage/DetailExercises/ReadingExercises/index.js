@@ -17,9 +17,9 @@ import demo_part2_10_2 from "../../../../assets/readingExercises/demo_part2_10_2
 
 import demo_part3_1 from "../../../../assets/readingExercises/demo_part3_1.png";
 import demo_part3_2 from "../../../../assets/readingExercises/demo_part3_2.png";
-import demo_part3_3 from '../../../../assets/readingExercises/demo_part3_3.png';
-import demo_part3_4 from '../../../../assets/readingExercises/demo_part3_4.png';
-import demo_part3_5 from '../../../../assets/readingExercises/demo_part3_5.png';
+import demo_part3_3 from "../../../../assets/readingExercises/demo_part3_3.png";
+import demo_part3_4 from "../../../../assets/readingExercises/demo_part3_4.png";
+import demo_part3_5 from "../../../../assets/readingExercises/demo_part3_5.png";
 
 import { Col, Row } from "antd";
 
@@ -38,7 +38,7 @@ const imgReadingArr = {
   demo_part3_2,
   demo_part3_3,
   demo_part3_4,
-  demo_part3_5
+  demo_part3_5,
 };
 
 export default function ReadingExercises() {
@@ -160,6 +160,7 @@ export default function ReadingExercises() {
     setIsCompleted(false);
     setCurrentPartIndex(0);
   }, []);
+
   const totalQuestions = useMemo(() => exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0), [exercises]);
 
   const handleSubmit = useCallback(() => {

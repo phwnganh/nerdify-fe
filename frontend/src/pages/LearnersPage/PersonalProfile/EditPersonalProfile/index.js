@@ -3,7 +3,7 @@ import { Avatar, Col, DatePicker, Form, Input, Radio, Row, Upload } from "antd";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
-import Sidebar from "../../../../components/Sidebar";
+import Sidebar from "../../../../components/Sidebar/learnerSideBar";
 import { EditOutlined } from "@ant-design/icons";
 import moment from "moment";
 

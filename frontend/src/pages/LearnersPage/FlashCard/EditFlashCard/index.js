@@ -9,6 +9,7 @@ import {
   Card,
   message,
   Typography,
+  Dropdown,
 } from "antd";
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
@@ -19,15 +20,21 @@ export default function EditFlashCard() {
   const [flashcard, setFlashcard] = useState(null);
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
-
+  const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
     fetch(`http://localhost:9999/flashcard/${flashcardId}`)
       .then((response) => response.json())
       .then((data) => {
         setFlashcard(data);
+        form.setFieldsValue({
+          title: data.title,
+          description: data.description,
+          level: data.level,
+          cards: data.cards,
+        });
       })
       .catch((err) => console.error(err));
-  }, [flashcardId]);
+  }, [flashcardId, form]);
 
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -35,6 +42,11 @@ export default function EditFlashCard() {
     }
     return e?.fileList;
   };
+
+  const handleSelectLevel = key => {
+    setSelectedLevel(key);
+    form.setFieldsValue({ level: key });
+  }
 
   const handleSubmit = () => {
     fetch(`http://localhost:9999/flashcard/${flashcardId}`, {
@@ -71,6 +83,25 @@ export default function EditFlashCard() {
     // JSON.stringify(form.getFieldsValue());
   };
 
+  const items = [
+    {
+      key: "A1",
+      label: (
+        <div>A1</div>
+      )
+    }, {
+      key: "A2",
+      label: (
+        <div>A2</div>
+      )
+    }, {
+      key: "B1",
+      label: (
+        <div>B1</div>
+      )
+    }
+  ]
+
   if (!flashcard) {
     return <div>Loading...</div>;
   }
@@ -88,6 +119,7 @@ export default function EditFlashCard() {
           initialValues={{
             title: flashcard.title,
             description: flashcard.description,
+            level: flashcard.level,
             cards: flashcard.cards,
           }}
         >
@@ -119,6 +151,11 @@ export default function EditFlashCard() {
                   placeholder="Nhập mô tả"
                   style={{ fontWeight: "600", padding: "10px" }}
                 />
+              </Form.Item>
+              <Form.Item name="level" rules={[{ message: "Vui lòng chọn trình độ", required: true}]}>
+              <Dropdown menu={{items, onClick: e => handleSelectLevel(e.key)}} trigger={["click"]}>
+                <Button shape="default" style={{marginRight: '10px', padding: '20px', paddingLeft: '60px', paddingRight: '60px', marginBottom: '20px'}}>{ selectedLevel|| form.getFieldValue("level")}</Button>
+              </Dropdown>
               </Form.Item>
             </Col>
             <Col
