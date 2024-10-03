@@ -144,7 +144,7 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+              "answerDetail": "Câu hỏi đang hỏi về con trai của bà Hegers, và nhìn vào hình, ta thấy có ba biển hiệu cho các lớp học khác nhau: \n 9. Klasse (lớp 9), 3. Klasse (lớp 3), và 4. Klasse (lớp 4). Để trả lời câu này, ta cần chọn đúng lớp mà con trai của bà ấy đang học."
             },
             {
               "id": 4,
@@ -165,8 +165,8 @@
                   "text": "Mit der Rolltreppe."
                 }
               ],
-              "answer": "B",
-              "answerDetail": " Câu hỏi đang hỏi về con trai của bà Hegers, và nhìn vào hình, ta thấy có ba biển hiệu cho các lớp học khác nhau: \n 9. Klasse (lớp 9), 3. Klasse (lớp 3), và 4. Klasse (lớp 4). \n Để trả lời câu này, ta cần chọn đúng lớp mà con trai của bà ấy đang học."
+              "answer": "C",
+              "answerDetail": "Phụ thuộc vào hình ảnh người phụ nữ sử dụng để lên tầng. Nếu người phụ nữ sử dụng thang máy, thì đáp án là a); nếu sử dụng cầu thang bộ, thì là b); và nếu dùng thang cuốn thì đáp án là c)."
             },
             {
               "id": 5,
@@ -187,8 +187,8 @@
                   "text": "Zur Famillie."
                 }
               ],
-              "answer": "A",
-              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+              "answer": "C",
+              "answerDetail": "Hình ảnh đầu tiên (lựa chọn a) có hình chiếc ô trên bãi biển, đại diện cho kỳ nghỉ biển. Hình ảnh thứ hai (lựa chọn b) là một người đàn ông đang ngồi bàn làm việc, thể hiện việc đi làm. Hình ảnh thứ ba (lựa chọn c) là cảnh một gia đình với người mẹ và hai đứa trẻ, đại diện cho việc đi gặp gia đình. \nVì câu hỏi hỏi về 'Wohin fährt Herr Albers?' (Ông Albers đi đâu?), nên đáp án có thể dựa vào ngữ cảnh hình ảnh hoặc nội dung mà bạn học trước đó. \nDựa vào hình ảnh và ngữ cảnh của câu hỏi, đáp án đúng là c: Zur Familie (Đi gặp gia đình)."
             }
           ]
         },
@@ -6463,6 +6463,15 @@
     },
     {
       "id": "7b1c",
+      "packageId": "1",
+      "startDate": "01/10/2024",
+      "endDate": "01/04/2025",
+      "discount": 0.15,
+      "totalPrice": 254150,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    },
+    {
+      "id": "01b9",
       "packageId": "1",
       "startDate": "01/10/2024",
       "endDate": "01/04/2025",
