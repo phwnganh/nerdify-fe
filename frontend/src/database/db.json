@@ -19,8 +19,7 @@
       "exercises": [
         4,
         5,
-        6,
-        8
+        6
       ],
       "isNew": false
     },
@@ -35,9 +34,9 @@
       "name": "Phase 1",
       "levelId": 2,
       "exercise": [
+        8,
         9,
-        10,
-        11
+        10
       ],
       "isNew": true
     },
@@ -54,8 +53,7 @@
       "title": "Bài tập trình độ A1",
       "levelImage": "a1",
       "learners": 10,
-      "levelType": "A1",
-      "description": "Ở trình độ A1, bạn sẽ được luyện các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình qua cả bài tập ngữ pháp và từ vựng theo chủ đề.",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
       "phases": [
         1,
         2,
@@ -70,22 +68,13 @@
       "title": "Bài tập trình độ A2",
       "levelImage": "a2",
       "learners": 10,
-      "levelType": "A2",
-      "description": "Ở trình độ A2, bạn sẽ được luyện các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình qua cả bài tập ngữ pháp và từ vựng theo chủ đề.",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
       "phases": [
         4
       ],
       "finalexams": [
         2
       ]
-    },
-    {
-      "id": "3",
-      "title": "Bài tập trình độ B1",
-      "levelImage": "b1",
-      "levelType": "B1",
-      "learners": 10,
-      "description": "Ở trình độ B1, bạn sẽ được luyện các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình qua cả bài tập ngữ pháp và từ vựng theo chủ đề."
     }
   ],
   "exercises": [
@@ -424,7 +413,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "29%"
+      "score": "36%"
     },
     {
       "id": "2",
@@ -536,8 +525,8 @@
             {
               "id": 6,
               "questionImage": [
-                "demo_part2_6_1",
-                "demo_part2_6_2"
+                "demo_part2_1",
+                "demo_part2_2"
               ],
               "options": [
                 {
@@ -724,7 +713,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "38%"
+      "score": "0%"
     },
     {
       "id": "3",
@@ -1080,7 +1069,7 @@
                 "sie",
                 "sie"
               ],
-              "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. \n Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. \nCâu này giới thiệu Herr Gupta, là nam giới. \nTrong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. \n'Das ist Frau Kioka, sie kommt aus Japan.'. \nTương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. \n'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. \nỞ câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. \nKhi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
+              "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. Câu này giới thiệu Herr Gupta, là nam giới. Trong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. 'Das ist Frau Kioka, sie kommt aus Japan.'. Tương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. 'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. Ở câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. Khi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
             },
             {
               "id": 6,
@@ -1089,7 +1078,7 @@
                 "du",
                 "Ich"
               ],
-              "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). \n Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
+              "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
             },
             {
               "id": 7,
@@ -1098,7 +1087,7 @@
                 "ihr",
                 "Wir"
               ],
-              "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. \n Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
+              "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
             },
             {
               "id": 8,
@@ -1106,8 +1095,7 @@
               "answer": [
                 "Sie",
                 "Ich"
-              ],
-              "answerDetail": "Trong trường hợp này, đây là một lời chào mang tính trang trọng. \n Ở câu đầu tiên 'Guten Tag, wie heißen Sie?'' người nói sử dụng đại từ nhân xưng trang trọng 'Sie' (Ngài/Ông/Bà) vì đang hỏi một người chưa quen biết hoặc người có vị thế cao hơn một cách lịch sự. \n Ở câu thứ hai 'Guten Tag, ich heiße Berger, Roland Berger.' người nói sử dụng đại từ nhân xưng 'ich' (tôi) để giới thiệu về bản thân mình. \n Cấu trúc câu này thường được dùng trong các cuộc hội thoại trang trọng hoặc môi trường công việc ở Đức."
+              ]
             }
           ]
         },
@@ -1134,8 +1122,7 @@
               "answer": [
                 "Sie",
                 "Ich"
-              ],
-              "answerDetail": "'arbeiten Sie': 'Sie' là đại từ ngôi thứ ba số ít ở dạng lịch sự, dùng để hỏi về hành động của người đối diện. \n 'Ich arbeite': 'Ich' là đại từ ngôi thứ nhất, chỉ chính người đang trả lời, và động từ 'arbeiten' chia theo ngôi 'Ich' thành 'arbeite'."
+              ]
             },
             {
               "id": 12,
@@ -1143,8 +1130,7 @@
               "answer": [
                 "du",
                 "ich"
-              ],
-              "answerDetail": "Trong câu đầu tiên, 'du' là đại từ nhân xưng chỉ Marie (người thứ hai số ít). \n Trong câu thứ hai, 'ich' là đại từ nhân xưng cho người nói (người thứ nhất số ít)."
+              ]
             }
           ]
         }
@@ -1172,7 +1158,6 @@
                 "demo02_1_2",
                 "demo02_1_3"
               ],
-              "audioUrl": "part1_ques1_2",
               "options": [
                 {
                   "id": "A",
@@ -1197,7 +1182,6 @@
                 "demo02_2_2",
                 "demo02_2_3"
               ],
-              "audioUrl": "part1_ques2_2",
               "options": [
                 {
                   "id": "A",
@@ -5927,664 +5911,6 @@
         }
       ],
       "isCompleted": true
-    },
-    {
-      "id": "a2b3",
-      "submissionDate": "2024-10-02T15:52:21.934Z",
-      "score": "50%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "von",
-          "correctAnswer": "von",
-          "isCorrect": true
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "sprechen",
-          "correctAnswer": "sprechen",
-          "isCorrect": true
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "",
-          "correctAnswer": "bißchen",
-          "isCorrect": false
-        },
-        {
-          "questionId": "paragraph_2",
-          "userAnswer": "ffffffffffffffffffff",
-          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
-          "isCorrect": false
-        }
-      ],
-      "isCompleted": true,
-      "exerciseId": "4"
-    },
-    {
-      "id": "7a9c",
-      "submissionDate": "2024-10-02T15:52:53.484Z",
-      "score": "25%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "",
-          "correctAnswer": "von",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "",
-          "correctAnswer": "sprechen",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "",
-          "correctAnswer": "bißchen",
-          "isCorrect": false
-        },
-        {
-          "questionId": "paragraph_2",
-          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
-          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
-          "isCorrect": true
-        }
-      ],
-      "isCompleted": true,
-      "exerciseId": "4"
-    },
-    {
-      "id": "d008",
-      "submissionDate": "2024-10-02T16:05:53.875Z",
-      "score": "50%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "von",
-          "correctAnswer": "von",
-          "isCorrect": true
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "sprechen",
-          "correctAnswer": "sprechen",
-          "isCorrect": true
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "heißt",
-          "correctAnswer": "bißchen",
-          "isCorrect": false
-        },
-        {
-          "questionId": "paragraph_2",
-          "userAnswer": "",
-          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
-          "isCorrect": false
-        }
-      ],
-      "isCompleted": true,
-      "exerciseId": "4"
-    },
-    {
-      "id": "93f4",
-      "submissionDate": "2024-10-02T16:06:30.614Z",
-      "score": "0%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "komme von",
-          "correctAnswer": "von",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "",
-          "correctAnswer": "sprechen",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "",
-          "correctAnswer": "bißchen",
-          "isCorrect": false
-        },
-        {
-          "questionId": "paragraph_2",
-          "userAnswer": "",
-          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
-          "isCorrect": false
-        }
-      ],
-      "isCompleted": true,
-      "exerciseId": "4"
-    },
-    {
-      "id": "5304",
-      "exerciseId": "5",
-      "submissionDate": "2024-10-02T16:23:01.303Z",
-      "score": "17%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "Sie",
-          "correctAnswer": "Sie",
-          "isCorrect": true
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "sie",
-          "correctAnswer": "Sie",
-          "isCorrect": true
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "",
-          "correctAnswer": "du",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "",
-          "correctAnswer": "Er",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "userAnswer": ", , ",
-          "correctAnswer": "er, sie, sie",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": ", ",
-          "correctAnswer": "du, Ich",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": ", ",
-          "correctAnswer": "ihr, Wir",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "userAnswer": ", ",
-          "correctAnswer": "Sie, Ich",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "",
-          "correctAnswer": "Sie",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "",
-          "correctAnswer": "sie",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "userAnswer": ", ",
-          "correctAnswer": "Sie, Ich",
-          "isCorrect": false
-        },
-        {
-          "questionId": 12,
-          "userAnswer": ", ",
-          "correctAnswer": "du, ich",
-          "isCorrect": false
-        }
-      ],
-      "isCompleted": true
-    },
-    {
-      "id": "41d9",
-      "submissionDate": "2024-10-02T16:53:47.402Z",
-      "score": "3%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "die Woche - no answer",
-          "correctAnswer": "die Woche - tuần",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "Montag - no answer",
-          "correctAnswer": "Montag - Thứ hai",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "Dienstag - no answer",
-          "correctAnswer": "Dienstag - Thứ ba",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "Mittwoch - no answer",
-          "correctAnswer": "Mittwoch - Thứ Tư",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "Donnerstag - no answer",
-          "correctAnswer": "Donnerstag - Thứ năm",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "Freitag - Thứ sáu",
-          "correctAnswer": "Freitag - Thứ sáu",
-          "isCorrect": true
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "Samstag - no answer",
-          "correctAnswer": "Samstag - Thứ bảy",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "Sonntag - no answer",
-          "correctAnswer": "Sonntag - Chủ nhật",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "der Frühling - mùa hè",
-          "correctAnswer": "der Frühling - mùa xuân",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "der Sommer - no answer",
-          "correctAnswer": "der Sommer - mùa hè",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "der Herbst - no answer",
-          "correctAnswer": "der Herbst - mùa thu",
-          "isCorrect": false
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "der Winter - no answer",
-          "correctAnswer": "der Winter - mùa đông",
-          "isCorrect": false
-        },
-        {
-          "questionId": 13,
-          "userAnswer": "der Tag - no answer",
-          "correctAnswer": "der Tag - ngày",
-          "isCorrect": false
-        },
-        {
-          "questionId": 14,
-          "userAnswer": "der Morgen - no answer",
-          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
-          "isCorrect": false
-        },
-        {
-          "questionId": 15,
-          "userAnswer": "der Vormittag - no answer",
-          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
-          "isCorrect": false
-        },
-        {
-          "questionId": 16,
-          "userAnswer": "der Mittag - no answer",
-          "correctAnswer": "der Mittag - giữa trưa",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "no answer",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "no answer",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 1,
-          "userAnswer": "no answer",
-          "correctAnswer": "Januar"
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "no answer",
-          "correctAnswer": "Februar"
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "no answer",
-          "correctAnswer": "März"
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "no answer",
-          "correctAnswer": "April"
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "no answer",
-          "correctAnswer": "Mai"
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "no answer",
-          "correctAnswer": "Juni"
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "no answer",
-          "correctAnswer": "Juli"
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "no answer",
-          "correctAnswer": "August"
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "no answer",
-          "correctAnswer": "September"
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "no answer",
-          "correctAnswer": "Oktober"
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "no answer",
-          "correctAnswer": "November"
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "no answer",
-          "correctAnswer": "Dezember"
-        }
-      ],
-      "exerciseId": "3"
-    },
-    {
-      "id": "79aa",
-      "submissionDate": "2024-10-03T11:19:10.258Z",
-      "score": "29%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "A",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 13,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 14,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        }
-      ],
-      "exerciseId": "1",
-      "isCompleted": true
-    },
-    {
-      "id": "044f",
-      "submissionDate": "2024-10-03T11:22:22.353Z",
-      "score": "0%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "die Woche - no answer",
-          "correctAnswer": "die Woche - tuần",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "Montag - no answer",
-          "correctAnswer": "Montag - Thứ hai",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "Dienstag - no answer",
-          "correctAnswer": "Dienstag - Thứ ba",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "Mittwoch - no answer",
-          "correctAnswer": "Mittwoch - Thứ Tư",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "Donnerstag - no answer",
-          "correctAnswer": "Donnerstag - Thứ năm",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "Freitag - no answer",
-          "correctAnswer": "Freitag - Thứ sáu",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "Samstag - no answer",
-          "correctAnswer": "Samstag - Thứ bảy",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "Sonntag - no answer",
-          "correctAnswer": "Sonntag - Chủ nhật",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "der Frühling - no answer",
-          "correctAnswer": "der Frühling - mùa xuân",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "der Sommer - no answer",
-          "correctAnswer": "der Sommer - mùa hè",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "der Herbst - no answer",
-          "correctAnswer": "der Herbst - mùa thu",
-          "isCorrect": false
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "der Winter - no answer",
-          "correctAnswer": "der Winter - mùa đông",
-          "isCorrect": false
-        },
-        {
-          "questionId": 13,
-          "userAnswer": "der Tag - no answer",
-          "correctAnswer": "der Tag - ngày",
-          "isCorrect": false
-        },
-        {
-          "questionId": 14,
-          "userAnswer": "der Morgen - no answer",
-          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
-          "isCorrect": false
-        },
-        {
-          "questionId": 15,
-          "userAnswer": "der Vormittag - no answer",
-          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
-          "isCorrect": false
-        },
-        {
-          "questionId": 16,
-          "userAnswer": "der Mittag - no answer",
-          "correctAnswer": "der Mittag - giữa trưa",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "no answer",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "no answer",
-          "correctAnswer": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 1,
-          "userAnswer": "no answer",
-          "correctAnswer": "Januar"
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "no answer",
-          "correctAnswer": "Februar"
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "no answer",
-          "correctAnswer": "März"
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "no answer",
-          "correctAnswer": "April"
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "no answer",
-          "correctAnswer": "Mai"
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "no answer",
-          "correctAnswer": "Juni"
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "no answer",
-          "correctAnswer": "Juli"
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "no answer",
-          "correctAnswer": "August"
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "no answer",
-          "correctAnswer": "September"
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "no answer",
-          "correctAnswer": "Oktober"
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "no answer",
-          "correctAnswer": "November"
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "no answer",
-          "correctAnswer": "Dezember"
-        }
-      ],
-      "exerciseId": "3"
     }
   ],
   "finalExamSubmission": [
@@ -7333,7 +6659,7 @@
       "password": "1234567Az!",
       "gender": "male",
       "phone": "0865921245",
-      "dob": "2024-08-20",
+      "dob": "2024-10-02",
       "avatar": ""
     },
     {
@@ -7431,22 +6757,6 @@
       "endDate": "01/04/2025",
       "discount": 0.15,
       "totalPrice": 254150,
-      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
-    },
-    {
-      "id": "d3d0",
-      "packageId": "1",
-      "startDate": "03/10/2024",
-      "endDate": "03/04/2025",
-      "discount": 0.15
-    },
-    {
-      "id": "c708",
-      "packageId": "1",
-      "startDate": "03/10/2024",
-      "endDate": "03/04/2025",
-      "discount": 0.15,
-      "totalPrice": 299000,
       "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
     }
   ]
