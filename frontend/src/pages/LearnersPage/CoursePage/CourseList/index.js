@@ -16,7 +16,7 @@ export default function CourseList({ course }) {
       <div style={{ margin: "10px 0px" }}>
         <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}>
           <ReadOutlined style={{ fontSize: "25px" }} />
-          <span style={{ marginLeft: "8px" }}>{course.phases.length} Phase</span>
+          <span style={{ marginLeft: "8px" }}>{course?.phases?.length} Phase</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}>
           <ReadOutlined style={{ fontSize: "25px" }} />

@@ -10,24 +10,16 @@ export const GuestLayout = ({ children }) => {
       <div style={{ minHeight: "100vh", width: "100%" }}>
         {/* Fixed Navbar */}
         <Navbar />
-
         {/* Content Area */}
         <div style={styles.container}>
-          <div style={styles.content}>{children}</div>
-          {/* <div
-            style={{
-              marginTop: "100px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              // flexDirection: "column",
-
-              paddingLeft: "150px",
-              paddingRight: "150px",
-            }}
-          >
-            <div>{children}</div>
-          </div> */}
+          <div style={styles.gridContainer}>
+            {/* Left Column (spacer) */}
+            <div style={styles.column}></div>
+            {/* Middle Column (content) */}
+            <div style={styles.content}>{children}</div>
+            {/* Right Column (spacer) */}
+            <div style={styles.column}></div>
+          </div>
           <Divider style={{ marginBottom: 5 }} />
           <Footer />
         </div>
@@ -42,21 +34,23 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-
-    // width: "100%",
-    // paddingTop: "80px",
-    // boxSizing: "border-box",
-    // overflowX: "hidden",
-
     marginTop: "100px",
+  },
+  gridContainer: {
+    display: "grid",
+    gridTemplateColumns: "1fr minmax(auto, 1200px) 1fr",
+    width: "100%",
+    padding: "20px",
+    boxSizing: "border-box",
+  },
+  column: {
+
   },
   content: {
     flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     width: "100%",
   },
 };
 
 export default GuestLayout;
+

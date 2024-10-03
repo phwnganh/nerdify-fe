@@ -11,11 +11,16 @@ export const LearnerLayout = ({ children }) => {
       <div style={{ minHeight: "100vh", width: "100%" }}>
         {/* Fixed LearnerHeader */}
         <LearnerHeader />
-
         {/* Content Area */}
         <div style={styles.container}>
-          <div style={styles.content}>{children}</div>
-
+          <div style={styles.gridContainer}>
+            {/* Left Column (spacer) */}
+            <div style={styles.column}></div>
+            {/* Middle Column (content) */}
+            <div style={styles.content}>{children}</div>
+            {/* Right Column (spacer) */}
+            <div style={styles.column}></div>
+          </div>
           {/* Divider and Footer */}
           <Divider style={{ marginBottom: 5 }} />
           <Footer />
@@ -32,17 +37,23 @@ const styles = {
     flexDirection: "column",
     minHeight: "100vh",
     width: "100%",
-    maxWidth: "1200px",
     margin: "0 auto",
     paddingTop: "80px",
     boxSizing: "border-box",
     overflowX: "hidden",
   },
+  gridContainer: {
+    display: "grid",
+    gridTemplateColumns: "1fr minmax(auto, 1200px) 1fr",
+    width: "100%",
+    padding: "20px",
+    boxSizing: "border-box",
+  },
+  column: {
+
+  },
   content: {
     flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     width: "100%",
   },
 };
