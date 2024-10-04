@@ -22,6 +22,7 @@ import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword";
 export const routes = [
   // Guest urls
   {
@@ -133,8 +134,12 @@ export const routes = [
       },
       {
         path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile/>
-      }
+        element: <EditPersonalProfile />,
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
+      },
     ],
   },
 

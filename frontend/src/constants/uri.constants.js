@@ -23,6 +23,7 @@ export const CLIENT_URI = {
   PREMIUM: "/premium",
   BILLINFO: "/bill-info",
   LEARNING_PROGRESS: "/learning-progress",
+  CHANGE_PASSWORD: "/change-password",
   // ADMIN
   DASHBOARD: "/dashboard",
 };
