@@ -22,6 +22,8 @@ import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import MySubscription from "../pages/LearnersPage/MySubscription";
+import ManageSubscription from "../pages/LearnersPage/MySubscription/ManageSubscription";
 export const routes = [
   // Guest urls
   {
@@ -200,6 +202,14 @@ export const routes = [
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
         element: <ViewResultsDetail />,
       },
+      {
+        path: CLIENT_URI.MY_SUBSCRIPTION,
+        element: <MySubscription/>
+      },
+      {
+        path: CLIENT_URI.MANAGE_SUBSCRIPTION,
+        element: <ManageSubscription/>
+      }
       // {
       //   path: CLIENT_URI.PREMIUM,
       //   element: <PremiumPage />,

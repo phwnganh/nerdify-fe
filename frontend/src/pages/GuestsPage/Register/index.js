@@ -8,6 +8,8 @@ import logo from "../../../assets/logo1.png";
 import registerImage from "../../../assets/registerImage.png";
 import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
 import { register } from "../../../services/GuestService";
+import { validationRules } from "../../../helpers/validate";
+import { style } from "./styled";
 export const RegisterPage = () => {
   const [messageResp, setMessageResp] = useState({
     type: "",
@@ -63,11 +65,8 @@ export const RegisterPage = () => {
               name="fullName"
               label="Họ và Tên"
               rules={[
-                { min: 2, message: "Tên phải có ít nhất 2 kí tự" },
-                {
-                  required: true,
-                  message: "Vui lòng nhập tên của bạn",
-                },
+               validationRules.minLength(2, "Tên phải có ít nhất 2 kí tự"),
+                validationRules.required("Vui lòng nhập tên của bạn"),
                 {
                   pattern: /^[\p{L} ]+$/u,
                   message: "Tên phải là chuỗi các ký tự",
@@ -85,11 +84,8 @@ export const RegisterPage = () => {
               label="Email"
               name="email"
               rules={[
-                { required: true, message: "Vui lòng nhập email" },
-                {
-                  type: "email",
-                  message: "Email không hợp lệ",
-                },
+                validationRules.required("Vui lòng nhập email" ),
+                validationRules.email("Email không hợp lệ"),
               ]}
             >
               <InputCustom placeholder="Email" prefix={<UserOutlined />} />
@@ -122,7 +118,7 @@ export const RegisterPage = () => {
               name="confirmPassword"
               dependencies={["password"]}
               rules={[
-                { required: true, message: "Vui lòng nhập mật khẩu" },
+                validationRules.required("Vui lòng nhập mật khẩu"),
                 ({ getFieldValue }) => ({
                   validator(_, value) {
                     if (!value || getFieldValue("password") === value) {
@@ -196,43 +192,6 @@ export const RegisterPage = () => {
   );
 };
 
-const style = {
-  loginContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    height: "100vh",
-    width: "100%",
-    background: "#f4fcfc",
-    margin: 0,
-    padding: 0,
-  },
-  rightSide: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "#ffe45c",
-    borderRadius: "0 20px 20px 0",
-  },
-  leftSide: {
-    display: "flex",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "white",
-    borderRadius: "20px 0 0 20px",
-  },
-  formLogin: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    margin: "auto",
-    width: "80%",
-  },
-};
+
 
 export default RegisterPage;

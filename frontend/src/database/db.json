@@ -2244,6 +2244,18 @@
         }
       ],
       "id": "19ed"
+    },
+    {
+      "id": "a037",
+      "title": "happiness",
+      "level": "A1",
+      "cards": [
+        {
+          "terms": "aaa",
+          "definitions": "aaaa",
+          "id": 1
+        }
+      ]
     }
   ],
   "exercisesSubmission": [
@@ -6660,7 +6672,8 @@
       "gender": "male",
       "phone": "0865921245",
       "dob": "2024-10-02",
-      "avatar": ""
+      "avatar": "",
+      "accountType": "freemium"
     },
     {
       "id": "2",
@@ -6670,7 +6683,8 @@
       "gender": "female",
       "phone": "",
       "dob": "",
-      "avatar": ""
+      "avatar": "",
+      "accountType": "premium"
     }
   ],
   "package": [

@@ -1,0 +1,38 @@
+export const style = {
+      loginContainer: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        height: "100vh",
+        width: "100%",
+        background: "#f4fcfc",
+        margin: 0,
+        padding: 0,
+      },
+      rightSide: {
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "40%",
+        height: "80%",
+        background: "#ffe45c",
+        borderRadius: "0 20px 20px 0",
+      },
+      leftSide: {
+        display: "flex",
+        flexDirection: "column",
+        width: "40%",
+        height: "80%",
+        background: "white",
+        borderRadius: "20px 0 0 20px",
+      },
+      formLogin: {
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        margin: "auto",
+        width: "80%",
+      },
+    };
