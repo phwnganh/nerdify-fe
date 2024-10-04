@@ -8,7 +8,7 @@ import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyE
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
-import FlashcardList from "../pages/LearnersPage/FlashCard";
+import Flashcard from "../pages/LearnersPage/FlashCard";
 import CoursePage from "../pages/LearnersPage/CoursePage";
 import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
@@ -22,6 +22,7 @@ import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 export const routes = [
   // Guest urls
   {
@@ -49,7 +50,7 @@ export const routes = [
           },
           {
             path: CLIENT_URI.FLASH_CARD,
-            element: <FlashcardList />,
+            element: <Flashcard />,
           },
           {
             path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
@@ -133,8 +134,16 @@ export const routes = [
       },
       {
         path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile/>
-      }
+        element: <EditPersonalProfile />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.EDIT_PROFILE,
+        element: <EditPersonalProfile />,
+      },
     ],
   },
 
@@ -170,7 +179,7 @@ export const routes = [
       // },
       {
         path: CLIENT_URI.FLASH_CARD,
-        element: <FlashcardList />,
+        element: <Flashcard />,
       },
       {
         path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
