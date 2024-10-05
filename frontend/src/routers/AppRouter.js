@@ -23,6 +23,7 @@ import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
+import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 export const routes = [
   // Guest urls
   {
@@ -141,8 +142,8 @@ export const routes = [
         element: <ManageFlashcard />,
       },
       {
-        path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile />,
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
       },
     ],
   },

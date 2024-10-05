@@ -28,7 +28,7 @@ export default function FlashcardList() {
       <Row gutter={[24, 24]}>
         {flashcards?.map((flashcard, index) => (
           <Col span={12}>
-            <CardCustom>
+            <CardCustom style={{ background: "rgb(240, 242, 245)" }}>
               <div>
                 <TitleCustom style={{ margin: "0px" }} level={3}>
                   {flashcard?.title}
