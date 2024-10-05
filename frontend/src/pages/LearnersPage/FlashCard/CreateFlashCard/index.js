@@ -16,6 +16,7 @@ import {
 
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
+import { validationRules } from "../../../../helpers/validate";
 export default function CreateFlashCard() {
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -91,7 +92,7 @@ export default function CreateFlashCard() {
     <>
       {contextHolder}
       
-      <div style={{ width: "60%" }}>
+      <div style={{ width: "60%"}}>
       <BreadCrumbHome/>
         <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI</h1>
         <Form
@@ -105,14 +106,8 @@ export default function CreateFlashCard() {
               <Form.Item
                 name="title"
                 rules={[
-                  {
-                    required: true,
-                    message: "Vui lòng nhập tiêu đề",
-                  },
-                  {
-                    max: 20,
-                    message: "Tiêu đề không quá 20 ký tự",
-                  },
+                 validationRules.required("Vui lòng nhập tiêu đề"),
+                 validationRules.maxLength(20, "Tiêu đề không quá 20 ký tự")
                 ]}
               >
                 <Input.TextArea
@@ -129,7 +124,7 @@ export default function CreateFlashCard() {
                   style={{ fontWeight: "600", padding: "10px" }}
                 />
               </Form.Item>
-              <Form.Item name="level" rules={[{ message: "Vui lòng chọn trình độ", required: true}]}>
+              <Form.Item name="level" rules={[validationRules.selectRequired("Vui lòng chọn trình độ")]}>
               <Dropdown menu={{items, onClick: e => handleSelectLevel(e.key)}} trigger={["click"]}>
                 <Button shape="default" style={{marginRight: '10px', padding: '20px', paddingLeft: '60px', paddingRight: '60px', marginBottom: '20px'}}>{selectedLevel || "Chọn trình độ"}</Button>
               </Dropdown>
@@ -193,10 +188,7 @@ export default function CreateFlashCard() {
                           <Form.Item
                             name={[field.name, "terms"]}
                             rules={[
-                              {
-                                required: true,
-                                message: "Vui lòng nhập thuật ngữ!",
-                              },
+                              validationRules.required("Vui lòng nhập thuật ngữ!")
                             ]}
                             noStyle
                           >
@@ -215,10 +207,7 @@ export default function CreateFlashCard() {
                           <Form.Item
                             name={[field.name, "definitions"]}
                             rules={[
-                              {
-                                required: true,
-                                message: "Vui lòng nhập định nghĩa!",
-                              },
+                              validationRules.required("Vui lòng nhập định nghĩa!")
                             ]}
                             noStyle
                           >

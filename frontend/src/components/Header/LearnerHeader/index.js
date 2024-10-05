@@ -34,6 +34,7 @@ export default function LearnerHeader() {
       <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.PROFILE)}>
         Xem Trang Cá Nhân
       </Menu.Item>
+      <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>Gói đăng ký của tôi</Menu.Item>
       <Menu.Item key="logout" onClick={handleLogout}>
         Đăng Xuất
       </Menu.Item>

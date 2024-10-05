@@ -27,7 +27,17 @@ export default function FlashcardList() {
   return (
     <div style={{ padding: "24px" }}>
       <BreadCrumbHome/>
-      <TitleCustom level={2}>Chọn bộ flashcard để học</TitleCustom>
+      <Row justify="space-between" align="middle">
+  <Col>
+    <TitleCustom level={2}>Chọn bộ flashcard để học</TitleCustom>
+  </Col>
+  <Col>
+    <ButtonCustom onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)} buttonType="primary" style={{padding: '20px'}}>
+      Tạo bộ flashcard mới
+    </ButtonCustom>
+  </Col>
+</Row>
+      
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <InputCustom
           placeholder="Tìm kiếm flashcard"
