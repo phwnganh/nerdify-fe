@@ -16,6 +16,8 @@ import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
+import MySubscription from "../pages/LearnersPage/MySubscription";
+import ManageSubscription from "../pages/LearnersPage/MySubscription/ManageSubscription";
 import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword";
 import Payment from "../pages/LearnersPage/Payment";
