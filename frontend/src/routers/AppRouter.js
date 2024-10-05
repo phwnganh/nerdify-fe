@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { CLIENT_URI } from "../constants";
-import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
+import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
@@ -24,7 +24,33 @@ import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import MySubscription from "../pages/LearnersPage/MySubscription";
 import ManageSubscription from "../pages/LearnersPage/MySubscription/ManageSubscription";
+import { GuestLearnerLayout } from "../layouts/GuestLearnerLayout";
 export const routes = [
+  {
+    element: (
+      <GuestLearnerGuard>
+        <GuestLearnerLayout>
+        <Outlet />
+        </GuestLearnerLayout>
+        
+      </GuestLearnerGuard>
+    ),
+    children: [
+      {
+        children: [
+          {
+            path: CLIENT_URI.FLASH_CARD,
+            element: <FlashcardList />,
+          },
+          {
+            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+            element: <FlashcardDetail />,
+          },
+
+        ],
+      },
+    ],
+  },
   // Guest urls
   {
     element: (
@@ -49,30 +75,20 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
-          {
-            path: CLIENT_URI.FLASH_CARD,
-            element: <FlashcardList />,
-          },
-          {
-            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-            element: <FlashcardDetail />,
-          },
-          {
-            path: CLIENT_URI.CREATE_FLASH_CARD,
-            element: <CreateFlashCard />,
-          },
-          {
-            path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
-            element: <EditFlashCard />,
-          },
-          {
-            path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
-            element: <TestFlashCard />,
-          },
-          {
-            path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
-            element: <ViewLevelDetail />,
-          },
+
+          // {
+          //   path: CLIENT_URI.CREATE_FLASH_CARD,
+          //   element: <CreateFlashCard />,
+          // },
+          // {
+          //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
+          //   element: <EditFlashCard />,
+          // },
+          // {
+          //   path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
+          //   element: <TestFlashCard />,
+          // },
+
           {
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
             element: <ExerciseDetail />,
@@ -135,8 +151,8 @@ export const routes = [
       },
       {
         path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile/>
-      }
+        element: <EditPersonalProfile />,
+      },
     ],
   },
 
@@ -154,10 +170,22 @@ export const routes = [
         path: CLIENT_URI.COURSE_PAGE,
         element: <CoursePage />,
       },
-      // {
-      //   path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
-      //   element: <ViewLevelDetail />,
-      // },
+      {
+        path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+        element: <ViewLevelDetail />,
+      },
+      {
+        path: CLIENT_URI.CREATE_FLASH_CARD,
+        element: <CreateFlashCard />,
+      },
+      {
+        path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
+        element: <EditFlashCard />,
+      },
+      {
+        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
+        element: <TestFlashCard />,
+      },
       // {
       //   path: CLIENT_URI.FINAL_EXAM,
       //   element: <FinalExam />,
@@ -170,14 +198,7 @@ export const routes = [
       //   path: CLIENT_URI.CREATE_FLASH_CARD,
       //   element: <CreateFlashCard />,
       // },
-      {
-        path: CLIENT_URI.FLASH_CARD,
-        element: <FlashcardList />,
-      },
-      {
-        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-        element: <FlashcardDetail />,
-      },
+
       // {
       //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
       //   element: <EditFlashCard />,
@@ -204,12 +225,12 @@ export const routes = [
       },
       {
         path: CLIENT_URI.MY_SUBSCRIPTION,
-        element: <MySubscription/>
+        element: <MySubscription />,
       },
       {
         path: CLIENT_URI.MANAGE_SUBSCRIPTION,
-        element: <ManageSubscription/>
-      }
+        element: <ManageSubscription />,
+      },
       // {
       //   path: CLIENT_URI.PREMIUM,
       //   element: <PremiumPage />,
