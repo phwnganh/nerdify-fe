@@ -30,9 +30,8 @@ export const routes = [
     element: (
       <GuestLearnerGuard>
         <GuestLearnerLayout>
-        <Outlet />
+          <Outlet />
         </GuestLearnerLayout>
-        
       </GuestLearnerGuard>
     ),
     children: [
@@ -46,7 +45,6 @@ export const routes = [
             path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
             element: <FlashcardDetail />,
           },
-
         ],
       },
     ],
