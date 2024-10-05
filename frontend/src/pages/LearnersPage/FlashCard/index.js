@@ -7,7 +7,7 @@ import FlashcardList from "./FlashCardList";
 export default function Flashcard() {
   return (
     <div style={{ padding: "24px" }}>
-      <BreadCrumbHome />
+      <BreadCrumbHome/>
       <TitleCustom level={2}>Chọn bộ flashcard để học</TitleCustom>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <InputCustom

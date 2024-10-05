@@ -8,6 +8,8 @@ import logo from "../../../assets/logo1.png";
 import loginImage from "../../../assets/loginImage.png";
 import { CLIENT_URI } from "../../../constants";
 import { forgotPassword } from "../../../services/GuestService";
+import { style } from "./styled";
+import { validationRules } from "../../../helpers/validate";
 
 export const ForgotPasswordPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -40,48 +42,20 @@ export const ForgotPasswordPage = () => {
       </div>
       <div style={style.rightSide}>
         <div style={style.formForgot}>
-          <img
-            src={logo}
-            alt="Deustch Nerd"
-            style={{ width: "100px", height: "50px" }}
-          />
-          <span style={{ fontSize: "30px", fontWeight: "bold" }}>
-            Quên mật khẩu
-          </span>
+          <img src={logo} alt="Deustch Nerd" style={{ width: "100px", height: "50px" }} />
+          <span style={{ fontSize: "30px", fontWeight: "bold" }}>Quên mật khẩu</span>
           {!isSubmitted ? (
             <>
               <span>Nhập email để lấy lại mật khẩu</span>
-              <Form
-                layout="vertical"
-                name="formForgotPassword"
-                style={{ width: "100%" }}
-                onFinish={onForgotPassword}
-              >
+              <Form layout="vertical" name="formForgotPassword" style={{ width: "100%" }} onFinish={onForgotPassword}>
                 {/* input email */}
-                <Form.Item
-                  label="Email"
-                  name="email"
-                  rules={[
-                    { required: true, message: "Vui lòng nhập email" },
-                    {
-                      type: "email",
-                      message: "Email không hợp lệ",
-                    },
-                  ]}
-                >
-                  <InputCustom
-                    placeholder="Nhập email"
-                    prefix={<UserOutlined />}
-                  />
+                <Form.Item label="Email" name="email" rules={[validationRules.required("Vui lòng nhập email"), validationRules.email("Email không hợp lệ")]}>
+                  <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} />
                 </Form.Item>
 
                 {/* button submit */}
                 <Form.Item>
-                  <ButtonCustom
-                    htmlType="submit"
-                    type="primary"
-                    style={{ width: "100%", background: "#ffa454" }}
-                  >
+                  <ButtonCustom htmlType="submit" type="primary" style={{ width: "100%", background: "#ffa454" }}>
                     Gửi yêu cầu
                   </ButtonCustom>
                 </Form.Item>
@@ -100,45 +74,6 @@ export const ForgotPasswordPage = () => {
       </div>
     </div>
   );
-};
-
-const style = {
-  forgotContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    height: "100vh",
-    width: "100%",
-    background: "#f4fcfc",
-    margin: 0,
-    padding: 0,
-  },
-  leftSide: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "#ffe45c",
-    borderRadius: "20px 0 0 20px",
-  },
-  rightSide: {
-    display: "flex",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "white",
-    borderRadius: "0 20px 20px 0",
-  },
-  formForgot: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "80%",
-    margin: "auto",
-  },
 };
 
 export default ForgotPasswordPage;
