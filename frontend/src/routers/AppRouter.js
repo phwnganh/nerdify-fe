@@ -3,12 +3,12 @@ import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { CLIENT_URI } from "../constants";
 import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
-import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
-import FlashcardList from "../pages/LearnersPage/FlashCard";
+import Flashcard from "../pages/LearnersPage/FlashCard";
 import CoursePage from "../pages/LearnersPage/CoursePage";
 import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
@@ -16,15 +16,17 @@ import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
+import MySubscription from "../pages/LearnersPage/MySubscription";
+import ManageSubscription from "../pages/LearnersPage/MySubscription/ManageSubscription";
 import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
-
+import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword";
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
-import MySubscription from "../pages/LearnersPage/MySubscription";
-import ManageSubscription from "../pages/LearnersPage/MySubscription/ManageSubscription";
-import { GuestLearnerLayout } from "../layouts/GuestLearnerLayout";
+import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
+import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
+import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
 export const routes = [
   {
     element: (
@@ -73,20 +75,6 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
-
-          // {
-          //   path: CLIENT_URI.CREATE_FLASH_CARD,
-          //   element: <CreateFlashCard />,
-          // },
-          // {
-          //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
-          //   element: <EditFlashCard />,
-          // },
-          // {
-          //   path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
-          //   element: <TestFlashCard />,
-          // },
-
           {
             path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
             element: <ExerciseDetail />,
@@ -151,6 +139,19 @@ export const routes = [
         path: CLIENT_URI.EDIT_PROFILE,
         element: <EditPersonalProfile />,
       },
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+        element: <EditPersonalProfile/>
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
+      },
     ],
   },
 
@@ -196,7 +197,6 @@ export const routes = [
       //   path: CLIENT_URI.CREATE_FLASH_CARD,
       //   element: <CreateFlashCard />,
       // },
-
       // {
       //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
       //   element: <EditFlashCard />,

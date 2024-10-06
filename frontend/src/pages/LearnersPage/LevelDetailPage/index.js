@@ -28,12 +28,15 @@ import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 // Constants
 import { CLIENT_URI } from "../../../constants/uri.constants"; // URI constants for navigation
 import { EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
+import { getLevelDetail } from "../../../services/LearnerService";
 
 export default function ViewLevelDetail() {
   // State for storing phases, active phase, course, etc.
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
-  const { courseId } = useParams(); // Getting courseId from the URL params
+  const { courseId } = useParams();
+  // console.log("courseId", courseId);
+  
   const [course, setCourse] = useState(null);
   const navigate = useNavigate(); // Hook to programmatically navigate
 
@@ -46,7 +49,16 @@ export default function ViewLevelDetail() {
       .then((course) => {
         setCourse(course);
       })
-      .catch((err) => console.error(err)); // Handle error for course fetch
+      .catch((err) => console.error(err));
+    // const retrieveCourseLevelDetail = async () => {
+    //   try {
+    //     const response = await getLevelDetail(courseId);
+    //     setCourse(response?.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // retrieveCourseLevelDetail();
   }, [courseId]);
 
   // Fetch phases and their respective exercises
