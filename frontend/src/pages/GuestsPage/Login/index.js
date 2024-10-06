@@ -19,36 +19,49 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   const onLoginWithGoogle = () => {
-    window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
+    // window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
   };
 
   const onLogin = (values) => {
     const data = {
       email: values.email,
       password: values.password,
-      remember: values.remember,
     };
-    login(data)
-      .then((resp) => {
-        dispatch(
-          signin({
-            user: {
-              id: resp.data.id,
-              email: resp.data.email,
-              fullName: resp.data.fullName,
-              role: resp.data.role,
-            },
-          })
-        );
-        // if user click on premium modal, we will redirect to premium page
-        if (localStorage.getItem("isPremium")) {
-          navigate(CLIENT_URI.PREMIUM);
-          localStorage.removeItem("isPremium");
-          return;
+
+    // Make a request to the fake server
+    fetch("http://localhost:9999/users")
+      .then((response) => response.json())
+      .then((users) => {
+        // Find the user with matching email and password
+        const user = users.filter((u) => u.email === data.email && u.password === data.password);
+        if (user) {
+          dispatch(
+            signin({
+              user: {
+                id: user[0].id,
+                email: user[0].email,
+                fullName: user[0].fullName,
+                role: user[0].role,
+              },
+            }),
+          );
+
+          if (localStorage.getItem("isPremium")) {
+            navigate(CLIENT_URI.PREMIUM);
+            localStorage.removeItem("isPremium");
+          } else {
+            navigate(CLIENT_URI.COURSE_PAGE);
+          }
+        } else {
+          // If no user found, show an error
+          throw new Error("Login failed: Invalid email or password!");
         }
-        navigate(() => CLIENT_URI.COURSE_PAGE);
       })
-      .catch((err) => {});
+      .catch((error) => {
+        console.error("Error during login:", error);
+        // Optionally, show error to user
+        alert(error.message);
+      });
   };
 
   return (
@@ -67,30 +80,12 @@ export const LoginPage = () => {
       </div>
       <div style={style.rightSide}>
         <div style={style.formLogin}>
-          <img
-            src={logo}
-            alt="Deutsch Nerd"
-            style={{ width: "100px", height: "50px" }}
-          />
-          <span style={{ fontSize: "30px", fontWeight: "bold" }}>
-            Chào mừng đến với Deutsch Nerd
-          </span>
+          <img src={logo} alt="Deutsch Nerd" style={{ width: "100px", height: "50px" }} />
+          <span style={{ fontSize: "30px", fontWeight: "bold" }}>Chào mừng đến với Deutsch Nerd</span>
           <span>Đăng nhập để tiếp tục</span>
-          <Form
-            layout="vertical"
-            name="formLogin"
-            style={{ width: "100%" }}
-            onFinish={onLogin}
-          >
+          <Form layout="vertical" name="formLogin" style={{ width: "100%" }} onFinish={onLogin}>
             {/* input email */}
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                validationRules.required("Vui lòng nhập email"),
-                validationRules.email("Email không hợp lệ"),
-              ]}
-            >
+            <Form.Item label="Email" name="email" rules={[validationRules.required("Vui lòng nhập email"), validationRules.email("Email không hợp lệ")]}>
               <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} />
             </Form.Item>
 
@@ -103,16 +98,11 @@ export const LoginPage = () => {
               rules={[
                 {
                   pattern: PASSWORD_REGEX,
-                  message:
-                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                  message: "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
                 },
               ]}
             >
-              <Input.Password
-                type="password"
-                placeholder="Nhập mật khẩu"
-                prefix={<LockOutlined />}
-              />
+              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} />
             </Form.Item>
 
             {/* remember and forgot password */}
@@ -132,11 +122,7 @@ export const LoginPage = () => {
 
             {/* button login */}
             <Form.Item>
-              <ButtonCustom
-                htmlType="submit"
-                type="primary"
-                style={{ width: "100%", background: "#ffa454" }}
-              >
+              <ButtonCustom htmlType="submit" type="primary" style={{ width: "100%", background: "#ffa454" }}>
                 Đăng nhập
               </ButtonCustom>
             </Form.Item>
@@ -144,12 +130,7 @@ export const LoginPage = () => {
             {/* social login */}
             <div style={{ justifyContent: "space-between" }}>
               <span>Hoặc đăng nhập với</span>
-              <ButtonCustom
-                type="primary"
-                icon={<GoogleOutlined />}
-                shape="circle"
-                onClick={() => onLoginWithGoogle()}
-              />
+              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={() => onLoginWithGoogle()} />
             </div>
             {/* register link */}
             <div>
@@ -162,7 +143,5 @@ export const LoginPage = () => {
     </div>
   );
 };
-
-
 
 export default LoginPage;

@@ -6665,6 +6665,18 @@
   ],
   "users": [
     {
+      "id": "12345",
+      "fullName": "test",
+      "email": "test@gmail.com",
+      "password": "123456Az!",
+      "role": "learner",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": ""
+    },
+    {
       "id": "1",
       "fullname": "Viet Hoang",
       "email": "hoang@gmail.com",
@@ -6685,6 +6697,18 @@
       "dob": "",
       "avatar": "",
       "accountType": "premium"
+    },
+    {
+      "fullName": "Trinh Dai Thien",
+      "email": "thientd2609@gmail.com",
+      "password": "123456Az!",
+      "role": "learner",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": "",
+      "id": "f_MzeC0"
     }
   ],
   "package": [
