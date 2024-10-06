@@ -2,15 +2,9 @@ import { Outlet } from "react-router-dom";
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import { CLIENT_URI } from "../constants";
-import { AdminGuard, GuestGuard, LearnerGuard } from "../guards";
+import { AdminContentGuard, AdminGuard, GuestGuard, LearnerGuard } from "../guards";
 import { AdminLayout, GuestLayout, LearnerLayout } from "../layouts";
-import {
-  ForgotPasswordPage,
-  LoginPage,
-  RegisterPage,
-  ResetPasswordPage,
-  VerifyEmailPage,
-} from "../pages/GuestsPage";
+import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
@@ -27,7 +21,11 @@ import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
-import Sidebar from "../components/Admin/Sidebar";
+import SidebarCustom from "../components/SidebarAdmin/SidebarCustom";
+import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import AdminContentLayout from "../layouts/AdminContentLayout";
+import { AdminContentSidebar } from "../components/SidebarAdmin/SidebarItems";
+import TableExercise from "../components/Table/TableExercise";
 export const routes = [
   // Guest urls
   {
@@ -108,17 +106,16 @@ export const routes = [
           },
           {
             path: CLIENT_URI.LEARNING_PROGRESS,
-            element: <LearningProgress />
+            element: <LearningProgress />,
           },
           {
-            path: CLIENT_URI.SIDEBAR,
-            element: <Sidebar/>
-          }
-          // {
-          //   path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
-          //   element: <ViewLevelDetail />,
-          // },
-
+            path: CLIENT_URI.TROPHY,
+            element: <TakeATrophy />,
+          },
+          {
+            path: CLIENT_URI.PREMIUM,
+            element: <PremiumPage />,
+          },
         ],
       },
       // {
@@ -144,11 +141,11 @@ export const routes = [
       // test giao diện
 
       {
-        path: CLIENT_URI.PAYMENT,
+        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
         element: <Payment />,
       },
       {
-        path: CLIENT_URI.BILLINFO,
+        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
         element: <BillInfo />,
       },
     ],
@@ -216,10 +213,10 @@ export const routes = [
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
         element: <ViewResultsDetail />,
       },
-      {
-        path: CLIENT_URI.PREMIUM,
-        element: <PremiumPage />,
-      },
+      // {
+      //   path: CLIENT_URI.PREMIUM,
+      //   element: <PremiumPage />,
+      // },
     ],
   },
 
@@ -233,6 +230,25 @@ export const routes = [
       </AdminGuard> 
     ),
     children: [],
+  },
+  // Admin content
+  {
+    element: (
+      <AdminContentGuard>
+        <AdminContentLayout>
+          <Outlet />
+        </AdminContentLayout>
+      </AdminContentGuard> 
+    ),
+    children: [
+      {
+        path: CLIENT_URI.DASHBOARD
+      },
+      {
+        path: `${CLIENT_URI.TABLE_EXERCISE}`,
+        element: <TableExercise />,
+      },
+    ],
   },
 ];
 

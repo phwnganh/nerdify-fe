@@ -2,27 +2,27 @@ import { Checkbox, Col, Divider, Row } from "antd";
 import CardCustom from "../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useEffect, useState } from "react";
 import moment from "moment";
 export default function BillInfo() {
   const navigate = useNavigate();
   const [transactionDetail, setTransactionDetail] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
   const [useVoucher, setUseVoucher] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+  const { transactionId } = useParams();
   useEffect(() => {
     const fetchTransaction = async () => {
       const transactionResponse = await fetch(
-        "http://localhost:9999/transaction/2"
+        `http://localhost:9999/transaction/${transactionId}`
       );
       const packageResponse = await fetch("http://localhost:9999/package");
       const transaction = await transactionResponse.json();
       const packages = await packageResponse.json();
       const packageDetail = packages.find(
-        (packageDetail) => Number(packageDetail.id) === transaction.packageId
+        (packageDetail) =>
+          Number(packageDetail.id) === Number(transaction.packageId)
       );
 
       const transactionData = {
@@ -37,15 +37,7 @@ export default function BillInfo() {
       setTotalPrice(transactionData?.price);
     };
     fetchTransaction();
-  }, []);
-
-  useEffect(() => {
-    const currentDate = moment();
-    setStartDate(currentDate.format("DD/MM/YYYY"));
-
-    const endDate = currentDate.add(transactionDetail?.duration, "months");
-    setEndDate(endDate.format("DD/MM/YYYY"));
-  });
+  }, [transactionId]);
 
   const handleVoucherToggle = (e) => {
     const isChecked = e.target.checked;
@@ -56,7 +48,25 @@ export default function BillInfo() {
     setTotalPrice(priceWithVoucher);
   };
 
-  const handlePaymentProcessing = () => {};
+  const handlePaymentProcessing = () => {
+    fetch(`http://localhost:9999/transaction/${transactionId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        totalPrice: totalPrice,
+        processingContent: `KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM ${(transactionDetail?.packageName).toUpperCase()}`,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        navigate(`${CLIENT_URI.PAYMENT}/${data?.id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div style={{ padding: "24px" }}>
       <div style={{ textAlign: "center" }}>
@@ -95,7 +105,7 @@ export default function BillInfo() {
               </Col>
               &nbsp;
               <Col span={10}>
-                <TextCustom>{startDate}</TextCustom>
+                <TextCustom>{transactionDetail?.startDate}</TextCustom>
               </Col>
             </Row>
             <Row
@@ -118,7 +128,7 @@ export default function BillInfo() {
               </Col>
               <Col span={12}>
                 <TextCustom type="danger" style={{ marginLeft: "20px" }}>
-                  {endDate}
+                  {transactionDetail?.endDate}
                 </TextCustom>
               </Col>
             </Row>
@@ -169,14 +179,22 @@ export default function BillInfo() {
             </Row>
           </Col>
           <Col>
-            <ButtonCustom
-              buttonType="primary"
-              onClick={() => {
-                navigate(CLIENT_URI.PAYMENT);
-              }}
-            >
-              Thanh toán
-            </ButtonCustom>
+            <Row>
+              <ButtonCustom
+                buttonType="primary"
+                style={{ padding: "23px" }}
+                onClick={() => navigate(-1)}
+              >
+                Hủy
+              </ButtonCustom>
+              <ButtonCustom
+                buttonType="primary"
+                style={{ padding: "23px", marginLeft: "30px" }}
+                onClick={handlePaymentProcessing}
+              >
+                Thanh toán
+              </ButtonCustom>
+            </Row>
           </Col>
         </Row>
       </CardCustom>
