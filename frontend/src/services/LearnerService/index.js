@@ -5,8 +5,8 @@ export const getCourseLevelList = async () => {
   return res.data;
 };
 
-export const getLevelDetail = async () => {
-  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSELEVEL_DETAIL);
+export const getLevelDetail = async (courseId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSELEVEL + "/" + courseId);
   return res.data;
 };
 

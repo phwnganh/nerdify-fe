@@ -1,10 +1,24 @@
 import { List } from "antd";
 import { Course } from "./course";
 import { useEffect, useState } from "react";
+import { getCourseLevelList, getLevelDetail } from "../../../../services/LearnerService";
 
 export const Courses = () => {
   const [courses, setCourses] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchCourseLevel = async () => {
+  //     try {
+  //       const response = await getCourseLevelList();
+  //       console.log("course level list: ", response.data);
+
+  //       setCourses(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchCourseLevel();
+  // }, []);
   useEffect(() => {
     fetch("http://localhost:9999/levels")
       .then((res) => res.json())

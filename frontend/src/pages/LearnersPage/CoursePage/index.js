@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { List } from "antd";
 import CourseList from "./CourseList";
+import { getCourseLevelList } from "../../../services/LearnerService";
 
 export default function CoursePage() {
   const [course, setCourse] = useState([]);
@@ -12,6 +13,17 @@ export default function CoursePage() {
         setCourse(data);
       })
       .catch((err) => console.error(err));
+    // const fetchCourseLevel = async () => {
+    //   try {
+    //     const response = await getCourseLevelList();
+    //     console.log("course level list: ", response.data);
+
+    //     setCourse(response.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // fetchCourseLevel();
   }, []);
 
   return (
