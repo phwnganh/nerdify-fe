@@ -4,14 +4,24 @@
       "id": "1",
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [1, 2, 3, 7],
+      "exercises": [
+        1,
+        2,
+        3,
+        7
+      ],
       "isNew": false
     },
     {
       "id": "2",
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [4, 5, 6, 8],
+      "exercises": [
+        4,
+        5,
+        6,
+        8
+      ],
       "isNew": false
     },
     {
@@ -24,7 +34,11 @@
       "id": "4",
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [9, 10, 11],
+      "exercise": [
+        9,
+        10,
+        11
+      ],
       "isNew": true
     },
     {
@@ -42,8 +56,14 @@
       "learners": 10,
       "levelType": "A1",
       "description": "Ở trình độ A1, bạn sẽ được luyện các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình qua cả bài tập ngữ pháp và từ vựng theo chủ đề.",
-      "phases": [1, 2, 3],
-      "finalexams": [1]
+      "phases": [
+        1,
+        2,
+        3
+      ],
+      "finalexams": [
+        1
+      ]
     },
     {
       "id": "2",
@@ -52,8 +72,12 @@
       "learners": 10,
       "levelType": "A2",
       "description": "Ở trình độ A2, bạn sẽ được luyện các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình qua cả bài tập ngữ pháp và từ vựng theo chủ đề.",
-      "phases": [4],
-      "finalexams": [2]
+      "phases": [
+        4
+      ],
+      "finalexams": [
+        2
+      ]
     },
     {
       "id": "3",
@@ -81,7 +105,11 @@
               "id": 1,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques1",
-              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
+              "questionImage": [
+                "demo1_1",
+                "demo1_2",
+                "demo1_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -106,7 +134,11 @@
               "id": 2,
               "question": "Wie spät ist es?",
               "audioUrl": "part1_ques2",
-              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
+              "questionImage": [
+                "demo2_1",
+                "demo2_2",
+                "demo2_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -128,7 +160,11 @@
               "id": 3,
               "question": "Was isst die Frau im Restaurant?",
               "audioUrl": "part1_ques3",
-              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
+              "questionImage": [
+                "demo3_1",
+                "demo3_2",
+                "demo3_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -150,7 +186,11 @@
               "id": 4,
               "question": "Wie kommt die Frau in den 2. Stock?",
               "audioUrl": "part1_ques4",
-              "questionImage": ["demo4_1", "demo4_2", "demo4_3"],
+              "questionImage": [
+                "demo4_1",
+                "demo4_2",
+                "demo4_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -172,7 +212,11 @@
               "id": 5,
               "question": "Wohin fährt Herr Albers?",
               "audioUrl": "part1_ques5",
-              "questionImage": ["demo5_1", "demo5_2", "demo5_3"],
+              "questionImage": [
+                "demo5_1",
+                "demo5_2",
+                "demo5_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -397,7 +441,10 @@
           "questions": [
             {
               "id": 6,
-              "questionImage": ["demo_part2_6_1", "demo_part2_6_2"],
+              "questionImage": [
+                "demo_part2_6_1",
+                "demo_part2_6_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -413,7 +460,10 @@
             },
             {
               "id": 7,
-              "questionImage": ["demo_part2_7_1", "demo_part2_7_2"],
+              "questionImage": [
+                "demo_part2_7_1",
+                "demo_part2_7_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -429,7 +479,10 @@
             },
             {
               "id": 8,
-              "questionImage": ["demo_part2_8_1", "demo_part2_8_2"],
+              "questionImage": [
+                "demo_part2_8_1",
+                "demo_part2_8_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -445,7 +498,10 @@
             },
             {
               "id": 9,
-              "questionImage": ["demo_part2_9_1", "demo_part2_9_2"],
+              "questionImage": [
+                "demo_part2_9_1",
+                "demo_part2_9_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -461,7 +517,10 @@
             },
             {
               "id": 10,
-              "questionImage": ["demo_part2_10_1", "demo_part2_10_2"],
+              "questionImage": [
+                "demo_part2_10_1",
+                "demo_part2_10_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -588,97 +647,145 @@
               "id": 1,
               "question": "die Woche",
               "matchedQuestion": "tuần",
-              "answer": ["die Woche", "tuần"]
+              "answer": [
+                "die Woche",
+                "tuần"
+              ]
             },
             {
               "id": 2,
               "question": "Montag",
               "matchedQuestion": "Thứ hai",
-              "answer": ["Montag", "Thứ hai"]
+              "answer": [
+                "Montag",
+                "Thứ hai"
+              ]
             },
             {
               "id": 3,
               "question": "Dienstag",
               "matchedQuestion": "Thứ ba",
-              "answer": ["Dienstag", "Thứ ba"]
+              "answer": [
+                "Dienstag",
+                "Thứ ba"
+              ]
             },
             {
               "id": 4,
               "question": "Mittwoch",
               "matchedQuestion": "Thứ Tư",
-              "answer": ["Mittwoch", "Thứ Tư"]
+              "answer": [
+                "Mittwoch",
+                "Thứ Tư"
+              ]
             },
             {
               "id": 5,
               "question": "Donnerstag",
               "matchedQuestion": "Thứ năm",
-              "answer": ["Donnerstag", "Thứ năm"]
+              "answer": [
+                "Donnerstag",
+                "Thứ năm"
+              ]
             },
             {
               "id": 6,
               "question": "Freitag",
               "matchedQuestion": "Thứ sáu",
-              "answer": ["Freitag", "Thứ sáu"]
+              "answer": [
+                "Freitag",
+                "Thứ sáu"
+              ]
             },
             {
               "id": 7,
               "question": "Samstag",
               "matchedQuestion": "Thứ bảy",
-              "answer": ["Samstag", "Thứ bảy"]
+              "answer": [
+                "Samstag",
+                "Thứ bảy"
+              ]
             },
             {
               "id": 8,
               "question": "Sonntag",
               "matchedQuestion": "Chủ nhật",
-              "answer": ["Sonntag", "Chủ nhật"]
+              "answer": [
+                "Sonntag",
+                "Chủ nhật"
+              ]
             },
             {
               "id": 9,
               "question": "der Frühling",
               "matchedQuestion": "mùa xuân",
-              "answer": ["der Frühling", "mùa xuân"]
+              "answer": [
+                "der Frühling",
+                "mùa xuân"
+              ]
             },
             {
               "id": 10,
               "question": "der Sommer",
               "matchedQuestion": "mùa hè",
-              "answer": ["der Sommer", "mùa hè"]
+              "answer": [
+                "der Sommer",
+                "mùa hè"
+              ]
             },
             {
               "id": 11,
               "question": "der Herbst",
               "matchedQuestion": "mùa thu",
-              "answer": ["der Herbst", "mùa thu"]
+              "answer": [
+                "der Herbst",
+                "mùa thu"
+              ]
             },
             {
               "id": 12,
               "question": "der Winter",
               "matchedQuestion": "mùa đông",
-              "answer": ["der Winter", "mùa đông"]
+              "answer": [
+                "der Winter",
+                "mùa đông"
+              ]
             },
             {
               "id": 13,
               "question": "der Tag",
               "matchedQuestion": "ngày",
-              "answer": ["der Tag", "ngày"]
+              "answer": [
+                "der Tag",
+                "ngày"
+              ]
             },
             {
               "id": 14,
               "question": "der Morgen",
               "matchedQuestion": "buổi sáng(từ 6-10 giờ)",
-              "answer": ["der Morgen", "buổi sáng(từ 6-10 giờ)"]
+              "answer": [
+                "der Morgen",
+                "buổi sáng(từ 6-10 giờ)"
+              ]
             },
             {
               "id": 15,
               "question": "der Vormittag",
               "matchedQuestion": "buổi sáng(từ 10-12 giờ)",
-              "answer": ["der Vormittag", "buổi sáng(từ 10-12 giờ)"]
+              "answer": [
+                "der Vormittag",
+                "buổi sáng(từ 10-12 giờ)"
+              ]
             },
             {
               "id": 16,
               "question": "der Mittag",
               "matchedQuestion": "giữa trưa",
-              "answer": ["der Mittag", "giữa trưa"]
+              "answer": [
+                "der Mittag",
+                "giữa trưa"
+              ]
             }
           ]
         },
@@ -869,26 +976,43 @@
           "questions": [
             {
               "id": 5,
-              "question": ["Das ist Herr Gupta, ___ kommt aus Indien.", "Das ist Frau Kioka, ___ kommt aus Japan.", "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."],
-              "answer": ["er", "sie", "sie"],
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "answer": [
+                "er",
+                "sie",
+                "sie"
+              ],
               "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. \n Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. \nCâu này giới thiệu Herr Gupta, là nam giới. \nTrong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. \n'Das ist Frau Kioka, sie kommt aus Japan.'. \nTương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. \n'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. \nỞ câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. \nKhi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
             },
             {
               "id": 6,
               "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "answer": ["du", "Ich"],
+              "answer": [
+                "du",
+                "Ich"
+              ],
               "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). \n Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
             },
             {
               "id": 7,
               "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "answer": ["ihr", "Wir"],
+              "answer": [
+                "ihr",
+                "Wir"
+              ],
               "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. \n Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
             },
             {
               "id": 8,
               "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "answer": ["Sie", "Ich"],
+              "answer": [
+                "Sie",
+                "Ich"
+              ],
               "answerDetail": "Trong trường hợp này, đây là một lời chào mang tính trang trọng. \n Ở câu đầu tiên 'Guten Tag, wie heißen Sie?'' người nói sử dụng đại từ nhân xưng trang trọng 'Sie' (Ngài/Ông/Bà) vì đang hỏi một người chưa quen biết hoặc người có vị thế cao hơn một cách lịch sự. \n Ở câu thứ hai 'Guten Tag, ich heiße Berger, Roland Berger.' người nói sử dụng đại từ nhân xưng 'ich' (tôi) để giới thiệu về bản thân mình. \n Cấu trúc câu này thường được dùng trong các cuộc hội thoại trang trọng hoặc môi trường công việc ở Đức."
             }
           ]
@@ -913,13 +1037,19 @@
             {
               "id": 11,
               "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "answer": ["Sie", "Ich"],
+              "answer": [
+                "Sie",
+                "Ich"
+              ],
               "answerDetail": "'arbeiten Sie': 'Sie' là đại từ ngôi thứ ba số ít ở dạng lịch sự, dùng để hỏi về hành động của người đối diện. \n 'Ich arbeite': 'Ich' là đại từ ngôi thứ nhất, chỉ chính người đang trả lời, và động từ 'arbeiten' chia theo ngôi 'Ich' thành 'arbeite'."
             },
             {
               "id": 12,
               "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "answer": ["du", "ich"],
+              "answer": [
+                "du",
+                "ich"
+              ],
               "answerDetail": "Trong câu đầu tiên, 'du' là đại từ nhân xưng chỉ Marie (người thứ hai số ít). \n Trong câu thứ hai, 'ich' là đại từ nhân xưng cho người nói (người thứ nhất số ít)."
             }
           ]
@@ -943,7 +1073,11 @@
             {
               "id": 1,
               "question": "Wo wollen die Freundinnen die Party machen?",
-              "questionImage": ["demo02_1_1", "demo02_1_2", "demo02_1_3"],
+              "questionImage": [
+                "demo02_1_1",
+                "demo02_1_2",
+                "demo02_1_3"
+              ],
               "audioUrl": "part1_ques1_2",
               "options": [
                 {
@@ -964,7 +1098,11 @@
             {
               "id": 2,
               "question": "Wann wollen sie sich treffen?",
-              "questionImage": ["demo02_2_1", "demo02_2_2", "demo02_2_3"],
+              "questionImage": [
+                "demo02_2_1",
+                "demo02_2_2",
+                "demo02_2_3"
+              ],
               "audioUrl": "part1_ques2_2",
               "options": [
                 {
@@ -985,7 +1123,11 @@
             {
               "id": 3,
               "question": "Wo stehen Taxis?",
-              "questionImage": ["demo02_3_1", "demo02_3_2", "demo02_3_3"],
+              "questionImage": [
+                "demo02_3_1",
+                "demo02_3_2",
+                "demo02_3_3"
+              ],
               "audioUrl": "part1_ques3_2",
               "options": [
                 {
@@ -1006,7 +1148,11 @@
             {
               "id": 4,
               "question": "Wie lange dauern die Sommerkurse?",
-              "questionImage": ["demo02_4_1", "demo02_4_2", "demo02_4_3"],
+              "questionImage": [
+                "demo02_4_1",
+                "demo02_4_2",
+                "demo02_4_3"
+              ],
               "audioUrl": "part1_ques4_2",
               "options": [
                 {
@@ -1027,7 +1173,11 @@
             {
               "id": 5,
               "question": "Was soll Johanna mitbringen?",
-              "questionImage": ["demo02_5_1", "demo02_5_2", "demo02_5_3"],
+              "questionImage": [
+                "demo02_5_1",
+                "demo02_5_2",
+                "demo02_5_3"
+              ],
               "audioUrl": "part1_ques5_2",
               "options": [
                 {
@@ -1048,7 +1198,11 @@
             {
               "id": 6,
               "question": "Wann ist Frau Horn aus dem Urlaub zurück?",
-              "questionImage": ["demo02_6_1", "demo02_6_2", "demo02_6_3"],
+              "questionImage": [
+                "demo02_6_1",
+                "demo02_6_2",
+                "demo02_6_3"
+              ],
               "audioUrl": "part1_ques6_2",
               "options": [
                 {
@@ -1439,15 +1593,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ],
               "answer": "A"
@@ -1456,7 +1619,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "30%",
+      "score": "0%",
       "conditionStatus": "not pass"
     },
     {
@@ -1795,15 +1958,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ],
               "answer": "A"
@@ -1814,15 +1986,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["ihr", "Wir"]
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 }
               ],
               "answer": "B"
@@ -1833,15 +2014,24 @@
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "ich"]
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["du", "Er"]
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["ich", "ich"]
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
                 }
               ],
               "answer": "A"
@@ -5631,6 +5821,66 @@
         }
       ],
       "isCompleted": true
+    },
+    {
+      "submissionDate": "2024-10-03T02:16:16.408Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true,
+      "id": "m7eV7BA"
     }
   ],
   "finalExamSubmission": [
