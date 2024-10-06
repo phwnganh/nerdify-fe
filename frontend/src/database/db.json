@@ -4,23 +4,14 @@
       "id": "1",
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [
-        1,
-        2,
-        3,
-        7
-      ],
+      "exercises": [1, 2, 3, 7],
       "isNew": false
     },
     {
       "id": "2",
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [
-        4,
-        5,
-        6
-      ],
+      "exercises": [4, 5, 6],
       "isNew": false
     },
     {
@@ -33,11 +24,7 @@
       "id": "4",
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [
-        8,
-        9,
-        10
-      ],
+      "exercise": [8, 9, 10],
       "isNew": true
     },
     {
@@ -54,14 +41,8 @@
       "levelImage": "a1",
       "learners": 10,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [
-        1,
-        2,
-        3
-      ],
-      "finalexams": [
-        1
-      ]
+      "phases": [1, 2, 3],
+      "finalexams": [1]
     },
     {
       "id": "2",
@@ -69,12 +50,8 @@
       "levelImage": "a2",
       "learners": 10,
       "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [
-        4
-      ],
-      "finalexams": [
-        2
-      ]
+      "phases": [4],
+      "finalexams": [2]
     }
   ],
   "exercises": [
@@ -94,11 +71,7 @@
               "id": 1,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques1",
-              "questionImage": [
-                "demo1_1",
-                "demo1_2",
-                "demo1_3"
-              ],
+              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
               "options": [
                 {
                   "id": "A",
@@ -120,11 +93,7 @@
               "id": 2,
               "question": "Wie spät ist es?",
               "audioUrl": "part1_ques2",
-              "questionImage": [
-                "demo2_1",
-                "demo2_2",
-                "demo2_3"
-              ],
+              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
               "options": [
                 {
                   "id": "A",
@@ -146,11 +115,7 @@
               "id": 3,
               "question": "Was isst die Frau im Restaurant?",
               "audioUrl": "part1_ques3",
-              "questionImage": [
-                "demo3_1",
-                "demo3_2",
-                "demo3_3"
-              ],
+              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
               "options": [
                 {
                   "id": "A",
@@ -172,11 +137,7 @@
               "id": 4,
               "question": "Wie kommt die Frau in den 2. Stock?",
               "audioUrl": "part1_ques4",
-              "questionImage": [
-                "demo4_1",
-                "demo4_2",
-                "demo4_3"
-              ],
+              "questionImage": ["demo4_1", "demo4_2", "demo4_3"],
               "options": [
                 {
                   "id": "A",
@@ -198,11 +159,7 @@
               "id": 5,
               "question": "Wohin fährt Herr Albers?",
               "audioUrl": "part1_ques5",
-              "questionImage": [
-                "demo5_1",
-                "demo5_2",
-                "demo5_3"
-              ],
+              "questionImage": ["demo5_1", "demo5_2", "demo5_3"],
               "options": [
                 {
                   "id": "A",
@@ -441,7 +398,7 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Câu hỏi 'Lis Zug kommt nach halb eins an' có nghĩa là 'Tàu của Li đến sau 12 giờ 30 không?'. \nTrong đoạn văn, thông tin cho biết tàu của Li sẽ đến Hannover vào lúc 12:36, tức là sau 12:30 (halb eins). "
+              "answerDetail": "Trong thư có đoạn ”Dein Zug kommt… um 12.36 Uhr an”."
             },
             {
               "id": 2,
@@ -457,7 +414,7 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Trong đoạn văn, Karin nói rằng cô ấy sẽ có mặt ở ga trung tâm (Hauptbahnhof) từ 12:15 và sẽ đợi trước quầy thông tin (Auskunft) từ thời điểm đó, chứ không phải là cả buổi sáng. \nTuy nhiên, cô ấy có thể được liên lạc qua điện thoại cả buổi sáng. "
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
             }
           ]
         },
@@ -481,7 +438,7 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Trong đoạn văn, Ralf nói rằng anh ấy có sinh nhật 'am kommenden Sonntag,' có nghĩa là vào 'Chủ nhật sắp tới.' \nĐiều này có nghĩa là sinh nhật của Ralf chưa diễn ra vào cuối tuần trước, mà sẽ diễn ra vào cuối tuần tới."
+              "answerDetail": "Trong thư có đoạn “am kommenden Sonntag habe ich Geburtstag”. "
             },
             {
               "id": 4,
@@ -497,7 +454,7 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Trong đoạn văn, Ralf nói rằng 'Es werden viele Leute da sein, die du auch kennst', nghĩa là sẽ có nhiều người đến dự tiệc, không phải chỉ có hai hoặc ba người."
+              "answerDetail": "Trong thư có đoạn “Es werden viele Leute sein”, tức là sẽ có nhiều người và không thể chỉ có 2 hay 3 người được. "
             },
             {
               "id": 5,
@@ -513,7 +470,7 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Trong đoạn văn, Ralf viết: „Wir wollen nämlich draußen im Garten feiern.“ (Chúng tôi muốn tổ chức tiệc ngoài vườn). \nĐiều này cho thấy bữa tiệc sẽ diễn ra ngoài trời."
+              "answerDetail": "Trong thư có đoạn 'Wir wollen nämlich draußen im Garten feiern'."
             }
           ]
         },
@@ -524,10 +481,7 @@
           "questions": [
             {
               "id": 6,
-              "questionImage": [
-                "demo_part2_1",
-                "demo_part2_2"
-              ],
+              "questionImage": ["demo1_part2_1", "demo1_part2_2"],
               "options": [
                 {
                   "id": "A",
@@ -539,14 +493,11 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+              "answerDetail": "Ở hình a, người ta đang muốn quảng cáo dịch vụ khách sạn tên là “Schiff” (nghĩa là “thuyền”), chứ thực chất không phải thuyền nào cả. Còn hình b thì ghi rất rõ là muốn tìm thông tin về thời gian cũng như giá vé của các chuyến đi du thuyền thì ấn vào “hier”."
             },
             {
               "id": 7,
-              "questionImage": [
-                "demo_part2_7_1",
-                "demo_part2_7_2"
-              ],
+              "questionImage": ["demo1_part2_7_1", "demo1_part2_7_2"],
               "options": [
                 {
                   "id": "A",
@@ -558,14 +509,11 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+              "answerDetail": "Hình a nghĩa là ở Dresden, Đức có cả lớp học tiếng Đức. Hình b chỉ có thông tin về các lớp học tiếng Tây Ban Nha và tiếng Anh cho người Đức."
             },
             {
               "id": 8,
-              "questionImage": [
-                "demo_part2_8_1",
-                "demo_part2_8_2"
-              ],
+              "questionImage": ["demo1_part2_8_1", "demo1_part2_8_2"],
               "options": [
                 {
                   "id": "A",
@@ -577,14 +525,11 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+              "answerDetail": "Hình a có ghi rõ là có thể đặt vé ở Deutsche Bahn. Hình b chỉ ghi “Busreisen”"
             },
             {
               "id": 9,
-              "questionImage": [
-                "demo_part2_9_1",
-                "demo_part2_9_2"
-              ],
+              "questionImage": ["demo1_part2_9_1", "demo1_part2_9_2"],
               "options": [
                 {
                   "id": "A",
@@ -596,14 +541,11 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+              "answerDetail": "Ở hình a có thể tìm thông tin chi tiết về Bodensee, chứ không phải chỉ mỗi về nhà nghỉ ở Bodensee như hình b. "
             },
             {
               "id": 10,
-              "questionImage": [
-                "demo_part2_10_1",
-                "demo_part2_10_2"
-              ],
+              "questionImage": ["demo1_part2_10_1", "demo1_part2_10_2"],
               "options": [
                 {
                   "id": "A",
@@ -615,7 +557,7 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+              "answerDetail": "Hình a có ghi chuyến tàu từ Hamburg đến Wiesbaden, còn hình b thì ngược lại. "
             }
           ]
         },
@@ -627,7 +569,7 @@
             {
               "id": 11,
               "question": "In der Sprachschule. In der Sprachschule können Sie etwas zu essen kaufen.",
-              "questionImage": "demo_part3_1",
+              "questionImage": "demo1_part3_1",
               "options": [
                 {
                   "id": "A",
@@ -639,12 +581,12 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Câu hỏi đang hỏi liệu bạn có thể mua đồ ăn ở trường ngôn ngữ hay không. \nTrong văn bản, trường ngôn ngữ cung cấp một gói bữa sáng (bao gồm bánh mì và đồ uống) với giá 2 Euro trong giờ nghỉ, vì vậy bạn có thể mua đồ ăn ở đó."
+              "answerDetail": "Hình này nghĩa là khi nghỉ giải lao vào lúc 10h có thể mua đồ ăn sáng với giá 2€."
             },
             {
               "id": 12,
               "question": "An der Post. Es ist Samstagnachmittag. Sie können auf der Post. Briefmarken kaufen.",
-              "questionImage": "demo_part3_2",
+              "questionImage": "demo1_part3_2",
               "options": [
                 {
                   "id": "A",
@@ -656,12 +598,12 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+              "answerDetail": "Trong hình ghi giờ mở cửa là “samstags 8.00 - 12.00”, chứ không phải là “Samstagnachmittag”."
             },
             {
               "id": 13,
               "question": "Am Bahnhof. Sie können hier Zigaretten rauchen.",
-              "questionImage": "demo_part3_3",
+              "questionImage": "demo1_part3_3",
               "options": [
                 {
                   "id": "A",
@@ -673,12 +615,12 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+              "answerDetail": "Hình này nghĩa là hút thuốc lá ở nhà ga bị cấm. Trong câu lại ghi là được phép hút thuốc lá ở đây."
             },
             {
               "id": 14,
               "question": "Eingang Restaurant. Heute Abend können Sie in diesem Restaurant tanzen.",
-              "questionImage": "demo_part3_4",
+              "questionImage": "demo1_part3_4",
               "options": [
                 {
                   "id": "A",
@@ -690,12 +632,12 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+              "answerDetail": "Trong hình có đoạn “ab 20 Uhr Tanz”."
             },
             {
               "id": 15,
               "question": "An der Haltestelle. Von 23 Uhr bis 1 Uhr fährt kein Bus.",
-              "questionImage": "demo_part3_5",
+              "questionImage": "demo1_part3_5",
               "options": [
                 {
                   "id": "A",
@@ -707,7 +649,7 @@
                 }
               ],
               "answer": "A",
-              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+              "answerDetail": "Hình này nghĩa là các tuyến xe bus chỉ hoạt động đến 23h và từ 1 đến 5h, nghĩa là không có xe bus nào hoạt động từ 23h đến 1h."
             }
           ]
         }
@@ -730,145 +672,223 @@
               "id": 1,
               "question": "die Woche",
               "matchedQuestion": "tuần",
-              "answer": [
-                "die Woche",
-                "tuần"
-              ]
+              "answer": ["die Woche", "tuần"]
             },
             {
               "id": 2,
               "question": "Montag",
               "matchedQuestion": "Thứ hai",
-              "answer": [
-                "Montag",
-                "Thứ hai"
-              ]
+              "answer": ["Montag", "Thứ hai"]
             },
             {
               "id": 3,
               "question": "Dienstag",
               "matchedQuestion": "Thứ ba",
-              "answer": [
-                "Dienstag",
-                "Thứ ba"
-              ]
+              "answer": ["Dienstag", "Thứ ba"]
             },
             {
               "id": 4,
               "question": "Mittwoch",
               "matchedQuestion": "Thứ Tư",
-              "answer": [
-                "Mittwoch",
-                "Thứ Tư"
-              ]
+              "answer": ["Mittwoch", "Thứ Tư"]
             },
             {
               "id": 5,
               "question": "Donnerstag",
               "matchedQuestion": "Thứ năm",
-              "answer": [
-                "Donnerstag",
-                "Thứ năm"
-              ]
+              "answer": ["Donnerstag", "Thứ năm"]
             },
             {
               "id": 6,
               "question": "Freitag",
               "matchedQuestion": "Thứ sáu",
-              "answer": [
-                "Freitag",
-                "Thứ sáu"
-              ]
+              "answer": ["Freitag", "Thứ sáu"]
             },
             {
               "id": 7,
               "question": "Samstag",
               "matchedQuestion": "Thứ bảy",
-              "answer": [
-                "Samstag",
-                "Thứ bảy"
-              ]
+              "answer": ["Samstag", "Thứ bảy"]
             },
             {
               "id": 8,
               "question": "Sonntag",
               "matchedQuestion": "Chủ nhật",
-              "answer": [
-                "Sonntag",
-                "Chủ nhật"
-              ]
+              "answer": ["Sonntag", "Chủ nhật"]
             },
             {
               "id": 9,
               "question": "der Frühling",
               "matchedQuestion": "mùa xuân",
-              "answer": [
-                "der Frühling",
-                "mùa xuân"
-              ]
+              "answer": ["der Frühling", "mùa xuân"]
             },
             {
               "id": 10,
               "question": "der Sommer",
               "matchedQuestion": "mùa hè",
-              "answer": [
-                "der Sommer",
-                "mùa hè"
-              ]
+              "answer": ["der Sommer", "mùa hè"]
             },
             {
               "id": 11,
               "question": "der Herbst",
               "matchedQuestion": "mùa thu",
-              "answer": [
-                "der Herbst",
-                "mùa thu"
-              ]
+              "answer": ["der Herbst", "mùa thu"]
             },
             {
               "id": 12,
               "question": "der Winter",
               "matchedQuestion": "mùa đông",
-              "answer": [
-                "der Winter",
-                "mùa đông"
-              ]
+              "answer": ["der Winter", "mùa đông"]
             },
             {
               "id": 13,
               "question": "der Tag",
               "matchedQuestion": "ngày",
-              "answer": [
-                "der Tag",
-                "ngày"
-              ]
+              "answer": ["der Tag", "ngày"]
             },
             {
               "id": 14,
               "question": "der Morgen",
               "matchedQuestion": "buổi sáng(từ 6-10 giờ)",
-              "answer": [
-                "der Morgen",
-                "buổi sáng(từ 6-10 giờ)"
-              ]
+              "answer": ["der Morgen", "buổi sáng(từ 6-10 giờ)"]
             },
             {
               "id": 15,
               "question": "der Vormittag",
               "matchedQuestion": "buổi sáng(từ 10-12 giờ)",
-              "answer": [
-                "der Vormittag",
-                "buổi sáng(từ 10-12 giờ)"
-              ]
+              "answer": ["der Vormittag", "buổi sáng(từ 10-12 giờ)"]
             },
             {
               "id": 16,
               "question": "der Mittag",
               "matchedQuestion": "giữa trưa",
-              "answer": [
-                "der Mittag",
-                "giữa trưa"
-              ]
+              "answer": ["der Mittag", "giữa trưa"]
+            },
+            {
+              "id": 17,
+              "question": "am + Tag",
+              "matchedQuestion": "vào + ngày",
+              "answer": ["am + Tag", "vào + ngày"]
+            },
+            {
+              "id": 18,
+              "question": "der Nachmittag",
+              "matchedQuestion": "buổi chiều",
+              "answer": ["der Nachmittag", "buổi chiều"]
+            },
+            {
+              "id": 19,
+              "question": "am Montag",
+              "matchedQuestion": "vào thứ Hai",
+              "answer": ["am Montag", "vào thứ Hai"]
+            },
+            {
+              "id": 20,
+              "question": "der Abend",
+              "matchedQuestion": "buổi tối",
+              "answer": ["der Abend", "buổi tối"]
+            },
+            {
+              "id": 21,
+              "question": "das Wochenende",
+              "matchedQuestion": "cuối tuần",
+              "answer": ["das Wochenende", "cuối tuần"]
+            },
+            {
+              "id": 22,
+              "question": "die Nacht",
+              "matchedQuestion": "đêm",
+              "answer": ["die Nacht", "đêm"]
+            },
+            {
+              "id": 23,
+              "question": "am Wochenende",
+              "matchedQuestion": "vào cuối tuần",
+              "answer": ["am Wochenende", "vào cuối tuần"]
+            },
+            {
+              "id": 24,
+              "question": "am Morgen",
+              "matchedQuestion": "vào buổi sáng",
+              "answer": ["am Morgen", "vào buổi sáng"]
+            },
+            {
+              "id": 25,
+              "question": "der Feiertag",
+              "matchedQuestion": "kỳ nghỉ",
+              "answer": ["der Feiertag", "kỳ nghỉ"]
+            },
+            {
+              "id": 26,
+              "question": "am Vormittag",
+              "matchedQuestion": "vào buổi sáng",
+              "answer": ["am Vormittag", "vào buổi sáng"]
+            },
+            {
+              "id": 27,
+              "question": "das Jahr",
+              "matchedQuestion": "năm",
+              "answer": ["das Jahr", "năm"]
+            },
+            {
+              "id": 28,
+              "question": "am Mittag",
+              "matchedQuestion": "vào buổi trưa",
+              "answer": ["am Mittag", "vào buổi trưa"]
+            },
+            {
+              "id": 29,
+              "question": "der Monat",
+              "matchedQuestion": "tháng",
+              "answer": ["der Monat", "tháng"]
+            },
+            {
+              "id": 30,
+              "question": "am Nachmittag",
+              "matchedQuestion": "vào buổi chiều",
+              "answer": ["am Nachmittag", "vào buổi chiều"]
+            },
+            {
+              "id": 31,
+              "question": "am Abend",
+              "matchedQuestion": "vào buổi tối",
+              "answer": ["am Abend", "vào buổi tối"]
+            },
+            {
+              "id": 32,
+              "question": "in der Nacht",
+              "matchedQuestion": "vào ban đêm",
+              "answer": ["in der Nacht", "vào ban đêm"]
+            },
+            {
+              "id": 33,
+              "question": "der erste August",
+              "matchedQuestion": "ngày đầu tiên của tháng 8",
+              "answer": ["der erste August", "ngày đầu tiên của tháng 8"]
+            },
+            {
+              "id": 34,
+              "question": "am ersten August",
+              "matchedQuestion": "vào ngày đầu tiên của tháng 8",
+              "answer": ["am ersten August", "vào ngày đầu tiên của tháng 8"]
+            },
+            {
+              "id": 35,
+              "question": "die Uhrzeit",
+              "matchedQuestion": "thời gian",
+              "answer": ["die Uhrzeit", "thời gian"]
+            },
+            {
+              "id": 36,
+              "question": "Wann?",
+              "matchedQuestion": "Khi?",
+              "answer": ["Wann?", "Khi?"]
+            },
+            {
+              "id": 37,
+              "question": "Wie spät ist es?",
+              "matchedQuestion": "Bây giờ là mấy giờ?",
+              "answer": ["Wie spät ist es?", "Bây giờ là mấy giờ?"]
             }
           ]
         },
@@ -878,7 +898,7 @@
           "partType": "multiple_choice",
           "questions": [
             {
-              "id": 6,
+              "id": 38,
               "question": "Es ist gleich 14 Uhr.",
               "options": [
                 {
@@ -897,7 +917,7 @@
               "answer": "A"
             },
             {
-              "id": 7,
+              "id": 39,
               "question": "Es ist genau 14 Uhr.",
               "options": [
                 {
@@ -914,6 +934,63 @@
                 }
               ],
               "answer": "C"
+            },
+            {
+              "id": 40,
+              "question": "Es ist kurz vor 4.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_3_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_3_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_3_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 41,
+              "question": "Es ist kurz nach 4.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_4_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_4_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_4_3"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 42,
+              "question": "Es ist halb 8.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_5_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_5_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_5_3"
+                }
+              ],
+              "answer": "B"
             }
           ]
         },
@@ -991,17 +1068,17 @@
             {
               "id": 1,
               "answer": "von",
-              "explanation": "von thành aus (khi nói về nơi xuất xứ)"
+              "explanation": "'von' -> 'aus': khi nói về nơi xuất xứ. "
             },
             {
               "id": 2,
               "answer": "sprechen",
-              "explanation": "sprechen thành spreche (chia động từ đúng ngôi thứ nhất số ít)"
+              "explanation": "'sprechen' -> 'spreche': chia động từ đúng với 'ich'"
             },
             {
               "id": 3,
               "answer": "bißchen",
-              "explanation": "bißchen thành bisschen (chính tả mới)"
+              "explanation": "'bißchen' -> 'bisschen': chính tả mới"
             }
           ]
         },
@@ -1059,43 +1136,26 @@
           "questions": [
             {
               "id": 5,
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "answer": [
-                "er",
-                "sie",
-                "sie"
-              ],
+              "question": ["Das ist Herr Gupta, ___ kommt aus Indien.", "Das ist Frau Kioka, ___ kommt aus Japan.", "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."],
+              "answer": ["er", "sie", "sie"],
               "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. Câu này giới thiệu Herr Gupta, là nam giới. Trong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. 'Das ist Frau Kioka, sie kommt aus Japan.'. Tương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. 'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. Ở câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. Khi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
             },
             {
               "id": 6,
               "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "answer": [
-                "du",
-                "Ich"
-              ],
+              "answer": ["du", "Ich"],
               "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
             },
             {
               "id": 7,
               "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "answer": [
-                "ihr",
-                "Wir"
-              ],
+              "answer": ["ihr", "Wir"],
               "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
             },
             {
               "id": 8,
               "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "answer": [
-                "Sie",
-                "Ich"
-              ]
+              "answer": ["Sie", "Ich"]
             }
           ]
         },
@@ -1119,18 +1179,76 @@
             {
               "id": 11,
               "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "answer": [
-                "Sie",
-                "Ich"
-              ]
+              "answer": ["Sie", "Ich"]
             },
             {
               "id": 12,
               "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "answer": [
-                "du",
-                "ich"
-              ]
+              "answer": ["du", "ich"]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ergänzen Sie die Pronomen.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 13,
+              "question": "Der Schrank ist teuer. ________ kommt aus Italien.",
+              "answer": "Er"
+            },
+            {
+              "id": 14,
+              "question": "Das Regal ist praktisch. ______ kostet nur 49 Euro.",
+              "answer": "Es"
+            },
+            {
+              "id": 15,
+              "question": "Die Lampe ist neu. ______ ist modern.",
+              "answer": "Sie"
+            },
+            {
+              "id": 16,
+              "question": "Das sind vier Stühle. ______ kosten nur 100 Euro.",
+              "answer": "Sie"
+            },
+            {
+              "id": 17,
+              "question": "Die Sessel sind sehr bequem und _______ sind günstig.",
+              "answer": "sie"
+            },
+            {
+              "id": 18,
+              "question": "Der Tisch da ist schön, aber______ ist klein.",
+              "answer": "er"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "partName": "Phần 5: Formell oder informell? Sie oder du? Sie oder ihr? Ergänzen Sie.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 19,
+              "question": "Anna, was machst ______?    Ich surfe ein bisschen im Internet.",
+              "answer": "du"
+            },
+            {
+              "id": 20,
+              "question": "Frau Schmidt, was machen ______?   Ich schreibe gerade eine E-Mail.",
+              "answer": "Sie"
+            },
+            {
+              "id": 21,
+              "question": "Daniel und Anna, was macht ______? Wir surfen im Internet.",
+              "answer": "ihr"
+            },
+            {
+              "id": 22,
+              "question": "Herr Meyer und Frau Schmidt, was machen ______? Wir lesen gerade eine E-Mail.",
+              "answer": "Sie"
             }
           ]
         }
@@ -1153,11 +1271,7 @@
             {
               "id": 1,
               "question": "Wo wollen die Freundinnen die Party machen?",
-              "questionImage": [
-                "demo02_1_1",
-                "demo02_1_2",
-                "demo02_1_3"
-              ],
+              "questionImage": ["demo02_1_1", "demo02_1_2", "demo02_1_3"],
               "options": [
                 {
                   "id": "A",
@@ -1177,11 +1291,7 @@
             {
               "id": 2,
               "question": "Wann wollen sie sich treffen?",
-              "questionImage": [
-                "demo02_2_1",
-                "demo02_2_2",
-                "demo02_2_3"
-              ],
+              "questionImage": ["demo02_2_1", "demo02_2_2", "demo02_2_3"],
               "options": [
                 {
                   "id": "A",
@@ -1201,11 +1311,7 @@
             {
               "id": 3,
               "question": "Wo stehen Taxis?",
-              "questionImage": [
-                "demo02_3_1",
-                "demo02_3_2",
-                "demo02_3_3"
-              ],
+              "questionImage": ["demo02_3_1", "demo02_3_2", "demo02_3_3"],
               "audioUrl": "part1_ques3_2",
               "options": [
                 {
@@ -1226,11 +1332,7 @@
             {
               "id": 4,
               "question": "Wie lange dauern die Sommerkurse?",
-              "questionImage": [
-                "demo02_4_1",
-                "demo02_4_2",
-                "demo02_4_3"
-              ],
+              "questionImage": ["demo02_4_1", "demo02_4_2", "demo02_4_3"],
               "audioUrl": "part1_ques4_2",
               "options": [
                 {
@@ -1251,11 +1353,7 @@
             {
               "id": 5,
               "question": "Was soll Johanna mitbringen?",
-              "questionImage": [
-                "demo02_5_1",
-                "demo02_5_2",
-                "demo02_5_3"
-              ],
+              "questionImage": ["demo02_5_1", "demo02_5_2", "demo02_5_3"],
               "audioUrl": "part1_ques5_2",
               "options": [
                 {
@@ -1276,11 +1374,7 @@
             {
               "id": 6,
               "question": "Wann ist Frau Horn aus dem Urlaub zurück?",
-              "questionImage": [
-                "demo02_6_1",
-                "demo02_6_2",
-                "demo02_6_3"
-              ],
+              "questionImage": ["demo02_6_1", "demo02_6_2", "demo02_6_3"],
               "audioUrl": "part1_ques6_2",
               "options": [
                 {
@@ -1483,6 +1577,291 @@
     },
     {
       "id": "7",
+      "title": "Bài tập đọc 2",
+      "exerciseType": "reading",
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1.1: Lesen Sie die beiden Texte und di Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "partType": "multiple_choice",
+          "questionParagraph": "Liebe Frau Dehner, \nvielen Dank für die Einladung zu Ihrem Jazz-Konzert. \nIch komme gern und ich freue mich sehr auf das Konzert. Ich danke Ihnen auch, dass ich in Ihrem Gästezimmer schlafen kann und kein Hotel suchen muss. \nMein Zug kommt schon um circa 16 Uhr an. \nKann ich Ihnen am Nachmittag dann \nvor dem Konzert etwas helfen? \nBis bald und herzliche Grüße \nWinfried Beck",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Herr Beck übernachtet im Hotel.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Ich danke Ihnen… kein Hotel suchen muss”."
+            },
+            {
+              "id": 2,
+              "question": "Herr Beck bietet Frau Dehner seine Hilfe an.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “Kann ich Ihnen… helfen?”. "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 1.2: Lesen Sie die beiden Texte und di Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "partType": "multiple_choice",
+          "questionParagraph": "Betreff: Neuer Arbeitsplan \nLiebe Frau Jakobs, \nich komme heute, Dienstag, noch nicht aus Berlin zurück. Ich habe morgen ein Gespräch mit dem Kunden Maybach. Der ist ganz wichtig für uns. Und am Donnerstag habe ich zwei weitere neue Termine. \nAber am Freitag bin ich ab 8 Uhr wieder im Büro. \nBitte machen Sie mir für 11 Uhr einen Termin mit Dr. Falk. \nVielen Dank und herzliche Grüße \nHelga Stein",
+          "questions": [
+            {
+              "id": 3,
+              "question": "Frau Stein ist in Berlin.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “ich… noch nicht aus Berlin zurück”. "
+            },
+            {
+              "id": 4,
+              "question": "Am Mittwoch hat Frau Stein frei.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Ich habe morgen… Maybach”, trước đó có đề cập đến “heute” tức là “Dienstag”. Vậy “morgen” ở đây chính là “Mittwoch”."
+            },
+            {
+              "id": 5,
+              "question": "Frau Stein will am Freitag Dr. Falk treffen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “Aber am Freitag… Dr. Falk”."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Lesen Sie die Texte und die Aufgaben 6 bis 10. \nWo finden Sie Informationen? Kreuzen Sie an: a, b oder c",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Sie wollen viele Freunde zu Ihrem Geburtstag einladen. Sie suchen einen Ort.",
+              "questionParagraph": ["demo2_part2_6_1", "demo2_part2_6_2"],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.raum-in-koeln.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.wohnen-in-koeln.de"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Hình a nghĩa là cho thuê phòng với nhiều sự kiện khác nhau. Còn hình b là muốn cho thuê từ 2 đến 12 tuần. "
+            },
+            {
+              "id": 7,
+              "question": "Der Computer ist kaputt. Sie können ihn nicht allein reparieren.",
+              "questionParagraph": ["demo2_part2_7_1", "demo2_part2_7_2"],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.computer-loesungen.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.technohaus.de"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Chỉ cần để ý từ “Computern” và “Reparaturen” ở hình a."
+            },
+            {
+              "id": 8,
+              "question": "Sie möchten am Samstagabend mit Freunden tanzen gehen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.tanzen-macht-spass.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.wohin-am-wochenende.de"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Hình a là thông tin về trường dạy nhảy, còn hình b nói rằng có thể nhảy cả đêm đến 4h sáng vào thứ 6 và thứ 7 trong nhà hàng. "
+            },
+            {
+              "id": 9,
+              "question": "Sie möchten am Wochenende Fußball spielen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.freizeitsport-freiburg.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.fc-1897.de/training"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ở hình a chỉ ghi là “Montags bis donnerstags”, chứ không phải “Wochenende”."
+            },
+            {
+              "id": 10,
+              "question": "Sie studieren und möchten ein bisschen arbeiten.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "0176 - 55 44 321"
+                },
+                {
+                  "id": "B",
+                  "text": "0160 - 683 456 20"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Hình a ghi là làm việc chỉ vào thứ 7 từ 7 đến 11h, còn hình b thì làm tận 42h/tuần. "
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 3: Lesen Sie die Texte und die Aufgaben 11 bis 15. Kreuzen Sie an: Richtig oder Falsch.",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Vor einem Blumenladen, Am Sonntagvormittag bekommen Sie hier Blumen",
+              "questionImage": "demo2_part3_1",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": " Trong hình có đoạn “sonntags von 9 - 12 Uhr für Sie geöffnet”."
+            },
+            {
+              "id": 12,
+              "question": "Im Restaurant. Jeden Montag bietet das Restaurant indisches Essen an.",
+              "questionImage": "demo2_part3_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "“im nächsten Monat” chứ không phải “Jeden Montag” có đồ ăn Ấn Độ. "
+            },
+            {
+              "id": 13,
+              "question": "Bei der Straßenbahn. Es ist der 2. Mai, 21 Uhr. Sie können jetzt nicht zum. Hauptbahnhof fahren.",
+              "questionImage": "demo2_part3_3",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ý ở đây là từ ngày 1.5 chỉ đi đến Hauptbahnhof, có nghĩa là ngày 2.5 vẫn đi được đến đó."
+            },
+            {
+              "id": 14,
+              "question": "An einer Haustür. Sie können die Wohnung nicht besichtigen.",
+              "questionImage": "demo2_part3_4",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong hình có ghi “keine Besichtigungen”. "
+            },
+            {
+              "id": 15,
+              "question": "Im Bahnhof. Ab 22 Uhr können Sie keine Fahrkarten mehr kaufen.",
+              "questionImage": "demo2_part3_5",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Chú ý câu sau “Fahrkarten… Automaten.”, nghĩa là ab 22 Uhr vẫn mua vé được. "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
       "title": "QUIZ KẾT THÚC PHASE 1",
       "exerciseType": "quiz",
       "phaseId": 1,
@@ -1671,24 +2050,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "A"
@@ -1701,25 +2071,25 @@
       "conditionStatus": "not pass"
     },
     {
-      "id": "8",
+      "id": "9",
       "title": "QUIZ KẾT THÚC PHASE 2",
       "exerciseType": "quiz",
       "phaseId": 2
     },
     {
-      "id": "9",
+      "id": "10",
       "title": "Bài tập nghe 3",
       "exerciseType": "listening",
       "phaseId": 4
     },
     {
-      "id": "10",
+      "id": "11",
       "title": "Bài tập đọc 3",
       "exerciseType": "reading",
       "phaseId": 4
     },
     {
-      "id": "11",
+      "id": "12",
       "title": "QUIZ KẾT THÚC PHASE 1",
       "phaseId": 4
     }
@@ -2036,24 +2406,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "A"
@@ -2064,24 +2425,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "ihr",
-                    "Wir"
-                  ]
+                  "text": ["ihr", "Wir"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 }
               ],
               "answer": "B"
@@ -2092,24 +2444,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "ich"
-                  ]
+                  "text": ["du", "ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "du",
-                    "Er"
-                  ]
+                  "text": ["du", "Er"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "ich",
-                    "ich"
-                  ]
+                  "text": ["ich", "ich"]
                 }
               ],
               "answer": "A"
