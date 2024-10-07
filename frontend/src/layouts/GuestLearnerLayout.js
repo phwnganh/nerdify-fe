@@ -1,27 +1,21 @@
-import React from "react";
 import { Divider } from "antd";
+import Navbar from "../components/Header";
 import LearnerHeader from "../components/Header/LearnerHeader";
+import { ROLES } from "../constants";
 import Footer from "../components/Footer";
 
-// LearnerLayout Component
-export const LearnerLayout = ({ children }) => {
+export const GuestLearnerLayout = ({ children, role }) => {
+  const HeaderComponent = role === ROLES.LEARNER_ROLE ? <LearnerHeader /> : <Navbar />;
   return (
     <>
-      {/* Main Container */}
       <div style={{ minHeight: "100vh", width: "100%" }}>
-        {/* Fixed LearnerHeader */}
-        <LearnerHeader />
-        {/* Content Area */}
+        {HeaderComponent}
         <div style={styles.container}>
           <div style={styles.gridContainer}>
-            {/* Left Column (spacer) */}
             <div style={styles.column}></div>
-            {/* Middle Column (content) */}
             <div style={styles.content}>{children}</div>
-            {/* Right Column (spacer) */}
             <div style={styles.column}></div>
           </div>
-          {/* Divider and Footer */}
           <Divider style={{ marginBottom: 5 }} />
           <Footer />
         </div>
@@ -30,7 +24,7 @@ export const LearnerLayout = ({ children }) => {
   );
 };
 
-// Styles
+// Styles (giữ nguyên)
 const styles = {
   container: {
     display: "flex",
@@ -55,5 +49,3 @@ const styles = {
     width: "100%",
   },
 };
-
-export default LearnerLayout;

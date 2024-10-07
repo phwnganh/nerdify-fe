@@ -8,6 +8,8 @@ import logo from "../../../assets/logo1.png";
 import loginImage from "../../../assets/loginImage.png";
 import { CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
 import { resetPassword } from "../../../services/GuestService";
+import { validationRules } from "../../../helpers/validate";
+import { style } from "./styled";
 
 export const ResetPasswordPage = () => {
   const [isReset, setIsReset] = useState(false);
@@ -67,11 +69,8 @@ export const ResetPasswordPage = () => {
                   label="Email"
                   name="email"
                   rules={[
-                    { required: true, message: "Vui lòng nhập email" },
-                    {
-                      type: "email",
-                      message: "Email không hợp lệ",
-                    },
+                    validationRules.required("Vui lòng nhập email"),
+                    validationRules.email("Email không hợp lệ"),
                   ]}
                 >
                   <InputCustom
@@ -85,7 +84,7 @@ export const ResetPasswordPage = () => {
                   label="Mật khẩu mới"
                   name="new_password"
                   rules={[
-                    { required: true, message: "Vui lòng nhập mật khẩu mới" },
+                    validationRules.required("Vui lòng nhập mật khẩu mới"),
                     {
                       pattern: PASSWORD_REGEX,
                       message:
@@ -106,7 +105,7 @@ export const ResetPasswordPage = () => {
                   name="new_password_confirmation"
                   dependencies={["new_password"]}
                   rules={[
-                    { required: true, message: "Vui lòng xác nhận mật khẩu" },
+                    validationRules.required("Vui lòng xác nhận mật khẩu"),
                     ({ getFieldValue }) => ({
                       validator(_, value) {
                         if (!value || getFieldValue("new_password") === value) {
@@ -155,43 +154,6 @@ export const ResetPasswordPage = () => {
   );
 };
 
-const style = {
-  resetContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    height: "100vh",
-    width: "100%",
-    background: "#f4fcfc",
-    margin: 0,
-    padding: 0,
-  },
-  leftSide: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "#ffe45c",
-    borderRadius: "20px 0 0 20px",
-  },
-  rightSide: {
-    display: "flex",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "white",
-    borderRadius: "0 20px 20px 0",
-  },
-  formReset: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "80%",
-    margin: "auto",
-  },
-};
+
 
 export default ResetPasswordPage;
