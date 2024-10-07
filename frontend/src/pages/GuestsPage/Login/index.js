@@ -35,16 +35,17 @@ export const LoginPage = () => {
         // Find the user with matching email and password
         const user = users.filter((u) => u.email === data.email && u.password === data.password);
         if (user) {
-          dispatch(
-            signin({
-              user: {
-                id: user[0].id,
-                email: user[0].email,
-                fullName: user[0].fullName,
-                role: user[0].role,
-              },
-            }),
-          );
+          // dispatch(
+          //   signin({
+          //     user: {
+          //       id: user[0].id,
+          //       email: user[0].email,
+          //       fullName: user[0].fullName,
+          //       role: user[0].role,
+          //     },
+          //   }),
+          // );
+          localStorage.setItem("userInfo", JSON.stringify(user[0]));
 
           if (localStorage.getItem("isPremium")) {
             navigate(CLIENT_URI.PREMIUM);

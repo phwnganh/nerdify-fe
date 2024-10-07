@@ -4,19 +4,20 @@ import { CLIENT_URI, ROLES } from "../constants";
 import LoadingSpin from "../components/Spinning";
 
 export const AdminGuard = ({ children }) => {
-  const { isInitialized, isAuthenticated, user } = useAuth();
+  const userInfo = localStorage.getItem("userInfo");
 
-  if (!isInitialized) {
-    return <LoadingSpin/>;
-  }
+  // Parse the user info from localStorage
+  const user = userInfo ? JSON.parse(userInfo) : null;
 
-  if (isAuthenticated) {
+  if (user) {
+    // Check if the role is 'learner'
     if (user?.role === ROLES.ADMIN_ROLE) {
       return <>{children}</>;
     }
     return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
   }
 
+  // If not authenticated, redirect to login page
   return <Navigate to={CLIENT_URI.LOGIN} replace />;
 };
 

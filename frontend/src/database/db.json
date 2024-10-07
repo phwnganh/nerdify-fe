@@ -6709,6 +6709,18 @@
       "dob": "2024-10-02",
       "avatar": "",
       "id": "f_MzeC0"
+    },
+    {
+      "fullName": "Trinh Dai Thien",
+      "email": "thientd26019@gmail.com",
+      "password": "123456Az!",
+      "role": "learner",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": "",
+      "id": "PWDGcJj"
     }
   ],
   "package": [

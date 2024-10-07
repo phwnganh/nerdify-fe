@@ -3,7 +3,7 @@ import { Form, notification } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
 import registerImage from "../../../assets/registerImage.png";
 import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
@@ -11,6 +11,7 @@ import { validationRules } from "../../../helpers/validate";
 import { style } from "./styled";
 
 export const RegisterPage = () => {
+  const navigate = useNavigate();
   const [messageResp, setMessageResp] = useState({
     type: "",
     message: "",
@@ -76,7 +77,7 @@ export const RegisterPage = () => {
           message: "Success",
           description: "Đăng ký thành công!",
         });
-
+        navigate(CLIENT_URI.LOGIN);
         console.log("User registered:", resp);
       })
       .catch((err) => {
