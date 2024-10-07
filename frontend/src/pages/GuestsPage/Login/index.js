@@ -13,6 +13,7 @@ import { signin } from "../../../hooks/auth/reducers";
 import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 import { validationRules } from "../../../helpers/validate";
 import { style } from "./styled";
+import STORAGE, { setStorage } from "../../../library/storage";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
@@ -45,14 +46,14 @@ export const LoginPage = () => {
           //     },
           //   }),
           // );
-          localStorage.setItem("userInfo", JSON.stringify(user[0]));
-
-          if (localStorage.getItem("isPremium")) {
-            navigate(CLIENT_URI.PREMIUM);
-            localStorage.removeItem("isPremium");
-          } else {
-            navigate(CLIENT_URI.COURSE_PAGE);
-          }
+          setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
+          navigate(CLIENT_URI.COURSE_PAGE);
+          // if (localStorage.getItem("isPremium")) {
+          //   navigate(CLIENT_URI.PREMIUM);
+          //   localStorage.removeItem("isPremium");
+          // } else {
+          //   navigate(CLIENT_URI.COURSE_PAGE);
+          // }
         } else {
           // If no user found, show an error
           throw new Error("Login failed: Invalid email or password!");

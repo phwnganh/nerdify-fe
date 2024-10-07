@@ -40,7 +40,7 @@
       "title": "Bài tập trình độ A1",
       "levelImage": "a1",
       "learners": 10,
-      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "description": "Ở trình độ A1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
       "phases": [1, 2, 3],
       "finalexams": [1]
     },
@@ -49,9 +49,16 @@
       "title": "Bài tập trình độ A2",
       "levelImage": "a2",
       "learners": 10,
-      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "description": "Ở trình độ A2, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
       "phases": [4],
       "finalexams": [2]
+    },
+    {
+      "id": "2",
+      "title": "Bài tập trình độ B1",
+      "levelImage": "b1",
+      "learners": 10,
+      "description": "Ở trình độ B1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình."
     }
   ],
   "exercises": [

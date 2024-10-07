@@ -28,29 +28,6 @@ import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashca
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
 export const routes = [
-  {
-    element: (
-      <GuestLearnerGuard>
-        <GuestLearnerLayout>
-          <Outlet />
-        </GuestLearnerLayout>
-      </GuestLearnerGuard>
-    ),
-    children: [
-      {
-        children: [
-          {
-            path: CLIENT_URI.FLASH_CARD,
-            element: <FlashcardList />,
-          },
-          {
-            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-            element: <FlashcardDetail />,
-          },
-        ],
-      },
-    ],
-  },
   // Guest urls
   {
     element: (
@@ -75,14 +52,7 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
-          {
-            path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-            element: <ExerciseDetail />,
-          },
-          {
-            path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
-            element: <FinalExam />,
-          },
+
           {
             path: CLIENT_URI.FORGOT_PASSWORD,
             element: <ForgotPasswordPage />,
@@ -172,6 +142,22 @@ export const routes = [
       {
         path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
         element: <ViewLevelDetail />,
+      },
+      {
+        path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+        element: <ExerciseDetail />,
+      },
+      {
+        path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
+        element: <FinalExam />,
+      },
+      {
+        path: CLIENT_URI.FLASH_CARD,
+        element: <FlashcardList />,
+      },
+      {
+        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+        element: <FlashcardDetail />,
       },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,

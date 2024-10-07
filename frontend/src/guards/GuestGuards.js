@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
 import LoadingSpin from "../components/Spinning";
+import STORAGE, { getStorage } from "../library/storage";
 
 export const GuestGuard = ({ children }) => {
   // const { isInitialized, isAuthenticated, user } = useAuth();
@@ -15,7 +16,7 @@ export const GuestGuard = ({ children }) => {
   //     return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
   //   }
   // }
-  const user = localStorage.getItem("userInfo");
+  const user = getStorage(STORAGE.USER_INFO);
   if (user) {
     return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
   }

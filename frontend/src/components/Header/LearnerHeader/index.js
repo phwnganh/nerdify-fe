@@ -9,6 +9,7 @@ import logo from "../../../assets/logo1.png";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import { logout } from "../../../services/GuestService";
 import { signout } from "../../../hooks/auth/reducers";
+import { clearStorage } from "../../../library/storage";
 
 const { Header } = Layout;
 
@@ -28,7 +29,7 @@ export default function LearnerHeader() {
     //   window.location.reload();
     // });
     // await signout();
-    localStorage.clear();
+    clearStorage();
     window.location.reload();
   };
 
