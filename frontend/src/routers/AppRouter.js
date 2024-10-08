@@ -75,10 +75,10 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
-          {
-            path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-            element: <ExerciseDetail />,
-          },
+          // {
+          //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+          //   element: <ExerciseDetail />,
+          // },
           {
             path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
             element: <FinalExam />,
@@ -146,7 +146,6 @@ export const routes = [
       {
         path: CLIENT_URI.MANAGE_FOLDER,
         element: <ManageFolder />,
-        element: <EditPersonalProfile/>
       },
       {
         path: CLIENT_URI.CHANGE_PASSWORD,
@@ -165,6 +164,14 @@ export const routes = [
       </LearnerGuard>
     ),
     children: [
+      {
+        path: CLIENT_URI.FLASH_CARD,
+        element: <FlashcardList />,
+      },
+      {
+        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+        element: <FlashcardDetail />,
+      },
       {
         path: CLIENT_URI.COURSE_PAGE,
         element: <CoursePage />,

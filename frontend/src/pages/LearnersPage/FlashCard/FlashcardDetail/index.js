@@ -57,20 +57,12 @@ export default function FlashCardDetail() {
   const items = [
     {
       key: "1",
-      label: (
-        <div onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}>
-          Tạo folder mới
-        </div>
-      ),
+      label: <div onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}>Tạo folder mới</div>,
       icon: <FolderOutlined />,
     },
     {
       key: "2",
-      label: (
-        <div onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}>
-          Tạo học phần mới
-        </div>
-      ),
+      label: <div onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}>Tạo học phần mới</div>,
       icon: <FileOutlined />,
     },
   ];
@@ -96,10 +88,7 @@ export default function FlashCardDetail() {
 
   const handlePrevious = () => {
     setIsFlipped(false);
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + flashcard?.cards.length) % flashcard?.cards.length
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + flashcard?.cards.length) % flashcard?.cards.length);
     console.log(isFlipped);
   };
 
@@ -140,35 +129,22 @@ export default function FlashCardDetail() {
         onCancel={handleCancel}
         width={400}
         footer={[
-          <ButtonCustom
-            key="submit"
-            buttonType="primary"
-            onClick={handleOk}
-            disabled={
-              !(numberOfCard > 0 && numberOfCard <= flashcard?.cards.length)
-            }
-          >
+          <ButtonCustom key="submit" buttonType="primary" onClick={handleOk} disabled={!(numberOfCard > 0 && numberOfCard <= flashcard?.cards.length)}>
             Bắt đầu làm bài
           </ButtonCustom>,
         ]}
         centered
       >
-        <TextCustom
-          style={{ display: "flex", alignItems: "center", type: "number" }}
-        >
+        <TextCustom style={{ display: "flex", alignItems: "center", type: "number" }}>
           Số lượng câu hỏi : &nbsp;
-          <InputCustom
-            onChange={handleOnChange}
-            style={{ width: "90px", textAlign: "center", padding: "0" }}
-            addonAfter={`/ ${flashcard?.cards.length}`}
-          />
+          <InputCustom onChange={handleOnChange} style={{ width: "90px", textAlign: "center", padding: "0" }} addonAfter={`/ ${flashcard?.cards.length}`} />
         </TextCustom>
       </ModalCustom>
 
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <TitleCustom level={2}>{flashcard?.title}</TitleCustom>
-        <div style={{textAlign: 'center', marginBottom: '10px'}}>
-        <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
+        <div style={{ textAlign: "center", marginBottom: "10px" }}>
+          <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
         </div>
         <Dropdown menu={{ items }} trigger={["click"]}>
           <ButtonCustom
@@ -194,7 +170,6 @@ export default function FlashCardDetail() {
         >
           Kiểm tra
         </ButtonCustom>
-
       </div>
       <Container>
         <div
@@ -220,21 +195,13 @@ export default function FlashCardDetail() {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(
-                    isFlipped
-                      ? flashcard?.cards[currentIndex].definitions
-                      : flashcard?.cards[currentIndex].terms
-                  );
+                  handleSpeak(isFlipped ? flashcard?.cards[currentIndex].definitions : flashcard?.cards[currentIndex].terms);
                 }}
               ></Button>
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>
-              {isFlipped
-                ? flashcard?.cards[currentIndex].definitions
-                : flashcard?.cards[currentIndex].terms}
-            </TextCustom>
+            <TextCustom>{isFlipped ? flashcard?.cards[currentIndex].definitions : flashcard?.cards[currentIndex].terms}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -265,13 +232,7 @@ export default function FlashCardDetail() {
             </Col>
             <Col>
               <Button
-                icon={
-                  isFullScreen ? (
-                    <FullscreenExitOutlined />
-                  ) : (
-                    <FullscreenOutlined />
-                  )
-                }
+                icon={isFullScreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -283,20 +244,9 @@ export default function FlashCardDetail() {
         </div>
 
         <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-          <Button
-            icon={<EditOutlined />}
-            shape="circle"
-            style={{ marginRight: "20px" }}
-            onClick={() =>
-              navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)
-            }
-          ></Button>
+          <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
           <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
-            <Button
-              icon={<FolderOutlined />}
-              shape="circle"
-              style={{ marginRight: "10px" }}
-            ></Button>
+            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }}></Button>
           </Dropdown>
         </Row>
         <div style={{ marginTop: "20px", textAlign: "center" }}>
@@ -306,15 +256,16 @@ export default function FlashCardDetail() {
             renderItem={(item) => (
               <List.Item>
                 <Row style={{ width: "100%" }} align="middle">
-                  <Col
-                    style={{ flex: 1, textAlign: "left", paddingLeft: "10px" }}
-                  >
-                    <span style={{ marginRight: "15px" }}>{item.terms}</span>
+                  <Col style={{ flex: 1, textAlign: "left", paddingLeft: "10px" }}>
                     <Button
+                      style={{
+                        marginRight: "15px",
+                      }}
                       shape="circle"
                       icon={<SoundOutlined />}
                       onClick={() => handleSpeak(item.terms)}
                     />
+                    <span style={{ marginRight: "15px" }}>{item.terms}</span>
                   </Col>
 
                   <Col
@@ -326,14 +277,8 @@ export default function FlashCardDetail() {
                       alignItems: "center",
                     }}
                   >
-                    <span style={{ marginRight: "10px" }}>
-                      {item.definitions}
-                    </span>
-                    <Button
-                      shape="circle"
-                      icon={<SoundOutlined />}
-                      onClick={() => handleSpeak(item.definitions)}
-                    />
+                    <span style={{ marginRight: "10px" }}>{item.definitions}</span>
+                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definitions)} />
                   </Col>
                 </Row>
               </List.Item>
