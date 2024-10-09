@@ -781,11 +781,12 @@ export default function VocabularyExercises() {
                           >
                             {option.id}
                           </ButtonCustom>
-                          <img
+                          {option.optionImage && <img
                             src={vocabImg[option.optionImage]}
                             alt={`Option ${option.id}`}
                             style={{ width: "50%" }}
-                          />
+                          />}
+                          {option.text && <div><TextCustom>{option.text}</TextCustom></div>}
                         </Col>
                       );
                     })}

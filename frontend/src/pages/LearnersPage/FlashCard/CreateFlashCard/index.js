@@ -92,7 +92,7 @@ export default function CreateFlashCard() {
     <>
       {contextHolder}
       
-      <div style={{ width: "60%"}}>
+      <div style={{padding: '20px'}}>
       <BreadCrumbHome/>
         <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI</h1>
         <Form
