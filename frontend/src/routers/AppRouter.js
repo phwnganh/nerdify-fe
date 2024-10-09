@@ -116,7 +116,6 @@ export const routes = [
       {
         path: CLIENT_URI.MANAGE_FOLDER,
         element: <ManageFolder />,
-        element: <EditPersonalProfile/>
       },
       {
         path: CLIENT_URI.CHANGE_PASSWORD,

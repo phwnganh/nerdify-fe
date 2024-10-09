@@ -13,10 +13,19 @@ import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
+ // a2
+
 
 import part2_ques7 from "../../../../assets/listeningExercises/teil 2-07.mp3";
 import part2_ques8 from "../../../../assets/listeningExercises/teil 2-08.mp3";
 import part2_ques9 from "../../../../assets/listeningExercises/teil 2-09.mp3";
+import part2_ques10 from '../../../../assets/listeningExercises/teil 2-10.mp3'
+
+// audio a2
+import part2_ques7_2 from '../../../../assets/listeningExercises/02- teil 2-07.mp3'
+import part2_ques8_2 from '../../../../assets/listeningExercises/02- teil 2-08.mp3'
+import part2_ques9_2 from '../../../../assets/listeningExercises/02- teil 2-09.mp3'
+import part2_ques10_2 from '../../../../assets/listeningExercises/02- teil 2-10.mp3'
 
 export default function ReadingExercises() {
   const { exerciseType, exerciseId } = useParams();
@@ -34,6 +43,11 @@ export default function ReadingExercises() {
     part2_ques7,
     part2_ques8,
     part2_ques9,
+    part2_ques10,
+    part2_ques7_2,
+    part2_ques8_2,
+    part2_ques9_2,
+    part2_ques10_2
   };
 
   useEffect(() => {
