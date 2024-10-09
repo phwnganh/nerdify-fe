@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Col, Row, Tabs } from "antd";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
+import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
 import { PART_TYPE } from "../../../../constants";
 
@@ -40,6 +40,24 @@ import demo02_5_3 from "../../../../assets/listeningExercises/2_5_3.png";
 import demo02_6_1 from "../../../../assets/listeningExercises/2_6_1.png";
 import demo02_6_2 from "../../../../assets/listeningExercises/2_6_2.png";
 import demo02_6_3 from "../../../../assets/listeningExercises/2_6_3.png";
+
+// images of a2-phase 1
+import part2_ques6_1_A2 from "../../../../assets/listeningExercises/a2-teil2-6_1.png";
+import part2_ques6_2_A2 from "../../../../assets/listeningExercises/a2-teil2-6_2.png";
+import part2_ques6_3_A2 from "../../../../assets/listeningExercises/a2-teil2-6_3.png";
+import part2_ques7_1_A2 from "../../../../assets/listeningExercises/a2-teil2-7_1.png";
+import part2_ques7_2_A2 from "../../../../assets/listeningExercises/a2-teil2-7_2.png";
+import part2_ques7_3_A2 from "../../../../assets/listeningExercises/a2-teil2-7_3.png";
+import part2_ques8_1_A2 from "../../../../assets/listeningExercises/a2-teil2-8_1.png";
+import part2_ques8_2_A2 from "../../../../assets/listeningExercises/a2-teil2-8_2.png";
+import part2_ques8_3_A2 from "../../../../assets/listeningExercises/a2-teil2_8_3.png";
+import part2_ques9_1_A2 from "../../../../assets/listeningExercises/a2-teil2-9_1.png";
+import part2_ques9_2_A2 from "../../../../assets/listeningExercises/a2-teil2-9_2.png";
+import part2_ques9_3_A2 from "../../../../assets/listeningExercises/a2-teil2-9_3.png";
+import part2_ques10_1_A2 from "../../../../assets/listeningExercises/a2-teil2-10_1.png";
+import part2_ques10_2_A2 from "../../../../assets/listeningExercises/a2-teil2-10_2.png";
+import part2_ques10_3_A2 from "../../../../assets/listeningExercises/a2-teil2-10_3.png";
+
 import part1_ques1 from "../../../../assets/listeningExercises/teil 1-01.mp3";
 import part1_ques2 from "../../../../assets/listeningExercises/teil 1-02.mp3";
 import part1_ques3 from "../../../../assets/listeningExercises/teil 1-03.mp3";
@@ -54,6 +72,37 @@ import part3_ques12 from "../../../../assets/listeningExercises/teil 3-12.mp3";
 import part3_ques13 from "../../../../assets/listeningExercises/teil 3-13.mp3";
 import part3_ques14 from "../../../../assets/listeningExercises/teil 3-14.mp3";
 import part3_ques15 from "../../../../assets/listeningExercises/teil 3-15.mp3";
+
+// phase 2
+import part1_ques1_2 from "../../../../assets/listeningExercises/02- teil 1-01.mp3";
+import part1_ques2_2 from "../../../../assets/listeningExercises/02- teil 1-02.mp3";
+import part1_ques3_2 from "../../../../assets/listeningExercises/02- teil 1-03.mp3";
+import part1_ques4_2 from "../../../../assets/listeningExercises/02- teil 1-04.mp3";
+import part1_ques5_2 from "../../../../assets/listeningExercises/02- teil 1-05.mp3";
+import part1_ques6_2 from "../../../../assets/listeningExercises/02- teil 1-06.mp3";
+import part2_ques7_2 from "../../../../assets/listeningExercises/02- teil 2-07.mp3";
+import part2_ques8_2 from "../../../../assets/listeningExercises/02- teil 2-08.mp3";
+import part2_ques9_2 from "../../../../assets/listeningExercises/02- teil 2-09.mp3";
+import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.mp3";
+import part3_ques11_2 from "../../../../assets/listeningExercises/02- teil 3-11.mp3";
+import part3_ques12_2 from "../../../../assets/listeningExercises/02- teil 3-12.mp3";
+import part3_ques13_2 from "../../../../assets/listeningExercises/02- teil 3-13.mp3";
+import part3_ques14_2 from "../../../../assets/listeningExercises/02- teil 3-14.mp3";
+import part3_ques15_2 from "../../../../assets/listeningExercises/02- teil 3-15.mp3";
+
+//phase 1 - a2
+import part1_ques1_A2 from "../../../../assets/listeningExercises/a2-teil1-01.mp3";
+import part1_ques2_A2 from "../../../../assets/listeningExercises/a2-teil1-02.mp3";
+import part1_ques3_A2 from "../../../../assets/listeningExercises/02- teil 1-03.mp3";
+import part1_ques4_A2 from "../../../../assets/listeningExercises/02- teil 1-04.mp3";
+import part1_ques5_A2 from "../../../../assets/listeningExercises/02- teil 1-05.mp3";
+import part2_ques6_A2 from "../../../../assets/listeningExercises/a2-teil2-6.mp3";
+import part2_ques7_A2 from "../../../../assets/listeningExercises/a2-teil2-7.mp3";
+import part2_ques8_A2 from "../../../../assets/listeningExercises/a2-teil2-8.mp3";
+import part2_ques9_A2 from "../../../../assets/listeningExercises/a2-teil2-9.mp3";
+import part2_ques10_A2 from "../../../../assets/listeningExercises/a2-teil2-10.mp3";
+import part3_A2 from '../../../../assets/listeningExercises/part3_A2.mp3';
+
 const imagesArr = {
   demo1_1,
   demo1_2,
@@ -88,6 +137,21 @@ const imagesArr = {
   demo02_6_1,
   demo02_6_2,
   demo02_6_3,
+  part2_ques6_1_A2,
+  part2_ques6_2_A2,
+  part2_ques6_3_A2,
+  part2_ques7_1_A2,
+  part2_ques7_2_A2,
+  part2_ques7_3_A2,
+  part2_ques8_1_A2,
+  part2_ques8_2_A2,
+  part2_ques8_3_A2,
+  part2_ques9_1_A2,
+  part2_ques9_2_A2,
+  part2_ques9_3_A2,
+  part2_ques10_1_A2,
+  part2_ques10_2_A2,
+  part2_ques10_3_A2,
 };
 
 const audioArr = {
@@ -105,6 +169,32 @@ const audioArr = {
   part3_ques13,
   part3_ques14,
   part3_ques15,
+  part1_ques1_2,
+  part1_ques2_2,
+  part1_ques3_2,
+  part1_ques4_2,
+  part1_ques5_2,
+  part1_ques6_2,
+  part2_ques7_2,
+  part2_ques8_2,
+  part2_ques9_2,
+  part2_ques10_2,
+  part3_ques11_2,
+  part3_ques12_2,
+  part3_ques13_2,
+  part3_ques14_2,
+  part3_ques15_2,
+  part1_ques1_A2,
+  part1_ques2_A2,
+  part1_ques3_A2,
+  part1_ques4_A2,
+  part1_ques5_A2,
+  part2_ques6_A2,
+  part2_ques7_A2,
+  part2_ques8_A2,
+  part2_ques9_A2,
+  part2_ques10_A2,
+  part3_A2
 };
 
 const { TabPane } = Tabs;
@@ -217,115 +307,36 @@ export default function ListeningExercise() {
     setCurrentPartIndex(0);
   }, []);
 
-  // const renderPart = (currentPart) => {
-  //   return (
-  //     <>
-  //       {currentPart.questions.map((question) => (
-  //         <div key={question.id} style={{ marginBottom: "40px" }}>
-  //           {/* Câu hỏi */}
-  //           <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
-  //             Câu {question.id}: {question.question}
-  //           </TextCustom>
-
-  //           {/* Audio */}
-  //           <audio controls style={{ marginTop: "20px", width: "100%" }}>
-  //             <source src={audioArr[question.audioUrl]} type="audio/mp3" />
-  //             Trình duyệt của bạn không hỗ trợ phần tử audio.
-  //           </audio>
-
-  //           {/* Image của các đáp án */}
-  //           <div style={{ marginTop: "20px" }}>
-  //             <Row style={{ textAlign: "center" }}>
-  //               {question.questionImage &&
-  //                 question.questionImage.map((image, index) => (
-  //                   <Col key={index} span={8}>
-  //                     {/* Hình ảnh của mỗi đáp án */}
-  //                     <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
-  //                   </Col>
-  //                 ))}
-  //             </Row>
-
-  //             {/* Các đáp án (button) */}
-  //             <Row style={{ textAlign: "center", marginTop: "10px" }}>
-  //               {question.options.map((option) => {
-  //                 const isUserSelected = option.id === userAnswers[question.id];
-  //                 const isCorrectAnswer = option.id === question.answer;
-
-  //                 let backgroundColor = isUserSelected ? "#A8703E" : "";
-  //                 if (isSubmitted) {
-  //                   if (isCorrectAnswer) {
-  //                     backgroundColor = "#5FD855";
-  //                   } else if (isUserSelected && !isCorrectAnswer) {
-  //                     backgroundColor = "red";
-  //                   }
-  //                 }
-
-  //                 return (
-  //                   <Col key={option.id} span={8} style={{ padding: "0 10px" }}>
-  //                     <ButtonCustom
-  //                       buttonType="primary"
-  //                       onClick={() => handleSelectOptions(question.id, option.id)}
-  //                       style={{
-  //                         backgroundColor,
-  //                         width: "100%", // Đảm bảo nút chiếm toàn bộ chiều rộng của cột
-  //                       }}
-  //                       disabled={isSubmitted}
-  //                     >
-  //                       {option.id}. {option.text}
-  //                     </ButtonCustom>
-  //                   </Col>
-  //                 );
-  //               })}
-  //             </Row>
-  //           </div>
-
-  //           {/* Đáp án chi tiết */}
-  //           {isSubmitted && (
-  //             <>
-  //               <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)} style={{ marginTop: "20px" }}>
-  //                 Đáp án chi tiết
-  //               </ButtonCustom>
-  //               {toggleAnswerDetail[question.id] && <TextCustom style={{ color: "blue", marginTop: "10px" }}>{question.answerDetail}</TextCustom>}
-  //             </>
-  //           )}
-  //         </div>
-  //       ))}
-  //     </>
-  //   );
-  // };
-
   const renderPart = (currentPart) => {
     return (
       <>
         {currentPart.questions.map((question) => (
-          <div key={question.id} style={{ marginBottom: "40px" }}>
-            {/* Câu hỏi */}
-            <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
+          <div key={question.id}>
+            <TextCustom style={{ paddingTop: "100px", fontWeight: "bold" }}>
               Câu {question.id}: {question.question}
             </TextCustom>
-
-            {/* Audio */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "start",
-                alignItems: "center",
-              }}
-            >
-              <audio controls style={{ marginTop: "20px", width: "50%" }}>
+            {question.audioUrl && (
+              <audio controls style={{ marginTop: "20px", width: "100%" }}>
                 <source src={audioArr[question.audioUrl]} type="audio/mp3" />
                 Trình duyệt của bạn không hỗ trợ phần tử audio.
               </audio>
-            </div>
+            )}
 
-            {/* Hình ảnh và các đáp án nằm ngang */}
             <div style={{ marginTop: "20px" }}>
-              <Row justify="center" style={{ textAlign: "center", marginTop: "10px" }}>
-                {question.options.map((option, index) => {
+              <Row style={{ textAlign: "center" }}>
+                {question.questionImage &&
+                  question.questionImage.map((image, index) => (
+                    <Col key={index} span={8}>
+                      <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
+                    </Col>
+                  ))}
+              </Row>
+              <Row style={{ textAlign: "center", marginTop: "10px" }}>
+                {question.options.map((option) => {
                   const isUserSelected = option.id === userAnswers[question.id];
                   const isCorrectAnswer = option.id === question.answer;
-
                   let backgroundColor = isUserSelected ? "#A8703E" : "";
+
                   if (isSubmitted) {
                     if (isCorrectAnswer) {
                       backgroundColor = "#5FD855";
@@ -335,60 +346,15 @@ export default function ListeningExercise() {
                   }
 
                   return (
-                    <Col key={option.id} span={24} style={{ padding: "10px" }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "start",
-                          padding: "10px",
-                          borderRadius: "8px",
-                        }}
-                      >
-                        {/* Khung ảnh cố định */}
-                        <div
-                          style={{
-                            height: "100px",
-                            width: "100px",
-                            overflow: "hidden",
-                            marginRight: "12px", // Khoảng cách giữa img và btn
-                          }}
-                        >
-                          {question.questionImage && question.questionImage[index] && (
-                            <img
-                              src={imagesArr[question.questionImage[index]]}
-                              style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                              }}
-                              alt={`Question ${question.id} option ${option.id}`}
-                            />
-                          )}
-                        </div>
-                        {/* Đáp án (button) */}
-                        <ButtonCustom
-                          buttonType="primary"
-                          onClick={() => handleSelectOptions(question.id, option.id)}
-                          style={{
-                            backgroundColor,
-                            width: "auto",
-                            whiteSpace: "nowrap",
-                            padding: "8px 16px",
-                            textAlign: "center",
-                          }}
-                          disabled={isSubmitted}
-                        >
-                          {option.id}. {option.text}
-                        </ButtonCustom>
-                      </div>
+                    <Col key={option.id} span={8}>
+                      <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isSubmitted}>
+                        {option.id}. {option.text}
+                      </ButtonCustom>
                     </Col>
                   );
                 })}
               </Row>
             </div>
-
-            {/* Đáp án chi tiết */}
             {isSubmitted && (
               <div style={{ padding: "20px" }}>
                 <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
@@ -425,48 +391,76 @@ export default function ListeningExercise() {
   const currentPart = exercises.parts[currentPartIndex];
 
   return (
-    <div style={{ paddingTop: "40px" }}>
-      {/* Container có độ rộng là 100% - 5px */}
-      <div style={{ width: "calc(100% - 50px)", margin: "0 auto" }}>
-        <BreadCrumbHome />
-        <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-          {exercises.title}
-        </TitleCustom>
-        <Tabs defaultActiveKey="1" onChange={handleTabChange}>
-          <TabPane tab="Questions and Answers" key="questionsAnswers">
-            {isSubmitted && (
-              <div style={{ textAlign: "center" }}>
-                <TextCustom>
-                  Điểm: <span style={{ color: "red" }}>{score}%</span>
-                </TextCustom>
-              </div>
-            )}
-          </TabPane>
-          <TabPane tab="Transcripts" key="transcripts">
+    <div style={{ padding: "24px" }}>
+      <BreadCrumbHome />
+      <TitleCustom level={2} style={{ fontWeight: "bold" }}>
+        {exercises.title}
+      </TitleCustom>
+
+      <Tabs defaultActiveKey="1" onChange={handleTabChange}>
+        <TabPane tab="Questions and Answers" key="questionsAnswers">
+          {isSubmitted && (
+            <div style={{ textAlign: "center" }}>
+              <TextCustom>
+                Điểm: <span style={{ color: "red" }}>{score}%</span>
+              </TextCustom>
+            </div>
+          )}
+          <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
+          {currentPart.audioUrl && (
+            <audio controls style={{ marginTop: "20px", width: "100%" }}>
+              <source src={audioArr[currentPart?.audioUrl]} type="audio/mp3" />
+              Trình duyệt của bạn không hỗ trợ phần tử audio.
+            </audio>
+          )}
+          {currentPart.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart)}
+          <div style={{ textAlign: "center", paddingTop: "50px" }}>
+            <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => Math.max(prev - 1, 0))} disabled={currentPartIndex === 0}>
+              Phần trước
+            </ButtonCustom>
+            <ButtonCustom
+              buttonType="secondary"
+              style={{ padding: "23px", marginLeft: "30px" }}
+              onClick={() => setCurrentPartIndex((prev) => Math.min(prev + 1, exercises.parts.length - 1))}
+              disabled={currentPartIndex === exercises.parts.length - 1}
+            >
+              Phần tiếp theo
+            </ButtonCustom>
             {isSubmitted ? (
-              exercises?.parts?.map((part, index) => (
-                <React.Fragment key={index}>
-                  <div>
-                    <TextCustom style={{ fontWeight: "bold" }}>{part?.partName}</TextCustom>
-                  </div>
-                  <div>
-                    <TextCustom>
-                      {part?.transcript.split("\n").map((line, index) => (
-                        <React.Fragment key={index}>
-                          {line}
-                          <br />
-                        </React.Fragment>
-                      ))}
-                    </TextCustom>
-                  </div>
-                </React.Fragment>
-              ))
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
+                Làm lại bài tập này
+              </ButtonCustom>
             ) : (
-              <div>Bạn phải hoàn thành bài tập này</div>
+              <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={currentPartIndex !== exercises.parts.length - 1}>
+                Nộp bài
+              </ButtonCustom>
             )}
-          </TabPane>
-        </Tabs>
-      </div>
+          </div>
+        </TabPane>
+        <TabPane tab="Transcripts" key="transcripts">
+          {isSubmitted ? (
+            exercises?.parts?.map((part, index) => (
+              <React.Fragment key={index}>
+                <div>
+                  <TextCustom style={{ fontWeight: "bold" }}>{part?.partName}</TextCustom>
+                </div>
+                <div>
+                  <TextCustom>
+                    {part?.transcript.split("\n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </TextCustom>
+                </div>
+              </React.Fragment>
+            ))
+          ) : (
+            <div>Bạn phải hoàn thành bài tập này</div>
+          )}
+        </TabPane>
+      </Tabs>
     </div>
   );
 }

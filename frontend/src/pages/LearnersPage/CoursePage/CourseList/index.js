@@ -5,9 +5,10 @@ import { CLIENT_URI } from "../../../../constants";
 import { ReadOutlined } from "@ant-design/icons";
 import a1 from "../../../../assets/levelImage/a1.png";
 import a2 from "../../../../assets/levelImage/a2.png";
+import b1 from '../../../../assets/levelImage/b1.png';
 
 export default function CourseList({ course }) {
-  const levelImgArr = { a1: a1, a2: a2 }; // Add more levels as needed
+  const levelImgArr = { a1: a1, a2: a2, b1: b1 }; // Add more levels as needed
   const navigate = useNavigate();
 
   return (

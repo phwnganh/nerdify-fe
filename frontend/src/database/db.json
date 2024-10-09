@@ -4,14 +4,23 @@
       "id": "1",
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [1, 2, 3, 7],
+      "exercises": [
+        1,
+        2,
+        3,
+        7
+      ],
       "isNew": false
     },
     {
       "id": "2",
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [4, 5, 6],
+      "exercises": [
+        4,
+        5,
+        6
+      ],
       "isNew": false
     },
     {
@@ -24,7 +33,11 @@
       "id": "4",
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [8, 9, 10],
+      "exercise": [
+        8,
+        9,
+        10
+      ],
       "isNew": true
     },
     {
@@ -40,18 +53,35 @@
       "title": "Bài tập trình độ A1",
       "levelImage": "a1",
       "learners": 10,
-      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [1, 2, 3],
-      "finalexams": [1]
+      "description": "Ở trình độ A1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
+      "phases": [
+        1,
+        2,
+        3
+      ],
+      "finalexams": [
+        1
+      ]
     },
     {
       "id": "2",
       "title": "Bài tập trình độ A2",
       "levelImage": "a2",
       "learners": 10,
-      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
-      "phases": [4],
-      "finalexams": [2]
+      "description": "Ở trình độ A2, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
+      "phases": [
+        4
+      ],
+      "finalexams": [
+        2
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Bài tập trình độ B1",
+      "levelImage": "b1",
+      "learners": 10,
+      "description": "Ở trình độ B1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình."
     }
   ],
   "exercises": [
@@ -71,22 +101,23 @@
               "id": 1,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques1",
-              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
+              "questionImage": [
+                "demo1_1",
+                "demo1_2",
+                "demo1_3"
+              ],
               "options": [
                 {
                   "id": "A",
-                  "text": "Dreißig Euro.",
-                  "optionImage": "demo1_1"
+                  "text": "Dreißig Euro."
                 },
                 {
                   "id": "B",
-                  "text": "Fünfundneunzig Euro.",
-                  "optionImage": "demo_1_2"
+                  "text": "Fünfundneunzig Euro."
                 },
                 {
                   "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent.",
-                  "optionImage": "demo_1_3"
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
                 }
               ],
               "answer": "C",
@@ -96,19 +127,23 @@
               "id": 2,
               "question": "Wie spät ist es?",
               "audioUrl": "part1_ques2",
-              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
+              "questionImage": [
+                "demo2_1",
+                "demo2_2",
+                "demo2_3"
+              ],
               "options": [
                 {
                   "id": "A",
-                  "text": "Dreißig Euro."
+                  "text": "15 Uhr."
                 },
                 {
                   "id": "B",
-                  "text": "Fünfundneunzig Euro."
+                  "text": "Gleich 5Uhr."
                 },
                 {
                   "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                  "text": "Halb 5 Uhr."
                 }
               ],
               "answer": "B",
@@ -118,19 +153,23 @@
               "id": 3,
               "question": "Was isst die Frau im Restaurant?",
               "audioUrl": "part1_ques3",
-              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
+              "questionImage": [
+                "demo3_1",
+                "demo3_2",
+                "demo3_3"
+              ],
               "options": [
                 {
                   "id": "A",
-                  "text": "Dreißig Euro."
+                  "text": "In die neunte Klasse."
                 },
                 {
                   "id": "B",
-                  "text": "Fünfundneunzig Euro."
+                  "text": "In die dritte Klasse."
                 },
                 {
                   "id": "C",
-                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                  "text": "In die vierte Klasse."
                 }
               ],
               "answer": "A",
@@ -140,7 +179,11 @@
               "id": 4,
               "question": "Wie kommt die Frau in den 2. Stock?",
               "audioUrl": "part1_ques4",
-              "questionImage": ["demo4_1", "demo4_2", "demo4_3"],
+              "questionImage": [
+                "demo4_1",
+                "demo4_2",
+                "demo4_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -162,7 +205,11 @@
               "id": 5,
               "question": "Wohin fährt Herr Albers?",
               "audioUrl": "part1_ques5",
-              "questionImage": ["demo5_1", "demo5_2", "demo5_3"],
+              "questionImage": [
+                "demo5_1",
+                "demo5_2",
+                "demo5_3"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -186,10 +233,10 @@
           "id": 2,
           "partName": "Phần 2: Kreuzen Sie an: Richtig oder Falsch. Sie hören jeden Text einmal.",
           "partType": "multiple_choice",
-          "transcript": "Nummer 7\n Liebe Kunden, zu Weihnachten bieten wir Ihnen Superpreise an ... z. B. erstklassiger italienischer Weißwein für 12 Euro 78 die Flasche oder exklusiver argentinischer Rotwein für 9 Euro 68. Besuchen Sie uns im 3. Stock. Frohe Weihnachten. \nNummer 8 \nLiebe Fahrgäste. Wir sind kurz vor Würzburg. Sicherlich haben Sie schon Hunger. An der nächsten Raststätte halten wir für eine Stunde. Wir treffen uns wieder um halb eins am Bus, aber bitte pünktlich sein.\nNummer 9 \nLiebe Fahrgäste! Bitte beachten Sie. Das ist ein außerplanmäßiger Halt. Bitte hier nicht aussteigen. In ein paar Minuten erreichen wir den Bahnhof Bonn Bad Godesberg. \nNummer 10 \nHerr Stefan Janda gebucht auf dem Flug LH 737 nach Warschau, wird zum Schalter F7 gebeten. Der Flug wird in ein paar Minuten geschlossen. Herr Janda gebucht nach Warschau bitte nach F7.",
+          "transcript": "Nummer 7: \n Liebe Kunden, zu Weihnachten bieten wir Ihnen Superpreise an ... z. B. erstklassiger italienischer Weißwein für 12 Euro 78 die Flasche oder exklusiver argentinischer Rotwein für 9 Euro 68. Besuchen Sie uns im 3. Stock. Frohe Weihnachten. \nNummer 8: \nLiebe Fahrgäste. Wir sind kurz vor Würzburg. Sicherlich haben Sie schon Hunger. An der nächsten Raststätte halten wir für eine Stunde. Wir treffen uns wieder um halb eins am Bus, aber bitte pünktlich sein.\nNummer 9: \nLiebe Fahrgäste! Bitte beachten Sie. Das ist ein außerplanmäßiger Halt. Bitte hier nicht aussteigen. In ein paar Minuten erreichen wir den Bahnhof Bonn Bad Godesberg. \nNummer 10: \nHerr Stefan Janda gebucht auf dem Flug LH 737 nach Warschau, wird zum Schalter F7 gebeten. Der Flug wird in ein paar Minuten geschlossen. Herr Janda gebucht nach Warschau bitte nach F7.",
           "questions": [
             {
-              "id": 4,
+              "id": 6,
               "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
               "audioUrl": "part2_ques7",
               "options": [
@@ -203,11 +250,11 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. \nKhông có thông tin về một bữa tiệc Giáng sinh."
             },
             {
-              "id": 5,
-              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "id": 7,
+              "question": "Die Fahrgäste sollen sich im Restaurant treffen.",
               "audioUrl": "part2_ques8",
               "options": [
                 {
@@ -220,7 +267,41 @@
                 }
               ],
               "answer": "B",
-              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. Không có thông tin về một bữa tiệc Giáng sinh."
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. \nKhông có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 8,
+              "question": "Die Fahrgäste sollen im Zug bleiben.",
+              "audioUrl": "part2_ques9",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 9,
+              "question": "Der Herr soll sofort zum Schalter kommen.",
+              "audioUrl": "part2_ques10",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
             }
           ]
         },
@@ -228,10 +309,10 @@
           "id": 3,
           "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
           "partType": "multiple_choice",
-          "transcript": "Nummer 11 \nTelefonansagedienst der deutschen Tele- kom. Die Rufnummer des Teilnehmers hat sich geändert. Bitte rufen Sie die Telefon- Auskunft an unter 11 8 33. \nNummer 12 \nHallo Jan, hier ist Boris. Du, ich bin noch im Zug. Du holst mich doch vom Bahnhof ab? Ich warte an der Information auf dich. \nNummer 13 \nMensch Jan, du Penner, hier noch mal Boris. Ich bin jetzt am Bahnhof. Und du? Wo bist du denn? Ich warte schon über 20 Minuten auf dich. Zehn Minuten Zeit hast du noch... bis 2, dann nehme ich ein Taxi. \nNummer 14 \nGuten Tag, hier Rogalla. Wir können am Samstag leider nicht zu Ihnen kommen. Am Sonntag haben wir aber Zeit. Rufen Sie uns doch bitte zurück, ob Ihnen das passt. Danke. \nNummer 15 \nHallo Alex. Walter hier. Kannst du schnell mal rüberkommen? Mein Computer hat einen Fehler. Ich kann nichts drucken. Melde dich doch bitte gleich, wenn du nach Hause kommst.",
+          "transcript": "Nummer 11: \nTelefonansagedienst der deutschen Tele- kom. Die Rufnummer des Teilnehmers hat sich geändert. Bitte rufen Sie die Telefon- Auskunft an unter 11 8 33. \nNummer 12: \nHallo Jan, hier ist Boris. Du, ich bin noch im Zug. Du holst mich doch vom Bahnhof ab? Ich warte an der Information auf dich. \nNummer 13: \nMensch Jan, du Penner, hier noch mal Boris. Ich bin jetzt am Bahnhof. Und du? Wo bist du denn? Ich warte schon über 20 Minuten auf dich. Zehn Minuten Zeit hast du noch... bis 2, dann nehme ich ein Taxi. \nNummer 14: \nGuten Tag, hier Rogalla. Wir können am Samstag leider nicht zu Ihnen kommen. Am Sonntag haben wir aber Zeit. Rufen Sie uns doch bitte zurück, ob Ihnen das passt. Danke. \nNummer 15: \nHallo Alex. Walter hier. Kannst du schnell mal rüberkommen? Mein Computer hat einen Fehler. Ich kann nichts drucken. Melde dich doch bitte gleich, wenn du nach Hause kommst.",
           "questions": [
             {
-              "id": 6,
+              "id": 10,
               "question": "Die Nummer ist:",
               "audioUrl": "part3_ques11",
               "options": [
@@ -248,13 +329,34 @@
                   "text": "12833"
                 }
               ],
-              "answer": "C",
+              "answer": "A",
               "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
             },
             {
-              "id": 7,
+              "id": 11,
               "question": "Wo genau treffen sich die Männer?",
               "audioUrl": "part3_ques12",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Am Zug."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Bahnhof."
+                },
+                {
+                  "id": "C",
+                  "text": "An der Information."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
+            },
+            {
+              "id": 12,
+              "question": "Wie lange will der Mann noch warten?",
+              "audioUrl": "part3_ques13",
               "options": [
                 {
                   "id": "A",
@@ -269,8 +371,50 @@
                   "text": "10 Minuten"
                 }
               ],
-              "answer": "A",
-              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
+              "answer": "C",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 13,
+              "question": "An welchem Tag will die Frau kommen?",
+              "audioUrl": "part3_ques14",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Am Montag."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Sonntag."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Samstag."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 14,
+              "question": "Was ist kaputt?",
+              "audioUrl": "part3_ques15",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Der Fernseher."
+                },
+                {
+                  "id": "B",
+                  "text": "Der Computer."
+                },
+                {
+                  "id": "C",
+                  "text": "Das Handy."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
             }
           ]
         }
@@ -387,7 +531,10 @@
           "questions": [
             {
               "id": 6,
-              "questionImage": ["demo1_part2_1", "demo1_part2_2"],
+              "questionImage": [
+                "demo_part2_6_1",
+                "demo_part2_6_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -403,7 +550,10 @@
             },
             {
               "id": 7,
-              "questionImage": ["demo1_part2_7_1", "demo1_part2_7_2"],
+              "questionImage": [
+                "demo_part2_7_1",
+                "demo_part2_7_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -419,7 +569,10 @@
             },
             {
               "id": 8,
-              "questionImage": ["demo1_part2_8_1", "demo1_part2_8_2"],
+              "questionImage": [
+                "demo_part2_8_1",
+                "demo_part2_8_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -435,7 +588,10 @@
             },
             {
               "id": 9,
-              "questionImage": ["demo1_part2_9_1", "demo1_part2_9_2"],
+              "questionImage": [
+                "demo_part2_9_1",
+                "demo_part2_9_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -451,7 +607,10 @@
             },
             {
               "id": 10,
-              "questionImage": ["demo1_part2_10_1", "demo1_part2_10_2"],
+              "questionImage": [
+                "demo_part2_10_1",
+                "demo_part2_10_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -475,7 +634,7 @@
             {
               "id": 11,
               "question": "In der Sprachschule. In der Sprachschule können Sie etwas zu essen kaufen.",
-              "questionImage": "demo1_part3_1",
+              "questionImage": "demo_part3_1",
               "options": [
                 {
                   "id": "A",
@@ -492,7 +651,7 @@
             {
               "id": 12,
               "question": "An der Post. Es ist Samstagnachmittag. Sie können auf der Post. Briefmarken kaufen.",
-              "questionImage": "demo1_part3_2",
+              "questionImage": "demo_part3_2",
               "options": [
                 {
                   "id": "A",
@@ -509,7 +668,7 @@
             {
               "id": 13,
               "question": "Am Bahnhof. Sie können hier Zigaretten rauchen.",
-              "questionImage": "demo1_part3_3",
+              "questionImage": "demo_part3_3",
               "options": [
                 {
                   "id": "A",
@@ -526,7 +685,7 @@
             {
               "id": 14,
               "question": "Eingang Restaurant. Heute Abend können Sie in diesem Restaurant tanzen.",
-              "questionImage": "demo1_part3_4",
+              "questionImage": "demo_part3_4",
               "options": [
                 {
                   "id": "A",
@@ -543,7 +702,7 @@
             {
               "id": 15,
               "question": "An der Haltestelle. Von 23 Uhr bis 1 Uhr fährt kein Bus.",
-              "questionImage": "demo1_part3_5",
+              "questionImage": "demo_part3_5",
               "options": [
                 {
                   "id": "A",
@@ -578,223 +737,334 @@
               "id": 1,
               "question": "die Woche",
               "matchedQuestion": "tuần",
-              "answer": ["die Woche", "tuần"]
+              "answer": [
+                "die Woche",
+                "tuần"
+              ]
             },
             {
               "id": 2,
               "question": "Montag",
               "matchedQuestion": "Thứ hai",
-              "answer": ["Montag", "Thứ hai"]
+              "answer": [
+                "Montag",
+                "Thứ hai"
+              ]
             },
             {
               "id": 3,
               "question": "Dienstag",
               "matchedQuestion": "Thứ ba",
-              "answer": ["Dienstag", "Thứ ba"]
+              "answer": [
+                "Dienstag",
+                "Thứ ba"
+              ]
             },
             {
               "id": 4,
               "question": "Mittwoch",
               "matchedQuestion": "Thứ Tư",
-              "answer": ["Mittwoch", "Thứ Tư"]
+              "answer": [
+                "Mittwoch",
+                "Thứ Tư"
+              ]
             },
             {
               "id": 5,
               "question": "Donnerstag",
               "matchedQuestion": "Thứ năm",
-              "answer": ["Donnerstag", "Thứ năm"]
+              "answer": [
+                "Donnerstag",
+                "Thứ năm"
+              ]
             },
             {
               "id": 6,
               "question": "Freitag",
               "matchedQuestion": "Thứ sáu",
-              "answer": ["Freitag", "Thứ sáu"]
+              "answer": [
+                "Freitag",
+                "Thứ sáu"
+              ]
             },
             {
               "id": 7,
               "question": "Samstag",
               "matchedQuestion": "Thứ bảy",
-              "answer": ["Samstag", "Thứ bảy"]
+              "answer": [
+                "Samstag",
+                "Thứ bảy"
+              ]
             },
             {
               "id": 8,
               "question": "Sonntag",
               "matchedQuestion": "Chủ nhật",
-              "answer": ["Sonntag", "Chủ nhật"]
+              "answer": [
+                "Sonntag",
+                "Chủ nhật"
+              ]
             },
             {
               "id": 9,
               "question": "der Frühling",
               "matchedQuestion": "mùa xuân",
-              "answer": ["der Frühling", "mùa xuân"]
+              "answer": [
+                "der Frühling",
+                "mùa xuân"
+              ]
             },
             {
               "id": 10,
               "question": "der Sommer",
               "matchedQuestion": "mùa hè",
-              "answer": ["der Sommer", "mùa hè"]
+              "answer": [
+                "der Sommer",
+                "mùa hè"
+              ]
             },
             {
               "id": 11,
               "question": "der Herbst",
               "matchedQuestion": "mùa thu",
-              "answer": ["der Herbst", "mùa thu"]
+              "answer": [
+                "der Herbst",
+                "mùa thu"
+              ]
             },
             {
               "id": 12,
               "question": "der Winter",
               "matchedQuestion": "mùa đông",
-              "answer": ["der Winter", "mùa đông"]
+              "answer": [
+                "der Winter",
+                "mùa đông"
+              ]
             },
             {
               "id": 13,
               "question": "der Tag",
               "matchedQuestion": "ngày",
-              "answer": ["der Tag", "ngày"]
+              "answer": [
+                "der Tag",
+                "ngày"
+              ]
             },
             {
               "id": 14,
               "question": "der Morgen",
               "matchedQuestion": "buổi sáng(từ 6-10 giờ)",
-              "answer": ["der Morgen", "buổi sáng(từ 6-10 giờ)"]
+              "answer": [
+                "der Morgen",
+                "buổi sáng(từ 6-10 giờ)"
+              ]
             },
             {
               "id": 15,
               "question": "der Vormittag",
               "matchedQuestion": "buổi sáng(từ 10-12 giờ)",
-              "answer": ["der Vormittag", "buổi sáng(từ 10-12 giờ)"]
+              "answer": [
+                "der Vormittag",
+                "buổi sáng(từ 10-12 giờ)"
+              ]
             },
             {
               "id": 16,
               "question": "der Mittag",
               "matchedQuestion": "giữa trưa",
-              "answer": ["der Mittag", "giữa trưa"]
+              "answer": [
+                "der Mittag",
+                "giữa trưa"
+              ]
             },
             {
               "id": 17,
               "question": "am + Tag",
               "matchedQuestion": "vào + ngày",
-              "answer": ["am + Tag", "vào + ngày"]
+              "answer": [
+                "am + Tag",
+                "vào + ngày"
+              ]
             },
             {
               "id": 18,
               "question": "der Nachmittag",
               "matchedQuestion": "buổi chiều",
-              "answer": ["der Nachmittag", "buổi chiều"]
+              "answer": [
+                "der Nachmittag",
+                "buổi chiều"
+              ]
             },
             {
               "id": 19,
               "question": "am Montag",
               "matchedQuestion": "vào thứ Hai",
-              "answer": ["am Montag", "vào thứ Hai"]
+              "answer": [
+                "am Montag",
+                "vào thứ Hai"
+              ]
             },
             {
               "id": 20,
               "question": "der Abend",
               "matchedQuestion": "buổi tối",
-              "answer": ["der Abend", "buổi tối"]
+              "answer": [
+                "der Abend",
+                "buổi tối"
+              ]
             },
             {
               "id": 21,
               "question": "das Wochenende",
               "matchedQuestion": "cuối tuần",
-              "answer": ["das Wochenende", "cuối tuần"]
+              "answer": [
+                "das Wochenende",
+                "cuối tuần"
+              ]
             },
             {
               "id": 22,
               "question": "die Nacht",
               "matchedQuestion": "đêm",
-              "answer": ["die Nacht", "đêm"]
+              "answer": [
+                "die Nacht",
+                "đêm"
+              ]
             },
             {
               "id": 23,
               "question": "am Wochenende",
               "matchedQuestion": "vào cuối tuần",
-              "answer": ["am Wochenende", "vào cuối tuần"]
+              "answer": [
+                "am Wochenende",
+                "vào cuối tuần"
+              ]
             },
             {
               "id": 24,
               "question": "am Morgen",
               "matchedQuestion": "vào buổi sáng",
-              "answer": ["am Morgen", "vào buổi sáng"]
+              "answer": [
+                "am Morgen",
+                "vào buổi sáng"
+              ]
             },
             {
               "id": 25,
               "question": "der Feiertag",
               "matchedQuestion": "kỳ nghỉ",
-              "answer": ["der Feiertag", "kỳ nghỉ"]
+              "answer": [
+                "der Feiertag",
+                "kỳ nghỉ"
+              ]
             },
             {
               "id": 26,
               "question": "am Vormittag",
               "matchedQuestion": "vào buổi sáng",
-              "answer": ["am Vormittag", "vào buổi sáng"]
+              "answer": [
+                "am Vormittag",
+                "vào buổi sáng"
+              ]
             },
             {
               "id": 27,
               "question": "das Jahr",
               "matchedQuestion": "năm",
-              "answer": ["das Jahr", "năm"]
+              "answer": [
+                "das Jahr",
+                "năm"
+              ]
             },
             {
               "id": 28,
               "question": "am Mittag",
               "matchedQuestion": "vào buổi trưa",
-              "answer": ["am Mittag", "vào buổi trưa"]
+              "answer": [
+                "am Mittag",
+                "vào buổi trưa"
+              ]
             },
             {
               "id": 29,
               "question": "der Monat",
               "matchedQuestion": "tháng",
-              "answer": ["der Monat", "tháng"]
+              "answer": [
+                "der Monat",
+                "tháng"
+              ]
             },
             {
               "id": 30,
               "question": "am Nachmittag",
               "matchedQuestion": "vào buổi chiều",
-              "answer": ["am Nachmittag", "vào buổi chiều"]
+              "answer": [
+                "am Nachmittag",
+                "vào buổi chiều"
+              ]
             },
             {
               "id": 31,
               "question": "am Abend",
               "matchedQuestion": "vào buổi tối",
-              "answer": ["am Abend", "vào buổi tối"]
+              "answer": [
+                "am Abend",
+                "vào buổi tối"
+              ]
             },
             {
               "id": 32,
               "question": "in der Nacht",
               "matchedQuestion": "vào ban đêm",
-              "answer": ["in der Nacht", "vào ban đêm"]
+              "answer": [
+                "in der Nacht",
+                "vào ban đêm"
+              ]
             },
             {
               "id": 33,
               "question": "der erste August",
               "matchedQuestion": "ngày đầu tiên của tháng 8",
-              "answer": ["der erste August", "ngày đầu tiên của tháng 8"]
+              "answer": [
+                "der erste August",
+                "ngày đầu tiên của tháng 8"
+              ]
             },
             {
               "id": 34,
               "question": "am ersten August",
               "matchedQuestion": "vào ngày đầu tiên của tháng 8",
-              "answer": ["am ersten August", "vào ngày đầu tiên của tháng 8"]
+              "answer": [
+                "am ersten August",
+                "vào ngày đầu tiên của tháng 8"
+              ]
             },
             {
               "id": 35,
               "question": "die Uhrzeit",
               "matchedQuestion": "thời gian",
-              "answer": ["die Uhrzeit", "thời gian"]
+              "answer": [
+                "die Uhrzeit",
+                "thời gian"
+              ]
             },
             {
               "id": 36,
               "question": "Wann?",
               "matchedQuestion": "Khi?",
-              "answer": ["Wann?", "Khi?"]
+              "answer": [
+                "Wann?",
+                "Khi?"
+              ]
             },
             {
               "id": 37,
               "question": "Wie spät ist es?",
               "matchedQuestion": "Bây giờ là mấy giờ?",
-              "answer": ["Wie spät ist es?", "Bây giờ là mấy giờ?"]
+              "answer": [
+                "Wie spät ist es?",
+                "Bây giờ là mấy giờ?"
+              ]
             }
           ]
         },
@@ -996,7 +1266,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "0%"
+      "score": "50%"
     },
     {
       "id": "5",
@@ -1042,26 +1312,43 @@
           "questions": [
             {
               "id": 5,
-              "question": ["Das ist Herr Gupta, ___ kommt aus Indien.", "Das ist Frau Kioka, ___ kommt aus Japan.", "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."],
-              "answer": ["er", "sie", "sie"],
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "answer": [
+                "er",
+                "sie",
+                "sie"
+              ],
               "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. Câu này giới thiệu Herr Gupta, là nam giới. Trong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. 'Das ist Frau Kioka, sie kommt aus Japan.'. Tương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. 'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. Ở câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. Khi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
             },
             {
               "id": 6,
               "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "answer": ["du", "Ich"],
+              "answer": [
+                "du",
+                "Ich"
+              ],
               "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
             },
             {
               "id": 7,
               "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "answer": ["ihr", "Wir"],
+              "answer": [
+                "ihr",
+                "Wir"
+              ],
               "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
             },
             {
               "id": 8,
               "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "answer": ["Sie", "Ich"]
+              "answer": [
+                "Sie",
+                "Ich"
+              ]
             }
           ]
         },
@@ -1085,12 +1372,18 @@
             {
               "id": 11,
               "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "answer": ["Sie", "Ich"]
+              "answer": [
+                "Sie",
+                "Ich"
+              ]
             },
             {
               "id": 12,
               "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "answer": ["du", "ich"]
+              "answer": [
+                "du",
+                "ich"
+              ]
             }
           ]
         },
@@ -1101,32 +1394,32 @@
           "questions": [
             {
               "id": 13,
-              "question": "Der Schrank ist teuer. ________ kommt aus Italien.",
+              "question": "Der Schrank ist teuer. ___ kommt aus Italien.",
               "answer": "Er"
             },
             {
               "id": 14,
-              "question": "Das Regal ist praktisch. ______ kostet nur 49 Euro.",
+              "question": "Das Regal ist praktisch. ___ kostet nur 49 Euro.",
               "answer": "Es"
             },
             {
               "id": 15,
-              "question": "Die Lampe ist neu. ______ ist modern.",
+              "question": "Die Lampe ist neu. ___ ist modern.",
               "answer": "Sie"
             },
             {
               "id": 16,
-              "question": "Das sind vier Stühle. ______ kosten nur 100 Euro.",
+              "question": "Das sind vier Stühle. ___ kosten nur 100 Euro.",
               "answer": "Sie"
             },
             {
               "id": 17,
-              "question": "Die Sessel sind sehr bequem und _______ sind günstig.",
+              "question": "Die Sessel sind sehr bequem und ___ sind günstig.",
               "answer": "sie"
             },
             {
               "id": 18,
-              "question": "Der Tisch da ist schön, aber______ ist klein.",
+              "question": "Der Tisch da ist schön, aber___ ist klein.",
               "answer": "er"
             }
           ]
@@ -1138,29 +1431,29 @@
           "questions": [
             {
               "id": 19,
-              "question": "Anna, was machst ______?    Ich surfe ein bisschen im Internet.",
+              "question": "Anna, was machst ___?    Ich surfe ein bisschen im Internet.",
               "answer": "du"
             },
             {
               "id": 20,
-              "question": "Frau Schmidt, was machen ______?   Ich schreibe gerade eine E-Mail.",
+              "question": "Frau Schmidt, was machen ___?   Ich schreibe gerade eine E-Mail.",
               "answer": "Sie"
             },
             {
               "id": 21,
-              "question": "Daniel und Anna, was macht ______? Wir surfen im Internet.",
+              "question": "Daniel und Anna, was macht ___? Wir surfen im Internet.",
               "answer": "ihr"
             },
             {
               "id": 22,
-              "question": "Herr Meyer und Frau Schmidt, was machen ______? Wir lesen gerade eine E-Mail.",
+              "question": "Herr Meyer und Frau Schmidt, was machen ___? Wir lesen gerade eine E-Mail.",
               "answer": "Sie"
             }
           ]
         }
       ],
       "isCompleted": true,
-      "score": "17%"
+      "score": "9%"
     },
     {
       "id": "6",
@@ -1177,7 +1470,12 @@
             {
               "id": 1,
               "question": "Wo wollen die Freundinnen die Party machen?",
-              "questionImage": ["demo02_1_1", "demo02_1_2", "demo02_1_3"],
+              "questionImage": [
+                "demo02_1_1",
+                "demo02_1_2",
+                "demo02_1_3"
+              ],
+              "audioUrl": "part1_ques1_2",
               "options": [
                 {
                   "id": "A",
@@ -1197,7 +1495,12 @@
             {
               "id": 2,
               "question": "Wann wollen sie sich treffen?",
-              "questionImage": ["demo02_2_1", "demo02_2_2", "demo02_2_3"],
+              "questionImage": [
+                "demo02_2_1",
+                "demo02_2_2",
+                "demo02_2_3"
+              ],
+              "audioUrl": "part1_ques2_2",
               "options": [
                 {
                   "id": "A",
@@ -1217,7 +1520,11 @@
             {
               "id": 3,
               "question": "Wo stehen Taxis?",
-              "questionImage": ["demo02_3_1", "demo02_3_2", "demo02_3_3"],
+              "questionImage": [
+                "demo02_3_1",
+                "demo02_3_2",
+                "demo02_3_3"
+              ],
               "audioUrl": "part1_ques3_2",
               "options": [
                 {
@@ -1238,7 +1545,11 @@
             {
               "id": 4,
               "question": "Wie lange dauern die Sommerkurse?",
-              "questionImage": ["demo02_4_1", "demo02_4_2", "demo02_4_3"],
+              "questionImage": [
+                "demo02_4_1",
+                "demo02_4_2",
+                "demo02_4_3"
+              ],
               "audioUrl": "part1_ques4_2",
               "options": [
                 {
@@ -1259,7 +1570,11 @@
             {
               "id": 5,
               "question": "Was soll Johanna mitbringen?",
-              "questionImage": ["demo02_5_1", "demo02_5_2", "demo02_5_3"],
+              "questionImage": [
+                "demo02_5_1",
+                "demo02_5_2",
+                "demo02_5_3"
+              ],
               "audioUrl": "part1_ques5_2",
               "options": [
                 {
@@ -1280,7 +1595,11 @@
             {
               "id": 6,
               "question": "Wann ist Frau Horn aus dem Urlaub zurück?",
-              "questionImage": ["demo02_6_1", "demo02_6_2", "demo02_6_3"],
+              "questionImage": [
+                "demo02_6_1",
+                "demo02_6_2",
+                "demo02_6_3"
+              ],
               "audioUrl": "part1_ques6_2",
               "options": [
                 {
@@ -1357,7 +1676,7 @@
             {
               "id": 10,
               "question": "Fahrgäste nach Innsbruck sollen mit dem ICE 346 fahren.",
-              "audioUrl": "part2_ques9_2",
+              "audioUrl": "part2_ques10_2",
               "options": [
                 {
                   "id": "A",
@@ -1591,7 +1910,10 @@
             {
               "id": 6,
               "question": "Sie wollen viele Freunde zu Ihrem Geburtstag einladen. Sie suchen einen Ort.",
-              "questionParagraph": ["demo2_part2_6_1", "demo2_part2_6_2"],
+              "questionImage": [
+                "demo_part2_6_1",
+                "demo_part2_6_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -1608,7 +1930,10 @@
             {
               "id": 7,
               "question": "Der Computer ist kaputt. Sie können ihn nicht allein reparieren.",
-              "questionParagraph": ["demo2_part2_7_1", "demo2_part2_7_2"],
+              "questionImage": [
+                "demo_part2_7_1",
+                "demo_part2_7_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -1625,6 +1950,10 @@
             {
               "id": 8,
               "question": "Sie möchten am Samstagabend mit Freunden tanzen gehen.",
+              "questionImage": [
+                "demo_part2_8_1",
+                "demo_part2_8_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -1641,6 +1970,10 @@
             {
               "id": 9,
               "question": "Sie möchten am Wochenende Fußball spielen.",
+              "questionImage": [
+                "demo_part2_9_1",
+                "demo_part2_9_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -1657,6 +1990,10 @@
             {
               "id": 10,
               "question": "Sie studieren und möchten ein bisschen arbeiten.",
+              "questionImage": [
+                "demo_part2_10_1",
+                "demo_part2_10_2"
+              ],
               "options": [
                 {
                   "id": "A",
@@ -1680,7 +2017,7 @@
             {
               "id": 11,
               "question": "Vor einem Blumenladen, Am Sonntagvormittag bekommen Sie hier Blumen",
-              "questionImage": "demo2_part3_1",
+              "questionImage": "demo_part3_1",
               "options": [
                 {
                   "id": "A",
@@ -1697,7 +2034,7 @@
             {
               "id": 12,
               "question": "Im Restaurant. Jeden Montag bietet das Restaurant indisches Essen an.",
-              "questionImage": "demo2_part3_2",
+              "questionImage": "demo_part3_2",
               "options": [
                 {
                   "id": "A",
@@ -1714,7 +2051,7 @@
             {
               "id": 13,
               "question": "Bei der Straßenbahn. Es ist der 2. Mai, 21 Uhr. Sie können jetzt nicht zum. Hauptbahnhof fahren.",
-              "questionImage": "demo2_part3_3",
+              "questionImage": "demo_part3_3",
               "options": [
                 {
                   "id": "A",
@@ -1731,7 +2068,7 @@
             {
               "id": 14,
               "question": "An einer Haustür. Sie können die Wohnung nicht besichtigen.",
-              "questionImage": "demo2_part3_4",
+              "questionImage": "demo_part3_4",
               "options": [
                 {
                   "id": "A",
@@ -1748,7 +2085,7 @@
             {
               "id": 15,
               "question": "Im Bahnhof. Ab 22 Uhr können Sie keine Fahrkarten mehr kaufen.",
-              "questionImage": "demo2_part3_5",
+              "questionImage": "demo_part3_5",
               "options": [
                 {
                   "id": "A",
@@ -1795,8 +2132,8 @@
             },
             {
               "id": 2,
-              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
-              "audioUrl": "part2_ques7",
+              "question": "Die Fahrgäste sollen sich im Restaurant treffen.",
+              "audioUrl": "part2_ques8",
               "options": [
                 {
                   "id": "A",
@@ -1811,8 +2148,8 @@
             },
             {
               "id": 3,
-              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
-              "audioUrl": "part2_ques7",
+              "question": "Die Fahrgäste sollen im Zug bleiben.",
+              "audioUrl": "part2_ques9",
               "options": [
                 {
                   "id": "A",
@@ -1827,8 +2164,8 @@
             },
             {
               "id": 4,
-              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
-              "audioUrl": "part2_ques7",
+              "question": "Der Herr soll sofort zum Schalter kommen.",
+              "audioUrl": "part2_ques10",
               "options": [
                 {
                   "id": "A",
@@ -1839,7 +2176,7 @@
                   "text": "Falsch"
                 }
               ],
-              "answer": "B"
+              "answer": "A"
             }
           ]
         },
@@ -1933,7 +2270,7 @@
           "questions": [
             {
               "id": 9,
-              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "question": "Ergänzen Sie die Pronomen. Haben _ Zeit?",
               "options": [
                 {
                   "id": "A",
@@ -1952,19 +2289,28 @@
             },
             {
               "id": 10,
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "question": "Hallo, Anna, woher kommst _ ? _ komme aus New York.",
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ],
               "answer": "A"
@@ -1973,31 +2319,1153 @@
         }
       ],
       "isCompleted": true,
-      "score": "0%",
+      "score": "30%",
       "conditionStatus": "not pass"
     },
     {
       "id": "9",
       "title": "QUIZ KẾT THÚC PHASE 2",
       "exerciseType": "quiz",
-      "phaseId": 2
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Die Fahrgäste sollen den Bus nehmen.",
+              "audioUrl": "part2_ques7_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 2,
+              "question": "Die Kunden sollen in den zweiten Stock kommen.",
+              "audioUrl": "part2_ques8_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Die Leute sollen zu Hause bleiben.",
+              "audioUrl": "part2_ques9_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Fahrgäste nach Innsbruck sollen mit dem ICE 346 fahren.",
+              "audioUrl": "part2_ques10_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "questions": [
+            {
+              "id": 5,
+              "question": "Herr Beck übernachtet im Hotel.",
+              "questionParagraph": "Liebe Frau Dehner, \nvielen Dank für die Einladung zu Ihrem Jazz-Konzert. \nIch komme gern und ich freue mich sehr auf das Konzert. Ich danke Ihnen auch, dass ich in Ihrem Gästezimmer schlafen kann und kein Hotel suchen muss. \nMein Zug kommt schon um circa 16 Uhr an. \nKann ich Ihnen am Nachmittag dann \nvor dem Konzert etwas helfen? \nBis bald und herzliche Grüße \nWinfried Beck",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 6,
+              "question": "Herr Beck bietet Frau Dehner seine Hilfe an.",
+              "questionParagraph": "Liebe Frau Dehner, \nvielen Dank für die Einladung zu Ihrem Jazz-Konzert. \nIch komme gern und ich freue mich sehr auf das Konzert. Ich danke Ihnen auch, dass ich in Ihrem Gästezimmer schlafen kann und kein Hotel suchen muss. \nMein Zug kommt schon um circa 16 Uhr an. \nKann ich Ihnen am Nachmittag dann \nvor dem Konzert etwas helfen? \nBis bald und herzliche Grüße \nWinfried Beck",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist kurz vor 4.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_3_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_3_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_3_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist kurz nach 4.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_4_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_4_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_4_3"
+                }
+              ],
+              "answer": "B"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 9,
+              "question": "_ sprechen Deutsch.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 10,
+              "question": "Guten Tag, wie heißen _ ? Guten Tag, _ heiße Berger, Roland Berger.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
+                }
+              ],
+              "answer": "B"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "10",
       "title": "Bài tập nghe 3",
       "exerciseType": "listening",
-      "phaseId": 4
+      "phaseId": 4,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Sie hören fünf kurze Texte. Sie hören jeden Text zweimal. Wählen Sie für die Aufgaben 1 bis 5 die richtige Lösung: [a], [b] oder [c].",
+          "partType": "multiple_choice",
+          "transcript": "Und hier das Wetter: Endlich fängt der Frühling an. Heute, am Donnerstag, war es noch etwas kälter, aber morgen können wir uns auf Temperaturen von 15 bis 21 Grad freuen und so bleibt es auch am Samstag und am Sonntag: sonnig und warm. Erst ab Montag kann es wieder etwas regnen. \nRadio Pop und Rock - Ihr Musiksender! Heute fährt ein Auto durch Frankfurt. Auf diesem Auto ist ein großes Radio, an diesem Radio ist ein großes Schild. Ihre Aufgabe: Rufen Sie uns an, sagen Sie uns, was auf dem Schild steht, und Sie können gewinnen. Und was? 5 Karten für die Radio Pop und Rock Club- Disko. \nWegen des guten Wetters sind alle Parkplätze vor dem Schwimmbad besetzt. Autofahrer können ihren Wagen noch hinter dem Sportplatz abstellen. Weil es auch hier nur wenige Parkmöglichkeiten gibt, empfehlen wir, mit der U-Bahn Linie 2 zum Schwimmbad zu fahren. \nGuten Tag, Herr Lohmann, hier Zahnarztpraxis Dr. Lemmer. Sie haben morgen, am Dienstag, um 14 Uhr einen Termin. Leider ist Herr Lemmer heute und morgen krank. Können Sie am Mittwoch um 10 Uhr kommen? Bitte rufen Sie uns heute bis 18 Uhr noch an. Vielen Dank. \nHallo, Claudia, hier ist Pauline. Du, Claudia, leider kann ich heute Abend nicht ins Kino. Meine Tochter ist krank geworden, wir waren gerade beim Arzt und heute muss ich bei ihr bleiben. Treffen wir uns bei mir in der Wohnung? Ich habe auch viele Filme auf DVD. Die können wir hier sehen. Ist das okay?",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wie wird das Wetter am Wochenende?",
+              "audioUrl": "part1_ques1_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Es bleibt schön."
+                },
+                {
+                  "id": "B",
+                  "text": "Es kann regnen."
+                },
+                {
+                  "id": "C",
+                  "text": "Es wird kälter."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Khách hàng hỏi giá của chiếc áo len, được giảm giá 30%. Người bán xác nhận rằng giá đã giảm là 19,95 Euro. \nTrong câu hỏi trắc nghiệm, tùy chọn C (19,95 €) là câu trả lời đúng vì nó khớp với giá được đề cập trong hộp thoại."
+            },
+            {
+              "id": 2,
+              "question": "Was kann man gewinnen?",
+              "audioUrl": "part1_ques2_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ein Auto."
+                },
+                {
+                  "id": "B",
+                  "text": "Ein Radio."
+                },
+                {
+                  "id": "C",
+                  "text": "Eintrittskarten."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Người qua đường hỏi giờ, và người phụ nữ trả lời là 'gleich 5 Uhr', nghĩa là gần 5 giờ.\n Trong câu hỏi trắc nghiệm, phương án B (Gleich 5 Uhr) là câu trả lời đúng vì nó phản ánh đúng thời gian được đưa ra trong đoạn hội thoại."
+            },
+            {
+              "id": 3,
+              "question": "Wo gibt es noch freie Parkplätze?",
+              "audioUrl": "part1_ques3_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Vor dem Schwimmbad."
+                },
+                {
+                  "id": "B",
+                  "text": "Hinter dem Sportplatz."
+                },
+                {
+                  "id": "C",
+                  "text": "Es gibt keine Parkplätze mehr."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Câu hỏi đang hỏi về con trai của bà Hegers, và nhìn vào hình, ta thấy có ba biển hiệu cho các lớp học khác nhau: \n 9. Klasse (lớp 9), 3. Klasse (lớp 3), và 4. Klasse (lớp 4). Để trả lời câu này, ta cần chọn đúng lớp mà con trai của bà ấy đang học."
+            },
+            {
+              "id": 4,
+              "question": "Wann kann Herr Lohmann einen Termin haben?",
+              "audioUrl": "part1_ques4_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Heute um 18 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Dienstag um 14 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Mittwoch um 10 Uhr."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Phụ thuộc vào hình ảnh người phụ nữ sử dụng để lên tầng. Nếu người phụ nữ sử dụng thang máy, thì đáp án là a); nếu sử dụng cầu thang bộ, thì là b); và nếu dùng thang cuốn thì đáp án là c)."
+            },
+            {
+              "id": 5,
+              "question": "Wo will Pauline ihre Freundin treffen?",
+              "audioUrl": "part1_ques5_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Im Kino."
+                },
+                {
+                  "id": "B",
+                  "text": "In ihrer Wohnung."
+                },
+                {
+                  "id": "C",
+                  "text": "Beim Arzt."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Hình ảnh đầu tiên (lựa chọn a) có hình chiếc ô trên bãi biển, đại diện cho kỳ nghỉ biển. Hình ảnh thứ hai (lựa chọn b) là một người đàn ông đang ngồi bàn làm việc, thể hiện việc đi làm. Hình ảnh thứ ba (lựa chọn c) là cảnh một gia đình với người mẹ và hai đứa trẻ, đại diện cho việc đi gặp gia đình. \nVì câu hỏi hỏi về 'Wohin fährt Herr Albers?' (Ông Albers đi đâu?), nên đáp án có thể dựa vào ngữ cảnh hình ảnh hoặc nội dung mà bạn học trước đó. \nDựa vào hình ảnh và ngữ cảnh của câu hỏi, đáp án đúng là c: Zur Familie (Đi gặp gia đình)."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Sie hören fünfkurze Gespräche. Sie hören jeden Text einmal. Wählen Sie für die Aufgaben 1 bis 15 die richtige Lösung: [a], [b] oder [c].",
+          "partType": "multiple_choice",
+          "transcript": "Verzeihung. Wie komme ich zum Bahnhof? Muss ich hier nach rechts gehen? \nNein, nein, nicht nach rechts. Das stimmt nicht. Gehen Sie geradeaus und an der Ecke nach links. Dann noch 100 Meter geradeaus und dann sehen Sie schon den Bahnhof. \nVielen Dank. \nHallo, Gerhard. Kannst du mir helfen? \nJa, was ist los? Wieder Probleme mit dem Computer? \nNein, du hast mir ja geholfen. Der geht jetzt wieder. Nur macht jetzt mein Drucker Probleme. Kann ich zu dir kommen und bei dir etwas drucken? \nNatürlich. Nur im Moment ist es schlecht. Ich muss gleich weg. Ich rufe dich über mein Handy an, wenn ich wieder zu Hause bin. \nGuten Tag. Kann ich Ihnen helfen? \nJa. Der Pullover hier gefällt mir. Aber nicht in Grün. Haben Sie diesen Pullover auch in Rot? \nNein, leider nicht. Aber wir haben Jacken bekommen. Für nur 55 Euro. Sie sind im Angebot. Und dann haben wir auch noch Hosen zu günstigen Preisen. \nNa ja, eine Jacke habe ich bei Ihnen schon letzte Woche gekauft und Hosen habe ich genug. Schade, dass Sie den Pullover nicht in Rot haben. \nGuten Tag, Meyer, ich habe einen Termin um 15 Uhr. \nGuten Tag, Herr Meyer. Vier Patienten sind noch vor Ihnen. \nMuss ich lange warten? \nNein, vielleicht eine halbe Stunde. Nehmen Sie bitte im Wartezimmer Platz. Der Doktor ruft Sie dann. \nHerr Schneider. Wie kommen Sie zur Arbeit? \nFrüher habe ich immer das Auto genommen, aber man findet ja keine Parkplätze mehr. Deshalb nehme ich jetzt immer das Fahrrad. Der Weg zur Arbeit ist ja nicht weit. Natürlich wäre die U-Bahn bequemer, aber das ist mir zu teuer und etwas Sport zu machen, ist ja auch nicht schlecht.",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Wie muss die Frau gehen?",
+              "audioUrl": "part2_ques6_A2",
+              "questionImage": [
+                "part2_ques6_1_A2",
+                "part2_ques6_2_A2",
+                "part2_ques6_3_A2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. \nKhông có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 7,
+              "question": "Was ist kaputt?",
+              "audioUrl": "part2_ques7_A2",
+              "questionImage": [
+                "part2_ques7_1_A2",
+                "part2_ques7_2_A2",
+                "part2_ques7_3_A2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. \nKhông có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 8,
+              "question": "Was möchte die Frau kaufen?",
+              "audioUrl": "part2_ques8_A2",
+              "questionImage": [
+                "part2_ques8_1_A2",
+                "part2_ques8_2_A2",
+                "part2_ques8_3_A2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 9,
+              "question": "Wohin soll der Mann gehen?",
+              "audioUrl": "part2_ques9_A2",
+              "questionImage": [
+                "part2_ques9_1_A2",
+                "part2_ques9_2_A2",
+                "part2_ques9_3_A2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 10,
+              "question": "Wie kommt Herr Schneider zur Arbeit?",
+              "audioUrl": "part2_ques10_A2",
+              "questionImage": [
+                "part2_ques10_1_A2",
+                "part2_ques10_2_A2",
+                "part2_ques10_3_A2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Sie hören ein Interview. Sie hören den Text zweimal. Wählen Sie für die Aufgaben 16 bis 20 [Ja] oder [Nein]. Lesen Sie jetzt die Aufgaben.",
+          "partType": "multiple_choice",
+          "audioUrl": "part3_A2",
+          "transcript": "Genau. Nun, ich war ja auch lange arbeitslos. Im Internet gibt es viele Jobbörsen, aber da hatte ich kein Glück. \nUnd wo haben Sie noch gesucht? \nNa ja, ich bin durch die Straßen gelaufen und habe dann in einem Supermarkt eine Anzeige an der Wand gesehen: Pizzafahrer gesucht. \nUnd haben Sie sich gleich beworben? \nNein, zuerst habe ich gedacht, ich bekomme die Stelle nicht, weil ich ja keinen Führerschein habe, und habe zwei Wochen gewartet. Dann aber hat meine Freundin gesagt: Du hast doch ein schnelles Fahr- rad, geh doch mal in die Pizzeria und sprich dort mit dem Chef. Vielleicht brauchst du ja für den Job kein Auto. \nUnd haben Sie das gemacht? \nJa, ich bin da vorbeigegangen und habe mit dem Chef geredet. Der Chef war sehr freundlich und als ich ihm erzählt habe, dass ich die Stadt sehr gut kenne und superschnell Fahrrad fahren kann, hat er mir den Job gegeben, auch ohne Auto. \nUnd wie ist die Arbeit? \nIch arbeite immer von 16 bis 22 Uhr. Ich bin in der Pizzeria und warte, dass Kunden anrufen. Und wenn es nichts zu tun gibt, helfe ich in der Küche. \nSie sind also zufrieden? \nJa. Ich bin froh, dass ich jetzt seit einem halben Jahr einen Job habe. Bald fange ich mit meiner Aus- bildung an, dann kann ich sicher auch noch bei der Pizzeria weiter arbeiten, mit weniger Stunden.",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Er hat im Internet keine Arbeit gefunden.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
+            },
+            {
+              "id": 12,
+              "question": "Er hat sich sofort bei einer Pizzeria beworben.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
+            },
+            {
+              "id": 13,
+              "question": "Für seine Arbeit braucht er keinen Führerschein.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 14,
+              "question": "Er arbeitet nicht nur als Fahrer.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 15,
+              "question": "Seit einem Jahr macht er eine Ausbildung.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "11",
       "title": "Bài tập đọc 3",
       "exerciseType": "reading",
-      "phaseId": 4
+      "phaseId": 4,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Sie lesen in einer Zeitung diesen Text. Wählen Sie für die Aufgaben 1 bis 5 die richtige Lösung: [a], [b] oder [c] .",
+          "partType": "multiple_choice",
+          "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Nach seiner Ausbildung ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat er in Hamburg gearbeitet. "
+                },
+                {
+                  "id": "B",
+                  "text": "hat er Jobs im Ausland gehabt."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er Englisch und Französisch gelernt."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn ”Dein Zug kommt… um 12.36 Uhr an”."
+            },
+            {
+              "id": 2,
+              "question": "Bei der Firma Kantor Partners arbeitet Joachim Sanders ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "als Sekretär."
+                },
+                {
+                  "id": "B",
+                  "text": "in der Küche."
+                },
+                {
+                  "id": "C",
+                  "text": "als Personalchef."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 3,
+              "question": "Viele Kollegen denken, dass ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Büroarbeit einfache Arbeit für Frauen ist. "
+                },
+                {
+                  "id": "B",
+                  "text": "Frauen schneller arbeiten als Männer."
+                },
+                {
+                  "id": "C",
+                  "text": "Frauen manchmal Probleme im Beruf haben."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 4,
+              "question": "In einem Wettbewerb...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "war er der Beste."
+                },
+                {
+                  "id": "B",
+                  "text": "hat er viel gelacht."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er eine Frau kennengelernt."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 5,
+              "question": "Dieser Text informiert über:",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Frauen in Männerberufen."
+                },
+                {
+                  "id": "B",
+                  "text": "Männer in Frauenberufen. "
+                },
+                {
+                  "id": "C",
+                  "text": "neue Berufe."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Sie gehen einkaufen. Lesen Sie die Aufgaben 6 bis 10 und die Information im Kaufhaus. Inwelches Stockwerk gehen Sie? Kreuzen Sie an: [a], [b] oder [c] .",
+          "partType": "multiple_choice",
+          "questionImage": "demo_part2_read_A2",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Sie möchten Kaffee trinken und etwas essen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Erdgeschoss."
+                },
+                {
+                  "id": "B",
+                  "text": "3. Stock."
+                },
+                {
+                  "id": "C",
+                  "text": "Anderer Stock."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong thư có đoạn ”Dein Zug kommt… um 12.36 Uhr an”."
+            },
+            {
+              "id": 7,
+              "question": "Sie brauchen einen neuen Wintermantel.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "1. Stock."
+                },
+                {
+                  "id": "B",
+                  "text": "2. Stock."
+                },
+                {
+                  "id": "C",
+                  "text": "Anderer Stock."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 8,
+              "question": "Sie suchen eine Hose für Ihren 6-jährigen Sohn.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "1. Stock."
+                },
+                {
+                  "id": "B",
+                  "text": "2. Stock."
+                },
+                {
+                  "id": "C",
+                  "text": "Anderer Stock."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 9,
+              "question": "Sie interessieren sich für eine neue Kaffeemaschine.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Erdgeschoss."
+                },
+                {
+                  "id": "B",
+                  "text": "3. Stock."
+                },
+                {
+                  "id": "C",
+                  "text": "Anderer Stock."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 10,
+              "question": "Ihre Freundin hat Geburtstag. Sie möchten ihr eine Eintrittskarte für ein Konzert schenken.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Erdgeschoss."
+                },
+                {
+                  "id": "B",
+                  "text": "2. Stock."
+                },
+                {
+                  "id": "C",
+                  "text": "Anderer Stock."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "partName": "Phần 3: Sie lesen eine E-Mail. Wählen Sie für die Aufgaben 11 bis 15 die richtige Lösung: [a], [b] oder [c].",
+          "partType": "multiple_choice",
+          "questionParagraph": "Liebe Alexa, \nerinnerst du dich an den tollen Urlaub am Bodensee? Dort haben wir uns kennengelernt und es war sehr schön. Ich wollte dir schon die ganze Zeit schreiben, hatte aber so wenig Zeit. Tut mir wirklich leid. \nWie geht es dir? Bei mir läuft alles super. Ich bin inzwischen mit dem Studium fertig und hoffe, dass ich bald eine Arbeit finde. Und das Beste: Ich habe endlich eine größere Wohnung gefunden. Dort wohne ich jetzt seit einem Monat. \nDas möchte ich feiern. Deshalb schreibe ich dir. Ich möchte gern, dass du zu meiner Party kommst. Hast du Lust zu kommen und mich zu besuchen? \nDie Party findet am Samstag, dem 5. September, statt. Essen und Trinken habe ich schon eingekauft. Du brauchst nichts mitzubringen, nur vielleicht Musik aus deinem Land, es gibt doch so schöne griechische Musik! Wir wollen ja auch tanzen! Das wäre super. \nUnd wenn du schon mal in Berlin bist, kannst du auch etwas länger bleiben. Es gibt in Kreuzberg billige Hotels, aber wenn du willst, kannst du auch gern in meiner Wohnung schlafen, Platz gibt es genug, übernachten ist also kein Problem. Überleg es dir, ich würde mich sehr freuen, dich wiederzusehen. \nMeine neue Adresse ist Wrangelstraße 40 in Kreuzberg. Und am Sonntag könnte ich dir Berlin zeigen, die Stadt wird dir bestimmt gefallen, ich habe auch zwei Fahrräder. Und am Abend gibt es hier ein tolles Straßenfest mit Musik und Essen. \nLass bald etwas von dir hören! \nViele Grüße \nThomas",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Thomas entschuldigt sich, weil er ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "a so spät schreibt."
+                },
+                {
+                  "id": "B",
+                  "text": "in den Ferien keine Zeit hatte."
+                },
+                {
+                  "id": "C",
+                  "text": "den Urlaub vergessen hat."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Dein Zug kommt… um 12.36 Uhr an”."
+            },
+            {
+              "id": 12,
+              "question": "Vor kurzem ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat er eine Arbeit gefunden."
+                },
+                {
+                  "id": "B",
+                  "text": "ist er umgezogen."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er sein Studium angefangen."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 13,
+              "question": "Thomas schreibt, dass er ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Alexa einladen möchte."
+                },
+                {
+                  "id": "B",
+                  "text": "nach Griechenland fahren möchte."
+                },
+                {
+                  "id": "C",
+                  "text": "mit Alexa eine Party vorbereiten möchte."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 14,
+              "question": "Er findet es toll, wenn Alexa...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Getränke mitbringt."
+                },
+                {
+                  "id": "B",
+                  "text": "mit ihm tanzen geht."
+                },
+                {
+                  "id": "C",
+                  "text": "sich um Musik kümmert."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            },
+            {
+              "id": 15,
+              "question": "Was schlägt Thomas vor?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Beide können einen Ausflug mit dem Fahrrad machen. "
+                },
+                {
+                  "id": "B",
+                  "text": "Er kann ein billiges Zimmer in einem Hotel reservieren. "
+                },
+                {
+                  "id": "C",
+                  "text": "Sie können am Abend in ein Restaurant gehen."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn ”Ich bin ab 12.15 Uhr… vor der Auskunft”. "
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "12",
       "title": "QUIZ KẾT THÚC PHASE 1",
-      "phaseId": 4
+      "exerciseType": "quiz",
+      "phaseId": 4,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wie wird das Wetter am Wochenende?",
+              "audioUrl": "part1_ques1_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Es bleibt schön."
+                },
+                {
+                  "id": "B",
+                  "text": "Es kann regnen."
+                },
+                {
+                  "id": "C",
+                  "text": "Es wird kälter."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 2,
+              "question": "Was kann man gewinnen?",
+              "audioUrl": "part1_ques2_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ein Auto."
+                },
+                {
+                  "id": "B",
+                  "text": "Ein Radio."
+                },
+                {
+                  "id": "C",
+                  "text": "Eintrittskarten."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Wo gibt es noch freie Parkplätze?",
+              "audioUrl": "part1_ques3_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Vor dem Schwimmbad."
+                },
+                {
+                  "id": "B",
+                  "text": "Hinter dem Sportplatz."
+                },
+                {
+                  "id": "C",
+                  "text": "Es gibt keine Parkplätze mehr."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Wann kann Herr Lohmann einen Termin haben?",
+              "audioUrl": "part1_ques4_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Heute um 18 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Dienstag um 14 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Mittwoch um 10 Uhr."
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "questions": [
+            {
+              "id": 5,
+              "question": "Nach seiner Ausbildung ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat er in Hamburg gearbeitet. "
+                },
+                {
+                  "id": "B",
+                  "text": "hat er Jobs im Ausland gehabt."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er Englisch und Französisch gelernt."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 6,
+              "question": "Bei der Firma Kantor Partners arbeitet Joachim Sanders ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "als Sekretär."
+                },
+                {
+                  "id": "B",
+                  "text": "in der Küche."
+                },
+                {
+                  "id": "C",
+                  "text": "als Personalchef."
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Guten Tag, _ geht es Ihnen?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "wann"
+                },
+                {
+                  "id": "B",
+                  "text": "wie"
+                },
+                {
+                  "id": "C",
+                  "text": "warum"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 8,
+              "question": "_ wohnen Sie?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Wo"
+                },
+                {
+                  "id": "B",
+                  "text": "welche"
+                },
+                {
+                  "id": "C",
+                  "text": "Wie"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 9,
+              "question": "Ist das der nett______ Lehrer? Ja, das ist ein nett______ Lehrer.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "nette",
+                    "netter"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "bequeme",
+                    "nette"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "gute",
+                    "nette"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 10,
+              "question": "Ist das die neu______ Tasche? Ja, das ist eine neu______ Tasche.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "neue ",
+                    "neuen"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "neue",
+                    "neue "
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "neune",
+                    "neue"
+                  ]
+                }
+              ],
+              "answer": "B"
+            }
+          ]
+        }
+      ]
     }
   ],
   "finalexam": [
@@ -2289,7 +3757,7 @@
           "questions": [
             {
               "id": 16,
-              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "question": "Ergänzen Sie die Pronomen. Haben _ Zeit?",
               "options": [
                 {
                   "id": "A",
@@ -2308,64 +3776,91 @@
             },
             {
               "id": 17,
-              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "question": "Hallo, Anna, woher kommst _ ? _ komme aus New York.",
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Sie"]
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
                 }
               ],
               "answer": "A"
             },
             {
               "id": 18,
-              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "question": "Marc und Dominic, wo wohnt _ ? _ wohnen in Frankfurt.",
               "options": [
                 {
                   "id": "A",
-                  "text": ["Sie", "Ich"]
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["ihr", "Wir"]
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["du", "Ich"]
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
                 }
               ],
               "answer": "B"
             },
             {
               "id": 19,
-              "question": "Marie, kommst ______ bitte? Nein,_____ habe keine Zeit.",
+              "question": "Marie, kommst ____ bitte? Nein,_____ habe keine Zeit.",
               "options": [
                 {
                   "id": "A",
-                  "text": ["du", "ich"]
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
                 },
                 {
                   "id": "B",
-                  "text": ["du", "Er"]
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
                 },
                 {
                   "id": "C",
-                  "text": ["ich", "ich"]
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
                 }
               ],
               "answer": "A"
             },
             {
               "id": 20,
-              "question": "Der Schrank ist teuer. ________ kommt aus Italien.",
+              "question": "Der Schrank ist teuer. ______ kommt aus Italien.",
               "options": [
                 {
                   "id": "A",
@@ -6174,64 +7669,178 @@
       "isCompleted": true
     },
     {
-      "submissionDate": "2024-10-03T02:16:16.408Z",
-      "score": "0%",
+      "id": "2572",
+      "exerciseId": "5",
+      "submissionDate": "2024-10-08T01:50:31.738Z",
+      "score": "9%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
         },
         {
           "questionId": 2,
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
         },
         {
           "questionId": 3,
-          "correctAnswer": "A",
+          "userAnswer": "",
+          "correctAnswer": "du",
           "isCorrect": false
         },
         {
           "questionId": 4,
-          "correctAnswer": "B",
+          "userAnswer": "",
+          "correctAnswer": "Er",
           "isCorrect": false
         },
         {
           "questionId": 5,
-          "correctAnswer": "B",
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
           "isCorrect": false
         },
         {
           "questionId": 6,
-          "correctAnswer": "B",
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
           "isCorrect": false
         },
         {
           "questionId": 7,
-          "correctAnswer": "A",
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
           "isCorrect": false
         },
         {
           "questionId": 8,
-          "correctAnswer": "C",
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
           "isCorrect": false
         },
         {
           "questionId": 9,
-          "correctAnswer": "B",
+          "userAnswer": "",
+          "correctAnswer": "Sie",
           "isCorrect": false
         },
         {
           "questionId": 10,
-          "correctAnswer": "A",
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "",
+          "correctAnswer": "Es",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "",
+          "correctAnswer": "er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 21,
+          "userAnswer": "",
+          "correctAnswer": "ihr",
+          "isCorrect": false
+        },
+        {
+          "questionId": 22,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
           "isCorrect": false
         }
       ],
-      "conditionStatus": "not pass",
-      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "0213",
+      "submissionDate": "2024-10-08T04:54:26.445Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
       "isCompleted": true,
-      "id": "m7eV7BA"
+      "exerciseId": "4"
     }
   ],
   "finalExamSubmission": [
@@ -6973,6 +8582,30 @@
     }
   ],
   "users": [
+    {
+      "id": "12345",
+      "fullName": "test",
+      "email": "test@gmail.com",
+      "password": "123456Az!",
+      "role": "learner",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": ""
+    },
+    {
+      "fullName": "Trinh Dai Thien",
+      "email": "thientd2609@gmail.com",
+      "password": "123456Az!",
+      "role": "learner",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": "",
+      "id": "f_MzeC0"
+    },
     {
       "id": "1",
       "fullname": "Viet Hoang",

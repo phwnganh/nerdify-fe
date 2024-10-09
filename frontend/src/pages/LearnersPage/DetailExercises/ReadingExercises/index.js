@@ -21,6 +21,7 @@ import demo_part3_3 from "../../../../assets/readingExercises/demo_part3_3.png";
 import demo_part3_4 from "../../../../assets/readingExercises/demo_part3_4.png";
 import demo_part3_5 from "../../../../assets/readingExercises/demo_part3_5.png";
 
+//A2 exercises
 import { Col, Row } from "antd";
 
 const imgReadingArr = {
@@ -97,10 +98,9 @@ export default function ReadingExercises() {
             </TextCustom>
 
             {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
-              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]}
-                                                                style={{ padding: "10px" }} alt="question-part" />)
+              question.questionImage.map((image, index) => <img key={index} src={imgReadingArr[image]} style={{ padding: "10px" }} alt="question-part" />)
             ) : question.questionImage ? (
-              <img src={imgReadingArr[question.questionImage]} alt="question-part" style={{ padding: "20px" }} />
+              <img src={imgReadingArr[question.questionImage]} alt="question-part" style={{ padding: "20px",  }} />
             ) : null}
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               {question.options.map((option) => {

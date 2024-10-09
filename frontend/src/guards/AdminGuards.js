@@ -2,21 +2,23 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
 import LoadingSpin from "../components/Spinning";
+import STORAGE, { getStorage } from "../library/storage";
 
 export const AdminGuard = ({ children }) => {
-  const { isInitialized, isAuthenticated, user } = useAuth();
+  const userInfo = getStorage(STORAGE.USER_INFO);
 
-  if (!isInitialized) {
-    return <LoadingSpin/>;
-  }
+  // Parse the user info from localStorage
+  // const user = userInfo ? JSON.parse(userInfo) : null;
 
-  if (isAuthenticated) {
-    if (user?.role === ROLES.ADMIN_ROLE) {
+  if (userInfo) {
+    // Check if the role is 'learner'
+    if (userInfo?.role === ROLES.ADMIN_ROLE) {
       return <>{children}</>;
     }
     return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
   }
 
+  // If not authenticated, redirect to login page
   return <Navigate to={CLIENT_URI.LOGIN} replace />;
 };
 
