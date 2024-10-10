@@ -25,7 +25,8 @@ export default function FlashcardList() {
   };
   return (
     <div>
-      <Row gutter={[24, 24]}>
+      <BreadCrumbHome/>
+      <Row gutter={[24, 24]} style={{paddingTop: '30px'}}>
         {flashcards?.map((flashcard, index) => (
           <Col span={12}>
             <CardCustom style={{ background: "rgb(240, 242, 245)" }}>

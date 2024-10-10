@@ -9,6 +9,7 @@ import logo from "../../../assets/logo1.png";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import { logout } from "../../../services/GuestService";
 import { signout } from "../../../hooks/auth/reducers";
+import { clearStorage } from "../../../library/storage";
 
 const { Header } = Layout;
 
@@ -22,11 +23,14 @@ export default function LearnerHeader() {
   const handleSearchClick = () => setSearchVisible(true);
   const handleInputChange = (e) => setInputValue(e.target.value);
 
-  const handleLogout = () => {
-    logout().then(() => {
-      signout();
-      window.location.reload();
-    });
+  const handleLogout = async () => {
+    // logout().then(() => {
+    //   signout();
+    //   window.location.reload();
+    // });
+    // await signout();
+    clearStorage();
+    window.location.reload();
   };
 
   const userMenu = (
@@ -34,7 +38,9 @@ export default function LearnerHeader() {
       <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.PROFILE)}>
         Xem Trang Cá Nhân
       </Menu.Item>
-      <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>Gói đăng ký của tôi</Menu.Item>
+      <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>
+        Gói đăng ký của tôi
+      </Menu.Item>
       <Menu.Item key="logout" onClick={handleLogout}>
         Đăng Xuất
       </Menu.Item>
