@@ -128,6 +128,8 @@ export default function FlashCardDetail() {
             textAlign: "center",
             cursor: "pointer",
             transition: "transform 0.6s",
+            backgroundColor: "#e0e0e0",
+            height: "250px",
           }}
           onClick={toggleFlashcard}
         >
@@ -197,6 +199,7 @@ export default function FlashCardDetail() {
             textAlign: "center",
             cursor: "pointer",
             transition: "transform 0.6s",
+            height: "250px",
           }}
           onClick={toggleFlashcard}
         >
@@ -220,7 +223,7 @@ export default function FlashCardDetail() {
               <Button
                 icon={<LeftOutlined />}
                 onClick={(e) => {
-                  e.stopPropagation();
+                  //                 e.stopPropagation();
                   handlePrevious();
                   setIsFlipped(false);
                 }}
