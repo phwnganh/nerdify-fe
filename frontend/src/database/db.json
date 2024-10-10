@@ -752,7 +752,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "27%"
+      "score": "0%"
     },
     {
       "id": "3",
@@ -8975,6 +8975,90 @@
       "exerciseId": "2",
       "isCompleted": true,
       "id": "ORoOy2F"
+    },
+    {
+      "submissionDate": "2024-10-10T02:29:33.145Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true,
+      "id": "xAdVVIv"
     }
   ],
   "finalExamSubmission": [

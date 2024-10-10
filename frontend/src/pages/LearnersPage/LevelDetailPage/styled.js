@@ -54,8 +54,8 @@ export const ScrollablePhaseDiv = styled.div`
   padding: 16px 0;
   margin: 0 auto;
   max-width: 100%;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #ffe259 transparent; /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #ffe259 transparent;
   height: 150px;
 
   &::-webkit-scrollbar {
@@ -63,7 +63,7 @@ export const ScrollablePhaseDiv = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    background-color: transparent; /* Scrollbar track color */
+    background-color: transparent;
   }
 `;
 
