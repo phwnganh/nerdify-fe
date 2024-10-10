@@ -8,7 +8,8 @@
         1,
         2,
         3,
-        7, 8
+        7,
+        8
       ],
       "isNew": false
     },
@@ -19,7 +20,9 @@
       "exercises": [
         4,
         5,
-        6, 7, 9
+        6,
+        7,
+        9
       ],
       "isNew": false
     },
@@ -34,8 +37,9 @@
       "name": "Phase 1",
       "levelId": 2,
       "exercise": [
-        
-        10, 11, 12
+        10,
+        11,
+        12
       ],
       "isNew": true
     },
@@ -92,7 +96,9 @@
       "learners": 10,
       "description": "Ở trình độ A2, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
       "phases": [
-        4,5,6
+        4,
+        5,
+        6
       ],
       "finalexams": [
         3
@@ -105,7 +111,8 @@
       "learners": 10,
       "description": "Ở trình độ B1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
       "phases": [
-        7,8
+        7,
+        8
       ]
     }
   ],
@@ -745,7 +752,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "0%"
+      "score": "27%"
     },
     {
       "id": "3",
@@ -3966,7 +3973,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "id": "15",
       "title": "Bài tập nghe 4",
       "exerciseType": "listening",
@@ -4030,7 +4038,8 @@
                 {
                   "id": "B",
                   "text": "Spiele"
-                }, {
+                },
+                {
                   "id": "C",
                   "text": "Musik"
                 }
@@ -4054,7 +4063,6 @@
                   "id": "C",
                   "text": "Auf einen Anruf warten."
                 }
-
               ],
               "answer": "B"
             },
@@ -4075,12 +4083,12 @@
                   "id": "C",
                   "text": "Kurz vor 20 Uhr."
                 }
-
               ],
               "answer": "A"
             }
           ]
-        }, {
+        },
+        {
           "id": 2,
           "partName": "Phần 2: Sie hören fünfkurze Gespräche. Sie hören jeden Text einmal. Wählen Sie für die Aufgaben 1 bis 15 die richtige Lösung: [a], [b] oder [c].",
           "partType": "multiple_choice",
@@ -4212,7 +4220,8 @@
               "answer": "A"
             }
           ]
-        }, {
+        },
+        {
           "id": 3,
           "partName": "Phần 3: Sie hören ein Interview. Sie hören den Text zweimal. Wählen Sie für die Aufgaben 16 bis 20 [Ja] oder [Nein]. Lesen Sie jetzt die Aufgaben.",
           "partType": "multiple_choice",
@@ -8676,6 +8685,296 @@
       ],
       "isCompleted": true,
       "exerciseId": "4"
+    },
+    {
+      "submissionDate": "2024-10-10T01:53:11.098Z",
+      "score": "27%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true,
+      "id": "b3H5TX5"
+    },
+    {
+      "submissionDate": "2024-10-10T01:59:15.418Z",
+      "score": "47%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true,
+      "id": "e50MNpk"
+    },
+    {
+      "submissionDate": "2024-10-10T02:05:01.628Z",
+      "score": "27%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true,
+      "id": "ORoOy2F"
     }
   ],
   "finalExamSubmission": [
