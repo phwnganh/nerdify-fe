@@ -30,12 +30,40 @@ import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 import { CLIENT_URI } from "../../../constants/uri.constants"; // URI constants for navigation
 import { EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
 import { getLevelDetail } from "../../../services/LearnerService";
+import ModalCustom from "../../../components/Modal";
 
+
+export function StartQuizModal({ exerciseId, onClose }) {
+  const navigate = useNavigate();
+  const handleStartQuiz = () => {
+    onClose(); // Close the modal
+    navigate(`${CLIENT_URI.ONE_EXERCISE}/${EXERCISE_TYPE.QUIZ}/${exerciseId}`); // Redirect to the quiz
+  };
+
+  return (
+    <ModalCustom
+      title="Bài kiểm tra Quiz"
+      visible={true}
+      onCancel={onClose}
+      footer={[
+        <ButtonCustom key="start" buttonType="primary" onClick={handleStartQuiz}>
+          Bắt đầu làm bài
+        </ButtonCustom>,
+      ]}
+    >
+      <p>Bạn có 15 phút để hoàn thành bài kiểm tra này.</p>
+    </ModalCustom>
+  );
+}
 export default function ViewLevelDetail() {
   // State for storing phases, active phase, course, etc.
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
   const { courseId } = useParams();
+  const [isModalVisible, setIsModalVisible] = useState(false); // State to handle modal visibility
+
+  const [selectedExerciseId, setSelectedExerciseId] = useState(null); // Store the selected exercise id
+
   // console.log("courseId", courseId);
   
   const [course, setCourse] = useState(null);
@@ -92,9 +120,17 @@ export default function ViewLevelDetail() {
 
   // Handle when a user clicks on an exercise
   const handleExerciseClick = (exerciseType, exerciseId) => {
+    if(exerciseType === EXERCISE_TYPE.QUIZ){
+      setSelectedExerciseId(exerciseId); // Set the quiz exercise ID
+      setIsModalVisible(true); // Show the modal
+    }
     navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`); // Navigate to the exercise page
+    
   };
 
+  const handleCloseModal = () => {
+    setIsModalVisible(false); // Close the modal
+  };
   // Handle when a user clicks on the final exam
   const handleFinalExamClick = (examId) => {
     navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`); // Navigate to the final exam page
@@ -191,6 +227,9 @@ export default function ViewLevelDetail() {
 
   return (
     <div style={{ padding: "50px 10px 20px 10px" }}>
+      {isModalVisible && (
+        <StartQuizModal exerciseId={selectedExerciseId} onClose={() => setIsModalVisible(false)} />
+      )}
       <div style={{ marginBottom: 16 }}>
         <BreadCrumbHome />
       </div>

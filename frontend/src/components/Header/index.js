@@ -35,6 +35,11 @@ export default function Navbar() {
   const handleInputChange = (e) => setInputValue(e.target.value);
   const handleCloseModal = () => setIsModalVisible(false);
 
+  // Trigger modal on learning-progress click
+  const handleLearningProgressClick = () => {
+    setIsModalVisible(true); // Show the modal when clicking the menu item
+  };
+
   // Styles
   const headerStyle = {
     background: "#fff",
@@ -107,20 +112,21 @@ export default function Navbar() {
               style={{
                 lineHeight: "64px", // Ensures menu items are vertically centered
                 borderBottom: "none", // Removes bottom border if any
+                width: "60%", // Ensures the MenuBar takes full width
+                whiteSpace: "nowrap", // Prevents items from wrapping to the next line
               }}
             >
               <MenuItem key="home" onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}>
                 TRANG CHỦ
               </MenuItem>
-              <MenuItem key="flashcards" onClick={() => navigate(CLIENT_URI.FLASH_CARD)}>
+              <MenuItem key="flashcards" onClick={handleLearningProgressClick}>
                 FLASHCARD
               </MenuItem>
-              <MenuItem key="learning-progress" onClick={() => navigate(CLIENT_URI.LEARNING_PROGRESS)}>
+              <MenuItem key="learning-progress" onClick={handleLearningProgressClick}>
                 TIẾN ĐỘ HỌC TẬP
               </MenuItem>
-              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-              <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
-                GÓI PREMIUM
+              <MenuItem key="blog" onClick={handleLearningProgressClick}>
+                BLOG HỌC TẬP
               </MenuItem>
             </MenuBar>
           </div>
