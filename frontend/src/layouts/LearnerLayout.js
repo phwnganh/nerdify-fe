@@ -8,7 +8,7 @@ export const LearnerLayout = ({ children }) => {
   return (
     <>
       {/* Main Container */}
-      <div style={{ minHeight: "100vh", width: "100%" }}>
+      <div style={{ minHeight: "100vh", width: "100%", marginTop: '30px' }}>
         {/* Fixed LearnerHeader */}
         <LearnerHeader />
         {/* Content Area */}
@@ -49,9 +49,7 @@ const styles = {
     padding: "20px",
     boxSizing: "border-box",
   },
-  column: {
-
-  },
+  column: {},
   content: {
     flex: 1,
     width: "100%",

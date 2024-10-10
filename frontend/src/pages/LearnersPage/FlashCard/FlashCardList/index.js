@@ -6,6 +6,7 @@ import { Col, Row } from "antd";
 import CardCustom from "../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
+import Flashcard from "..";
 
 export default function FlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
@@ -25,7 +26,7 @@ export default function FlashcardList() {
   };
   return (
     <div>
-      <Row gutter={[24, 24]}>
+      <Row gutter={[24, 24]} style={{paddingTop: '30px'}}>
         {flashcards?.map((flashcard, index) => (
           <Col span={12}>
             <CardCustom style={{ background: "rgb(240, 242, 245)" }}>

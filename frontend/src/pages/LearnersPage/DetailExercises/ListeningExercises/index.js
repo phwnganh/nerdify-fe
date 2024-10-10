@@ -40,6 +40,24 @@ import demo02_5_3 from "../../../../assets/listeningExercises/2_5_3.png";
 import demo02_6_1 from "../../../../assets/listeningExercises/2_6_1.png";
 import demo02_6_2 from "../../../../assets/listeningExercises/2_6_2.png";
 import demo02_6_3 from "../../../../assets/listeningExercises/2_6_3.png";
+
+// images of a2-phase 1
+import part2_ques6_1_A2 from "../../../../assets/listeningExercises/a2-teil2-6_1.png";
+import part2_ques6_2_A2 from "../../../../assets/listeningExercises/a2-teil2-6_2.png";
+import part2_ques6_3_A2 from "../../../../assets/listeningExercises/a2-teil2-6_3.png";
+import part2_ques7_1_A2 from "../../../../assets/listeningExercises/a2-teil2-7_1.png";
+import part2_ques7_2_A2 from "../../../../assets/listeningExercises/a2-teil2-7_2.png";
+import part2_ques7_3_A2 from "../../../../assets/listeningExercises/a2-teil2-7_3.png";
+import part2_ques8_1_A2 from "../../../../assets/listeningExercises/a2-teil2-8_1.png";
+import part2_ques8_2_A2 from "../../../../assets/listeningExercises/a2-teil2-8_2.png";
+import part2_ques8_3_A2 from "../../../../assets/listeningExercises/a2-teil2_8_3.png";
+import part2_ques9_1_A2 from "../../../../assets/listeningExercises/a2-teil2-9_1.png";
+import part2_ques9_2_A2 from "../../../../assets/listeningExercises/a2-teil2-9_2.png";
+import part2_ques9_3_A2 from "../../../../assets/listeningExercises/a2-teil2-9_3.png";
+import part2_ques10_1_A2 from "../../../../assets/listeningExercises/a2-teil2-10_1.png";
+import part2_ques10_2_A2 from "../../../../assets/listeningExercises/a2-teil2-10_2.png";
+import part2_ques10_3_A2 from "../../../../assets/listeningExercises/a2-teil2-10_3.png";
+
 import part1_ques1 from "../../../../assets/listeningExercises/teil 1-01.mp3";
 import part1_ques2 from "../../../../assets/listeningExercises/teil 1-02.mp3";
 import part1_ques3 from "../../../../assets/listeningExercises/teil 1-03.mp3";
@@ -54,6 +72,37 @@ import part3_ques12 from "../../../../assets/listeningExercises/teil 3-12.mp3";
 import part3_ques13 from "../../../../assets/listeningExercises/teil 3-13.mp3";
 import part3_ques14 from "../../../../assets/listeningExercises/teil 3-14.mp3";
 import part3_ques15 from "../../../../assets/listeningExercises/teil 3-15.mp3";
+
+// phase 2
+import part1_ques1_2 from "../../../../assets/listeningExercises/02- teil 1-01.mp3";
+import part1_ques2_2 from "../../../../assets/listeningExercises/02- teil 1-02.mp3";
+import part1_ques3_2 from "../../../../assets/listeningExercises/02- teil 1-03.mp3";
+import part1_ques4_2 from "../../../../assets/listeningExercises/02- teil 1-04.mp3";
+import part1_ques5_2 from "../../../../assets/listeningExercises/02- teil 1-05.mp3";
+import part1_ques6_2 from "../../../../assets/listeningExercises/02- teil 1-06.mp3";
+import part2_ques7_2 from "../../../../assets/listeningExercises/02- teil 2-07.mp3";
+import part2_ques8_2 from "../../../../assets/listeningExercises/02- teil 2-08.mp3";
+import part2_ques9_2 from "../../../../assets/listeningExercises/02- teil 2-09.mp3";
+import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.mp3";
+import part3_ques11_2 from "../../../../assets/listeningExercises/02- teil 3-11.mp3";
+import part3_ques12_2 from "../../../../assets/listeningExercises/02- teil 3-12.mp3";
+import part3_ques13_2 from "../../../../assets/listeningExercises/02- teil 3-13.mp3";
+import part3_ques14_2 from "../../../../assets/listeningExercises/02- teil 3-14.mp3";
+import part3_ques15_2 from "../../../../assets/listeningExercises/02- teil 3-15.mp3";
+
+//phase 1 - a2
+import part1_ques1_A2 from "../../../../assets/listeningExercises/a2-teil1-01.mp3";
+import part1_ques2_A2 from "../../../../assets/listeningExercises/a2-teil1-02.mp3";
+import part1_ques3_A2 from "../../../../assets/listeningExercises/02- teil 1-03.mp3";
+import part1_ques4_A2 from "../../../../assets/listeningExercises/02- teil 1-04.mp3";
+import part1_ques5_A2 from "../../../../assets/listeningExercises/02- teil 1-05.mp3";
+import part2_ques6_A2 from "../../../../assets/listeningExercises/a2-teil2-6.mp3";
+import part2_ques7_A2 from "../../../../assets/listeningExercises/a2-teil2-7.mp3";
+import part2_ques8_A2 from "../../../../assets/listeningExercises/a2-teil2-8.mp3";
+import part2_ques9_A2 from "../../../../assets/listeningExercises/a2-teil2-9.mp3";
+import part2_ques10_A2 from "../../../../assets/listeningExercises/a2-teil2-10.mp3";
+import part3_A2 from '../../../../assets/listeningExercises/part3_A2.mp3';
+
 const imagesArr = {
   demo1_1,
   demo1_2,
@@ -88,6 +137,21 @@ const imagesArr = {
   demo02_6_1,
   demo02_6_2,
   demo02_6_3,
+  part2_ques6_1_A2,
+  part2_ques6_2_A2,
+  part2_ques6_3_A2,
+  part2_ques7_1_A2,
+  part2_ques7_2_A2,
+  part2_ques7_3_A2,
+  part2_ques8_1_A2,
+  part2_ques8_2_A2,
+  part2_ques8_3_A2,
+  part2_ques9_1_A2,
+  part2_ques9_2_A2,
+  part2_ques9_3_A2,
+  part2_ques10_1_A2,
+  part2_ques10_2_A2,
+  part2_ques10_3_A2,
 };
 
 const audioArr = {
@@ -105,6 +169,32 @@ const audioArr = {
   part3_ques13,
   part3_ques14,
   part3_ques15,
+  part1_ques1_2,
+  part1_ques2_2,
+  part1_ques3_2,
+  part1_ques4_2,
+  part1_ques5_2,
+  part1_ques6_2,
+  part2_ques7_2,
+  part2_ques8_2,
+  part2_ques9_2,
+  part2_ques10_2,
+  part3_ques11_2,
+  part3_ques12_2,
+  part3_ques13_2,
+  part3_ques14_2,
+  part3_ques15_2,
+  part1_ques1_A2,
+  part1_ques2_A2,
+  part1_ques3_A2,
+  part1_ques4_A2,
+  part1_ques5_A2,
+  part2_ques6_A2,
+  part2_ques7_A2,
+  part2_ques8_A2,
+  part2_ques9_A2,
+  part2_ques10_A2,
+  part3_A2
 };
 
 const { TabPane } = Tabs;
@@ -319,7 +409,7 @@ export default function ListeningExercise() {
           <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
           {currentPart.audioUrl && (
             <audio controls style={{ marginTop: "20px", width: "100%" }}>
-              <source src={currentPart?.audioUrl} type="audio/mp3" />
+              <source src={audioArr[currentPart?.audioUrl]} type="audio/mp3" />
               Trình duyệt của bạn không hỗ trợ phần tử audio.
             </audio>
           )}

@@ -27,30 +27,8 @@ import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
+import BlogStudy from "../pages/LearnersPage/BlogStudy";
 export const routes = [
-  {
-    element: (
-      <GuestLearnerGuard>
-        <GuestLearnerLayout>
-          <Outlet />
-        </GuestLearnerLayout>
-      </GuestLearnerGuard>
-    ),
-    children: [
-      {
-        children: [
-          {
-            path: CLIENT_URI.FLASH_CARD,
-            element: <FlashcardList />,
-          },
-          {
-            path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
-            element: <FlashcardDetail />,
-          },
-        ],
-      },
-    ],
-  },
   // Guest urls
   {
     element: (
@@ -75,14 +53,7 @@ export const routes = [
             path: CLIENT_URI.REGISTER,
             element: <RegisterPage />,
           },
-          {
-            path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-            element: <ExerciseDetail />,
-          },
-          {
-            path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
-            element: <FinalExam />,
-          },
+
           {
             path: CLIENT_URI.FORGOT_PASSWORD,
             element: <ForgotPasswordPage />,
@@ -91,17 +62,10 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-          {
-            path: CLIENT_URI.LEARNING_PROGRESS,
-            element: <LearningProgress />,
-          },
+        
           {
             path: CLIENT_URI.TROPHY,
             element: <TakeATrophy />,
-          },
-          {
-            path: CLIENT_URI.PREMIUM,
-            element: <PremiumPage />,
           },
         ],
       },
@@ -127,18 +91,8 @@ export const routes = [
       },
       // test giao diện
 
-      {
-        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
-        element: <Payment />,
-      },
-      {
-        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
-        element: <BillInfo />,
-      },
-      {
-        path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile />,
-      },
+
+
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
         element: <ManageFlashcard />,
@@ -146,7 +100,6 @@ export const routes = [
       {
         path: CLIENT_URI.MANAGE_FOLDER,
         element: <ManageFolder />,
-        element: <EditPersonalProfile/>
       },
       {
         path: CLIENT_URI.CHANGE_PASSWORD,
@@ -174,6 +127,22 @@ export const routes = [
         element: <ViewLevelDetail />,
       },
       {
+        path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+        element: <ExerciseDetail />,
+      },
+      {
+        path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
+        element: <FinalExam />,
+      },
+      {
+        path: CLIENT_URI.FLASH_CARD,
+        element: <Flashcard />,
+      },
+      {
+        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+        element: <FlashcardDetail />,
+      },
+      {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
       },
@@ -184,6 +153,14 @@ export const routes = [
       {
         path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
         element: <TestFlashCard />,
+      },
+      {
+        path: `${CLIENT_URI.EDIT_PROFILE}`,
+        element: <EditPersonalProfile />,
+      },
+      {
+        path: CLIENT_URI.BLOG_STUDY,
+        element: <BlogStudy/>
       },
       // {
       //   path: CLIENT_URI.FINAL_EXAM,
@@ -229,10 +206,22 @@ export const routes = [
         path: CLIENT_URI.MANAGE_SUBSCRIPTION,
         element: <ManageSubscription />,
       },
-      // {
-      //   path: CLIENT_URI.PREMIUM,
-      //   element: <PremiumPage />,
-      // },
+      {
+        path: CLIENT_URI.PREMIUM,
+        element: <PremiumPage />,
+      },
+      {
+        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
+        element: <Payment />,
+      },
+      {
+        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
+        element: <BillInfo />,
+      },
+      {
+        path: CLIENT_URI.LEARNING_PROGRESS,
+        element: <LearningProgress />,
+      },
     ],
   },
 

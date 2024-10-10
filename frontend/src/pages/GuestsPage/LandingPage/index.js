@@ -9,9 +9,9 @@ import speaking from "../../../assets/landingPage/speaking.png";
 import reading from "../../../assets/landingPage/reading.png";
 import writing from "../../../assets/landingPage/writing.png";
 import sample from "../../../assets/landingPage/sample.png";
-import beginner from '../../../assets/landingPage/beginner.jpg';
-import vocabularyTip from '../../../assets/landingPage/tiphoctuvunghieuqua.png';
-import certificate from '../../../assets/landingPage/BI-QUYET-DAT-DIEM-CAO-TRONG-PHAN-THI-VIET-TIENG-DUC-TELC-B1-1-min-scaled.jpg';
+import beginner from "../../../assets/landingPage/beginner.jpg";
+import vocabularyTip from "../../../assets/landingPage/tiphoctuvunghieuqua.png";
+import certificate from "../../../assets/landingPage/BI-QUYET-DAT-DIEM-CAO-TRONG-PHAN-THI-VIET-TIENG-DUC-TELC-B1-1-min-scaled.jpg";
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import { Courses } from "./courses/coursesList";
 import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
@@ -36,7 +36,7 @@ export const LandingPage = () => {
     },
   ];
 
-  const benefit = ["Bài tập 4 kỹ năng đầy đủ theo trình độ", "Bài tập từ vựng và ngữ pháp theo trình độ", "Được giáo viên chữa bài viết cẩn thận", "Bộ từ vựng flashcard theo chủ đề"];
+  const benefit = ["Bài tập 4 kỹ năng đầy đủ theo trình độ.", "Bài tập từ vựng và ngữ pháp theo trình độ.", "Được giáo viên chữa bài viết cẩn thận.", "Bộ từ vựng flashcard theo chủ đề."];
 
   const feedbacks = [
     {
@@ -46,17 +46,20 @@ export const LandingPage = () => {
     },
     {
       name: "Giáo trình chất lượng cao",
-      content: "Tôi rất thích cách bài tập được thiết kế theo chủ đề và bám sát thực tiễn. Điều này giúp tôi không chỉ học tiếng Đức mà còn hiểu thêm về văn hóa Đức. Các bài tập từ vựng phong phú và có độ khó tăng dần rất hợp lý.",
+      content:
+        "Tôi rất thích cách bài tập được thiết kế theo chủ đề và bám sát thực tiễn. Điều này giúp tôi không chỉ học tiếng Đức mà còn hiểu thêm về văn hóa Đức. Các bài tập từ vựng phong phú và có độ khó tăng dần rất hợp lý.",
       stars: 5,
     },
     {
       name: "Phù hợp cho người mới bắt đầu",
-      content: "Tôi là người mới bắt đầu học tiếng Đức, và giáo trình này thực sự rất dễ tiếp cận. Các bài tập từ cơ bản đến nâng cao giúp tôi theo kịp tiến độ và không cảm thấy quá khó khăn khi mới học.",
+      content:
+        "Tôi là người mới bắt đầu học tiếng Đức, và giáo trình này thực sự rất dễ tiếp cận. Các bài tập từ cơ bản đến nâng cao giúp tôi theo kịp tiến độ và không cảm thấy quá khó khăn khi mới học.",
       stars: 5,
     },
     {
       name: "Bài tập phong phú và đa dạng",
-      content: "Tôi rất ấn tượng với sự đa dạng của bài tập trong giáo trình tiếng Đức này. Các dạng bài khác nhau như trắc nghiệm, điền từ, và bài tập luyện nói giúp tôi có cái nhìn toàn diện và cải thiện mọi kỹ năng tiếng Đức.",
+      content:
+        "Tôi rất ấn tượng với sự đa dạng của bài tập trong giáo trình tiếng Đức này. Các dạng bài khác nhau như trắc nghiệm, điền từ, và bài tập luyện nói giúp tôi có cái nhìn toàn diện và cải thiện mọi kỹ năng tiếng Đức.",
       stars: 5,
     },
     {
@@ -70,17 +73,19 @@ export const LandingPage = () => {
     {
       title: "Hướng Dẫn Học Tiếng Đức Cho Người Mới Bắt Đầu",
       image: beginner,
-      description: "Blog cung cấp lộ trình học tiếng Đức cơ bản, bao gồm các bước khởi đầu từ việc làm quen với bảng chữ cái, phát âm và ngữ pháp nền tảng."
-    }, {
+      description: "Blog cung cấp lộ trình học tiếng Đức cơ bản, bao gồm các bước khởi đầu từ việc làm quen với bảng chữ cái, phát âm và ngữ pháp nền tảng.",
+    },
+    {
       title: "10 Cách Học Từ Vựng Tiếng Đức Hiệu Quả",
       image: vocabularyTip,
-      description: "Bài viết chia sẻ những phương pháp ghi nhớ từ vựng tiếng Đức nhanh chóng và dễ dàng, phù hợp cho mọi trình độ học viên."
-    }, {
+      description: "Bài viết chia sẻ những phương pháp ghi nhớ từ vựng tiếng Đức nhanh chóng và dễ dàng, phù hợp cho mọi trình độ học viên.",
+    },
+    {
       title: "Bí Quyết Đạt Điểm Cao Trong Kỳ Thi Chứng Chỉ Tiếng Đức",
       image: certificate,
-      description: "Chia sẻ kinh nghiệm ôn tập và làm bài thi các chứng chỉ tiếng Đức phổ biến như Goethe, TELC, TestDaF để đạt kết quả cao."
-    }
-  ]
+      description: "Chia sẻ kinh nghiệm ôn tập và làm bài thi các chứng chỉ tiếng Đức phổ biến như Goethe, TELC, TestDaF để đạt kết quả cao.",
+    },
+  ];
 
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -88,13 +93,13 @@ export const LandingPage = () => {
       <Row style={{ marginTop: "100px" }}>
         <Col span={16}>
           <h2 style={{ fontSize: "50px" }}>
-            Học tiếng đức
+            Học tiếng Đức
             <br />
             trực tuyến hiệu quả
             <br />
             cùng các bài tập
             <br />
-            theo trình độ
+            theo trình độ.
           </h2>
           <p style={{ fontSize: "20px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ButtonCustom
@@ -108,34 +113,6 @@ export const LandingPage = () => {
           >
             HỌC THỬ MIỄN PHÍ
           </ButtonCustom>
-          {/* <Row>
-            <Col span={6}>
-              <p
-                style={{
-                  fontSize: "22px",
-                  margin: "10px 0px",
-                  color: "#F3D512",
-                  fontWeight: "700",
-                }}
-              >
-                1000+
-              </p>
-              <b style={{ fontSize: "20px" }}>Bài tập</b>
-            </Col>
-            <Col span={6}>
-              <p
-                style={{
-                  fontSize: "22px",
-                  margin: "10px 0px",
-                  color: "#467AE2",
-                  fontWeight: "700",
-                }}
-              >
-                5000+
-              </p>
-              <b style={{ fontSize: "20px" }}>Học viên</b>
-            </Col>
-          </Row> */}
         </Col>
         <Col span={8}>
           <img
@@ -176,7 +153,7 @@ export const LandingPage = () => {
           <img src={landingPageImg3} alt="Landing page 3" />
         </Col>
         <Col span={16}>
-          <h2 style={{ textAlign: "center", fontSize: "40px" }}>Trang Web cung cấp</h2>
+          <h2 style={{ textAlign: "center", fontSize: "40px" }}>Trang Web Cung Cấp</h2>
           <p style={{ fontSize: "25px", color: "grey" }}>Cung cấp các bài tập 4 kỹ năng nghe, nói, đọc, viết cùng từ vựng, ngữ pháp theo trình độ.</p>
           <ul style={{ listStyleType: "none", padding: "0px" }}>
             {benefit.map((b) => (
@@ -200,8 +177,6 @@ export const LandingPage = () => {
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>CÁC BÀI TẬP THEO TRÌNH ĐỘ </h2>
         <div
           style={{
-            // display: "flex",
-            // justifyContent: "center",
             marginLeft: "8px",
             marginRight: "8px",
           }}
@@ -214,22 +189,18 @@ export const LandingPage = () => {
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
         <List
-        grid={{ gutter: 16, column: 3 }}
-        dataSource={blog}
-        renderItem={item => (
-          <List.Item>
-            <div style={{ border: '1px solid #e8e8e8', borderRadius: '4px', padding: '16px', textAlign: 'center' }}>
-              <img
-                src={item.image}
-                alt={item.title}
-                style={{ width: '100%', height: '150px', objectFit: 'cover', marginBottom: '16px' }}
-              />
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
-          </List.Item>
-        )}
-      />
+          grid={{ gutter: 16, column: 3 }}
+          dataSource={blog}
+          renderItem={(item) => (
+            <List.Item>
+              <div style={{ border: "1px solid #e8e8e8", borderRadius: "4px", padding: "16px", textAlign: "center" }}>
+                <img src={item.image} alt={item.title} style={{ width: "100%", height: "150px", objectFit: "cover", marginBottom: "16px" }} />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </List.Item>
+          )}
+        />
       </div>
 
       {/* Feedback - think about carousel */}
@@ -243,47 +214,46 @@ export const LandingPage = () => {
           FEEDBACK
         </h2>
         <div
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    marginLeft: "8px",
-    marginRight: "8px",
-  }}
->
-  <List
-    grid={{
-      gutter: 16, // Adjust the space between cards
-      column: 3,  // Set the number of columns to 3 (like the image)
-    }}
-    dataSource={feedbacks}
-    renderItem={(item) => (
-      <List.Item>
-        <Card style={{ width: "330px", textAlign: "center" }}>
-          <Row gutter={[16, 16]} justify="center" align="middle">
-            <Col span={4}>
-              <Avatar src={sample} size={42} />
-            </Col>
-            <Col>
-              <Row>
-                <b>{item.name}</b>
-              </Row>
-              <Row>
-                {Array.from({ length: item.stars }).map((_, index) => (
-                  <StarFilled
-                    key={index} // Added key to each StarFilled component
-                    style={{ color: "#FFCC33", fontSize: "20px" }}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
-          <p>{item.content}</p>
-        </Card>
-      </List.Item>
-    )}
-  />
-</div>
-
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginLeft: "8px",
+            marginRight: "8px",
+          }}
+        >
+          <List
+            grid={{
+              gutter: 16, // Adjust the space between cards
+              column: 3, // Set the number of columns to 3 (like the image)
+            }}
+            dataSource={feedbacks}
+            renderItem={(item) => (
+              <List.Item>
+                <Card style={{ width: "330px", textAlign: "center" }}>
+                  <Row gutter={[16, 16]} justify="center" align="middle">
+                    <Col span={4}>
+                      <Avatar src={sample} size={42} />
+                    </Col>
+                    <Col>
+                      <Row>
+                        <b>{item.name}</b>
+                      </Row>
+                      <Row>
+                        {Array.from({ length: item.stars }).map((_, index) => (
+                          <StarFilled
+                            key={index} // Added key to each StarFilled component
+                            style={{ color: "#FFCC33", fontSize: "20px" }}
+                          />
+                        ))}
+                      </Row>
+                    </Col>
+                  </Row>
+                  <p>{item.content}</p>
+                </Card>
+              </List.Item>
+            )}
+          />
+        </div>
       </div>
 
       <div

@@ -26,6 +26,7 @@ export const CLIENT_URI = {
   MANAGE_FOLDER: "/manage-folder",
   MANAGE_FLASHCARD: "/manage-flashcard",
   CHANGE_PASSWORD: "/change-password",
+  BLOG_STUDY: '/blog-study',
   // ADMIN
   DASHBOARD: "/dashboard",
 };
