@@ -69,10 +69,6 @@ export const routes = [
             path: CLIENT_URI.TROPHY,
             element: <TakeATrophy />,
           },
-          {
-            path: CLIENT_URI.PREMIUM,
-            element: <PremiumPage />,
-          },
         ],
       },
       // {
@@ -152,7 +148,7 @@ export const routes = [
       },
       {
         path: CLIENT_URI.FLASH_CARD,
-        element: <FlashcardList />,
+        element: <Flashcard />,
       },
       {
         path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
@@ -214,10 +210,10 @@ export const routes = [
         path: CLIENT_URI.MANAGE_SUBSCRIPTION,
         element: <ManageSubscription />,
       },
-      // {
-      //   path: CLIENT_URI.PREMIUM,
-      //   element: <PremiumPage />,
-      // },
+      {
+        path: CLIENT_URI.PREMIUM,
+        element: <PremiumPage />,
+      },
     ],
   },
 

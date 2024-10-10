@@ -8,7 +8,7 @@
         1,
         2,
         3,
-        7
+        7, 8
       ],
       "isNew": false
     },
@@ -19,7 +19,7 @@
       "exercises": [
         4,
         5,
-        6
+        6, 7, 9
       ],
       "isNew": false
     },
@@ -34,17 +34,39 @@
       "name": "Phase 1",
       "levelId": 2,
       "exercise": [
-        8,
-        9,
-        10
+        
+        10, 11, 12
       ],
       "isNew": true
     },
     {
       "id": "5",
+      "name": "Phase 2",
+      "levelId": 2,
+      "exercises": [
+        15
+      ]
+    },
+    {
+      "id": "6",
       "name": "Final Exam",
       "levelId": 2,
       "examId": 2
+    },
+    {
+      "id": "7",
+      "name": "Phase 1",
+      "levelId": 3,
+      "exercises": [
+        13,
+        14
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Final Exam",
+      "levelId": 3,
+      "examId": 3
     }
   ],
   "levels": [
@@ -70,18 +92,21 @@
       "learners": 10,
       "description": "Ở trình độ A2, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
       "phases": [
-        4
+        4,5,6
       ],
       "finalexams": [
-        2
+        3
       ]
     },
     {
-      "id": "2",
+      "id": "3",
       "title": "Bài tập trình độ B1",
       "levelImage": "b1",
       "learners": 10,
-      "description": "Ở trình độ B1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình."
+      "description": "Ở trình độ B1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
+      "phases": [
+        7,8
+      ]
     }
   ],
   "exercises": [
@@ -730,7 +755,7 @@
       "parts": [
         {
           "id": 1,
-          "partName": "Phần 1: Điền nghĩa của các từ sau đây: ",
+          "partName": "Phần 1: Nối các cặp từ sau đây: ",
           "partType": "matching",
           "questions": [
             {
@@ -3462,6 +3487,816 @@
                 }
               ],
               "answer": "B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Bài tập ngữ pháp: THÌ QUÁ KHỨ",
+      "exerciseType": "grammar",
+      "phaseId": 7,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Ergänzen Sie die regelmäßigen Verben mi Präteritum.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Ein Mann und eine Frau ___ (lieben) sich und ___ (heiraten). ",
+              "answer": [
+                "liebten",
+                "heirateten"
+              ],
+              "answerDetail": "Đây là hình thức động từ dùng để diễn tả hành động đã xảy ra và kết thúc trong quá khứ. \nlieben (yêu): \nĐộng từ 'lieben' được chia ở thì Präteritum cho ngôi thứ ba số nhiều ('sie/Sie' hoặc 'sie' - một người phụ nữ và một người đàn ông ở đây là số nhiều), vì thế ta dùng liebten. \nheiraten (kết hôn): \nTương tự, động từ 'heiraten' cũng được chia ở thì Präteritum cho ngôi thứ ba số nhiều. Do đó, ta dùng heirateten."
+            },
+            {
+              "id": 2,
+              "question": "Sie ___ (leben) in einer kleinen Wohnung",
+              "answer": "lebten",
+              "answerDetail": "Sie ở đây có thể là 'họ' (ngôi thứ ba số nhiều) hoặc ngôi thứ ba số ít trang trọng (bạn/bà/ngài), đều yêu cầu chia động từ theo cách giống nhau trong thì quá khứ đơn. \nĐộng từ 'leben' là động từ yếu (schwaches Verb), có quy tắc chia động từ ở thì quá khứ. \nCấu trúc chung của động từ yếu ở thì quá khứ đơn (Präteritum): \nThân động từ (leb-) + hậu tố -te + đuôi phù hợp cho ngôi chủ ngữ. \nChia động từ 'leben' ở thì quá khứ đơn: \nich lebte (tôi đã sống) \ndu lebtest (bạn đã sống) \ner/sie/es lebte (anh ấy/cô ấy/nó đã sống) \nwir lebten (chúng tôi đã sống) \nihr lebtet (các bạn đã sống) \nsie/Sie lebten (họ/Ngài đã sống)"
+            },
+            {
+              "id": 3,
+              "question": "Die Frau ___ (arbeiten) sehr viel und ihr Mann ___ (freuen) sich und ___ (einkaufen).",
+              "answer": [
+                "arbeitete",
+                "freute",
+                "kaufte ein"
+              ],
+              "answerDetail": "'Die Frau arbeitete sehr viel': \nĐộng từ nguyên mẫu: arbeiten (làm việc) \nĐây là một động từ yếu (schwache Verben), nên quy tắc chia động từ quá khứ là thêm '-te' vào gốc động từ. \n'Die Frau' là chủ ngữ số ít, nên ta chia động từ arbeiten ở ngôi thứ ba số ít trong quá khứ đơn: arbeitete. \n'und ihr Mann freute sich': \nĐộng từ nguyên mẫu: freuen (vui mừng) \nĐây cũng là một động từ yếu, nên thêm '-te' vào gốc động từ. \n'ihr Mann' là chủ ngữ số ít, ngôi thứ ba, nên chia động từ freuen ở ngôi thứ ba số ít trong quá khứ đơn: freute. \n'sich' là đại từ phản thân đi cùng với động từ freuen, nên nó được giữ nguyên vị trí. \n'und kaufte ein': \nĐộng từ nguyên mẫu: einkaufen (mua sắm) \nĐây là một động từ tách được (trennbares Verb), nghĩa là ở thì hiện tại và quá khứ, phần tách của động từ sẽ đứng cuối câu. \n'kaufen' là động từ yếu, nên chia quá khứ đơn bằng cách thêm '-te', thành kaufte. \n'ein' là phần tách của động từ einkaufen và sẽ được đặt ở cuối câu."
+            },
+            {
+              "id": 4,
+              "question": "Die Frau ___ (verdienen) mehr Geld und sie ___ (kaufen) ein Haus, aber der Mann ___ (suchen) eine Villa. ",
+              "answer": [
+                "verdiente",
+                "kaufte",
+                "suchte"
+              ],
+              "answerDetail": "Die Frau verdiente mehr Geld: \nĐộng từ trong ngoặc là 'verdienen' (kiếm tiền). \nỞ đây, 'Frau' là ngôi thứ 3 số ít (sie), và động từ 'verdienen' được chia ở thì quá khứ đơn (Präteritum). \nCách chia: \nIch verdiente \nDu verdientest \nEr/sie/es verdiente \nVậy, 'verdienen' -> 'verdiente'. \nsie kaufte ein Haus: \nĐộng từ trong ngoặc là 'kaufen' (mua). \nTương tự như câu trước, 'sie' (cô ấy) là ngôi thứ 3 số ít. \nCách chia: \nIch kaufte \nDu kauftest \nEr/sie/es kaufte \nVậy, 'kaufen'-> 'kaufte'. \nder Mann suchte eine Villa: \nĐộng từ trong ngoặc là 'suchen' (tìm kiếm). \n'der Mann' là ngôi thứ 3 số ít, nên động từ được chia tương tự. \nCách chia: \nIch suchte \nDu suchtest \nEr/sie/es suchte \n=>'suchen' -> 'suchte'."
+            },
+            {
+              "id": 5,
+              "question": "Die Frau ___ (verkaufen) ihren Mercedes, aber der Mann ___ (wünschen) sich ein schönes Auto und ein noch größeres Haus.",
+              "answer": [
+                "verkaufte",
+                "wünschte"
+              ],
+              "answerDetail": "Câu trên yêu cầu điền động từ đúng dạng vào các chỗ trống và cả hai động từ cần chia ở thì quá khứ đơn (Präteritum) trong tiếng Đức. Đây là cách thức chia động từ: \nDie Frau verkaufte ihren Mercedes: Động từ trong dấu ngoặc là verkaufen (bán). Động từ này ở thì quá khứ đơn của ngôi thứ ba số ít sẽ là verkaufte. Cấu trúc này diễn tả một hành động đã xảy ra và kết thúc trong quá khứ (người phụ nữ đã bán chiếc Mercedes của mình). \nder Mann wünschte sich ein schönes Auto und ein noch größeres Haus: Động từ trong dấu ngoặc là wünschen (ước mong). Ở thì quá khứ đơn, động từ này với ngôi thứ ba số ít sẽ là wünschte. Cấu trúc này diễn tả mong ước của người đàn ông trong quá khứ (người đàn ông đã ước có một chiếc xe đẹp và một ngôi nhà to hơn)."
+            },
+            {
+              "id": 6,
+              "question": "Da ___ (suchen) sich die Frau einen sparsamen Mann.",
+              "answer": "suchte",
+              "answerDetail": "động từ 'suchen' cần được chia theo thì quá khứ để phù hợp với tình huống. \nDa có thể hiểu là từ nối (liên từ) chỉ nguyên nhân hoặc thời điểm trong quá khứ, nên câu này có ngữ cảnh ở thì quá khứ. \nChủ ngữ là 'die Frau' (người phụ nữ) — số ít. \nĐộng từ 'suchen' cần được chia ở thì quá khứ đơn (Präteritum) để phù hợp với ngữ cảnh. \nChia động từ 'suchen' ở thì quá khứ đơn (Präteritum): \nich suchte \ndu suchtest \ner/sie/es suchte \nwir suchten \nihr suchtet \nsie/Sie suchten \nTrong câu này, chủ ngữ là 'die Frau' (số ít, ngôi thứ 3), vì vậy động từ 'suchen' sẽ được chia là 'suchte'."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Ergänzen Sie die unregelmäßigen Verben mi Präteritum.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Mit zwölf ___  (bekommen) ich zum Geburtstag einen Hund. ",
+              "answer": "bekam",
+              "answerDetail": "Mit zwölf: Đây là cụm từ chỉ thời gian (lúc tôi 12 tuổi). Trong tiếng Đức, khi bắt đầu một câu bằng cụm từ chỉ thời gian, động từ sẽ đứng ngay sau chủ ngữ. \nich: Chủ ngữ của câu, có nghĩa là 'tôi.' \nbekommen: Động từ 'bekommen' nghĩa là 'nhận được.' Câu hỏi yêu cầu chia động từ này ở quá khứ, vì câu nói về một sự việc đã xảy ra trong quá khứ (khi tôi 12 tuổi). \nThì quá khứ đơn (Präteritum): Trong câu kể chuyện hoặc tường thuật sự việc trong quá khứ, người ta thường dùng thì quá khứ đơn (Präteritum). Động từ bekommen trong thì quá khứ đơn là bekam."
+            },
+            {
+              "id": 8,
+              "question": "Da ___  (beginnen) eine glückliche Zeit. ",
+              "answer": "begann",
+              "answerDetail": "Câu này đang kể về một sự kiện đã xảy ra trong quá khứ, vì từ 'Da' (khi, lúc đó) thường được dùng để chỉ một thời điểm hoặc hoàn cảnh trong quá khứ. Ngoài ra, cụm từ 'eine glückliche Zeit' (một thời gian hạnh phúc) gợi ý rằng sự kiện này đã hoàn thành. \nĐộng từ 'beginnen': \nĐộng từ này có nghĩa là 'bắt đầu'. Đây là một động từ mạnh (unregelmäßiges Verb), có sự thay đổi trong các thì. \nChia động từ 'beginnen' ở quá khứ đơn (Präteritum): \nỞ thì Präteritum (quá khứ đơn), 'beginnen' được chia như sau: \nich begann \ndu begannst \ner/sie/es begann \nwir begannen \nihr begannt \nsie/Sie begannen"
+            },
+            {
+              "id": 9,
+              "question": "Ich ___ (verbringen) jede freie Minute mit dem Hund und ___ (gehen) täglich mit ihm spazieren.",
+              "answer": [
+                "verbrachte",
+                "ging"
+              ],
+              "answerDetail": "verbringen (dành): Đây là một động từ mạnh, nhưng trong thì quá khứ đơn, nó chia giống động từ yếu. Dạng quá khứ đơn của nó là verbrachte. \nIch verbrachte bedeutet 'Tôi đã dành'. \ngehen (đi): Đây là một động từ bất quy tắc (irregular verb). Dạng quá khứ đơn của nó là ging. \nIch ging bedeutet 'Tôi đã đi'.Ich verbrachte jede freie Minute mit dem Hund: Hành động 'dành mọi phút rảnh với con chó' đã xảy ra trong quá khứ, vì thế dùng thì quá khứ đơn của 'verbringen' là 'verbrachte'. \nund ging täglich mit ihm spazieren: Hành động 'đi dạo hằng ngày với con chó' cũng đã xảy ra trong quá khứ, vì vậy dùng thì quá khứ đơn của 'gehen' là 'ging'."
+            },
+            {
+              "id": 10,
+              "question": "In der Nacht ___ (liegen) er in meinem Zimmer und ___(schlafen)neben meinem Bett. ",
+              "answer": [
+                "lag",
+                "schlief"
+              ],
+              "answerDetail": "'In der Nacht' có nghĩa là 'Vào ban đêm', đây là một cụm trạng từ chỉ thời gian. \n'liegen' (nằm) và 'schlafen' (ngủ) là hai động từ cần được chia ở thì quá khứ. \n1. Liegen (nằm): \nĐộng từ 'liegen' là động từ không bất quy tắc, và ở thì quá khứ (Präteritum), nó sẽ biến đổi thành 'lag'. \nNguyên mẫu: liegen \nQuá khứ: lag \nQuá khứ hoàn thành: gelegen \n'Er lag in meinem Zimmer' có nghĩa là 'Anh ấy đã nằm trong phòng của tôi'. \n2. Schlafen (ngủ): \nĐộng từ 'schlafen' là một động từ bất quy tắc. Khi chia ở thì quá khứ, nó biến thành 'schlief'. \nNguyên mẫu: schlafen \nQuá khứ: schlief \nQuá khứ hoàn thành: geschlafen \n'und schlief neben meinem Bett' có nghĩa là 'và đã ngủ bên cạnh giường của tôi'."
+            },
+            {
+              "id": 11,
+              "question": "Es ___  (geben)nichts Schöneres für mich!",
+              "answer": "gab",
+              "answerDetail": "Trong câu này, đáp án là 'gab,' vì câu đang ở thì quá khứ. Cấu trúc của câu là: \n'Es gibt' là dạng ở thì hiện tại, có nghĩa là 'có' (there is/there are). \nKhi chuyển về thì quá khứ, 'gibt' trở thành 'gab.'"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Das Märchen vom Aschenputtel. Ergänzen Sie die Verben im Präteritum.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 12,
+              "question": "Es ___ (sein) einmal ein Mädchen. ",
+              "answer": "war",
+              "answerDetail": "Cụm 'Es war einmal...' thường được sử dụng trong truyện cổ tích để mở đầu một câu chuyện, tương đương với cụm 'Ngày xửa ngày xưa...' trong tiếng Việt. \nĐộng từ 'sein' (là) trong quá khứ đơn cho chủ ngữ số ít 'es' (nó) ở ngôi thứ ba sẽ chia thành 'war'."
+            },
+            {
+              "id": 13,
+              "question": "Es ___ (heißen) Aschenputtel. ",
+              "answer": "heiß",
+              "answerDetail": "Nguyên thể động từ: heißen (nghĩa là 'tên là'). \nThì quá khứ: Trong câu này, động từ heißen cần được chia ở thì quá khứ đơn (Präteritum) vì câu đang kể về một câu chuyện trong quá khứ. \nChia động từ: \n'ich hieß' \n'du hießest' \n'er/sie/es hieß' => Ở đây, chủ ngữ là 'sie' (Aschenputtel), nên động từ heißen được chia là hieß."
+            },
+            {
+              "id": 14,
+              "question": "Seine Mutter ___ (sein) tot. ",
+              "answer": "war",
+              "answerDetail": "Động từ 'sein' trong câu này cần được chia ở thì quá khứ đơn (Präteritum), vì câu đang nói về một trạng thái trong quá khứ (tức là mẹ anh ấy đã chết). \nChủ ngữ 'Seine Mutter' là số ít và ở ngôi thứ ba, vì vậy cách chia đúng của động từ 'sein' ở thì quá khứ đơn cho ngôi thứ ba số ít là 'war.' \nTại sao lại là 'war'? \nTrong tiếng Đức, động từ 'sein' là bất quy tắc, và ở thì quá khứ đơn (Präteritum), các dạng chia của nó là: \nich war (tôi đã) \ndu warst (bạn đã) \ner/sie/es war (anh/cô/nó đã) \nwir waren (chúng tôi đã) \nihr wart (các bạn đã) \nsie/Sie waren (họ/Ngài đã) \nVì 'Seine Mutter' là ngôi thứ ba số ít (tương ứng với 'sie' – cô ấy), nên dạng đúng của động từ là 'war.'"
+            },
+            {
+              "id": 15,
+              "question": "Sein Vater ___ (heiraten*) eine neue, böse Frau. ",
+              "answer": "heiratete",
+              "answerDetail": "heiraten là động từ ở dạng nguyên mẫu, có nghĩa là 'kết hôn'.\nCâu này sử dụng thì Präteritum (quá khứ đơn) để diễn tả một sự việc đã xảy ra trong quá khứ. Động từ 'heiraten' là một động từ có quy tắc, vì vậy khi chia ở thì Präteritum, nó sẽ trở thành heiratete. \nChủ ngữ là Sein Vater (cha của anh ấy), tương ứng với ngôi er (ngôi thứ 3 số ít), và dạng Präteritum của động từ heiraten với chủ ngữ này là heiratete."
+            },
+            {
+              "id": 16,
+              "question": "Die Frau zwei böse Töchter ___ (mitbringen).",
+              "answer": "brachte ... mit",
+              "answerDetail": "Động từ 'mitbringen' là một động từ tách được, nghĩa là trong câu, nó sẽ bị tách ra làm hai phần: 'brachte' (quá khứ của 'bringen') và 'mit' (giới từ đi kèm). Trong thì quá khứ, phần 'brachte' đứng ở vị trí thứ hai trong câu, và 'mit' đứng ở cuối câu. \n Phân tích câu: Chủ ngữ: Die Frau (số ít, ngôi thứ 3) \nĐộng từ: mitbringen (mang theo). \nTân ngữ: zwei böse Töchter (hai cô con gái xấu tính). Chia động từ 'mitbringen' ở thì quá khứ: \nVới chủ ngữ Die Frau, động từ 'mitbringen' trong quá khứ chia thành brachte ... mit."
+            },
+            {
+              "id": 17,
+              "question": "Aschenputtel ___ (müssen) viel arbeiten. ",
+              "answer": "musste",
+              "answerDetail": "Trong câu 'Aschenputtel ___ (müssen) viel arbeiten,' động từ müssen (phải) được sử dụng ở thì quá khứ và chủ ngữ là Aschenputtel, là một danh từ số ít. \nĐể chia đúng động từ müssen ở thì quá khứ cho ngôi thứ ba số ít (er/sie/es), chúng ta sử dụng dạng musste. Dưới đây là giải thích chi tiết: \nMüssen là một động từ khuyết thiếu (Modalverb), được sử dụng để diễn tả sự cần thiết hoặc bắt buộc. \nỞ thì quá khứ đơn (Präteritum) của động từ müssen, ta thay đổi từ nguyên mẫu müssen thành musste cho các chủ ngữ số ít. \nAschenputtel là một danh từ chỉ người số ít, vì vậy ta dùng dạng động từ cho ngôi thứ ba số ít, đó là musste."
+            },
+            {
+              "id": 18,
+              "question": "Aschenputtel ___ (kochen*), ___ (waschen) und ___ (putzen*).",
+              "answer": [
+                "kochte",
+                "wusch",
+                "putze"
+              ],
+              "answerDetail": "Aschenputtel kochte: Động từ 'kochen' (nấu ăn) được chia thành thì quá khứ đơn (Präteritum) là 'kochte.' Đây là một động từ quy tắc, vì vậy thì quá khứ được hình thành bằng cách thêm '-te' vào gốc động từ 'koch-.' \nHiện tại: Aschenputtel kocht (Aschenputtel nấu ăn) \nQuá khứ đơn: Aschenputtel kochte (Aschenputtel đã nấu ăn) \nAschenputtel wusch: Động từ 'waschen' (rửa) là một động từ bất quy tắc (động từ mạnh). Thì quá khứ của nó là 'wusch.' Trong các động từ mạnh, nguyên âm gốc thường thay đổi khi chuyển sang quá khứ. \nHiện tại: Aschenputtel wäscht (Aschenputtel rửa) \nQuá khứ đơn: Aschenputtel wusch (Aschenputtel đã rửa) \nAschenputtel putzte: Động từ 'putzen' (dọn dẹp) cũng là một động từ quy tắc, và thì quá khứ của nó là 'putzte.' Tương tự như 'kochen,' bạn thêm '-te' vào gốc động từ 'putz-.' \nHiện tại: Aschenputtel putzt (Aschenputtel dọn dẹp) \nQuá khứ đơn: Aschenputtel putzte (Aschenputtel đã dọn dẹp)"
+            },
+            {
+              "id": 19,
+              "question": "Eines Tages ___ (geben) es ein großes Fest beim Prinzen. ",
+              "answer": "gab",
+              "answerDetail": "Thì quá khứ đơn (Präteritum): Đây là thì thường được sử dụng trong văn viết, đặc biệt là trong các câu chuyện cổ tích, truyện kể, hoặc văn phong trang trọng để kể lại một sự kiện đã xảy ra trong quá khứ. \nNgữ cảnh: Câu bắt đầu với 'Eines Tages' (Một ngày nào đó), ám chỉ một sự kiện trong quá khứ, và thường được dùng để mở đầu cho các câu chuyện. Trong trường hợp này, việc dùng thì quá khứ đơn là phù hợp. \nĐộng từ 'geben': 'geben' khi chia ở thì quá khứ đơn với ngôi thứ ba số ít (es) sẽ là 'gab.'"
+            },
+            {
+              "id": 20,
+              "question": "Aschenputtel ___ (gehen) heimlich auf das Fest. ",
+              "answer": "ging",
+              "answerDetail": "Với chủ ngữ là 'Aschenputtel' (ngôi thứ ba số ít), động từ 'gehen' sẽ được chia thành 'ging'. Aschenputtel: chủ ngữ, là một người, thuộc ngôi thứ ba số ít. \ngehen: động từ nguyên mẫu, có nghĩa là 'đi'. \nTrong thì quá khứ đơn (Präteritum), động từ gehen khi chia ở ngôi thứ ba số ít biến đổi thành ging. \nheimlich auf das Fest: trạng ngữ chỉ nơi chốn và cách thức, nghĩa là 'lén lút đến buổi tiệc'."
+            },
+            {
+              "id": 21,
+              "question": "Der Prinz ___ (tanzen*) mit Aschenputtel. ",
+              "answer": "tanze",
+              "answerDetail": "Động từ cần được chia theo chủ ngữ Der Prinz (ngôi thứ 3 số ít). Động từ 'tanzen' là động từ nguyên mẫu và cần được chia theo ngôi thứ 3 số ít trong thì hiện tại. \nNgôi thứ 3 số ít (er/sie/es) của động từ 'tanzen' là tanzt."
+            },
+            {
+              "id": 22,
+              "question": "Er ___ (verlieben*) sich in ___(gehen) Aschenputtel. ",
+              "answer": [
+                "verliebte",
+                "lief"
+              ],
+              "answerDetail": "1. Verlieben (yêu): \n'Verlieben' là động từ phản thân, nên nó cần có đại từ phản thân đi kèm. Trong trường hợp này, 'Er' (anh ấy) là chủ ngữ, và đại từ phản thân tương ứng với ngôi thứ ba số ít là 'sich'. \nỞ thì quá khứ đơn (Präteritum), động từ 'verlieben' với ngôi thứ ba số ít (er/sie/es) được chia thành 'verliebte.' \nVì vậy, phần 'Er ___ sich' sẽ trở thành 'Er verliebte sich', nghĩa là 'Anh ấy yêu.' \n2. Gehen (đi): \nĐộng từ 'gehen' là một động từ bất quy tắc. Ở thì quá khứ đơn, động từ này được chia là 'lief' với ngôi thứ ba số ít. \nVì vậy, phần 'in ___ Aschenputtel' sẽ trở thành 'lief in Aschenputtel', nghĩa là 'đi tới Aschenputtel' (Cô bé Lọ Lem)."
+            },
+            {
+              "id": 23,
+              "question": "In der Nacht schnell weg. Sie ___ (laufen) Aschenputtel ___ (verlieren) einen Schuh.",
+              "answer": [
+                "lief",
+                "verlor"
+              ],
+              "answerDetail": "laufen (lief): \nĐộng từ 'laufen' (chạy) ở đây được chia ở thì quá khứ đơn (Präteritum), dùng để mô tả một hành động đã xảy ra trong quá khứ. Chủ ngữ là 'Aschenputtel' (Cô bé Lọ Lem), đại từ ngôi thứ ba số ít, nên động từ 'laufen' sẽ chia thành 'lief' ở thì quá khứ đơn. \nCâu hoàn chỉnh: 'Sie lief.' (Cô ấy chạy.) \nverlieren (verlor): \nTương tự, động từ 'verlieren' (đánh mất) cũng được chia ở thì quá khứ đơn. Chủ ngữ ở đây vẫn là 'Aschenputtel', và với ngôi thứ ba số ít, động từ 'verlieren' sẽ được chia thành 'verlor'. \nCâu hoàn chỉnh: 'Aschenputtel verlor einen Schuh.' (Cô bé Lọ Lem đánh mất một chiếc giày.)"
+            },
+            {
+              "id": 24,
+              "question": "Der Prinz ___ (wollen) Aschenputtel heiraten. ",
+              "answer": "wollte",
+              "answerDetail": "đây là dạng quá khứ (Präteritum) của động từ 'wollen' (muốn). Trong câu này, 'Der Prinz' (Hoàng tử) là chủ ngữ và 'wollte' là động từ chia theo ngôi thứ ba số ít ở thì quá khứ. \nTrong tiếng Đức, khi diễn tả một sự việc đã xảy ra trong quá khứ mà không có yếu tố liên quan đến hiện tại, ta dùng thì quá khứ Präteritum. Ở đây, câu nói về mong muốn của Hoàng tử trong quá khứ, tức là anh ta muốn kết hôn với Aschenputtel (Cô bé Lọ Lem). Vì vậy, ta sử dụng 'wollte' (quá khứ của 'wollen'). \nwollen ở ngôi thứ ba số ít trong thì hiện tại là will. \nwollen ở ngôi thứ ba số ít trong thì quá khứ Präteritum là wollte."
+            },
+            {
+              "id": 25,
+              "question": "Er ___ (haben) den Schuh und ___ (suchen*) Aschenputtel. ",
+              "answer": [
+                "hatte",
+                "suchte"
+              ],
+              "answerDetail": "Er hatte den Schuh: Ở đây, động từ 'haben' (có) ở ngôi thứ ba số ít 'er' chuyển thành 'hatte' trong thì quá khứ đơn. Thì quá khứ đơn (Präteritum) thường được sử dụng trong văn viết hoặc kể lại một câu chuyện trong quá khứ. Câu này có nghĩa là 'Anh ấy đã có chiếc giày.' \nsuchte Aschenputtel: Động từ 'suchen' (tìm kiếm) ở ngôi thứ ba số ít 'er' chuyển thành 'suchte' trong thì quá khứ đơn. 'suchte' có nghĩa là 'đã tìm kiếm'. "
+            },
+            {
+              "id": 26,
+              "question": "Die bösen ___ (sagen*): „Ich habe gestern mit Ihnen getanzt, werter Prinz. ",
+              "answer": "sagten",
+              "answerDetail": "Động từ 'sagen' ở đây cần được chia ở thì quá khứ (Präteritum) để phù hợp với ngữ cảnh của câu. Câu nói trong ngoặc kép ám chỉ một lời nói đã xảy ra trong quá khứ (hôm qua), vì vậy động từ 'sagen' phải được chia ở dạng quá khứ. \nNgôi số nhiều (Die bösen ...): Chủ ngữ 'Die bösen' là số nhiều, vì vậy động từ 'sagen' phải được chia ở ngôi thứ ba số nhiều trong thì quá khứ, tức là 'sagten'."
+            },
+            {
+              "id": 27,
+              "question": "Aber der Schuh ihnen nicht. Der Schuh ___ (passen*) Aschenputtel. Der Prinz und Aschenputtel ___ (leben*) glücklich bis zum Ende.",
+              "answer": [
+                "passte",
+                "lebten"
+              ],
+              "answerDetail": "passte: Đây là dạng động từ 'passen' (phù hợp, vừa vặn) ở thì quá khứ đơn (Präteritum). Ở câu này, 'der Schuh' là chủ ngữ số ít và động từ cần được chia theo chủ ngữ này. Vì vậy, 'passen' được chia thành 'passte'. Nghĩa của câu là: 'Nhưng chiếc giày không vừa Aschenputtel.' \nlebten: Đây là dạng động từ 'leben' (sống) ở thì quá khứ đơn (Präteritum). 'Der Prinz und Aschenputtel' là chủ ngữ số nhiều, nên động từ 'leben' được chia thành 'lebten'. Nghĩa của câu là: 'Hoàng tử và Aschenputtel sống hạnh phúc đến cuối đời.'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Bài tập đọc 4",
+      "exerciseType": "reading",
+      "phaseId": 7,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Lesen Sie den Text und die Aufgaben 1 bis 6 dazu. Wählen Sie: Sind die Aussagen Richtig oder Falsch?",
+          "partType": "multiple_choice",
+          "questionParagraph": "ChristinesAlltagsBlog.at \nGuten Abend! \nAlso, mir ist letzte Woche was wirklich Dummes passiert. \nEigentlich kann ich ganz gut Kuchen backen. Kochen und Backen gehören zu meinen liebsten Freizeitbeschäftigungen. Und einmal im Monat treffe ich mich mit anderen Koch- und Backfans. \n5 Da bringen wir immer neue Rezepte mit... ja, und was wir kochen oder backen schmeckt immer super! \nAber das wisst ihr ja schon, wenn ihr öfter mal in mein Tagebuch schaut. Am Samstag wollte ich nun eine ganz besondere Torte für den Geburtstag von meinem Freund machen. Das Rezept hatte ich mir mal bei einem 10 Treffen der Hobbyköche aufgeschrieben. Ich bin mit einer langen \nEinkaufsliste in den Supermarkt gegangen, denn ich brauchte für meine Supertorte sehr viele Zutaten. \nEndlich hatte ich alles zusammen und wollte mit der Arbeit beginnen. Leider konnte ich das Rezept nicht mehr finden. Ich hatte es zum 15 Einkaufen mitgenommen und wahrscheinlich im Supermarkt vergessen. Also habe ich ohne das Rezept angefangen. \nAber ich habe euch ja noch gar nicht erzählt, was für eine Torte ich machen wollte. \nEs sollte eine Schwarzweißtorte werden, also eine Torte mit viel \n20 Sahnecreme und Schokolade. \nIch will euch jetzt nicht langweilen und alles genau erzählen. Die Torte wurde super. Wenn ihr wollt, kann ich sie mal ins Netz stellen. \nJetzt möchtet ihr sicher wissen, was denn Dummes passiert ist. \nDas Telefon hat geklingelt. Meine Freundin! Schnell habe ich den Teller mit 25 der Torte in den Kühlschrank gestellt. \nIch habe über eine Stunde mit meiner Freundin gesprochen. Dann musste ich schnell weg, weil ich noch einen Termin hatte. Als ich sehr spät wieder nach Hause kam, habe ich nicht mehr an die Torte gedacht. Sie stand die ganze Nacht im Kühlschrank... neben dem Fisch!!! Das war 30 natürlich nicht so gut... \nKönnt ihr euch vorstellen, wie die Torte geschmeckt hat? \nDie Sahnecreme hat wie Fischcreme geschmeckt und keiner wollte sie \nessen. \nWie konnte ich nur so dumm sein! \nBis bald \neure Christine",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Christine kocht und backt mit anderen zusammen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “Ich danke Ihnen… kein Hotel suchen muss”."
+            },
+            {
+              "id": 2,
+              "question": "Christine musste für die Geburtstagstorte viel einkaufen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “Kann ich Ihnen… helfen?”. "
+            },
+            {
+              "id": 3,
+              "question": "Das Rezept für die Torte hat Christine im Supermarkt gefunden.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Kann ich Ihnen… helfen?”. "
+            },
+            {
+              "id": 4,
+              "question": "Christine erklärt im Netz, wie man die Torte macht.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Kann ich Ihnen… helfen?”. "
+            },
+            {
+              "id": 5,
+              "question": "Christine hat die Torte im Kühlschrank vergessen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “Kann ich Ihnen… helfen?”. "
+            },
+            {
+              "id": 6,
+              "question": "Die Torte hat sehr gut geschmeckt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Kann ich Ihnen… helfen?”. "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2.1: Lesen Sie den Text und die  Aufgaben 7 bis  9 dazu. Wählen Sie bei jeder Aufgabe die richtige Lösung a, b oder c.",
+          "partType": "multiple_choice",
+          "questionParagraph": "Lego nur für Kinder? Das war einmal. \nIn mehr als 130 Ländern spielen Kinder gerne mit den kleinen, bunten Klötzchen von Lego und bauen Häuser, Burgen, Autos, Roboter oder Raumschiffe. \nAber auch viele Erwachsene sind Lego- Fans. Vor allem in der Freizeit vieler Männer spielen die bunten Legosteine eine Rolle. Der 31-jährige Simon Patzke sagt:,,Zuerst habe 5 ich mit meinen Kindern mit Lego gespielt. Jetzt ist Lego schon seit einigen Jahren mein Hobby. Fast jeden Tag beschäftige ich mich zwei bis drei Stunden damit. Am liebsten baue ich Rennautos'.'\n10 Er braucht etwa 40 Stunden für einen \nWagen. Ein Modell besteht aus 1000 bis \n2000 Teilen und kostet oft über 200 Euro. Er will auch einmal versuchen, seinen Opel aus Legosteinen nachzubauen. \n15 Die dänische Firma Lego gibt es seit 1934. Sie hat zuerst nur Holzspielzeug hergestellt. 1949 gab es zum ersten Mal Legosteine, die so ähnlich aussahen wie die, die wir heute kaufen können. In Dänemark wurde 1968 20 auch das erste Legoland eröffnet. Inzwischen gibt es fünf Legoländer und viele Freizeitparks auf der ganzen Welt mit zahlreichen Lego- Attraktionen. \n'Rennauto: auch Rennwagen = schnelles Auto für Autorennen, z.B. Formel 1",
+          "questions": [
+            {
+              "id": 7,
+              "question": "In diesem Text geht es um ...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "die Lieblingsbeschäftigung von Männern."
+                },
+                {
+                  "id": "B",
+                  "text": "Automodelle von Lego."
+                },
+                {
+                  "id": "C",
+                  "text": "Informationen über ein bekanntes Spielzeug."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong thư có đoạn “ich… noch nicht aus Berlin zurück”. "
+            },
+            {
+              "id": 8,
+              "question": "Simon Patzke...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat schon als Kind mit Lego gespielt."
+                },
+                {
+                  "id": "B",
+                  "text": "gibt häufig mehr als 200 Euro für sein Hobby aus."
+                },
+                {
+                  "id": "C",
+                  "text": "spielt jeden Tag zwei bis drei Stunden mit seinen Kindern."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Ich habe morgen… Maybach”, trước đó có đề cập đến “heute” tức là “Dienstag”. Vậy “morgen” ở đây chính là “Mittwoch”."
+            },
+            {
+              "id": 9,
+              "question": "Legosteine gibt es seit...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "1949."
+                },
+                {
+                  "id": "B",
+                  "text": "1934."
+                },
+                {
+                  "id": "C",
+                  "text": "1968."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong thư có đoạn “Aber am Freitag… Dr. Falk”."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 2.2: Lesen Sie den Text und die  Aufgaben 10 bis 12 dazu. Wählen Sie bei jeder Aufgabe die richtige Lösung a, b oder c.",
+          "partType": "multiple_choice",
+          "questionParagraph": "Die „Kifrie-Jugendetage' in Berlin \n150 Kinder und Jugendliche zwischen 8 und 22 aus 14 Nationen machen in der Kifrie'-Jugendetage ein gemeinsames \nFreizeitprogramm. An den Nachmittagen, am 5 Abend, an Wochenenden und in den Ferien kann man zum Beispiel Billard spielen, Judo oder kochen lernen oder Jazzdance machen. Es gibt auch Computer- und Videokurse. Am wichtigsten ist aber die Musik. So spielen dort 10 zehn verschiedene Bands mit unterschiedlichen Musikrichtungen wie z.B. Rock, Funk, Soul, Blues, Hip-Hop und Ethno-Pop. Für kleine Jungen und Mädchen gibt es die Gruppe Kifrie Drummers mit einem brasilianischen Trommler. 15 Der Sozialpädagoge Schwarz sagt:,,Alle können sich hier in der Freizeit treffen und zusammen was machen: Ob Mädchen oder Jungen, Christen oder Moslems, Dicke oder Dünne, Gymnasiasten oder Hauptschüler.' \n20 Dass das gut funktioniert, zeigen die vielen erfolgreichen Projekte. Zum Beispiel haben über 30 Kinder und Jugendliche aus verschiedenen Ländern ein Musical geschrieben, das sie über zwanzig Mal aufgeführt haben. Und die \n25 Musikgruppen nehmen jedes Jahr am Karneval der Kulturen in Berlin teil. Die Kifrie Sunshine Show Band hat auch schon Preise gewonnen. \nKifrie' ist die Abkürzung für Kinder- und Jugendgruppen Friedenau.",
+          "questions": [
+            {
+              "id": 10,
+              "question": "In diesem Text geht es um...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "ein Ferienprogramm."
+                },
+                {
+                  "id": "B",
+                  "text": "einen Treffpunkt für Kinder und Jugendliche."
+                },
+                {
+                  "id": "C",
+                  "text": "ein Freizeitprogramm für Musiker."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “ich… noch nicht aus Berlin zurück”. "
+            },
+            {
+              "id": 11,
+              "question": "Im Kifrie...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "können Jugendliche Informationen über andere Nationen bekommen."
+                },
+                {
+                  "id": "B",
+                  "text": "kann man am Musikunterricht teilnehmen."
+                },
+                {
+                  "id": "C",
+                  "text": "gibt es ein großes Angebot an Freizeitaktivitäten."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong thư có đoạn “Ich habe morgen… Maybach”, trước đó có đề cập đến “heute” tức là “Dienstag”. Vậy “morgen” ở đây chính là “Mittwoch”."
+            },
+            {
+              "id": 12,
+              "question": "Ein wichtiges Ziel von Kifrie ist, dass...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "es viele Projekte gibt."
+                },
+                {
+                  "id": "B",
+                  "text": "Jugendliche, die ganz verschieden sind, etwas gemeinsam machen."
+                },
+                {
+                  "id": "C",
+                  "text": "junge Leute mit ihren Aufführungen Preise gewinnen."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong thư có đoạn “Aber am Freitag… Dr. Falk”."
+            }
+          ]
+        }
+      ]
+    }, {
+      "id": "15",
+      "title": "Bài tập nghe 4",
+      "exerciseType": "listening",
+      "phaseId": 5,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Sie hören fünf kurze Texte. Sie hören jeden Text zweimal. Wählen Sie für die Aufgaben 1 bis 5 die richtige Lösung: [a], [b] oder [c].",
+          "partType": "multiple_choice",
+          "transcript": "1. \nUnd hier das Wetter: Heute Abend und in der Nacht gibt es starke Gewitter. Morgen scheint zuerst die Sonne, am Nach- mittag kommen von Westen Wolken auf und es kann auch etwas regnen. Mit 22 bis 25 Grad ist es nicht mehr so heiß wie in den letzten Tagen. Abends bleibt es aber trocken. \n2. \nUnd hier die Verkehrsmeldungen: Autobahn A1 Dortmund Richtung Köln: Die Straßenarbeiten sind zu Ende. Sie haben wieder freie Fahrt. Auch auf der A3 Köln Richtung Frank- furt können Sie nach einem Unfall wieder normal fahren. Achtung, Autofahrer: Schwerer Unfall auf der A31 zwi- schen Heek und Gronau - bitte fahren Sie langsam. \n3. \nHallo, Nadja, hier ist Lea. Am Samstag ist doch das Sommerfest bei uns im Garten. Getränke und Essen haben wir schon gekauft. Aber denkst du bitte an deine CDs? Bringst du sie mit? Dann können wir tanzen. Spiele haben wir, Pauline will ein paar mitbringen. \n4. \nGuten Tag, Frau Berger, Gundula Groß von der Firma All- Touristic. \nFrau Berger, Sie hatten doch am nächsten Montag einen Termin mit Herrn Lehbach. Leider ist Herr Lehbach am Montag auf Geschäftsreise und kann erst am Mittwoch wieder da sein. Er schlägt vor, dass Sie dann am Mittwoch, dem 23. September, um 13 Uhr hier vorbeikommen? Ist das möglich? Bitte rufen Sie uns an. Danke. \n5. \nHallo, Ewa. Immer dieser Anrufbeantworter! Hier ist Alexandra. Du, Ewa, wir wollen doch heute Abend ins Kino. Ich habe Karten reserviert. Der Film fängt um 20 Uhr an, wir müssen die Karten aber bis 19 Uhr an der Kasse ab- holen. Kannst du das machen? Ich kann erst kurz vor acht da sein. Danke und bis später.",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wie wird das Wetter morgen?",
+              "audioUrl": "part1_ques1_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Die Sonne scheint den ganzen Tag."
+                },
+                {
+                  "id": "B",
+                  "text": "Es wird heißer."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Abend regnet es nicht."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 2,
+              "question": "Wo muss man vorsichtig fahren?",
+              "audioUrl": "part1_ques2_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Auf der A 1."
+                },
+                {
+                  "id": "B",
+                  "text": "Auf der A3."
+                },
+                {
+                  "id": "C",
+                  "text": "Auf der A31."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 3,
+              "question": "Was soll Nadja nicht vergessen?",
+              "audioUrl": "part1_ques3_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Lebensmittel"
+                },
+                {
+                  "id": "B",
+                  "text": "Spiele"
+                }, {
+                  "id": "C",
+                  "text": "Musik"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 4,
+              "question": "Wann soll Frau Berger tun?",
+              "audioUrl": "part1_ques4_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Einen neuen Termin vorschlagen."
+                },
+                {
+                  "id": "B",
+                  "text": "Einen Termin verschieben."
+                },
+                {
+                  "id": "C",
+                  "text": "Auf einen Anruf warten."
+                }
+
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 5,
+              "question": "Wann soll Ewa am Kino sein?",
+              "audioUrl": "part1_ques5_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Um 19 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Um 20 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Kurz vor 20 Uhr."
+                }
+
+              ],
+              "answer": "A"
+            }
+          ]
+        }, {
+          "id": 2,
+          "partName": "Phần 2: Sie hören fünfkurze Gespräche. Sie hören jeden Text einmal. Wählen Sie für die Aufgaben 1 bis 15 die richtige Lösung: [a], [b] oder [c].",
+          "partType": "multiple_choice",
+          "transcript": "11. \n• Guten Tag, ich hätte gern ein Kilo Äpfel und 5 Bananen. \nHaben Sie noch einen Wunsch? Wir haben Birnen, das Kilo wie auch die Äpfel nur für 1 Euro 50. \n• Gut, dann auch noch ein Kilo Birnen. Das ist alles. Die Äpfel, die Bananen und die Birnen ... das macht zu- sammen 4 Euro 90. \n• Oh, ich sehe gerade, ich habe nur drei Euro dabei. Wie teuer sind die Bananen? \n2 Euro. \n• Dann geben Sie mir nur die Äpfel und die Birnen. \n12. \n• Guten Tag, haben Sie schon gewählt? \n► Was können Sie empfehlen? Haben Sie frischen Fisch? • Nein, heute leider nicht. Aber wir haben eine sehr gute Fischsuppe. Und vielleicht einen Salat? \n► Die Fischsuppe nehme ich gern, aber bitte keinen Salat. • Und zu trinken...? \n13. \n• Sag mal, Ewa, was machst du heute Abend? Wollen wir einen Film sehen? \n▸ Nein, ich muss arbeiten, ich muss für die Prüfung lernen. • Und wollen wir später etwas trinken gehen. Es gibt hier an der Ecke ein neues Café. \n▸ Nein, tut mir leid, lieber am Sonntag. Dann habe ich Zeit. \n14. \n• Julia, Ich gehe schnell einkaufen. Was möchtest du zum \nFrühstück? \n► Frische Brötchen. \n• Soll ich auch Eier und Käse kaufen? \n▸ Nein, Käse mag ich nicht. Und Eier haben wir noch im Kühlschrank Aber vielleicht kannst du etwas Wurst ein- kaufen, das wäre super. \n• Gut, dann gehe ich zum Supermarkt. \n15. \n• Welche Fächer magst du am liebsten Lena? \n▸ Englisch macht mir sehr viel Spaß. Leider ist unsere Lehrerin nicht so nett, sie gibt sehr viele Hausaufgaben. Was ich wirklich gerne habe, ist Musik. Die Lehrerin ist nett und ich spiele auch gern zuhause Gitarre. \n• Und Kunst? Du hast doch letzten Monat ein so tolles Bild gemalt. \n▸ Ja, aber ich habe eine schlechte Note bekommen. Und ich finde den Unterricht langweilig.",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Was kauft die Frau?",
+              "questionImage": [
+                "6_1_phase2_A2",
+                "6_2_phase2_A2",
+                "6_3_phase2_A2"
+              ],
+              "audioUrl": "part1_ques1_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 7,
+              "question": "Was bestellt der Mann?",
+              "questionImage": [
+                "7_1_phase2_A2",
+                "7_2_phase2_A2",
+                "7_3_phase2_A2"
+              ],
+              "audioUrl": "part2_ques7_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "Was macht Ewa heute Abend?",
+              "questionImage": [
+                "8_1_phase2_A2",
+                "8_2_phase2_A2",
+                "8_3_phase2_A2"
+              ],
+              "audioUrl": "part2_ques8_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 9,
+              "question": "Was kauft der Mann ein?",
+              "questionImage": [
+                "9_1_phase2_A2",
+                "9_2_phase2_A2",
+                "9_3_phase2_A2"
+              ],
+              "audioUrl": "part2_ques9_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 10,
+              "question": "Was ist das Lieblingsfach von Lena?",
+              "questionImage": [
+                "10_1_phase2_A2",
+                "10_2_phase2_A2",
+                "10_3_phase2_A2"
+              ],
+              "audioUrl": "part2_ques10_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Image 1"
+                },
+                {
+                  "id": "B",
+                  "text": "Image 2"
+                },
+                {
+                  "id": "C",
+                  "text": "Image 3"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        }, {
+          "id": 3,
+          "partName": "Phần 3: Sie hören ein Interview. Sie hören den Text zweimal. Wählen Sie für die Aufgaben 16 bis 20 [Ja] oder [Nein]. Lesen Sie jetzt die Aufgaben.",
+          "partType": "multiple_choice",
+          "transcript": "• Und wie haben Sie die Wohnung gefunden? \n► Zuerst habe ich natürlich die Wohnungsanzeigen in der Zeitung gelesen. Und auch im Internet. Da kann man \nauch Wohnungen finden. Ich hatte auch viele Termine und habe mir viele Wohnungen angesehen, aber immer waren andere Interessenten schneller. Und dann habe ich Freunde und Kolleginnen gefragt. Sie hatten auch Tipps für mich, schöne Wohnungen, aber die Wohnungen waren immer zu teuer. \n• Und dann? \n► Dann beim Einkaufen in einem Supermarkt habe ich einen Zettel gesehen. 3-Zimmerwohnung, billig, sofort zu vermieten. Ich habe dort angerufen, hatte einen Termin. Die Vermieterin war sehr nett und ich war die erste. Es hat geklappt. \n• Und wie ist die Wohnung? \n‣ Schön und groß. Leider ist sie etwas dunkel, aber sie liegt im Zentrum, das ist auch wichtig für mich. \n• Und müssen Sie noch viel renovieren? \n▸ Nein, alles ist fertig, ich muss nur noch Tische und Stühle kaufen, aber das hat Zeit. \n• Also für unsere Hörerinnen und Hörer, unser Tipp: Wenn Sie eine Wohnung suchen, immer Augen und \nOhren offenhalten, überall schauen, ob es Angebote gibt.",
+          "questions": [
+            {
+              "id": 12,
+              "question": "Lara hat ihre Wohnung im Internet gefunden",
+              "audioUrl": "part3_ques12_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 13,
+              "question": "Freunde haben ihr Wohnungen empfohlen.",
+              "audioUrl": "part3_ques12_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 14,
+              "question": "Lara hat ihre Vermieterin im Supermarkt getroffen.",
+              "audioUrl": "part3_ques14_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 15,
+              "question": "Die Wohnung ist groß und hell",
+              "audioUrl": "part3_ques15_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 16,
+              "question": "Lara braucht noch einige Möbel.",
+              "audioUrl": "part3_ques16_02_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ja"
+                },
+                {
+                  "id": "B",
+                  "text": "Nein"
+                }
+              ],
+              "answer": "A"
             }
           ]
         }
@@ -8711,6 +9546,15 @@
       "packageId": "1",
       "startDate": "01/10/2024",
       "endDate": "01/04/2025",
+      "discount": 0.15,
+      "totalPrice": 254150,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    },
+    {
+      "id": "a1b8",
+      "packageId": "1",
+      "startDate": "09/10/2024",
+      "endDate": "09/04/2025",
       "discount": 0.15,
       "totalPrice": 254150,
       "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"

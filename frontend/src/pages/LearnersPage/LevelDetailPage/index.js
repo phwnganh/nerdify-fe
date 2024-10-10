@@ -18,6 +18,7 @@ import { ButtonToDoExam, ScrollablePhaseDiv, ButtonPhase } from "./styled";
 // 5. Static assets (images)
 import a1 from "../../../assets/levelImage/a1.png";
 import a2 from "../../../assets/levelImage/a2.png";
+import b1 from "../../../assets/levelImage/b1.png";
 import listening from "../../../assets/exercisesSkill/listening.png";
 import reading from "../../../assets/exercisesSkill/reading.png";
 import vocabulary from "../../../assets/exercisesSkill/vocabulary.jpg";
@@ -40,7 +41,7 @@ export default function ViewLevelDetail() {
   const [course, setCourse] = useState(null);
   const navigate = useNavigate(); // Hook to programmatically navigate
 
-  const imgLevelArr = { a1: a1, a2: a2 }; // Mapping images for course levels
+  const imgLevelArr = { a1: a1, a2: a2, b1: b1 }; // Mapping images for course levels
 
   // Fetch course details based on courseId
   useEffect(() => {
