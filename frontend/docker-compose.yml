@@ -1,14 +1,14 @@
 version: '3'
 services:
-  nerdify_fe:
-    image: benzo203/nerdify_be:latest
-    ports:
-      - "9999:9999"
-    restart: always
-    env_file:
-      - .env
-    networks:
-      - nerdify_fe_network
+  # nerdify_fe:
+  #   image: benzo203/nerdify_be:latest
+  #   ports:
+  #     - "9999:9999"
+  #   restart: always
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - nerdify_fe_network
 
   # Nginx service
   nginx:
@@ -20,8 +20,8 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - /etc/nginx/ssl:/etc/nginx/ssl
-    depends_on:
-      - nerdify_fe
+    # depends_on:
+    #   - nerdify_fe
     networks:
       - nerdify_fe_network
 
