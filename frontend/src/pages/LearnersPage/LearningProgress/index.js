@@ -3,6 +3,7 @@ import { TextCustom, TitleCustom } from "../../../components/Typography";
 import CardCustom from "../../../components/Card";
 import { useEffect, useState } from "react";
 import ButtonCustom from "../../../components/Button";
+import { BASE_SERVER } from "../../../constants";
 export default function LearningProgress() {
   const [levelPhaseMap, setLevelPhaseMap] = useState({});
   const [allExercises, setAllExercises] = useState([]); // Store all exercises
@@ -13,9 +14,9 @@ export default function LearningProgress() {
         // Fetch phases, levels, and exercises in parallel
         const [phasesResponse, levelsResponse, exercisesResponse] =
           await Promise.all([
-            fetch("http://54.254.175.236:9999/phases"),
-            fetch("http://54.254.175.236:9999/levels"),
-            fetch("http://54.254.175.236:9999/exercises"), // Fetch exercises
+            fetch(`${BASE_SERVER}/phases`),
+            fetch(`${BASE_SERVER}/levels`),
+            fetch(`${BASE_SERVER}/exercises`), // Fetch exercises
           ]);
 
         const phases = await phasesResponse.json();

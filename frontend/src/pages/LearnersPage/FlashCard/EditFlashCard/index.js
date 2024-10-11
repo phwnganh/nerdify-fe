@@ -4,6 +4,7 @@ import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../helpers/validate";
+import { BASE_SERVER } from "../../../../constants";
 
 export default function EditFlashCard() {
   const { flashcardId } = useParams();
@@ -12,7 +13,7 @@ export default function EditFlashCard() {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`)
+    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
       .then((response) => response.json())
       .then((data) => {
         setFlashcard(data);
@@ -39,7 +40,7 @@ export default function EditFlashCard() {
   };
 
   const handleSubmit = () => {
-    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`, {
+    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ import demo_2_3 from "../../../assets/vocabExercises/2_3.png";
 
 import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
-import { CLIENT_URI, PART_TYPE } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
@@ -38,7 +38,7 @@ export default function FinalExam() {
   };
 
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/finalexam/${examId}`)
+    fetch(`${BASE_SERVER}/finalexam/${examId}`)
       .then((res) => res.json())
       .then((res) => {
         setExam(res);
@@ -215,7 +215,7 @@ export default function FinalExam() {
       examId: exam.id,
     };
 
-    fetch("http://54.254.175.236:9999/finalExamSubmission", {
+    fetch(`${BASE_SERVER}/finalExamSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

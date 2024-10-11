@@ -5,6 +5,7 @@ import { Col, Row } from "antd";
 // import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
 // import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
 import ButtonCustom from "../../../../components/Button";
+import { BASE_SERVER } from "../../../../constants";
 export default function ReadingResults() {
   const [exerciseResults, setExerciseResults] = useState(null);
   const { submissionId } = useParams();
@@ -26,8 +27,8 @@ export default function ReadingResults() {
 
   useEffect(() => {
     const fetchReadingSubmissionData = async () => {
-      const submissionsResponse = await fetch(`http://54.254.175.236:9999/readingExercisesSubmission?id=${submissionId}&userId=1`);
-      const exercisesResponse = await fetch("http://54.254.175.236:9999/exercises");
+      const submissionsResponse = await fetch(`${BASE_SERVER}/readingExercisesSubmission?id=${submissionId}&userId=1`);
+      const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`);
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
 

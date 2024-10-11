@@ -3,7 +3,7 @@ import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
-import { PART_TYPE } from "../../../../constants";
+import { BASE_SERVER, PART_TYPE } from "../../../../constants";
 import demo_part2_6_1 from "../../../../assets/readingExercises/demo_part2_6_1.png";
 import demo_part2_6_2 from "../../../../assets/readingExercises/demo_part2_6_2.png";
 import demo_part2_7_1 from "../../../../assets/readingExercises/demo_part2_7_1.png";
@@ -52,7 +52,7 @@ export default function ReadingExercises() {
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -276,7 +276,7 @@ export default function ReadingExercises() {
       isCompleted: true,
     };
 
-    fetch(`http://54.254.175.236:9999/exercises/${exercises?.id}`, {
+    fetch(`${BASE_SERVER}/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -294,7 +294,7 @@ export default function ReadingExercises() {
         console.log(err);
       });
 
-    fetch("http://54.254.175.236:9999/exercisesSubmission", {
+    fetch(`${BASE_SERVER}/exercisesSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

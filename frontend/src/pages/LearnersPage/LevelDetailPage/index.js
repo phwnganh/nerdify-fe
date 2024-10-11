@@ -28,7 +28,7 @@ import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 
 // Constants
 import { CLIENT_URI } from "../../../constants/uri.constants"; // URI constants for navigation
-import { EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
+import { BASE_SERVER, EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
 import { getLevelDetail } from "../../../services/LearnerService";
 import ModalCustom from "../../../components/Modal";
 
@@ -73,7 +73,7 @@ export default function ViewLevelDetail() {
 
   // Fetch course details based on courseId
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/levels/${courseId}`)
+    fetch(`${BASE_SERVER}/levels/${courseId}`)
       .then((response) => response.json())
       .then((course) => {
         setCourse(course);
@@ -92,12 +92,12 @@ export default function ViewLevelDetail() {
 
   // Fetch phases and their respective exercises
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/phases?levelId=${courseId}`)
+    fetch(`${BASE_SERVER}/phases?levelId=${courseId}`)
       .then((response) => response.json())
       .then((phases) => {
         // Fetch exercises for each phase
         const fetchExercises = phases.map((phase) =>
-          fetch(`http://54.254.175.236:9999/exercises?phaseId=${phase.id}`)
+          fetch(`${BASE_SERVER}/exercises?phaseId=${phase.id}`)
             .then((res) => res.json())
             .then((exercises) => ({ ...phase, exercises })),
         );

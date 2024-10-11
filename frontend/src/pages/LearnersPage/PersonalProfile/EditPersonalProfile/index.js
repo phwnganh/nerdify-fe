@@ -8,6 +8,7 @@ import { EditOutlined } from "@ant-design/icons";
 import moment from "moment";
 import STORAGE, { getStorage } from "../../../../library/storage";
 import dayjs from "dayjs";
+import { BASE_SERVER } from "../../../../constants";
 
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
@@ -16,7 +17,7 @@ export default function EditPersonalProfile() {
   const userId = getStorage(STORAGE.USER_ID);
 
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/users/${userId}`)
+    fetch(`${BASE_SERVER}/users/${userId}`)
       .then((res) => res.json())
       .then((res) => {
         setUser(res);
@@ -40,7 +41,7 @@ export default function EditPersonalProfile() {
       dob: values.dob ? values.dob.format("YYYY-MM-DD") : null,
       phone: values.phone,
     };
-    fetch(`http://54.254.175.236:9999/users/${userId}`, {
+    fetch(`${BASE_SERVER}/users/${userId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedUserData),

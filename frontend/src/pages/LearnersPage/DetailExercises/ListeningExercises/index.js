@@ -4,7 +4,7 @@ import { Col, Row, Tabs } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { PART_TYPE } from "../../../../constants";
+import { BASE_SERVER, PART_TYPE } from "../../../../constants";
 
 // Import images and audio files
 import demo1_1 from "../../../../assets/listeningExercises/1_1.png";
@@ -209,7 +209,7 @@ export default function ListeningExercise() {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
 
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -273,7 +273,7 @@ export default function ListeningExercise() {
       isCompleted: true,
     };
 
-    fetch("http://54.254.175.236:9999/exercisesSubmission", {
+    fetch(`${BASE_SERVER}/exercisesSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -285,7 +285,7 @@ export default function ListeningExercise() {
       .catch((err) => console.error("Error saving submission:", err));
 
     // Update exercise completion status
-    fetch(`http://54.254.175.236:9999/exercises/${exercises.id}`, {
+    fetch(`${BASE_SERVER}/exercises/${exercises.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

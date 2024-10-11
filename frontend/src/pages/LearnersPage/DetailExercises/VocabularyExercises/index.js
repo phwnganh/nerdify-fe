@@ -15,7 +15,7 @@ import demo_5_1 from "../../../../assets/vocabExercises/5_1.png";
 import demo_5_2 from "../../../../assets/vocabExercises/5_2.png";
 import demo_5_3 from "../../../../assets/vocabExercises/5_3.png";
 
-import { PART_TYPE } from "../../../../constants";
+import { BASE_SERVER, PART_TYPE } from "../../../../constants";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
@@ -65,7 +65,7 @@ export default function VocabularyExercises() {
 
   useEffect(() => {
     fetch(
-      `http://54.254.175.236:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
+      `${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -336,7 +336,7 @@ export default function VocabularyExercises() {
 
     setUserScore(score);
 
-    fetch(`http://54.254.175.236:9999/exercises/${exercises?.id}`, {
+    fetch(`${BASE_SERVER}/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -365,7 +365,7 @@ export default function VocabularyExercises() {
       exerciseId: exercises.id,
     };
 
-    fetch("http://54.254.175.236:9999/exercisesSubmission", {
+    fetch(`${BASE_SERVER}/exercisesSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

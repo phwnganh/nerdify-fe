@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import CardCustom from "../../../../components/Card";
+import { BASE_SERVER } from "../../../../constants";
 
 export const TestFlashCard = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export const TestFlashCard = () => {
   const [userScore, setUserScore] = useState(-1);
 
   useEffect(() => {
-    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`)
+    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
       .then((response) => response.json())
       .then((data) => {
         const flashcardClone = JSON.parse(JSON.stringify(data));

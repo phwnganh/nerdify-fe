@@ -2,12 +2,12 @@ import { useState } from "react";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import ButtonCustom from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 
 export default function MySubscription() {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
-  fetch("http://54.254.175.236:9999/users/2")
+  fetch(`${BASE_SERVER}/users/2`)
     .then((res) => res.json())
     .then((data) => {
       setUser(data);
