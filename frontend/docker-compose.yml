@@ -1,7 +1,7 @@
 version: '3'
 services:
   nerdify_fe:
-    image: benzo203/nerdify_fe:latest
+    image: benzo203/nerdify_be:latest
     ports:
       - "80:80"
       - "443:443"
