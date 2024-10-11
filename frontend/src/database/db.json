@@ -1,0 +1,6777 @@
+{
+  "phases": [
+    {
+      "id": "1",
+      "name": "Phase 1",
+      "levelId": 1,
+      "exercises": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "isNew": false
+    },
+    {
+      "id": "2",
+      "name": "Phase 2",
+      "levelId": 1,
+      "exercises": [
+        4,
+        5,
+        6
+      ],
+      "isNew": false
+    },
+    {
+      "id": "3",
+      "name": "Final Exam",
+      "levelId": 1,
+      "examId": 1
+    },
+    {
+      "id": "4",
+      "name": "Phase 1",
+      "levelId": 2,
+      "exercise": [
+        8,
+        9,
+        10
+      ],
+      "isNew": true
+    },
+    {
+      "id": "5",
+      "name": "Final Exam",
+      "levelId": 2,
+      "examId": 2
+    }
+  ],
+  "levels": [
+    {
+      "id": "1",
+      "title": "Bài tập trình độ A1",
+      "levelImage": "a1",
+      "learners": 10,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "phases": [
+        1,
+        2,
+        3
+      ],
+      "finalexams": [
+        1
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Bài tập trình độ A2",
+      "levelImage": "a2",
+      "learners": 10,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "phases": [
+        4
+      ],
+      "finalexams": [
+        2
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "1",
+      "exerciseType": "listening",
+      "phaseId": 1,
+      "title": "Bài tập nghe 1",
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "partType": "multiple_choice",
+          "transcript": "Nummer 1: \n Kunde: Entschuldigung, was kostet dieser Pullover jetzt? Da steht 30 Prozent billiger. Verkäuferin: Einen Moment bitte... neunzehnfünfundneunzig.\n Kunde: 19,95 Euro? \n Verkäuferin: Ja, Euro natürlich.\n Kunde: Hm, ... ok, den nehme ich.\n Nummer 2: \n Passant: Ach, entschuldigen Sie bitte. Passantin: Ja bitte.\n Passant: Haben Sie eine Uhr? ...\n Wie spät ist es bitte?\n Passantin: Ja - jetzt ist es gleich 5 Uhr.\n Passant: Was, schon 5. Vielen Dank, Wiedersehen.\n Nummer 3: \n Kellner: Was wünschen Sie bitte? Gast: Ich hätte gern die Salatplatte und ein ...\n Kellner: Entschuldigung, die Salatplatte ist leider aus, aber die Bratwurst kann ich Ihnen empfehlen ... ganz frisch heute. Gast: Nein danke ... ich esse kein Fleisch. Gibt es etwas ohne Fleisch? \n ...\n Kellner: Ja nicht mehr viel: Fisch oder... Pommes. \n Gast: Fisch... hm... Tja, dann wohl die Pommes. \n",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Was kostet der Pullover?",
+              "audioUrl": "part1_ques1",
+              "questionImage": [
+                "demo1_1",
+                "demo1_2",
+                "demo1_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Dreißig Euro."
+                },
+                {
+                  "id": "B",
+                  "text": "Fünfundneunzig Euro."
+                },
+                {
+                  "id": "C",
+                  "text": "Neunzehn Euro fünfundneunzig Cent."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Khách hàng hỏi giá của chiếc áo len, được giảm giá 30%. Người bán xác nhận rằng giá đã giảm là 19,95 Euro. \nTrong câu hỏi trắc nghiệm, tùy chọn C (19,95 €) là câu trả lời đúng vì nó khớp với giá được đề cập trong hộp thoại."
+            },
+            {
+              "id": 2,
+              "question": "Wie spät ist es?",
+              "audioUrl": "part1_ques2",
+              "questionImage": [
+                "demo2_1",
+                "demo2_2",
+                "demo2_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "15 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Gleich 5Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Halb 5 Uhr."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Người qua đường hỏi giờ, và người phụ nữ trả lời là 'gleich 5 Uhr', nghĩa là gần 5 giờ.\n Trong câu hỏi trắc nghiệm, phương án B (Gleich 5 Uhr) là câu trả lời đúng vì nó phản ánh đúng thời gian được đưa ra trong đoạn hội thoại."
+            },
+            {
+              "id": 3,
+              "question": "Was isst die Frau im Restaurant?",
+              "audioUrl": "part1_ques3",
+              "questionImage": [
+                "demo3_1",
+                "demo3_2",
+                "demo3_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "In die neunte Klasse."
+                },
+                {
+                  "id": "B",
+                  "text": "In die dritte Klasse."
+                },
+                {
+                  "id": "C",
+                  "text": "In die vierte Klasse."
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Câu hỏi đang hỏi về con trai của bà Hegers, và nhìn vào hình, ta thấy có ba biển hiệu cho các lớp học khác nhau: \n 9. Klasse (lớp 9), 3. Klasse (lớp 3), và 4. Klasse (lớp 4). Để trả lời câu này, ta cần chọn đúng lớp mà con trai của bà ấy đang học."
+            },
+            {
+              "id": 4,
+              "question": "Wie kommt die Frau in den 2. Stock?",
+              "audioUrl": "part1_ques4",
+              "questionImage": [
+                "demo4_1",
+                "demo4_2",
+                "demo4_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Mit dem Aufzug."
+                },
+                {
+                  "id": "B",
+                  "text": "Auf der Treppe um die Ecke."
+                },
+                {
+                  "id": "C",
+                  "text": "Mit der Rolltreppe."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Phụ thuộc vào hình ảnh người phụ nữ sử dụng để lên tầng. Nếu người phụ nữ sử dụng thang máy, thì đáp án là a); nếu sử dụng cầu thang bộ, thì là b); và nếu dùng thang cuốn thì đáp án là c)."
+            },
+            {
+              "id": 5,
+              "question": "Wohin fährt Herr Albers?",
+              "audioUrl": "part1_ques5",
+              "questionImage": [
+                "demo5_1",
+                "demo5_2",
+                "demo5_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "In Urlaub ans Meer."
+                },
+                {
+                  "id": "B",
+                  "text": "Zur Arbeit."
+                },
+                {
+                  "id": "C",
+                  "text": "Zur Famillie."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Hình ảnh đầu tiên (lựa chọn a) có hình chiếc ô trên bãi biển, đại diện cho kỳ nghỉ biển. Hình ảnh thứ hai (lựa chọn b) là một người đàn ông đang ngồi bàn làm việc, thể hiện việc đi làm. Hình ảnh thứ ba (lựa chọn c) là cảnh một gia đình với người mẹ và hai đứa trẻ, đại diện cho việc đi gặp gia đình. \nVì câu hỏi hỏi về 'Wohin fährt Herr Albers?' (Ông Albers đi đâu?), nên đáp án có thể dựa vào ngữ cảnh hình ảnh hoặc nội dung mà bạn học trước đó. \nDựa vào hình ảnh và ngữ cảnh của câu hỏi, đáp án đúng là c: Zur Familie (Đi gặp gia đình)."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Kreuzen Sie an: Richtig oder Falsch. Sie hören jeden Text einmal.",
+          "partType": "multiple_choice",
+          "transcript": "Nummer 7: \n Liebe Kunden, zu Weihnachten bieten wir Ihnen Superpreise an ... z. B. erstklassiger italienischer Weißwein für 12 Euro 78 die Flasche oder exklusiver argentinischer Rotwein für 9 Euro 68. Besuchen Sie uns im 3. Stock. Frohe Weihnachten. \nNummer 8: \nLiebe Fahrgäste. Wir sind kurz vor Würzburg. Sicherlich haben Sie schon Hunger. An der nächsten Raststätte halten wir für eine Stunde. Wir treffen uns wieder um halb eins am Bus, aber bitte pünktlich sein.\nNummer 9: \nLiebe Fahrgäste! Bitte beachten Sie. Das ist ein außerplanmäßiger Halt. Bitte hier nicht aussteigen. In ein paar Minuten erreichen wir den Bahnhof Bonn Bad Godesberg. \nNummer 10: \nHerr Stefan Janda gebucht auf dem Flug LH 737 nach Warschau, wird zum Schalter F7 gebeten. Der Flug wird in ein paar Minuten geschlossen. Herr Janda gebucht nach Warschau bitte nach F7.",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. \nKhông có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 7,
+              "question": "Die Fahrgäste sollen sich im Restaurant treffen.",
+              "audioUrl": "part2_ques8",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Phiên âm chỉ đề cập đến việc khách hàng được ưu đãi giá siêu khủng nhân dịp Giáng sinh và được mời ghé thăm cửa hàng trên tầng 3. \nKhông có thông tin về một bữa tiệc Giáng sinh."
+            },
+            {
+              "id": 8,
+              "question": "Die Fahrgäste sollen im Zug bleiben.",
+              "audioUrl": "part2_ques9",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 9,
+              "question": "Der Herr soll sofort zum Schalter kommen.",
+              "audioUrl": "part2_ques10",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "partType": "multiple_choice",
+          "transcript": "Nummer 11: \nTelefonansagedienst der deutschen Tele- kom. Die Rufnummer des Teilnehmers hat sich geändert. Bitte rufen Sie die Telefon- Auskunft an unter 11 8 33. \nNummer 12: \nHallo Jan, hier ist Boris. Du, ich bin noch im Zug. Du holst mich doch vom Bahnhof ab? Ich warte an der Information auf dich. \nNummer 13: \nMensch Jan, du Penner, hier noch mal Boris. Ich bin jetzt am Bahnhof. Und du? Wo bist du denn? Ich warte schon über 20 Minuten auf dich. Zehn Minuten Zeit hast du noch... bis 2, dann nehme ich ein Taxi. \nNummer 14: \nGuten Tag, hier Rogalla. Wir können am Samstag leider nicht zu Ihnen kommen. Am Sonntag haben wir aber Zeit. Rufen Sie uns doch bitte zurück, ob Ihnen das passt. Danke. \nNummer 15: \nHallo Alex. Walter hier. Kannst du schnell mal rüberkommen? Mein Computer hat einen Fehler. Ich kann nichts drucken. Melde dich doch bitte gleich, wenn du nach Hause kommst.",
+          "questions": [
+            {
+              "id": 10,
+              "question": "Die Nummer ist:",
+              "audioUrl": "part3_ques11",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "11833"
+                },
+                {
+                  "id": "B",
+                  "text": "11883"
+                },
+                {
+                  "id": "C",
+                  "text": "12833"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong văn bản, Boris nói: Tôi sẽ đợi bạn ở bàn thông tin."
+            },
+            {
+              "id": 11,
+              "question": "Wo genau treffen sich die Männer?",
+              "audioUrl": "part3_ques12",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Am Zug."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Bahnhof."
+                },
+                {
+                  "id": "C",
+                  "text": "An der Information."
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Trong tin nhắn, Boris nói: Tôi đã đợi bạn hơn 20 phút. Bạn vẫn còn 10 phút... đến 2 giờ, sau đó tôi sẽ bắt taxi. \nBoris cho biết anh đã đợi hơn 20 phút và sẽ đợi thêm 10 phút nữa, tổng cộng nhiều hơn 20 phút so với thời gian anh đợi ban đầu."
+            },
+            {
+              "id": 12,
+              "question": "Wie lange will der Mann noch warten?",
+              "audioUrl": "part3_ques13",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "20 Minuten"
+                },
+                {
+                  "id": "B",
+                  "text": "2 Minuten"
+                },
+                {
+                  "id": "C",
+                  "text": "10 Minuten"
+                }
+              ],
+              "answer": "C",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 13,
+              "question": "An welchem Tag will die Frau kommen?",
+              "audioUrl": "part3_ques14",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Am Montag."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Sonntag."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Samstag."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            },
+            {
+              "id": 14,
+              "question": "Was ist kaputt?",
+              "audioUrl": "part3_ques15",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Der Fernseher."
+                },
+                {
+                  "id": "B",
+                  "text": "Der Computer."
+                },
+                {
+                  "id": "C",
+                  "text": "Das Handy."
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Ban đầu, khách muốn ăn salad nhưng không có. \nNgười phục vụ gợi ý món xúc xích (Bratwurst), nhưng khách từ chối vì cô ấy không ăn thịt. Cô ấy cân nhắc đến cá nhưng cuối cùng quyết định ăn khoai tây chiên (Pommes). \nTrong câu hỏi trắc nghiệm, phương án A (Pommes) là câu trả lời đúng vì nó chỉ ra chính xác những gì người phụ nữ quyết định ăn."
+            }
+          ]
+        }
+      ],
+      "isCompleted": true,
+      "score": "36%"
+    },
+    {
+      "id": "2",
+      "exerciseType": "reading",
+      "title": "Bài tập đọc 1",
+      "phaseId": 1,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1.1: Lesen Sie die beiden Texte und die Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "partType": "multiple_choice",
+          "questionParagraph": "Hallo Li\n danke für deine Mail. Dein Zug kommt hier in Hannover um 12.36 Uhr an. Ich bin ab 12.15 Uhr im Hauptbahnhof und warte auf dich vor der Auskunft.\nDu kannst mich den ganzen Vormittag auf meinem Handy (++49 173 62 205 59) erreichen.\nDeine \nKarin",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Lis Zug kommt nach halb eins an.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Câu hỏi 'Lis Zug kommt nach halb eins an' có nghĩa là 'Tàu của Li đến sau 12 giờ 30 không?'. \nTrong đoạn văn, thông tin cho biết tàu của Li sẽ đến Hannover vào lúc 12:36, tức là sau 12:30 (halb eins). "
+            },
+            {
+              "id": 2,
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong đoạn văn, Karin nói rằng cô ấy sẽ có mặt ở ga trung tâm (Hauptbahnhof) từ 12:15 và sẽ đợi trước quầy thông tin (Auskunft) từ thời điểm đó, chứ không phải là cả buổi sáng. \nTuy nhiên, cô ấy có thể được liên lạc qua điện thoại cả buổi sáng. "
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 1.2: Lesen Sie die beiden Texte und die Aufgaben 1 bis 5. Kreuzen Sie an: Richtig oder Falsch",
+          "partType": "multiple_choice",
+          "questionParagraph": "Liebe Carmen, \nam kommenden Sonntag habe ich Geburtstag. \nIch möchte gerne mit dir feiern und lade dich \nherzlich zu meiner Party am Samstagabend ein. \nWir fangen um 21 Uhr an. Ist das okay für dich? \nEs werden viele Leute da sein, die du auch kennst. \nKannst du vielleicht einen Salat mitbringen? Und \nvergiss bitte nicht einen Pullover oder eine Jacke! \nWir wollen nämlich draußen im Garten feiern. \nIch freue mich sehr auf dich! \n Bis zum Wochenende \nRalf",
+          "questions": [
+            {
+              "id": 3,
+              "question": "Ralf hatte am letzten Wochenende Geburtstag.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong đoạn văn, Ralf nói rằng anh ấy có sinh nhật 'am kommenden Sonntag,' có nghĩa là vào 'Chủ nhật sắp tới.' \nĐiều này có nghĩa là sinh nhật của Ralf chưa diễn ra vào cuối tuần trước, mà sẽ diễn ra vào cuối tuần tới."
+            },
+            {
+              "id": 4,
+              "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Trong đoạn văn, Ralf nói rằng 'Es werden viele Leute da sein, die du auch kennst', nghĩa là sẽ có nhiều người đến dự tiệc, không phải chỉ có hai hoặc ba người."
+            },
+            {
+              "id": 5,
+              "question": "Die Party findet draußen statt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Trong đoạn văn, Ralf viết: „Wir wollen nämlich draußen im Garten feiern.“ (Chúng tôi muốn tổ chức tiệc ngoài vườn). \nĐiều này cho thấy bữa tiệc sẽ diễn ra ngoài trời."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Lesen Sie die Texte und die Aufgaben 6 bis 10. Wo finden Sie Informationen? Kreuzen Sie an: a, b oder c",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 6,
+              "questionImage": [
+                "demo_part2_1",
+                "demo_part2_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.schiff-ruedesheim.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.bingen-ruedesheimer.de"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            },
+            {
+              "id": 7,
+              "questionImage": [
+                "demo_part2_7_1",
+                "demo_part2_7_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.sprachenfuchs.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.eviva.com"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            },
+            {
+              "id": 8,
+              "questionImage": [
+                "demo_part2_8_1",
+                "demo_part2_8_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.DER.com"
+                },
+                {
+                  "id": "B",
+                  "text": "www.RED.com"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            },
+            {
+              "id": 9,
+              "questionImage": [
+                "demo_part2_9_1",
+                "demo_part2_9_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.bodensee.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.rottenmeier.de"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            },
+            {
+              "id": 10,
+              "questionImage": [
+                "demo_part2_10_1",
+                "demo_part2_10_2"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "www.reiseauskunft.bahn.de"
+                },
+                {
+                  "id": "B",
+                  "text": "www.reiseauskunft.bahn.de"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Thứ nhất là trang web www.openair.de: Thông báo rằng buổi hòa nhạc ngoài trời (Open-Air-Konzert) vào ngày 30 tháng 5 sẽ được tổ chức trong nhà tại Stadthalle nếu trời mưa. \n Thứ hai là trang web www.dwd.de: Đây là trang web của Dịch vụ Thời tiết Đức (Deutscher Wetterdienst), nơi bạn có thể kiểm tra thông tin thời tiết hiện tại, cảnh báo thời tiết và dữ liệu khí hậu.\n Câu hỏi “Sie wollen wissen: Regnet es in Deutschland?” có nghĩa là “Bạn muốn biết: Có mưa ở Đức không?”. \nĐể trả lời câu hỏi này, bạn cần kiểm tra trang web của Dịch vụ Thời tiết Đức (www.dwd.de) để biết thông tin thời tiết hiện tại. \nNếu trang web này cho biết trời đang mưa, thì buổi hòa nhạc sẽ được chuyển vào trong nhà."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Lesen Sie die Texte und die Aufgaben 11 bis 15. Kreuzen Sie an: Richtig oder Falsch.",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 11,
+              "question": "In der Sprachschule. In der Sprachschule können Sie etwas zu essen kaufen.",
+              "questionImage": "demo_part3_1",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Câu hỏi đang hỏi liệu bạn có thể mua đồ ăn ở trường ngôn ngữ hay không. \nTrong văn bản, trường ngôn ngữ cung cấp một gói bữa sáng (bao gồm bánh mì và đồ uống) với giá 2 Euro trong giờ nghỉ, vì vậy bạn có thể mua đồ ăn ở đó."
+            },
+            {
+              "id": 12,
+              "question": "An der Post. Es ist Samstagnachmittag. Sie können auf der Post. Briefmarken kaufen.",
+              "questionImage": "demo_part3_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            },
+            {
+              "id": 13,
+              "question": "Am Bahnhof. Sie können hier Zigaretten rauchen.",
+              "questionImage": "demo_part3_3",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            },
+            {
+              "id": 14,
+              "question": "Eingang Restaurant. Heute Abend können Sie in diesem Restaurant tanzen.",
+              "questionImage": "demo_part3_4",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            },
+            {
+              "id": 15,
+              "question": "An der Haltestelle. Von 23 Uhr bis 1 Uhr fährt kein Bus.",
+              "questionImage": "demo_part3_5",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "answerDetail": "Bưu điện chỉ mở cửa đến 12:00 vào Thứ Bảy, vì vậy bạn không thể mua tem vào buổi chiều."
+            }
+          ]
+        }
+      ],
+      "isCompleted": true,
+      "score": "0%"
+    },
+    {
+      "id": "3",
+      "title": "BÀI TẬP TỪ VỰNG CHỦ ĐỀ: THỜI GIAN",
+      "exerciseType": "vocabulary",
+      "phaseId": 1,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Điền nghĩa của các từ sau đây: ",
+          "partType": "matching",
+          "questions": [
+            {
+              "id": 1,
+              "question": "die Woche",
+              "matchedQuestion": "tuần",
+              "answer": [
+                "die Woche",
+                "tuần"
+              ]
+            },
+            {
+              "id": 2,
+              "question": "Montag",
+              "matchedQuestion": "Thứ hai",
+              "answer": [
+                "Montag",
+                "Thứ hai"
+              ]
+            },
+            {
+              "id": 3,
+              "question": "Dienstag",
+              "matchedQuestion": "Thứ ba",
+              "answer": [
+                "Dienstag",
+                "Thứ ba"
+              ]
+            },
+            {
+              "id": 4,
+              "question": "Mittwoch",
+              "matchedQuestion": "Thứ Tư",
+              "answer": [
+                "Mittwoch",
+                "Thứ Tư"
+              ]
+            },
+            {
+              "id": 5,
+              "question": "Donnerstag",
+              "matchedQuestion": "Thứ năm",
+              "answer": [
+                "Donnerstag",
+                "Thứ năm"
+              ]
+            },
+            {
+              "id": 6,
+              "question": "Freitag",
+              "matchedQuestion": "Thứ sáu",
+              "answer": [
+                "Freitag",
+                "Thứ sáu"
+              ]
+            },
+            {
+              "id": 7,
+              "question": "Samstag",
+              "matchedQuestion": "Thứ bảy",
+              "answer": [
+                "Samstag",
+                "Thứ bảy"
+              ]
+            },
+            {
+              "id": 8,
+              "question": "Sonntag",
+              "matchedQuestion": "Chủ nhật",
+              "answer": [
+                "Sonntag",
+                "Chủ nhật"
+              ]
+            },
+            {
+              "id": 9,
+              "question": "der Frühling",
+              "matchedQuestion": "mùa xuân",
+              "answer": [
+                "der Frühling",
+                "mùa xuân"
+              ]
+            },
+            {
+              "id": 10,
+              "question": "der Sommer",
+              "matchedQuestion": "mùa hè",
+              "answer": [
+                "der Sommer",
+                "mùa hè"
+              ]
+            },
+            {
+              "id": 11,
+              "question": "der Herbst",
+              "matchedQuestion": "mùa thu",
+              "answer": [
+                "der Herbst",
+                "mùa thu"
+              ]
+            },
+            {
+              "id": 12,
+              "question": "der Winter",
+              "matchedQuestion": "mùa đông",
+              "answer": [
+                "der Winter",
+                "mùa đông"
+              ]
+            },
+            {
+              "id": 13,
+              "question": "der Tag",
+              "matchedQuestion": "ngày",
+              "answer": [
+                "der Tag",
+                "ngày"
+              ]
+            },
+            {
+              "id": 14,
+              "question": "der Morgen",
+              "matchedQuestion": "buổi sáng(từ 6-10 giờ)",
+              "answer": [
+                "der Morgen",
+                "buổi sáng(từ 6-10 giờ)"
+              ]
+            },
+            {
+              "id": 15,
+              "question": "der Vormittag",
+              "matchedQuestion": "buổi sáng(từ 10-12 giờ)",
+              "answer": [
+                "der Vormittag",
+                "buổi sáng(từ 10-12 giờ)"
+              ]
+            },
+            {
+              "id": 16,
+              "question": "der Mittag",
+              "matchedQuestion": "giữa trưa",
+              "answer": [
+                "der Mittag",
+                "giữa trưa"
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Lựa chọn nào dưới đây là đúng? Hãy chọn câu trả lời chính xác nhất: ",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Es ist gleich 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_1_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 7,
+              "question": "Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Schreiben Sie die Monatsnamen.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 1,
+              "answer": "Januar"
+            },
+            {
+              "id": 2,
+              "answer": "Februar"
+            },
+            {
+              "id": 3,
+              "answer": "März"
+            },
+            {
+              "id": 4,
+              "answer": "April"
+            },
+            {
+              "id": 5,
+              "answer": "Mai"
+            },
+            {
+              "id": 6,
+              "answer": "Juni"
+            },
+            {
+              "id": 7,
+              "answer": "Juli"
+            },
+            {
+              "id": 8,
+              "answer": "August"
+            },
+            {
+              "id": 9,
+              "answer": "September"
+            },
+            {
+              "id": 10,
+              "answer": "Oktober"
+            },
+            {
+              "id": 11,
+              "answer": "November"
+            },
+            {
+              "id": 12,
+              "answer": "Dezember"
+            }
+          ]
+        }
+      ],
+      "isCompleted": true,
+      "score": "0%"
+    },
+    {
+      "id": "4",
+      "title": "Bài tập viết 1",
+      "exerciseType": "writing",
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Tìm và sửa các lỗi chính tả, ngữ pháp và từ theo thứ tự từ trái sang phải trong đoạn văn",
+          "partType": "fill_in_the_blank",
+          "paragraph": "Ich bin Maria und ich komme von Vietnam. Ich bin 20 Jahre alt. Ich sprechen ein bißchen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "questions": [
+            {
+              "id": 1,
+              "answer": "von",
+              "explanation": "von thành aus (khi nói về nơi xuất xứ)"
+            },
+            {
+              "id": 2,
+              "answer": "sprechen",
+              "explanation": "sprechen thành spreche (chia động từ đúng ngôi thứ nhất số ít)"
+            },
+            {
+              "id": 3,
+              "answer": "bißchen",
+              "explanation": "bißchen thành bisschen (chính tả mới)"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Viết thành đoạn văn hoàn chỉnh",
+          "partType": "write_paragraph",
+          "answer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna."
+        }
+      ],
+      "isCompleted": true,
+      "score": "0%"
+    },
+    {
+      "id": "5",
+      "title": "Bài tập ngữ pháp 1",
+      "exerciseType": "grammar",
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Ergänzen Sie die Pronomen.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 1,
+              "question": "___ sprechen Deutsch.",
+              "answer": "Sie",
+              "answerDetail": "Động từ 'sprechen' (nói) được chia ở ngôi số nhiều hoặc ngôi lịch sự. \n Trong tiếng Đức, nếu chủ ngữ là 'Sie' (viết hoa), thì động từ sẽ ở dạng số nhiều bất kể là 'Sie' chỉ một người hay nhiều người, vì đó là cách lịch sự."
+            },
+            {
+              "id": 2,
+              "question": "Haben ___ Zeit?",
+              "answer": "Sie",
+              "answerDetail": "Đây là cách nói lịch sự khi hỏi ai đó 'bạn' hoặc 'ngài' trong ngữ cảnh trang trọng. \n 'Sie' trong trường hợp này là đại từ nhân xưng ngôi thứ hai số nhiều hoặc số ít (khi dùng để chỉ một cá nhân) mang tính trang trọng. \nCấu trúc câu hỏi 'Haben Sie Zeit?' là một câu hỏi đúng ngữ pháp trong tiếng Đức khi muốn hỏi người khác (trong ngữ cảnh lịch sự) rằng họ có thời gian không."
+            },
+            {
+              "id": 3,
+              "question": "Hilfst ___ mir?",
+              "answer": "du",
+              "answerDetail": "Động từ 'helfen' (giúp đỡ) luôn yêu cầu tân ngữ ở cách Dativ (cách gián tiếp). \n Đại từ nhân xưng 'du' (bạn) khi ở cách Dativ sẽ biến thành 'dir'."
+            },
+            {
+              "id": 4,
+              "question": "___ ist Programmierer.",
+              "answer": "Er",
+              "answerDetail": "'Er' là đại từ nhân xưng cho ngôi thứ ba số ít, giống đực (nam giới). \n Câu 'Er ist Programmierer' có nghĩa là 'Anh ấy là lập trình viên."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Ergänzen Sie die Pronomen.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 5,
+              "question": [
+                "Das ist Herr Gupta, ___ kommt aus Indien.",
+                "Das ist Frau Kioka, ___ kommt aus Japan.",
+                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
+              ],
+              "answer": [
+                "er",
+                "sie",
+                "sie"
+              ],
+              "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. Câu này giới thiệu Herr Gupta, là nam giới. Trong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. 'Das ist Frau Kioka, sie kommt aus Japan.'. Tương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. 'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. Ở câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. Khi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
+            },
+            {
+              "id": 6,
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "answer": [
+                "du",
+                "Ich"
+              ],
+              "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
+            },
+            {
+              "id": 7,
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "answer": [
+                "ihr",
+                "Wir"
+              ],
+              "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
+            },
+            {
+              "id": 8,
+              "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
+              "answer": [
+                "Sie",
+                "Ich"
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Ergänzen Sie die Pronomen.",
+          "partType": "fill_in_the_blank",
+          "questions": [
+            {
+              "id": 9,
+              "question": "Frau Meier geht einkaufen. ___ kauft Gemüse und Obst.",
+              "answer": "Sie",
+              "answerDetail": "Đây là đại từ nhân xưng ngôi thứ ba số ít giống cái (she), dùng để thay thế cho danh từ chỉ người nữ trong câu trước, cụ thể là 'Frau Meier'. \n Để tránh việc lặp lại danh từ 'Frau Meier', đại từ 'Sie' được sử dụng thay thế. \n Đại từ này tương ứng với 'Frau Meier' vì 'Frau Meier' là danh từ chỉ người phụ nữ (giống cái), và 'Sie' là đại từ ngôi thứ ba số ít để chỉ người nữ."
+            },
+            {
+              "id": 10,
+              "question": "Peter und Paul gehen heute nicht zur Schule. Frau Meier, ___ haben Ferien.",
+              "answer": "sie",
+              "answerDetail": "'Peter und Paul' là hai người, nghĩa là chủ ngữ là số nhiều. Vì vậy, đại từ nhân xưng tương ứng ở ngôi thứ ba số nhiều là 'sie' (họ). \n Câu này muốn nói rằng: Peter và Paul (họ) có kỳ nghỉ (Ferien). \n Nên phải dùng 'sie' để thay thế cho Peter và Paul ở vế sau, chỉ về họ - là hai người đã nhắc đến trước đó."
+            },
+            {
+              "id": 11,
+              "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
+              "answer": [
+                "Sie",
+                "Ich"
+              ]
+            },
+            {
+              "id": 12,
+              "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
+              "answer": [
+                "du",
+                "ich"
+              ]
+            }
+          ]
+        }
+      ],
+      "isCompleted": true,
+      "score": "17%"
+    },
+    {
+      "id": "6",
+      "title": "Bài tập nghe 2",
+      "exerciseType": "listening",
+      "phaseId": 2,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "partType": "multiple_choice",
+          "transcript": "Nummer 1: \nHanna: Wo wollen wir dieses Jahr unsere \nParty machen? \nSteffi: Ich bin für eine Feier am See. Wir \nkönnen schwimmen, grillen... \nHanna: Ich bin nicht dafür. Ich finde eine \nParty im Garten viel besser. Bei Regen können \nwir schnell ins Haus und im Haus schön \nweiter feiern. \nSteffi: In Ordnung. Da können wir ja auch grillen. \n Nummer 2: \nMartin: Möchtest du heute Abend mit mir in das Konzert von Rosenstolz gehen? \nLuisa: Hmm. Gern. Aber wann beginnt das \nKonzert? Ich bin ja bis um halb acht im Spanisch-Kurs. \nMartin: Dann gibt es kein Problem. Die fangen um neun Uhr an. Wollen wir uns um halb neun an der Kasse treffen? \nLuisa: Ja, wunderbar. Dann bis heute Abend. \nNummer 3: \nDame: Entschuldigen Sie bitte. Ich suche ein Taxi, vielleicht dort vorne rechts? \nHerr: Nein, da vorne rechts gibt es keine. Gehen Sie hier geradeaus und an der Ecke \nnach links. Sie müssen dann noch circa 100 Meter gehen. Da stehen schon die Taxis. Dame: Vielen Dank. \nNummer 4: \nHerr: Guten Tag. Ich möchte einen Sprachkurs \nbesuchen. Wie lange dauern Ihre Kurse? Dame: Die Sommerkurse jetzt im Juli und August zwei Wochen. Unsere normalen Kurse dauern aber drei oder vier Wochen. \nHerr: Gut. Ich möchte einen Sommerkurs. Dame: Im Juli oder August? \nHerr: Anfang Juli. \nNummer 5: \nMann: Hallo Johanna, wir treffen uns heute Nachmittag im Park. Kommst du auch? Frau: Ja, gerne. Soll ich was mitbringen? Mann: Vielleicht ein Kartenspiel. \nFrau: Okay. Und etwas zu essen? \nMann: Nein, das machen wir schon. Ich \nbringe Salat mit und Clara Saft. \nNummer 6: \nDame: Guten Tag. Ich möchte bitte Frau \nHorn sprechen. \nHerr: Frau Horn ist leider nicht im Büro. Sie ist von Mittwoch bis Freitag im Urlaub. Aber am Montag kommt sie aus dem Urlaub zurück. Ab acht Uhr ist sie im Büro. \nDame: Aha, na dann rufe ich nächsten Mittwoch wieder an. Da habe ich Zeit.",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wo wollen die Freundinnen die Party machen?",
+              "questionImage": [
+                "demo02_1_1",
+                "demo02_1_2",
+                "demo02_1_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Im Garten."
+                },
+                {
+                  "id": "B",
+                  "text": "Im Haus."
+                },
+                {
+                  "id": "C",
+                  "text": "Am See."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 2,
+              "question": "Wann wollen sie sich treffen?",
+              "questionImage": [
+                "demo02_2_1",
+                "demo02_2_2",
+                "demo02_2_3"
+              ],
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Um 19.30 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Um 20.30 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Um 21.00 Uhr."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Wo stehen Taxis?",
+              "questionImage": [
+                "demo02_3_1",
+                "demo02_3_2",
+                "demo02_3_3"
+              ],
+              "audioUrl": "part1_ques3_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "An der Ecke rechts."
+                },
+                {
+                  "id": "B",
+                  "text": "Die Straße geradeaus."
+                },
+                {
+                  "id": "C",
+                  "text": "Geradeaus und links."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 4,
+              "question": "Wie lange dauern die Sommerkurse?",
+              "questionImage": [
+                "demo02_4_1",
+                "demo02_4_2",
+                "demo02_4_3"
+              ],
+              "audioUrl": "part1_ques4_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Zwei Wochen."
+                },
+                {
+                  "id": "B",
+                  "text": "Drei Wochen."
+                },
+                {
+                  "id": "C",
+                  "text": "Vier Wochen."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 5,
+              "question": "Was soll Johanna mitbringen?",
+              "questionImage": [
+                "demo02_5_1",
+                "demo02_5_2",
+                "demo02_5_3"
+              ],
+              "audioUrl": "part1_ques5_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Salat."
+                },
+                {
+                  "id": "B",
+                  "text": "Saft."
+                },
+                {
+                  "id": "C",
+                  "text": "Karten."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 6,
+              "question": "Wann ist Frau Horn aus dem Urlaub zurück?",
+              "questionImage": [
+                "demo02_6_1",
+                "demo02_6_2",
+                "demo02_6_3"
+              ],
+              "audioUrl": "part1_ques6_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Am Mittwoch."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Freitag."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Montag."
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Kreuzen Sie an: Richtig oder Falsch. Sie hören jeden Text einmal.",
+          "partType": "multiple_choice",
+          "transcript": "Nummer 7: \nLiebe Fahrgäste, diese Straßenbahn hat ein Problem mit den Türen. Sie schließen nicht mehr richtig. Leider können wir nicht weiterfahren. Bitte steigen Sie an der nächsten Haltestelle aus. Dort haben Sie Anschluss an den Bus Linie 19. \nNummer 8: \nLiebe Kunden, heute haben wir tolle \nSonderangebote bei den Badmöbeln. Kommen Sie doch mal in den dritten Stock und sehen Sie sich um. Und am Wochenende feiert unser Möbelhaus Geburtstag. Sie sind herzlich eingeladen! \nNummer 9: \nAchtung. Hier spricht die Polizei. Es gibt ein \ngroßes Feuer in der Firma Chemotec. Bitte schließen Sie alle Türen und Fenster und gehen Sie nicht aus dem Haus. \nNummer 10: \nWillkommen in Berlin Hauptbahnhof. Ihre nächsten Züge: ICE 389 nach Dresden 18.48 Uhr, Gleis 3. Intercity nach Innsbruck 18.52 Uhr fährt heute nicht. Fahrgäste nach Innsbruck benutzen bitte den ICE 346 nach München um 19.20 Uhr und steigen dort um.",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Die Fahrgäste sollen den Bus nehmen.",
+              "audioUrl": "part2_ques7_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "Die Kunden sollen in den zweiten Stock kommen.",
+              "audioUrl": "part2_ques8_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 9,
+              "question": "Die Leute sollen zu Hause bleiben.",
+              "audioUrl": "part2_ques9_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 10,
+              "question": "Fahrgäste nach Innsbruck sollen mit dem ICE 346 fahren.",
+              "audioUrl": "part2_ques9_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Wann will Greta das Formular holen?",
+              "audioUrl": "part3_ques11_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Heute Abend."
+                },
+                {
+                  "id": "B",
+                  "text": "Morgen."
+                },
+                {
+                  "id": "C",
+                  "text": "Montagmorgen."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 12,
+              "question": "Wo möchte Heinz Siggi treffen?",
+              "audioUrl": "part3_ques12_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Am Bahnhof."
+                },
+                {
+                  "id": "B",
+                  "text": "Im italienischen Restaurant."
+                },
+                {
+                  "id": "C",
+                  "text": "Im Restaurant „Zwiebel”."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 13,
+              "question": "Wann möchte Eva Schmitz am Mittwoch kommen?",
+              "audioUrl": "part3_ques13_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Um 10.00 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Um 11.00 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Um 12.00 Uhr."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 14,
+              "question": "Was soll man sagen?",
+              "audioUrl": "part3_ques14_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Die Adresse."
+                },
+                {
+                  "id": "B",
+                  "text": "Die E-Mail-Adresse."
+                },
+                {
+                  "id": "C",
+                  "text": "Die Telefonnummer."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 15,
+              "question": "Wie kommt Herr Müller ins Büro??",
+              "audioUrl": "part3_ques15_2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Mit dem Fahrrad."
+                },
+                {
+                  "id": "B",
+                  "text": "Mit der Straßenbahn."
+                },
+                {
+                  "id": "C",
+                  "text": "Mit dem Auto."
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "QUIZ KẾT THÚC PHASE 1",
+      "exerciseType": "quiz",
+      "phaseId": 1,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 2,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "questions": [
+            {
+              "id": 5,
+              "question": "Lis Zug kommt nach halb eins an.",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 6,
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_1_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 9,
+              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 10,
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        }
+      ],
+      "isCompleted": true,
+      "score": "30%",
+      "conditionStatus": "not pass"
+    },
+    {
+      "id": "8",
+      "title": "QUIZ KẾT THÚC PHASE 2",
+      "exerciseType": "quiz",
+      "phaseId": 2
+    },
+    {
+      "id": "9",
+      "title": "Bài tập nghe 3",
+      "exerciseType": "listening",
+      "phaseId": 4
+    },
+    {
+      "id": "10",
+      "title": "Bài tập đọc 3",
+      "exerciseType": "reading",
+      "phaseId": 4
+    },
+    {
+      "id": "11",
+      "title": "QUIZ KẾT THÚC PHASE 1",
+      "phaseId": 4
+    }
+  ],
+  "finalexam": [
+    {
+      "id": "1",
+      "levelId": 1,
+      "title": "Bài kiểm tra kết thúc trình độ A1",
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 2,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 3,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 5,
+              "question": "Die Kunden sollen die Weihnachtsfeier besuchen.",
+              "audioUrl": "part2_ques7",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Lis Zug kommt nach halb eins an.",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 7,
+              "question": "Karin wartet den ganzen Vormittag vor der Auskunft.",
+              "questionParagraph": "In der 10-Uhr-Pause\n bekommen Sie an der \n Rezeption ein \n Frühstückspaket: \n Belegte Brötchen und Getränke für \n 2 Euro.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 8,
+              "question": "Ralf hatte am letzten Wochenende Geburtstag.",
+              "questionParagraph": "Liebe Carmen, \n am kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. \n Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. \n Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. \nIch freue mich sehr auf dich! \n Bis zum Wochenende \n Ralf",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 9,
+              "question": "Ralf hat nur zwei oder drei Leute eingeladen.",
+              "questionParagraph": "Liebe Carmen, \n am kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. \n Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. \n Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. \nIch freue mich sehr auf dich! \n Bis zum Wochenende \n Ralf",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 10,
+              "question": "Die Party findet draußen statt.",
+              "questionParagraph": "Liebe Carmen, \n am kommenden Sonntag habe ich Geburtstag. Ich möchte gerne mit dir feiern und lade dich herzlich zu meiner Party am Samstagabend ein. \n Wir fangen um 21 Uhr an. Ist das okay für dich? Es werden viele Leute da sein, die du auch kennst. \n Kannst du vielleicht einen Salat mitbringen? Und vergiss bitte nicht einen Pullover oder eine Jacke! Wir wollen nämlich draußen im Garten feiern. \nIch freue mich sehr auf dich! \n Bis zum Wochenende \n Ralf",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Richtig"
+                },
+                {
+                  "id": "B",
+                  "text": "Falsch"
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_1_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 12,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 13,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 14,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 15,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 16,
+              "question": "Ergänzen Sie die Pronomen. Haben ___ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 17,
+              "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 18,
+              "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 19,
+              "question": "Marie, kommst ______ bitte? Nein,_____ habe keine Zeit.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 20,
+              "question": "Der Schrank ist teuer. ________ kommt aus Italien.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Du"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Er"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        }
+      ],
+      "trophy": "a1_trophy"
+    },
+    {
+      "id": "2",
+      "levelId": 2,
+      "title": "Bài kiểm tra kết thúc trình độ A2"
+    }
+  ],
+  "flashcard": [
+    {
+      "title": "Tiere",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "level": "A1",
+      "cards": [
+        {
+          "id": 1,
+          "terms": "Hund",
+          "definitions": "Ein Tier, das ein enger Begleiter des Menschen ist und zu Haushalts-, Jagd- oder Gesellschaftszwecken gehalten wird."
+        },
+        {
+          "id": 2,
+          "terms": "Katze",
+          "definitions": "Das Tier hat scharfe Krallen, wird oft als Haustier gehalten und ist berühmt für seine Fähigkeit, Mäuse zu jagen."
+        },
+        {
+          "id": 3,
+          "terms": "Vogel",
+          "definitions": "Tiere haben Flügel, Federn, legen Eier und können oft fliegen."
+        },
+        {
+          "id": 4,
+          "terms": "Kuh",
+          "definitions": "Tiere, die zur Milch- und Fleischgewinnung gezüchtet werden, leben oft auf Bauernhöfen."
+        },
+        {
+          "terms": "Schwein",
+          "definitions": "Tiere mit dickem Körper und langer Schnauze werden oft zur Fleischgewinnung gezüchtet.",
+          "id": 5
+        },
+        {
+          "terms": "Pferd",
+          "definitions": "Aufgrund ihrer Kraft und Schnelligkeit werden Tiere häufig zum Reiten oder Ziehen von Karren eingesetzt.",
+          "id": 6
+        }
+      ],
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "title": "Studium",
+      "level": "A1",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, quas, illum voluptates hic impedit molestias velit labore ipsa unde nihil eius excepturi nesciunt sed voluptatem perferendis nisi numquam, dignissimos distinctio.",
+      "cards": [
+        {
+          "id": 1,
+          "terms": "Schule",
+          "definitions": "Hier nehmen Schüler von der Grundschule bis zum Gymnasium an Kursen teil, in denen sie grundlegende Kenntnisse und Fertigkeiten erlernen."
+        },
+        {
+          "id": 2,
+          "terms": "Lehrer",
+          "definitions": "Die Person, die die Studierenden im Lernprozess anleitet, ist für die Wissensvermittlung in den Fächern verantwortlich."
+        },
+        {
+          "id": 3,
+          "terms": "Schüler",
+          "definitions": "Lernende, insbesondere Kinder oder Jugendliche, die an schulischen Lernprogrammen teilnehmen."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Technologie",
+      "level": "A1",
+      "cards": [
+        {
+          "id": 1,
+          "terms": "Daten",
+          "definitions": "Digitale Informationen oder Daten werden in einem Computersystem gespeichert, verarbeitet und übertragen."
+        },
+        {
+          "id": 2,
+          "terms": "Netzwerk",
+          "definitions": "Ein System, das Geräte miteinander verbindet, um Daten und Ressourcen gemeinsam zu nutzen, beispielsweise ein Computernetzwerk oder das Internet."
+        },
+        {
+          "id": 3,
+          "terms": "Cloud",
+          "definitions": "Technologie, die Daten über das Internet speichert und darauf zugreift, anstatt auf einem lokalen physischen Gerät."
+        },
+        {
+          "id": 4,
+          "terms": "Künstliche Intelligenz",
+          "definitions": "Technologie schafft Computersysteme, die ähnlich wie Menschen lernen, schlussfolgern und automatisch Aufgaben ausführen können."
+        }
+      ]
+    },
+    {
+      "title": "aaaa",
+      "level": "B1",
+      "cards": [
+        {
+          "terms": "aaa",
+          "definitions": "aaaa",
+          "id": 1
+        }
+      ],
+      "id": "19ed"
+    },
+    {
+      "id": "a037",
+      "title": "happiness",
+      "level": "A1",
+      "cards": [
+        {
+          "terms": "aaa",
+          "definitions": "aaaa",
+          "id": 1
+        }
+      ]
+    }
+  ],
+  "exercisesSubmission": [
+    {
+      "id": "f9bb",
+      "submissionDate": "2024-09-18T10:37:46.325Z",
+      "score": "63%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "2"
+    },
+    {
+      "id": "6e76",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-20T11:01:09.090Z",
+      "score": "25%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "du, ich",
+          "correctAnswer": "du, ich",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": "9bf3",
+      "submissionDate": "2024-09-20T11:10:51.391Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2"
+    },
+    {
+      "id": "2816",
+      "submissionDate": "2024-09-20T13:02:49.449Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "spre",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "bißchen",
+          "correctAnswer": "bißchen",
+          "isCorrect": true
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "9697",
+      "submissionDate": "2024-09-20T13:04:47.823Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "spre",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "0758",
+      "submissionDate": "2024-09-20T13:39:17.587Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "fff",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "0a83",
+      "submissionDate": "2024-09-20T13:39:37.953Z",
+      "score": "25%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "",
+          "correctAnswer": "von",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "",
+          "correctAnswer": "sprechen",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "4"
+    },
+    {
+      "id": "c737",
+      "submissionDate": "2024-09-20T15:08:07.609Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "6d29",
+      "submissionDate": "2024-09-20T15:09:27.235Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "81c3",
+      "submissionDate": "2024-09-20T15:13:45.071Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "0ac2",
+      "submissionDate": "2024-09-20T15:15:33.647Z",
+      "score": "63%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "58ab",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-21T09:58:33.157Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "du, ich",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "a5c0",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-24T15:28:36.272Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "5caa",
+      "submissionDate": "2024-09-24T15:35:36.441Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "25d4",
+      "submissionDate": "2024-09-24T15:36:19.128Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "7cd9",
+      "submissionDate": "2024-09-28T14:08:36.332Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "771d",
+      "submissionDate": "2024-09-28T14:10:58.988Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "1570",
+      "submissionDate": "2024-09-30T02:55:31.617Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "c164",
+      "submissionDate": "2024-09-30T03:11:35.939Z",
+      "score": "14%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - Thứ Tư",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - no answer",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - Thứ sáu",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - mùa hè",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Februar",
+          "correctAnswer": "Februar",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3"
+    },
+    {
+      "id": "0c35",
+      "submissionDate": "2024-09-30T04:12:13.943Z",
+      "score": "30%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "f657",
+      "submissionDate": "2024-09-30T04:12:25.321Z",
+      "score": "40%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "bf36",
+      "submissionDate": "2024-09-30T04:13:37.979Z",
+      "score": "80%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "passed",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "c984",
+      "submissionDate": "2024-09-30T04:21:20.872Z",
+      "score": "30%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "9cec",
+      "submissionDate": "2024-09-30T04:21:43.806Z",
+      "score": "40%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "7d63",
+      "submissionDate": "2024-09-30T04:54:54.053Z",
+      "score": "30%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "71b7",
+      "submissionDate": "2024-09-30T10:23:13.708Z",
+      "score": "60%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "C",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "passed",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "eac8",
+      "submissionDate": "2024-09-30T10:37:02.169Z",
+      "score": "30%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "not pass",
+      "exerciseId": "7",
+      "isCompleted": true
+    },
+    {
+      "id": "41f9",
+      "submissionDate": "2024-09-30T10:54:36.218Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "e54f",
+      "submissionDate": "2024-09-30T11:01:28.343Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "30cb",
+      "submissionDate": "2024-09-30T11:03:09.573Z",
+      "score": "57%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "C",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "0964",
+      "submissionDate": "2024-09-30T11:06:04.510Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "8826",
+      "submissionDate": "2024-09-30T11:06:51.773Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "1164",
+      "submissionDate": "2024-09-30T13:10:04.268Z",
+      "score": "29%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "526e",
+      "submissionDate": "2024-09-30T15:14:11.995Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "8128",
+      "submissionDate": "2024-09-30T15:31:31.576Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "c1f7",
+      "submissionDate": "2024-09-30T15:33:00.414Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "c139",
+      "submissionDate": "2024-09-30T15:33:33.731Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "bc76",
+      "submissionDate": "2024-09-30T15:34:06.708Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "1d33",
+      "submissionDate": "2024-09-30T15:34:55.156Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "3546",
+      "submissionDate": "2024-09-30T15:36:05.173Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "4507",
+      "submissionDate": "2024-09-30T15:49:18.918Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "6285",
+      "submissionDate": "2024-09-30T16:11:07.150Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "88e3",
+      "submissionDate": "2024-09-30T16:11:45.792Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "71c2",
+      "submissionDate": "2024-09-30T16:12:32.722Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "3276",
+      "submissionDate": "2024-09-30T16:14:21.942Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "c242",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-30T16:18:28.958Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "46cc",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-30T16:35:00.667Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "508e",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-30T16:36:11.636Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "5dcb",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-30T16:37:29.939Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "cf57",
+      "exerciseId": "5",
+      "submissionDate": "2024-09-30T16:41:11.874Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    },
+    {
+      "id": "eb57",
+      "submissionDate": "2024-09-30T19:41:18.323Z",
+      "score": "36%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "55ad",
+      "submissionDate": "2024-10-01T00:45:12.595Z",
+      "score": "36%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "badb",
+      "submissionDate": "2024-10-01T00:46:53.826Z",
+      "score": "36%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "5258",
+      "submissionDate": "2024-10-01T00:47:51.660Z",
+      "score": "38%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true
+    },
+    {
+      "id": "c690",
+      "submissionDate": "2024-10-01T01:25:27.398Z",
+      "score": "36%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "1",
+      "isCompleted": true
+    },
+    {
+      "id": "d9ff",
+      "submissionDate": "2024-10-01T01:27:34.146Z",
+      "score": "14%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - no answer",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - Thứ sáu",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - Thứ năm",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - mùa đông",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Februar",
+          "correctAnswer": "Februar",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3"
+    },
+    {
+      "id": "98bb",
+      "submissionDate": "2024-10-01T01:29:22.891Z",
+      "score": "50%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "von",
+          "correctAnswer": "von",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sprechen",
+          "correctAnswer": "sprechen",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "bißchen",
+          "isCorrect": false
+        },
+        {
+          "questionId": "paragraph_2",
+          "userAnswer": "",
+          "correctAnswer": "Ich bin Maria und ich komme aus Vietnam. Ich bin 20 Jahre alt. Ich spreche ein bisschen Deutsch. Ich mag Deutsch lernen, aber es ist schwer. Ich habe eine Katze und sie heißt Luna.",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true,
+      "exerciseId": "4"
+    },
+    {
+      "id": "b8b0",
+      "exerciseId": "5",
+      "submissionDate": "2024-10-01T01:31:45.154Z",
+      "score": "17%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "sie",
+          "correctAnswer": "Sie",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "",
+          "correctAnswer": "du",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "",
+          "correctAnswer": "Er",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": ", , ",
+          "correctAnswer": "er, sie, sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": ", ",
+          "correctAnswer": "du, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": ", ",
+          "correctAnswer": "ihr, Wir",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "",
+          "correctAnswer": "Sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "",
+          "correctAnswer": "sie",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": ", ",
+          "correctAnswer": "Sie, Ich",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": ", ",
+          "correctAnswer": "du, ich",
+          "isCorrect": false
+        }
+      ],
+      "isCompleted": true
+    }
+  ],
+  "finalExamSubmission": [
+    {
+      "id": "082a",
+      "submissionDate": "2024-09-20T06:11:22.859Z",
+      "score": "55%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "B",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "examId": "1"
+    },
+    {
+      "id": "d2eb",
+      "submissionDate": "2024-09-20T06:21:18.216Z",
+      "score": "40%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "C",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "C",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "C",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "not pass",
+      "examId": "1"
+    },
+    {
+      "id": "4459",
+      "submissionDate": "2024-09-20T06:24:24.342Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "examId": "1"
+    },
+    {
+      "id": "7ee3",
+      "submissionDate": "2024-09-20T06:31:04.960Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
+      "examId": "1"
+    },
+    {
+      "id": "d0af",
+      "submissionDate": "2024-09-25T16:37:00.311Z",
+      "score": "100%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        }
+      ],
+      "conditionStatus": "passed",
+      "isCompleted": true,
+      "examId": "1"
+    },
+    {
+      "id": "4447",
+      "submissionDate": "2024-10-01T01:37:47.796Z",
+      "score": "85%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "C",
+          "correctAnswer": "C",
+          "isCorrect": true
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "passed",
+      "isCompleted": true,
+      "examId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "fullname": "Viet Hoang",
+      "email": "hoang@gmail.com",
+      "password": "1234567Az!",
+      "gender": "male",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": "",
+      "accountType": "freemium"
+    },
+    {
+      "id": "2",
+      "fullname": "Nga Pham",
+      "email": "nga@gmail.com",
+      "password": "1234567Az!",
+      "gender": "female",
+      "phone": "",
+      "dob": "",
+      "avatar": "",
+      "accountType": "premium"
+    }
+  ],
+  "package": [
+    {
+      "id": "1",
+      "packageName": "6 tháng",
+      "price": 299000,
+      "duration": 6
+    },
+    {
+      "id": "2",
+      "packageName": "1 năm",
+      "price": 499000,
+      "duration": 12
+    }
+  ],
+  "transaction": [
+    {
+      "id": "1",
+      "packageId": 1,
+      "startDate": "",
+      "endDate": "",
+      "discount": 0
+    },
+    {
+      "id": "2",
+      "packageId": 2,
+      "startDate": "",
+      "endDate": "",
+      "discount": 0.15
+    },
+    {
+      "id": "03de",
+      "packageId": "1",
+      "startDate": "26/09/2024",
+      "endDate": "26/03/2025",
+      "discount": 0
+    },
+    {
+      "id": "2fb9",
+      "packageId": "2",
+      "startDate": "26/09/2024",
+      "endDate": "26/09/2025",
+      "discount": 0
+    },
+    {
+      "id": "1165",
+      "packageId": "1",
+      "startDate": "26/09/2024",
+      "endDate": "26/03/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "f386",
+      "packageId": "1",
+      "startDate": "26/09/2024",
+      "endDate": "26/03/2025",
+      "discount": 0.15,
+      "totalPrice": 254150,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    },
+    {
+      "id": "2db4",
+      "packageId": "2",
+      "startDate": "26/09/2024",
+      "endDate": "26/09/2025",
+      "discount": 0.15,
+      "totalPrice": 499000,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 1 NĂM"
+    },
+    {
+      "id": "7b1c",
+      "packageId": "1",
+      "startDate": "01/10/2024",
+      "endDate": "01/04/2025",
+      "discount": 0.15,
+      "totalPrice": 254150,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    },
+    {
+      "id": "01b9",
+      "packageId": "1",
+      "startDate": "01/10/2024",
+      "endDate": "01/04/2025",
+      "discount": 0.15,
+      "totalPrice": 254150,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    }
+  ]
+}
