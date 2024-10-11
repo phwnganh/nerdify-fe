@@ -16,7 +16,7 @@ export default function ViewPersonalProfile() {
   const [latestListeningSubmission, setLatestListeningSubmission] =
     useState(null);
   useEffect(() => {
-    // fetch(`http://localhost:9999/users/1`).then(res => res.json()).then(res => setUser(res));
+    // fetch(`http://54.254.175.236:9999/users/1`).then(res => res.json()).then(res => setUser(res));
     const fetchCurrentUser = async () => {
       try {
         const res = await getCurrentUser();
@@ -33,9 +33,9 @@ export default function ViewPersonalProfile() {
   useEffect(() => {
     const fetchReadingSubmissionData = async () => {
       const submissionsResponse = await fetch(
-        "http://localhost:9999/readingExercisesSubmission?userId=1"
+        "http://54.254.175.236:9999/readingExercisesSubmission?userId=1"
       );
-      const exercisesResponse = await fetch("http://localhost:9999/exercises");
+      const exercisesResponse = await fetch("http://54.254.175.236:9999/exercises");
 
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
@@ -63,9 +63,9 @@ export default function ViewPersonalProfile() {
 
     const fetchListeningSubmissionData = async () => {
       const submissionsResponse = await fetch(
-        "http://localhost:9999/listeningExercisesSubmission?userId=1"
+        "http://54.254.175.236:9999/listeningExercisesSubmission?userId=1"
       );
-      const exercisesResponse = await fetch("http://localhost:9999/exercises");
+      const exercisesResponse = await fetch("http://54.254.175.236:9999/exercises");
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
       const joinedData = submissions?.map((submission) => {

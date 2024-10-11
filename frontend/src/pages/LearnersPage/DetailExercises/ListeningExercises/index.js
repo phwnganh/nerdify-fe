@@ -209,7 +209,7 @@ export default function ListeningExercise() {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+    fetch(`http://54.254.175.236:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -273,7 +273,7 @@ export default function ListeningExercise() {
       isCompleted: true,
     };
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch("http://54.254.175.236:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -285,7 +285,7 @@ export default function ListeningExercise() {
       .catch((err) => console.error("Error saving submission:", err));
 
     // Update exercise completion status
-    fetch(`http://localhost:9999/exercises/${exercises.id}`, {
+    fetch(`http://54.254.175.236:9999/exercises/${exercises.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

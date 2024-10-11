@@ -12,7 +12,7 @@ export default function EditFlashCard() {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:9999/flashcard/${flashcardId}`)
+    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`)
       .then((response) => response.json())
       .then((data) => {
         setFlashcard(data);
@@ -39,7 +39,7 @@ export default function EditFlashCard() {
   };
 
   const handleSubmit = () => {
-    fetch(`http://localhost:9999/flashcard/${flashcardId}`, {
+    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -15,7 +15,7 @@ export const TestFlashCard = () => {
   const [userScore, setUserScore] = useState(-1);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/flashcard/${flashcardId}`)
+    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`)
       .then((response) => response.json())
       .then((data) => {
         const flashcardClone = JSON.parse(JSON.stringify(data));

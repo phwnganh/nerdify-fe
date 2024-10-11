@@ -15,7 +15,7 @@ export const PremiumPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:9999/package")
+    fetch("http://54.254.175.236:9999/package")
       .then((res) => res.json())
       .then((data) => setPackages(data));
   }, []);
@@ -31,7 +31,7 @@ export const PremiumPage = () => {
       discount: 0.15
     };
 
-    fetch(`http://localhost:9999/transaction`, {
+    fetch(`http://54.254.175.236:9999/transaction`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

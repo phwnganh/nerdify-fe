@@ -52,7 +52,7 @@ export default function ReadingExercises() {
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+    fetch(`http://54.254.175.236:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -276,7 +276,7 @@ export default function ReadingExercises() {
       isCompleted: true,
     };
 
-    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
+    fetch(`http://54.254.175.236:9999/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -294,7 +294,7 @@ export default function ReadingExercises() {
         console.log(err);
       });
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch("http://54.254.175.236:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

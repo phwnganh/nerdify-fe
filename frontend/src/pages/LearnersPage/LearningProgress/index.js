@@ -13,9 +13,9 @@ export default function LearningProgress() {
         // Fetch phases, levels, and exercises in parallel
         const [phasesResponse, levelsResponse, exercisesResponse] =
           await Promise.all([
-            fetch("http://localhost:9999/phases"),
-            fetch("http://localhost:9999/levels"),
-            fetch("http://localhost:9999/exercises"), // Fetch exercises
+            fetch("http://54.254.175.236:9999/phases"),
+            fetch("http://54.254.175.236:9999/levels"),
+            fetch("http://54.254.175.236:9999/exercises"), // Fetch exercises
           ]);
 
         const phases = await phasesResponse.json();

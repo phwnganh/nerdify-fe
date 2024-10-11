@@ -33,7 +33,7 @@ export const RegisterPage = () => {
 
     // Check if the email already exists
     try {
-      const response = await fetch(`http://localhost:9999/users?email=${encodeURIComponent(email)}`);
+      const response = await fetch(`http://54.254.175.236:9999/users?email=${encodeURIComponent(email)}`);
       const existingUser = await response.json();
 
       if (existingUser.length > 0) {
@@ -53,7 +53,7 @@ export const RegisterPage = () => {
     }
 
     // Send a POST request to register the user
-    fetch("http://localhost:9999/users", {
+    fetch("http://54.254.175.236:9999/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -38,7 +38,7 @@ export default function FinalExam() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9999/finalexam/${examId}`)
+    fetch(`http://54.254.175.236:9999/finalexam/${examId}`)
       .then((res) => res.json())
       .then((res) => {
         setExam(res);
@@ -215,7 +215,7 @@ export default function FinalExam() {
       examId: exam.id,
     };
 
-    fetch("http://localhost:9999/finalExamSubmission", {
+    fetch("http://54.254.175.236:9999/finalExamSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

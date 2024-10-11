@@ -20,7 +20,7 @@ export const Courses = () => {
   //   fetchCourseLevel();
   // }, []);
   useEffect(() => {
-    fetch("http://localhost:9999/levels")
+    fetch("http://54.254.175.236:9999/levels")
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);

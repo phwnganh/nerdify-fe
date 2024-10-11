@@ -8,7 +8,7 @@ export default function Payment() {
   const [transaction, setTransaction] = useState(null);
   const [timeLeft, setTimeLeft] = useState(5 * 60);
   useEffect(() => {
-    fetch(`http://localhost:9999/transaction/${transactionId}`)
+    fetch(`http://54.254.175.236:9999/transaction/${transactionId}`)
       .then((res) => res.json())
       .then((data) => setTransaction(data));
   }, [transactionId]);

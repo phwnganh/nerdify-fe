@@ -26,8 +26,8 @@ export default function ReadingResults() {
 
   useEffect(() => {
     const fetchReadingSubmissionData = async () => {
-      const submissionsResponse = await fetch(`http://localhost:9999/readingExercisesSubmission?id=${submissionId}&userId=1`);
-      const exercisesResponse = await fetch("http://localhost:9999/exercises");
+      const submissionsResponse = await fetch(`http://54.254.175.236:9999/readingExercisesSubmission?id=${submissionId}&userId=1`);
+      const exercisesResponse = await fetch("http://54.254.175.236:9999/exercises");
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
 

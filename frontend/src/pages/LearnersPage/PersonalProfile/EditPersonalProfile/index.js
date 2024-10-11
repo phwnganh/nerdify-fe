@@ -16,7 +16,7 @@ export default function EditPersonalProfile() {
   const userId = getStorage(STORAGE.USER_ID);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/users/${userId}`)
+    fetch(`http://54.254.175.236:9999/users/${userId}`)
       .then((res) => res.json())
       .then((res) => {
         setUser(res);
@@ -40,7 +40,7 @@ export default function EditPersonalProfile() {
       dob: values.dob ? values.dob.format("YYYY-MM-DD") : null,
       phone: values.phone,
     };
-    fetch(`http://localhost:9999/users/${userId}`, {
+    fetch(`http://54.254.175.236:9999/users/${userId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedUserData),

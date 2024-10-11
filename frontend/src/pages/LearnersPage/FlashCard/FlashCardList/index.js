@@ -12,7 +12,7 @@ export default function FlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:9999/flashcard")
+    fetch("http://54.254.175.236:9999/flashcard")
       .then((res) => res.json())
       .then((data) => {
         console.log("flashcards: ", data);

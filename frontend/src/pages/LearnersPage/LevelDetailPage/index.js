@@ -73,7 +73,7 @@ export default function ViewLevelDetail() {
 
   // Fetch course details based on courseId
   useEffect(() => {
-    fetch(`http://localhost:9999/levels/${courseId}`)
+    fetch(`http://54.254.175.236:9999/levels/${courseId}`)
       .then((response) => response.json())
       .then((course) => {
         setCourse(course);
@@ -92,12 +92,12 @@ export default function ViewLevelDetail() {
 
   // Fetch phases and their respective exercises
   useEffect(() => {
-    fetch(`http://localhost:9999/phases?levelId=${courseId}`)
+    fetch(`http://54.254.175.236:9999/phases?levelId=${courseId}`)
       .then((response) => response.json())
       .then((phases) => {
         // Fetch exercises for each phase
         const fetchExercises = phases.map((phase) =>
-          fetch(`http://localhost:9999/exercises?phaseId=${phase.id}`)
+          fetch(`http://54.254.175.236:9999/exercises?phaseId=${phase.id}`)
             .then((res) => res.json())
             .then((exercises) => ({ ...phase, exercises })),
         );

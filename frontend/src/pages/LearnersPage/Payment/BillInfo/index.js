@@ -15,9 +15,9 @@ export default function BillInfo() {
   useEffect(() => {
     const fetchTransaction = async () => {
       const transactionResponse = await fetch(
-        `http://localhost:9999/transaction/${transactionId}`
+        `http://54.254.175.236:9999/transaction/${transactionId}`
       );
-      const packageResponse = await fetch("http://localhost:9999/package");
+      const packageResponse = await fetch("http://54.254.175.236:9999/package");
       const transaction = await transactionResponse.json();
       const packages = await packageResponse.json();
       const packageDetail = packages.find(
@@ -49,7 +49,7 @@ export default function BillInfo() {
   };
 
   const handlePaymentProcessing = () => {
-    fetch(`http://localhost:9999/transaction/${transactionId}`, {
+    fetch(`http://54.254.175.236:9999/transaction/${transactionId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

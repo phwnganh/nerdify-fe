@@ -7,7 +7,7 @@ import { CLIENT_URI } from "../../../constants";
 export default function MySubscription() {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
-  fetch("http://localhost:9999/users/2")
+  fetch("http://54.254.175.236:9999/users/2")
     .then((res) => res.json())
     .then((data) => {
       setUser(data);

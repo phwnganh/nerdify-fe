@@ -49,7 +49,7 @@ export default function FlashCardDetail() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9999/flashcard/${flashcardId}`)
+    fetch(`http://54.254.175.236:9999/flashcard/${flashcardId}`)
       .then((data) => data.json())
       .then((data) => setFlashcard(data))
       .catch((err) => console.error(err));

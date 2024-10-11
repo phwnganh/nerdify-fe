@@ -50,8 +50,8 @@ export default function ListeningResults() {
   // Fetch exercise submission data
   useEffect(() => {
     const fetchListeningSubmissionData = async () => {
-      const submissionsResponse = await fetch(`http://localhost:9999/listeningExercisesSubmission?id=${submissionId}&userId=1`); // Fetch submission data based on submissionId and userId
-      const exercisesResponse = await fetch(`http://localhost:9999/exercises`); // Fetch all exercises
+      const submissionsResponse = await fetch(`http://54.254.175.236:9999/listeningExercisesSubmission?id=${submissionId}&userId=1`); // Fetch submission data based on submissionId and userId
+      const exercisesResponse = await fetch(`http://54.254.175.236:9999/exercises`); // Fetch all exercises
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
       const joinedData = submissions.map((submission) => {

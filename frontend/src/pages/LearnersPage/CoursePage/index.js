@@ -7,7 +7,7 @@ export default function CoursePage() {
   const [course, setCourse] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9999/levels")
+    fetch("http://54.254.175.236:9999/levels")
       .then((res) => res.json())
       .then((data) => {
         setCourse(data);

@@ -30,7 +30,7 @@ export const LoginPage = () => {
     };
 
     // Make a request to the fake server
-    fetch("http://localhost:9999/users")
+    fetch("http://54.254.175.236:9999/users")
       .then((response) => response.json())
       .then((users) => {
         // Find the user with matching email and password

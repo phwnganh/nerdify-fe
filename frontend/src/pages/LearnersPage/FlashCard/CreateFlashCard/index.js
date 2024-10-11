@@ -31,7 +31,7 @@ export default function CreateFlashCard() {
 
   const handleSubmit = () => {
     
-    fetch(`http://localhost:9999/flashcard`, {
+    fetch(`http://54.254.175.236:9999/flashcard`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

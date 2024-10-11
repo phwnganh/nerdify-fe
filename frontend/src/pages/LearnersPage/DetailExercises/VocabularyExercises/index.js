@@ -65,7 +65,7 @@ export default function VocabularyExercises() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
+      `http://54.254.175.236:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -336,7 +336,7 @@ export default function VocabularyExercises() {
 
     setUserScore(score);
 
-    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
+    fetch(`http://54.254.175.236:9999/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -365,7 +365,7 @@ export default function VocabularyExercises() {
       exerciseId: exercises.id,
     };
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch("http://54.254.175.236:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
