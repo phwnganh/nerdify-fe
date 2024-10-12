@@ -6,10 +6,7 @@ const STORAGE = {
 
 export const getStorage = (name) => {
   let data;
-  data =
-    typeof window !== "undefined" && name !== undefined
-      ? localStorage.getItem(name)
-      : "";
+  data = typeof window !== "undefined" && name !== undefined ? localStorage.getItem(name) : "";
   try {
     if (data) return JSON.parse(data);
   } catch (error) {

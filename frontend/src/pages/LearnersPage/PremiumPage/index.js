@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Layout, Typography, Card, Radio, List } from "antd";
 import ButtonCustom from "../../../components/Button";
 import { AudioOutlined, BookOutlined, EditOutlined, ReadOutlined } from "@ant-design/icons";
@@ -10,16 +10,18 @@ import moment from "moment";
 
 const { Content } = Layout;
 
-
-
 export const PremiumPage = () => {
   const [packages, setPackages] = useState([]);
   const navigate = useNavigate();
-  fetch("http://localhost:9999/package")
-    .then((res) => res.json())
-    .then((data) => setPackages(data));
 
-  const handleRedirectToBill = (packageId, duration) => {
+  useEffect(() => {
+    fetch("http://localhost:9999/package")
+      .then((res) => res.json())
+      .then((data) => setPackages(data));
+  }, []);
+
+  // Tạo hàm handleRedirectToBill với useCallback để không bị tạo lại mỗi khi render
+  const handleRedirectToBill = useCallback((packageId, duration) => {
     const startDate = moment().format("DD/MM/YYYY");
     const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
     const newTransaction = {
@@ -27,7 +29,7 @@ export const PremiumPage = () => {
       startDate,
       endDate,
       discount: 0.15
-    }
+    };
 
     fetch(`http://localhost:9999/transaction`, {
       method: "POST",
@@ -35,12 +37,16 @@ export const PremiumPage = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newTransaction)
-    }).then(res => res.json()).then(data => {
-      navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`)
-    }).catch(err => {
-      console.error(err);
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [navigate]);
+
   return (
     <>
       <Content
@@ -67,7 +73,7 @@ export const PremiumPage = () => {
               </List.Item>
               <List.Item>
                 <h2>
-                  <BookOutlined/> &nbsp; Tạo bộ flashcard mới(nhiều nhất là 50 từ)
+                  <BookOutlined /> &nbsp; Tạo bộ flashcard mới(nhiều nhất là 50 từ)
                 </h2>
               </List.Item>
               <List.Item>

@@ -6,7 +6,6 @@ const API_PREFIXES = {
 
 const URI_COURSES_SERVICE = {
       COURSELEVEL: API_PREFIXES.COURSE + "/levels",
-      COURSELEVEL_DETAIL: API_PREFIXES.COURSE + "/levels/:levelId",
       PHASES: API_PREFIXES.COURSE + "/phases",
       PHASE_DETAIL: API_PREFIXES.COURSE + "/phases/:phaseId",
       EXERCISE: API_PREFIXES.COURSE + "/exercises",

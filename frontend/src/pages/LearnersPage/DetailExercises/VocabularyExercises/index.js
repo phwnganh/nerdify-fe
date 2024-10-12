@@ -5,6 +5,16 @@ import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
 import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
 import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
 import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
+import demo_3_1 from "../../../../assets/vocabExercises/3_1.png";
+import demo_3_2 from "../../../../assets/vocabExercises/3_2.png";
+import demo_3_3 from "../../../../assets/vocabExercises/3_3.png";
+import demo_4_1 from "../../../../assets/vocabExercises/4_1.png";
+import demo_4_2 from "../../../../assets/vocabExercises/4_2.png";
+import demo_4_3 from "../../../../assets/vocabExercises/4_3.png";
+import demo_5_1 from "../../../../assets/vocabExercises/5_1.png";
+import demo_5_2 from "../../../../assets/vocabExercises/5_2.png";
+import demo_5_3 from "../../../../assets/vocabExercises/5_3.png";
+
 import { PART_TYPE } from "../../../../constants";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
@@ -20,6 +30,15 @@ const vocabImg = {
   demo_2_1: demo_2_1,
   demo_2_2: demo_2_2,
   demo_2_3: demo_2_3,
+  demo_3_1,
+  demo_3_2,
+  demo_3_3,
+  demo_4_1,
+  demo_4_2,
+  demo_4_3,
+  demo_5_1,
+  demo_5_2,
+  demo_5_3
 };
 
 export default function VocabularyExercises() {
@@ -531,7 +550,7 @@ export default function VocabularyExercises() {
 
             {/* Display Selected Pairs */}
 
-            {/* <div style={{ marginTop: "30px" }}>
+            <div style={{ marginTop: "30px" }}>
               <TitleCustom level={4}>Selected Pairs:</TitleCustom>
               {Object.entries(selectedPairsPart1).map(
                 ([questionId, matchQuestionId]) => {
@@ -561,7 +580,7 @@ export default function VocabularyExercises() {
                   );
                 }
               )}
-            </div> */}
+            </div>
           </>
         )}
 
@@ -762,11 +781,12 @@ export default function VocabularyExercises() {
                           >
                             {option.id}
                           </ButtonCustom>
-                          <img
+                          {option.optionImage && <img
                             src={vocabImg[option.optionImage]}
                             alt={`Option ${option.id}`}
                             style={{ width: "50%" }}
-                          />
+                          />}
+                          {option.text && <div><TextCustom>{option.text}</TextCustom></div>}
                         </Col>
                       );
                     })}
