@@ -118,7 +118,9 @@ export default function Navbar() {
               <MenuItem key="learning-progress" onClick={() => navigate(CLIENT_URI.LEARNING_PROGRESS)}>
                 TIẾN ĐỘ HỌC TẬP
               </MenuItem>
-              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
+              <MenuItem key="blog" onClick={() => navigate(CLIENT_URI.BLOG)}>
+                BLOG HỌC TẬP
+              </MenuItem>
               <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
                 GÓI PREMIUM
               </MenuItem>

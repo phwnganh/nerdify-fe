@@ -1,10 +1,19 @@
+// Importing components from react-router-dom
 import { Outlet } from "react-router-dom";
-import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
+
+// Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
-import { CLIENT_URI } from "../constants";
-import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
+import BlogPage from "../pages/GuestsPage/BlogPage";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
+
+// Importing Guards for route protection
+import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+
+// Importing Layouts for different user roles
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
+
+// Importing Pages for Learners
+import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
 import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
 import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
 import FinalExam from "../pages/LearnersPage/FinalExam";
@@ -27,6 +36,10 @@ import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
+
+// Importing constants
+import { CLIENT_URI } from "../constants";
+
 export const routes = [
   // Guest urls
   {
@@ -75,6 +88,10 @@ export const routes = [
       //   path: CLIENT_URI.LEVEL_DETAIL,
       //   element: <ViewLevelDetail />,
       // },
+      {
+        path: CLIENT_URI.BLOG,
+        element: <BlogPage />,
+      },
       {
         path: CLIENT_URI.LANDING_PAGE,
         element: <LandingPage />,

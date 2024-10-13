@@ -6,6 +6,7 @@ export const CLIENT_URI = {
   FORGOT_PASSWORD: "/forgot-password",
   VERIFY_EMAIL: "/verify-email/:emailToken",
   RESET_PASSWORD: "/reset-password/:resetToken",
+  BLOG: "/blog",
   // LEARNER
   COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
