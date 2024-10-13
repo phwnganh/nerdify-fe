@@ -22,6 +22,7 @@ import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import ModalCustom from "../../../../components/Modal";
 import InputCustom from "../../../../components/Input";
 import ReactCardFlip from 'react-card-flip';
+import { BASE_SERVER } from "../../../../constants";
 
 export default function FlashCardDetail() {
   const navigate = useNavigate();
