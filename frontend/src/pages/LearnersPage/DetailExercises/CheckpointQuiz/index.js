@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { ParagraphCustom, TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { CLIENT_URI } from "../../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
 
 // Import images
 import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
@@ -54,7 +54,7 @@ export default function ReadingExercises() {
 
   useEffect(() => {
     if (!hasStarted) {
-      fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+      fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
         .then((res) => res.json())
         .then((data) => {
           if (data && data.length > 0) {
@@ -137,7 +137,7 @@ export default function ReadingExercises() {
       isCompleted: true,
     };
 
-    fetch(`http://localhost:9999/exercises/${exercises.id}`, {
+    fetch(`${BASE_SERVER}/exercises/${exercises.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -156,7 +156,7 @@ export default function ReadingExercises() {
         console.log(err);
       });
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch(`${BASE_SERVER}/exercisesSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

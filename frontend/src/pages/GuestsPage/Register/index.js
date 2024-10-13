@@ -6,7 +6,7 @@ import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
 import registerImage from "../../../assets/registerImage.png";
-import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
 import { validationRules } from "../../../helpers/validate";
 import { style } from "./styled";
 
@@ -33,7 +33,7 @@ export const RegisterPage = () => {
 
     // Check if the email already exists
     try {
-      const response = await fetch(`http://localhost:9999/users?email=${encodeURIComponent(email)}`);
+      const response = await fetch(`${BASE_SERVER}/users?email=${encodeURIComponent(email)}`);
       const existingUser = await response.json();
 
       if (existingUser.length > 0) {
@@ -53,7 +53,7 @@ export const RegisterPage = () => {
     }
 
     // Send a POST request to register the user
-    fetch("http://localhost:9999/users", {
+    fetch(`${BASE_SERVER}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

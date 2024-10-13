@@ -5,7 +5,7 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
 import React, { useCallback, useEffect, useState, useMemo } from "react";
 import ButtonCustom from "../../../../components/Button";
-import { PART_TYPE } from "../../../../constants";
+import { BASE_SERVER, PART_TYPE } from "../../../../constants";
 
 export default function GrammarExercises() {
   const [exercises, setExercises] = useState(null); // Initialize with null
@@ -17,7 +17,7 @@ export default function GrammarExercises() {
   const [answerStatus, setAnswerStatus] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -178,7 +178,7 @@ export default function GrammarExercises() {
       isCompleted: true,
     };
 
-    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
+    fetch(`${BASE_SERVER}/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -195,7 +195,7 @@ export default function GrammarExercises() {
       .catch((err) => {
         console.log(err);
       });
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch(`${BASE_SERVER}/exercisesSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

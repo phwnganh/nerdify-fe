@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { BASE_SERVER } from "../../../../constants";
 export default function BillInfo() {
   const navigate = useNavigate();
   const [transactionDetail, setTransactionDetail] = useState(null);
@@ -15,9 +16,9 @@ export default function BillInfo() {
   useEffect(() => {
     const fetchTransaction = async () => {
       const transactionResponse = await fetch(
-        `http://localhost:9999/transaction/${transactionId}`
+        `${BASE_SERVER}/transaction/${transactionId}`
       );
-      const packageResponse = await fetch("http://localhost:9999/package");
+      const packageResponse = await fetch(`${BASE_SERVER}/package`);
       const transaction = await transactionResponse.json();
       const packages = await packageResponse.json();
       const packageDetail = packages.find(
@@ -49,7 +50,7 @@ export default function BillInfo() {
   };
 
   const handlePaymentProcessing = () => {
-    fetch(`http://localhost:9999/transaction/${transactionId}`, {
+    fetch(`${BASE_SERVER}/transaction/${transactionId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

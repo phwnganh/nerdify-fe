@@ -2,13 +2,14 @@ import { Col, QRCode, Row } from "antd";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { BASE_SERVER } from "../../../constants";
 
 export default function Payment() {
   const { transactionId } = useParams();
   const [transaction, setTransaction] = useState(null);
   const [timeLeft, setTimeLeft] = useState(5 * 60);
   useEffect(() => {
-    fetch(`http://localhost:9999/transaction/${transactionId}`)
+    fetch(`${BASE_SERVER}/transaction/${transactionId}`)
       .then((res) => res.json())
       .then((data) => setTransaction(data));
   }, [transactionId]);

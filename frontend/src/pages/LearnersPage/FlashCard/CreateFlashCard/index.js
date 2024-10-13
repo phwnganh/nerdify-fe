@@ -17,6 +17,7 @@ import {
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../helpers/validate";
+import { BASE_SERVER } from "../../../../constants";
 export default function CreateFlashCard() {
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -31,7 +32,7 @@ export default function CreateFlashCard() {
 
   const handleSubmit = () => {
     
-    fetch(`http://localhost:9999/flashcard`, {
+    fetch(`${BASE_SERVER}/flashcard`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

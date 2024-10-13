@@ -22,6 +22,7 @@ import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import ModalCustom from "../../../../components/Modal";
 import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
+import { BASE_SERVER } from "../../../../constants";
 
 export default function FlashCardDetail() {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export default function FlashCardDetail() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9999/flashcard/${flashcardId}`)
+    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
       .then((data) => data.json())
       .then((data) => setFlashcard(data))
       .catch((err) => console.error(err));
