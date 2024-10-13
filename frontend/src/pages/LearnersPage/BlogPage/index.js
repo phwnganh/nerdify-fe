@@ -33,6 +33,7 @@ import React, { useState } from "react";
 import { Pagination, Row, Col, Space } from "antd";
 import { EyeOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 
 const dataSample = {
   data: [
@@ -86,6 +87,7 @@ const BlogPage = () => {
   return (
     <div style={{ padding: "20px", maxWidth: "1200px", margin: "auto" }}>
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>BLOG HỌC TẬP</h1>
+      <BreadCrumbHome/>
       <Row gutter={[16, 16]}>
         {paginatedData.map((item) => (
           <Col key={item._id} xs={24} sm={12} md={8}>

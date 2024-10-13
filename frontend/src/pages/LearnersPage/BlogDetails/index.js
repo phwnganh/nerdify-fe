@@ -71,6 +71,7 @@ const RelatedArticleText = styled(Text)`
 `;
 
 const ImageBanner = styled.div`
+  margin-top: 30px;
   height: 450px;
   background-size: cover;
   background-position: center;
