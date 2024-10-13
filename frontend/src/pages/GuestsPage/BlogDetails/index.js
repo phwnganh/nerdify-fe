@@ -16,9 +16,10 @@
 //   message: "Fetched blog details",
 // };
 import React from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { Card, Typography, Tag, Button } from "antd";
+import { Card, Typography, Tag, Button, Breadcrumb } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
+import { useParams, Link } from "react-router-dom"; // Import useParams to get the blog title from the URL
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -40,9 +41,9 @@ const Sidebar = styled.div`
   padding: 16px;
   background-color: #f5f5f5;
   border-radius: 8px;
-  position: sticky; /* Sticky positioning */
-  top: 20px; /* Distance from the top of the viewport */
-  height: fit-content; /* Ensures sidebar is only as tall as its content */
+  position: sticky;
+  top: 20px;
+  height: fit-content;
 `;
 
 const RelatedArticlesTitle = styled(Title)`
@@ -103,10 +104,26 @@ const StyledQuote = styled.blockquote`
 
 // Main Component
 const BlogDetails = () => {
+  const { id } = useParams(); // Get the blog ID from the URL
+  const blogTitle = "Revenge of the Never Trumpers"; // replace this with a dynamic title based on the ID
+
   return (
     <Layout>
       {/* Main Blog Content */}
       <ContentWrapper>
+        {/* Breadcrumb */}
+        <Breadcrumb style={{ marginBottom: "16px" }}>
+          <Breadcrumb.Item>
+            <Link to="/">
+              <HomeOutlined /> Trang chủ
+            </Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/blog">Blog</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>{blogTitle}</Breadcrumb.Item>
+        </Breadcrumb>
+
         <ImageBanner />
         <ContentCard bordered={false}>
           <TagsWrapper>
@@ -114,7 +131,7 @@ const BlogDetails = () => {
             <Tag color="blue">Politics</Tag>
           </TagsWrapper>
 
-          <Title level={2}>Revenge of the Never Trumpers</Title>
+          <Title level={2}>{blogTitle}</Title>
 
           <AuthorInfo type="secondary">
             Tác giả:{" "}
