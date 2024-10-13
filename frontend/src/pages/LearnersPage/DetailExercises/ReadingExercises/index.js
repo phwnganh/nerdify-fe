@@ -42,25 +42,25 @@ const imgReadingArr = {
   demo_part3_5,
 };
 
-export default function ReadingExercises() {
+export default function ReadingExercises({ exercises }) {
   const { exerciseType, exerciseId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [exerciseResults, setExerciseResults] = useState({});
-  const [exercises, setExercises] = useState(null);
+  // const [exercises, setExercises] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
-  useEffect(() => {
-    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => console.error("error", err));
-  }, [exerciseType, exerciseId]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data && data.length > 0) {
+  //         setExercises(data[0]);
+  //       }
+  //     })
+  //     .catch((err) => console.error("error", err));
+  // }, [exerciseType, exerciseId]);
 
   const handleSelectOptions = useCallback((questionId, optionId) => {
     setUserAnswers((prev) => ({

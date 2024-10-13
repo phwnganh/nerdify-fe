@@ -27,11 +27,11 @@ import part2_ques9_2 from "../../../../assets/listeningExercises/02- teil 2-09.m
 import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.mp3";
 import { StartQuizModal } from "../../LevelDetailPage";
 
-export default function ReadingExercises() {
+export default function ReadingExercises({ exercises }) {
   const { exerciseType, exerciseId } = useParams();
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [exercises, setExercises] = useState(null);
+  // const [exercises, setExercises] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
@@ -52,18 +52,18 @@ export default function ReadingExercises() {
     part2_ques10_2,
   };
 
-  useEffect(() => {
-    if (!hasStarted) {
-      fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.length > 0) {
-            setExercises(data[0]);
-          }
-        })
-        .catch((err) => console.error("error", err));
-    }
-  }, [exerciseType, exerciseId, hasStarted]);
+  // useEffect(() => {
+  //   if (!hasStarted) {
+  //     fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data && data.length > 0) {
+  //           setExercises(data[0]);
+  //         }
+  //       })
+  //       .catch((err) => console.error("error", err));
+  //   }
+  // }, [exerciseType, exerciseId, hasStarted]);
 
   useEffect(() => {
     if (!hasStarted) return;

@@ -101,7 +101,7 @@ import part2_ques7_A2 from "../../../../assets/listeningExercises/a2-teil2-7.mp3
 import part2_ques8_A2 from "../../../../assets/listeningExercises/a2-teil2-8.mp3";
 import part2_ques9_A2 from "../../../../assets/listeningExercises/a2-teil2-9.mp3";
 import part2_ques10_A2 from "../../../../assets/listeningExercises/a2-teil2-10.mp3";
-import part3_A2 from '../../../../assets/listeningExercises/part3_A2.mp3';
+import part3_A2 from "../../../../assets/listeningExercises/part3_A2.mp3";
 
 const imagesArr = {
   demo1_1,
@@ -194,30 +194,18 @@ const audioArr = {
   part2_ques8_A2,
   part2_ques9_A2,
   part2_ques10_A2,
-  part3_A2
+  part3_A2,
 };
 
 const { TabPane } = Tabs;
 
-export default function ListeningExercise() {
-  const { exerciseType, exerciseId } = useParams();
+export default function ListeningExercise({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
-  const [exercises, setExercises] = useState(null);
+  // const [exercises, setExercises] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-
-  useEffect(() => {
-    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => console.error("Error fetching exercise data", err));
-  }, [exerciseType, exerciseId]);
 
   const handleSelectOptions = useCallback(
     (questionId, optionId) => {
