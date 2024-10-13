@@ -81,13 +81,13 @@ const BlogPage = () => {
 
   const handleCardClick = (id) => {
     id = 1;
-    navigate(`/blog/${id}`);
+    navigate(`/blog-study/${id}`);
   };
 
   return (
     <div style={{ padding: "20px", maxWidth: "1200px", margin: "auto" }}>
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>BLOG HỌC TẬP</h1>
-      <BreadCrumbHome/>
+      <BreadCrumbHome />
       <Row gutter={[16, 16]}>
         {paginatedData.map((item) => (
           <Col key={item._id} xs={24} sm={12} md={8}>
