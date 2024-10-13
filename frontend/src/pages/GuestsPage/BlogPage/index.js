@@ -32,6 +32,7 @@
 import React, { useState } from "react";
 import { Pagination, Row, Col, Space } from "antd";
 import { EyeOutlined, UserOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const dataSample = {
   data: [
@@ -67,7 +68,8 @@ const dataSample = {
 
 const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [hoveredCard, setHoveredCard] = useState(null); // Track hovered card
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const navigate = useNavigate();
   const pageSize = 3;
 
   const onChangePage = (page) => {
@@ -76,16 +78,21 @@ const BlogPage = () => {
 
   const paginatedData = dataSample.data.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
+  const handleCardClick = (id) => {
+    id = 1;
+    navigate(`/blog/${id}`);
+  };
+
   return (
     <div style={{ padding: "20px", maxWidth: "1200px", margin: "auto" }}>
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>BLOG HỌC TẬP</h1>
-
       <Row gutter={[16, 16]}>
         {paginatedData.map((item) => (
           <Col key={item._id} xs={24} sm={12} md={8}>
             <div
-              onMouseEnter={() => setHoveredCard(item._id)} // Set hovered card ID
-              onMouseLeave={() => setHoveredCard(null)} // Reset on mouse leave
+              onMouseEnter={() => setHoveredCard(item._id)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => handleCardClick(item._id)}
               style={{
                 border: hoveredCard === item._id ? "1px solid #FFAC1C" : "1px solid #e8e8e8",
                 borderRadius: "4px",
@@ -95,8 +102,8 @@ const BlogPage = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                transition: "border-color 0.3s ease, box-shadow 0.3s ease", // Smooth transition
-                boxShadow: hoveredCard === item._id ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none", // Shadow on hover
+                transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                boxShadow: hoveredCard === item._id ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none",
                 cursor: "pointer", // Change cursor on hover
               }}
             >
@@ -148,14 +155,7 @@ const BlogPage = () => {
           </Col>
         ))}
       </Row>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "50px",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
         <Pagination current={currentPage} total={dataSample.data.length} pageSize={pageSize} onChange={onChangePage} style={{ marginTop: "20px", textAlign: "center" }} />
       </div>
     </div>
