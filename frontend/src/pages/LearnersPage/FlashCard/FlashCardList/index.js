@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CLIENT_URI } from "../../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { Col, Row } from "antd";
 import CardCustom from "../../../../components/Card";
@@ -12,7 +12,7 @@ export default function FlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:9999/flashcard")
+    fetch(`${BASE_SERVER}/flashcard`)
       .then((res) => res.json())
       .then((data) => {
         console.log("flashcards: ", data);

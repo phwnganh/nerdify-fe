@@ -6,7 +6,7 @@ import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
 import loginImage from "../../../assets/loginImage.png";
-import { CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
 import { useAuth } from "../../../hooks";
 import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
@@ -30,7 +30,7 @@ export const LoginPage = () => {
     };
 
     // Make a request to the fake server
-    fetch("http://localhost:9999/users")
+    fetch(`${BASE_SERVER}/users`)
       .then((response) => response.json())
       .then((users) => {
         // Find the user with matching email and password
@@ -47,6 +47,9 @@ export const LoginPage = () => {
           //   }),
           // );
           setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
+          setStorage(STORAGE.USER_ID, JSON.stringify(user[0].id));
+          console.log("userId: ", user[0].id);
+          
           navigate(CLIENT_URI.COURSE_PAGE);
           // if (localStorage.getItem("isPremium")) {
           //   navigate(CLIENT_URI.PREMIUM);

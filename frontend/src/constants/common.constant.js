@@ -4,7 +4,7 @@ export const USERNAME_REGEX = /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-
 export const ACCESS_TOKEN_KEY_COOKIE = "access_token";
 
 export const ROLES = { ADMIN_ROLE: "admin", LEARNER_ROLE: "learner" };
-
+export const BASE_SERVER = "http://localhost:9999";
 export const EXERCISE_TYPE = {
   LISTENING: "listening",
   READING: "reading",
