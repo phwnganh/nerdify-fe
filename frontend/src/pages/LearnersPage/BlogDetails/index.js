@@ -20,6 +20,7 @@ import styled from "styled-components";
 import { Card, Typography, Tag, Button, Breadcrumb } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import { useParams, Link } from "react-router-dom"; // Import useParams to get the blog title from the URL
+import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -112,18 +113,7 @@ const BlogDetails = () => {
       {/* Main Blog Content */}
       <ContentWrapper>
         {/* Breadcrumb */}
-        <Breadcrumb style={{ marginBottom: "16px" }}>
-          <Breadcrumb.Item>
-            <Link to="/">
-              <HomeOutlined /> Trang chủ
-            </Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Link to="/blog">Blog</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>{blogTitle}</Breadcrumb.Item>
-        </Breadcrumb>
-
+        <BreadCrumbHome/>
         <ImageBanner />
         <ContentCard bordered={false}>
           <TagsWrapper>

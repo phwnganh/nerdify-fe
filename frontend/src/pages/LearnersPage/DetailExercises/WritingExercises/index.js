@@ -7,7 +7,7 @@ import { Col, Input, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
-import { PART_TYPE } from "../../../../constants";
+import { BASE_SERVER, PART_TYPE } from "../../../../constants";
 
 export default function WritingExercises() {
   const [exercise, setExercise] = useState(null);
@@ -20,7 +20,7 @@ export default function WritingExercises() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -184,7 +184,7 @@ export default function WritingExercises() {
       exerciseId,
     };
 
-    fetch(`http://localhost:9999/exercises/${exercise?.id}`, {
+    fetch(`${BASE_SERVER}/exercises/${exercise?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -202,7 +202,7 @@ export default function WritingExercises() {
         console.log(err);
       });
 
-    fetch("http://localhost:9999/exercisesSubmission", {
+    fetch(`${BASE_SERVER}/exercisesSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

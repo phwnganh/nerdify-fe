@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { List } from "antd";
 import CourseList from "./CourseList";
 import { getCourseLevelList } from "../../../services/LearnerService";
+import { BASE_SERVER } from "../../../constants";
 
 export default function CoursePage() {
   const [course, setCourse] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9999/levels")
+    fetch(`${BASE_SERVER}/levels`)
       .then((res) => res.json())
       .then((data) => {
         setCourse(data);

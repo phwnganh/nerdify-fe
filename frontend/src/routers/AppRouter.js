@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 
 // Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
-import BlogPage from "../pages/GuestsPage/BlogPage";
-import BlogDetails from "../pages/GuestsPage/BlogDetails";
+import BlogPage from "../pages/LearnersPage/BlogPage";
+import BlogDetails from "../pages/LearnersPage/BlogDetails";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
@@ -37,10 +37,7 @@ import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-
-// Importing constants
 import { CLIENT_URI } from "../constants";
-
 export const routes = [
   // Guest urls
   {
@@ -75,10 +72,7 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-          {
-            path: CLIENT_URI.LEARNING_PROGRESS,
-            element: <LearningProgress />,
-          },
+        
           {
             path: CLIENT_URI.TROPHY,
             element: <TakeATrophy />,
@@ -89,14 +83,7 @@ export const routes = [
       //   path: CLIENT_URI.LEVEL_DETAIL,
       //   element: <ViewLevelDetail />,
       // },
-      {
-        path: CLIENT_URI.BLOG,
-        element: <BlogPage />,
-      },
-      {
-        path: `${CLIENT_URI.BLOG}/:blogId`,
-        element: <BlogDetails />,
-      },
+
       {
         path: CLIENT_URI.LANDING_PAGE,
         element: <LandingPage />,
@@ -115,18 +102,8 @@ export const routes = [
       },
       // test giao diện
 
-      {
-        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
-        element: <Payment />,
-      },
-      {
-        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
-        element: <BillInfo />,
-      },
-      {
-        path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile />,
-      },
+
+
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
         element: <ManageFlashcard />,
@@ -188,6 +165,18 @@ export const routes = [
         path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
         element: <TestFlashCard />,
       },
+      {
+        path: `${CLIENT_URI.EDIT_PROFILE}`,
+        element: <EditPersonalProfile />,
+      },
+      {
+        path: CLIENT_URI.BLOG_STUDY,
+        element: <BlogPage />,
+      },
+      {
+        path: `${CLIENT_URI.BLOG_STUDY}/:blogId`,
+        element: <BlogDetails />,
+      },
       // {
       //   path: CLIENT_URI.FINAL_EXAM,
       //   element: <FinalExam />,
@@ -235,6 +224,18 @@ export const routes = [
       {
         path: CLIENT_URI.PREMIUM,
         element: <PremiumPage />,
+      },
+      {
+        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
+        element: <Payment />,
+      },
+      {
+        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
+        element: <BillInfo />,
+      },
+      {
+        path: CLIENT_URI.LEARNING_PROGRESS,
+        element: <LearningProgress />,
       },
     ],
   },

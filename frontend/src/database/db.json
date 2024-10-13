@@ -48,8 +48,10 @@
       "name": "Phase 2",
       "levelId": 2,
       "exercises": [
-        15
-      ]
+        15,
+        17
+      ],
+      "isNew": true
     },
     {
       "id": "6",
@@ -64,7 +66,8 @@
       "exercises": [
         13,
         14
-      ]
+      ],
+      "isNew": true
     },
     {
       "id": "8",
@@ -101,7 +104,7 @@
         6
       ],
       "finalexams": [
-        3
+        2
       ]
     },
     {
@@ -113,6 +116,9 @@
       "phases": [
         7,
         8
+      ],
+      "finalexams": [
+        3
       ]
     }
   ],
@@ -452,7 +458,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "36%"
+      "score": "21%"
     },
     {
       "id": "2",
@@ -1259,7 +1265,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "0%"
+      "score": "2%"
     },
     {
       "id": "4",
@@ -2351,7 +2357,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "30%",
+      "score": "40%",
       "conditionStatus": "not pass"
     },
     {
@@ -4310,6 +4316,460 @@
           ]
         }
       ]
+    },
+    {
+      "id": "16",
+      "title": "QUIZ KẾT THÚC PHASE 1",
+      "exerciseType": "quiz",
+      "phaseId": 7,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Đọc",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Lesen Sie den Text und die Aufgaben 1 bis 6 dazu. Wählen Sie: Sind die Aussagen Richtig oder Falsch?",
+              "questionParagraph": "ChristinesAlltagsBlog.at \nGuten Abend! \nAlso, mir ist letzte Woche was wirklich Dummes passiert. \nEigentlich kann ich ganz gut Kuchen backen. Kochen und Backen gehören zu meinen liebsten Freizeitbeschäftigungen. Und einmal im Monat treffe ich mich mit anderen Koch- und Backfans. \n5 Da bringen wir immer neue Rezepte mit... ja, und was wir kochen oder backen schmeckt immer super! \nAber das wisst ihr ja schon, wenn ihr öfter mal in mein Tagebuch schaut. Am Samstag wollte ich nun eine ganz besondere Torte für den Geburtstag von meinem Freund machen. Das Rezept hatte ich mir mal bei einem 10 Treffen der Hobbyköche aufgeschrieben. Ich bin mit einer langen \nEinkaufsliste in den Supermarkt gegangen, denn ich brauchte für meine Supertorte sehr viele Zutaten. \nEndlich hatte ich alles zusammen und wollte mit der Arbeit beginnen. Leider konnte ich das Rezept nicht mehr finden. Ich hatte es zum 15 Einkaufen mitgenommen und wahrscheinlich im Supermarkt vergessen. Also habe ich ohne das Rezept angefangen. \nAber ich habe euch ja noch gar nicht erzählt, was für eine Torte ich machen wollte. \nEs sollte eine Schwarzweißtorte werden, also eine Torte mit viel \n20 Sahnecreme und Schokolade. \nIch will euch jetzt nicht langweilen und alles genau erzählen. Die Torte wurde super. Wenn ihr wollt, kann ich sie mal ins Netz stellen. \nJetzt möchtet ihr sicher wissen, was denn Dummes passiert ist. \nDas Telefon hat geklingelt. Meine Freundin! Schnell habe ich den Teller mit 25 der Torte in den Kühlschrank gestellt. \nIch habe über eine Stunde mit meiner Freundin gesprochen. Dann musste ich schnell weg, weil ich noch einen Termin hatte. Als ich sehr spät wieder nach Hause kam, habe ich nicht mehr an die Torte gedacht. Sie stand die ganze Nacht im Kühlschrank... neben dem Fisch!!! Das war 30 natürlich nicht so gut... \nKönnt ihr euch vorstellen, wie die Torte geschmeckt hat? \nDie Sahnecreme hat wie Fischcreme geschmeckt und keiner wollte sie \nessen. \nWie konnte ich nur so dumm sein! \nBis bald \neure Christine",
+              "questions": [
+                {
+                  "id": 1,
+                  "question": "Christine kocht und backt mit anderen zusammen.",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Richtig"
+                    },
+                    {
+                      "id": "B",
+                      "text": "Falsch"
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "id": 2,
+                  "question": "Christine musste für die Geburtstagstorte viel einkaufen.",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Richtig"
+                    },
+                    {
+                      "id": "B",
+                      "text": "Falsch"
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "id": 3,
+                  "question": "Das Rezept für die Torte hat Christine im Supermarkt gefunden.",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Richtig"
+                    },
+                    {
+                      "id": "B",
+                      "text": "Falsch"
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "id": 4,
+                  "question": "Christine erklärt im Netz, wie man die Torte macht.",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Richtig"
+                    },
+                    {
+                      "id": "B",
+                      "text": "Falsch"
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "id": 5,
+                  "question": "Christine hat die Torte im Kühlschrank vergessen.",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Richtig"
+                    },
+                    {
+                      "id": "B",
+                      "text": "Falsch"
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "id": 6,
+                  "question": "Die Torte hat sehr gut geschmeckt.",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Richtig"
+                    },
+                    {
+                      "id": "B",
+                      "text": "Falsch"
+                    }
+                  ],
+                  "answer": "B"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "partName": "Phần 2: Từ vựng",
+              "questions": [
+                {
+                  "id": 7,
+                  "question": "der ___",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "der Großvater"
+                    },
+                    {
+                      "id": "B",
+                      "text": "der Schwester"
+                    },
+                    {
+                      "id": "C",
+                      "text": "der Nichte"
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "id": 8,
+                  "question": "der ___",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "der Großvater"
+                    },
+                    {
+                      "id": "B",
+                      "text": "der Schwester"
+                    },
+                    {
+                      "id": "C",
+                      "text": "der Cousin"
+                    }
+                  ],
+                  "answer": "C"
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "partName": "Phần 3: Ngữ pháp",
+              "questions": [
+                {
+                  "id": 9,
+                  "question": "Ein Mann und eine Frau ___ (lieben) sich und ___ (heiraten). ",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": [
+                        "liebten",
+                        "heirateten"
+                      ]
+                    },
+                    {
+                      "id": "B",
+                      "text": [
+                        "arbeitete",
+                        "heirateten"
+                      ]
+                    },
+                    {
+                      "id": "C",
+                      "text": [
+                        "verdiente",
+                        "liebten"
+                      ]
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "id": 10,
+                  "question": "Sie ___ (leben) in einer kleinen Wohnung",
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "lebten"
+                    },
+                    {
+                      "id": "B",
+                      "text": "freute"
+                    },
+                    {
+                      "id": "C",
+                      "text": "verdiente"
+                    }
+                  ],
+                  "answer": "A"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": "QUIZ KẾT THÚC PHASE 2",
+      "exerciseType": "quiz",
+      "phaseId": 5,
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wie wird das Wetter am Wochenende?",
+              "audioUrl": "part1_ques1_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Es bleibt schön."
+                },
+                {
+                  "id": "B",
+                  "text": "Es kann regnen."
+                },
+                {
+                  "id": "C",
+                  "text": "Es wird kälter."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 2,
+              "question": "Was kann man gewinnen?",
+              "audioUrl": "part1_ques2_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ein Auto."
+                },
+                {
+                  "id": "B",
+                  "text": "Ein Radio."
+                },
+                {
+                  "id": "C",
+                  "text": "Eintrittskarten."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Wo gibt es noch freie Parkplätze?",
+              "audioUrl": "part1_ques3_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Vor dem Schwimmbad."
+                },
+                {
+                  "id": "B",
+                  "text": "Hinter dem Sportplatz."
+                },
+                {
+                  "id": "C",
+                  "text": "Es gibt keine Parkplätze mehr."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Wann kann Herr Lohmann einen Termin haben?",
+              "audioUrl": "part1_ques4_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Heute um 18 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Dienstag um 14 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Mittwoch um 10 Uhr."
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "questions": [
+            {
+              "id": 5,
+              "question": "Nach seiner Ausbildung ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat er in Hamburg gearbeitet. "
+                },
+                {
+                  "id": "B",
+                  "text": "hat er Jobs im Ausland gehabt."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er Englisch und Französisch gelernt."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 6,
+              "question": "Bei der Firma Kantor Partners arbeitet Joachim Sanders ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "als Sekretär."
+                },
+                {
+                  "id": "B",
+                  "text": "in der Küche."
+                },
+                {
+                  "id": "C",
+                  "text": "als Personalchef."
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "questions": [
+            {
+              "id": 7,
+              "question": "Guten Tag, ___ geht es Ihnen?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "wie"
+                },
+                {
+                  "id": "B",
+                  "text": "Wo"
+                },
+                {
+                  "id": "C",
+                  "text": "wem"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "___ wohnen Sie?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "wie"
+                },
+                {
+                  "id": "B",
+                  "text": "Wo"
+                },
+                {
+                  "id": "C",
+                  "text": "wem"
+                }
+              ],
+              "answer": "B"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "questions": [
+            {
+              "id": 9,
+              "question": "Ist das der nett ___ Lehrer? Ja, das ist ein nett ___ Lehrer.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "nette",
+                    "netter"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "nette",
+                    "neue"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "neue",
+                    "neune"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 10,
+              "question": "Ist das die neu ___ Tasche? Ja, das ist eine neu ___ Tasche.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "neue",
+                    "neue"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "neue",
+                    "netter"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "bequeme",
+                    "neue"
+                  ]
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        }
+      ]
     }
   ],
   "finalexam": [
@@ -4729,7 +5189,908 @@
     {
       "id": "2",
       "levelId": 2,
-      "title": "Bài kiểm tra kết thúc trình độ A2"
+      "title": "Bài kiểm tra kết thúc trình độ A2",
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wie wird das Wetter am Wochenende?",
+              "audioUrl": "part1_ques1_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Es bleibt schön."
+                },
+                {
+                  "id": "B",
+                  "text": "Es kann regnen."
+                },
+                {
+                  "id": "C",
+                  "text": "Es wird kälter."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 2,
+              "question": "Was kann man gewinnen?",
+              "audioUrl": "part1_ques2_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ein Auto."
+                },
+                {
+                  "id": "B",
+                  "text": "Ein Radio."
+                },
+                {
+                  "id": "C",
+                  "text": "Eintrittskarten."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Wo gibt es noch freie Parkplätze?",
+              "audioUrl": "part1_ques3_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Vor dem Schwimmbad."
+                },
+                {
+                  "id": "B",
+                  "text": "Hinter dem Sportplatz."
+                },
+                {
+                  "id": "C",
+                  "text": "Es gibt keine Parkplätze mehr."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Wann kann Herr Lohmann einen Termin haben?",
+              "audioUrl": "part1_ques4_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Heute um 18 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Dienstag um 14 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Mittwoch um 10 Uhr."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 5,
+              "question": "Wo will Pauline ihre Freundin treffen?",
+              "audioUrl": "part1_ques5_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Im Kino."
+                },
+                {
+                  "id": "B",
+                  "text": "In ihrer Wohnung."
+                },
+                {
+                  "id": "C",
+                  "text": "Beim Arzt."
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Nach seiner Ausbildung ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat er in Hamburg gearbeitet. "
+                },
+                {
+                  "id": "B",
+                  "text": "hat er Jobs im Ausland gehabt."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er Englisch und Französisch gelernt."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 7,
+              "question": "Bei der Firma Kantor Partners arbeitet Joachim Sanders ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "als Sekretär."
+                },
+                {
+                  "id": "B",
+                  "text": "in der Küche."
+                },
+                {
+                  "id": "C",
+                  "text": "als Personalchef."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "Viele Kollegen denken, dass ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "war er der Beste."
+                },
+                {
+                  "id": "B",
+                  "text": "hat er viel gelacht."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er eine Frau kennengelernt."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 9,
+              "question": "Dieser Text informiert über:",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Frauen in Männerberufen."
+                },
+                {
+                  "id": "B",
+                  "text": "Männer in Frauenberufen. "
+                },
+                {
+                  "id": "C",
+                  "text": "neue Berufe."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 10,
+              "question": "Die Party findet draußen statt.",
+              "questionParagraph": "Liebe Alexa, \nerinnerst du dich an den tollen Urlaub am Bodensee? Dort haben wir uns kennengelernt und es war sehr schön. Ich wollte dir schon die ganze Zeit schreiben, hatte aber so wenig Zeit. Tut mir wirklich leid. \nWie geht es dir? Bei mir läuft alles super. Ich bin inzwischen mit dem Studium fertig und hoffe, dass ich bald eine Arbeit finde. Und das Beste: Ich habe endlich eine größere Wohnung gefunden. Dort wohne ich jetzt seit einem Monat. \nDas möchte ich feiern. Deshalb schreibe ich dir. Ich möchte gern, dass du zu meiner Party kommst. Hast du Lust zu kommen und mich zu besuchen? \nDie Party findet am Samstag, dem 5. September, statt. Essen und Trinken habe ich schon eingekauft. Du brauchst nichts mitzubringen, nur vielleicht Musik aus deinem Land, es gibt doch so schöne griechische Musik! Wir wollen ja auch tanzen! Das wäre super. \nUnd wenn du schon mal in Berlin bist, kannst du auch etwas länger bleiben. Es gibt in Kreuzberg billige Hotels, aber wenn du willst, kannst du auch gern in meiner Wohnung schlafen, Platz gibt es genug, übernachten ist also kein Problem. Überleg es dir, ich würde mich sehr freuen, dich wiederzusehen. \nMeine neue Adresse ist Wrangelstraße 40 in Kreuzberg. Und am Sonntag könnte ich dir Berlin zeigen, die Stadt wird dir bestimmt gefallen, ich habe auch zwei Fahrräder. Und am Abend gibt es hier ein tolles Straßenfest mit Musik und Essen. \nLass bald etwas von dir hören! \nViele Grüße \nThomas",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "a so spät schreibt."
+                },
+                {
+                  "id": "B",
+                  "text": "in den Ferien keine Zeit hatte."
+                },
+                {
+                  "id": "C",
+                  "text": "den Urlaub vergessen hat."
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_1_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 12,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 13,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 14,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 15,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 16,
+              "question": "Ergänzen Sie die Pronomen. Haben _ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 17,
+              "question": "Hallo, Anna, woher kommst _ ? _ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 18,
+              "question": "Marc und Dominic, wo wohnt _ ? _ wohnen in Frankfurt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 19,
+              "question": "Marie, kommst ____ bitte? Nein,_____ habe keine Zeit.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 20,
+              "question": "Der Schrank ist teuer. ______ kommt aus Italien.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Du"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Er"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        }
+      ],
+      "trophy": "a2_trophy"
+    },
+    {
+      "id": "3",
+      "levelId": 3,
+      "title": "Bài kiểm tra kết thúc trình độ B1",
+      "parts": [
+        {
+          "id": 1,
+          "partName": "Phần 1: Nghe",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Wie wird das Wetter am Wochenende?",
+              "audioUrl": "part1_ques1_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Es bleibt schön."
+                },
+                {
+                  "id": "B",
+                  "text": "Es kann regnen."
+                },
+                {
+                  "id": "C",
+                  "text": "Es wird kälter."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 2,
+              "question": "Was kann man gewinnen?",
+              "audioUrl": "part1_ques2_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ein Auto."
+                },
+                {
+                  "id": "B",
+                  "text": "Ein Radio."
+                },
+                {
+                  "id": "C",
+                  "text": "Eintrittskarten."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 3,
+              "question": "Wo gibt es noch freie Parkplätze?",
+              "audioUrl": "part1_ques3_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Vor dem Schwimmbad."
+                },
+                {
+                  "id": "B",
+                  "text": "Hinter dem Sportplatz."
+                },
+                {
+                  "id": "C",
+                  "text": "Es gibt keine Parkplätze mehr."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 4,
+              "question": "Wann kann Herr Lohmann einen Termin haben?",
+              "audioUrl": "part1_ques4_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Heute um 18 Uhr."
+                },
+                {
+                  "id": "B",
+                  "text": "Am Dienstag um 14 Uhr."
+                },
+                {
+                  "id": "C",
+                  "text": "Am Mittwoch um 10 Uhr."
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 5,
+              "question": "Wo will Pauline ihre Freundin treffen?",
+              "audioUrl": "part1_ques5_A2",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Im Kino."
+                },
+                {
+                  "id": "B",
+                  "text": "In ihrer Wohnung."
+                },
+                {
+                  "id": "C",
+                  "text": "Beim Arzt."
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "partName": "Phần 2: Đọc",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 6,
+              "question": "Nach seiner Ausbildung ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "hat er in Hamburg gearbeitet. "
+                },
+                {
+                  "id": "B",
+                  "text": "hat er Jobs im Ausland gehabt."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er Englisch und Französisch gelernt."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 7,
+              "question": "Bei der Firma Kantor Partners arbeitet Joachim Sanders ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "als Sekretär."
+                },
+                {
+                  "id": "B",
+                  "text": "in der Küche."
+                },
+                {
+                  "id": "C",
+                  "text": "als Personalchef."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 8,
+              "question": "Viele Kollegen denken, dass ...",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "war er der Beste."
+                },
+                {
+                  "id": "B",
+                  "text": "hat er viel gelacht."
+                },
+                {
+                  "id": "C",
+                  "text": "hat er eine Frau kennengelernt."
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 9,
+              "question": "Dieser Text informiert über:",
+              "questionParagraph": "Joachim Sanders - Ein Mann als Sekretärin \n,Ich habe einen typischen Frauenberuf - warum auch nicht?' \nIn unserer Reihe „Frauenberufe - Jetzt auch für Männer!' möchten wir Ihnen heute Joa- chim Sanders vorstellen. Joachim Sanders hat immer schon gern Büroarbeit gemacht. Auch das Lernen von Sprachen ist schon seit seiner Schulzeit ein wichtiges Hobby. Nach seiner Ausbildung zum Fremdsprachense- kretär fuhr er erst einmal nach England und Frankreich. Dort konnte er seine Sprach- kenntnisse noch weiter verbessern. Er hat dort auch in verschiedenen Büros gearbeitet, aber immer nur kurze Zeit. \nAls er zurück in Hamburg war, suchte er einen festen Job als Sekretär. Er schrieb viele Bewerbungen, hatte aber kein Glück. Dann sah er im Internet eine Anzeige bei der Firma Kantor Partners. Er hatte mit dem Personal- \nchef der Firma ein Gespräch und bekam die Stelle. \nJetzt arbeitet er als Sekretär bei dieser Fir- ma. Er ist der einzige männliche Sekretär. \nSeine Kolleginnen haben damit kein Pro- blem. Nur einige Kollegen finden das manch- mal noch etwas komisch. Immer noch den- ken viele, dass man als Sekretärin nur schnell tippen können muss, gut aussehen sollte und vor allem in der Büroküche Kaffee kocht. Aber das ist schon lange nicht mehr so. \nJoachim Sanders: „Es war schon lustig. Ich habe an einem Wettbewerb für Fremdspra- chensekretärinnen teilgenommen und war der einzige Mann. Und ich habe den Wettbe- werb gewonnen. Ich wurde die Nummer Eins und bekam den Preis- und das als Mann.'",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Frauen in Männerberufen."
+                },
+                {
+                  "id": "B",
+                  "text": "Männer in Frauenberufen. "
+                },
+                {
+                  "id": "C",
+                  "text": "neue Berufe."
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 10,
+              "question": "Die Party findet draußen statt.",
+              "questionParagraph": "Liebe Alexa, \nerinnerst du dich an den tollen Urlaub am Bodensee? Dort haben wir uns kennengelernt und es war sehr schön. Ich wollte dir schon die ganze Zeit schreiben, hatte aber so wenig Zeit. Tut mir wirklich leid. \nWie geht es dir? Bei mir läuft alles super. Ich bin inzwischen mit dem Studium fertig und hoffe, dass ich bald eine Arbeit finde. Und das Beste: Ich habe endlich eine größere Wohnung gefunden. Dort wohne ich jetzt seit einem Monat. \nDas möchte ich feiern. Deshalb schreibe ich dir. Ich möchte gern, dass du zu meiner Party kommst. Hast du Lust zu kommen und mich zu besuchen? \nDie Party findet am Samstag, dem 5. September, statt. Essen und Trinken habe ich schon eingekauft. Du brauchst nichts mitzubringen, nur vielleicht Musik aus deinem Land, es gibt doch so schöne griechische Musik! Wir wollen ja auch tanzen! Das wäre super. \nUnd wenn du schon mal in Berlin bist, kannst du auch etwas länger bleiben. Es gibt in Kreuzberg billige Hotels, aber wenn du willst, kannst du auch gern in meiner Wohnung schlafen, Platz gibt es genug, übernachten ist also kein Problem. Überleg es dir, ich würde mich sehr freuen, dich wiederzusehen. \nMeine neue Adresse ist Wrangelstraße 40 in Kreuzberg. Und am Sonntag könnte ich dir Berlin zeigen, die Stadt wird dir bestimmt gefallen, ich habe auch zwei Fahrräder. Und am Abend gibt es hier ein tolles Straßenfest mit Musik und Essen. \nLass bald etwas von dir hören! \nViele Grüße \nThomas",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "a so spät schreibt."
+                },
+                {
+                  "id": "B",
+                  "text": "in den Ferien keine Zeit hatte."
+                },
+                {
+                  "id": "C",
+                  "text": "den Urlaub vergessen hat."
+                }
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partName": "Phần 3: Từ vựng",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 11,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist gleich 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_1_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_1_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_1_3"
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 12,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 13,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 14,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            },
+            {
+              "id": 15,
+              "question": "Was ist richtig? Kreuzen Sie an. Es ist genau 14 Uhr.",
+              "options": [
+                {
+                  "id": "A",
+                  "optionImage": "demo_2_1"
+                },
+                {
+                  "id": "B",
+                  "optionImage": "demo_2_2"
+                },
+                {
+                  "id": "C",
+                  "optionImage": "demo_2_3"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partName": "Phần 4: Ngữ pháp",
+          "partType": "multiple_choice",
+          "questions": [
+            {
+              "id": 16,
+              "question": "Ergänzen Sie die Pronomen. Haben _ Zeit?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Er"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Es"
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 17,
+              "question": "Hallo, Anna, woher kommst _ ? _ komme aus New York.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Sie"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 18,
+              "question": "Marc und Dominic, wo wohnt _ ? _ wohnen in Frankfurt.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "Sie",
+                    "Ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "ihr",
+                    "Wir"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "du",
+                    "Ich"
+                  ]
+                }
+              ],
+              "answer": "B"
+            },
+            {
+              "id": 19,
+              "question": "Marie, kommst ____ bitte? Nein,_____ habe keine Zeit.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": [
+                    "du",
+                    "ich"
+                  ]
+                },
+                {
+                  "id": "B",
+                  "text": [
+                    "du",
+                    "Er"
+                  ]
+                },
+                {
+                  "id": "C",
+                  "text": [
+                    "ich",
+                    "ich"
+                  ]
+                }
+              ],
+              "answer": "A"
+            },
+            {
+              "id": 20,
+              "question": "Der Schrank ist teuer. ______ kommt aus Italien.",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Du"
+                },
+                {
+                  "id": "B",
+                  "text": "Sie"
+                },
+                {
+                  "id": "C",
+                  "text": "Er"
+                }
+              ],
+              "answer": "C"
+            }
+          ]
+        }
+      ],
+      "trophy": "b1_trophy"
     }
   ],
   "flashcard": [
@@ -8687,13 +10048,14 @@
       "exerciseId": "4"
     },
     {
-      "submissionDate": "2024-10-10T01:53:11.098Z",
-      "score": "27%",
+      "id": "4806",
+      "submissionDate": "2024-10-10T02:26:48.186Z",
+      "score": "21%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "userAnswer": "B",
-          "correctAnswer": "A",
+          "userAnswer": "A",
+          "correctAnswer": "C",
           "isCorrect": false
         },
         {
@@ -8705,57 +10067,58 @@
         {
           "questionId": 3,
           "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "B",
-          "correctAnswer": "B",
+          "correctAnswer": "A",
           "isCorrect": true
         },
         {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
           "questionId": 5,
-          "userAnswer": "B",
-          "correctAnswer": "A",
+          "userAnswer": "A",
+          "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 6,
-          "userAnswer": "B",
+          "userAnswer": "A",
           "correctAnswer": "B",
-          "isCorrect": true
+          "isCorrect": false
         },
         {
           "questionId": 7,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
           "userAnswer": "A",
           "correctAnswer": "A",
           "isCorrect": true
         },
         {
-          "questionId": 8,
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
           "questionId": 9,
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "B",
-          "correctAnswer": "B",
           "isCorrect": true
         },
         {
-          "questionId": 11,
+          "questionId": 10,
           "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 12,
-          "correctAnswer": "B",
+          "correctAnswer": "C",
           "isCorrect": false
         },
         {
@@ -8765,300 +10128,1044 @@
         },
         {
           "questionId": 14,
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 15,
-          "userAnswer": "B",
-          "correctAnswer": "A",
+          "correctAnswer": "B",
           "isCorrect": false
         }
       ],
-      "exerciseId": "2",
-      "isCompleted": true,
-      "id": "b3H5TX5"
+      "exerciseId": "1",
+      "isCompleted": true
     },
     {
-      "submissionDate": "2024-10-10T01:59:15.418Z",
-      "score": "47%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 13,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 14,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 15,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        }
-      ],
-      "exerciseId": "2",
-      "isCompleted": true,
-      "id": "e50MNpk"
-    },
-    {
-      "submissionDate": "2024-10-10T02:05:01.628Z",
-      "score": "27%",
-      "submissionAnswers": [
-        {
-          "questionId": 1,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 2,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 6,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "userAnswer": "A",
-          "correctAnswer": "A",
-          "isCorrect": true
-        },
-        {
-          "questionId": 8,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 12,
-          "userAnswer": "B",
-          "correctAnswer": "B",
-          "isCorrect": true
-        },
-        {
-          "questionId": 13,
-          "userAnswer": "A",
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 14,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 15,
-          "userAnswer": "B",
-          "correctAnswer": "A",
-          "isCorrect": false
-        }
-      ],
-      "exerciseId": "2",
-      "isCompleted": true,
-      "id": "ORoOy2F"
-    },
-    {
-      "submissionDate": "2024-10-10T02:29:33.145Z",
+      "id": "8b9d",
+      "submissionDate": "2024-10-10T11:47:34.933Z",
       "score": "0%",
       "submissionAnswers": [
         {
           "questionId": 1,
-          "correctAnswer": "A",
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
           "isCorrect": false
         },
         {
           "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - no answer",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - no answer",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "am + Tag - no answer",
+          "correctAnswer": "am + Tag - vào + ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "der Nachmittag - no answer",
+          "correctAnswer": "der Nachmittag - buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "am Montag - Thứ năm",
+          "correctAnswer": "am Montag - vào thứ Hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "der Abend - no answer",
+          "correctAnswer": "der Abend - buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 21,
+          "userAnswer": "das Wochenende - no answer",
+          "correctAnswer": "das Wochenende - cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 22,
+          "userAnswer": "die Nacht - cuối tuần",
+          "correctAnswer": "die Nacht - đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 23,
+          "userAnswer": "am Wochenende - no answer",
+          "correctAnswer": "am Wochenende - vào cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 24,
+          "userAnswer": "am Morgen - no answer",
+          "correctAnswer": "am Morgen - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 25,
+          "userAnswer": "der Feiertag - no answer",
+          "correctAnswer": "der Feiertag - kỳ nghỉ",
+          "isCorrect": false
+        },
+        {
+          "questionId": 26,
+          "userAnswer": "am Vormittag - no answer",
+          "correctAnswer": "am Vormittag - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 27,
+          "userAnswer": "das Jahr - no answer",
+          "correctAnswer": "das Jahr - năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 28,
+          "userAnswer": "am Mittag - no answer",
+          "correctAnswer": "am Mittag - vào buổi trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 29,
+          "userAnswer": "der Monat - no answer",
+          "correctAnswer": "der Monat - tháng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 30,
+          "userAnswer": "am Nachmittag - no answer",
+          "correctAnswer": "am Nachmittag - vào buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 31,
+          "userAnswer": "am Abend - no answer",
+          "correctAnswer": "am Abend - vào buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 32,
+          "userAnswer": "in der Nacht - no answer",
+          "correctAnswer": "in der Nacht - vào ban đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 33,
+          "userAnswer": "der erste August - no answer",
+          "correctAnswer": "der erste August - ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 34,
+          "userAnswer": "am ersten August - no answer",
+          "correctAnswer": "am ersten August - vào ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 35,
+          "userAnswer": "die Uhrzeit - no answer",
+          "correctAnswer": "die Uhrzeit - thời gian",
+          "isCorrect": false
+        },
+        {
+          "questionId": 36,
+          "userAnswer": "Wann? - no answer",
+          "correctAnswer": "Wann? - Khi?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 37,
+          "userAnswer": "Wie spät ist es? - no answer",
+          "correctAnswer": "Wie spät ist es? - Bây giờ là mấy giờ?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 38,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 39,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 40,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 41,
+          "userAnswer": "no answer",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 42,
+          "userAnswer": "no answer",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "no answer",
+          "correctAnswer": "Februar"
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3"
+    },
+    {
+      "submissionDate": "2024-10-10T12:32:17.807Z",
+      "score": "2%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - buổi sáng(từ 6-10 giờ)",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - no answer",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "am + Tag - no answer",
+          "correctAnswer": "am + Tag - vào + ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "der Nachmittag - no answer",
+          "correctAnswer": "der Nachmittag - buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "am Montag - no answer",
+          "correctAnswer": "am Montag - vào thứ Hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "der Abend - no answer",
+          "correctAnswer": "der Abend - buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 21,
+          "userAnswer": "das Wochenende - no answer",
+          "correctAnswer": "das Wochenende - cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 22,
+          "userAnswer": "die Nacht - no answer",
+          "correctAnswer": "die Nacht - đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 23,
+          "userAnswer": "am Wochenende - no answer",
+          "correctAnswer": "am Wochenende - vào cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 24,
+          "userAnswer": "am Morgen - no answer",
+          "correctAnswer": "am Morgen - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 25,
+          "userAnswer": "der Feiertag - no answer",
+          "correctAnswer": "der Feiertag - kỳ nghỉ",
+          "isCorrect": false
+        },
+        {
+          "questionId": 26,
+          "userAnswer": "am Vormittag - no answer",
+          "correctAnswer": "am Vormittag - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 27,
+          "userAnswer": "das Jahr - no answer",
+          "correctAnswer": "das Jahr - năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 28,
+          "userAnswer": "am Mittag - no answer",
+          "correctAnswer": "am Mittag - vào buổi trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 29,
+          "userAnswer": "der Monat - no answer",
+          "correctAnswer": "der Monat - tháng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 30,
+          "userAnswer": "am Nachmittag - no answer",
+          "correctAnswer": "am Nachmittag - vào buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 31,
+          "userAnswer": "am Abend - no answer",
+          "correctAnswer": "am Abend - vào buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 32,
+          "userAnswer": "in der Nacht - no answer",
+          "correctAnswer": "in der Nacht - vào ban đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 33,
+          "userAnswer": "der erste August - no answer",
+          "correctAnswer": "der erste August - ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 34,
+          "userAnswer": "am ersten August - no answer",
+          "correctAnswer": "am ersten August - vào ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 35,
+          "userAnswer": "die Uhrzeit - no answer",
+          "correctAnswer": "die Uhrzeit - thời gian",
+          "isCorrect": false
+        },
+        {
+          "questionId": 36,
+          "userAnswer": "Wann? - no answer",
+          "correctAnswer": "Wann? - Khi?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 37,
+          "userAnswer": "Wie spät ist es? - no answer",
+          "correctAnswer": "Wie spät ist es? - Bây giờ là mấy giờ?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 38,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 39,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 40,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 41,
+          "userAnswer": "no answer",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 42,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Februar",
+          "correctAnswer": "Februar",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3",
+      "id": "IRERwk0"
+    },
+    {
+      "submissionDate": "2024-10-10T12:32:17.807Z",
+      "score": "2%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - buổi sáng(từ 6-10 giờ)",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - no answer",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "am + Tag - no answer",
+          "correctAnswer": "am + Tag - vào + ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "der Nachmittag - no answer",
+          "correctAnswer": "der Nachmittag - buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "am Montag - no answer",
+          "correctAnswer": "am Montag - vào thứ Hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "der Abend - no answer",
+          "correctAnswer": "der Abend - buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 21,
+          "userAnswer": "das Wochenende - no answer",
+          "correctAnswer": "das Wochenende - cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 22,
+          "userAnswer": "die Nacht - no answer",
+          "correctAnswer": "die Nacht - đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 23,
+          "userAnswer": "am Wochenende - no answer",
+          "correctAnswer": "am Wochenende - vào cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 24,
+          "userAnswer": "am Morgen - no answer",
+          "correctAnswer": "am Morgen - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 25,
+          "userAnswer": "der Feiertag - no answer",
+          "correctAnswer": "der Feiertag - kỳ nghỉ",
+          "isCorrect": false
+        },
+        {
+          "questionId": 26,
+          "userAnswer": "am Vormittag - no answer",
+          "correctAnswer": "am Vormittag - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 27,
+          "userAnswer": "das Jahr - no answer",
+          "correctAnswer": "das Jahr - năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 28,
+          "userAnswer": "am Mittag - no answer",
+          "correctAnswer": "am Mittag - vào buổi trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 29,
+          "userAnswer": "der Monat - no answer",
+          "correctAnswer": "der Monat - tháng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 30,
+          "userAnswer": "am Nachmittag - no answer",
+          "correctAnswer": "am Nachmittag - vào buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 31,
+          "userAnswer": "am Abend - no answer",
+          "correctAnswer": "am Abend - vào buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 32,
+          "userAnswer": "in der Nacht - no answer",
+          "correctAnswer": "in der Nacht - vào ban đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 33,
+          "userAnswer": "der erste August - no answer",
+          "correctAnswer": "der erste August - ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 34,
+          "userAnswer": "am ersten August - no answer",
+          "correctAnswer": "am ersten August - vào ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 35,
+          "userAnswer": "die Uhrzeit - no answer",
+          "correctAnswer": "die Uhrzeit - thời gian",
+          "isCorrect": false
+        },
+        {
+          "questionId": 36,
+          "userAnswer": "Wann? - no answer",
+          "correctAnswer": "Wann? - Khi?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 37,
+          "userAnswer": "Wie spät ist es? - no answer",
+          "correctAnswer": "Wie spät ist es? - Bây giờ là mấy giờ?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 38,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 39,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 40,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 41,
+          "userAnswer": "no answer",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 42,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Februar",
+          "correctAnswer": "Februar",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3",
+      "id": "GtYq6QY"
+    },
+    {
+      "id": "68da",
+      "submissionDate": "2024-10-13T09:35:58.164Z",
+      "score": "40%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 3,
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
         },
         {
           "questionId": 4,
-          "correctAnswer": "B",
-          "isCorrect": false
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
         },
         {
           "questionId": 5,
-          "correctAnswer": "A",
+          "userAnswer": "A",
+          "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 6,
+          "userAnswer": "A",
           "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 7,
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "questionId": 8,
-          "correctAnswer": "A",
+          "userAnswer": "A",
+          "correctAnswer": "C",
           "isCorrect": false
         },
         {
           "questionId": 9,
-          "correctAnswer": "A",
+          "userAnswer": "A",
+          "correctAnswer": "B",
           "isCorrect": false
         },
         {
           "questionId": 10,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
+          "userAnswer": "A",
           "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 12,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 13,
-          "correctAnswer": "B",
-          "isCorrect": false
-        },
-        {
-          "questionId": 14,
-          "correctAnswer": "A",
-          "isCorrect": false
-        },
-        {
-          "questionId": 15,
-          "correctAnswer": "A",
-          "isCorrect": false
+          "isCorrect": true
         }
       ],
-      "exerciseId": "2",
-      "isCompleted": true,
-      "id": "xAdVVIv"
+      "conditionStatus": "not pass",
+      "exerciseId": "8",
+      "isCompleted": true
     }
   ],
   "finalExamSubmission": [
@@ -9820,7 +11927,7 @@
       "gender": "male",
       "accountType": "freemium",
       "phone": "0865921245",
-      "dob": "2024-10-02",
+      "dob": "2024-01-03",
       "avatar": "",
       "id": "f_MzeC0"
     },
@@ -9941,6 +12048,36 @@
       "discount": 0.15,
       "totalPrice": 254150,
       "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 6 THÁNG"
+    },
+    {
+      "id": "e740",
+      "packageId": "1",
+      "startDate": "10/10/2024",
+      "endDate": "10/04/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "5023",
+      "packageId": "1",
+      "startDate": "10/10/2024",
+      "endDate": "10/04/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "5981",
+      "packageId": "1",
+      "startDate": "10/10/2024",
+      "endDate": "10/04/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "6595",
+      "packageId": "2",
+      "startDate": "10/10/2024",
+      "endDate": "10/10/2025",
+      "discount": 0.15,
+      "totalPrice": 499000,
+      "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 1 NĂM"
     }
   ]
 }

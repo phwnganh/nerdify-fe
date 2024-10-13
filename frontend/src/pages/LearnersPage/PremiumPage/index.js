@@ -4,7 +4,7 @@ import ButtonCustom from "../../../components/Button";
 import { AudioOutlined, BookOutlined, EditOutlined, ReadOutlined } from "@ant-design/icons";
 import CardCustom from "../../../components/Card";
 import { useNavigate } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import moment from "moment";
 
@@ -15,7 +15,7 @@ export const PremiumPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:9999/package")
+    fetch(`${BASE_SERVER}/package`)
       .then((res) => res.json())
       .then((data) => setPackages(data));
   }, []);
@@ -31,7 +31,7 @@ export const PremiumPage = () => {
       discount: 0.15
     };
 
-    fetch(`http://localhost:9999/transaction`, {
+    fetch(`${BASE_SERVER}/transaction`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

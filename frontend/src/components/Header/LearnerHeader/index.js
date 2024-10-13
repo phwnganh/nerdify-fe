@@ -35,7 +35,7 @@ export default function LearnerHeader() {
 
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.PROFILE)}>
+      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
         Xem Trang Cá Nhân
       </Menu.Item>
       <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>
@@ -110,6 +110,8 @@ export default function LearnerHeader() {
               style={{
                 lineHeight: "64px",
                 borderBottom: "none",
+                width: "60%", // Ensures the MenuBar takes full width
+                whiteSpace: "nowrap", // Prevents items from wrapping to the next line
               }}
             >
               <MenuItem key="course" onClick={() => navigate(CLIENT_URI.COURSE_PAGE)}>
@@ -118,8 +120,12 @@ export default function LearnerHeader() {
               <MenuItem key="flashcards" onClick={() => navigate(CLIENT_URI.FLASH_CARD)}>
                 FLASHCARD
               </MenuItem>
-              <MenuItem key="learning-progress">TIẾN ĐỘ HỌC TẬP</MenuItem>
-              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
+              <MenuItem key="learning-progress" onClick={() => navigate(CLIENT_URI.LEARNING_PROGRESS)}>
+                TIẾN ĐỘ HỌC TẬP
+              </MenuItem>
+              <MenuItem key="blog" onClick={() => navigate(CLIENT_URI.BLOG_STUDY)}>
+                BLOG HỌC TẬP
+              </MenuItem>
               <MenuItem key="premium" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
                 PREMIUM
               </MenuItem>

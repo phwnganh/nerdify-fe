@@ -6,37 +6,42 @@ import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
 import { EditOutlined } from "@ant-design/icons";
 import moment from "moment";
+import STORAGE, { getStorage } from "../../../../library/storage";
+import dayjs from "dayjs";
+import { BASE_SERVER } from "../../../../constants";
 
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
+  const userId = getStorage(STORAGE.USER_ID);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/users/1`)
+    fetch(`${BASE_SERVER}/users/${userId}`)
       .then((res) => res.json())
       .then((res) => {
         setUser(res);
+        const dob = res.dob && dayjs(res.dob, "YYYY-MM-DD").isValid() ? dayjs(res.dob, "YYYY-MM-DD") : null;
         form.setFieldsValue({
-          fullname: res.fullname,
+          fullname: res.fullName,
           gender: res.gender,
-          dob: res.dob ? moment(res.dob, "YYYY-MM-DD") : null,
+          dob: dob,
           phone: res.phone,
           email: res.email,
         });
       })
       .catch((err) => console.log(err));
-  }, [form]);
+  }, [form, userId]);
 
   const handleChangeInformation = (values) => {
     const updatedUserData = {
       ...user,
-      fullname: values.fullname,
+      fullName: values.fullname,
       gender: values.gender,
       dob: values.dob ? values.dob.format("YYYY-MM-DD") : null,
       phone: values.phone,
     };
-    fetch("http://localhost:9999/users/1", {
+    fetch(`${BASE_SERVER}/users/${userId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedUserData),
@@ -44,10 +49,11 @@ export default function EditPersonalProfile() {
       .then((res) => res.json())
       .then((res) => {
         setUser(res);
+        const dob = res.dob && dayjs(res.dob, "YYYY-MM-DD").isValid() ? dayjs(res.dob, "YYYY-MM-DD") : null;
         form.setFieldsValue({
-          fullname: res.fullname,
+          fullname: res.fullName,
           gender: res.gender,
-          dob: res.dob ? moment(res.dob, "YYYY-MM-DD") : null,
+          dob: dob,
           phone: res.phone,
           email: res.email,
         });
@@ -105,9 +111,10 @@ export default function EditPersonalProfile() {
                   <DatePicker
                     style={{ width: "100%" }}
                     placeholder="Ngày sinh"
-                    format="DD/MM/YYYY"
+                    format="YYYY-MM-DD"
+                    allowClear
                     disabledDate={(current) => current && current > moment().endOf("day")} // Chặn ngày trong tương lai
-                    showToday={false}
+                    showToday={true}
                     inputReadOnly={true} // Không cho phép nhập bằng tay
                   />
                 </Form.Item>
