@@ -22,11 +22,50 @@ import { Card, Typography, Tag, Button } from "antd";
 
 const { Title, Text, Paragraph } = Typography;
 
-// Styled components for CSS-in-JS
-const Container = styled.div`
+// Styled Components for CSS-in-JS
+const Layout = styled.div`
+  display: flex;
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
+  gap: 24px;
+`;
+
+const ContentWrapper = styled.div`
+  flex: 3;
+`;
+
+const Sidebar = styled.div`
+  flex: 1;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  position: sticky; /* Sticky positioning */
+  top: 20px; /* Distance from the top of the viewport */
+  height: fit-content; /* Ensures sidebar is only as tall as its content */
+`;
+
+const RelatedArticlesTitle = styled(Title)`
+  font-size: 18px;
+`;
+
+const RelatedArticleItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+
+const RelatedArticleImage = styled.img`
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 12px;
+  border-radius: 8px;
+`;
+
+const RelatedArticleText = styled(Text)`
+  font-size: 14px;
+  line-height: 1.4;
 `;
 
 const ImageBanner = styled.div`
@@ -62,56 +101,74 @@ const StyledQuote = styled.blockquote`
   color: #1890ff;
 `;
 
+// Main Component
 const BlogDetails = () => {
   return (
-    <Container>
-      <ImageBanner />
+    <Layout>
+      {/* Main Blog Content */}
+      <ContentWrapper>
+        <ImageBanner />
+        <ContentCard bordered={false}>
+          <TagsWrapper>
+            <Tag color="blue">Election</Tag>
+            <Tag color="blue">Politics</Tag>
+          </TagsWrapper>
 
-      <ContentCard bordered={false}>
-        <TagsWrapper>
-          <Tag color="blue">Election</Tag>
-          <Tag color="blue">Politics</Tag>
-        </TagsWrapper>
+          <Title level={2}>Revenge of the Never Trumpers</Title>
 
-        <Title level={2}>Revenge of the Never Trumpers</Title>
+          <AuthorInfo type="secondary">
+            Tác giả:{" "}
+            <Button type="link" href="#">
+              Ahmad Sultani
+            </Button>
+          </AuthorInfo>
 
-        <AuthorInfo type="secondary">
-          Tác giả:{" "}
-          <Button type="link" href="#">
-            Ahmad Sultani
-          </Button>
-        </AuthorInfo>
+          <Paragraph>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+          </Paragraph>
 
-        <Paragraph>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-          of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-          popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
-          Lorem Ipsum.
-        </Paragraph>
+          <Title level={3}>#1. What is Lorem Ipsum?</Title>
 
-        <Title level={3}>#1. What is Lorem Ipsum?</Title>
+          <Paragraph>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book.
+          </Paragraph>
 
-        <Paragraph>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-          of type and scrambled it to make a type specimen book.
-        </Paragraph>
+          <StyledQuote>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</StyledQuote>
 
-        <StyledQuote>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</StyledQuote>
+          <Paragraph>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</Paragraph>
 
-        <Paragraph>
-          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </Paragraph>
+          <TagsWrapper>
+            <Tag color="blue">#Election</Tag>
+            <Tag color="blue">#People</Tag>
+            <Tag color="blue">#Election2020</Tag>
+            <Tag color="blue">#Trump</Tag>
+            <Tag color="blue">#Joe</Tag>
+          </TagsWrapper>
+        </ContentCard>
+      </ContentWrapper>
 
-        <TagsWrapper>
-          <Tag color="blue">#Election</Tag>
-          <Tag color="blue">#People</Tag>
-          <Tag color="blue">#Election2020</Tag>
-          <Tag color="blue">#Trump</Tag>
-          <Tag color="blue">#Joe</Tag>
-        </TagsWrapper>
-      </ContentCard>
-    </Container>
+      {/* Sidebar for Related Articles */}
+      <Sidebar>
+        <RelatedArticlesTitle level={4}>Bài viết liên quan</RelatedArticlesTitle>
+
+        <RelatedArticleItem>
+          <RelatedArticleImage src="https://via.placeholder.com/60" />
+          <RelatedArticleText>10 Kênh Podcast Miễn Phí Giúp Học Tiếng Đức Dễ Dàng Hơn</RelatedArticleText>
+        </RelatedArticleItem>
+
+        <RelatedArticleItem>
+          <RelatedArticleImage src="https://via.placeholder.com/60" />
+          <RelatedArticleText>12 cụm từ tiếng Đức kỳ lạ nên biết</RelatedArticleText>
+        </RelatedArticleItem>
+
+        <RelatedArticleItem>
+          <RelatedArticleImage src="https://via.placeholder.com/60" />
+          <RelatedArticleText>10 cách học tiếng Anh nhanh và hiệu quả</RelatedArticleText>
+        </RelatedArticleItem>
+      </Sidebar>
+    </Layout>
   );
 };
 
