@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 // Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import BlogPage from "../pages/GuestsPage/BlogPage";
+import BlogDetails from "../pages/GuestsPage/BlogDetails";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
@@ -91,6 +92,10 @@ export const routes = [
       {
         path: CLIENT_URI.BLOG,
         element: <BlogPage />,
+      },
+      {
+        path: `${CLIENT_URI.BLOG}/:blogId`,
+        element: <BlogDetails />,
       },
       {
         path: CLIENT_URI.LANDING_PAGE,
