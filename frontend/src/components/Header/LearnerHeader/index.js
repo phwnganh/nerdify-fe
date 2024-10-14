@@ -24,13 +24,10 @@ export default function LearnerHeader() {
   const handleInputChange = (e) => setInputValue(e.target.value);
 
   const handleLogout = async () => {
-    // logout().then(() => {
-    //   signout();
-    //   window.location.reload();
-    // });
-    // await signout();
-    clearStorage();
-    window.location.reload();
+    logout().then(() => {
+      signout();
+      window.location.reload();
+    });
   };
 
   const userMenu = (

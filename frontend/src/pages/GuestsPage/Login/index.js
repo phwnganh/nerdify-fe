@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Checkbox, Input } from "antd";
+import { Form, Checkbox, Input, notification } from "antd"; // Import notification here
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -10,17 +10,16 @@ import { CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
 import { useAuth } from "../../../hooks";
 import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
-import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 import { validationRules } from "../../../helpers/validate";
 import { style } from "./styled";
-import STORAGE, { setStorage } from "../../../library/storage";
+import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
   const navigate = useNavigate();
 
   const onLoginWithGoogle = () => {
-    // window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
+    window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
   };
 
   const onLogin = (values) => {
@@ -29,43 +28,29 @@ export const LoginPage = () => {
       password: values.password,
     };
 
-    // Make a request to the fake server
-    fetch("http://localhost:9999/users")
-      .then((response) => response.json())
-      .then((users) => {
-        // Find the user with matching email and password
-        const user = users.filter((u) => u.email === data.email && u.password === data.password);
-        if (user) {
-          // dispatch(
-          //   signin({
-          //     user: {
-          //       id: user[0].id,
-          //       email: user[0].email,
-          //       fullName: user[0].fullName,
-          //       role: user[0].role,
-          //     },
-          //   }),
-          // );
-          setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
-          setStorage(STORAGE.USER_ID, JSON.stringify(user[0].id));
-          console.log("userId: ", user[0].id);
-          
-          navigate(CLIENT_URI.COURSE_PAGE);
-          // if (localStorage.getItem("isPremium")) {
-          //   navigate(CLIENT_URI.PREMIUM);
-          //   localStorage.removeItem("isPremium");
-          // } else {
-          //   navigate(CLIENT_URI.COURSE_PAGE);
-          // }
-        } else {
-          // If no user found, show an error
-          throw new Error("Login failed: Invalid email or password!");
-        }
+    login(data)
+      .then((resp) => {
+        dispatch(
+          signin({
+            user: {
+              id: resp.data.id,
+              email: resp.data.email,
+              fullName: resp.data.fullName,
+              role: resp.data.role,
+            },
+          }),
+        );
+        notification.success({
+          message: "Đăng nhập thành công",
+          description: "Chào mừng bạn đến với Deutsch Nerd!",
+        });
+        navigate(CLIENT_URI.COURSE_PAGE);
       })
-      .catch((error) => {
-        console.error("Error during login:", error);
-        // Optionally, show error to user
-        alert(error.message);
+      .catch((err) => {
+        notification.error({
+          message: "Đăng nhập thất bại",
+          description: err.response?.data?.message || "Vui lòng kiểm tra email và mật khẩu của bạn.",
+        });
       });
   };
 

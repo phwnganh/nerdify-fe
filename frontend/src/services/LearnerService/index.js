@@ -1,12 +1,12 @@
 import client from "../client";
 import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI } from "./url";
 export const getCourseLevelList = async () => {
-  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSELEVEL);
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL);
   return res.data;
 };
 
 export const getLevelDetail = async (courseId) => {
-  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSELEVEL + "/" + courseId);
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL + "/" + courseId);
   return res.data;
 };
 
@@ -25,8 +25,8 @@ export const getExerciseList = async () => {
   return res.data;
 };
 
-export const getExerciseDetail = async () => {
-  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.EXERCISE_DETAIL);
+export const getExerciseDetail = async (exerciseId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.EXERCISE_DETAIL + "/" + exerciseId);
   return res.data;
 };
 
