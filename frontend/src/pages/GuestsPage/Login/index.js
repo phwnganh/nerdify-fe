@@ -11,6 +11,8 @@ import { useAuth } from "../../../hooks";
 import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
 import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
+import { validationRules } from "../../../helpers/validate";
+import { style } from "./styled";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
@@ -54,7 +56,7 @@ export const LoginPage = () => {
       <div style={style.leftSide}>
         <img
           src={loginImage}
-          alt="Deustch Nerd"
+          alt="Deutsch Nerd"
           style={{
             width: "100%",
             height: "100%",
@@ -67,11 +69,11 @@ export const LoginPage = () => {
         <div style={style.formLogin}>
           <img
             src={logo}
-            alt="Deustch Nerd"
+            alt="Deutsch Nerd"
             style={{ width: "100px", height: "50px" }}
           />
           <span style={{ fontSize: "30px", fontWeight: "bold" }}>
-            Chào mừng đến với Deustch Nerd
+            Chào mừng đến với Deutsch Nerd
           </span>
           <span>Đăng nhập để tiếp tục</span>
           <Form
@@ -85,11 +87,8 @@ export const LoginPage = () => {
               label="Email"
               name="email"
               rules={[
-                { required: true, message: "Vui lòng nhập email" },
-                {
-                  type: "email",
-                  message: "Email không hợp lệ",
-                },
+                validationRules.required("Vui lòng nhập email"),
+                validationRules.email("Email không hợp lệ"),
               ]}
             >
               <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} />
@@ -164,43 +163,6 @@ export const LoginPage = () => {
   );
 };
 
-const style = {
-  loginContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    height: "100vh",
-    width: "100%",
-    background: "#f4fcfc",
-    margin: 0,
-    padding: 0,
-  },
-  leftSide: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "#ffe45c",
-    borderRadius: "20px 0 0 20px",
-  },
-  rightSide: {
-    display: "flex",
-    flexDirection: "column",
-    width: "40%",
-    height: "80%",
-    background: "white",
-    borderRadius: "0 20px 20px 0",
-  },
-  formLogin: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "80%",
-    margin: "auto",
-  },
-};
+
 
 export default LoginPage;

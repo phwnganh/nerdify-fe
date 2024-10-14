@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // 2. Third-party libraries
 import { Col, Row } from "antd";
-import { BarChartOutlined, UserAddOutlined, CheckOutlined } from "@ant-design/icons"; // Cleaned up duplicate imports
+import { BarChartOutlined, UserAddOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons"; // Cleaned up duplicate imports
 import { useNavigate, useParams } from "react-router-dom";
 
 // 3. Custom components
@@ -28,12 +28,15 @@ import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 // Constants
 import { CLIENT_URI } from "../../../constants/uri.constants"; // URI constants for navigation
 import { EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
+import { getLevelDetail } from "../../../services/LearnerService";
 
 export default function ViewLevelDetail() {
   // State for storing phases, active phase, course, etc.
   const [phases, setPhases] = useState([]);
   const [activePhase, setActivePhase] = useState("");
-  const { courseId } = useParams(); // Getting courseId from the URL params
+  const { courseId } = useParams();
+  // console.log("courseId", courseId);
+  
   const [course, setCourse] = useState(null);
   const navigate = useNavigate(); // Hook to programmatically navigate
 
@@ -46,7 +49,16 @@ export default function ViewLevelDetail() {
       .then((course) => {
         setCourse(course);
       })
-      .catch((err) => console.error(err)); // Handle error for course fetch
+      .catch((err) => console.error(err));
+    // const retrieveCourseLevelDetail = async () => {
+    //   try {
+    //     const response = await getLevelDetail(courseId);
+    //     setCourse(response?.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // retrieveCourseLevelDetail();
   }, [courseId]);
 
   // Fetch phases and their respective exercises
@@ -137,18 +149,37 @@ export default function ViewLevelDetail() {
               />
             </Col>
             <Col md={12}>
-              {exercise?.isCompleted ? (
+              {exercise?.exerciseType === EXERCISE_TYPE.QUIZ ? (
+                exercise?.isCompleted ? (
+                  exercise?.conditionStatus === "passed" ? (
+                    <div style={{ textAlign: "center" }}>
+                      <TitleCustom level={4}>{exercise?.title}</TitleCustom>
+                      <CheckOutlined style={{ color: "green" }} /> &nbsp;
+                      <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                    </div>
+                  ) : (
+                    <div style={{ textAlign: "center" }}>
+                      <TitleCustom level={4}>{exercise?.title}</TitleCustom>
+                      <CloseOutlined style={{ color: "red" }} /> &nbsp;
+                      <TextCustom style={{ color: "red" }}>{exercise?.score}</TextCustom>
+                    </div>
+                  )
+                ) : (
+                  <TitleCustom level={4} style={{ textAlign: "center" }}>
+                    {exercise?.title}
+                  </TitleCustom>
+                )
+              ) : // Default case for non-quiz exercises (passed case only)
+              exercise?.isCompleted ? (
                 <div style={{ textAlign: "center" }}>
                   <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                   <CheckOutlined style={{ color: "green" }} /> &nbsp;
                   <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
                 </div>
               ) : (
-                <>
-                  <TitleCustom level={4} style={{ textAlign: "center" }}>
-                    {exercise.title}
-                  </TitleCustom>
-                </>
+                <TitleCustom level={4} style={{ textAlign: "center" }}>
+                  {exercise?.title}
+                </TitleCustom>
               )}
             </Col>
           </Row>
@@ -183,7 +214,7 @@ export default function ViewLevelDetail() {
                   <UserAddOutlined style={{ marginRight: 8, color: "#9a9a9a" }} />
                   <TextCustom>{course?.learners} người học</TextCustom>
                   <BarChartOutlined style={{ marginLeft: 70, marginRight: 8, color: "#9a9a9a" }} />
-                  <TextCustom>{course?.phasesNum} giai đoạn</TextCustom>
+                  <TextCustom>{course?.phases?.length} phase</TextCustom>
                 </div>
                 <ParagraphCustom>{course?.description}</ParagraphCustom>
               </Col>

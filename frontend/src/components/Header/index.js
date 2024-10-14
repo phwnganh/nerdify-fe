@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Col, Layout, Row } from "antd";
+import { Layout } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { useNavigate, useLocation } from "react-router-dom";
 import MenuBar from "../Menu";
 import InputCustom from "../Input";
-import { SearchOutlined } from "@ant-design/icons";
 import ButtonCustom from "../Button";
 import MenuItem from "../Menu/MenuItem";
+import ModalRequireToLogin from "../../pages/GuestsPage/ModalRequireToLogin";
 import logo from "../../assets/logo1.png";
-import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
 import { CLIENT_URI } from "../../constants/uri.constants";
 
-import ModalRequireToLogin from "../../pages/GuestsPage/ModalRequireToLogin";
 const { Header } = Layout;
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedKey, setSelectedKey] = useState("home");
   const [searchVisible, setSearchVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const location = useLocation();
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // Handle setting the selected menu item based on the current route
   useEffect(() => {
     if (location.pathname === CLIENT_URI.LEVEL_DETAIL) {
       setSelectedKey("practices");
@@ -27,129 +29,119 @@ export default function Navbar() {
     }
   }, [location.pathname]);
 
-  const handleMenuClick = (e) => {
-    setSelectedKey(e.key);
-    // console.log(e.key);
+  // Event Handlers
+  const handleMenuClick = (e) => setSelectedKey(e.key);
+  const handleSearchClick = () => setSearchVisible(true);
+  const handleInputChange = (e) => setInputValue(e.target.value);
+  const handleCloseModal = () => setIsModalVisible(false);
+
+  // Styles
+  const headerStyle = {
+    background: "#fff",
+    position: "fixed",
+    width: "100%",
+    zIndex: 1000,
+    top: 0,
+    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+    height: "100px", // Increased header height
+    display: "flex",
+    alignItems: "center",
   };
 
-  const handleSearchClick = () => {
-    setSearchVisible(true);
+  const containerStyle = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    width: "100%",
+    padding: "0 16px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexWrap: "nowrap",
   };
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+  const logoStyle = {
+    width: "150px",
+    height: "auto",
   };
 
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
+  const menuStyle = {
+    flexGrow: 1,
+    display: "flex",
+    justifyContent: "center",
   };
+
+  const searchContainerStyle = {
+    display: "flex",
+    alignItems: "center",
+    paddingRight: "10px",
+  };
+
+  const buttonGroupStyle = {
+    display: "flex",
+    alignItems: "center",
+  };
+
   return (
-    <Header
-      style={{
-        background: "#fff",
-        padding: "0 50px",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <Row align="middle" justify="space-between" style={{ width: "100%" }}>
-        {/* Logo */}
-        <Col flex="50px">
-        <Link to={"/"}>
-          <div className="logo">
-            <img
-              src={logo}
-              alt="Deustch Nerd"
-              style={{ width: "100px", height: "50px", paddingTop: "15px" }}
-            />
-          </div>
-          </Link>
-        </Col>
-
-        {/* Menu */}
-        <Col flex="auto">
-          <MenuBar
-            mode="horizontal"
-            style={{ display: "flex", justifyContent: "center" }}
-            selectedKey={selectedKey}
-            onClick={handleMenuClick}
-          >
-            <MenuItem
-              key="home"
-              onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}
-            >
-              TRANG CHỦ
-            </MenuItem>
-            <MenuItem
-              key="flashcards"
-              onClick={() => {
-                navigate(CLIENT_URI.FLASH_CARD);
-                // setIsModalVisible(true);
-              }}
-            >
-              FLASHCARD
-            </MenuItem>
-            <MenuItem key="learning-progress" onClick={() => {navigate(CLIENT_URI.LEARNING_PROGRESS)}}>TIẾN ĐỘ HỌC TẬP</MenuItem>
-            <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-            <MenuItem
-              key="payment"
-              onClick={() => navigate(CLIENT_URI.PREMIUM)}
-            >
-              GÓI PREMIUM
-            </MenuItem>
-          </MenuBar>
-        </Col>
-
-        {/* Search and Buttons */}
-        <Col
-          flex="300px"
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
+    <>
+      {/* Fixed Header */}
+      <Header style={headerStyle}>
+        <div style={containerStyle}>
+          {/* Logo */}
           <div
-            className="search-container"
-            onClick={handleSearchClick}
             style={{
               display: "flex",
               alignItems: "center",
-              paddingRight: "10px",
+              justifyContent: "center",
+              width: "100px",
             }}
           >
-            <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
-            {searchVisible && (
-              <InputCustom
-                placeholder="Tìm kiếm"
-                onChange={handleInputChange}
-                value={inputValue}
-                style={{
-                  width: "180px",
-                  marginLeft: "10px",
-                }}
-              />
-            )}
+            <img src={logo} alt="Deutsch Nerd" style={logoStyle} />
           </div>
 
-          <ButtonCustom
-            buttonType="primary"
-            style={{ marginRight: "10px" }}
-            onClick={() => navigate(CLIENT_URI.LOGIN)}
-          >
-            ĐĂNG NHẬP
-          </ButtonCustom>
-          <ButtonCustom
-            buttonType="secondary"
-            onClick={() => navigate(CLIENT_URI.REGISTER)}
-          >
-            ĐĂNG KÝ
-          </ButtonCustom>
-        </Col>
-      </Row>
-      {isModalVisible && (
-        <ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal} />
-      )}
-    </Header>
+          {/* Menu */}
+          <div style={menuStyle}>
+            <MenuBar
+              mode="horizontal"
+              selectedKey={selectedKey}
+              onClick={handleMenuClick}
+              style={{
+                lineHeight: "64px", // Ensures menu items are vertically centered
+                borderBottom: "none", // Removes bottom border if any
+              }}
+            >
+              <MenuItem key="home" onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}>
+                TRANG CHỦ
+              </MenuItem>
+              <MenuItem key="flashcards" onClick={() => navigate(CLIENT_URI.FLASH_CARD)}>
+                FLASHCARD
+              </MenuItem>
+              <MenuItem key="learning-progress" onClick={() => navigate(CLIENT_URI.LEARNING_PROGRESS)}>
+                TIẾN ĐỘ HỌC TẬP
+              </MenuItem>
+              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
+              <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
+                GÓI PREMIUM
+              </MenuItem>
+            </MenuBar>
+          </div>
+
+          {/* Search and Buttons */}
+          <div style={buttonGroupStyle}>
+            <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
+              <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
+              {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
+            </div>
+            <ButtonCustom buttonType="primary" style={{ marginRight: "10px" }} onClick={() => navigate(CLIENT_URI.LOGIN)}>
+              ĐĂNG NHẬP
+            </ButtonCustom>
+            <ButtonCustom buttonType="secondary" onClick={() => navigate(CLIENT_URI.REGISTER)}>
+              ĐĂNG KÝ
+            </ButtonCustom>
+          </div>
+        </div>
+        {/* Modal for requiring login */}
+        {isModalVisible && <ModalRequireToLogin open={isModalVisible} onClose={handleCloseModal} />}
+      </Header>
+    </>
   );
 }
