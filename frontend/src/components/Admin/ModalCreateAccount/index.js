@@ -77,3 +77,32 @@ const ModalCreateAccount = ({ isVisible, onClose }) => {
 };
 
 export default ModalCreateAccount;
+
+//======================how to use===================================
+// ParentComponent.js
+// import React, { useState } from 'react';
+// import { Button } from 'antd';
+// import ModalCreateAccount from './ModalCreateAccount';
+
+// const ParentComponent = () => {
+//   const [isModalVisible, setIsModalVisible] = useState(false);
+
+//   const showModal = () => {
+//     setIsModalVisible(true);
+//   };
+
+//   const handleClose = () => {
+//     setIsModalVisible(false);
+//   };
+
+//   return (
+//     <div>
+//       <Button type="primary" onClick={showModal}>
+//         Thêm mới tài khoản
+//       </Button>
+//       <ModalCreateAccount isVisible={isModalVisible} onClose={handleClose} />
+//     </div>
+//   );
+// };
+
+// export default ParentComponent;
