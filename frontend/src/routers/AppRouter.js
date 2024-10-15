@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 
 // Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
+import BlogPage from "../pages/LearnersPage/BlogPage";
+import BlogDetails from "../pages/LearnersPage/BlogDetails";
 import { CLIENT_URI } from "../constants";
-import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
@@ -13,6 +13,7 @@ import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guar
 
 // Importing Layouts for different user roles
 import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
+import { AdminContentGuard } from "../guards/AdminContentGuards";
 
 // Importing Pages for Learners
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
