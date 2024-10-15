@@ -40,34 +40,17 @@ export const routes = [
     ),
     children: [
       {
-        children: [
-          {
-            path: CLIENT_URI.LANDING_PAGE,
-            element: <LandingPage />,
-          },
-          {
-            path: CLIENT_URI.LOGIN,
-            element: <LoginPage />,
-          },
-          {
-            path: CLIENT_URI.REGISTER,
-            element: <RegisterPage />,
-          },
+        path: CLIENT_URI.FORGOT_PASSWORD,
+        element: <ForgotPasswordPage />,
+      },
+      {
+        path: CLIENT_URI.RESET_PASSWORD,
+        element: <ResetPasswordPage />,
+      },
 
-          {
-            path: CLIENT_URI.FORGOT_PASSWORD,
-            element: <ForgotPasswordPage />,
-          },
-          {
-            path: CLIENT_URI.RESET_PASSWORD,
-            element: <ResetPasswordPage />,
-          },
-        
-          {
-            path: CLIENT_URI.TROPHY,
-            element: <TakeATrophy />,
-          },
-        ],
+      {
+        path: CLIENT_URI.TROPHY,
+        element: <TakeATrophy />,
       },
       // {
       //   path: CLIENT_URI.LEVEL_DETAIL,
@@ -90,8 +73,6 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-
-
 
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
@@ -160,7 +141,7 @@ export const routes = [
       },
       {
         path: CLIENT_URI.BLOG_STUDY,
-        element: <BlogStudy/>
+        element: <BlogStudy />,
       },
       // {
       //   path: CLIENT_URI.FINAL_EXAM,
