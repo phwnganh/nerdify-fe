@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row, Card, List, Avatar } from "antd";
 import ButtonCustom from "../../../components/Button";
 import landingPageImg from "../../../assets/landingPage/landingPage.png";
@@ -16,7 +16,18 @@ import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import { Courses } from "./courses/coursesList";
 import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
 
+//test modal
+import ModalCreateAccount from "../../../components/Admin/ModalCreateAccount";
+import { Button } from "antd";
 export const LandingPage = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleClose = () => {
+    setIsModalVisible(false);
+  };
+
   const skills = [
     {
       img: listening,
@@ -129,6 +140,13 @@ export const LandingPage = () => {
         </Col>
       </Row>
 
+      <div>
+        <Button type="primary" onClick={showModal}>
+          Thêm mới tài khoản
+        </Button>
+        <ModalCreateAccount isVisible={isModalVisible} onClose={handleClose} />
+      </div>
+
       {/* Skills */}
       <Row style={{ marginTop: "100px" }}>
         {skills.map((skill) => (
@@ -146,7 +164,6 @@ export const LandingPage = () => {
           </Col>
         ))}
       </Row>
-
       {/* Benefit */}
       <Row style={{ marginTop: "100px" }}>
         <Col span={8}>
@@ -171,7 +188,6 @@ export const LandingPage = () => {
           </ButtonCustom>
         </Col>
       </Row>
-
       {/* Khoa hoc */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>CÁC BÀI TẬP THEO TRÌNH ĐỘ </h2>
@@ -184,7 +200,6 @@ export const LandingPage = () => {
           <Courses />
         </div>
       </div>
-
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
@@ -202,7 +217,6 @@ export const LandingPage = () => {
           )}
         />
       </div>
-
       {/* Feedback - think about carousel */}
       <div>
         <h2
@@ -255,7 +269,6 @@ export const LandingPage = () => {
           />
         </div>
       </div>
-
       <div
         style={{
           background: "#FFCD26",
