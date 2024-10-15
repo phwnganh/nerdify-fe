@@ -5,22 +5,23 @@ import WritingExercises from "./WritingExercises";
 import VocabularyExercises from "./VocabularyExercises";
 import GrammarExercises from "./GrammarExercises";
 import CheckpointQuiz from "./CheckpointQuiz";
+import { EXERCISE_TYPE } from "../../../constants";
 export default function ExerciseDetail() {
   const { exerciseType, exerciseId } = useParams();
 
   const renderExercises = () => {
     switch (exerciseType) {
-      case "listening":
+      case EXERCISE_TYPE.LISTENING:
         return <ListeningExercise />;
-      case "reading":
+      case EXERCISE_TYPE.READING:
         return <ReadingExercises />;
-      case "writing":
+      case EXERCISE_TYPE.WRITING:
         return <WritingExercises />;
-      case "vocabulary":
+      case EXERCISE_TYPE.VOCABULARY:
         return <VocabularyExercises />;
-      case "grammar":
+      case EXERCISE_TYPE.GRAMMAR:
         return <GrammarExercises />;
-      case "quiz":
+      case EXERCISE_TYPE.QUIZ:
         return <CheckpointQuiz />;
     }
   };

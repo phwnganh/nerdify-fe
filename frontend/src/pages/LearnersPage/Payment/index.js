@@ -1,13 +1,16 @@
 import { Col, QRCode, Row } from "antd";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { BASE_SERVER } from "../../../constants";
+import { useNavigate, useParams } from "react-router-dom";
+import { BASE_SERVER, CLIENT_URI } from "../../../constants";
+import qrCode from '../../../assets/qrCode.jpg'
+import ButtonCustom from "../../../components/Button";
 
 export default function Payment() {
   const { transactionId } = useParams();
   const [transaction, setTransaction] = useState(null);
   const [timeLeft, setTimeLeft] = useState(5 * 60);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`${BASE_SERVER}/transaction/${transactionId}`)
       .then((res) => res.json())
@@ -21,12 +24,13 @@ export default function Payment() {
           return prevTime - 1;
         } else {
           clearInterval(timer);
+          navigate(CLIENT_URI.CONFIRM_PAYMENT)
           return 0;
         }
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [navigate]);
 
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -45,8 +49,7 @@ export default function Payment() {
       </Row>
       <Row justify="center" style={{ marginTop: "20px" }}>
         <Col>
-          {/* Ant Design QRCode Component */}
-          <QRCode value="https://payment-link.com" size={150} />
+          <img src={qrCode} alt="" srcset="" width={300}/>
         </Col>
       </Row>
       <Row justify="center" style={{ marginTop: "10px" }}>
@@ -62,10 +65,8 @@ export default function Payment() {
               </span>
             </TextCustom>
           </div>
-          <div style={{ marginTop: "10px" }}>
-            <TextCustom>
-              Nội dung chuyển khoản: {transaction?.processingContent}
-            </TextCustom>
+          <div style={{marginTop: '20px'}}>
+            <ButtonCustom onClick={() => navigate(CLIENT_URI.CONFIRM_PAYMENT)}>Xác nhận giao dịch</ButtonCustom>
           </div>
         </Col>
       </Row>

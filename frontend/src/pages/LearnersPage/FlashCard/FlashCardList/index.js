@@ -7,13 +7,13 @@ import CardCustom from "../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
 import Flashcard from "..";
+import { getFlashcardList } from "../../../../services/LearnerService";
 
 export default function FlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard`)
-      .then((res) => res.json())
+    fetch(`${BASE_SERVER}/flashcard`).then(res => res.json())
       .then((data) => {
         console.log("flashcards: ", data);
         setFlashcards(data);

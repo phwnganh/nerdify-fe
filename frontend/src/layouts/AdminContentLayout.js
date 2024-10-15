@@ -3,7 +3,7 @@ import Navbar from "../components/Header";
 import Footer from "../components/Footer";
 import { Divider } from "antd";
 
-export const AdminLayout = ({ children }) => {
+export const AdminContentLayout = ({ children }) => {
   return (
     <>
       {/* Main Container */}
@@ -52,5 +52,5 @@ const styles = {
   },
 };
 
-export default AdminLayout;
+export default AdminContentLayout;
 

@@ -8,10 +8,10 @@ import BlogDetails from "../pages/LearnersPage/BlogDetails";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
-import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
 
 // Importing Layouts for different user roles
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AdminContentLayout } from "../layouts";
 
 // Importing Pages for Learners
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
@@ -38,6 +38,9 @@ import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashca
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
 import { CLIENT_URI } from "../constants";
+import Exercise from "../pages/ContentManager/Exercise";
+import UploadForm from "../components/Upload";
+import ConfirmPayment from "../pages/LearnersPage/Payment/ConfirmPayment";
 export const routes = [
   // Guest urls
   {
@@ -73,10 +76,7 @@ export const routes = [
             element: <ResetPasswordPage />,
           },
         
-          {
-            path: CLIENT_URI.TROPHY,
-            element: <TakeATrophy />,
-          },
+
         ],
       },
       // {
@@ -166,6 +166,10 @@ export const routes = [
         element: <TestFlashCard />,
       },
       {
+        path: CLIENT_URI.TROPHY,
+        element: <TakeATrophy />,
+      },
+      {
         path: `${CLIENT_URI.EDIT_PROFILE}`,
         element: <EditPersonalProfile />,
       },
@@ -206,10 +210,6 @@ export const routes = [
         element: <ViewPersonalProfile />,
       },
       {
-        path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile />,
-      },
-      {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
         element: <ViewResultsDetail />,
       },
@@ -234,6 +234,10 @@ export const routes = [
         element: <BillInfo />,
       },
       {
+        path: CLIENT_URI.CONFIRM_PAYMENT,
+        element: <ConfirmPayment/>
+      },
+      {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
       },
@@ -250,6 +254,29 @@ export const routes = [
       </AdminGuard>
     ),
     children: [],
+  },
+  // Admin content
+  {
+    element: (
+      <AdminContentGuard>
+        <AdminContentLayout>
+          <Outlet />
+        </AdminContentLayout>
+      </AdminContentGuard> 
+    ),
+    children: [
+      {
+        path: CLIENT_URI.DASHBOARD
+      },
+      {
+        path: `${CLIENT_URI.TABLE_EXERCISE}`,
+        element: <Exercise />,
+      },
+      {
+        path: `/upload`,
+        element: <UploadForm />,
+      },
+    ],
   },
 ];
 

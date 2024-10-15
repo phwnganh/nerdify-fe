@@ -21,7 +21,7 @@ import { Container } from "./styled";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import ModalCustom from "../../../../components/Modal";
 import InputCustom from "../../../../components/Input";
-import ReactCardFlip from 'react-card-flip';
+import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 
 export default function FlashCardDetail() {
@@ -343,11 +343,24 @@ export default function FlashCardDetail() {
         {/* Render flashcard content */}
         {renderFlashcardContent(isFlippedNormal, setIsFlippedNormal)}
         {/* Button edit and add to folder */}
-        <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-          <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
-          <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
-            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }}></Button>
-          </Dropdown>
+        <Row justify={"space-between"} align={"middle"} style={{ marginTop: "20px" }}>
+          <Col>
+            <div>
+              <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
+            </div>
+            <div>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>líp phì</TextCustom>
+            </div>
+            <div>
+              <TextCustom style={{ fontSize: "12px" }}>Đã tạo 28/09/2024</TextCustom>
+            </div>
+          </Col>
+          <Col>
+            <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
+            <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
+              <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }}></Button>
+            </Dropdown>
+          </Col>
         </Row>
         {/* List word and definition */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
