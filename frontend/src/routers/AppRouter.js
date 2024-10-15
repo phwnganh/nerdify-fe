@@ -279,6 +279,7 @@ export const routes = [
       },
     ],
   },
+  // Accountant urls
 ];
 
 export default routes;
