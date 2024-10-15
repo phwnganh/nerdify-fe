@@ -30,5 +30,6 @@ export const CLIENT_URI = {
   // ADMIN
   DASHBOARD: "/dashboard",
   // ADMIN CONTENT
-  TABLE_EXERCISE:"/exercise"
+  TABLE_EXERCISE: "/exercise",
+  // ACCOUNTANT
 };
