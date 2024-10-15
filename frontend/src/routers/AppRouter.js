@@ -3,8 +3,9 @@ import { Outlet } from "react-router-dom";
 
 // Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
-import BlogPage from "../pages/LearnersPage/BlogPage";
-import BlogDetails from "../pages/LearnersPage/BlogDetails";
+import { CLIENT_URI } from "../constants";
+import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
@@ -33,11 +34,16 @@ import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
+import SidebarCustom from "../components/SidebarAdmin/SidebarCustom";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import AdminContentLayout from "../layouts/AdminContentLayout";
+import { AdminContentSidebar } from "../components/SidebarAdmin/SidebarItems";
+import TableExercise from "../components/Table/TableExercise";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-import { CLIENT_URI } from "../constants";
+import Upload from "../components/Upload/upload";
+import Exercise from "../pages/ContentManager/Exercise";
 export const routes = [
   // Guest urls
   {
@@ -72,7 +78,7 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-        
+
           {
             path: CLIENT_URI.TROPHY,
             element: <TakeATrophy />,
@@ -101,8 +107,6 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-
-
 
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
@@ -250,6 +254,29 @@ export const routes = [
       </AdminGuard>
     ),
     children: [],
+  },
+  // Admin content
+  {
+    element: (
+      <AdminContentGuard>
+        <AdminContentLayout>
+          <Outlet />
+        </AdminContentLayout>
+      </AdminContentGuard>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.DASHBOARD,
+      },
+      {
+        path: `${CLIENT_URI.TABLE_EXERCISE}`,
+        element: <Exercise />,
+      },
+      {
+        path: `/upload`,
+        element: <Upload />,
+      },
+    ],
   },
 ];
 

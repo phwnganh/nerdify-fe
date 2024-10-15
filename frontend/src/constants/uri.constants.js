@@ -29,4 +29,6 @@ export const CLIENT_URI = {
   CHANGE_PASSWORD: "/change-password",
   // ADMIN
   DASHBOARD: "/dashboard",
+  // ADMIN CONTENT
+  TABLE_EXERCISE:"/exercise"
 };
