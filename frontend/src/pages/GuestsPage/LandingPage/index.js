@@ -19,6 +19,10 @@ import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
 //test modal
 import ModalCreateAccount from "../../../components/Admin/ModalCreateAccount";
 import { Button } from "antd";
+
+//test table user
+import TableUser from "../../../components/Table/TableUser";
+
 export const LandingPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -140,12 +144,20 @@ export const LandingPage = () => {
         </Col>
       </Row>
 
+      {/* ================================================================================= TEST AREA ================================================================================= */}
       {/* button test add new account of admin */}
       <div>
         <Button type="primary" onClick={showModal}>
           Thêm mới tài khoản
         </Button>
         <ModalCreateAccount isVisible={isModalVisible} onClose={handleClose} />
+      </div>
+      <div
+        style={{
+          marginTop: "100px",
+        }}
+      >
+        <TableUser />
       </div>
 
       {/* Skills */}
