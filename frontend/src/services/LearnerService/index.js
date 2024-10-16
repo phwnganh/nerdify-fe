@@ -35,8 +35,8 @@ export const getFlashcardList = async () => {
   return res.data;
 };
 
-export const getFlashcardDetail = async () => {
-  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD_DETAIL);
+export const getFlashcardDetail = async (flashcardId) => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId);
   return res.data;
 };
 
@@ -72,5 +72,10 @@ export const getPackageList = async() => {
 
 export const createPayment = async(params) => {
   const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.CREATE_PAYMENT, params);
+  return res.data;
+}
+
+export const getPackageDetail = async() => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE_DETAIL);
   return res.data;
 }

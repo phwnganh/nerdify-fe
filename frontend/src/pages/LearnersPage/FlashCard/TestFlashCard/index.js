@@ -5,6 +5,7 @@ import ButtonCustom from "../../../../components/Button";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import CardCustom from "../../../../components/Card";
 import { BASE_SERVER } from "../../../../constants";
+import { getFlashcardDetail } from "../../../../services/LearnerService";
 
 export const TestFlashCard = () => {
   const navigate = useNavigate();
@@ -16,36 +17,35 @@ export const TestFlashCard = () => {
   const [userScore, setUserScore] = useState(-1);
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
-      .then((response) => response.json())
+    getFlashcardDetail(flashcardId)
       .then((data) => {
-        const flashcardClone = JSON.parse(JSON.stringify(data));
-        setFlashcard(flashcardClone);
+        // const flashcardClone = JSON.parse(JSON.stringify(data));
+        setFlashcard(data.data);
 
-        const questionArray = flashcardClone.cards
+        const questionArray = data.data.cards
           .slice(0, numberOfCard)
           .map((questionCard) => {
-            const remainingCards = flashcardClone.cards.filter(
+            const remainingCards = data.data.cards.filter(
               // not include correct definition
-              (card) => card.id !== questionCard.id
+              (card) => card._id !== questionCard._id
             );
             const shuffledIncorrectCards = remainingCards // random 3 incorrect definitions in same flashcard
               .sort(() => Math.random() - 0.5)
               .slice(0, 3);
             const options = [
               {
-                id: questionCard.id,
-                definition: questionCard.definitions,
+                id: questionCard._id,
+                definition: questionCard.definition,
                 isCorrect: true,
               },
               ...shuffledIncorrectCards.map((card) => ({
-                id: card.id,
-                definition: card.definitions,
+                id: card._id,
+                definition: card.definition,
                 isCorrect: false,
               })),
             ].sort(() => Math.random() - 0.5);
             return {
-              term: questionCard.terms,
+              term: questionCard.term,
               options,
             };
           });

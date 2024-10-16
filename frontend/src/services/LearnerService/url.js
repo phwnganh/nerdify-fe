@@ -15,7 +15,6 @@ const URI_COURSES_SERVICE = {
 
 const URI_FLASHCARDS_SERVICE = {
   FLASHCARD: API_PREFIXES.FLASHCARD,
-  FLASHCARD_DETAIL: API_PREFIXES.FLASHCARD + "/:flashcardId",
   UPDATE_FLASHCARD_STATUS: API_PREFIXES.FLASHCARD + "/:flashcardId/visibility",
   CREATE_FOLDER: API_PREFIXES + "/folders",
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES + "/folders/:folderId" + "/flashcards/:flashcardId",
@@ -24,7 +23,7 @@ const URI_FLASHCARDS_SERVICE = {
 const URI_PAYMENT_SERVICE = {
   PACKAGE: API_PREFIXES.PAYMENT + "/packages",
   CREATE_PAYMENT: API_PREFIXES.PAYMENT + "/main/create-payment",
-
+  PACKAGE_DETAIL: API_PREFIXES.PAYMENT + "/packages/:packageId"
 }
 
 export const COURSE_SERVER_URI = {

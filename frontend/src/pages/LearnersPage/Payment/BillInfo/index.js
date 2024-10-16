@@ -7,6 +7,7 @@ import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import { BASE_SERVER } from "../../../../constants";
+import { createPayment } from "../../../../services/LearnerService";
 export default function BillInfo() {
   const navigate = useNavigate();
   const [transactionDetail, setTransactionDetail] = useState(null);
@@ -14,31 +15,47 @@ export default function BillInfo() {
   const [totalPrice, setTotalPrice] = useState(0);
   const { transactionId } = useParams();
   useEffect(() => {
-    const fetchTransaction = async () => {
-      const transactionResponse = await fetch(
-        `${BASE_SERVER}/transaction/${transactionId}`
-      );
-      const packageResponse = await fetch(`${BASE_SERVER}/package`);
-      const transaction = await transactionResponse.json();
-      const packages = await packageResponse.json();
-      const packageDetail = packages.find(
-        (packageDetail) =>
-          Number(packageDetail.id) === Number(transaction.packageId)
-      );
+    // const fetchTransaction = async () => {
+    //   const transactionResponse = await fetch(
+    //     `${BASE_SERVER}/transaction/${transactionId}`
+    //   );
+    //   const packageResponse = await fetch(`${BASE_SERVER}/package`);
+    //   const transaction = await transactionResponse.json();
+    //   const packages = await packageResponse.json();
+    //   const packageDetail = packages.find(
+    //     (packageDetail) =>
+    //       Number(packageDetail.id) === Number(transaction.packageId)
+    //   );
 
-      const transactionData = {
-        ...transaction,
-        packageName: packageDetail?.packageName,
-        price: packageDetail?.price,
-        duration: packageDetail?.duration,
-      };
-      console.log("joined: ", transactionData);
+    //   const transactionData = {
+    //     ...transaction,
+    //     packageName: packageDetail?.packageName,
+    //     price: packageDetail?.price,
+    //     duration: packageDetail?.duration,
+    //   };
+    //   console.log("joined: ", transactionData);
 
-      setTransactionDetail(transactionData);
-      setTotalPrice(transactionData?.price);
-    };
-    fetchTransaction();
-  }, [transactionId]);
+    //   setTransactionDetail(transactionData);
+    //   setTotalPrice(transactionData?.price);
+    // };
+  const getPackageDetail = async() => {
+    try {
+      const result = await getPackageDetail(transactionId);
+      console.log("result: ", result);
+      
+      setTransactionDetail(result);
+      const calculatedPrice = result.price - (useVoucher ? result?.discount : 0);
+      setTotalPrice(calculatedPrice);
+    } catch (error) {
+      console.log(error);
+      
+    }
+    getPackageDetail();
+  }
+    
+  }, [transactionId, useVoucher]);
+
+  
 
   const handleVoucherToggle = (e) => {
     const isChecked = e.target.checked;
@@ -49,24 +66,35 @@ export default function BillInfo() {
     setTotalPrice(priceWithVoucher);
   };
 
-  const handlePaymentProcessing = () => {
-    fetch(`${BASE_SERVER}/transaction/${transactionId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        totalPrice: totalPrice,
-        processingContent: `KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM ${(transactionDetail?.packageName).toUpperCase()}`,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        navigate(`${CLIENT_URI.PAYMENT}/${data?.id}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handlePaymentProcessing = async() => {
+    // fetch(`${BASE_SERVER}/transaction/${transactionId}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     totalPrice: totalPrice,
+    //     processingContent: `KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM ${(transactionDetail?.packageName).toUpperCase()}`,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     navigate(`${CLIENT_URI.PAYMENT}/${data?.id}`);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    try {
+      const paymentParams = {
+        transactionId,
+        useVoucher
+      }
+      await createPayment(paymentParams);
+      navigate(`${CLIENT_URI.PAYMENT}/${transactionId}`)
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
   return (
     <div style={{ padding: "24px" }}>

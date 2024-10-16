@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import moment from "moment";
-import { getPackageList } from "../../../services/LearnerService";
+import { createPayment, getPackageList } from "../../../services/LearnerService";
 
 const { Content } = Layout;
 
@@ -22,23 +22,15 @@ export const PremiumPage = () => {
 
   // Tạo hàm handleRedirectToBill với useCallback để không bị tạo lại mỗi khi render
   const handleRedirectToBill = useCallback((packageId, duration) => {
-    const startDate = moment().format("DD/MM/YYYY");
-    const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
+    // const startDate = moment().format("DD/MM/YYYY");
+    // const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
     const newTransaction = {
       packageId,
-      startDate,
-      endDate,
-      discount: 0.15
+      
+      // discount
     };
 
-    fetch(`${BASE_SERVER}/transaction`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newTransaction)
-    })
-      .then((res) => res.json())
+    createPayment()
       .then((data) => {
         navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`);
       })

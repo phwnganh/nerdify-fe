@@ -26,6 +26,7 @@ import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
+import { getFlashcardDetail } from "../../../../services/LearnerService";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
@@ -71,10 +72,11 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   };
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
-      .then((data) => data.json())
-      .then((data) => setFlashcard(data))
-      .catch((err) => console.error(err));
+    if (flashcardId) {
+      getFlashcardDetail(flashcardId)
+        .then((data) => setFlashcard(data.data))
+        .catch((err) => console.error(err));
+    }
   }, [flashcardId]);
 
   useEffect(() => {
@@ -174,13 +176,13 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].terms);
+                  handleSpeak(flashcard?.cards[currentIndex].term);
                 }}
               />
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>{flashcard?.cards[currentIndex].terms}</TextCustom>
+            <TextCustom>{flashcard?.cards[currentIndex].term}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -244,13 +246,13 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].definitions);
+                  handleSpeak(flashcard?.cards[currentIndex].definition);
                 }}
               />
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>{flashcard?.cards[currentIndex].definitions}</TextCustom>
+            <TextCustom>{flashcard?.cards[currentIndex].definition}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -436,8 +438,8 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
                       paddingLeft: "10px",
                     }}
                   >
-                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.terms)} />
-                    <span style={{ marginRight: "15px" }}>{item.terms}</span>
+                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.term)} />
+                    <span style={{ marginRight: "15px" }}>{item.term}</span>
                   </Col>
                   <Col
                     style={{
@@ -448,8 +450,8 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
                       alignItems: "center",
                     }}
                   >
-                    <span style={{ marginRight: "10px" }}>{item.definitions}</span>
-                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definitions)} />
+                    <span style={{ marginRight: "10px" }}>{item.definition}</span>
+                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} />
                   </Col>
                 </Row>
               </List.Item>

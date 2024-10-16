@@ -12285,6 +12285,18 @@
       "discount": 0.15,
       "totalPrice": 499000,
       "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 1 NĂM"
+    },
+    {
+      "id": "2d13",
+      "startDate": "16/10/2024",
+      "endDate": "16/04/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "067c",
+      "startDate": "16/10/2024",
+      "endDate": "16/04/2025",
+      "discount": 0.15
     }
   ]
 }
