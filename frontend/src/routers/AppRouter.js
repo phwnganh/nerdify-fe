@@ -104,18 +104,7 @@ export const routes = [
 
 
 
-      {
-        path: CLIENT_URI.MANAGE_FLASHCARD,
-        element: <ManageFlashcard />,
-      },
-      {
-        path: CLIENT_URI.MANAGE_FOLDER,
-        element: <ManageFolder />,
-      },
-      {
-        path: CLIENT_URI.CHANGE_PASSWORD,
-        element: <ChangePassword />,
-      },
+     
     ],
   },
 
@@ -180,6 +169,18 @@ export const routes = [
       {
         path: `${CLIENT_URI.BLOG_STUDY}/:blogId`,
         element: <BlogDetails />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
       },
       // {
       //   path: CLIENT_URI.FINAL_EXAM,

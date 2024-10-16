@@ -6207,6 +6207,28 @@
       ]
     }
   ],
+  "folders": [
+    {
+      "id": "1",
+      "name": "Technology"
+    },
+    {
+      "id": "2",
+      "name": "Animal"
+    },
+    {
+      "id": "3",
+      "name": "Human"
+    },
+    {
+      "id": "4",
+      "name": "Music"
+    },
+    {
+      "id": "ed54",
+      "name": "aaaa"
+    }
+  ],
   "exercisesSubmission": [
     {
       "id": "f9bb",
@@ -11902,6 +11924,116 @@
         }
       ],
       "conditionStatus": "passed",
+      "isCompleted": true,
+      "examId": "1"
+    },
+    {
+      "id": "8478",
+      "submissionDate": "2024-10-16T11:27:25.111Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "correctAnswer": "C",
+          "isCorrect": false
+        }
+      ],
+      "conditionStatus": "not pass",
       "isCompleted": true,
       "examId": "1"
     }
