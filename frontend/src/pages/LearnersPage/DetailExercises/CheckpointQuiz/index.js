@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { ParagraphCustom, TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
+import { CLIENT_URI } from "../../../../constants";
 
 // Import images
 import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
@@ -27,11 +27,11 @@ import part2_ques9_2 from "../../../../assets/listeningExercises/02- teil 2-09.m
 import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.mp3";
 import { StartQuizModal } from "../../LevelDetailPage";
 
-export default function CheckpointQuiz() {
+export default function ReadingExercises({ exercises }) {
   const { exerciseType, exerciseId } = useParams();
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [exercises, setExercises] = useState(null);
+  // const [exercises, setExercises] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(-1);
@@ -52,18 +52,18 @@ export default function CheckpointQuiz() {
     part2_ques10_2,
   };
 
-  useEffect(() => {
-    if (!hasStarted) {
-      fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.length > 0) {
-            setExercises(data[0]);
-          }
-        })
-        .catch((err) => console.error("error", err));
-    }
-  }, [exerciseType, exerciseId, hasStarted]);
+  // useEffect(() => {
+  //   if (!hasStarted) {
+  //     fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data && data.length > 0) {
+  //           setExercises(data[0]);
+  //         }
+  //       })
+  //       .catch((err) => console.error("error", err));
+  //   }
+  // }, [exerciseType, exerciseId, hasStarted]);
 
   useEffect(() => {
     if (!hasStarted) return;
@@ -137,7 +137,7 @@ export default function CheckpointQuiz() {
       isCompleted: true,
     };
 
-    fetch(`${BASE_SERVER}/exercises/${exercises.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercises.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -156,7 +156,7 @@ export default function CheckpointQuiz() {
         console.log(err);
       });
 
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

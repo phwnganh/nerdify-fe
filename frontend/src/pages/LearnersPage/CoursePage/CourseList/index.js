@@ -5,19 +5,21 @@ import { CLIENT_URI } from "../../../../constants";
 import { ReadOutlined } from "@ant-design/icons";
 import a1 from "../../../../assets/levelImage/a1.png";
 import a2 from "../../../../assets/levelImage/a2.png";
-import b1 from '../../../../assets/levelImage/b1.png';
+import b1 from "../../../../assets/levelImage/b1.png";
 
 export default function CourseList({ course }) {
-  const levelImgArr = { a1: a1, a2: a2, b1: b1 }; // Add more levels as needed
+  const levelImgArr = { a1: a1, a2: a2, b1: b1 };
+  const levelImage = levelImgArr[course.levelType?.toLowerCase()] || a1;
+
   const navigate = useNavigate();
 
   return (
-    <CardCustom cover={<img src={levelImgArr[course.levelImage]} height={150} style={{ objectFit: "cover" }} alt="" />}>
+    <CardCustom cover={<img src={levelImage} height={150} style={{ objectFit: "cover" }} alt="" />}>
       <h4 style={{ margin: "0" }}>{course.title}</h4>
       <div style={{ margin: "10px 0px" }}>
         <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}>
           <ReadOutlined style={{ fontSize: "25px" }} />
-          <span style={{ marginLeft: "8px" }}>{course?.phases?.length} Phase</span>
+          <span style={{ marginLeft: "8px" }}>{course?.phases?.length || 0} Phase(s)</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}>
           <ReadOutlined style={{ fontSize: "25px" }} />
@@ -28,7 +30,7 @@ export default function CourseList({ course }) {
         buttonType="primary"
         style={{ width: "100%" }}
         onClick={() => {
-          navigate(CLIENT_URI.LEVEL_DETAIL + `/${course.id}`);
+          navigate(CLIENT_URI.LEVEL_DETAIL + `/${course._id}`);
         }}
       >
         Bắt đầu

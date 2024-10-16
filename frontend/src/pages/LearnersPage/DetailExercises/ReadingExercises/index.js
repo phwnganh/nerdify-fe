@@ -3,7 +3,7 @@ import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
 import demo_part2_6_1 from "../../../../assets/readingExercises/demo_part2_6_1.png";
 import demo_part2_6_2 from "../../../../assets/readingExercises/demo_part2_6_2.png";
 import demo_part2_7_1 from "../../../../assets/readingExercises/demo_part2_7_1.png";
@@ -42,25 +42,25 @@ const imgReadingArr = {
   demo_part3_5,
 };
 
-export default function ReadingExercises() {
+export default function ReadingExercises({ exercises }) {
   const { exerciseType, exerciseId } = useParams();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [exerciseResults, setExerciseResults] = useState({});
-  const [exercises, setExercises] = useState(null);
+  // const [exercises, setExercises] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => console.error("error", err));
-  }, [exerciseType, exerciseId]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data && data.length > 0) {
+  //         setExercises(data[0]);
+  //       }
+  //     })
+  //     .catch((err) => console.error("error", err));
+  // }, [exerciseType, exerciseId]);
 
   const handleSelectOptions = useCallback((questionId, optionId) => {
     setUserAnswers((prev) => ({
@@ -276,7 +276,7 @@ export default function ReadingExercises() {
       isCompleted: true,
     };
 
-    fetch(`${BASE_SERVER}/exercises/${exercises?.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -294,7 +294,7 @@ export default function ReadingExercises() {
         console.log(err);
       });
 
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { Col, Row, Tabs } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
 
 // Import images and audio files
 import demo1_1 from "../../../../assets/listeningExercises/1_1.png";
@@ -101,7 +101,7 @@ import part2_ques7_A2 from "../../../../assets/listeningExercises/a2-teil2-7.mp3
 import part2_ques8_A2 from "../../../../assets/listeningExercises/a2-teil2-8.mp3";
 import part2_ques9_A2 from "../../../../assets/listeningExercises/a2-teil2-9.mp3";
 import part2_ques10_A2 from "../../../../assets/listeningExercises/a2-teil2-10.mp3";
-import part3_A2 from '../../../../assets/listeningExercises/part3_A2.mp3';
+import part3_A2 from "../../../../assets/listeningExercises/part3_A2.mp3";
 
 const imagesArr = {
   demo1_1,
@@ -194,30 +194,18 @@ const audioArr = {
   part2_ques8_A2,
   part2_ques9_A2,
   part2_ques10_A2,
-  part3_A2
+  part3_A2,
 };
 
 const { TabPane } = Tabs;
 
-export default function ListeningExercise() {
-  const { exerciseType, exerciseId } = useParams();
+export default function ListeningExercise({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
-  const [exercises, setExercises] = useState(null);
+  // const [exercises, setExercises] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => console.error("Error fetching exercise data", err));
-  }, [exerciseType, exerciseId]);
 
   const handleSelectOptions = useCallback(
     (questionId, optionId) => {
@@ -273,7 +261,7 @@ export default function ListeningExercise() {
       isCompleted: true,
     };
 
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -285,7 +273,7 @@ export default function ListeningExercise() {
       .catch((err) => console.error("Error saving submission:", err));
 
     // Update exercise completion status
-    fetch(`${BASE_SERVER}/exercises/${exercises.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercises.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

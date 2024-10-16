@@ -7,10 +7,10 @@ import { Col, Input, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
 
-export default function WritingExercises() {
-  const [exercise, setExercise] = useState(null);
+export default function WritingExercises({ exercise }) {
+  // const [exercise, setExercise] = useState(null);
   const { exerciseType, exerciseId } = useParams();
   const [userAnswers, setUserAnswers] = useState({});
   const [answerStatus, setAnswerStatus] = useState({});
@@ -19,16 +19,16 @@ export default function WritingExercises() {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercise(data[0]);
-        }
-      })
-      .catch((err) => console.error("error", err));
-  }, [exerciseType, exerciseId]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data && data.length > 0) {
+  //         setExercise(data[0]);
+  //       }
+  //     })
+  //     .catch((err) => console.error("error", err));
+  // }, [exerciseType, exerciseId]);
 
   if (!exercise?.parts) {
     return <div>Loading...</div>;
@@ -184,7 +184,7 @@ export default function WritingExercises() {
       exerciseId,
     };
 
-    fetch(`${BASE_SERVER}/exercises/${exercise?.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercise?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -202,7 +202,7 @@ export default function WritingExercises() {
         console.log(err);
       });
 
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

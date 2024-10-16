@@ -5,10 +5,10 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import { useParams } from "react-router-dom";
 import React, { useCallback, useEffect, useState, useMemo } from "react";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
 
-export default function GrammarExercises() {
-  const [exercises, setExercises] = useState(null); // Initialize with null
+export default function GrammarExercises({ exercises }) {
+  // const [exercises, setExercises] = useState(null); // Initialize with null
   const [userAnswers, setUserAnswers] = useState({});
   const { exerciseType, exerciseId } = useParams();
   const [userScore, setUserScore] = useState(0);
@@ -16,18 +16,18 @@ export default function GrammarExercises() {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [answerStatus, setAnswerStatus] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [exerciseId, exerciseType]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data && data.length > 0) {
+  //         setExercises(data[0]);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [exerciseId, exerciseType]);
 
   const handleInputChange = useCallback((partId, questionId, inputIndex, value) => {
     const key = `${partId}-${questionId}-${inputIndex}`;
@@ -99,12 +99,12 @@ export default function GrammarExercises() {
                 <span>{question.question}</span>
               )}
               {isCompleted && userAnswers[`${partKey}-${question.id}-0`] !== question.answer && (
-                <div style={{paddingTop: '10px'}}>
+                <div style={{ paddingTop: "10px" }}>
                   <TextCustom style={{ color: "red" }}>Đáp án: {Array.isArray(question.answer) ? question.answer.join(" - ") : question.answer}</TextCustom>
                 </div>
               )}
               {isCompleted && (
-                <div style={{paddingTop: '20px' }}>
+                <div style={{ paddingTop: "20px" }}>
                   <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
                     Đáp án chi tiết
                   </ButtonCustom>
@@ -178,7 +178,7 @@ export default function GrammarExercises() {
       isCompleted: true,
     };
 
-    fetch(`${BASE_SERVER}/exercises/${exercises?.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -195,7 +195,7 @@ export default function GrammarExercises() {
       .catch((err) => {
         console.log(err);
       });
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
