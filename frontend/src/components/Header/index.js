@@ -125,7 +125,7 @@ export default function Navbar() {
               <MenuItem key="learning-progress" onClick={handleLearningProgressClick}>
                 TIẾN ĐỘ HỌC TẬP
               </MenuItem>
-              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
+              <MenuItem key="blog" onClick={handleLearningProgressClick}>BLOG HỌC TẬP</MenuItem>
               <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
                 GÓI PREMIUM
               </MenuItem>

@@ -2,6 +2,7 @@ const DOMAIN = process.env.REACT_APP_ROOT_API;
 const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",
+  PAYMENT: "/api/payment"
 };
 
 const URI_COURSES_SERVICE = {
@@ -20,6 +21,12 @@ const URI_FLASHCARDS_SERVICE = {
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES + "/folders/:folderId" + "/flashcards/:flashcardId",
 };
 
+const URI_PAYMENT_SERVICE = {
+  PACKAGE: API_PREFIXES.PAYMENT + "/packages",
+  CREATE_PAYMENT: API_PREFIXES.PAYMENT + "/main/create-payment",
+
+}
+
 export const COURSE_SERVER_URI = {
   DOMAIN: DOMAIN,
   COURSE_SERVICE: URI_COURSES_SERVICE,
@@ -29,3 +36,8 @@ export const FLASHCARD_SERVER_URI = {
   DOMAIN: DOMAIN,
   FLASHCARD_SERVICE: URI_FLASHCARDS_SERVICE,
 };
+
+export const PAYMENT_SERVER_URI = {
+  DOMAIN: DOMAIN,
+  PAYMENT_SERVICE: URI_PAYMENT_SERVICE
+}

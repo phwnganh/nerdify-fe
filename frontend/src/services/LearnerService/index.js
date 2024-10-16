@@ -1,5 +1,5 @@
 import client from "../client";
-import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI } from "./url";
+import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
 export const getCourseLevelList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL);
   return res.data;
@@ -64,3 +64,8 @@ export const updateFlashcardStatus = async (params) => {
   const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS, params);
   return res.data;
 };
+
+export const getPackageList = async() => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
+  return res.data;
+}

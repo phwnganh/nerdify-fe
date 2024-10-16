@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import moment from "moment";
+import { getPackageList } from "../../../services/LearnerService";
 
 const { Content } = Layout;
 
@@ -15,9 +16,8 @@ export const PremiumPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/package`)
-      .then((res) => res.json())
-      .then((data) => setPackages(data));
+    getPackageList()
+      .then((data) => setPackages(data.data));
   }, []);
 
   // Tạo hàm handleRedirectToBill với useCallback để không bị tạo lại mỗi khi render
