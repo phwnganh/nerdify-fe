@@ -69,3 +69,8 @@ export const getPackageList = async() => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
   return res.data;
 }
+
+export const createPayment = async(params) => {
+  const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.CREATE_PAYMENT, params);
+  return res.data;
+}
