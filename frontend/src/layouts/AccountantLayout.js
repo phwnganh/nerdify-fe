@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 // test sidebar
-import { AdminContentSidebar } from "../components/SidebarAdmin/SidebarItems";
+import { AccountantSidebar } from "../components/Sidebar/accountantSideBar/SidebarItems";
 
 const { Content } = Layout;
 
@@ -21,7 +21,7 @@ export const AccountantLayout = ({ children }) => {
 
   return (
     <div style={styles.container}>
-      <AdminContentSidebar />
+      <AccountantSidebar />
       <Content style={styles.content}>{children}</Content>
     </div>
   );
