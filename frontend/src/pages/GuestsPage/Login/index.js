@@ -49,8 +49,14 @@ export const LoginPage = () => {
           setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
           setStorage(STORAGE.USER_ID, JSON.stringify(user[0].id));
           console.log("userId: ", user[0].id);
-          
-          navigate(CLIENT_URI.COURSE_PAGE);
+
+          //check role account from local storage , if role is accountant, redirect to accountant dashboard , else redirect to course page
+          if (user[0].role === "accountant") {
+            navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
+          } else {
+            navigate(CLIENT_URI.COURSE_PAGE);
+          }
+
           // if (localStorage.getItem("isPremium")) {
           //   navigate(CLIENT_URI.PREMIUM);
           //   localStorage.removeItem("isPremium");

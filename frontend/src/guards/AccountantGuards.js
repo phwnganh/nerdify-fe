@@ -5,15 +5,16 @@ import STORAGE, { getStorage } from "../library/storage";
 
 export const AccountantGuard = ({ children }) => {
   const userInfo = getStorage(STORAGE.USER_INFO);
+  console.log("userInfo", userInfo);
 
   // Check if user information exists in storage
   if (userInfo) {
     // Verify if the role matches 'accountant'
-    if (userInfo?.role === ROLES.ACCOUNTANT_ROLE) {
+    if (userInfo?.role === "accountant") {
       return <>{children}</>;
     }
     // If the role is not 'accountant', redirect to a relevant page
-    return <Navigate to={CLIENT_URI.HOME_PAGE} replace />;
+    return <Navigate to={CLIENT_URI.ACCOUNTANT_DASHBOARD} replace />;
   }
 
   // If user is not authenticated, redirect to the login page
