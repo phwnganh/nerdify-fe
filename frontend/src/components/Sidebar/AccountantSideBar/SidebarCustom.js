@@ -15,10 +15,7 @@ const { Text } = Typography;
 const CustomSider = styled(Sider)`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  .ant-layout-sider-trigger {
-    display: none;
-  }
+  height: 100vh; /* Đảm bảo chiều cao của sider bằng chiều cao màn hình */
 `;
 
 const LogoContainer = styled.div`
@@ -27,7 +24,7 @@ const LogoContainer = styled.div`
 `;
 
 const CustomMenu = styled(Menu)`
-  flex: 1;
+  flex-grow: 1; /* Đảm bảo menu chiếm toàn bộ không gian còn lại */
   .ant-menu-item-selected {
     font-weight: bold;
     color: black;
@@ -37,10 +34,8 @@ const CustomMenu = styled(Menu)`
 
 const FooterSection = styled.div`
   padding: 15px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 220px;
+  text-align: center;
+  flex-shrink: 0; /* Đảm bảo footer không bị co lại */
 `;
 
 const UserInfoContainer = styled.div`
@@ -59,12 +54,15 @@ export default function SidebarCustom({ menuItems = [] }) {
   }, [location.pathname]);
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`).then(res => res.json()).then(res => {
-      setUser(res);
-    }).catch(err => {
-      console.log(err);
-    })
-  }, [userId])
+    fetch(`${BASE_SERVER}/users/${userId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userId]);
 
   const handleLogout = async () => {
     // logout().then(() => {
@@ -79,7 +77,7 @@ export default function SidebarCustom({ menuItems = [] }) {
   const handleMenuClick = ({ key }) => {
     if (key === "logout") {
       console.log("Logout action triggered");
-      handleLogout()
+      handleLogout();
     } else if (key === "hide-dashboard") {
       setCollapsed(!collapsed);
     } else {
