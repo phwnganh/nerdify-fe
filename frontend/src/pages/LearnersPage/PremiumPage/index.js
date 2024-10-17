@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import moment from "moment";
-import { createPayment, getPackageList } from "../../../services/LearnerService";
+import { createPayment, getPackageDetail, getPackageList } from "../../../services/LearnerService";
 
 const { Content } = Layout;
 
@@ -21,22 +21,38 @@ export const PremiumPage = () => {
   }, []);
 
   // Tạo hàm handleRedirectToBill với useCallback để không bị tạo lại mỗi khi render
-  const handleRedirectToBill = useCallback((packageId, duration) => {
+  const handleRedirectToBill = useCallback(async (packageId) => {
     // const startDate = moment().format("DD/MM/YYYY");
     // const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
-    const newTransaction = {
-      packageId,
-      
-      // discount
-    };
+    // const packageDetail = await getPackageDetail(packageId);
+    // const newTransaction = {
+    //   packageId: packageDetail._id,
+    //   discount: 0
+    //   // discount
+    // };
 
-    createPayment()
-      .then((data) => {
-        navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // const learnerTransaction = await createPayment(newTransaction);
+    // navigate(`${CLIENT_URI.BILLINFO}/transaction`)
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+    try {
+      // Fetch package details using the packageId
+      const packageDetails = await getPackageDetail(packageId);
+  
+      const newTransaction = {
+        packageId: packageDetails._id, // Pass the correct packageId from the fetched package
+        discount: 0 // You can adjust this value based on user input or offer
+      };
+  
+      // Create a new payment and get the transaction response
+      const transaction = await createPayment(newTransaction);
+  
+      // Navigate to the bill info page using the returned transaction ID
+      navigate(`${CLIENT_URI.BILLINFO}/${transaction?.data?._id}`);
+    } catch (err) {
+      console.error(err);
+    }
   }, [navigate]);
 
   return (
@@ -96,7 +112,7 @@ export const PremiumPage = () => {
                     type="primary"
                     style={{ marginTop: "16px" }}
                     block
-                    onClick={() => handleRedirectToBill(pack.id, pack.duration)}
+                    onClick={() => handleRedirectToBill(pack._id)}
                   >
                     Chọn ngay
                   </ButtonCustom>

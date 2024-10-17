@@ -75,7 +75,7 @@ export const createPayment = async(params) => {
   return res.data;
 }
 
-export const getPackageDetail = async() => {
-  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE_DETAIL);
+export const getPackageDetail = async(packageId) => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE + "/" + packageId);
   return res.data;
 }

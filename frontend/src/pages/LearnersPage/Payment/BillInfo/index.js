@@ -14,6 +14,8 @@ export default function BillInfo() {
   const [useVoucher, setUseVoucher] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const { transactionId } = useParams();
+  console.log("transactionid: ", transactionId);
+  
   useEffect(() => {
     // const fetchTransaction = async () => {
     //   const transactionResponse = await fetch(

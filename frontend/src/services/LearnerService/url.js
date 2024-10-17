@@ -23,7 +23,6 @@ const URI_FLASHCARDS_SERVICE = {
 const URI_PAYMENT_SERVICE = {
   PACKAGE: API_PREFIXES.PAYMENT + "/packages",
   CREATE_PAYMENT: API_PREFIXES.PAYMENT + "/main/create-payment",
-  PACKAGE_DETAIL: API_PREFIXES.PAYMENT + "/packages/:packageId"
 }
 
 export const COURSE_SERVER_URI = {
