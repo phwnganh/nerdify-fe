@@ -1,13 +1,17 @@
 // AccountantHeader.js
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Layout } from "antd";
 import { useLocation } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
+import { BASE_SERVER } from "../../../constants";
+import STORAGE, { getStorage } from "../../../library/storage";
 
 const { Header } = Layout;
 
 const AccountantHeader = () => {
   const location = useLocation();
+  const [user, setUser] = useState(null);
+  const userId = getStorage(STORAGE.USER_ID);
 
   // Map routes to their respective labels
   const routeLabels = useMemo(
@@ -19,6 +23,14 @@ const AccountantHeader = () => {
     }),
     [],
   );
+
+  useEffect(() => {
+    fetch(`${BASE_SERVER}/users/${userId}`).then(res => res.json()).then(res => {
+      setUser(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  }, [userId])
 
   // Determine the current title based on the path
   const currentTitle = routeLabels[location.pathname] || "Thống Kê Tài Chính";
@@ -38,7 +50,7 @@ const AccountantHeader = () => {
     <Header style={styles.header}>
       <h2 style={{ margin: 0 }}>{currentTitle}</h2> {/* Dynamic Header Title */}
       <div>
-        <span>Chào buổi chiều, Nguyễn Văn A 🎉</span> {/* User Greeting */}
+        <span>Xin chào, {user?.fullName} 🎉</span> {/* User Greeting */}
       </div>
     </Header>
   );

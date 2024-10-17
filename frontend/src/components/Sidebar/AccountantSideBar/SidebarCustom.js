@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { LogoutOutlined, EyeInvisibleOutlined, HomeOutlined, DollarCircleOutlined, HistoryOutlined, BarChartOutlined } from "@ant-design/icons";
 import logo from "../../../assets/logo1.png";
 import logoMini from "../../../assets/logomini.png";
+import STORAGE, { clearStorage, getStorage } from "../../../library/storage";
+import { BASE_SERVER } from "../../../constants";
 
 const { Sider } = Layout;
 const { Text } = Typography;
@@ -38,7 +40,7 @@ const FooterSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: auto;
+  margin-top: 220px;
 `;
 
 const UserInfoContainer = styled.div`
@@ -50,15 +52,34 @@ export default function SidebarCustom({ menuItems = [] }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedKey, setSelectedKey] = useState("/");
-
+  const [user, setUser] = useState(null);
+  const userId = getStorage(STORAGE.USER_ID);
   useEffect(() => {
     setSelectedKey(location.pathname);
   }, [location.pathname]);
 
+  useEffect(() => {
+    fetch(`${BASE_SERVER}/users/${userId}`).then(res => res.json()).then(res => {
+      setUser(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  }, [userId])
+
+  const handleLogout = async () => {
+    // logout().then(() => {
+    //   signout();
+    //   window.location.reload();
+    // });
+    // await signout();
+    clearStorage();
+    window.location.reload();
+  };
   // Handle Menu Item Clicks
   const handleMenuClick = ({ key }) => {
     if (key === "logout") {
       console.log("Logout action triggered");
+      handleLogout()
     } else if (key === "hide-dashboard") {
       setCollapsed(!collapsed);
     } else {
@@ -104,9 +125,9 @@ export default function SidebarCustom({ menuItems = [] }) {
         <UserInfoContainer>
           <Avatar size={64} src="https://via.placeholder.com/64" />
           <div style={{ marginTop: 10 }}>
-            <Text strong>Nguyễn Văn A</Text>
+            <Text strong>{user?.fullName}</Text>
             <br />
-            <Text type="secondary">nhihm@fe.du.vn</Text>
+            <Text type="secondary">{user?.email}</Text>
           </div>
         </UserInfoContainer>
       </FooterSection>

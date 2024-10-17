@@ -11442,8 +11442,8 @@
   "users": [
     {
       "id": "12345",
-      "fullName": "test",
-      "email": "test@gmail.com",
+      "fullName": "Đoàn Chung",
+      "email": "doanchung1006@gmail.com",
       "password": "123456Az!",
       "role": "accountant",
       "gender": "male",
