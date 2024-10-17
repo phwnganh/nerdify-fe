@@ -40,8 +40,8 @@ export const getFlashcardDetail = async (flashcardId) => {
   return res.data;
 };
 
-export const createNewFlashcard = async () => {
-  const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD);
+export const createNewFlashcard = async (params) => {
+  const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD, params);
   return res.data;
 };
 
