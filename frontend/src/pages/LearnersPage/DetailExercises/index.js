@@ -41,20 +41,19 @@ export default function ExerciseDetail() {
     if (!exerciseData) {
       return <div>No exercise data available</div>;
     }
-
     switch (exerciseType) {
       case "listening":
-        return <ListeningExercise data={exerciseData} />;
+        return <ListeningExercise exercises={exerciseData} />;
       case "reading":
-        return <ReadingExercises data={exerciseData} />;
+        return <ReadingExercises exercises={exerciseData} />;
       case "writing":
-        return <WritingExercises data={exerciseData} />;
+        return <WritingExercises exercises={exerciseData} />;
       case "vocabulary":
-        return <VocabularyExercises data={exerciseData} />;
+        return <VocabularyExercises exercises={exerciseData} />;
       case "grammar":
-        return <GrammarExercises data={exerciseData} />;
+        return <GrammarExercises exercises={exerciseData} />;
       case "quiz":
-        return <CheckpointQuiz data={exerciseData} />;
+        return <CheckpointQuiz exercises={exerciseData} />;
       default:
         return <div>Unknown exercise type</div>;
     }
