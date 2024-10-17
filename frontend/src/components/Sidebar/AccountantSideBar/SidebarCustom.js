@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Layout, Menu, Avatar, Typography, Divider } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { LogoutOutlined, EyeInvisibleOutlined, HomeOutlined, DollarCircleOutlined, HistoryOutlined, BarChartOutlined } from "@ant-design/icons";
+import { LogoutOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import logo from "../../../assets/logo1.png";
 import logoMini from "../../../assets/logomini.png";
 import STORAGE, { clearStorage, getStorage } from "../../../library/storage";
@@ -15,7 +15,7 @@ const { Text } = Typography;
 const CustomSider = styled(Sider)`
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Đảm bảo chiều cao của sider bằng chiều cao màn hình */
+  height: 100vh;
 `;
 
 const LogoContainer = styled.div`
@@ -24,7 +24,7 @@ const LogoContainer = styled.div`
 `;
 
 const CustomMenu = styled(Menu)`
-  flex-grow: 1; /* Đảm bảo menu chiếm toàn bộ không gian còn lại */
+  flex-grow: 1;
   .ant-menu-item-selected {
     font-weight: bold;
     color: black;
@@ -100,7 +100,7 @@ export default function SidebarCustom({ menuItems = [] }) {
     {
       key: "hide-dashboard",
       icon: <EyeInvisibleOutlined />,
-      label: "Ẩn bảng điều khiển",
+      label: "Thu bảng điều khiển",
     },
   ];
 

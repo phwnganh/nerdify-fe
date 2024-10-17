@@ -16,12 +16,12 @@ import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import { Courses } from "./courses/coursesList";
 import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
 
-//test modal
-import ModalCreateAccount from "../../../components/Admin/ModalCreateAccount";
-import { Button } from "antd";
+// //test modal
+// import ModalCreateAccount from "../../../components/Admin/ModalCreateAccount";
+// import { Button } from "antd";
 
-//test table user
-import TableUser from "../../../components/Table/TableUser";
+// //test table user
+// import TableUser from "../../../components/Table/TableUser";
 
 export const LandingPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -146,19 +146,19 @@ export const LandingPage = () => {
 
       {/* ================================================================================= TEST AREA ================================================================================= */}
       {/* button test add new account of admin */}
-      <div>
+      {/* <div>
         <Button type="primary" onClick={showModal}>
           Thêm mới tài khoản
         </Button>
         <ModalCreateAccount isVisible={isModalVisible} onClose={handleClose} />
-      </div>
-      <div
+      </div> */}
+      {/* <div
         style={{
           marginTop: "100px",
         }}
       >
         <TableUser />
-      </div>
+      </div> */}
 
       {/* Skills */}
       <Row style={{ marginTop: "100px" }}>
