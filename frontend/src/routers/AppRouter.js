@@ -12,7 +12,7 @@ import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyE
 import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
 
 // Importing Layouts for different user roles
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AccountantLayout } from "../layouts";
 import { AdminContentGuard } from "../guards/AdminContentGuards";
 
 // Importing Pages for Learners
@@ -45,6 +45,13 @@ import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
 import Upload from "../components/Upload/upload";
 import Exercise from "../pages/ContentManager/Exercise";
+import AccountantGuard from "../guards/AccountantGuards";
+
+//accountant
+import AccountantDashboard from "../pages/AccountantPage/Dashboard";
+import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
+import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
+import UserStatistics from "../pages/AccountantPage/UserStatistics";
 export const routes = [
   // Guest urls
   {
@@ -280,6 +287,33 @@ export const routes = [
     ],
   },
   // Accountant urls
+  {
+    element: (
+      <AccountantGuard>
+        <AccountantLayout>
+          <Outlet />
+        </AccountantLayout>
+      </AccountantGuard>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
+        element: <AccountantDashboard />,
+      },
+      {
+        path: CLIENT_URI.SYSTEM_REVENUE,
+        element: <SystemRevenue />,
+      },
+      {
+        path: CLIENT_URI.TRANSACTION_HISTORY,
+        element: <TransactionHistory />,
+      },
+      {
+        path: CLIENT_URI.USER_STATISTICS,
+        element: <UserStatistics />,
+      },
+    ],
+  },
 ];
 
 export default routes;

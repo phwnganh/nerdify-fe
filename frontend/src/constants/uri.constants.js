@@ -32,4 +32,8 @@ export const CLIENT_URI = {
   // ADMIN CONTENT
   TABLE_EXERCISE: "/exercise",
   // ACCOUNTANT
+  ACCOUNTANT_DASHBOARD: "/accountant-dashboard",
+  SYSTEM_REVENUE: "/system-revenue",
+  TRANSACTION_HISTORY: "/transaction-history",
+  USER_STATISTICS: "/user-statistics",
 };
