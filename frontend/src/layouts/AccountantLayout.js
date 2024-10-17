@@ -17,12 +17,12 @@ export const AccountantLayout = ({ children }) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      padding: "20px", // Padding for content spacing
+      padding: "20px",
     },
     layout: {
       flex: 1,
 
-      backgroundColor: "#f0f2f5", // Optional: background color for content area
+      backgroundColor: "#f0f2f5",
     },
   };
 
