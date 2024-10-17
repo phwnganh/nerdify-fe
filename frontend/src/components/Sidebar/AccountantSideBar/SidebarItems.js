@@ -1,7 +1,7 @@
 import React from "react";
 import SidebarCustom from "./SidebarCustom";
 import { HomeOutlined, DollarCircleOutlined, HistoryOutlined, BarChartOutlined } from "@ant-design/icons";
-import { CLIENT_URI } from "../../constants/uri.constants";
+import { CLIENT_URI } from "../../../constants/uri.constants";
 
 // Sidebar items for Accountant's content
 const menuItemsForAccountantContent = [

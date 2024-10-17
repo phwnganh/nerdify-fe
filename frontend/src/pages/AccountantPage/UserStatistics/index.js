@@ -2,7 +2,7 @@
 import React from "react";
 
 const UserStatistics = () => {
-  return <div>index</div>;
+  return <div>UserStatistics</div>;
 };
 
 export default UserStatistics;

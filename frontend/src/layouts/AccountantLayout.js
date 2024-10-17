@@ -1,7 +1,8 @@
 import React from "react";
 import { Layout } from "antd";
-// test sidebar
+// Import Sidebar and Header
 import { AccountantSidebar } from "../components/Sidebar/accountantSideBar/SidebarItems";
+import AccountantHeader from "../components/Header/AccountantHeader";
 
 const { Content } = Layout;
 
@@ -16,13 +17,22 @@ export const AccountantLayout = ({ children }) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      padding: "20px", // Padding for content spacing
+    },
+    layout: {
+      flex: 1,
+
+      backgroundColor: "#f0f2f5", // Optional: background color for content area
     },
   };
 
   return (
     <div style={styles.container}>
       <AccountantSidebar />
-      <Content style={styles.content}>{children}</Content>
+      <Layout style={styles.layout}>
+        <AccountantHeader />
+        <Content style={styles.content}>{children}</Content>
+      </Layout>
     </div>
   );
 };
