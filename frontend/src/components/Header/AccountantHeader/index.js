@@ -25,12 +25,15 @@ const AccountantHeader = () => {
   );
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`).then(res => res.json()).then(res => {
-      setUser(res);
-    }).catch(err => {
-      console.log(err);
-    })
-  }, [userId])
+    fetch(`${BASE_SERVER}/users/${userId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userId]);
 
   // Determine the current title based on the path
   const currentTitle = routeLabels[location.pathname] || "Thống Kê Tài Chính";

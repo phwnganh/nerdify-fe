@@ -31,7 +31,7 @@ export const AccountantLayout = ({ children }) => {
       <AccountantSidebar />
       <Layout style={styles.layout}>
         <AccountantHeader />
-        <Content style={styles.content}>{children}</Content>
+        <Content>{children}</Content>
       </Layout>
     </div>
   );
