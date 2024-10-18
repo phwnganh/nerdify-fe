@@ -84,3 +84,13 @@ export const submitExercise = async (params) => {
   const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.SUBMIT_EXERCISE, params);
   return res.data;
 };
+
+export const userGetTransactionDetail = async (transactionId) => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_GET_TRANSACTION + "/" + transactionId);
+  return res.data;
+};
+
+export const finishPayment = async (transactionId, params) => {
+  const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.FINISH_PAYMENT + "/" + transactionId, params);
+  return res.data;
+};
