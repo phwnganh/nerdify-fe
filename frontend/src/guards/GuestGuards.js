@@ -13,7 +13,7 @@ export const GuestGuard = ({ children }) => {
     if (user?.role === ROLES.ADMIN_ROLE) {
       return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
     }
-    return <Navigate to={CLIENT_URI.HOME_PAGE} replace />;
+    return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
   }
 
   return <>{children}</>;

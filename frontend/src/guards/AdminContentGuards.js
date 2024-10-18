@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
 
-export const AdminGuard = ({ children }) => {
+export const AdminContentGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
 
   if (!isInitialized) {
@@ -10,13 +10,12 @@ export const AdminGuard = ({ children }) => {
   }
 
   if (isAuthenticated) {
-    if (user?.role === ROLES.ADMIN_ROLE) {
-      return <>{children}</>;
+    if (user?.role === ROLES.CONTENT_MANAGER_ROLE) {
+      return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
     }
-    return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
   }
 
-  return <Navigate to={CLIENT_URI.LOGIN} replace />;
+  return <>{children}</>;
 };
 
-export default AdminGuard;
+export default AdminContentGuard;

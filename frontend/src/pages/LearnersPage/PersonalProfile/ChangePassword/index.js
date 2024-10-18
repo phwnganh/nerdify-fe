@@ -1,14 +1,30 @@
-import React from "react";
-import { Form, Input } from "antd";
+import React, { useState } from "react";
+import { Form, Input, notification } from "antd";
 import CardCustom from "../../../../components/Card";
 import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
+import { changePassword } from "../../../../services/GuestService";
 
 export default function ChangePassword() {
   const [form] = Form.useForm();
-
-  const handleChangePassword = (values) => {
-    console.log("Change password values:", values);
+  const handleChangePassword = async (values) => {
+    try {
+      const updatedPassword = {
+        oldPassword: values.oldPassword,
+        newPassword: values.newPassword,
+        newConfirmationPassword: values.newConfirmationPassword
+      }
+      console.log('Sending data to backend:', updatedPassword);
+      const res = await changePassword(updatedPassword)
+      notification.success({
+        message: "Cập nhật mật khẩu thành công!",
+        description: "Cập nhật mật khẩu thành công"
+      })
+    } catch (error) {
+      notification.error({
+        message: "Cập nhật mật khẩu thất bại!"
+      })
+    }
     //Send a request to your backend to change the password
   };
 
@@ -18,27 +34,17 @@ export default function ChangePassword() {
       <div style={{ flex: 1, padding: "30px", backgroundColor: "#f0f2f5" }}>
         <CardCustom title="ĐỔI MẬT KHẨU" style={{ backgroundColor: "white" }}>
           <Form form={form} layout="vertical" onFinish={handleChangePassword}>
-            <Form.Item name="currentPassword" label="Mật khẩu hiện tại" rules={[{ required: true, message: "Vui lòng nhập mật khẩu hiện tại!" }]}>
+            <Form.Item name="oldPassword" label="Mật khẩu hiện tại" >
               <Input.Password placeholder="Mật khẩu hiện tại" />
             </Form.Item>
-            <Form.Item name="newPassword" label="Mật khẩu mới" rules={[{ required: true, message: "Vui lòng nhập mật khẩu mới!" }]}>
+            <Form.Item name="newPassword" label="Mật khẩu mới" >
               <Input.Password placeholder="Mật khẩu mới" />
             </Form.Item>
             <Form.Item
-              name="confirmPassword"
+              name="newConfirmationPassword"
               label="Nhập lại mật khẩu mới"
               dependencies={["newPassword"]}
-              rules={[
-                { required: true, message: "Vui lòng nhập lại mật khẩu mới!" },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue("newPassword") === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(new Error("Mật khẩu nhập lại không khớp!"));
-                  },
-                }),
-              ]}
+              
             >
               <Input.Password placeholder="Nhập lại mật khẩu mới" />
             </Form.Item>

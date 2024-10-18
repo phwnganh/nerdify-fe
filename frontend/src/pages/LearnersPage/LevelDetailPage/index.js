@@ -231,7 +231,7 @@ export default function ViewLevelDetail() {
           </ScrollablePhaseDiv>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "center" }}>{renderContent()}</div>
+        <div>{activePhase && <div style={{ marginTop: "16px" }}>{renderContent()}</div>}</div>
       </div>
     </div>
   );

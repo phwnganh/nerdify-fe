@@ -15,6 +15,7 @@ import demo3_1 from "../../../../assets/listeningExercises/3_1.png";
 import demo3_2 from "../../../../assets/listeningExercises/3_2.png";
 import demo3_3 from "../../../../assets/listeningExercises/3_3.png";
 import ButtonCustom from "../../../../components/Button"; // Import custom button component
+import { BASE_SERVER } from "../../../../constants";
 
 export default function ListeningResults() {
   const [exerciseResults, setExerciseResults] = useState(null); // Holds the exercise result data
@@ -50,8 +51,8 @@ export default function ListeningResults() {
   // Fetch exercise submission data
   useEffect(() => {
     const fetchListeningSubmissionData = async () => {
-      const submissionsResponse = await fetch(`http://localhost:9999/listeningExercisesSubmission?id=${submissionId}&userId=1`); // Fetch submission data based on submissionId and userId
-      const exercisesResponse = await fetch(`http://localhost:9999/exercises`); // Fetch all exercises
+      const submissionsResponse = await fetch(`${BASE_SERVER}/listeningExercisesSubmission?id=${submissionId}&userId=1`); // Fetch submission data based on submissionId and userId
+      const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`); // Fetch all exercises
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
       const joinedData = submissions.map((submission) => {

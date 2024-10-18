@@ -11,10 +11,13 @@ const URI_AUTH_SERVICE = {
   RESET_PASSWORD: API_AUTH_PREFIXES.AUTH + "/reset-password",
   VERIFY_EMAIL: API_AUTH_PREFIXES.AUTH + "/verify-email",
   SEND_ACTIVATION: API_AUTH_PREFIXES.AUTH + "/send-activation",
-
+  
   CURRENT_USER: API_AUTH_PREFIXES.AUTH + "/current-user",
   LOGOUT: API_AUTH_PREFIXES.AUTH + "/logout",
   TOKEN: API_AUTH_PREFIXES.AUTH + "/token",
+  VIEW_PROFILE: API_AUTH_PREFIXES.AUTH + "/view-profile",
+  CHANGE_PROFILE: API_AUTH_PREFIXES.AUTH + "/change-profile",
+  CHANGE_PASSWORD: API_AUTH_PREFIXES.AUTH + "/change-password"
 };
 
 export const AUTH_SERVER_URI = {

@@ -4,7 +4,7 @@ import CardCustom from "../../../components/Card";
 import Meta from "antd/es/card/Meta";
 import { TrophyOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "../../../services/GuestService";
 import moment from "moment";
@@ -33,9 +33,9 @@ export default function ViewPersonalProfile() {
   useEffect(() => {
     const fetchReadingSubmissionData = async () => {
       const submissionsResponse = await fetch(
-        "http://localhost:9999/readingExercisesSubmission?userId=1"
+        `${BASE_SERVER}/readingExercisesSubmission?userId=1`
       );
-      const exercisesResponse = await fetch("http://localhost:9999/exercises");
+      const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`);
 
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
@@ -63,9 +63,9 @@ export default function ViewPersonalProfile() {
 
     const fetchListeningSubmissionData = async () => {
       const submissionsResponse = await fetch(
-        "http://localhost:9999/listeningExercisesSubmission?userId=1"
+        `${BASE_SERVER}/listeningExercisesSubmission?userId=1`
       );
-      const exercisesResponse = await fetch("http://localhost:9999/exercises");
+      const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`);
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
       const joinedData = submissions?.map((submission) => {

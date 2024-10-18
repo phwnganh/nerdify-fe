@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Dropdown, List, Row, Modal } from "antd";
+import { Button, Col, Dropdown, List, Row, Modal, Select } from "antd";
 import {
   EditOutlined,
   FileOutlined,
@@ -9,6 +9,8 @@ import {
   FullscreenExitOutlined,
   FullscreenOutlined,
   LeftOutlined,
+  LockOutlined,
+  MinusCircleOutlined,
   RightOutlined,
   ShareAltOutlined,
   SoundOutlined,
@@ -22,8 +24,11 @@ import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import ModalCustom from "../../../../components/Modal";
 import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
+import { BASE_SERVER } from "../../../../constants";
+import { Option } from "antd/es/mentions";
+import { getFlashcardDetail } from "../../../../services/LearnerService";
 
-export default function FlashCardDetail() {
+export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
   const { flashcardId } = useParams();
 
@@ -34,7 +39,25 @@ export default function FlashCardDetail() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [open, setOpen] = useState(false);
   const [numberOfCard, setNumberOfCard] = useState("");
+  const [isVisibleFolderList, setIsVisibleFolderList] = useState(false);
+  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [folders, setFolders] = useState([]);
+  const displayModalToChooseFolders = () => {
+    console.log("Modal is opening");
+    setIsVisibleFolderList(true);
+  };
 
+  const handleOkToChooseFolders = () => {
+    setIsVisibleFolderList(false);
+  };
+
+  const handleCancelToChooseFolders = () => {
+    setIsVisibleFolderList(false);
+  };
+
+  const handleSelectFolder = (key) => {
+    setSelectedFolder(key);
+  };
   const showModal = () => {
     setOpen(true);
   };
@@ -49,11 +72,24 @@ export default function FlashCardDetail() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9999/flashcard/${flashcardId}`)
-      .then((data) => data.json())
-      .then((data) => setFlashcard(data))
-      .catch((err) => console.error(err));
+    if (flashcardId) {
+      getFlashcardDetail(flashcardId)
+        .then((data) => setFlashcard(data.data))
+        .catch((err) => console.error(err));
+    }
   }, [flashcardId]);
+
+  useEffect(() => {
+    fetch(`${BASE_SERVER}/folders`)
+      .then((data) => data.json())
+      .then((data) => {setFolders(data)
+        console.log("folders:" , folders);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const items = [
     {
@@ -140,13 +176,13 @@ export default function FlashCardDetail() {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].terms);
+                  handleSpeak(flashcard?.cards[currentIndex].term);
                 }}
               />
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>{flashcard?.cards[currentIndex].terms}</TextCustom>
+            <TextCustom>{flashcard?.cards[currentIndex].term}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -210,13 +246,13 @@ export default function FlashCardDetail() {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].definitions);
+                  handleSpeak(flashcard?.cards[currentIndex].definition);
                 }}
               />
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>{flashcard?.cards[currentIndex].definitions}</TextCustom>
+            <TextCustom>{flashcard?.cards[currentIndex].definition}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -309,6 +345,30 @@ export default function FlashCardDetail() {
       >
         {renderFlashcardContent(isFlippedModal, setIsFlippedModal)}
       </Modal>
+      <ModalCustom
+        title="Chọn folder có sẵn"
+        visible={isVisibleFolderList}
+        onOk={handleOkToChooseFolders}
+        onCancel={handleCancelToChooseFolders}
+        footer={[
+          <div style={{ marginTop: "20px" }}>
+            <Button key={"cancel"} style={{ marginRight: "20px" }} onClick={handleCancelToChooseFolders}>
+              Hủy
+            </Button>
+            <ButtonCustom buttonType="primary" key="add">
+              Thêm vào folder
+            </ButtonCustom>
+          </div>
+        ]}
+      >
+        <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}>
+          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }}>
+            {folders.map(folder => (
+              <Option key={folder.id}>{folder.name}</Option>
+            ))}
+          </Select>
+        </div>
+      </ModalCustom>
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <TitleCustom level={2}>{flashcard?.title}</TitleCustom>
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
@@ -342,11 +402,26 @@ export default function FlashCardDetail() {
         {/* Render flashcard content */}
         {renderFlashcardContent(isFlippedNormal, setIsFlippedNormal)}
         {/* Button edit and add to folder */}
-        <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-          <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
-          <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
-            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }}></Button>
-          </Dropdown>
+        <Row justify={"space-between"} align={"middle"} style={{ marginTop: "20px" }}>
+          <Col>
+            <div>
+              <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
+            </div>
+            <div>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>líp phì</TextCustom>
+            </div>
+            <div>
+              <TextCustom style={{ fontSize: "12px" }}>Đã tạo 28/09/2024</TextCustom>
+            </div>
+          </Col>
+          <Col>
+            <Button icon={<LockOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
+            <Button icon={<MinusCircleOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
+            <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
+            {/* <Dropdown menu={{ items: folderSelected }} trigger={["click"]}> */}
+            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }} onClick={displayModalToChooseFolders}></Button>
+            {/* </Dropdown> */}
+          </Col>
         </Row>
         {/* List word and definition */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
@@ -363,8 +438,8 @@ export default function FlashCardDetail() {
                       paddingLeft: "10px",
                     }}
                   >
-                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.terms)} />
-                    <span style={{ marginRight: "15px" }}>{item.terms}</span>
+                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.term)} />
+                    <span style={{ marginRight: "15px" }}>{item.term}</span>
                   </Col>
                   <Col
                     style={{
@@ -375,8 +450,8 @@ export default function FlashCardDetail() {
                       alignItems: "center",
                     }}
                   >
-                    <span style={{ marginRight: "10px" }}>{item.definitions}</span>
-                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definitions)} />
+                    <span style={{ marginRight: "10px" }}>{item.definition}</span>
+                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} />
                   </Col>
                 </Row>
               </List.Item>
