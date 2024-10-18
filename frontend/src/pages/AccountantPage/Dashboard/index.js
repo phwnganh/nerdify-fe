@@ -4,60 +4,58 @@ import CustomLineChart from "../../../components/Chart/CustomLineChart";
 import { BellOutlined } from "@ant-design/icons";
 
 const AccountantDashboard = () => {
+  // Dữ liệu thẻ thông tin
   const doanhThu = [
-    {
-      id: 1,
-      title: "Doanh thu tháng này",
-      value: "1,000,000,000 VND",
-      icon: <BellOutlined />,
-    },
-    {
-      id: 2,
-      title: "Doanh thu trong năm",
-      value: "1,000,000,000 VND",
-      icon: <BellOutlined />,
-    },
+    { id: 1, title: "Doanh thu tháng này", value: "1,000,000,000 VND", icon: <BellOutlined /> },
+    { id: 2, title: "Doanh thu trong năm", value: "1,000,000,000 VND", icon: <BellOutlined /> },
   ];
 
   const taiKhoanDangKyGoi = [
-    {
-      id: 1,
-      title: "Tài khoản đăng ký gói 6 tháng",
-      value: "100",
-      icon: <BellOutlined />,
-    },
-    {
-      id: 2,
-      title: "Tài khoản đăng ký gói 12 tháng",
-      value: "100",
-      icon: <BellOutlined />,
-    },
+    { id: 1, title: "Tài khoản đăng ký gói 6 tháng", value: "100", icon: <BellOutlined /> },
+    { id: 2, title: "Tài khoản đăng ký gói 12 tháng", value: "100", icon: <BellOutlined /> },
   ];
 
+  // Dữ liệu biểu đồ
   const dataChart = [
     { month: "Tháng 7", "Gói 6 tháng": 10, "Gói 12 tháng": 5 },
     { month: "Tháng 8", "Gói 6 tháng": 15, "Gói 12 tháng": 7 },
     { month: "Tháng 9", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
-    { month: "Tháng 10", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
-    { month: "Tháng 11", "Gói 6 tháng": 12, "Gói 12 tháng": 5 },
-    { month: "Tháng 12", "Gói 6 tháng": 13, "Gói 12 tháng": 5 },
-    { month: "Tháng 1", "Gói 6 tháng": 11, "Gói 12 tháng": 4 },
   ];
+
   const chartTitle = "Lượng học viên mới đăng ký gói Premium trong tháng";
   const dataKey = [
     { dataKey: "Gói 6 tháng", color: "#fa8c16" },
     { dataKey: "Gói 12 tháng", color: "#722ed1" },
   ];
 
+  // Số liệu mới thêm
+  const hocVienTraPhiThangNay = 20;
+  const tongHocVienTraPhiThang = 200;
+  const tiLeHocVien = (hocVienTraPhiThangNay / tongHocVienTraPhiThang) * 100;
+
   return (
     <div style={{ padding: "20px" }}>
-      {/* User Information */}
+      {/* Thông tin người dùng */}
       <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
         <span style={{ fontWeight: "bold", fontSize: "1rem" }}>Xin chào, Đoàn Thành Chung 🎉</span>
         <span style={{ fontSize: "0.9rem", color: "#666" }}>Tài khoản quyền: Accountant - Ngày tạo: 10/01/2025</span>
       </div>
 
-      {/* Revenue and Subscription Cards */}
+      {/* Thông tin học viên trả phí */}
+      <div style={{ marginTop: "20px", display: "flex", gap: "40px" }}>
+        <div style={{ textAlign: "center" }}>
+          <h2 style={{ margin: 0 }}>
+            {hocVienTraPhiThangNay}/{tongHocVienTraPhiThang}
+          </h2>
+          <p>Học viên trả phí mới tháng này</p>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <h2 style={{ margin: 0 }}>{tiLeHocVien.toFixed(0)}%</h2>
+          <p>Tổng số học viên mới trả phí trong tháng</p>
+        </div>
+      </div>
+
+      {/* Thẻ thông tin */}
       <div style={{ marginTop: "20px" }}>
         <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
           {doanhThu.map((item) => (
@@ -69,7 +67,7 @@ const AccountantDashboard = () => {
         </div>
       </div>
 
-      {/* Charts */}
+      {/* Biểu đồ */}
       <div>
         <CustomLineChart dataChart={dataChart} chartTitle={chartTitle} dataKey={dataKey} />
       </div>

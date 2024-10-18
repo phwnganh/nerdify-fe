@@ -19,12 +19,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 // ====================================================================== |
 
 const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
+  console.log(dataChart);
   return (
     <div
       style={{
         width: "100%",
         // maxWidth: "800px",
-        height: "400px",
+        height: "auto",
         margin: "40px auto",
         padding: "20px",
         backgroundColor: "#fff",
@@ -36,6 +37,16 @@ const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
       <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
         <h3>{chartTitle}</h3>
       </div>
+
+      {/* More information part */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "5px",
+          marginBottom: "20px",
+        }}
+      ></div>
       {/* chart */}
       <ResponsiveContainer width="100%" height="80%">
         <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
