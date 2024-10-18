@@ -47,20 +47,10 @@ export default function ReadingExercises({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [exerciseResults, setExerciseResults] = useState({});
-  // const [exercises, setExercises] = useState(null);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [userScore, setUserScore] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
-  // useEffect(() => {
-  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data && data.length > 0) {
-  //         setExercises(data[0]);
-  //       }
-  //     })
-  //     .catch((err) => console.error("error", err));
-  // }, [exerciseType, exerciseId]);
+
 
   const handleSelectOptions = useCallback((questionId, optionId) => {
     setUserAnswers((prev) => ({
@@ -79,9 +69,10 @@ export default function ReadingExercises({ exercises }) {
 
   //function hien thi cau hoi va ket qua sau khi nop bai
   const renderPart = (currentPart) => {
+    console.log("currentPart: ", currentPart);
     return (
       <>
-        {currentPart?.questionParagraph && (
+        {currentPart?.paragraph && (
           <div
             style={{
               display: "flex",
@@ -99,7 +90,7 @@ export default function ReadingExercises({ exercises }) {
                 width: "fit-content",
               }}
             >
-              {currentPart?.questionParagraph.split("\n").map((line, index) => (
+              {currentPart?.paragraph.split("\n").map((line, index) => (
                 <React.Fragment key={index}>
                   {line}
                   <br />
@@ -108,95 +99,64 @@ export default function ReadingExercises({ exercises }) {
             </div>
           </div>
         )}
-        {currentPart.questions.map((question) => (
-          <div key={question.id} style={{ marginBottom: "30px" }}>
+        {currentPart.questions.map((question, index) => (
+          <div key={index + 1} style={{ marginBottom: "30px" }}>
             {/* Display the question label */}
             <TextCustom style={{ fontWeight: "bold", marginBottom: "10px" }}>
-              Câu {question.id}: {question.question}
+              Câu {index + 1}: {question.question}
             </TextCustom>
 
-            {/* Display images if present */}
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
-              {Array.isArray(question.questionImage) && question.questionImage.length > 0 ? (
-                question.questionImage.map((image, index) => {
-                  const option = question.options[index];
-                  const userSelected = userAnswers[question.id] === option?.id;
-                  const correctAnswer = question?.answer;
-                  const isCorrect = option?.id === correctAnswer;
-                  const isUserSelectedWrong = userSelected && !isCorrect;
 
-                  // Determine button background color based on user selection and correctness
-                  let backgroundColor = userSelected ? "#A8703E" : "";
-                  if (isCompleted) {
-                    if (isCorrect) {
-                      backgroundColor = "#5FD855";
-                    } else if (isUserSelectedWrong) {
-                      backgroundColor = "red";
-                    }
+            {/* Render Images */}
+            {Array.isArray(question.questionImage) && question.questionImage.length > 0 && (
+              <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
+                {question.questionImage.map((image, index) => (
+                  <img
+                    key={index}
+                    src={imgReadingArr[image]}
+                    style={{ padding: '10px 0px' }}
+                    alt={`question-part-${index}`}
+                  />
+                ))}
+              </div>
+            )}
+
+
+            {/* Render Options */}
+            <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
+              {question.options.map((option, index) => {
+                const userSelected = userAnswers[question._id] === option._id;
+                const correctAnswer = question?.answers[0]?.answerOption;
+                const isCorrect = option._id === correctAnswer;
+                const isUserSelectedWrong = userSelected && !isCorrect;
+
+                // Determine button background color based on user selection and correctness
+                let backgroundColor = userSelected ? "#A8703E" : "";
+                if (isCompleted) {
+                  if (isCorrect) {
+                    backgroundColor = "#5FD855";
+                  } else if (isUserSelectedWrong) {
+                    backgroundColor = "red";
                   }
+                }
 
-                  return (
-                    <div
-                      key={index}
-                      style={{
-                        textAlign: "center",
-                        margin: "10px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
+                return (
+                  <div>
+                    <ButtonCustom
+                      key={`button-no-image-${index}`}
+                      buttonType="primary"
+                      onClick={() => handleSelectOptions(question._id, option._id)}
+                      style={{ marginTop: "10px", width: "200px", backgroundColor }}
+                      disabled={isCompleted}
                     >
-                      <img src={imgReadingArr[image]} style={{ padding: "10px" }} alt="question-part" />
-                      {/* Display answer button below the image */}
-                      <ButtonCustom
-                        key={`button-${index}`}
-                        buttonType="primary"
-                        onClick={() => handleSelectOptions(question.id, option?.id)}
-                        style={{ marginTop: "10px", backgroundColor }}
-                        disabled={isCompleted}
-                      >
-                        {option?.text}
-                      </ButtonCustom>
-                    </div>
-                  );
-                })
-              ) : (
-                // If no image is present, render answer buttons in a row layout
-                <div style={{ display: "flex", justifyContent: "center", margin: "10px" }}>
-                  {question.options.map((option, index) => {
-                    const userSelected = userAnswers[question.id] === option.id;
-                    const correctAnswer = question?.answer;
-                    const isCorrect = option.id === correctAnswer;
-                    const isUserSelectedWrong = userSelected && !isCorrect;
-
-                    // Determine button background color based on user selection and correctness
-                    let backgroundColor = userSelected ? "#A8703E" : "";
-                    if (isCompleted) {
-                      if (isCorrect) {
-                        backgroundColor = "#5FD855";
-                      } else if (isUserSelectedWrong) {
-                        backgroundColor = "red";
-                      }
-                    }
-
-                    return (
-                      <div>
-                        <ButtonCustom
-                          key={`button-no-image-${index}`}
-                          buttonType="primary"
-                          onClick={() => handleSelectOptions(question.id, option.id)}
-                          style={{ marginTop: "10px", width: "200px", marginRight: "180px", backgroundColor }}
-                          disabled={isCompleted}
-                        >
-                          {option.text}
-                        </ButtonCustom>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+                      {option.text}
+                    </ButtonCustom>
+                  </div>
+                );
+              })}
             </div>
+
+
 
             {/* Show detailed answers after submission */}
             {isCompleted && (
@@ -354,7 +314,7 @@ export default function ReadingExercises({ exercises }) {
               <ButtonCustom
                 buttonType="secondary"
                 style={{ padding: "23px", marginLeft: "30px" }}
-                // onClick={handleNextExercise}
+              // onClick={handleNextExercise}
               >
                 Chuyển sang bài tập tiếp theo
               </ButtonCustom>

@@ -42,10 +42,7 @@ const vocabImg = {
 };
 
 export default function VocabularyExercises({ exercises }) {
-  const { exerciseId, exerciseType } = useParams();
-
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  // const [exercises, setExercises] = useState(null);
   // part 1: matching
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [selectedMatches, setSelectedMatches] = useState([]);
@@ -62,18 +59,6 @@ export default function VocabularyExercises({ exercises }) {
   const [inputValuePart3, setInputValuePart3] = useState({});
   const [userScore, setUserScore] = useState(-1);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-
-  // useEffect(() => {
-  //   fetch(
-  //     `http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       if (res && res.length > 0) {
-  //         setExercises(res[0]);
-  //       }
-  //     });
-  // }, [exerciseId, exerciseType]);
 
   const shuffleArray = (array) => {
     return array
@@ -324,7 +309,7 @@ export default function VocabularyExercises({ exercises }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -379,8 +364,8 @@ export default function VocabularyExercises({ exercises }) {
     const resultMatchQuestions = [];
 
     Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
-      const questionText = questions.find((q) => q.id === parseInt(questionId))?.question;
-      const matchQuestionText = questions.find((m) => m.id === parseInt(matchQuestionId))?.matchedQuestion;
+      const questionText = questions.find((q) => q._id === questionId)?.question;
+      const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.matchedQuestion;
 
       resultQuestion.push({ id: questionId, question: questionText });
       resultMatchQuestions.push({
@@ -407,23 +392,23 @@ export default function VocabularyExercises({ exercises }) {
             >
               <Col span={8}>
                 <Radio.Group onChange={onChangeQues}>
-                  {shuffleQuestions.map((ques) => (
-                    <Row key={ques.id} align="middle">
+                  {shuffleQuestions.map((ques, index) => (
+                    <Row key={index} align="middle">
                       <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
                         <Radio.Button
-                          value={ques.id}
+                          value={ques._id}
                           style={{
-                            backgroundColor: availablePairs.question === ques.id ? "#A8703E" : "#ffa751",
+                            backgroundColor: availablePairs.question === ques._id ? "#A8703E" : "#ffa751",
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
-                            pointerEvents: userScore > -1 ? "none" : selectedQuestions.includes(ques.id) ? "none" : "auto",
-                            opacity: userScore > -1 ? 0.5 : selectedQuestions.includes(ques.id) ? 0.5 : 1,
+                            pointerEvents: userScore > -1 ? "none" : selectedQuestions.includes(ques._id) ? "none" : "auto",
+                            opacity: userScore > -1 ? 0.5 : selectedQuestions.includes(ques._id) ? 0.5 : 1,
                           }}
                           onClick={() =>
                             handlePairSelectionPart1({
-                              question: ques.id,
-                              matchQuestion: selectedPairsPart1[ques.id] || "",
+                              question: ques._id,
+                              matchQuestion: selectedPairsPart1[ques._id] || "",
                             })
                           }
                         >
@@ -444,23 +429,23 @@ export default function VocabularyExercises({ exercises }) {
               </Col>
               <Col span={8}>
                 <Radio.Group onChange={onChangeMatchQues}>
-                  {shuffledMatchedQuestions.map((matchQues) => (
-                    <Row key={matchQues.id} align="middle">
+                  {shuffledMatchedQuestions.map((matchQues, index) => (
+                    <Row key={index} align="middle">
                       <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
                         <Radio.Button
-                          value={matchQues.id}
+                          value={matchQues._id}
                           style={{
-                            backgroundColor: availablePairs.matchQuestion === matchQues.id ? "#A8703E" : "#ffa751",
+                            backgroundColor: availablePairs.matchQuestion === matchQues._id ? "#A8703E" : "#ffa751",
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
-                            pointerEvents: userScore > -1 ? "none" : selectedMatches.includes(matchQues.id) ? "none" : "auto",
-                            opacity: userScore > -1 ? 0.5 : selectedMatches.includes(matchQues.id) ? 0.5 : 1,
+                            pointerEvents: userScore > -1 ? "none" : selectedMatches.includes(matchQues._id) ? "none" : "auto",
+                            opacity: userScore > -1 ? 0.5 : selectedMatches.includes(matchQues._id) ? 0.5 : 1,
                           }}
                           onClick={() =>
                             handlePairSelectionPart1({
                               question: availablePairs.question,
-                              matchQuestion: matchQues.id,
+                              matchQuestion: matchQues._id,
                             })
                           }
                         >
@@ -487,8 +472,8 @@ export default function VocabularyExercises({ exercises }) {
             <div style={{ marginTop: "30px" }}>
               <TitleCustom level={4}>Selected Pairs:</TitleCustom>
               {Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
-                const questionText = questions.find((q) => q.id === parseInt(questionId))?.question;
-                const matchQuestionText = questions.find((m) => m.id === parseInt(matchQuestionId))?.matchedQuestion;
+                const questionText = questions.find((q) => q._id === questionId)?.question;
+                const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.matchedQuestion;
 
                 return (
                   <Row
@@ -524,11 +509,11 @@ export default function VocabularyExercises({ exercises }) {
             >
               <Col span={8}>
                 <Radio.Group>
-                  {resultQuestionPart1.map((ques) => (
-                    <Row key={ques.id} align="middle">
+                  {resultQuestionPart1.map((ques, index) => (
+                    <Row key={index} align="middle">
                       <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
                         <Radio.Button
-                          value={ques.id}
+                          value={ques._id}
                           style={{
                             backgroundColor: "#ff855d",
                             borderRadius: "100px",
@@ -554,11 +539,11 @@ export default function VocabularyExercises({ exercises }) {
               </Col>
               <Col span={8}>
                 <Radio.Group>
-                  {resultMatchQuestionPart1.map((matchQues) => (
-                    <Row key={matchQues.id} align="middle">
+                  {resultMatchQuestionPart1.map((matchQues, index) => (
+                    <Row key={index} align="middle">
                       <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
                         <Radio.Button
-                          value={matchQues.id}
+                          value={matchQues._id}
                           style={{
                             backgroundColor: "#ff855d",
                             borderRadius: "100px",
@@ -585,7 +570,7 @@ export default function VocabularyExercises({ exercises }) {
 
               <Col span={4}>
                 {Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
-                  const questionText = questions.find((q) => q.id === parseInt(questionId))?.question;
+                  const questionText = questions.find((q) => q._id === questionId)?.question;
 
                   return (
                     <Row
@@ -617,7 +602,7 @@ export default function VocabularyExercises({ exercises }) {
                             >
                               Đáp án:
                               <br />
-                              {questionText} - {questions.find((m) => m.id === parseInt(questionId))?.matchedQuestion}
+                              {questionText} - {questions.find((m) => m._id === questionId)?.matchedQuestion}
                             </p>
                           )
                         ) : (
@@ -636,13 +621,14 @@ export default function VocabularyExercises({ exercises }) {
   };
 
   const renderPart2 = (exercise) => {
+
     return (
       <div>
-        {exercise.questions.map((question) => {
+        {exercise.questions.map((question, index) => {
           return (
             <>
               <Row
-                key={question.id}
+                key={index}
                 gutter={[16, 16]}
                 style={{
                   paddingTop: "25px",
@@ -652,39 +638,35 @@ export default function VocabularyExercises({ exercises }) {
               >
                 <Col span={24} style={{ paddingBottom: "24px" }}>
                   <TextCustom style={{ fontWeight: "bold" }}>
-                    Câu {question.id}: {question.question}
+                    Câu {index + 1}: {question.question}
                   </TextCustom>
                   <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-                    {question.options.map((option) => {
+                    {question.options.map((option, index) => {
                       return (
-                        <Col span={8} key={option.id} style={{ textAlign: "center" }}>
+                        <Col span={8} key={index} style={{ textAlign: "center" }}>
                           <ButtonCustom
                             buttonType="primary"
                             style={{
                               backgroundColor:
                                 userScore > -1
-                                  ? selectedAnswersPart2[question.id] === question.answer && option.id === question.answer
+                                  ? selectedAnswersPart2[question._id] === question.answers[0].answerOption && option._id === question.answers[0].answerOption
                                     ? "rgb(95, 216, 85)"
-                                    : selectedAnswersPart2[question.id] === option.id
-                                    ? "red"
-                                    : option.id === question.answer
-                                    ? "rgb(95, 216, 85)"
-                                    : ""
-                                  : selectedAnswersPart2[question.id] === option.id
-                                  ? "#A8703E"
-                                  : "",
+                                    : selectedAnswersPart2[question._id] === option._id
+                                      ? "red"
+                                      : option._id === question.answers[0].answerOption
+                                        ? "rgb(95, 216, 85)"
+                                        : ""
+                                  : selectedAnswersPart2[question._id] === option._id
+                                    ? "#A8703E"
+                                    : "",
                               pointerEvents: userScore > -1 ? "none" : "auto",
                             }}
-                            onClick={() => handleSelectAnswersPart2(question.id, option.id)}
+                            onClick={() => handleSelectAnswersPart2(question._id, option._id)}
                           >
-                            {option.id}
+                            {option.text}
                           </ButtonCustom>
-                          {option.optionImage && <img src={vocabImg[option.optionImage]} alt={`Option ${option.id}`} style={{ width: "50%" }} />}
-                          {option.text && (
-                            <div>
-                              <TextCustom>{option.text}</TextCustom>
-                            </div>
-                          )}
+                          {option.optionImage && <img src={vocabImg[option.optionImage]} alt={`Option ${index + 1}`} style={{ width: "50%" }} />}
+
                         </Col>
                       );
                     })}
@@ -694,11 +676,11 @@ export default function VocabularyExercises({ exercises }) {
 
               {userScore > -1 && (
                 <Row style={{ display: "flex", alignItems: "center" }}>
-                  <ButtonCustom buttonType="primary" onClick={() => toggleButtonAnswerDetail(question.id)} style={{ marginRight: "12px" }}>
+                  <ButtonCustom buttonType="primary" onClick={() => toggleButtonAnswerDetail(question._id)} style={{ marginRight: "12px" }}>
                     Đáp án chi tiết
                   </ButtonCustom>
                   <div>
-                    {toggleAnswerDetail[question.id] && (
+                    {toggleAnswerDetail[question._id] && (
                       <TextCustom
                         style={{
                           color: "blue",
@@ -707,7 +689,7 @@ export default function VocabularyExercises({ exercises }) {
                           flex: 1,
                         }}
                       >
-                        {question.answer}
+                        {question.answers[0].explanation}
                       </TextCustom>
                     )}
                   </div>
@@ -722,26 +704,31 @@ export default function VocabularyExercises({ exercises }) {
 
   const renderPart3 = (part) => {
     const { questions } = part;
-
+    console.log("questions", questions);
+    console.log(inputValuePart3);
     return (
       <div style={{ marginLeft: "80px", marginRight: "80px" }}>
         <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
           <Col span={24}>
             <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-              {questions.map((question) => {
+              {questions.map((question, index) => {
                 return (
-                  <Col span={6} key={question.id} style={{ paddingBottom: "24px" }}>
+                  <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
                     <InputCustom
                       //if first question => value = answer and disabled
-                      value={question.id === 1 ? question.answer : inputValuePart3[question.id]}
-                      onChange={(e) => handleInputChangePart3(question.id, e.target.value)}
+                      value={index === 0 ? question.matchedQuestion
+                        : inputValuePart3[question._id]}
+                      onChange={(e) => handleInputChangePart3(question._id, e.target.value)}
                       style={{
-                        borderColor: question.id === 1 || (userScore > -1 ? (inputValuePart3[question.id]?.toLowerCase() === question.answer.toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
+                        borderColor: index === 0 || (userScore > -1 ? (inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
+                          .toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
                       }}
-                      disabled={userScore > -1 || question.id === 1}
+                      disabled={userScore > -1 || index === 0}
                     />
                     {userScore > -1 && (
-                      <TextCustom style={{ color: "red" }}>{question.id === 1 || inputValuePart3[question.id]?.toLowerCase() === question.answer.toLowerCase() ? "" : question.answer}</TextCustom>
+                      <TextCustom style={{ color: "red" }}>{index === 0 || inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
+                        .toLowerCase() ? "" : question.matchedQuestion
+                      }</TextCustom>
                     )}
                   </Col>
                 );
