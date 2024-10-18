@@ -64,3 +64,8 @@ export const updateFlashcardStatus = async (params) => {
   const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS, params);
   return res.data;
 };
+
+export const submitExercise = async (params) => {
+  const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.SUBMIT_EXERCISE, params);
+  return res.data;
+};

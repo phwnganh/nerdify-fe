@@ -15,6 +15,7 @@ import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
 import { CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
+import { getPhaseDetail } from "../../../services/LearnerService";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
   const [exam, setExam] = useState([]);
@@ -38,12 +39,17 @@ export default function FinalExam() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:9999/finalexam/${examId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setExam(res);
-      })
-      .catch((err) => console.log("error", err));
+    //   if ( phaseId ) {
+    //   getPhaseDetail(phaseId).then((resp) => {
+    //     setExam(resp.data);
+    //   })
+    // }
+    // fetch(`http://localhost:9999/finalexam/${examId}`)
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     setExam(res);
+    //   })
+    //   .catch((err) => console.log("error", err));
   }, []);
 
   useEffect(() => {
