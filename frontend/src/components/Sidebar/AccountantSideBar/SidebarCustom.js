@@ -16,6 +16,9 @@ const CustomSider = styled(Sider)`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-color: white !important;
+  color: black;
+  box-shadow: none;
 `;
 
 const LogoContainer = styled.div`
@@ -65,11 +68,6 @@ export default function SidebarCustom({ menuItems = [] }) {
   }, [userId]);
 
   const handleLogout = async () => {
-    // logout().then(() => {
-    //   signout();
-    //   window.location.reload();
-    // });
-    // await signout();
     clearStorage();
     window.location.reload();
   };
@@ -119,7 +117,7 @@ export default function SidebarCustom({ menuItems = [] }) {
 
       <CustomMenu theme="light" selectedKeys={[selectedKey]} onClick={handleMenuClick} mode="inline" items={menuItemsList} />
 
-      <FooterSection>
+      {/* <FooterSection>
         <UserInfoContainer>
           <Avatar size={64} src="https://via.placeholder.com/64" />
           <div style={{ marginTop: 10 }}>
@@ -128,7 +126,7 @@ export default function SidebarCustom({ menuItems = [] }) {
             <Text type="secondary">{user?.email}</Text>
           </div>
         </UserInfoContainer>
-      </FooterSection>
+      </FooterSection> */}
     </CustomSider>
   );
 }

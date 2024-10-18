@@ -13,11 +13,7 @@ const menuItemsForAccountantContent = [
 
 // Accountant Sidebar Component
 const AccountantSidebar = () => {
-  return (
-    <div>
-      <SidebarCustom menuItems={menuItemsForAccountantContent} />
-    </div>
-  );
+  return <SidebarCustom menuItems={menuItemsForAccountantContent} />;
 };
 
 export default AccountantSidebar;

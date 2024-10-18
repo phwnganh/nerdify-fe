@@ -8,7 +8,7 @@ export const AccountantGuard = ({ children }) => {
   // console.log("userInfo", userInfo);
 
   if (userInfo) {
-    if (userInfo?.role === "accountant") {
+    if (userInfo?.role === ROLES.ACCOUNTANT_ROLE) {
       return <>{children}</>;
     }
     return <Navigate to={CLIENT_URI.ACCOUNTANT_DASHBOARD} replace />;
