@@ -15,6 +15,7 @@ import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
 import { BASE_SERVER, CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
+import { getPhaseDetail } from "../../../services/LearnerService";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
   const [exam, setExam] = useState([]);

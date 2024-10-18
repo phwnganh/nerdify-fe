@@ -10,7 +10,6 @@ import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { PART_TYPE } from "../../../../constants";
 
 export default function WritingExercises({ exercises }) {
-  // const [exercise, setExercise] = useState(null);
   const { exerciseType, exerciseId } = useParams();
   const [userAnswers, setUserAnswers] = useState({});
   const [answerStatus, setAnswerStatus] = useState({});
@@ -18,17 +17,6 @@ export default function WritingExercises({ exercises }) {
   const [userScore, setUserScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data && data.length > 0) {
-  //         setExercise(data[0]);
-  //       }
-  //     })
-  //     .catch((err) => console.error("error", err));
-  // }, [exerciseType, exerciseId]);
 
   if (!exercises?.parts) {
     return <div>Loading...</div>;

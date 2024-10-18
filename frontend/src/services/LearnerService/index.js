@@ -65,17 +65,22 @@ export const updateFlashcardStatus = async (params) => {
   return res.data;
 };
 
-export const getPackageList = async() => {
+export const getPackageList = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
   return res.data;
-}
+};
 
-export const createPayment = async(params) => {
+export const createPayment = async (params) => {
   const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.CREATE_PAYMENT, params);
   return res.data;
-}
+};
 
-export const getPackageDetail = async(packageId) => {
+export const getPackageDetail = async (packageId) => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE + "/" + packageId);
   return res.data;
-}
+};
+
+export const submitExercise = async (params) => {
+  const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.SUBMIT_EXERCISE, params);
+  return res.data;
+};
