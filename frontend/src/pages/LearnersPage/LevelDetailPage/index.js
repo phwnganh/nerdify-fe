@@ -84,7 +84,6 @@ export default function ViewLevelDetail() {
     if(activePhase === "Final Exam" && courseId){
       getFinalExamDetailByCourseId(courseId).then(res => {
         console.log("final exam detail: ", res.data[0]);
-        <FinalExam exams={finalExamDetail}/>
         setFinalExamDetail(res.data[0]);
       }).catch(err => {
         console.error("Error fetching final exam details", err);
@@ -119,7 +118,9 @@ export default function ViewLevelDetail() {
     if (!selectedPhase) return null;
 
     if (selectedPhase.title === "Final Exam") {
-      const examId = finalExamDetail?.[0]?._id;
+      const examId = finalExamDetail?.exercises[0]?._id;
+      console.log("examId: ", examId);
+      
       return (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <CardCustom

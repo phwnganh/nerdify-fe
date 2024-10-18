@@ -20,8 +20,8 @@ export const getPhaseList = async () => {
   return res.data;
 };
 
-export const getPhaseDetail = async () => {
-  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASE_DETAIL);
+export const getPhaseDetail = async (phaseId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES + "/" + phaseId);
   return res.data;
 };
 
