@@ -5,6 +5,8 @@ import { CLIENT_URI, ROLES } from "../constants";
 export const LearnerGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
 
+  console.log("user info: ", user);
+  
   if (!isInitialized) {
     return <>loading...</>;
   }

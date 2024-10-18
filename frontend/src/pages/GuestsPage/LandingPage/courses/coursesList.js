@@ -2,6 +2,7 @@ import { List } from "antd";
 import { Course } from "./course";
 import { useEffect, useState } from "react";
 import { getCourseLevelList, getLevelDetail } from "../../../../services/LearnerService";
+import { BASE_SERVER } from "../../../../constants";
 
 export const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -20,7 +21,7 @@ export const Courses = () => {
   //   fetchCourseLevel();
   // }, []);
   useEffect(() => {
-    fetch("http://localhost:9999/levels")
+    fetch(`${BASE_SERVER}/levels`)
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
