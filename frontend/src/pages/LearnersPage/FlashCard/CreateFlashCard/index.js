@@ -18,7 +18,7 @@ export default function CreateFlashCard() {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = (values) => {
     // fetch(`${BASE_SERVER}/flashcard`, {
     //   method: "POST",
     //   headers: {
@@ -26,17 +26,44 @@ export default function CreateFlashCard() {
     //   },
     //   body: JSON.stringify(form.getFieldsValue()),
     // })
-    createNewFlashcard()
-      .then((response) => {})
+    //   .then((response) => {
+    //     response.json();
+    //     messageApi.open({
+    //       type: "success",
+    //       content: "Tạo flash card thành công",
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     messageApi.open({
+    //       type: "error",
+    //       content: "Tạo flash card thất bại",
+    //     });
+    //   })
+    //   .then(() => {
+    //     console.log("duoc roi");
+    //   });
+
+    const { title, description, cards, level } = values;
+
+    const formattedCards = cards.map((card) => ({
+      term: card.terms,
+      definition: card.definitions,
+    }));
+
+    const data = {
+      title,
+      description,
+      cards: formattedCards,
+      level,
+      isPublic: true,
+    };
+    createNewFlashcard(data)
+      .then((res) => messageApi.success("Tạo flash card thành công"))
       .catch((err) => {
-        console.log(err);
-        messageApi.open({
-          type: "error",
-          content: "Tạo flash card thất bại",
-        });
-      })
-      .then(() => {
-        console.log("duoc roi");
+        const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
+        messageApi.error(errorMessage);
+        console.error("Error:", err);
       });
   };
 
