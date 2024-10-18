@@ -5,7 +5,7 @@ import STORAGE, { getStorage } from "../library/storage";
 
 export const AccountantGuard = ({ children }) => {
   const userInfo = getStorage(STORAGE.USER_INFO);
-  console.log("userInfo", userInfo);
+  // console.log("userInfo", userInfo);
 
   if (userInfo) {
     if (userInfo?.role === "accountant") {
