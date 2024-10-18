@@ -132,7 +132,7 @@ export const routes = [
       },
       {
         path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
-        element: <FinalExam />,
+        element: <FinalExam/>,
       },
       {
         path: CLIENT_URI.FLASH_CARD,

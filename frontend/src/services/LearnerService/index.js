@@ -10,6 +10,11 @@ export const getLevelDetail = async (courseId) => {
   return res.data;
 };
 
+export const getFinalExamDetailByCourseId = async (courseId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES + "/" + courseId + "/final-exam");
+  return res.data;
+}
+
 export const getPhaseList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES);
   return res.data;
@@ -19,6 +24,8 @@ export const getPhaseDetail = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASE_DETAIL);
   return res.data;
 };
+
+
 
 export const getExerciseList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.EXERCISE);

@@ -21,10 +21,9 @@ export const Courses = () => {
   //   fetchCourseLevel();
   // }, []);
   useEffect(() => {
-    fetch(`${BASE_SERVER}/levels`)
-      .then((res) => res.json())
+    getCourseLevelList()
       .then((data) => {
-        setCourses(data);
+        setCourses(data.data);
       })
       .catch((err) => console.error("error", err));
   }, []);
