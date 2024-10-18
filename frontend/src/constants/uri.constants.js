@@ -6,6 +6,7 @@ export const CLIENT_URI = {
   FORGOT_PASSWORD: "/forgot-password",
   VERIFY_EMAIL: "/verify-email/:emailToken",
   RESET_PASSWORD: "/reset-password/:resetToken",
+  BLOG_STUDY: "/blog-study",
   // LEARNER
   COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
@@ -22,11 +23,13 @@ export const CLIENT_URI = {
   TROPHY: "/trophy",
   PREMIUM: "/premium",
   BILLINFO: "/bill-info",
+  CONFIRM_PAYMENT: "/confirm-payment",
   LEARNING_PROGRESS: "/learning-progress",
   MANAGE_FOLDER: "/manage-folder",
   MANAGE_FLASHCARD: "/manage-flashcard",
   CHANGE_PASSWORD: "/change-password",
-  BLOG_STUDY: '/blog-study',
   // ADMIN
   DASHBOARD: "/dashboard",
+  // ADMIN CONTENT
+  TABLE_EXERCISE:"/exercise"
 };

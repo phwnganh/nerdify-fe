@@ -51,3 +51,18 @@ export const getCurrentUser = async () => {
   const res = await client.get(AUTH_SERVER_URI.AUTH_SERVICE.CURRENT_USER);
   return res.data;
 };
+
+export const viewUserProfile = async() => {
+  const res = await client.get(AUTH_SERVER_URI.AUTH_SERVICE.VIEW_PROFILE);
+  return res.data;
+}
+
+export const changeUserProfile = async(params) => {
+  const res = await client.put(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PROFILE, params);
+  return res.data;
+}
+
+export const changePassword = async (params) => {
+  const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PASSWORD, params);
+  return res.data;
+}

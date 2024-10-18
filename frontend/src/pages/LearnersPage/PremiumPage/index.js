@@ -4,9 +4,10 @@ import ButtonCustom from "../../../components/Button";
 import { AudioOutlined, BookOutlined, EditOutlined, ReadOutlined } from "@ant-design/icons";
 import CardCustom from "../../../components/Card";
 import { useNavigate } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import moment from "moment";
+import { createPayment, getPackageDetail, getPackageList } from "../../../services/LearnerService";
 
 const { Content } = Layout;
 
@@ -15,36 +16,43 @@ export const PremiumPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:9999/package")
-      .then((res) => res.json())
-      .then((data) => setPackages(data));
+    getPackageList()
+      .then((data) => setPackages(data.data));
   }, []);
 
   // Tạo hàm handleRedirectToBill với useCallback để không bị tạo lại mỗi khi render
-  const handleRedirectToBill = useCallback((packageId, duration) => {
-    const startDate = moment().format("DD/MM/YYYY");
-    const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
-    const newTransaction = {
-      packageId,
-      startDate,
-      endDate,
-      discount: 0.15
-    };
+  const handleRedirectToBill = useCallback(async (packageId) => {
+    // const startDate = moment().format("DD/MM/YYYY");
+    // const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
+    // const packageDetail = await getPackageDetail(packageId);
+    // const newTransaction = {
+    //   packageId: packageDetail._id,
+    //   discount: 0
+    //   // discount
+    // };
 
-    fetch(`http://localhost:9999/transaction`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newTransaction)
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // const learnerTransaction = await createPayment(newTransaction);
+    // navigate(`${CLIENT_URI.BILLINFO}/transaction`)
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+    try {
+      // Fetch package details using the packageId
+      const packageDetails = await getPackageDetail(packageId);
+      
+      const newTransaction = {
+        packageId: packageDetails._id, // Pass the correct packageId from the fetched package
+        discount: 0 // You can adjust this value based on user input or offer
+      };
+  
+      // Create a new payment and get the transaction response
+      const transaction = await createPayment(newTransaction);
+  
+      // Navigate to the bill info page using the returned transaction ID
+      navigate(`${CLIENT_URI.BILLINFO}/${transaction?.data?._id}`);
+    } catch (err) {
+      console.error(err);
+    }
   }, [navigate]);
 
   return (
@@ -104,7 +112,7 @@ export const PremiumPage = () => {
                     type="primary"
                     style={{ marginTop: "16px" }}
                     block
-                    onClick={() => handleRedirectToBill(pack.id, pack.duration)}
+                    onClick={() => handleRedirectToBill(pack._id)}
                   >
                     Chọn ngay
                   </ButtonCustom>

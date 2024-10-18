@@ -1,5 +1,5 @@
 import client from "../client";
-import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI } from "./url";
+import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
 export const getCourseLevelList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL);
   return res.data;
@@ -35,13 +35,13 @@ export const getFlashcardList = async () => {
   return res.data;
 };
 
-export const getFlashcardDetail = async () => {
-  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD_DETAIL);
+export const getFlashcardDetail = async (flashcardId) => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId);
   return res.data;
 };
 
-export const createNewFlashcard = async () => {
-  const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD);
+export const createNewFlashcard = async (params) => {
+  const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD, params);
   return res.data;
 };
 
@@ -62,6 +62,21 @@ export const addFlashcardToFolder = async () => {
 
 export const updateFlashcardStatus = async (params) => {
   const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS, params);
+  return res.data;
+};
+
+export const getPackageList = async () => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
+  return res.data;
+};
+
+export const createPayment = async (params) => {
+  const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.CREATE_PAYMENT, params);
+  return res.data;
+};
+
+export const getPackageDetail = async (packageId) => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE + "/" + packageId);
   return res.data;
 };
 

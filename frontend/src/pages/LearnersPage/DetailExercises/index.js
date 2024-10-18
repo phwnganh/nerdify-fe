@@ -7,6 +7,7 @@ import VocabularyExercises from "./VocabularyExercises";
 import GrammarExercises from "./GrammarExercises";
 import CheckpointQuiz from "./CheckpointQuiz";
 import { getExerciseDetail } from "../../../services/LearnerService";
+import { EXERCISE_TYPE } from "../../../constants";
 
 export default function ExerciseDetail() {
   const { exerciseType, exerciseId } = useParams();
@@ -42,17 +43,17 @@ export default function ExerciseDetail() {
       return <div>No exercise data available</div>;
     }
     switch (exerciseType) {
-      case "listening":
+      case EXERCISE_TYPE.LISTENING:
         return <ListeningExercise exercises={exerciseData} />;
-      case "reading":
+      case EXERCISE_TYPE.READING:
         return <ReadingExercises exercises={exerciseData} />;
-      case "writing":
-        return <WritingExercises exercises={exerciseData} />;
-      case "vocabulary":
+      case EXERCISE_TYPE.WRITING:
+        return <WritingExercises exercise={exerciseData} />;
+      case EXERCISE_TYPE.VOCABULARY:
         return <VocabularyExercises exercises={exerciseData} />;
-      case "grammar":
+      case EXERCISE_TYPE.GRAMMAR:
         return <GrammarExercises exercises={exerciseData} />;
-      case "quiz":
+      case EXERCISE_TYPE.QUIZ:
         return <CheckpointQuiz exercises={exerciseData} />;
       default:
         return <div>Unknown exercise type</div>;

@@ -13,7 +13,7 @@ import demo_2_3 from "../../../assets/vocabExercises/2_3.png";
 
 import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
-import { CLIENT_URI, PART_TYPE } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPhaseDetail } from "../../../services/LearnerService";
 export default function FinalExam() {
@@ -39,17 +39,12 @@ export default function FinalExam() {
   };
 
   useEffect(() => {
-    //   if ( phaseId ) {
-    //   getPhaseDetail(phaseId).then((resp) => {
-    //     setExam(resp.data);
-    //   })
-    // }
-    // fetch(`http://localhost:9999/finalexam/${examId}`)
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     setExam(res);
-    //   })
-    //   .catch((err) => console.log("error", err));
+    fetch(`${BASE_SERVER}/finalexam/${examId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setExam(res);
+      })
+      .catch((err) => console.log("error", err));
   }, []);
 
   useEffect(() => {
@@ -221,7 +216,7 @@ export default function FinalExam() {
       examId: exam.id,
     };
 
-    fetch("http://localhost:9999/finalExamSubmission", {
+    fetch(`${BASE_SERVER}/finalExamSubmission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
