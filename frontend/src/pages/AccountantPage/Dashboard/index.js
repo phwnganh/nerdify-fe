@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import CustomLineChart from "../../../components/Chart/CustomLineChart";
 import { BellOutlined } from "@ant-design/icons";
@@ -43,6 +43,11 @@ const AccountantDashboard = () => {
     { month: "Tháng 12", "Gói 6 tháng": 13, "Gói 12 tháng": 5 },
     { month: "Tháng 1", "Gói 6 tháng": 11, "Gói 12 tháng": 4 },
   ];
+  const chartTitle = "Lượng học viên mới đăng ký gói Premium trong tháng";
+  const dataKey = [
+    { dataKey: "Gói 6 tháng", color: "#fa8c16" },
+    { dataKey: "Gói 12 tháng", color: "#722ed1" },
+  ];
 
   return (
     <div style={{ padding: "20px" }}>
@@ -66,7 +71,7 @@ const AccountantDashboard = () => {
 
       {/* Charts */}
       <div>
-        <CustomLineChart />
+        <CustomLineChart dataChart={dataChart} chartTitle={chartTitle} dataKey={dataKey} />
       </div>
     </div>
   );

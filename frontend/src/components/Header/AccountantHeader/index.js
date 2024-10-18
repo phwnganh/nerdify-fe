@@ -40,6 +40,7 @@ const AccountantHeader = () => {
 
   const styles = {
     header: {
+      height: "80px",
       background: "#fff",
       padding: "0 20px",
       display: "flex",
