@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Col, DatePicker, Form, Input, Radio, Row, Upload } from "antd";
+import { Avatar, Col, DatePicker, Form, Input, notification, Radio, Row, Upload } from "antd";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
@@ -9,56 +9,59 @@ import moment from "moment";
 import STORAGE, { getStorage } from "../../../../library/storage";
 import dayjs from "dayjs";
 import { BASE_SERVER } from "../../../../constants";
+import { changeUserProfile, viewUserProfile } from "../../../../services/GuestService";
+import { useAuth } from "../../../../hooks";
 
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
-  const [user, setUser] = useState({});
-  const userId = getStorage(STORAGE.USER_ID);
+  const [users, setUsers] = useState({});
+  const { user } = useAuth();
+  const userId = user?._id;
+  // const userId = getStorage(STORAGE.USER_ID);
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`)
-      .then((res) => res.json())
+    viewUserProfile()
       .then((res) => {
-        setUser(res);
-        const dob = res.dob && dayjs(res.dob, "YYYY-MM-DD").isValid() ? dayjs(res.dob, "YYYY-MM-DD") : null;
-        form.setFieldsValue({
-          fullname: res.fullName,
-          gender: res.gender,
-          dob: dob,
-          phone: res.phone,
-          email: res.email,
-        });
+        if(res && res.data && res.data[0]){
+          console.log("user profile", res.data[0]);
+
+          setUsers(res.data[0]);
+          const dob = res?.data[0]?.dateOfBirth && dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD") : null;
+          form.setFieldsValue({
+            fullname: res?.data[0]?.fullName,
+            gender: res?.data[0]?.gender,
+            dateOfBirth: dob,
+            phone: res?.data[0]?.phone,
+            email: res?.data[0]?.email,
+          });
+        }
+        
       })
       .catch((err) => console.log(err));
   }, [form, userId]);
 
-  const handleChangeInformation = (values) => {
-    const updatedUserData = {
-      ...user,
-      fullName: values.fullname,
-      gender: values.gender,
-      dob: values.dob ? values.dob.format("YYYY-MM-DD") : null,
-      phone: values.phone,
-    };
-    fetch(`${BASE_SERVER}/users/${userId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedUserData),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res);
-        const dob = res.dob && dayjs(res.dob, "YYYY-MM-DD").isValid() ? dayjs(res.dob, "YYYY-MM-DD") : null;
-        form.setFieldsValue({
-          fullname: res.fullName,
-          gender: res.gender,
-          dob: dob,
-          phone: res.phone,
-          email: res.email,
-        });
-        console.log(res);
-      });
+  const handleChangeInformation = async (values) => {
+    try {
+      const updatedUserData = {
+        ...users,
+        fullName: values.fullname,
+        gender: values.gender,
+        dateOfBirth: values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null,
+        phone: values.phone,
+      };
+
+      const res = await changeUserProfile(updatedUserData)
+      notification.success({
+        message: "Cập nhật thông tin thành công!",
+        description: "Cập nhật thông tin cá nhân thành công"
+      })
+    } catch (error) {
+      notification.error({
+        message: "Cập nhật thông tin thất bại!"
+      })
+    }
+
   };
 
   const handleAvatarPhotoChange = (info) => {
@@ -107,7 +110,7 @@ export default function EditPersonalProfile() {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Ngày sinh" name="dob">
+                <Form.Item label="Ngày sinh" name="dateOfBirth">
                   <DatePicker
                     style={{ width: "100%" }}
                     placeholder="Ngày sinh"

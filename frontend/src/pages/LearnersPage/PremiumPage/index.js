@@ -39,7 +39,7 @@ export const PremiumPage = () => {
     try {
       // Fetch package details using the packageId
       const packageDetails = await getPackageDetail(packageId);
-  
+      
       const newTransaction = {
         packageId: packageDetails._id, // Pass the correct packageId from the fetched package
         discount: 0 // You can adjust this value based on user input or offer

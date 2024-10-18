@@ -2,7 +2,7 @@ const DOMAIN = process.env.REACT_APP_ROOT_API;
 const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",
-  PAYMENT: "/api/payment"
+  PAYMENT: "/api/payment",
 };
 
 const URI_COURSES_SERVICE = {
