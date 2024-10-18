@@ -42,7 +42,6 @@ export default function ExerciseDetail() {
     if (!exerciseData) {
       return <div>No exercise data available</div>;
     }
-
     switch (exerciseType) {
       case EXERCISE_TYPE.LISTENING:
         return <ListeningExercise exercises={exerciseData} />;

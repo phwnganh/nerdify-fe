@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { PART_TYPE } from "../../../../constants";
 
-export default function WritingExercises({ exercise }) {
+export default function WritingExercises({ exercises }) {
   // const [exercise, setExercise] = useState(null);
   const { exerciseType, exerciseId } = useParams();
   const [userAnswers, setUserAnswers] = useState({});
@@ -30,7 +30,7 @@ export default function WritingExercises({ exercise }) {
   //     .catch((err) => console.error("error", err));
   // }, [exerciseType, exerciseId]);
 
-  if (!exercise?.parts) {
+  if (!exercises?.parts) {
     return <div>Loading...</div>;
   }
 
@@ -132,7 +132,7 @@ export default function WritingExercises({ exercise }) {
     const totalQuestions = 4;
     const newAnswerStatus = {};
     const questionsArray = [];
-    exercise.parts.forEach((part) => {
+    exercises.parts.forEach((part) => {
       if (part.partType === PART_TYPE.FILL_IN_THE_BLANK) {
         part.questions.forEach((question) => {
           const userAnswer = userAnswers[part.id]?.[question.id]?.trim() || "";
@@ -184,7 +184,7 @@ export default function WritingExercises({ exercise }) {
       exerciseId,
     };
 
-    fetch(`http://localhost:9999/exercises/${exercise?.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -227,7 +227,7 @@ export default function WritingExercises({ exercise }) {
     <div style={{ padding: "30px", marginLeft: "70px", marginRight: "70px" }}>
       <BreadCrumbHome />
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercise?.title}
+        {exercises?.title}
       </TitleCustom>
       <div style={{ textAlign: "center" }}>
         {isCompleted && (
@@ -238,7 +238,7 @@ export default function WritingExercises({ exercise }) {
         )}
       </div>
       <div>
-        {exercise.parts?.map((part, index) => (
+        {exercises.parts?.map((part, index) => (
           <>
             <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "16px" }}>{part.partName}</TextCustom>
             {part.partType === PART_TYPE.FILL_IN_THE_BLANK && renderPart1(part)}
