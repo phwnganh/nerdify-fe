@@ -10,6 +10,7 @@ const URI_COURSES_SERVICE = {
   PHASES: API_PREFIXES.COURSE + "/phases",
     EXERCISE: API_PREFIXES.COURSE + "/exercises",
   EXERCISE_DETAIL: API_PREFIXES.COURSE + "/exercises",
+  SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
 };
 
 const URI_FLASHCARDS_SERVICE = {

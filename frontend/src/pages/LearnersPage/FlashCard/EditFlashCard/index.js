@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../helpers/validate";
 import { BASE_SERVER } from "../../../../constants";
+import { getFlashcardDetail } from "../../../../services/LearnerService";
 
 export default function EditFlashCard() {
   const { flashcardId } = useParams();
@@ -13,15 +14,20 @@ export default function EditFlashCard() {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
-      .then((response) => response.json())
+   getFlashcardDetail(flashcardId)
       .then((data) => {
-        setFlashcard(data);
+        setFlashcard(data.data);
+        console.log("flashcard: ", data.data);
+        
         form.setFieldsValue({
-          title: data.title,
-          description: data.description,
-          level: data.level,
-          cards: data.cards,
+          title: data?.data?.title,
+          description: data?.data?.description,
+          level: data?.data?.level,
+          cards: data?.data?.cards?.map(card => ({
+            _id: card._id, // include the ID if needed
+            terms: card.term,
+            definitions: card.definition,
+          })),
         });
       })
       .catch((err) => console.error(err));
