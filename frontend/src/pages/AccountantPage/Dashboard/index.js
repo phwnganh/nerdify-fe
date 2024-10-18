@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HoverableCard from "../../../components/Card/HoverableCard";
+import CustomLineChart from "../../../components/Chart/CustomLineChart";
 import { BellOutlined } from "@ant-design/icons";
 
 const AccountantDashboard = () => {
@@ -33,6 +34,16 @@ const AccountantDashboard = () => {
     },
   ];
 
+  const dataChart = [
+    { month: "Tháng 7", "Gói 6 tháng": 10, "Gói 12 tháng": 5 },
+    { month: "Tháng 8", "Gói 6 tháng": 15, "Gói 12 tháng": 7 },
+    { month: "Tháng 9", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
+    { month: "Tháng 10", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
+    { month: "Tháng 11", "Gói 6 tháng": 12, "Gói 12 tháng": 5 },
+    { month: "Tháng 12", "Gói 6 tháng": 13, "Gói 12 tháng": 5 },
+    { month: "Tháng 1", "Gói 6 tháng": 11, "Gói 12 tháng": 4 },
+  ];
+
   return (
     <div style={{ padding: "20px" }}>
       {/* User Information */}
@@ -52,61 +63,13 @@ const AccountantDashboard = () => {
           ))}
         </div>
       </div>
+
+      {/* Charts */}
+      <div>
+        <CustomLineChart />
+      </div>
     </div>
   );
 };
-
-// const HoverableCard = ({ item }) => {
-//   const [isHovered, setIsHovered] = useState(false);
-
-//   return (
-//     <div
-//       onMouseEnter={() => setIsHovered(true)}
-//       onMouseLeave={() => setIsHovered(false)}
-//       style={{
-//         padding: "20px",
-//         background: "#fff",
-//         borderRadius: "5px",
-//         boxShadow: "0 0 1px rgba(0,0,0,0.1)",
-//         display: "flex",
-//         justifyContent: "space-around",
-//         alignItems: "center",
-//         width: "300px",
-//         border: `2px solid ${isHovered ? "orange" : "transparent"}`,
-//         transition: "border-color 0.3s ease",
-//       }}
-//     >
-//       {/* Icon */}
-//       <div
-//         style={{
-//           width: "40px",
-//           height: "40px",
-//           borderRadius: "50%",
-//           backgroundColor: "#FAFAFA",
-//           display: "flex",
-//           alignItems: "center",
-//           justifyContent: "center",
-//         }}
-//       >
-//         {item.icon}
-//       </div>
-
-//       {/* Content */}
-//       <div>
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "space-between",
-//             alignItems: "center",
-//             marginBottom: "10px",
-//           }}
-//         >
-//           <span style={{ fontSize: "0.9rem", color: "#666" }}>{item.title}</span>
-//         </div>
-//         <span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>{item.value}</span>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default AccountantDashboard;

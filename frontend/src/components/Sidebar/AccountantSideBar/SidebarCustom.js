@@ -38,7 +38,7 @@ const CustomMenu = styled(Menu)`
 const FooterSection = styled.div`
   padding: 15px 20px;
   text-align: center;
-  flex-shrink: 0; /* Đảm bảo footer không bị co lại */
+  flex-shrink: 0;
 `;
 
 const UserInfoContainer = styled.div`
@@ -103,21 +103,22 @@ export default function SidebarCustom({ menuItems = [] }) {
   ];
 
   return (
-    <CustomSider collapsible collapsed={collapsed} trigger={null} onCollapse={(value) => setCollapsed(value)}>
-      <LogoContainer>
-        <img
-          src={collapsed ? logoMini : logo}
-          alt="Deutsch Nerd"
-          style={{
-            width: collapsed ? "50px" : "100px",
-            height: "50px",
-          }}
-        />
-      </LogoContainer>
+    <div style={{ borderRight: "1px solid #e8e8e8" }}>
+      <CustomSider collapsible collapsed={collapsed} trigger={null} onCollapse={(value) => setCollapsed(value)}>
+        <LogoContainer>
+          <img
+            src={collapsed ? logoMini : logo}
+            alt="Deutsch Nerd"
+            style={{
+              width: collapsed ? "50px" : "100px",
+              height: "50px",
+            }}
+          />
+        </LogoContainer>
 
-      <CustomMenu theme="light" selectedKeys={[selectedKey]} onClick={handleMenuClick} mode="inline" items={menuItemsList} />
+        <CustomMenu theme="light" selectedKeys={[selectedKey]} onClick={handleMenuClick} mode="inline" items={menuItemsList} />
 
-      {/* <FooterSection>
+        {/* <FooterSection>
         <UserInfoContainer>
           <Avatar size={64} src="https://via.placeholder.com/64" />
           <div style={{ marginTop: 10 }}>
@@ -127,6 +128,7 @@ export default function SidebarCustom({ menuItems = [] }) {
           </div>
         </UserInfoContainer>
       </FooterSection> */}
-    </CustomSider>
+      </CustomSider>
+    </div>
   );
 }
