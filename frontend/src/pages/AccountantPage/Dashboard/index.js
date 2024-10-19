@@ -23,6 +23,7 @@ const AccountantDashboard = () => {
   ];
 
   const chartTitle = "Lượng học viên mới đăng ký gói Premium trong tháng";
+
   const dataKey = [
     { dataKey: "Gói 6 tháng", color: "#fa8c16" },
     { dataKey: "Gói 12 tháng", color: "#722ed1" },

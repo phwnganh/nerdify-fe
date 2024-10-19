@@ -1,4 +1,5 @@
 import React from "react";
+// import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 // ============================  Sample data ============================ |
@@ -38,17 +39,20 @@ const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
         <h3>{chartTitle}</h3>
       </div>
 
-      {/* More information part */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "5px",
-          marginBottom: "20px",
-        }}
-      ></div>
       {/* chart */}
-      <ResponsiveContainer width="100%" height="80%">
+      {/* <ResponsiveContainer width="100%" height="80%">
+        <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend verticalAlign="top" height={36} />
+          {dataKey.map((key) => (
+            <Line key={key.dataKey} type="monotone" dataKey={key.dataKey} stroke={key.color} activeDot={{ r: 8 }} />
+          ))}
+        </LineChart>
+      </ResponsiveContainer> */}
+      <ResponsiveContainer width="100%" height={400}>
         <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
