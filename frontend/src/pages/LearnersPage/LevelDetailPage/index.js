@@ -81,15 +81,17 @@ export default function ViewLevelDetail() {
   }, [courseId]);
 
   useEffect(() => {
-    if(activePhase === "Final Exam" && courseId){
-      getFinalExamDetailByCourseId(courseId).then(res => {
-        console.log("final exam detail: ", res.data[0]);
-        setFinalExamDetail(res.data[0]);
-      }).catch(err => {
-        console.error("Error fetching final exam details", err);
-      })
+    if (activePhase === "Final Exam" && courseId) {
+      getFinalExamDetailByCourseId(courseId)
+        .then((res) => {
+          console.log("final exam detail: ", res.data[0]);
+          setFinalExamDetail(res.data[0]);
+        })
+        .catch((err) => {
+          console.error("Error fetching final exam details", err);
+        });
     }
-  }, [activePhase, courseId])
+  }, [activePhase, courseId]);
 
   const handlePhaseClick = (phaseTitle) => {
     setActivePhase(phaseTitle);
@@ -120,7 +122,6 @@ export default function ViewLevelDetail() {
     if (selectedPhase.title === "Final Exam") {
       const examId = finalExamDetail?.exercises[0]?._id;
       console.log("examId: ", examId);
-      
       return (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <CardCustom
@@ -133,7 +134,7 @@ export default function ViewLevelDetail() {
             }}
           >
             <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
-            <ButtonToDoExam onClick={() => handleFinalExamClick(examId)}>Vào làm bài</ButtonToDoExam>
+            <ButtonToDoExam onClick={() => handleFinalExamClick(selectedPhase?._id)}>Vào làm bài</ButtonToDoExam>
           </CardCustom>
         </div>
       );

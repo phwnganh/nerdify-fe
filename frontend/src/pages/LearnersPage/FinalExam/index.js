@@ -15,7 +15,7 @@ import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
 import { BASE_SERVER, CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
-import { getExerciseDetail, getFinalExamDetailByCourseId, submitFinalExam } from "../../../services/LearnerService";
+import { getExerciseDetail, getFinalExamDetailByCourseId, getPhaseDetail, submitFinalExam } from "../../../services/LearnerService";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
   const [exam, setExam] = useState([]);
@@ -50,15 +50,16 @@ export default function FinalExam() {
   // }, []);
 
   useEffect(() => {
-    getExerciseDetail(examId)
-      .then((res) => {
-        console.log("exam id: ", res.data);
-
-        setExam(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (examId) {
+      getPhaseDetail(examId)
+        .then((resp) => {
+          // console.log(resp);
+          setExam(resp.data.exercises[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, [examId]);
 
   useEffect(() => {
@@ -94,8 +95,6 @@ export default function FinalExam() {
     setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
-
-
   // const handleSelectOptions = (questionId, optionId) => {
   //   setUserAnswers({
   //     ...userAnswers,
@@ -111,14 +110,12 @@ export default function FinalExam() {
           const newSelected = userSelected.map((userAnswers) => {
             if (userAnswers.questionId === questionId) {
               return {
-                userAnswers,
+                ...userAnswers,
                 userAnswer: optionId,
               };
             }
             return userAnswers;
           });
-          console.log("new selected: ", newSelected);
-          
           setUserSelected(newSelected);
         } else {
           setUserSelected((prev) => [
@@ -246,51 +243,6 @@ export default function FinalExam() {
   };
 
   const handleSubmit = () => {
-    // let score = 0;
-
-    // const submissionDate = new Date().toISOString();
-    // const questionsArray = exam?.parts.flatMap((part) =>
-    //   part.questions.map((question) => {
-    //     const userAnswer = userAnswers[question.id];
-    //     const correctAnswer = question.answer;
-    //     const isCorrect = userAnswer === correctAnswer;
-    //     if (isCorrect) {
-    //       score++;
-    //     }
-
-    //     return {
-    //       questionId: question.id,
-    //       userAnswer,
-    //       correctAnswer,
-    //       isCorrect,
-    //     };
-    //   }),
-    // );
-
-    // const conditionStatus = score >= 12 ? "passed" : "not pass";
-    // const markValue = Math.round((score / totalQuestions) * 100);
-    // setMark(markValue);
-    // setIsCompleted(true);
-
-    // const submissionData = {
-    //   submissionDate: submissionDate,
-    //   score: `${markValue}%`,
-    //   submissionAnswers: questionsArray,
-    //   conditionStatus: conditionStatus,
-    //   isCompleted: true,
-    //   examId: exam.id,
-    // };
-
-    // fetch(`${BASE_SERVER}/finalExamSubmission`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(submissionData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log("final exam: ", data));
-    // setUserScore(score);
     submitFinalExam({
       exerciseId: exam._id,
       userSelected,
@@ -306,9 +258,13 @@ export default function FinalExam() {
   };
 
   const handleAchieveTrophy = () => {
-    navigate(CLIENT_URI.TROPHY, {
-      state: { trophy: exam?.trophy, title: exam?.title },
-    });
+    if (submissionData.score >= 60) {
+      navigate(CLIENT_URI.TROPHY, {
+        state: { examId: examId, title: exam?.title },
+      });
+    } else {
+      alert("Bạn chưa đủ điểm để nhận cup");
+    }
   };
   const currentPart = exam.parts?.[currentPartIndex];
   return (

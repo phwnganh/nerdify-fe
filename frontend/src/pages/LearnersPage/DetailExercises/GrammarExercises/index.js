@@ -10,24 +10,11 @@ import { PART_TYPE } from "../../../../constants";
 export default function GrammarExercises({ exercises }) {
   // const [exercises, setExercises] = useState(null); // Initialize with null
   const [userAnswers, setUserAnswers] = useState({});
-  const { exerciseType, exerciseId } = useParams();
   const [userScore, setUserScore] = useState(0);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [answerStatus, setAnswerStatus] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
-  // useEffect(() => {
-  //   fetch(`http://localhost:9999/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data && data.length > 0) {
-  //         setExercises(data[0]);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [exerciseId, exerciseType]);
 
   const handleInputChange = useCallback((partId, questionId, inputIndex, value) => {
     const key = `${partId}-${questionId}-${inputIndex}`;
