@@ -11453,6 +11453,18 @@
       "avatar": ""
     },
     {
+      "id": "123456",
+      "fullName": "Đoàn Chung",
+      "email": "doanchung10062003@gmail.com",
+      "password": "123456Az!",
+      "role": "admin",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": ""
+    },
+    {
       "fullName": "Trinh Dai Thien",
       "email": "thientd2609@gmail.com",
       "password": "123456Az!",
