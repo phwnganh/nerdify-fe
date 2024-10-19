@@ -20,6 +20,10 @@ export const getPhaseList = async () => {
   return res.data;
 };
 
+export const getEnrollLearnerByCourseId = async(courseId) => {
+  const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL + "/enroll" + "/" + courseId);
+  return res.data;
+}
 export const getPhaseDetail = async (phaseId) => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES + "/" + phaseId);
   return res.data;

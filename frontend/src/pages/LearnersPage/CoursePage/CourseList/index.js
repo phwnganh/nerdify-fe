@@ -6,6 +6,7 @@ import { ReadOutlined } from "@ant-design/icons";
 import a1 from "../../../../assets/levelImage/a1.png";
 import a2 from "../../../../assets/levelImage/a2.png";
 import b1 from "../../../../assets/levelImage/b1.png";
+import { getEnrollLearnerByCourseId } from "../../../../services/LearnerService";
 
 export default function CourseList({ course }) {
   const levelImgArr = { a1: a1, a2: a2, b1: b1 };
@@ -30,7 +31,14 @@ export default function CourseList({ course }) {
         buttonType="primary"
         style={{ width: "100%" }}
         onClick={() => {
-          navigate(CLIENT_URI.LEVEL_DETAIL + `/${course._id}`);
+          getEnrollLearnerByCourseId(course?._id)
+            .then((res) => {
+              console.log("enroll: ", res);
+              navigate(CLIENT_URI.LEVEL_DETAIL + `/${course._id}`);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }}
       >
         Bắt đầu

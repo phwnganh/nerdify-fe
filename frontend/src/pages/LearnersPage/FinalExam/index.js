@@ -77,7 +77,7 @@ export default function FinalExam() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, isSubmitted]);
 
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -183,7 +183,7 @@ export default function FinalExam() {
                     // }
                     const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
                     let backgroundColor = isUserSelected ? "#A8703E" : "";
-                    if (isSubmitted) {
+                    if (isSubmitted && submissionData.score >= 60) {
                       const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer?.correctAnswer?.answerOption === option._id && answer?.isCorrect);
                       if (foundQuestion) {
                         backgroundColor = "#5FD855";
@@ -262,8 +262,6 @@ export default function FinalExam() {
       navigate(CLIENT_URI.TROPHY, {
         state: { examId: examId, title: exam?.title },
       });
-    } else {
-      alert("Bạn chưa đủ điểm để nhận cup");
     }
   };
   const currentPart = exam.parts?.[currentPartIndex];
@@ -307,7 +305,7 @@ export default function FinalExam() {
                 </ButtonCustom>
               ) : (
                 <>
-                  {submissionData?.conditionStatus < 60 ? (
+                  {submissionData?.score < 60 ? (
                     <>
                       <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleRetry}>
                         Làm lại bài kiểm tra

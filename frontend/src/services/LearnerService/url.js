@@ -12,7 +12,7 @@ const URI_COURSES_SERVICE = {
   EXERCISE_DETAIL: API_PREFIXES.COURSE + "/exercises",
   SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
   SUBMIT_FINALEXAM: API_PREFIXES.COURSE + "/submissions/submit-final-exam",
-
+  
   GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",
 };
 
