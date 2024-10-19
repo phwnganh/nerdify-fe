@@ -307,7 +307,7 @@ export default function ListeningExercise({ exercises }) {
                   return (
                     <Col key={option._id} span={8}>
                       <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question._id, option._id)} style={{ backgroundColor }} disabled={isSubmitted}>
-                        {index + 1}. {option.text}
+                        {option.text}
                       </ButtonCustom>
                     </Col>
                   );

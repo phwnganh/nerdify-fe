@@ -73,7 +73,7 @@ export default function BillInfo() {
           </Col>
           <Col span={11}>
             {/* Transaction details */}
-            <Row style={{ display: "flex", justifyContent: "space-between" }}>
+            <Row >
               <Col span={12}>
                 <TextCustom style={{ whiteSpace: "nowrap" }}>Ngày đặt hàng: </TextCustom>
               </Col>
@@ -90,6 +90,16 @@ export default function BillInfo() {
                   {transactionDetail?.endDate}
                 </TextCustom>
               </Col> */}
+                        <Col>
+            <Row>
+              <Col span={12}>
+                <TextCustom strong>TỔNG: </TextCustom>
+              </Col>
+              <Col span={12}>
+                <TextCustom style={{ color: "red", whiteSpace: "nowrap" }}>{transactionDetail?.totalPrice?.toLocaleString("vi-VN")} VNĐ</TextCustom>
+              </Col>
+            </Row>
+          </Col>
             </Row>
             {/* <Row style={{ marginTop: 8 }}>
               <Col span={12}>
@@ -110,9 +120,9 @@ export default function BillInfo() {
           </Col>
         </Row>
 
-        <Divider style={{ color: "black" }} />
+        {/* <Divider style={{ color: "black" }} /> */}
 
-        <Row justify="space-around" style={{ marginTop: 16 }}>
+        {/* <Row justify="space-around" style={{ marginTop: 16 }}>
           <Col>
             <Row>
               <Col span={12}>
@@ -126,7 +136,7 @@ export default function BillInfo() {
           <Col>
             <Row></Row>
           </Col>
-        </Row>
+        </Row> */}
 
         {/* QR Code Section */}
         <Divider style={{ marginTop: "40px" }} />
@@ -144,10 +154,10 @@ export default function BillInfo() {
         <Row justify="center" style={{ marginTop: "10px" }}>
           <Col>
             <div style={{ marginTop: "20px" }}>
-              <ButtonCustom buttonType="primary" onClick={() => navigate(-1)}>
+              <ButtonCustom buttonType="primary" style={{padding: '20px', marginRight: '25px'}} onClick={() => navigate(-1)}>
                 Hủy
               </ButtonCustom>
-              <ButtonCustom onClick={() => navigate(`${CLIENT_URI.CONFIRM_PAYMENT}/${transactionId}`)}>Xác nhận giao dịch</ButtonCustom>
+              <ButtonCustom  buttonType="primary" style={{padding: '20px'}} onClick={() => navigate(`${CLIENT_URI.CONFIRM_PAYMENT}/${transactionId}`)}>Xác nhận giao dịch</ButtonCustom>
             </div>
           </Col>
         </Row>

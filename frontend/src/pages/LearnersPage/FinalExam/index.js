@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import StartExamModal from "./ModalBeforeDoingExam";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 import { ParagraphCustom, TextCustom, TitleCustom } from "../../../components/Typography";
@@ -15,7 +15,7 @@ import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
 import { BASE_SERVER, CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
-import { getExerciseDetail, getFinalExamDetailByCourseId } from "../../../services/LearnerService";
+import { getExerciseDetail, getFinalExamDetailByCourseId, submitFinalExam } from "../../../services/LearnerService";
 export default function FinalExam() {
   const [hasStarted, setHasStarted] = useState(false);
   const [exam, setExam] = useState([]);
@@ -24,10 +24,12 @@ export default function FinalExam() {
   const [userAnswers, setUserAnswers] = useState({});
   const [userScore, setUserScore] = useState(0);
   const [mark, setMark] = useState(0);
+  const [userSelected, setUserSelected] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionData, setSubmissionData] = useState(null);
   const navigate = useNavigate();
   const { examId } = useParams();
-  
 
   const imgArrVocab = [demo_1_1, demo_1_2, demo_1_3, demo_2_1, demo_2_2, demo_2_3];
 
@@ -48,19 +50,19 @@ export default function FinalExam() {
   // }, []);
 
   useEffect(() => {
-    getExerciseDetail(examId).then(res => {
-      console.log("exam id: ", res.data);
-      
-      setExam(res.data)
-    }
-      
-    ).catch(err => {
-      console.log(err);
-    })
-  }, [examId])
+    getExerciseDetail(examId)
+      .then((res) => {
+        console.log("exam id: ", res.data);
+
+        setExam(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [examId]);
 
   useEffect(() => {
-    if (isCompleted) return;
+    if (isSubmitted) return;
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime > 0) {
@@ -92,19 +94,50 @@ export default function FinalExam() {
     setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
+
+
+  // const handleSelectOptions = (questionId, optionId) => {
+  //   setUserAnswers({
+  //     ...userAnswers,
+  //     [questionId]: optionId,
+  //   });
+  // };
+
+  const handleSelectOptions = useCallback(
+    (questionId, optionId) => {
+      if (!isSubmitted) {
+        const foundQuestion = userSelected.some((selected) => selected.questionId === questionId);
+        if (foundQuestion) {
+          const newSelected = userSelected.map((userAnswers) => {
+            if (userAnswers.questionId === questionId) {
+              return {
+                userAnswers,
+                userAnswer: optionId,
+              };
+            }
+            return userAnswers;
+          });
+          console.log("new selected: ", newSelected);
+          
+          setUserSelected(newSelected);
+        } else {
+          setUserSelected((prev) => [
+            ...prev,
+            {
+              questionId,
+              userAnswer: optionId,
+            },
+          ]);
+        }
+      }
+    },
+    [isSubmitted, userSelected],
+  );
+
+  // const totalQuestions = exam.parts.reduce((acc, part) => acc + part.questions.length, 0);
   if (!exam?.parts) {
     return <div>Loading...</div>;
   }
-
-  const handleSelectOptions = (questionId, optionId) => {
-    setUserAnswers({
-      ...userAnswers,
-      [questionId]: optionId,
-    });
-  };
-
-  const totalQuestions = exam.parts.reduce((acc, part) => acc + part.questions.length, 0);
-
   const renderAllParts = (part) => {
     return (
       <div>
@@ -118,40 +151,50 @@ export default function FinalExam() {
             ))}
           </ParagraphCustom>
         )}
-  
+
         {part.questions.map((question, index) => {
           // Lấy answerOption.text từ câu hỏi nếu tồn tại
-          const correctAnswer = question.answers?.answerOption?.text;
-  
+          const correctAnswer = question.answers?.answerOption?.text || null;
+
           return (
             <div key={question._id}>
               <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
                 Câu {index + 1}: {question.question}
               </TextCustom>
-  
+
               {question?.mediaUrl && (
                 <audio controls style={{ marginTop: "20px", width: "100%" }}>
                   <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
                   Trình duyệt của bạn không hỗ trợ phần tử audio.
                 </audio>
               )}
-  
+
               <div style={{ marginTop: "20px" }}>
                 <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
                   {question.options.map((option, optionIndex) => {
-                    const userAnswer = userAnswers[question._id] === option._id;
-                    const isCorrect = option._id === correctAnswer;
-                    const isUserSelectedWrong = userAnswer && !isCorrect;
-  
-                    let backgroundColor = userAnswer ? "#A8703E" : ""; // màu nền khi người dùng chọn
-                    if (isCompleted) {
-                      if (isCorrect) {
-                        backgroundColor = "#5FD855"; // màu nền cho câu trả lời đúng
-                      } else if (isUserSelectedWrong) {
-                        backgroundColor = "red"; // màu nền cho câu trả lời sai
+                    // const userAnswer = userAnswers[question._id] === option._id;
+                    // const isCorrect = option._id === correctAnswer;
+                    // const isUserSelectedWrong = userAnswer && !isCorrect;
+
+                    // let backgroundColor = userAnswer ? "#A8703E" : ""; // màu nền khi người dùng chọn
+                    // if (isCompleted) {
+                    //   if (isCorrect) {
+                    //     backgroundColor = "#5FD855"; // màu nền cho câu trả lời đúng
+                    //   } else if (isUserSelectedWrong) {
+                    //     backgroundColor = "red"; // màu nền cho câu trả lời sai
+                    //   }
+                    // }
+                    const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
+                    let backgroundColor = isUserSelected ? "#A8703E" : "";
+                    if (isSubmitted) {
+                      const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer?.correctAnswer?.answerOption === option._id && answer?.isCorrect);
+                      if (foundQuestion) {
+                        backgroundColor = "#5FD855";
+                      } else if (isUserSelected) {
+                        backgroundColor = "red";
                       }
                     }
-  
+
                     return (
                       <Col key={optionIndex} span={8}>
                         <ButtonCustom
@@ -160,7 +203,7 @@ export default function FinalExam() {
                           style={{
                             backgroundColor,
                           }}
-                          disabled={!!isCompleted}
+                          disabled={isSubmitted}
                         >
                           {option.optionImage ? (
                             <span>{option.text}</span>
@@ -174,7 +217,7 @@ export default function FinalExam() {
                     );
                   })}
                 </Row>
-  
+
                 {question.options.some((option) => option.optionImage) && (
                   <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
                     {question.options
@@ -193,62 +236,72 @@ export default function FinalExam() {
       </div>
     );
   };
-  
 
   const handleRetry = () => {
-    setUserAnswers({});
+    setUserSelected([]);
     setUserScore(0);
-    setIsCompleted(false);
+    setIsSubmitted(false);
     setCurrentPartIndex(0);
     setTimeLeft(20 * 60);
   };
 
   const handleSubmit = () => {
-    let score = 0;
+    // let score = 0;
 
-    const submissionDate = new Date().toISOString();
-    const questionsArray = exam?.parts.flatMap((part) =>
-      part.questions.map((question) => {
-        const userAnswer = userAnswers[question.id];
-        const correctAnswer = question.answer;
-        const isCorrect = userAnswer === correctAnswer;
-        if (isCorrect) {
-          score++;
-        }
+    // const submissionDate = new Date().toISOString();
+    // const questionsArray = exam?.parts.flatMap((part) =>
+    //   part.questions.map((question) => {
+    //     const userAnswer = userAnswers[question.id];
+    //     const correctAnswer = question.answer;
+    //     const isCorrect = userAnswer === correctAnswer;
+    //     if (isCorrect) {
+    //       score++;
+    //     }
 
-        return {
-          questionId: question.id,
-          userAnswer,
-          correctAnswer,
-          isCorrect,
-        };
-      }),
-    );
+    //     return {
+    //       questionId: question.id,
+    //       userAnswer,
+    //       correctAnswer,
+    //       isCorrect,
+    //     };
+    //   }),
+    // );
 
-    const conditionStatus = score >= 12 ? "passed" : "not pass";
-    const markValue = Math.round((score / totalQuestions) * 100);
-    setMark(markValue);
-    setIsCompleted(true);
+    // const conditionStatus = score >= 12 ? "passed" : "not pass";
+    // const markValue = Math.round((score / totalQuestions) * 100);
+    // setMark(markValue);
+    // setIsCompleted(true);
 
-    const submissionData = {
-      submissionDate: submissionDate,
-      score: `${markValue}%`,
-      submissionAnswers: questionsArray,
-      conditionStatus: conditionStatus,
-      isCompleted: true,
-      examId: exam.id,
-    };
+    // const submissionData = {
+    //   submissionDate: submissionDate,
+    //   score: `${markValue}%`,
+    //   submissionAnswers: questionsArray,
+    //   conditionStatus: conditionStatus,
+    //   isCompleted: true,
+    //   examId: exam.id,
+    // };
 
-    fetch(`${BASE_SERVER}/finalExamSubmission`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
+    // fetch(`${BASE_SERVER}/finalExamSubmission`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(submissionData),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => console.log("final exam: ", data));
+    // setUserScore(score);
+    submitFinalExam({
+      exerciseId: exam._id,
+      userSelected,
     })
-      .then((res) => res.json())
-      .then((data) => console.log("final exam: ", data));
-    setUserScore(score);
+      .then((res) => {
+        setSubmissionData(res.data);
+        setIsSubmitted(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     clearInterval(window.timer);
   };
 
@@ -275,11 +328,11 @@ export default function FinalExam() {
 
           <div>
             <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}>{currentPart.partName}</TextCustom>
-            {isCompleted && (
+            {isSubmitted && (
               <div style={{ textAlign: "center" }}>
                 <TextCustom style={{ textAlign: "center" }}>
                   Điểm:&nbsp;
-                  <span style={{ color: "red" }}>{mark}%</span>
+                  <span style={{ color: "red" }}>{Math.round(submissionData?.score).toFixed(2)}%</span>
                 </TextCustom>
               </div>
             )}
@@ -292,13 +345,13 @@ export default function FinalExam() {
               <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleNextPart} disabled={currentPartIndex === exam.parts.length - 1}>
                 Phần tiếp theo
               </ButtonCustom>
-              {!isCompleted ? (
+              {!isSubmitted ? (
                 <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} disabled={!(currentPartIndex === exam.parts.length - 1)} onClick={handleSubmit}>
                   Nộp bài
                 </ButtonCustom>
               ) : (
                 <>
-                  {mark < 60 ? (
+                  {submissionData?.conditionStatus < 60 ? (
                     <>
                       <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleRetry}>
                         Làm lại bài kiểm tra
