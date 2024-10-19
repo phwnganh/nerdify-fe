@@ -28,7 +28,7 @@ import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.
 import { StartQuizModal } from "../../LevelDetailPage";
 import { submitExercise } from "../../../../services/LearnerService";
 
-export default function ReadingExercises({ exercises }) {
+export default function CheckpointQuiz({ exercises }) {
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
@@ -36,8 +36,6 @@ export default function ReadingExercises({ exercises }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [submissionData, setSubmissionData] = useState(null);
-
-  console.log("exercises", exercises);
 
   const imgArrVocab = [demo_1_1, demo_1_2, demo_1_3, demo_2_1, demo_2_2, demo_2_3];
   const audioArr = {
@@ -118,15 +116,12 @@ export default function ReadingExercises({ exercises }) {
       });
   }, [exercises, userSelected]);
 
-  console.log("submissionData", submissionData);
-
   const handleRetry = useCallback(() => {
     setUserSelected([]);
     setIsSubmitted(false);
     setCurrentPartIndex(0);
     setTimeLeft(15 * 60);
   }, []);
-
   const renderPart = (part) => (
     <>
       {part.questions.map((question, index) => (
@@ -156,7 +151,7 @@ export default function ReadingExercises({ exercises }) {
                 const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
                 let backgroundColor = isUserSelected ? "#A8703E" : "";
 
-                if (isSubmitted) {
+                if (isSubmitted && (submissionData.score >= 50)) {
                   const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer?.answerOption == option._id && answer.isCorrect);
                   if (foundQuestion) {
                     backgroundColor = "#5FD855";
@@ -250,7 +245,7 @@ export default function ReadingExercises({ exercises }) {
               </ButtonCustom>
               {isSubmitted ? (
                 <>
-                  {submissionData.conditionStatus = "not pass" ? (
+                  {submissionData.score < 50 ? (
                     <>
                       <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
                         Làm lại bài tập này

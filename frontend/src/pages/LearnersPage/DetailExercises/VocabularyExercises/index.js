@@ -226,8 +226,6 @@ export default function VocabularyExercises({ exercises }) {
     handleAnswerPart1();
   };
 
-  console.log(submissionData);
-
   //redo exercises
   const handleDoAgain = () => {
     setSelectedPairsPart1({});
