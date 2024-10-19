@@ -201,8 +201,6 @@ const audioArr = {
 const { TabPane } = Tabs;
 
 export default function ListeningExercise({ exercises }) {
-  console.log(exercises);
-
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userSelected, setUserSelected] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -247,13 +245,11 @@ export default function ListeningExercise({ exercises }) {
   }, []);
 
   const handleSubmit = async () => {
-    console.log(userSelected);
     submitExercise({
       exerciseId: exercises._id,
       userSelected,
     })
       .then((resp) => {
-        console.log(resp.data);
         setSubmissionData(resp.data);
         setIsSubmitted(true);
       })
@@ -297,18 +293,14 @@ export default function ListeningExercise({ exercises }) {
                 {question.options.map((option, index) => {
                   // Check if the option is selected by the user
                   const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
-
-                  // Check if the option is the correct answer
-                  const isCorrectAnswer = option._id === question.answer;
-
-                  // Set background color based on the state
                   let backgroundColor = isUserSelected ? "#A8703E" : "";
 
                   if (isSubmitted) {
-                    if (isCorrectAnswer) {
-                      backgroundColor = "#5FD855"; // Green for correct answer
-                    } else if (isUserSelected && !isCorrectAnswer) {
-                      backgroundColor = "red"; // Red for wrong selected answer
+                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer.answerOption == option._id && answer.isCorrect);
+                    if (foundQuestion) {
+                      backgroundColor = "#5FD855";
+                    } else if (isUserSelected) {
+                      backgroundColor = "red";
                     }
                   }
 
@@ -330,12 +322,16 @@ export default function ListeningExercise({ exercises }) {
                 {toggleAnswerDetail[question._id] && (
                   <div>
                     <TextCustom style={{ color: "blue" }}>
-                      {question?.answer?.explanation.split("\n").map((line, index) => (
-                        <React.Fragment key={index}>
-                          {line}
-                          <br />
-                        </React.Fragment>
-                      ))}
+                      {submissionData?.submissionAnswer?.map((answer) => {
+                        if (answer.questionId === question._id) {
+                          return (
+                            <React.Fragment key={index}>
+                              {answer.correctAnswer.explanation?.split("\n")}
+                              <br />
+                            </React.Fragment>
+                          );
+                        }
+                      })}
                     </TextCustom>
                   </div>
                 )}
@@ -369,7 +365,7 @@ export default function ListeningExercise({ exercises }) {
           {isSubmitted && (
             <div style={{ textAlign: "center" }}>
               <TextCustom>
-                Điểm: <span style={{ color: "red" }}>{score}%</span>
+                Điểm: <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
               </TextCustom>
             </div>
           )}
@@ -413,7 +409,7 @@ export default function ListeningExercise({ exercises }) {
                 </div>
                 <div>
                   <TextCustom>
-                    {part?.transcript.split("\n").map((line, index) => (
+                    {part?.transcript?.split("\n")?.map((line, index) => (
                       <React.Fragment key={index}>
                         {line}
                         <br />

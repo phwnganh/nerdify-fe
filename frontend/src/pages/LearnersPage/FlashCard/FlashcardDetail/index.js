@@ -27,10 +27,13 @@ import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
 import { getFlashcardDetail } from "../../../../services/LearnerService";
+import { useAuth } from "../../../../hooks";
+import moment from "moment";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
   const { flashcardId } = useParams();
+  const {user} = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -408,10 +411,10 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
               <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
             </div>
             <div>
-              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>líp phì</TextCustom>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{user?.fullName}</TextCustom>
             </div>
             <div>
-              <TextCustom style={{ fontSize: "12px" }}>Đã tạo 28/09/2024</TextCustom>
+              <TextCustom style={{ fontSize: "12px" }}>Đã tạo {moment(user?.updatedAt).format("DD-MM-YYYY")}</TextCustom>
             </div>
           </Col>
           <Col>

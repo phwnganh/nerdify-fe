@@ -75,8 +75,6 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-        
-
         ],
       },
       // {
@@ -101,10 +99,6 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-
-
-
-     
     ],
   },
 
@@ -235,8 +229,8 @@ export const routes = [
         element: <BillInfo />,
       },
       {
-        path: CLIENT_URI.CONFIRM_PAYMENT,
-        element: <ConfirmPayment/>
+        path: `${CLIENT_URI.CONFIRM_PAYMENT}/:transactionId`,
+        element: <ConfirmPayment />,
       },
       {
         path: CLIENT_URI.LEARNING_PROGRESS,
@@ -263,11 +257,11 @@ export const routes = [
         <AdminContentLayout>
           <Outlet />
         </AdminContentLayout>
-      </AdminContentGuard> 
+      </AdminContentGuard>
     ),
     children: [
       {
-        path: CLIENT_URI.DASHBOARD
+        path: CLIENT_URI.DASHBOARD,
       },
       {
         path: `${CLIENT_URI.TABLE_EXERCISE}`,

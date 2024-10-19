@@ -11,7 +11,7 @@ client.interceptors.request.use(
   async (config) => {
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 client.interceptors.response.use(
@@ -20,7 +20,7 @@ client.interceptors.response.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 export default client;
