@@ -39,7 +39,6 @@ const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
         <h3>{chartTitle}</h3>
       </div>
 
-      {/* chart */}
       {/* <ResponsiveContainer width="100%" height="80%">
         <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -52,6 +51,7 @@ const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
           ))}
         </LineChart>
       </ResponsiveContainer> */}
+      {/* chart */}
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />
