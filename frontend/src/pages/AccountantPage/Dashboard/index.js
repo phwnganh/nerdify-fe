@@ -2,6 +2,7 @@ import React from "react";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import CustomLineChart from "../../../components/Chart/CustomLineChart";
 import { BellOutlined } from "@ant-design/icons";
+import UserInfo from "../../../components/Header/accountantHeader/UserInfo";
 
 const AccountantDashboard = () => {
   // Dữ liệu thẻ thông tin
@@ -36,11 +37,7 @@ const AccountantDashboard = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      {/* Thông tin người dùng */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-        <span style={{ fontWeight: "bold", fontSize: "1rem" }}>Xin chào, Đoàn Thành Chung 🎉</span>
-        <span style={{ fontSize: "0.9rem", color: "#666" }}>Tài khoản quyền: Accountant - Ngày tạo: 10/01/2025</span>
-      </div>
+      <UserInfo />
 
       {/* Thông tin học viên trả phí */}
       <div style={{ marginTop: "20px", display: "flex", gap: "40px" }}>
