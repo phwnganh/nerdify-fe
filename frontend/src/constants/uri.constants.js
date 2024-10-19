@@ -7,6 +7,7 @@ export const CLIENT_URI = {
   VERIFY_EMAIL: "/verify-email/:emailToken",
   RESET_PASSWORD: "/reset-password/:resetToken",
   BLOG_STUDY: "/blog-study",
+  BLOG_DETAIL: "/blog-study/:id",
   // LEARNER
   COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
