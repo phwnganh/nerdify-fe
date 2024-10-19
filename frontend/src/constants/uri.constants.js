@@ -1,0 +1,40 @@
+export const CLIENT_URI = {
+  // GUEST
+  LANDING_PAGE: "/",
+  LOGIN: "/login",
+  REGISTER: "/register",
+  FORGOT_PASSWORD: "/forgot-password",
+  VERIFY_EMAIL: "/verify-email/:emailToken",
+  RESET_PASSWORD: "/reset-password/:resetToken",
+  BLOG_STUDY: "/blog-study",
+  BLOG_DETAIL: "/blog-study/:id",
+  // LEARNER
+  COURSE_PAGE: "/course-page",
+  LEVEL_DETAIL: "/level-detail",
+  ONE_EXERCISE: "/one-exercise",
+  FINAL_EXAM: "/final-exam",
+  PROFILE: "/personal-profile",
+  EDIT_PROFILE: "/edit-personal-profile",
+  RESULT_DETAIL: "/result-detail",
+  FLASH_CARD: "/flash-card",
+  CREATE_FLASH_CARD: "/create-flash-card",
+  EDIT_FLASH_CARD: "/edit-flash-card",
+  PAYMENT: "/payment",
+  TEST_FLASH_CARD: "/test-flash-card",
+  TROPHY: "/trophy",
+  PREMIUM: "/premium",
+  BILLINFO: "/bill-info",
+  LEARNING_PROGRESS: "/learning-progress",
+  MANAGE_FOLDER: "/manage-folder",
+  MANAGE_FLASHCARD: "/manage-flashcard",
+  CHANGE_PASSWORD: "/change-password",
+  // ADMIN
+  DASHBOARD: "/dashboard",
+  // ADMIN CONTENT
+  TABLE_EXERCISE: "/exercise",
+  // ACCOUNTANT
+  ACCOUNTANT_DASHBOARD: "/accountant-dashboard",
+  SYSTEM_REVENUE: "/system-revenue",
+  TRANSACTION_HISTORY: "/transaction-history",
+  USER_STATISTICS: "/user-statistics",
+};

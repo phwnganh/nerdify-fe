@@ -1,0 +1,18 @@
+version: '3'
+services:
+  nerdify_fe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - nerdify_fe_network
+
+networks:
+  nerdify_fe_network:
+    driver: bridge

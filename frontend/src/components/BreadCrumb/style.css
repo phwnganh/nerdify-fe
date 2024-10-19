@@ -1,0 +1,5 @@
+.active a {
+      font-weight: bold;
+      color: #ff855d; /* Example color */
+      text-decoration: underline;
+    }

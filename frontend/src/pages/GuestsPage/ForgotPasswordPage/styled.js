@@ -1,0 +1,38 @@
+export const style = {
+      forgotContainer: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        height: "100vh",
+        width: "100%",
+        background: "#f4fcfc",
+        margin: 0,
+        padding: 0,
+      },
+      leftSide: {
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "40%",
+        height: "80%",
+        background: "#ffe45c",
+        borderRadius: "20px 0 0 20px",
+      },
+      rightSide: {
+        display: "flex",
+        flexDirection: "column",
+        width: "40%",
+        height: "80%",
+        background: "white",
+        borderRadius: "0 20px 20px 0",
+      },
+      formForgot: {
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "80%",
+        margin: "auto",
+      },
+    };
