@@ -22,6 +22,7 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { Col, Radio, Row } from "antd";
 import InputCustom from "../../../../components/Input";
+import { submitExercise } from "../../../../services/LearnerService";
 
 const vocabImg = {
   demo_1_1: demo_1_1,
@@ -56,9 +57,23 @@ export default function VocabularyExercises({ exercises }) {
   //part hai multiple choice
   const [selectedAnswersPart2, setSelectedAnswersPart2] = useState({});
   //part 3 fill in the blank
-  const [inputValuePart3, setInputValuePart3] = useState({});
-  const [userScore, setUserScore] = useState(-1);
+  // const [inputValuePart3, setInputValuePart3] = useState({});
+  const [inputValuePart3, setInputValuePart3] = useState(() => {
+    const initialValues = {};
+    exercises.parts[2].questions.forEach((question, index) => {
+      initialValues[question._id] = index === 0 ? question.matchedQuestion : "";
+    });
+    return initialValues;
+  });
+
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
+  const [submissionData, setSubmissionData] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [userSelected, setUserSelected] = useState([]);
+
+
+
+
 
   const shuffleArray = (array) => {
     return array
@@ -154,26 +169,6 @@ export default function VocabularyExercises({ exercises }) {
     }
   };
 
-  const markPart1 = (exercise) => {
-    let score = 0;
-
-    // Get the keys of the selectedPairsPart1 object
-    const keys = Object.keys(selectedPairsPart1);
-
-    // Iterate over each key
-    for (let key of keys) {
-      // Convert the key to a number to compare with its value
-      const index = parseInt(key, 10);
-
-      // Check if the value matches its key
-      if (selectedPairsPart1[key] === index) {
-        score++;
-      }
-    }
-
-    return score;
-  };
-
   const handleSelectAnswersPart2 = (questionId, optionId) => {
     setSelectedAnswersPart2((prev) => ({
       ...prev,
@@ -181,18 +176,6 @@ export default function VocabularyExercises({ exercises }) {
     }));
   };
 
-  const markPart2 = (exercise) => {
-    const { questions } = exercise;
-    let score = 0;
-    questions.map((question) => {
-      if (selectedAnswersPart2[question.id] === question.answer) {
-        score++;
-      }
-      return question;
-    });
-
-    return score;
-  };
 
   const handleInputChangePart3 = (index, value) => {
     setInputValuePart3((prev) => ({
@@ -201,154 +184,60 @@ export default function VocabularyExercises({ exercises }) {
     }));
   };
 
-  const markPart3 = (exercise) => {
-    const { questions } = exercise;
-    let score = 0;
-
-    questions.map((question) => {
-      if (inputValuePart3[question.id] && inputValuePart3[question.id].toLowerCase() === question.answer.toLowerCase()) {
-        score++;
-      }
-      return question;
-    });
-
-    return score;
-  };
-
-  const textOfSelectedPairs = (questionId, matchQuestionId) => {
-    const questionText = questions.find((q) => q.id === questionId)?.question;
-    const matchQuestionText = questions.find((m) => m.id === matchQuestionId)?.matchedQuestion;
-    return `${questionText} - ${matchQuestionText || "no answer"}`;
-  };
-
-  const totalQuestions = exercises.parts.reduce((total, part) => total + part.questions.length, 0) - 1;
-
   //submit all part and calculate score
   const handleSubmit = () => {
-    let score = 0;
-    const submissionDate = new Date().toISOString();
-    const partResultsData = {};
+
     //submission of part 1
     const submissionAnswersPart1 = exercises.parts[0].questions.map((question) => {
-      const userAnswer = textOfSelectedPairs(question.id, selectedPairsPart1[question.id]);
-      const correctAnswer = question.question + " - " + question.matchedQuestion;
-      const isCorrect = userAnswer === correctAnswer;
-      if (!partResultsData.part1) {
-        partResultsData.part1 = [];
-      }
-      partResultsData.part1.push({
-        questionId: question.id,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
-      });
       return {
-        questionId: question.id,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
+        questionId: question._id,
+        userAnswer: questions.find((q) => q._id === selectedPairsPart1[question._id])?.matchedQuestion
       };
     });
 
     //submission of part 2
     const submissionAnswersPart2 = exercises.parts[1].questions.map((question) => {
-      const userAnswer = selectedAnswersPart2[question.id] || "no answer";
-      const correctAnswer = question.answer;
-      const isCorrect = userAnswer === correctAnswer;
-      if (!partResultsData.part2) {
-        partResultsData.part2 = [];
-      }
-      partResultsData.part2.push({
-        questionId: question.id,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
-      });
       return {
-        questionId: question.id,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
+        questionId: question._id,
+        userAnswer: selectedAnswersPart2[question._id],
       };
     });
 
     const submissionAnswersPart3 = exercises.parts[2].questions.map((question) => {
-      const userAnswer = inputValuePart3[question.id] || "no answer";
-      const correctAnswer = question.answer;
-      const isCorrect = inputValuePart3[question.id] && inputValuePart3[question.id].toLowerCase() === question.answer.toLowerCase();
-      if (!partResultsData.part3) {
-        partResultsData.part3 = [];
-      }
-      partResultsData.part3.push({
-        questionId: question.id,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
-      });
       return {
-        questionId: question.id,
-        userAnswer,
-        correctAnswer,
-        isCorrect,
+        questionId: question._id,
+        userAnswer: inputValuePart3[question._id],
       };
     });
 
-    score = markPart1(exercises.parts[0]) + markPart2(exercises.parts[1]) + markPart3(exercises.parts[2]);
-
-    setUserScore(score);
-
-    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isCompleted: true,
-        score: `${Math.round((score / totalQuestions) * 100)}%`,
-      }),
+    setUserSelected([...submissionAnswersPart1, ...submissionAnswersPart2, ...submissionAnswersPart3]);
+    submitExercise({
+      exerciseId: exercises._id,
+      userSelected,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
+      .then((resp) => {
+        setSubmissionData(resp.data);
+        setIsSubmitted(true);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    const submissionData = {
-      submissionDate: submissionDate,
-      score: `${Math.round((score / totalQuestions) * 100)}%`,
-      submissionAnswers: [...submissionAnswersPart1, ...submissionAnswersPart2, ...submissionAnswersPart3],
-      exerciseId: exercises.id,
-    };
-
-    fetch("http://localhost:9999/exercisesSubmission", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("data: ", data);
-      })
-      .catch((err) => {
-        console.log("err", err);
+      .catch((error) => {
+        console.log(error);
       });
 
     handleAnswerPart1();
   };
 
+  console.log(submissionData);
+
   //redo exercises
   const handleDoAgain = () => {
-    setUserScore(-1);
     setSelectedPairsPart1({});
     setSelectedQuestions([]);
     setSelectedMatches([]);
     setSelectedAnswersPart2({});
     setInputValuePart3({});
     setCurrentPartIndex(0);
+    setIsSubmitted(false);
+    setUserSelected([]);
   };
 
   // dispaly detail answer for multiple choice
@@ -380,7 +269,7 @@ export default function VocabularyExercises({ exercises }) {
   const renderPart1 = (part) => {
     return (
       <>
-        {userScore < 0 && (
+        {!isSubmitted && (
           <>
             <Row
               gutter={[16, 16]}
@@ -402,8 +291,8 @@ export default function VocabularyExercises({ exercises }) {
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
-                            pointerEvents: userScore > -1 ? "none" : selectedQuestions.includes(ques._id) ? "none" : "auto",
-                            opacity: userScore > -1 ? 0.5 : selectedQuestions.includes(ques._id) ? 0.5 : 1,
+                            pointerEvents: isSubmitted ? "none" : selectedQuestions.includes(ques._id) ? "none" : "auto",
+                            opacity: isSubmitted ? 0.5 : selectedQuestions.includes(ques._id) ? 0.5 : 1,
                           }}
                           onClick={() =>
                             handlePairSelectionPart1({
@@ -439,8 +328,8 @@ export default function VocabularyExercises({ exercises }) {
                             borderRadius: "100px",
                             border: "none",
                             color: "white",
-                            pointerEvents: userScore > -1 ? "none" : selectedMatches.includes(matchQues._id) ? "none" : "auto",
-                            opacity: userScore > -1 ? 0.5 : selectedMatches.includes(matchQues._id) ? 0.5 : 1,
+                            pointerEvents: isSubmitted ? "none" : selectedMatches.includes(matchQues._id) ? "none" : "auto",
+                            opacity: isSubmitted ? 0.5 : selectedMatches.includes(matchQues._id) ? 0.5 : 1,
                           }}
                           onClick={() =>
                             handlePairSelectionPart1({
@@ -480,12 +369,6 @@ export default function VocabularyExercises({ exercises }) {
                     key={`${questionId}-${matchQuestionId}`}
                     style={{
                       marginBottom: "10px",
-                      // color:
-                      //   userScore > -1
-                      //     ? questionId == matchQuestionId
-                      //       ? "rgb(95, 216, 85)"
-                      //       : "red"
-                      //     : "",
                     }}
                   >
                     <Col span={12}>Question: {questionText}</Col>
@@ -497,7 +380,7 @@ export default function VocabularyExercises({ exercises }) {
           </>
         )}
 
-        {userScore > -1 && (
+        {isSubmitted && (
           <>
             <Row
               gutter={[16, 16]}
@@ -576,7 +459,7 @@ export default function VocabularyExercises({ exercises }) {
                     <Row
                       key={`${questionId}-${matchQuestionId}`}
                       style={{
-                        color: userScore > -1 ? (questionId == matchQuestionId ? "rgb(95, 216, 85)" : "red") : "",
+                        color: isSubmitted ? (questionId == matchQuestionId ? "rgb(95, 216, 85)" : "red") : "",
                       }}
                     >
                       <Col
@@ -588,7 +471,7 @@ export default function VocabularyExercises({ exercises }) {
                           alignItems: "center",
                         }}
                       >
-                        {userScore > -1 ? (
+                        {isSubmitted ? (
                           questionId == matchQuestionId ? (
                             "Đúng"
                           ) : (
@@ -648,7 +531,7 @@ export default function VocabularyExercises({ exercises }) {
                             buttonType="primary"
                             style={{
                               backgroundColor:
-                                userScore > -1
+                                isSubmitted
                                   ? selectedAnswersPart2[question._id] === question.answers[0].answerOption && option._id === question.answers[0].answerOption
                                     ? "rgb(95, 216, 85)"
                                     : selectedAnswersPart2[question._id] === option._id
@@ -659,7 +542,7 @@ export default function VocabularyExercises({ exercises }) {
                                   : selectedAnswersPart2[question._id] === option._id
                                     ? "#A8703E"
                                     : "",
-                              pointerEvents: userScore > -1 ? "none" : "auto",
+                              pointerEvents: isSubmitted ? "none" : "auto",
                             }}
                             onClick={() => handleSelectAnswersPart2(question._id, option._id)}
                           >
@@ -674,7 +557,7 @@ export default function VocabularyExercises({ exercises }) {
                 </Col>
               </Row>
 
-              {userScore > -1 && (
+              {isSubmitted && (
                 <Row style={{ display: "flex", alignItems: "center" }}>
                   <ButtonCustom buttonType="primary" onClick={() => toggleButtonAnswerDetail(question._id)} style={{ marginRight: "12px" }}>
                     Đáp án chi tiết
@@ -704,8 +587,6 @@ export default function VocabularyExercises({ exercises }) {
 
   const renderPart3 = (part) => {
     const { questions } = part;
-    console.log("questions", questions);
-    console.log(inputValuePart3);
     return (
       <div style={{ marginLeft: "80px", marginRight: "80px" }}>
         <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
@@ -720,12 +601,12 @@ export default function VocabularyExercises({ exercises }) {
                         : inputValuePart3[question._id]}
                       onChange={(e) => handleInputChangePart3(question._id, e.target.value)}
                       style={{
-                        borderColor: index === 0 || (userScore > -1 ? (inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
+                        borderColor: index === 0 || (isSubmitted ? (inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
                           .toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
                       }}
-                      disabled={userScore > -1 || index === 0}
+                      disabled={isSubmitted || index === 0}
                     />
-                    {userScore > -1 && (
+                    {isSubmitted && (
                       <TextCustom style={{ color: "red" }}>{index === 0 || inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
                         .toLowerCase() ? "" : question.matchedQuestion
                       }</TextCustom>
@@ -766,11 +647,11 @@ export default function VocabularyExercises({ exercises }) {
 
       {/* sau khi nop bai */}
 
-      {userScore > -1 && (
+      {isSubmitted && (
         <div style={{ textAlign: "center" }}>
           <TextCustom style={{ textAlign: "center" }}>
             Điểm:&nbsp;
-            <span style={{ color: "red" }}>{Math.round((userScore / totalQuestions) * 100)}%</span>
+            <span style={{ color: "red" }}>{submissionData.score}%</span>
           </TextCustom>
         </div>
       )}
@@ -787,7 +668,7 @@ export default function VocabularyExercises({ exercises }) {
         <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={handleNextPart} disabled={currentPartIndex === exercises.parts.length - 1}>
           Phần tiếp theo
         </ButtonCustom>
-        {userScore > -1 ? (
+        {isSubmitted ? (
           <>
             <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "100px" }}>
               Chuyển sang bài tập tiếp theo

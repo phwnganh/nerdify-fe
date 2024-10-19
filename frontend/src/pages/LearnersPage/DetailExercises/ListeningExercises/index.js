@@ -204,9 +204,10 @@ export default function ListeningExercise({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userSelected, setUserSelected] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [submissionData, setSubmissionData] = useState(null);
+
+  console.log(userSelected)
 
   const handleSelectOptions = useCallback(
     (questionId, optionId) => {
@@ -260,7 +261,6 @@ export default function ListeningExercise({ exercises }) {
 
   const handleRetry = useCallback(() => {
     setUserSelected([]);
-    setScore(0);
     setIsSubmitted(false);
     setCurrentPartIndex(0);
   }, []);
