@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import moment from "moment";
-import { createPayment, getPackageList } from "../../../services/LearnerService";
+import { createPayment, getPackageDetail, getPackageList } from "../../../services/LearnerService";
 
 const { Content } = Layout;
 
@@ -16,28 +16,45 @@ export const PremiumPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getPackageList()
-      .then((data) => setPackages(data.data));
+    getPackageList().then((data) => setPackages(data.data));
   }, []);
 
   // Tạo hàm handleRedirectToBill với useCallback để không bị tạo lại mỗi khi render
-  const handleRedirectToBill = useCallback((packageId, duration) => {
-    // const startDate = moment().format("DD/MM/YYYY");
-    // const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
-    const newTransaction = {
-      packageId,
-      
-      // discount
-    };
+  const handleRedirectToBill = useCallback(
+    async (packageId) => {
+      // const startDate = moment().format("DD/MM/YYYY");
+      // const endDate = moment().add(duration, "months").format("DD/MM/YYYY");
+      // const packageDetail = await getPackageDetail(packageId);
+      // const newTransaction = {
+      //   packageId: packageDetail._id,
+      //   discount: 0
+      //   // discount
+      // };
 
-    createPayment()
-      .then((data) => {
-        navigate(`${CLIENT_URI.BILLINFO}/${data?.id}`);
-      })
-      .catch((err) => {
+      // const learnerTransaction = await createPayment(newTransaction);
+      // navigate(`${CLIENT_URI.BILLINFO}/transaction`)
+      //   .catch((err) => {
+      //     console.error(err);
+      //   });
+      try {
+        // Fetch package details using the packageId
+        // const packageDetails = await getPackageDetail(packageId);
+
+        const newTransaction = {
+          packageId: packageId, // Pass the correct packageId from the fetched package
+          discount: 0, // You can adjust this value based on user input or offer
+        };
+        // Create a new payment and get the transaction response
+        const transaction = await createPayment(newTransaction);
+
+        // Navigate to the bill info page using the returned transaction ID
+        navigate(`${CLIENT_URI.BILLINFO}/${transaction?.data?._id}`);
+      } catch (err) {
         console.error(err);
-      });
-  }, [navigate]);
+      }
+    },
+    [navigate],
+  );
 
   return (
     <>
@@ -80,24 +97,12 @@ export const PremiumPage = () => {
         <div>
           <TitleCustom level={2}>VUI LÒNG CHỌN CÁC GÓI DƯỚI ĐÂY</TitleCustom>
           <CardCustom bordered={false}>
-            <Radio.Group
-              style={{ display: "flex", justifyContent: "space-evenly" }}
-            >
+            <Radio.Group style={{ display: "flex", justifyContent: "space-evenly" }}>
               {packages.map((pack) => (
-                <CardCustom
-                  key={pack.name}
-                  title={pack.packageName}
-                  bordered={true}
-                  style={{ marginBottom: "16px", border: "1px solid" }}
-                >
+                <CardCustom key={pack.name} title={pack.packageName} bordered={true} style={{ marginBottom: "16px", border: "1px solid" }}>
                   <TitleCustom level={4}>{pack.price?.toLocaleString("vi-VN")} VNĐ</TitleCustom>
                   <TextCustom>Thời hạn: {pack.duration} tháng</TextCustom>
-                  <ButtonCustom
-                    type="primary"
-                    style={{ marginTop: "16px" }}
-                    block
-                    onClick={() => handleRedirectToBill(pack.id, pack.duration)}
-                  >
+                  <ButtonCustom type="primary" style={{ marginTop: "16px" }} block onClick={() => handleRedirectToBill(pack._id)}>
                     Chọn ngay
                   </ButtonCustom>
                 </CardCustom>

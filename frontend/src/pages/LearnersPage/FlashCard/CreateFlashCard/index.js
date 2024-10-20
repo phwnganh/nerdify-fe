@@ -56,7 +56,7 @@ export default function CreateFlashCard() {
       description,
       cards: formattedCards,
       level,
-      isPublic: true,
+      isPublic: false,
     };
     createNewFlashcard(data)
       .then((res) => messageApi.success("Tạo flash card thành công"))

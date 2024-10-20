@@ -1,5 +1,5 @@
 import client from "../client";
-import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
+import { BLOG_SERVICE_URI, COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
 export const getCourseLevelList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL);
   return res.data;
@@ -10,13 +10,22 @@ export const getLevelDetail = async (courseId) => {
   return res.data;
 };
 
+export const getFinalExamDetailByCourseId = async (courseId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES + "/" + courseId + "/final-exam");
+  return res.data;
+};
+
 export const getPhaseList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES);
   return res.data;
 };
 
-export const getPhaseDetail = async () => {
-  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASE_DETAIL);
+export const getEnrollLearnerByCourseId = async(courseId) => {
+  const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL + "/enroll" + "/" + courseId);
+  return res.data;
+}
+export const getPhaseDetail = async (phaseId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES + "/" + phaseId);
   return res.data;
 };
 
@@ -45,8 +54,8 @@ export const createNewFlashcard = async (params) => {
   return res.data;
 };
 
-export const updateFlashcard = async (params) => {
-  const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD_DETAIL, params);
+export const updateFlashcard = async (flashcardId, data) => {
+  const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId, data);
   return res.data;
 };
 
@@ -60,22 +69,58 @@ export const addFlashcardToFolder = async () => {
   return res.data;
 };
 
-export const updateFlashcardStatus = async (params) => {
-  const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS, params);
+export const updateFlashcardStatus = async (flashcardId, isPublic) => {
+  const url = FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS.replace(":flashcardId", flashcardId);
+  const res = await client.put(url, { isPublic });
   return res.data;
 };
 
-export const getPackageList = async() => {
+export const getMyFolder = async() => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.GET_MY_FOLDER);
+  return res.data;
+}
+
+export const getPackageList = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
   return res.data;
-}
+};
 
-export const createPayment = async(params) => {
+export const createPayment = async (params) => {
   const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.CREATE_PAYMENT, params);
   return res.data;
-}
+};
 
-export const getPackageDetail = async() => {
-  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE_DETAIL);
+export const getPackageDetail = async (packageId) => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE + "/" + packageId);
+  return res.data;
+};
+
+export const submitExercise = async (params) => {
+  const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.SUBMIT_EXERCISE, params);
+  return res.data;
+};
+
+export const submitFinalExam = async (params) => {
+  const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.SUBMIT_FINALEXAM, params);
+  return res.data;
+};
+
+export const userGetTransactionDetail = async (transactionId) => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_GET_TRANSACTION + "/" + transactionId);
+  return res.data;
+};
+
+export const finishPayment = async (transactionId, params) => {
+  const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.FINISH_PAYMENT + "/" + transactionId, params);
+  return res.data;
+};
+
+export const getTrophyByPhaseId = async (examId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_TROPHY_BY_PHASE_ID + "/" + examId);
+  return res.data;
+};
+
+export const getBlogList = async () => {
+  const res = await client.get(BLOG_SERVICE_URI.BLOG_SERVICE.BLOG);
   return res.data;
 }
