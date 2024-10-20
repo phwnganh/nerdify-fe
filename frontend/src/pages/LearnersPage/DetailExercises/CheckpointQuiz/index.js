@@ -28,7 +28,9 @@ import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.
 import { StartQuizModal } from "../../LevelDetailPage";
 import { submitExercise } from "../../../../services/LearnerService";
 
+
 export default function CheckpointQuiz({ exercises }) {
+
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
