@@ -18,8 +18,7 @@ const URI_COURSES_SERVICE = {
 
 const URI_FLASHCARDS_SERVICE = {
   FLASHCARD: API_PREFIXES.FLASHCARD,
-  UPDATE_FLASHCARD_STATUS: API_PREFIXES.FLASHCARD + "/:flashcardId/visibility",
-  CREATE_FOLDER: API_PREFIXES + "/folders",
+  UPDATE_FLASHCARD_STATUS: API_PREFIXES.FLASHCARD + "/:flashcardId/visibility",  CREATE_FOLDER: API_PREFIXES + "/folders",
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES + "/folders/:folderId" + "/flashcards/:flashcardId",
 };
 

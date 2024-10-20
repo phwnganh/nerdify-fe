@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Dropdown, List, Row, Modal, Select } from "antd";
+import { Button, Col, Dropdown, List, Row, Modal, Select, message } from "antd";
 import {
   EditOutlined,
   FileOutlined,
@@ -14,6 +14,7 @@ import {
   RightOutlined,
   ShareAltOutlined,
   SoundOutlined,
+  UnlockOutlined,
 } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,14 +27,14 @@ import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
-import { getFlashcardDetail } from "../../../../services/LearnerService";
+import { getFlashcardDetail, updateFlashcardStatus } from "../../../../services/LearnerService";
 import { useAuth } from "../../../../hooks";
 import moment from "moment";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
   const { flashcardId } = useParams();
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,6 +46,8 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   const [isVisibleFolderList, setIsVisibleFolderList] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [folders, setFolders] = useState([]);
+  const [isPublic, setIsPublic] = useState(false);
+
   const displayModalToChooseFolders = () => {
     console.log("Modal is opening");
     setIsVisibleFolderList(true);
@@ -77,17 +80,36 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   useEffect(() => {
     if (flashcardId) {
       getFlashcardDetail(flashcardId)
-        .then((data) => setFlashcard(data.data))
+        .then((data) => {
+          setFlashcard(data.data);
+          setIsPublic(data.data.isPublic);
+        })
         .catch((err) => console.error(err));
     }
   }, [flashcardId]);
 
+  const handleChangStatus = () => {
+    const newStatus = !isPublic;
+    console.log(isPublic);
+
+    updateFlashcardStatus(flashcardId, newStatus)
+      .then((res) => {
+        setIsPublic(newStatus);
+        message.success("Cập nhật trạng thái flashcard thành công!");
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể cập nhật trạng thái flashcard.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+  };
+
   useEffect(() => {
     fetch(`${BASE_SERVER}/folders`)
       .then((data) => data.json())
-      .then((data) => {setFolders(data)
-        console.log("folders:" , folders);
-        
+      .then((data) => {
+        setFolders(data);
+        console.log("folders:", folders);
       })
       .catch((err) => {
         console.log(err);
@@ -361,12 +383,12 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
             <ButtonCustom buttonType="primary" key="add">
               Thêm vào folder
             </ButtonCustom>
-          </div>
+          </div>,
         ]}
       >
         <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}>
           <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }}>
-            {folders.map(folder => (
+            {folders.map((folder) => (
               <Option key={folder.id}>{folder.name}</Option>
             ))}
           </Select>
@@ -418,7 +440,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
             </div>
           </Col>
           <Col>
-            <Button icon={<LockOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
+            <Button icon={isPublic ? <UnlockOutlined /> : <LockOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={handleChangStatus} title={isPublic ? "Công khai" : "Riêng tư"} />
             <Button icon={<MinusCircleOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
             <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
             {/* <Dropdown menu={{ items: folderSelected }} trigger={["click"]}> */}

@@ -44,6 +44,7 @@ const imgReadingArr = {
 };
 
 export default function ReadingExercises({ exercises }) {
+  console.log(exercises);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userSelected, setUserSelected] = useState([]);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
@@ -184,7 +185,7 @@ export default function ReadingExercises({ exercises }) {
                 {toggleAnswerDetail[question._id] && (
                   <div>
                     <TextCustom style={{ color: "blue" }}>
-                      {question?.answerDetail.split("\n").map((line, index) => (
+                      {question?.answers[0].explanation.split("\n").map((line, index) => (
                         <React.Fragment key={index}>
                           {line}
                           <br />
@@ -237,7 +238,7 @@ export default function ReadingExercises({ exercises }) {
         {isSubmitted && (
           <>
             <TextCustom>Điểm: </TextCustom>
-            <span style={{ color: "red" }}>{submissionData.score}%</span>
+            <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
           </>
         )}
       </div>

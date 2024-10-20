@@ -69,8 +69,9 @@ export const addFlashcardToFolder = async () => {
   return res.data;
 };
 
-export const updateFlashcardStatus = async (params) => {
-  const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS, params);
+export const updateFlashcardStatus = async (flashcardId, isPublic) => {
+  const url = FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.UPDATE_FLASHCARD_STATUS.replace(":flashcardId", flashcardId);
+  const res = await client.put(url, { isPublic });
   return res.data;
 };
 

@@ -28,7 +28,9 @@ import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.
 import { StartQuizModal } from "../../LevelDetailPage";
 import { submitExercise } from "../../../../services/LearnerService";
 
+
 export default function CheckpointQuiz({ exercises }) {
+
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
@@ -222,7 +224,7 @@ export default function CheckpointQuiz({ exercises }) {
             ) : (
               <>
                 <TextCustom>
-                  Điểm: <span style={{ color: "red" }}>{submissionData.score}%</span>
+                  Điểm: <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
                 </TextCustom>
               </>
             )}
@@ -258,7 +260,6 @@ export default function CheckpointQuiz({ exercises }) {
                     <ButtonCustom
                       buttonType="secondary"
                       style={{ padding: "23px", marginLeft: "30px" }}
-                    // onClick={handleAchieveTrophy}
                     >
                       Chuyển sang phase tiếp theo
                     </ButtonCustom>

@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
+import SpinCustom from "../components/Spin";
 
 export const LearnerGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
@@ -8,7 +9,7 @@ export const LearnerGuard = ({ children }) => {
   console.log("user info: ", user);
   
   if (!isInitialized) {
-    return <>loading...</>;
+    return <SpinCustom size="large"></SpinCustom>;
   }
 
   if (isAuthenticated) {

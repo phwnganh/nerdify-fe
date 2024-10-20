@@ -14,16 +14,16 @@ export default function EditFlashCard() {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
-   getFlashcardDetail(flashcardId)
+    getFlashcardDetail(flashcardId)
       .then((data) => {
         setFlashcard(data.data);
         console.log("flashcard: ", data.data);
-        
+
         form.setFieldsValue({
           title: data?.data?.title,
           description: data?.data?.description,
           level: data?.data?.level,
-          cards: data?.data?.cards?.map(card => ({
+          cards: data?.data?.cards?.map((card) => ({
             _id: card._id, // include the ID if needed
             terms: card.term,
             definitions: card.definition,
@@ -46,28 +46,27 @@ export default function EditFlashCard() {
   };
 
   const handleSubmit = (values) => {
-    const {title, description, cards, level} = values;
-    const formattedCards = cards.map(card => ({
+    const { title, description, cards, level } = values;
+    const formattedCards = cards.map((card) => ({
       _id: card._id,
       term: card?.terms,
-      definition: card?.definitions
-    }))
+      definition: card?.definitions,
+    }));
 
     const data = {
       title,
       description,
       cards: formattedCards,
       level,
-      isPublic: true
-    }
+    };
 
-    updateFlashcard(flashcardId, data).then(res => 
-      messageApi.success("Cập nhật flashcard thành công!")
-    ).catch(err => {
-      const errorMessage = err.response?.data?.message || 'Failed to create flashcard.';
-      messageApi.error(errorMessage);
-      console.error('Error:', err); 
-    })
+    updateFlashcard(flashcardId, data)
+      .then((res) => messageApi.success("Cập nhật flashcard thành công!"))
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
+        messageApi.error(errorMessage);
+        console.error("Error:", err);
+      });
     // fetch(`${BASE_SERVER}/flashcard/${flashcardId}`, {
     //   method: "PUT",
     //   headers: {
@@ -204,13 +203,7 @@ export default function EditFlashCard() {
                     <div>
                       <Row style={{ alignItems: "center" }}>
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "terms"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập thuật ngữ!")
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "terms"]} rules={[validationRules.required("Vui lòng nhập thuật ngữ!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 3 }}
                               placeholder="Thuật ngữ"
@@ -223,13 +216,7 @@ export default function EditFlashCard() {
                         </Col>
 
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "definitions"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập định nghĩa!"),
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "definitions"]} rules={[validationRules.required("Vui lòng nhập định nghĩa!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 4 }}
                               placeholder="Định nghĩa"
