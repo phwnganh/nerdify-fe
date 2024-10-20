@@ -64,8 +64,8 @@ export const createFolder = async (params) => {
   return res.data;
 };
 
-export const addFlashcardToFolder = async () => {
-  const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.ADD_FLASHCARD_TO_FOLDER);
+export const addFlashcardToFolder = async (folderId, flashcardId) => {
+  const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.ADD_FLASHCARD_TO_FOLDER.replace(":folderId", folderId).replace(":flashcardId", flashcardId));
   return res.data;
 };
 
@@ -79,6 +79,7 @@ export const getMyFolder = async() => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.GET_MY_FOLDER);
   return res.data;
 }
+
 
 export const getPackageList = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);

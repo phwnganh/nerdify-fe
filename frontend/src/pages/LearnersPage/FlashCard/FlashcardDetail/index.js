@@ -27,13 +27,13 @@ import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
-import { getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
+import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
 import { useAuth } from "../../../../hooks";
 import moment from "moment";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
-  const { flashcardId } = useParams();
+  const {folderId, flashcardId } = useParams();
   const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
@@ -54,7 +54,17 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   };
 
   const handleOkToChooseFolders = () => {
-    setIsVisibleFolderList(false);
+    addFlashcardToFolder(folderId, flashcardId)
+      .then((res) => {
+        message.success("Thêm vào folder thành công!");
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể thêm vào folder.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+
+    // setIsVisibleFolderList(false);
   };
 
   const handleCancelToChooseFolders = () => {
