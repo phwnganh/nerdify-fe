@@ -75,6 +75,11 @@ export const updateFlashcardStatus = async (flashcardId, isPublic) => {
   return res.data;
 };
 
+export const getMyFolder = async() => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.GET_MY_FOLDER);
+  return res.data;
+}
+
 export const getPackageList = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
   return res.data;
