@@ -1,5 +1,5 @@
 import client from "../client";
-import { COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
+import { BLOG_SERVICE_URI, COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
 export const getCourseLevelList = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL);
   return res.data;
@@ -119,3 +119,8 @@ export const getTrophyByPhaseId = async (examId) => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_TROPHY_BY_PHASE_ID + "/" + examId);
   return res.data;
 };
+
+export const getBlogList = async () => {
+  const res = await client.get(BLOG_SERVICE_URI.BLOG_SERVICE.BLOG);
+  return res.data;
+}

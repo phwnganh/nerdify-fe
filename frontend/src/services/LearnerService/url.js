@@ -3,6 +3,7 @@ const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",
   PAYMENT: "/api/payment",
+  BLOG: "/api/blog"
 };
 
 const URI_COURSES_SERVICE = {
@@ -31,6 +32,10 @@ const URI_PAYMENT_SERVICE = {
   USER_GET_TRANSACTION: API_PREFIXES.PAYMENT + "/user/transactions",
 };
 
+const URI_BLOG_SERVICE = {
+  BLOG: API_PREFIXES.BLOG
+}
+
 export const COURSE_SERVER_URI = {
   DOMAIN: DOMAIN,
   COURSE_SERVICE: URI_COURSES_SERVICE,
@@ -45,3 +50,8 @@ export const PAYMENT_SERVER_URI = {
   DOMAIN: DOMAIN,
   PAYMENT_SERVICE: URI_PAYMENT_SERVICE,
 };
+
+export const BLOG_SERVICE_URI = {
+  DOMAIN: DOMAIN,
+  BLOG_SERVICE: URI_BLOG_SERVICE
+}
