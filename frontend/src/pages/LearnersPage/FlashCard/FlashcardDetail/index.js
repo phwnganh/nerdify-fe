@@ -27,7 +27,7 @@ import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
-import { getFlashcardDetail, updateFlashcardStatus } from "../../../../services/LearnerService";
+import { getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
 import { useAuth } from "../../../../hooks";
 import moment from "moment";
 
@@ -105,10 +105,9 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   };
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/folders`)
-      .then((data) => data.json())
+    getMyFolder()
       .then((data) => {
-        setFolders(data);
+        setFolders(data.data);
         console.log("folders:", folders);
       })
       .catch((err) => {

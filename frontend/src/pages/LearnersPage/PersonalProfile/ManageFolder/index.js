@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import ModalCustom from "../../../../components/Modal";
 import { Button, message } from "antd";
 import InputCustom from "../../../../components/Input";
+import { getMyFolder } from "../../../../services/LearnerService";
 
 export default function ManageFolder() {
   const navigate = useNavigate();
@@ -23,11 +24,10 @@ export default function ManageFolder() {
   };
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/folders`)
-      .then((res) => res.json())
+    getMyFolder()
       .then((data) => {
-        console.log("folders: ", data);
-        setFolders(data);
+        console.log("folders: ", data.data);
+        setFolders(data.data);
       })
       .catch((err) => console.error(err));
   }, []);
