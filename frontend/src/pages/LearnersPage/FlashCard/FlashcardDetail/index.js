@@ -389,7 +389,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
             <Button key={"cancel"} style={{ marginRight: "20px" }} onClick={handleCancelToChooseFolders}>
               Hủy
             </Button>
-            <ButtonCustom buttonType="primary" key="add" onClick={handleOkToChooseFolders}>
+            <ButtonCustom buttonType="primary" key="add">
               Thêm vào folder
             </ButtonCustom>
           </div>,

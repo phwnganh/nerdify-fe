@@ -9,7 +9,7 @@ import Folder from "../../FlashCard/Folder";
 import { TitleCustom } from "../../../../components/Typography";
 import { useEffect, useState } from "react";
 import ModalCustom from "../../../../components/Modal";
-import { Button, message } from "antd";
+import { Button, message, notification } from "antd";
 import InputCustom from "../../../../components/Input";
 import { createFolder, getMyFolder } from "../../../../services/LearnerService";
 
@@ -42,7 +42,8 @@ export default function ManageFolder() {
       const response = await createFolder({ name: newFolderName.trim() });
       messageApi.success("Tạo mới folder thành công!");
       console.log("new folder: ", response);
-      setFolders((prevFolders) => [...prevFolders, response]);
+      const newFolder = response.data;
+      setFolders((prevFolders) => [...prevFolders, newFolder]);
       setIsOpenModal(false);
       setNewFolderName("");
     } catch (error) {

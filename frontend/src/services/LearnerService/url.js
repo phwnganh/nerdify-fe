@@ -23,6 +23,7 @@ const URI_FLASHCARDS_SERVICE = {
   CREATE_FOLDER: API_PREFIXES + "/folders",
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES.FLASHCARD + "/folders/:folderId" + "/flashcards/:flashcardId",
   GET_MY_FOLDER: API_PREFIXES.FLASHCARD + "/folders/my-folders",
+  CREATE_FOLDER: API_PREFIXES.FLASHCARD + "/folders",
 };
 
 const URI_PAYMENT_SERVICE = {

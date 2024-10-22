@@ -22,6 +22,10 @@ export default function Folder({folders}) {
                   <TitleCustom style={{ margin: "0px" }} level={4}>
                     {folder?.name}
                   </TitleCustom>
+                  <div style={{marginTop: '10px'}}>
+                  <TextCustom>Có <span style={{fontWeight: "bold"}}>{folder?.flashcardCount}</span> bộ flashcards</TextCustom>
+
+                  </div>
                 </div>
               </div>
 
