@@ -272,6 +272,57 @@ export const routes = [
     ),
     children: [],
   },
+    // Admin content
+    {
+      element: (
+        <AdminContentGuard>
+          <AdminContentLayout>
+            <Outlet />
+          </AdminContentLayout>
+        </AdminContentGuard>
+      ),
+      children: [
+        {
+          path: CLIENT_URI.DASHBOARD,
+        },
+        {
+          path: `${CLIENT_URI.TABLE_EXERCISE}`,
+          element: <Exercise />,
+        },
+        {
+          path: `/upload`,
+          element: <Upload />,
+        },
+      ],
+    },
+    // Accountant urls
+    {
+      element: (
+        <AccountantGuard>
+          <AccountantLayout>
+            <Outlet />
+          </AccountantLayout>
+        </AccountantGuard>
+      ),
+      children: [
+        {
+          path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
+          element: <AccountantDashboard />,
+        },
+        {
+          path: CLIENT_URI.SYSTEM_REVENUE,
+          element: <SystemRevenue />,
+        },
+        {
+          path: CLIENT_URI.TRANSACTION_HISTORY,
+          element: <TransactionHistory />,
+        },
+        {
+          path: CLIENT_URI.USER_STATISTICS,
+          element: <UserStatistics />,
+        },
+      ],
+    },
 ];
 
 export default routes;
