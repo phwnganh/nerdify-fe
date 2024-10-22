@@ -27,13 +27,13 @@ import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
-import { getFlashcardDetail, updateFlashcardStatus } from "../../../../services/LearnerService";
+import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
 import { useAuth } from "../../../../hooks";
 import moment from "moment";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
-  const { flashcardId } = useParams();
+  const { folderId, flashcardId } = useParams();
   const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
@@ -54,7 +54,17 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   };
 
   const handleOkToChooseFolders = () => {
-    setIsVisibleFolderList(false);
+    addFlashcardToFolder(folderId, flashcardId)
+      .then((res) => {
+        message.success("Thêm vào folder thành công!");
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể thêm vào folder.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+
+    // setIsVisibleFolderList(false);
   };
 
   const handleCancelToChooseFolders = () => {
@@ -105,10 +115,9 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   };
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/folders`)
-      .then((data) => data.json())
+    getMyFolder()
       .then((data) => {
-        setFolders(data);
+        setFolders(data.data);
         console.log("folders:", folders);
       })
       .catch((err) => {
@@ -380,7 +389,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
             <Button key={"cancel"} style={{ marginRight: "20px" }} onClick={handleCancelToChooseFolders}>
               Hủy
             </Button>
-            <ButtonCustom buttonType="primary" key="add">
+            <ButtonCustom buttonType="primary" key="add" onClick={handleOkToChooseFolders}>
               Thêm vào folder
             </ButtonCustom>
           </div>,
