@@ -7,16 +7,16 @@ import CardCustom from "../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
 import Flashcard from "..";
+import { getFlashcardList } from "../../../../services/LearnerService";
 
 export default function FlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard`)
-      .then((res) => res.json())
+   getFlashcardList()
       .then((data) => {
         console.log("flashcards: ", data);
-        setFlashcards(data);
+        setFlashcards(data.data);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -38,7 +38,7 @@ export default function FlashcardList() {
                 <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
               </div>
               <div style={{ marginTop: "10px" }}>
-                <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?.id)}>
+                <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?._id)}>
                   Xem chi tiết
                 </ButtonCustom>
               </div>

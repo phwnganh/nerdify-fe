@@ -7,10 +7,9 @@ import { Col, Input, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
 
-export default function WritingExercises() {
-  const [exercise, setExercise] = useState(null);
+export default function WritingExercises({ exercises }) {
   const { exerciseType, exerciseId } = useParams();
   const [userAnswers, setUserAnswers] = useState({});
   const [answerStatus, setAnswerStatus] = useState({});
@@ -19,18 +18,7 @@ export default function WritingExercises() {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercise(data[0]);
-        }
-      })
-      .catch((err) => console.error("error", err));
-  }, [exerciseType, exerciseId]);
-
-  if (!exercise?.parts) {
+  if (!exercises?.parts) {
     return <div>Loading...</div>;
   }
 
@@ -132,7 +120,7 @@ export default function WritingExercises() {
     const totalQuestions = 4;
     const newAnswerStatus = {};
     const questionsArray = [];
-    exercise.parts.forEach((part) => {
+    exercises.parts.forEach((part) => {
       if (part.partType === PART_TYPE.FILL_IN_THE_BLANK) {
         part.questions.forEach((question) => {
           const userAnswer = userAnswers[part.id]?.[question.id]?.trim() || "";
@@ -184,7 +172,7 @@ export default function WritingExercises() {
       exerciseId,
     };
 
-    fetch(`${BASE_SERVER}/exercises/${exercise?.id}`, {
+    fetch(`http://localhost:9999/exercises/${exercises?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -202,7 +190,7 @@ export default function WritingExercises() {
         console.log(err);
       });
 
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
+    fetch("http://localhost:9999/exercisesSubmission", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -227,7 +215,7 @@ export default function WritingExercises() {
     <div style={{ padding: "30px", marginLeft: "70px", marginRight: "70px" }}>
       <BreadCrumbHome />
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercise?.title}
+        {exercises?.title}
       </TitleCustom>
       <div style={{ textAlign: "center" }}>
         {isCompleted && (
@@ -238,7 +226,7 @@ export default function WritingExercises() {
         )}
       </div>
       <div>
-        {exercise.parts?.map((part, index) => (
+        {exercises.parts?.map((part, index) => (
           <>
             <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "16px" }}>{part.partName}</TextCustom>
             {part.partType === PART_TYPE.FILL_IN_THE_BLANK && renderPart1(part)}

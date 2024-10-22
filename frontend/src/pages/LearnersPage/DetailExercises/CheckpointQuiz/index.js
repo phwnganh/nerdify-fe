@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { ParagraphCustom, TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
+import { CLIENT_URI } from "../../../../constants";
 
 // Import images
 import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
@@ -26,19 +26,18 @@ import part2_ques8_2 from "../../../../assets/listeningExercises/02- teil 2-08.m
 import part2_ques9_2 from "../../../../assets/listeningExercises/02- teil 2-09.mp3";
 import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.mp3";
 import { StartQuizModal } from "../../LevelDetailPage";
+import { submitExercise } from "../../../../services/LearnerService";
 
-export default function CheckpointQuiz() {
-  const { exerciseType, exerciseId } = useParams();
+
+export default function CheckpointQuiz({ exercises }) {
+
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [exercises, setExercises] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
-  const [userAnswers, setUserAnswers] = useState({});
-  const [userScore, setUserScore] = useState(-1);
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-  const [conditionStatus, setConditionStatus] = useState("");
+  const [userSelected, setUserSelected] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [submissionData, setSubmissionData] = useState(null);
 
   const imgArrVocab = [demo_1_1, demo_1_2, demo_1_3, demo_2_1, demo_2_2, demo_2_3];
   const audioArr = {
@@ -53,21 +52,8 @@ export default function CheckpointQuiz() {
   };
 
   useEffect(() => {
-    if (!hasStarted) {
-      fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.length > 0) {
-            setExercises(data[0]);
-          }
-        })
-        .catch((err) => console.error("error", err));
-    }
-  }, [exerciseType, exerciseId, hasStarted]);
-
-  useEffect(() => {
     if (!hasStarted) return;
-    if (isCompleted) return;
+    if (isSubmitted) return;
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime > 0) {
@@ -81,18 +67,36 @@ export default function CheckpointQuiz() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, isCompleted, hasStarted]);
+  }, [timeLeft, isSubmitted, hasStarted]);
 
-  const handleSelectOptions = useCallback((questionId, optionId) => {
-    setUserAnswers((prev) => ({
-      ...prev,
-      [questionId]: optionId,
-    }));
-  }, []);
-
-  // const handleStart = () => {
-  //   setHasStarted(true);
-  // };
+  const handleSelectOptions = useCallback(
+    (questionId, optionId) => {
+      if (!isSubmitted) {
+        const foundQuestion = userSelected.some((selected) => selected.questionId === questionId);
+        if (foundQuestion) {
+          const newSelected = userSelected.map((userAnswers) => {
+            if (userAnswers.questionId === questionId) {
+              return {
+                ...userAnswers,
+                userAnswer: optionId,
+              };
+            }
+            return userAnswers;
+          });
+          setUserSelected(newSelected);
+        } else {
+          setUserSelected((prev) => [
+            ...prev,
+            {
+              questionId,
+              userAnswer: optionId,
+            },
+          ]);
+        }
+      }
+    },
+    [isSubmitted, userSelected],
+  );
 
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -100,93 +104,32 @@ export default function CheckpointQuiz() {
     return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const totalQuestions = useMemo(() => exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0), [exercises]);
-
   const handleSubmit = useCallback(() => {
-    let score = 0;
-    const submissionDate = new Date().toISOString();
-    const questionsArray = exercises?.parts.flatMap((part) =>
-      part.questions.map((question) => {
-        const userAnswer = userAnswers[question.id];
-        const correctAnswer = question?.answer;
-        const isCorrect = userAnswer === correctAnswer;
-        if (isCorrect) {
-          score++;
-        }
-        return {
-          questionId: question.id,
-          userAnswer,
-          correctAnswer,
-          isCorrect,
-        };
-      }),
-    );
-
-    const markValue = Math.round((score / totalQuestions) * 100);
-    const newConditionStatus = markValue >= 50 ? "passed" : "not pass";
-    setConditionStatus(newConditionStatus);
-    setUserScore(markValue);
-    setIsCompleted(true);
-
-    const submissionData = {
-      submissionDate: submissionDate,
-      score: `${markValue}%`,
-      submissionAnswers: questionsArray,
-      conditionStatus: newConditionStatus,
-      exerciseId: exercises.id,
-      isCompleted: true,
-    };
-
-    fetch(`${BASE_SERVER}/exercises/${exercises.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isCompleted: true,
-        score: `${markValue}%`,
-        conditionStatus: newConditionStatus,
-      }),
+    submitExercise({
+      exerciseId: exercises._id,
+      userSelected,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((resp) => {
+        setSubmissionData(resp.data);
+        setIsSubmitted(true);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
-
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data: ", data);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  }, [exercises, userAnswers, totalQuestions]);
+  }, [exercises, userSelected]);
 
   const handleRetry = useCallback(() => {
-    setUserAnswers({});
-    setUserScore(-1);
-    setIsCompleted(false);
+    setUserSelected([]);
+    setIsSubmitted(false);
     setCurrentPartIndex(0);
     setTimeLeft(15 * 60);
-    setConditionStatus("");
   }, []);
-
   const renderPart = (part) => (
     <>
-      {part.questions.map((question) => (
-        <div key={question.id}>
+      {part.questions.map((question, index) => (
+        <div key={index}>
           <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
-            Câu {question.id}: {question.question}
+            Câu {index + 1}: {question.question}
           </TextCustom>
           {question.questionParagraph && (
             <ParagraphCustom>
@@ -207,17 +150,14 @@ export default function CheckpointQuiz() {
           <div style={{ marginTop: "20px" }}>
             <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
               {question.options.map((option, index) => {
-                const userSelected = userAnswers[question.id] === option.id;
-                const correctAnswer = question?.answer;
-                const isCorrect = option.id === correctAnswer;
-                const isUserSelectedWrong = userSelected && !isCorrect;
+                const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
+                let backgroundColor = isUserSelected ? "#A8703E" : "";
 
-                let backgroundColor = userSelected ? "#A8703E" : "";
-
-                if (isCompleted) {
-                  if (isCorrect) {
+                if (isSubmitted && (submissionData.score >= 50)) {
+                  const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer?.answerOption == option._id && answer.isCorrect);
+                  if (foundQuestion) {
                     backgroundColor = "#5FD855";
-                  } else if (isUserSelectedWrong) {
+                  } else if (isUserSelected) {
                     backgroundColor = "red";
                   }
                 }
@@ -226,17 +166,17 @@ export default function CheckpointQuiz() {
                   <Col key={index} span={8}>
                     <ButtonCustom
                       buttonType="primary"
-                      onClick={() => handleSelectOptions(question.id, option.id)}
+                      onClick={() => handleSelectOptions(question._id, option._id)}
                       style={{
                         backgroundColor,
                       }}
-                      disabled={isCompleted}
+                      disabled={isSubmitted}
                     >
                       {option.optionImage ? (
-                        <span>{option.id}</span>
+                        <span>{index + 1}</span>
                       ) : (
                         <div>
-                          <span>{Array.isArray(option.text) ? `${option.id}. ${option.text.join(" - ")}` : `${option.id}. ${option.text}`}</span>
+                          <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
                         </div>
                       )}
                     </ButtonCustom>
@@ -250,7 +190,7 @@ export default function CheckpointQuiz() {
                   .filter((option) => option.optionImage)
                   .map((option, index) => (
                     <Col key={index} span={8}>
-                      <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option.id}`} />
+                      <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
                     </Col>
                   ))}
               </Row>
@@ -269,7 +209,7 @@ export default function CheckpointQuiz() {
 
   return (
     <div>
-      {!hasStarted && <StartQuizModal exerciseId={exerciseId} onClose={() => setHasStarted(!hasStarted)}></StartQuizModal>}
+      {!hasStarted && <StartQuizModal exerciseId={exercises._id} onClose={() => setHasStarted(!hasStarted)}></StartQuizModal>}
       {hasStarted && (
         <div style={{ padding: "24px" }}>
           <BreadCrumbHome />
@@ -277,20 +217,15 @@ export default function CheckpointQuiz() {
             {exercises.title}
           </TitleCustom>
           <div style={{ textAlign: "center" }}>
-            {!isCompleted ? (
+            {!isSubmitted ? (
               <TextCustom>
                 Thời gian làm bài: <span style={{ color: "red", fontWeight: "bold" }}>{formattedTime(timeLeft)}</span>
               </TextCustom>
             ) : (
               <>
                 <TextCustom>
-                  Điểm: <span style={{ color: "red" }}>{userScore}%</span>
+                  Điểm: <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
                 </TextCustom>
-                {/* <TextCustom>
-              Kết quả: <span style={{ color: conditionStatus === "passed" ? "green" : "red" }}>
-                {conditionStatus === "passed" ? "Đạt" : "Không đạt"}
-              </span>
-            </TextCustom> */}
               </>
             )}
           </div>
@@ -310,9 +245,9 @@ export default function CheckpointQuiz() {
               >
                 Phần tiếp theo
               </ButtonCustom>
-              {isCompleted ? (
+              {isSubmitted ? (
                 <>
-                  {conditionStatus === "not pass" ? (
+                  {submissionData.score < 50 ? (
                     <>
                       <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
                         Làm lại bài tập này
@@ -325,7 +260,6 @@ export default function CheckpointQuiz() {
                     <ButtonCustom
                       buttonType="secondary"
                       style={{ padding: "23px", marginLeft: "30px" }}
-                      // onClick={handleAchieveTrophy}
                     >
                       Chuyển sang phase tiếp theo
                     </ButtonCustom>

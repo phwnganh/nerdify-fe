@@ -10,7 +10,7 @@ export const AdminContentGuard = ({ children }) => {
   }
 
   if (isAuthenticated) {
-    if (user?.role === ROLES.LEARNER_ROLE) {
+    if (user?.role === ROLES.CONTENT_MANAGER_ROLE) {
       return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
     }
   }

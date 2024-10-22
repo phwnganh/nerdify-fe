@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Dropdown, List, Row, Modal } from "antd";
+import { Button, Col, Dropdown, List, Row, Modal, Select, message } from "antd";
 import {
   EditOutlined,
   FileOutlined,
@@ -9,9 +9,12 @@ import {
   FullscreenExitOutlined,
   FullscreenOutlined,
   LeftOutlined,
+  LockOutlined,
+  MinusCircleOutlined,
   RightOutlined,
   ShareAltOutlined,
   SoundOutlined,
+  UnlockOutlined,
 } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,12 +24,17 @@ import { Container } from "./styled";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import ModalCustom from "../../../../components/Modal";
 import InputCustom from "../../../../components/Input";
-import ReactCardFlip from 'react-card-flip';
+import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
+import { Option } from "antd/es/mentions";
+import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
+import { useAuth } from "../../../../hooks";
+import moment from "moment";
 
-export default function FlashCardDetail() {
+export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
-  const { flashcardId } = useParams();
+  const {folderId, flashcardId } = useParams();
+  const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,7 +43,37 @@ export default function FlashCardDetail() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [open, setOpen] = useState(false);
   const [numberOfCard, setNumberOfCard] = useState("");
+  const [isVisibleFolderList, setIsVisibleFolderList] = useState(false);
+  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [folders, setFolders] = useState([]);
+  const [isPublic, setIsPublic] = useState(false);
 
+  const displayModalToChooseFolders = () => {
+    console.log("Modal is opening");
+    setIsVisibleFolderList(true);
+  };
+
+  const handleOkToChooseFolders = () => {
+    addFlashcardToFolder(folderId, flashcardId)
+      .then((res) => {
+        message.success("Thêm vào folder thành công!");
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể thêm vào folder.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+
+    // setIsVisibleFolderList(false);
+  };
+
+  const handleCancelToChooseFolders = () => {
+    setIsVisibleFolderList(false);
+  };
+
+  const handleSelectFolder = (key) => {
+    setSelectedFolder(key);
+  };
   const showModal = () => {
     setOpen(true);
   };
@@ -50,11 +88,42 @@ export default function FlashCardDetail() {
   };
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
-      .then((data) => data.json())
-      .then((data) => setFlashcard(data))
-      .catch((err) => console.error(err));
+    if (flashcardId) {
+      getFlashcardDetail(flashcardId)
+        .then((data) => {
+          setFlashcard(data.data);
+          setIsPublic(data.data.isPublic);
+        })
+        .catch((err) => console.error(err));
+    }
   }, [flashcardId]);
+
+  const handleChangStatus = () => {
+    const newStatus = !isPublic;
+    console.log(isPublic);
+
+    updateFlashcardStatus(flashcardId, newStatus)
+      .then((res) => {
+        setIsPublic(newStatus);
+        message.success("Cập nhật trạng thái flashcard thành công!");
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể cập nhật trạng thái flashcard.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+  };
+
+  useEffect(() => {
+    getMyFolder()
+      .then((data) => {
+        setFolders(data.data);
+        console.log("folders:", folders);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const items = [
     {
@@ -141,13 +210,13 @@ export default function FlashCardDetail() {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].terms);
+                  handleSpeak(flashcard?.cards[currentIndex].term);
                 }}
               />
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>{flashcard?.cards[currentIndex].terms}</TextCustom>
+            <TextCustom>{flashcard?.cards[currentIndex].term}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -211,13 +280,13 @@ export default function FlashCardDetail() {
                 shape="circle"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleSpeak(flashcard?.cards[currentIndex].definitions);
+                  handleSpeak(flashcard?.cards[currentIndex].definition);
                 }}
               />
             </Col>
           </Row>
           <div style={{ margin: "40px 0" }}>
-            <TextCustom>{flashcard?.cards[currentIndex].definitions}</TextCustom>
+            <TextCustom>{flashcard?.cards[currentIndex].definition}</TextCustom>
           </div>
           <Row justify={"space-around"} align={"middle"}>
             <Col>
@@ -310,6 +379,30 @@ export default function FlashCardDetail() {
       >
         {renderFlashcardContent(isFlippedModal, setIsFlippedModal)}
       </Modal>
+      <ModalCustom
+        title="Chọn folder có sẵn"
+        visible={isVisibleFolderList}
+        onOk={handleOkToChooseFolders}
+        onCancel={handleCancelToChooseFolders}
+        footer={[
+          <div style={{ marginTop: "20px" }}>
+            <Button key={"cancel"} style={{ marginRight: "20px" }} onClick={handleCancelToChooseFolders}>
+              Hủy
+            </Button>
+            <ButtonCustom buttonType="primary" key="add">
+              Thêm vào folder
+            </ButtonCustom>
+          </div>,
+        ]}
+      >
+        <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}>
+          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }}>
+            {folders.map((folder) => (
+              <Option key={folder.id}>{folder.name}</Option>
+            ))}
+          </Select>
+        </div>
+      </ModalCustom>
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <TitleCustom level={2}>{flashcard?.title}</TitleCustom>
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
@@ -343,11 +436,26 @@ export default function FlashCardDetail() {
         {/* Render flashcard content */}
         {renderFlashcardContent(isFlippedNormal, setIsFlippedNormal)}
         {/* Button edit and add to folder */}
-        <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-          <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
-          <Dropdown menu={{ items: folderSelected }} trigger={["click"]}>
-            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }}></Button>
-          </Dropdown>
+        <Row justify={"space-between"} align={"middle"} style={{ marginTop: "20px" }}>
+          <Col>
+            <div>
+              <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
+            </div>
+            <div>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{user?.fullName}</TextCustom>
+            </div>
+            <div>
+              <TextCustom style={{ fontSize: "12px" }}>Đã tạo {moment(user?.updatedAt).format("DD-MM-YYYY")}</TextCustom>
+            </div>
+          </Col>
+          <Col>
+            <Button icon={isPublic ? <UnlockOutlined /> : <LockOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={handleChangStatus} title={isPublic ? "Công khai" : "Riêng tư"} />
+            <Button icon={<MinusCircleOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
+            <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
+            {/* <Dropdown menu={{ items: folderSelected }} trigger={["click"]}> */}
+            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }} onClick={displayModalToChooseFolders}></Button>
+            {/* </Dropdown> */}
+          </Col>
         </Row>
         {/* List word and definition */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
@@ -364,8 +472,8 @@ export default function FlashCardDetail() {
                       paddingLeft: "10px",
                     }}
                   >
-                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.terms)} />
-                    <span style={{ marginRight: "15px" }}>{item.terms}</span>
+                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.term)} />
+                    <span style={{ marginRight: "15px" }}>{item.term}</span>
                   </Col>
                   <Col
                     style={{
@@ -376,8 +484,8 @@ export default function FlashCardDetail() {
                       alignItems: "center",
                     }}
                   >
-                    <span style={{ marginRight: "10px" }}>{item.definitions}</span>
-                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definitions)} />
+                    <span style={{ marginRight: "10px" }}>{item.definition}</span>
+                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} />
                   </Col>
                 </Row>
               </List.Item>

@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { List } from "antd";
+import { List, Spin, Alert } from "antd";
 import CourseList from "./CourseList";
 import { getCourseLevelList } from "../../../services/LearnerService";
-import { BASE_SERVER } from "../../../constants";
+import SpinCustom from "../../../components/Spin";
 
 export default function CoursePage() {
   const [course, setCourse] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/levels`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCourse(data);
+    getCourseLevelList()
+      .then((resp) => {
+        setCourse(resp.data);
       })
-      .catch((err) => console.error(err));
-    // const fetchCourseLevel = async () => {
-    //   try {
-    //     const response = await getCourseLevelList();
-    //     console.log("course level list: ", response.data);
-
-    //     setCourse(response.data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // fetchCourseLevel();
+      .catch((error) => {
+        setError("Không thể tải dữ liệu khóa học. Vui lòng thử lại sau.");
+      });
   }, []);
+
+
+  if (error) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Alert message={error} type="error" showIcon />
+      </div>
+    );
+  }
+
+  if (course.length === 0) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Alert message="Hiện tại không có khóa học nào." type="info" showIcon />
+      </div>
+    );
+  }
 
   return (
     <>

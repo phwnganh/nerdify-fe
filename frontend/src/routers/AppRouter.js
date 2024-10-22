@@ -9,11 +9,10 @@ import { CLIENT_URI } from "../constants";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
-import { AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
 
 // Importing Layouts for different user roles
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AccountantLayout } from "../layouts";
-import { AdminContentGuard } from "../guards/AdminContentGuards";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
 
 // Importing Pages for Learners
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
@@ -43,15 +42,7 @@ import TableExercise from "../components/Table/TableExercise";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-import Upload from "../components/Upload/upload";
-import Exercise from "../pages/ContentManager/Exercise";
-import AccountantGuard from "../guards/AccountantGuards";
-
-//accountant
-import AccountantDashboard from "../pages/AccountantPage/Dashboard";
-import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
-import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
-import UserStatistics from "../pages/AccountantPage/UserStatistics";
+import { CLIENT_URI } from "../constants";
 export const routes = [
   // Guest urls
   {
@@ -86,7 +77,7 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-
+        
           {
             path: CLIENT_URI.TROPHY,
             element: <TakeATrophy />,
@@ -115,6 +106,8 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
+
+
 
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
@@ -155,7 +148,7 @@ export const routes = [
       },
       {
         path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
-        element: <FinalExam />,
+        element: <FinalExam/>,
       },
       {
         path: CLIENT_URI.FLASH_CARD,
@@ -178,6 +171,10 @@ export const routes = [
         element: <TestFlashCard />,
       },
       {
+        path: CLIENT_URI.TROPHY,
+        element: <TakeATrophy />,
+      },
+      {
         path: `${CLIENT_URI.EDIT_PROFILE}`,
         element: <EditPersonalProfile />,
       },
@@ -188,6 +185,18 @@ export const routes = [
       {
         path: `${CLIENT_URI.BLOG_STUDY}/:blogId`,
         element: <BlogDetails />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
       },
       // {
       //   path: CLIENT_URI.FINAL_EXAM,
@@ -218,10 +227,6 @@ export const routes = [
         element: <ViewPersonalProfile />,
       },
       {
-        path: CLIENT_URI.EDIT_PROFILE,
-        element: <EditPersonalProfile />,
-      },
-      {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
         element: <ViewResultsDetail />,
       },
@@ -246,6 +251,10 @@ export const routes = [
         element: <BillInfo />,
       },
       {
+        path: `${CLIENT_URI.CONFIRM_PAYMENT}/:transactionId`,
+        element: <ConfirmPayment />,
+      },
+      {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
       },
@@ -262,57 +271,6 @@ export const routes = [
       </AdminGuard>
     ),
     children: [],
-  },
-  // Admin content
-  {
-    element: (
-      <AdminContentGuard>
-        <AdminContentLayout>
-          <Outlet />
-        </AdminContentLayout>
-      </AdminContentGuard>
-    ),
-    children: [
-      {
-        path: CLIENT_URI.DASHBOARD,
-      },
-      {
-        path: `${CLIENT_URI.TABLE_EXERCISE}`,
-        element: <Exercise />,
-      },
-      {
-        path: `/upload`,
-        element: <Upload />,
-      },
-    ],
-  },
-  // Accountant urls
-  {
-    element: (
-      <AccountantGuard>
-        <AccountantLayout>
-          <Outlet />
-        </AccountantLayout>
-      </AccountantGuard>
-    ),
-    children: [
-      {
-        path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
-        element: <AccountantDashboard />,
-      },
-      {
-        path: CLIENT_URI.SYSTEM_REVENUE,
-        element: <SystemRevenue />,
-      },
-      {
-        path: CLIENT_URI.TRANSACTION_HISTORY,
-        element: <TransactionHistory />,
-      },
-      {
-        path: CLIENT_URI.USER_STATISTICS,
-        element: <UserStatistics />,
-      },
-    ],
   },
 ];
 
