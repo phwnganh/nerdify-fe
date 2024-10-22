@@ -1,4 +1,6 @@
-const DOMAIN = process.env.REACT_APP_ROOT_API;
+import { BASE_SERVER } from "../../constants/common.constant";
+
+const DOMAIN = BASE_SERVER;
 const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",

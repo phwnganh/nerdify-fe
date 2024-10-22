@@ -9,10 +9,10 @@ import { CLIENT_URI } from "../constants";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
-import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard, AccountantGuard } from "../guards";
 
 // Importing Layouts for different user roles
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout } from "../layouts";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AccountantLayout } from "../layouts";
 
 // Importing Pages for Learners
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
@@ -42,7 +42,13 @@ import TableExercise from "../components/Table/TableExercise";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-import { CLIENT_URI } from "../constants";
+import ConfirmPayment from '../pages/LearnersPage/Payment/ConfirmPayment'
+import AccountantDashboard from "../pages/AccountantPage/Dashboard";
+import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
+import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
+import UserStatistics from "../pages/AccountantPage/UserStatistics";
+import Exercise from '../pages/ContentManager/Exercise'
+import { Upload } from "antd";
 export const routes = [
   // Guest urls
   {

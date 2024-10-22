@@ -2,7 +2,7 @@ import React from "react";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import CustomLineChart from "../../../components/Chart/CustomLineChart";
 import { BellOutlined } from "@ant-design/icons";
-import UserInfo from "../../../components/Header/accountantHeader/UserInfo";
+import UserInfo from "../../../components/Header/AccountantHeader/UserInfo";
 
 const AccountantDashboard = () => {
   // Dữ liệu thẻ thông tin

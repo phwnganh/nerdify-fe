@@ -4,3 +4,4 @@ export * from "./GuestLayout";
 export * from "./AccountantLayout";
 export * from './GuestLearnerLayout';
 export * from './AdminContentLayout';
+export * from './AccountantLayout';

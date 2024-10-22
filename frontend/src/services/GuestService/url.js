@@ -1,11 +1,13 @@
-const DOMAIN = process.env.REACT_APP_ROOT_API;
+import { BASE_SERVER } from "../../constants/common.constant";
+
+const DOMAIN = BASE_SERVER;
 const API_AUTH_PREFIXES = {
   AUTH: "/api/auth",
 };
 
 const URI_AUTH_SERVICE = {
   LOGIN: API_AUTH_PREFIXES.AUTH + "/login",
-  LOGIN_WITH_GOOGLE: DOMAIN + API_AUTH_PREFIXES.AUTH + "/google/callback",
+  LOGIN_WITH_GOOGLE: BASE_SERVER + API_AUTH_PREFIXES.AUTH + "/google/callback",
   REGISTER: API_AUTH_PREFIXES.AUTH + "/register",
   FORGOT_PASSWORD: API_AUTH_PREFIXES.AUTH + "/forgot-password",
   RESET_PASSWORD: API_AUTH_PREFIXES.AUTH + "/reset-password",
