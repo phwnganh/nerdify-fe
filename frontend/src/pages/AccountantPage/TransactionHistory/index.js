@@ -1,6 +1,6 @@
 // Danh sách giao dịch trong hệ thống
 import React from "react";
-import UserInfo from "../../../components/Header/accountantHeader/UserInfo";
+import UserInfo from "../../../components/Header/AccountantHeader/UserInfo";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import { BellOutlined } from "@ant-design/icons";
 import TableTransaction from "../../../components/Table/TableTransaction";
