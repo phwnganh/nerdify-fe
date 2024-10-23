@@ -246,15 +246,16 @@ export default function ViewLevelDetail() {
             </div>
           </ScrollablePhaseDiv> */}
           <ScrollablePhaseDiv>
-            {phases.map((phase, index) => (
+            {course?.phases?.map((phase, index) => (
               <ButtonPhase
                 key={index}
                 style={{
-                  backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+                  backgroundColor: activePhase === phase.title ? "#FFA26B" : "#F0F0F0",
+                  color: activePhase === phase.title ? "#FFFFFF" : "#000000",
                 }}
-                onClick={() => handlePhaseClick(phase.name)}
+                onClick={() => handlePhaseClick(phase.title)}
               >
-                {phase.name}
+                {phase.title}
               </ButtonPhase>
             ))}
           </ScrollablePhaseDiv>
