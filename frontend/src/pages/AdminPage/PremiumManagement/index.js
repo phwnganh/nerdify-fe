@@ -1,7 +1,12 @@
 import React from "react";
+import UserInfo from "../../../components/Header/AdminHeader/UserInfo";
 
 const PremiumManagement = () => {
-  return <div>PremiumManagement</div>;
+  return (
+    <div>
+      <UserInfo />
+    </div>
+  );
 };
 
 export default PremiumManagement;
