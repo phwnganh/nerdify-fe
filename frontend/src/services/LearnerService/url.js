@@ -1,4 +1,6 @@
-const DOMAIN = process.env.REACT_APP_ROOT_API;
+import { BASE_SERVER } from "../../constants/common.constant";
+
+const DOMAIN = BASE_SERVER;
 const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",
@@ -13,6 +15,7 @@ const URI_COURSES_SERVICE = {
   EXERCISE_DETAIL: API_PREFIXES.COURSE + "/exercises",
   SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
   SUBMIT_FINALEXAM: API_PREFIXES.COURSE + "/submissions/submit-final-exam",
+  LEARNING_PROGRESS: API_PREFIXES.COURSE + "/learning-progress",
 
   GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",
 };

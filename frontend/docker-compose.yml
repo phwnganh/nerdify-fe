@@ -1,13 +1,14 @@
 version: '3'
 services:
   nerdify_fe:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: benzo203/nerdify_fe:latest
     ports:
       - "80:80"
       - "443:443"
     restart: always
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+      - /etc/nginx/ssl:/etc/nginx/ssl
     env_file:
       - .env
     networks:

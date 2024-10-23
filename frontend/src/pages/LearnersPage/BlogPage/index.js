@@ -86,7 +86,7 @@ const BlogPage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch("http://localhost:80/api/blogs"); // Fetch all blogs from the server BE API
+      const response = await fetch("https://api.deustchnerd.site/api/blogs"); // Fetch all blogs from the server BE API
       const result = await response.json();
       if (result.success) {
         setBlogs(result.data);

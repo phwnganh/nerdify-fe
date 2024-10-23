@@ -7,6 +7,7 @@ export const CLIENT_URI = {
   VERIFY_EMAIL: "/verify-email/:emailToken",
   RESET_PASSWORD: "/reset-password/:resetToken",
   BLOG_STUDY: "/blog-study",
+  BLOG_DETAIL: "/blog-study/:id",
   // LEARNER
   COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
@@ -31,5 +32,11 @@ export const CLIENT_URI = {
   // ADMIN
   DASHBOARD: "/dashboard",
   // ADMIN CONTENT
+  TABLE_EXERCISE: "/exercise",
+  // ACCOUNTANT
+  ACCOUNTANT_DASHBOARD: "/accountant-dashboard",
+  SYSTEM_REVENUE: "/system-revenue",
+  TRANSACTION_HISTORY: "/transaction-history",
+  USER_STATISTICS: "/user-statistics",
   TABLE_EXERCISE:"/exercise"
 };
