@@ -25,14 +25,15 @@ const URI_FLASHCARDS_SERVICE = {
   UPDATE_FLASHCARD_STATUS: API_PREFIXES.FLASHCARD + "/:flashcardId/visibility",  CREATE_FOLDER: API_PREFIXES + "/folders",
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES.FLASHCARD + "/folders/:folderId" + "/flashcards/:flashcardId",
   GET_MY_FOLDER: API_PREFIXES.FLASHCARD + "/folders/my-folders",
-  CREATE_FOLDER: API_PREFIXES.FLASHCARD + "/folders"
+  CREATE_FOLDER: API_PREFIXES.FLASHCARD + "/folders",
+  SEARCH_FLASHCARD: API_PREFIXES.FLASHCARD + "/search"
 };
 
 const URI_PAYMENT_SERVICE = {
   PACKAGE: API_PREFIXES.PAYMENT + "/packages",
   CREATE_PAYMENT: API_PREFIXES.PAYMENT + "/main/create-payment",
   FINISH_PAYMENT: API_PREFIXES.PAYMENT + "/main/finish-payment/",
-
+  USER_GET_CURRENT_PACKAGE: API_PREFIXES.PAYMENT + "/user/my-current-package",
   USER_GET_TRANSACTION: API_PREFIXES.PAYMENT + "/user/transactions",
 };
 

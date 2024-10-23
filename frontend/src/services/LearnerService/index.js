@@ -80,6 +80,11 @@ export const getMyFolder = async() => {
   return res.data;
 }
 
+export const searchFlashcard = async (query) => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.SEARCH_FLASHCARD + "?query=" + query);
+  return res.data;
+}
+
 
 export const getPackageList = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
@@ -115,6 +120,11 @@ export const finishPayment = async (transactionId, params) => {
   const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.FINISH_PAYMENT + "/" + transactionId, params);
   return res.data;
 };
+
+export const getCurrentPremiumPackage = async () => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_GET_CURRENT_PACKAGE);
+  return res.data;
+}
 
 export const getTrophyByPhaseId = async (examId) => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_TROPHY_BY_PHASE_ID + "/" + examId);

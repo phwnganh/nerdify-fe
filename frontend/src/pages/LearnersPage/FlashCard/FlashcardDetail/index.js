@@ -48,6 +48,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   const [folders, setFolders] = useState([]);
   const [isPublic, setIsPublic] = useState(false);
 
+
   const displayModalToChooseFolders = () => {
     console.log("Modal is opening");
     setIsVisibleFolderList(true);
@@ -442,7 +443,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
               <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
             </div>
             <div>
-              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{user?.fullName}</TextCustom>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{(flashcard?.createdBy === user?.id) ? user?.fullName : "Anonymous Users"}</TextCustom>
             </div>
             <div>
               <TextCustom style={{ fontSize: "12px" }}>Đã tạo {moment(user?.updatedAt).format("DD-MM-YYYY")}</TextCustom>

@@ -2,27 +2,24 @@ import { useState } from "react";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import ButtonCustom from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { BASE_SERVER, CLIENT_URI } from "../../../constants";
-
+import { ACCOUNT_TYPE, BASE_SERVER, CLIENT_URI } from "../../../constants";
+import { useAuth } from "../../../hooks";
+import moment from 'moment'
 export default function MySubscription() {
-  const [user, setUser] = useState([]);
+  // const [user, setUser] = useState([]);
   const navigate = useNavigate();
-  fetch(`${BASE_SERVER}/users/2`)
-    .then((res) => res.json())
-    .then((data) => {
-      setUser(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const {user} = useAuth();
+  const accountType = user?.accountType?.type;
+  console.log("accountType: ", accountType);
+  
   return (
     <div style={{ padding: "20px" }}>
       <div style={{ textAlign: "center" }}>
         <TitleCustom level={2}>GÓI ĐĂNG KÝ VÀ THANH TOÁN</TitleCustom>
       </div>
       <div style={{ textAlign: "center" }}>
-        <TitleCustom level={5}>Trạng thái tài khoản: {user?.accountType}</TitleCustom>
-        {user?.accountType === "freemium" ? (
+        <TitleCustom level={5}>Trạng thái tài khoản: {accountType}</TitleCustom>
+        {accountType ===  ACCOUNT_TYPE.FREEMIUM ? (
           <div>
             <ButtonCustom buttonType="primary" style={{ padding: "20px" }} onClick={() => navigate(CLIENT_URI.PREMIUM)}>
               Nâng cấp gói Premium
@@ -37,7 +34,7 @@ export default function MySubscription() {
             </div>
             <div>
               <TextCustom>
-                Từ ngày: <span style={{ fontWeight: "bold" }}>29/08/2024</span> đến ngày: <span style={{ fontWeight: "bold" }}>01/03/2025</span>
+                Từ ngày: <span style={{ fontWeight: "bold" }}>{moment(accountType?.startDate).format("DD-MM-YYYY")}</span> đến ngày: <span style={{ fontWeight: "bold" }}>{moment(accountType?.endDate).format("DD-MM-YYYY")}</span>
               </TextCustom>
             </div>
             <div>

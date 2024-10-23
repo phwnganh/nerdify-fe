@@ -29,6 +29,8 @@ export const CLIENT_URI = {
   MANAGE_FOLDER: "/manage-folder",
   MANAGE_FLASHCARD: "/manage-flashcard",
   CHANGE_PASSWORD: "/change-password",
+  MY_SUBSCRIPTION: "/my-subscription",
+  MANAGE_SUBSCRIPTION: "/manage-subscription",
   // ADMIN
   DASHBOARD: "/dashboard",
   // ADMIN CONTENT
