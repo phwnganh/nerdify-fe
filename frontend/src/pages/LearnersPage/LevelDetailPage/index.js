@@ -229,7 +229,7 @@ export default function ViewLevelDetail() {
         </div>
 
         <div style={{ width: "100%" }}>
-          <ScrollablePhaseDiv>
+          {/* <ScrollablePhaseDiv>
             <div style={{ display: "flex", justifyContent: "center" }}>
               {course?.phases?.map((phase, index) => (
                 <ButtonPhase
@@ -244,6 +244,19 @@ export default function ViewLevelDetail() {
                 </ButtonPhase>
               ))}
             </div>
+          </ScrollablePhaseDiv> */}
+          <ScrollablePhaseDiv>
+            {course?.phases?.map((phase, index) => (
+              <ButtonPhase
+                key={index}
+                style={{
+                  backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+                }}
+                onClick={() => handlePhaseClick(phase.title)}
+              >
+                {phase.title}
+              </ButtonPhase>
+            ))}
           </ScrollablePhaseDiv>
         </div>
 
