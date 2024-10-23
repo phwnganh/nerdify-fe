@@ -13,10 +13,6 @@ export const AdminLayout = ({ children }) => {
       minHeight: "100vh",
     },
     content: {
-      flex: 1,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
       padding: "20px",
     },
     layout: {
@@ -30,7 +26,7 @@ export const AdminLayout = ({ children }) => {
       <AdminSidebar />
       <Layout style={styles.layout}>
         <AdminHeader />
-        <Content>{children}</Content>
+        <Content style={styles.content}>{children}</Content>
       </Layout>
     </div>
   );

@@ -36,7 +36,7 @@ const AccountantDashboard = () => {
   const tiLeHocVien = (hocVienTraPhiThangNay / tongHocVienTraPhiThang) * 100;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div>
       <UserInfo />
 
       {/* Thông tin học viên trả phí */}
