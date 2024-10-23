@@ -113,20 +113,6 @@ export const routes = [
       },
       // test giao diện
 
-
-
-      {
-        path: CLIENT_URI.MANAGE_FLASHCARD,
-        element: <ManageFlashcard />,
-      },
-      {
-        path: CLIENT_URI.MANAGE_FOLDER,
-        element: <ManageFolder />,
-      },
-      {
-        path: CLIENT_URI.CHANGE_PASSWORD,
-        element: <ChangePassword />,
-      },
     ],
   },
 
@@ -263,6 +249,21 @@ export const routes = [
       {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
+      },
+      
+
+
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
       },
     ],
   },
