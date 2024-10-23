@@ -250,7 +250,7 @@ export default function ViewLevelDetail() {
               <ButtonPhase
                 key={index}
                 style={{
-                  backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+                  backgroundColor: activePhase === phase.title ? "#ff855d" : "#ffa751",
                 }}
                 onClick={() => handlePhaseClick(phase.title)}
               >
