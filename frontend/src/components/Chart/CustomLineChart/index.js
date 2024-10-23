@@ -27,7 +27,7 @@ const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
         width: "100%",
         // maxWidth: "800px",
         height: "auto",
-        margin: "40px auto",
+        // margin: "40px auto",
         padding: "20px",
         backgroundColor: "#fff",
         borderRadius: "8px",
@@ -39,19 +39,6 @@ const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
         <h3>{chartTitle}</h3>
       </div>
 
-      {/* <ResponsiveContainer width="100%" height="80%">
-        <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend verticalAlign="top" height={36} />
-          {dataKey.map((key) => (
-            <Line key={key.dataKey} type="monotone" dataKey={key.dataKey} stroke={key.color} activeDot={{ r: 8 }} />
-          ))}
-        </LineChart>
-      </ResponsiveContainer> */}
-      {/* chart */}
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={dataChart} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />
