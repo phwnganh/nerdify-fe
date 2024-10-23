@@ -113,20 +113,6 @@ export const routes = [
       },
       // test giao diện
 
-
-
-      {
-        path: CLIENT_URI.MANAGE_FLASHCARD,
-        element: <ManageFlashcard />,
-      },
-      {
-        path: CLIENT_URI.MANAGE_FOLDER,
-        element: <ManageFolder />,
-      },
-      {
-        path: CLIENT_URI.CHANGE_PASSWORD,
-        element: <ChangePassword />,
-      },
     ],
   },
 
@@ -145,15 +131,15 @@ export const routes = [
         element: <CoursePage />,
       },
       {
-        path: `${CLIENT_URI.LEVEL_DETAIL}/:courseId`,
+        path: ${CLIENT_URI.LEVEL_DETAIL}/:courseId,
         element: <ViewLevelDetail />,
       },
       {
-        path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+        path: ${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId,
         element: <ExerciseDetail />,
       },
       {
-        path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
+        path: ${CLIENT_URI.FINAL_EXAM}/:examId,
         element: <FinalExam/>,
       },
       {
@@ -161,7 +147,7 @@ export const routes = [
         element: <Flashcard />,
       },
       {
-        path: `${CLIENT_URI.FLASH_CARD}/:flashcardId`,
+        path: ${CLIENT_URI.FLASH_CARD}/:flashcardId,
         element: <FlashcardDetail />,
       },
       {
@@ -169,11 +155,11 @@ export const routes = [
         element: <CreateFlashCard />,
       },
       {
-        path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
+        path: ${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId,
         element: <EditFlashCard />,
       },
       {
-        path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
+        path: ${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard,
         element: <TestFlashCard />,
       },
       {
@@ -181,7 +167,7 @@ export const routes = [
         element: <TakeATrophy />,
       },
       {
-        path: `${CLIENT_URI.EDIT_PROFILE}`,
+        path: ${CLIENT_URI.EDIT_PROFILE},
         element: <EditPersonalProfile />,
       },
       {
@@ -189,7 +175,7 @@ export const routes = [
         element: <BlogPage />,
       },
       {
-        path: `${CLIENT_URI.BLOG_STUDY}/:blogId`,
+        path: ${CLIENT_URI.BLOG_STUDY}/:blogId,
         element: <BlogDetails />,
       },
       {
@@ -209,7 +195,7 @@ export const routes = [
       //   element: <FinalExam />,
       // },
       // {
-      //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
+      //   path: ${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId,
       //   element: <ExerciseDetail />,
       // },
       // {
@@ -217,7 +203,7 @@ export const routes = [
       //   element: <CreateFlashCard />,
       // },
       // {
-      //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
+      //   path: ${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId,
       //   element: <EditFlashCard />,
       // },
       {
@@ -225,15 +211,15 @@ export const routes = [
         element: <CreateFlashCard />,
       },
       // {
-      //   path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
+      //   path: ${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard,
       //   element: <TestFlashCard />,
       // },
       {
-        path: `${CLIENT_URI.PROFILE}`,
+        path: ${CLIENT_URI.PROFILE},
         element: <ViewPersonalProfile />,
       },
       {
-        path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
+        path: ${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId,
         element: <ViewResultsDetail />,
       },
       {
@@ -249,20 +235,35 @@ export const routes = [
         element: <PremiumPage />,
       },
       {
-        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
+        path: ${CLIENT_URI.PAYMENT}/:transactionId,
         element: <Payment />,
       },
       {
-        path: `${CLIENT_URI.BILLINFO}/:transactionId`,
+        path: ${CLIENT_URI.BILLINFO}/:transactionId,
         element: <BillInfo />,
       },
       {
-        path: `${CLIENT_URI.CONFIRM_PAYMENT}/:transactionId`,
+        path: ${CLIENT_URI.CONFIRM_PAYMENT}/:transactionId,
         element: <ConfirmPayment />,
       },
       {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
+      },
+      
+
+
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
       },
     ],
   },
@@ -292,11 +293,11 @@ export const routes = [
           path: CLIENT_URI.DASHBOARD,
         },
         {
-          path: `${CLIENT_URI.TABLE_EXERCISE}`,
+          path: ${CLIENT_URI.TABLE_EXERCISE},
           element: <Exercise />,
         },
         {
-          path: `/upload`,
+          path: /upload,
           element: <Upload />,
         },
       ],
