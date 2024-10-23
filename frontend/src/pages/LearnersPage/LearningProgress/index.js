@@ -4,59 +4,71 @@ import CardCustom from "../../../components/Card";
 import { useEffect, useState } from "react";
 import ButtonCustom from "../../../components/Button";
 import { BASE_SERVER } from "../../../constants";
+import { learningProgress } from "../../../services/LearnerService";
 export default function LearningProgress() {
   const [levelPhaseMap, setLevelPhaseMap] = useState({});
   const [allExercises, setAllExercises] = useState([]); // Store all exercises
-
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
+    // const fetchData = async () => {
+    //   try {
+    //     // Fetch phases, levels, and exercises in parallel
+    //     const [phasesResponse, levelsResponse, exercisesResponse] =
+    //       await Promise.all([
+    //         fetch(`${BASE_SERVER}/phases`),
+    //         fetch(`${BASE_SERVER}/levels`),
+    //         fetch(`${BASE_SERVER}/exercises`), // Fetch exercises
+    //       ]);
+
+    //     const phases = await phasesResponse.json();
+    //     const levels = await levelsResponse.json();
+
+    //     const exercises = await exercisesResponse.json(); // Get all exercises
+
+    //     setAllExercises(exercises); // Store the exercises for later use
+
+    //     // Create a map to group phases by their corresponding level
+    //     const results = {};
+
+    //     // Loop through the phases and group them by their levelId
+    //     phases.forEach((phase) => {
+    //       // Initialize an array for the level if it doesn't exist
+    //       if (!results[phase.levelId]) {
+    //         const level = levels.find(
+    //           (level) => level.id === phase.levelId.toString()
+    //         );
+    //         if (level) {
+    //           results[phase.levelId] = {
+    //             levelTitle: level.title,
+    //             phases: [],
+    //           };
+    //         }
+    //       }
+    //       // Push the current phase to the respective level's phase list
+    //       results[phase.levelId].phases.push({
+    //         name: phase.name,
+    //         isNew: phase.isNew,
+    //         exercises: phase.exercises || [], // Store exercise IDs directly here
+    //       });
+    //     });
+    //     setLevelPhaseMap(results);
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   }
+    // };
+
+    // fetchData();
+    const fetchProgress = async () => {
       try {
-        // Fetch phases, levels, and exercises in parallel
-        const [phasesResponse, levelsResponse, exercisesResponse] =
-          await Promise.all([
-            fetch(`${BASE_SERVER}/phases`),
-            fetch(`${BASE_SERVER}/levels`),
-            fetch(`${BASE_SERVER}/exercises`), // Fetch exercises
-          ]);
-
-        const phases = await phasesResponse.json();
-        const levels = await levelsResponse.json();
-
-        const exercises = await exercisesResponse.json(); // Get all exercises
-
-        setAllExercises(exercises); // Store the exercises for later use
-
-        // Create a map to group phases by their corresponding level
-        const results = {};
-
-        // Loop through the phases and group them by their levelId
-        phases.forEach((phase) => {
-          // Initialize an array for the level if it doesn't exist
-          if (!results[phase.levelId]) {
-            const level = levels.find(
-              (level) => level.id === phase.levelId.toString()
-            );
-            if (level) {
-              results[phase.levelId] = {
-                levelTitle: level.title,
-                phases: [],
-              };
-            }
-          }
-          // Push the current phase to the respective level's phase list
-          results[phase.levelId].phases.push({
-            name: phase.name,
-            isNew: phase.isNew,
-            exercises: phase.exercises || [], // Store exercise IDs directly here
-          });
-        });
-        setLevelPhaseMap(results);
+        const res = await learningProgress();
+        console.log("learning progress: ", res.data);
+        setData(res.data); // Ensure you receive and set the data correctly
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log(error);
       }
     };
 
-    fetchData();
+    fetchProgress(); // Call the fetch function inside useEffect
   }, []);
 
   // Find exercise objects by their IDs
@@ -84,22 +96,21 @@ export default function LearningProgress() {
     <div style={{ padding: "24px" }}>
       <TitleCustom level={2}>Đang thực hiện</TitleCustom>
       <Row gutter={16}>
-        {Object.values(levelPhaseMap).map((level, levelIndex) => (
+        {data.map((level, levelIndex) => (
           <Col span={24} key={levelIndex}>
             <Row gutter={16}>
               {level.phases.map(
                 (phase, phaseIndex) =>
-                  // Properly wrap the condition and the elements inside parentheses
-                  phase.isNew === false && phase?.name !== "Final Exam" && (
+                  phase.completedExercises > 0 && phase.title !== "Final Exam" && (
                     <Col span={12} key={phaseIndex}>
                       <CardCustom
-                        title={`${level.levelTitle}`}
+                        title={`${level.title}`}
                         bordered={true}
-                        style={{ marginBottom: 16, borderColor: '#ffa751' }}
+                        style={{ marginBottom: 16, borderColor: "#ffa751" }}
                       >
                         <div>
                           <TextCustom style={{ fontWeight: "bold" }}>
-                            {phase.name}
+                            {phase.title}
                           </TextCustom>
                         </div>
                         <div>
@@ -107,7 +118,7 @@ export default function LearningProgress() {
                         </div>
                         <div>
                           <Progress
-                            percent={calculateProgressForIds(phase.exercises)} // Use phase.exercises here
+                            percent={phase.progress} // Progress value from backend
                             size={"small"}
                           />
                         </div>
@@ -130,22 +141,21 @@ export default function LearningProgress() {
 
       <TitleCustom level={2}>Các bài tập khác</TitleCustom>
       <Row gutter={16}>
-        {Object.values(levelPhaseMap).map((level, levelIndex) => (
+        {data.map((level, levelIndex) => (
           <Col span={24} key={levelIndex}>
             <Row gutter={16}>
               {level.phases.map(
                 (phase, phaseIndex) =>
-                  // Properly wrap the condition and the elements inside parentheses
-                  phase.isNew === true && phase?.name !== "Final Exam" && (
+                  phase.completedExercises === 0 && phase.title !== "Final Exam" && (
                     <Col span={12} key={phaseIndex}>
                       <CardCustom
-                        title={`${level.levelTitle}`}
+                        title={`${level.title}`}
                         bordered={true}
-                        style={{ marginBottom: 16, borderColor: '#ffa751' }}
+                        style={{ marginBottom: 16, borderColor: "#ffa751" }}
                       >
                         <div>
                           <TextCustom style={{ fontWeight: "bold" }}>
-                            {phase.name}
+                            {phase.title}
                           </TextCustom>
                         </div>
                         <Row justify={"end"}>
@@ -160,7 +170,7 @@ export default function LearningProgress() {
             </Row>
           </Col>
         ))}
-         <div>
+        <div>
           <a href="#">Xem tất cả</a>
         </div>
       </Row>

@@ -125,3 +125,8 @@ export const getBlogList = async () => {
   const res = await client.get(BLOG_SERVICE_URI.BLOG_SERVICE.BLOG);
   return res.data;
 }
+
+export const learningProgress = async () => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.LEARNING_PROGRESS);
+  return res.data;
+}
