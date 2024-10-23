@@ -52,6 +52,13 @@ import AccountantDashboard from "../pages/AccountantPage/Dashboard";
 import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
 import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
 import UserStatistics from "../pages/AccountantPage/UserStatistics";
+
+//admin
+import Dashboard from "../pages/AdminPage/Dashboard";
+import FeedbackManagement from "../pages/AdminPage/FeedbackManagement";
+import PremiumManagement from "../pages/AdminPage/PremiumManagement";
+import AccountManagement from "../pages/AdminPage/AccountManagement";
+
 export const routes = [
   // Guest urls
   {
@@ -261,7 +268,24 @@ export const routes = [
         </AdminLayout>
       </AdminGuard>
     ),
-    children: [],
+    children: [
+      {
+        path: CLIENT_URI.ADMIN_DASHBOARD,
+        element: <Dashboard />,
+      },
+      {
+        path: CLIENT_URI.ACCOUNT_MANAGEMENT,
+        element: <AccountManagement />,
+      },
+      {
+        path: CLIENT_URI.PREMIUM_MANAGEMENT,
+        element: <PremiumManagement />,
+      },
+      {
+        path: CLIENT_URI.FEEDBACK_MANAGEMENT,
+        element: <FeedbackManagement />,
+      },
+    ],
   },
   // Admin content
   {

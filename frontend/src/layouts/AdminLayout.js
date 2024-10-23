@@ -1,15 +1,37 @@
 import React from "react";
+import { Layout } from "antd";
+// Import Sidebar and Header
+import AdminSidebar from "../components/Sidebar/AdminSideBar/SidebarItems";
+import AdminHeader from "../components/Header/AdminHeader";
+
+const { Content } = Layout;
 
 export const AdminLayout = ({ children }) => {
+  const styles = {
+    container: {
+      display: "flex",
+      minHeight: "100vh",
+    },
+    content: {
+      flex: 1,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "20px",
+    },
+    layout: {
+      flex: 1,
+      backgroundColor: "#f0f2f5",
+    },
+  };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
-      {children}
+    <div style={styles.container}>
+      <AdminSidebar />
+      <Layout style={styles.layout}>
+        <AdminHeader />
+        <Content>{children}</Content>
+      </Layout>
     </div>
   );
 };

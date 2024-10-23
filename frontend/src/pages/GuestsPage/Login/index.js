@@ -53,6 +53,8 @@ export const LoginPage = () => {
           //check role account from local storage , if role is accountant, redirect to accountant dashboard , else redirect to course page
           if (user[0].role === "accountant") {
             navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
+          } else if (user[0].role === "admin") {
+            navigate(CLIENT_URI.ADMIN_DASHBOARD);
           } else {
             navigate(CLIENT_URI.COURSE_PAGE);
           }

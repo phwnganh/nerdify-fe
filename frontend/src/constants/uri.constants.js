@@ -29,7 +29,10 @@ export const CLIENT_URI = {
   MANAGE_FLASHCARD: "/manage-flashcard",
   CHANGE_PASSWORD: "/change-password",
   // ADMIN
-  DASHBOARD: "/dashboard",
+  ADMIN_DASHBOARD: "/admin-dashboard",
+  ACCOUNT_MANAGEMENT: "/account-management",
+  PREMIUM_MANAGEMENT: "/premium-management",
+  FEEDBACK_MANAGEMENT: "/feedback-management",
   // ADMIN CONTENT
   TABLE_EXERCISE: "/exercise",
   // ACCOUNTANT
