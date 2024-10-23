@@ -32,7 +32,6 @@ import { BASE_SERVER, EXERCISE_TYPE } from "../../../constants/common.constant";
 import { getLevelDetail } from "../../../services/LearnerService";
 import ModalCustom from "../../../components/Modal";
 
-
 export function StartQuizModal({ exerciseId, onClose }) {
   const navigate = useNavigate();
   const handleStartQuiz = () => {
@@ -65,7 +64,7 @@ export default function ViewLevelDetail() {
   const [selectedExerciseId, setSelectedExerciseId] = useState(null); // Store the selected exercise id
 
   // console.log("courseId", courseId);
-  
+
   const [course, setCourse] = useState(null);
   const navigate = useNavigate(); // Hook to programmatically navigate
 
@@ -120,12 +119,11 @@ export default function ViewLevelDetail() {
 
   // Handle when a user clicks on an exercise
   const handleExerciseClick = (exerciseType, exerciseId) => {
-    if(exerciseType === EXERCISE_TYPE.QUIZ){
+    if (exerciseType === EXERCISE_TYPE.QUIZ) {
       setSelectedExerciseId(exerciseId); // Set the quiz exercise ID
       setIsModalVisible(true); // Show the modal
     }
     navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`); // Navigate to the exercise page
-    
   };
 
   const handleCloseModal = () => {
@@ -227,9 +225,7 @@ export default function ViewLevelDetail() {
 
   return (
     <div style={{ padding: "50px 10px 20px 10px" }}>
-      {isModalVisible && (
-        <StartQuizModal exerciseId={selectedExerciseId} onClose={() => setIsModalVisible(false)} />
-      )}
+      {isModalVisible && <StartQuizModal exerciseId={selectedExerciseId} onClose={() => setIsModalVisible(false)} />}
       <div style={{ marginBottom: 16 }}>
         <BreadCrumbHome />
       </div>
@@ -264,7 +260,7 @@ export default function ViewLevelDetail() {
 
         {/* Phase buttons */}
         <div style={{ width: "100%" }}>
-          <ScrollablePhaseDiv>
+          {/* <ScrollablePhaseDiv>
             <div style={{ display: "flex", justifyContent: "center" }}>
               {phases.map((phase, index) => (
                 <ButtonPhase
@@ -278,6 +274,19 @@ export default function ViewLevelDetail() {
                 </ButtonPhase>
               ))}
             </div>
+          </ScrollablePhaseDiv> */}
+          <ScrollablePhaseDiv>
+            {phases.map((phase, index) => (
+              <ButtonPhase
+                key={index}
+                style={{
+                  backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+                }}
+                onClick={() => handlePhaseClick(phase.name)}
+              >
+                {phase.name}
+              </ButtonPhase>
+            ))}
           </ScrollablePhaseDiv>
         </div>
 
