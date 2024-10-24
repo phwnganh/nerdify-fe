@@ -42,14 +42,15 @@ import TableExercise from "../components/Table/TableExercise";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-import ConfirmPayment from '../pages/LearnersPage/Payment/ConfirmPayment'
+import ConfirmPayment from "../pages/LearnersPage/Payment/ConfirmPayment";
 import AccountantDashboard from "../pages/AccountantPage/Dashboard";
 import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
 import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
 import UserStatistics from "../pages/AccountantPage/UserStatistics";
-import Exercise from '../pages/ContentManager/Exercise'
+import Exercise from "../pages/ContentManager/Exercise";
 import { Upload } from "antd";
 import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
+import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice";
 export const routes = [
   // Guest urls
   {
@@ -84,7 +85,7 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-        
+
           {
             path: CLIENT_URI.TROPHY,
             element: <TakeATrophy />,
@@ -113,7 +114,6 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-
     ],
   },
 
@@ -141,7 +141,7 @@ export const routes = [
       },
       {
         path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
-        element: <FinalExam/>,
+        element: <FinalExam />,
       },
       {
         path: CLIENT_URI.FLASH_CARD,
@@ -251,8 +251,6 @@ export const routes = [
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
       },
-      
-
 
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
@@ -268,8 +266,12 @@ export const routes = [
       },
       {
         path: CLIENT_URI.MY_TRANSACTION_HISTORY,
-        element: <ViewTransactionHistoryList/>
-      }
+        element: <ViewTransactionHistoryList />,
+      },
+      {
+        path: CLIENT_URI.RESULTS_PRACTICE,
+        element: <ViewResultsPractice />,
+      },
     ],
   },
 
@@ -284,57 +286,57 @@ export const routes = [
     ),
     children: [],
   },
-    // Admin content
-    {
-      element: (
-        <AdminContentGuard>
-          <AdminContentLayout>
-            <Outlet />
-          </AdminContentLayout>
-        </AdminContentGuard>
-      ),
-      children: [
-        {
-          path: CLIENT_URI.DASHBOARD,
-        },
-        {
-          path: `${CLIENT_URI.TABLE_EXERCISE}`,
-          element: <Exercise />,
-        },
-        {
-          path: `/upload`,
-          element: <Upload />,
-        },
-      ],
-    },
-    // Accountant urls
-    {
-      element: (
-        <AccountantGuard>
-          <AccountantLayout>
-            <Outlet />
-          </AccountantLayout>
-        </AccountantGuard>
-      ),
-      children: [
-        {
-          path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
-          element: <AccountantDashboard />,
-        },
-        {
-          path: CLIENT_URI.SYSTEM_REVENUE,
-          element: <SystemRevenue />,
-        },
-        {
-          path: CLIENT_URI.TRANSACTION_HISTORY,
-          element: <TransactionHistory />,
-        },
-        {
-          path: CLIENT_URI.USER_STATISTICS,
-          element: <UserStatistics />,
-        },
-      ],
-    },
+  // Admin content
+  {
+    element: (
+      <AdminContentGuard>
+        <AdminContentLayout>
+          <Outlet />
+        </AdminContentLayout>
+      </AdminContentGuard>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.DASHBOARD,
+      },
+      {
+        path: `${CLIENT_URI.TABLE_EXERCISE}`,
+        element: <Exercise />,
+      },
+      {
+        path: `/upload`,
+        element: <Upload />,
+      },
+    ],
+  },
+  // Accountant urls
+  {
+    element: (
+      <AccountantGuard>
+        <AccountantLayout>
+          <Outlet />
+        </AccountantLayout>
+      </AccountantGuard>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
+        element: <AccountantDashboard />,
+      },
+      {
+        path: CLIENT_URI.SYSTEM_REVENUE,
+        element: <SystemRevenue />,
+      },
+      {
+        path: CLIENT_URI.TRANSACTION_HISTORY,
+        element: <TransactionHistory />,
+      },
+      {
+        path: CLIENT_URI.USER_STATISTICS,
+        element: <UserStatistics />,
+      },
+    ],
+  },
 ];
 
 export default routes;

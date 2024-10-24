@@ -20,10 +20,10 @@ export const getPhaseList = async () => {
   return res.data;
 };
 
-export const getEnrollLearnerByCourseId = async(courseId) => {
+export const getEnrollLearnerByCourseId = async (courseId) => {
   const res = await client.post(COURSE_SERVER_URI.COURSE_SERVICE.COURSE_LEVEL + "/enroll" + "/" + courseId);
   return res.data;
-}
+};
 export const getPhaseDetail = async (phaseId) => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.PHASES + "/" + phaseId);
   return res.data;
@@ -47,7 +47,7 @@ export const getPublicFlashcardList = async () => {
 export const getAllFlashcards = async () => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/all-flashcards");
   return res.data;
-}
+};
 
 export const getFlashcardDetail = async (flashcardId) => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId);
@@ -80,16 +80,15 @@ export const updateFlashcardStatus = async (flashcardId, isPublic) => {
   return res.data;
 };
 
-export const getMyFolder = async() => {
+export const getMyFolder = async () => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.GET_MY_FOLDER);
   return res.data;
-}
+};
 
 export const searchFlashcard = async (query) => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.SEARCH_FLASHCARD + "?query=" + query);
   return res.data;
-}
-
+};
 
 export const getPackageList = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.PACKAGE);
@@ -129,12 +128,12 @@ export const finishPayment = async (transactionId, params) => {
 export const getCurrentPremiumPackage = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_GET_CURRENT_PACKAGE);
   return res.data;
-}
+};
 
-export const historyTransaction = async() => {
+export const historyTransaction = async () => {
   const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_HISTORY_TRANSACTION);
   return res.data;
-}
+};
 
 export const getTrophyByPhaseId = async (examId) => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_TROPHY_BY_PHASE_ID + "/" + examId);
@@ -144,9 +143,9 @@ export const getTrophyByPhaseId = async (examId) => {
 export const getBlogList = async () => {
   const res = await client.get(BLOG_SERVICE_URI.BLOG_SERVICE.BLOG);
   return res.data;
-}
+};
 
 export const learningProgress = async () => {
   const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.LEARNING_PROGRESS);
   return res.data;
-}
+};

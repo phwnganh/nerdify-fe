@@ -33,7 +33,7 @@ import moment from "moment";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
-  const {folderId, flashcardId } = useParams();
+  const { folderId, flashcardId } = useParams();
   const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);

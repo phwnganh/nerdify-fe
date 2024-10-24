@@ -5,7 +5,7 @@ const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",
   PAYMENT: "/api/payment",
-  BLOG: "/api/blog"
+  BLOG: "/api/blog",
 };
 
 const URI_COURSES_SERVICE = {
@@ -16,17 +16,18 @@ const URI_COURSES_SERVICE = {
   SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
   SUBMIT_FINALEXAM: API_PREFIXES.COURSE + "/submissions/submit-final-exam",
   LEARNING_PROGRESS: API_PREFIXES.COURSE + "/learning-progress",
-  
+
   GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",
 };
 
 const URI_FLASHCARDS_SERVICE = {
   FLASHCARD: API_PREFIXES.FLASHCARD,
-  UPDATE_FLASHCARD_STATUS: API_PREFIXES.FLASHCARD + "/:flashcardId/visibility",  CREATE_FOLDER: API_PREFIXES + "/folders",
+  UPDATE_FLASHCARD_STATUS: API_PREFIXES.FLASHCARD + "/:flashcardId/visibility",
+  CREATE_FOLDER: API_PREFIXES + "/folders",
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES.FLASHCARD + "/folders/:folderId" + "/flashcards/:flashcardId",
   GET_MY_FOLDER: API_PREFIXES.FLASHCARD + "/folders/my-folders",
   CREATE_FOLDER: API_PREFIXES.FLASHCARD + "/folders",
-  SEARCH_FLASHCARD: API_PREFIXES.FLASHCARD + "/search"
+  SEARCH_FLASHCARD: API_PREFIXES.FLASHCARD + "/search",
 };
 
 const URI_PAYMENT_SERVICE = {
@@ -35,12 +36,12 @@ const URI_PAYMENT_SERVICE = {
   FINISH_PAYMENT: API_PREFIXES.PAYMENT + "/main/finish-payment/",
   USER_GET_CURRENT_PACKAGE: API_PREFIXES.PAYMENT + "/user/my-current-package",
   USER_GET_TRANSACTION: API_PREFIXES.PAYMENT + "/user/transactions",
-  USER_HISTORY_TRANSACTION: API_PREFIXES.PAYMENT + "/user"
+  USER_HISTORY_TRANSACTION: API_PREFIXES.PAYMENT + "/user",
 };
 
 const URI_BLOG_SERVICE = {
-  BLOG: API_PREFIXES.BLOG
-}
+  BLOG: API_PREFIXES.BLOG,
+};
 
 export const COURSE_SERVER_URI = {
   DOMAIN: DOMAIN,
@@ -59,5 +60,5 @@ export const PAYMENT_SERVER_URI = {
 
 export const BLOG_SERVICE_URI = {
   DOMAIN: DOMAIN,
-  BLOG_SERVICE: URI_BLOG_SERVICE
-}
+  BLOG_SERVICE: URI_BLOG_SERVICE,
+};

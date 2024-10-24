@@ -1,18 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  Row,
-  Upload,
-  Typography,
-  Card,
-  Space,
-  message,
-  Dropdown,
-  Menu,
-} from "antd";
+import { Button, Col, Form, Input, Row, Upload, Typography, Card, Space, message, Dropdown, Menu } from "antd";
 
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
@@ -32,7 +19,6 @@ export default function CreateFlashCard() {
   const [selectedLevel, setSelectedLevel] = useState(null);
 
   const handleSubmit = (values) => {
-    
     // fetch(`${BASE_SERVER}/flashcard`, {
     //   method: "POST",
     //   headers: {
@@ -58,33 +44,33 @@ export default function CreateFlashCard() {
     //     console.log("duoc roi");
     //   });
 
-    const {title, description, cards, level} = values;
+    const { title, description, cards, level } = values;
 
-    const formattedCards = cards.map(card => ({
+    const formattedCards = cards.map((card) => ({
       term: card.terms,
-      definition: card.definitions
-    }))
-    
+      definition: card.definitions,
+    }));
+
     const data = {
       title,
       description,
       cards: formattedCards,
       level,
-      isPublic: false
-    }
-    createNewFlashcard(data).then(res => 
-      messageApi.success("Tạo flash card thành công")
-    ).catch(err => {
-      const errorMessage = err.response?.data?.message || 'Failed to create flashcard.';
-      messageApi.error(errorMessage);
-      console.error('Error:', err); 
-    })
+      isPublic: false,
+    };
+    createNewFlashcard(data)
+      .then((res) => messageApi.success("Tạo flash card thành công"))
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
+        messageApi.error(errorMessage);
+        console.error("Error:", err);
+      });
   };
 
-  const handleSelectLevel = key => {
+  const handleSelectLevel = (key) => {
     setSelectedLevel(key);
     form.setFieldValue("level", key);
-  }
+  };
 
   const handleFlashCard = () => {
     const cards = form.getFieldValue("cards");
@@ -97,63 +83,41 @@ export default function CreateFlashCard() {
   const items = [
     {
       key: "A1",
-      label: (
-        <div>A1</div>
-      )
-    }, {
+      label: <div>A1</div>,
+    },
+    {
       key: "A2",
-      label: (
-        <div>A2</div>
-      )
-    }, {
+      label: <div>A2</div>,
+    },
+    {
       key: "B1",
-      label: (
-        <div>B1</div>
-      )
-    }
-  ]
+      label: <div>B1</div>,
+    },
+  ];
   return (
     <>
       {contextHolder}
-      
-      <div style={{padding: '20px'}}>
-      <BreadCrumbHome/>
+
+      <div style={{ padding: "20px" }}>
+        <BreadCrumbHome />
         <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI</h1>
-        <Form
-          form={form}
-          onFinish={handleSubmit}
-          scrollToFirstError
-          initialValues={{ cards: [{}], level: null }}
-        >
+        <Form form={form} onFinish={handleSubmit} scrollToFirstError initialValues={{ cards: [{}], level: null }}>
           <Row>
             <Col span={12}>
-              <Form.Item
-                name="title"
-                rules={[
-                 validationRules.required("Vui lòng nhập tiêu đề"),
-                 validationRules.maxLength(20, "Tiêu đề không quá 20 ký tự")
-                ]}
-              >
-                <Input.TextArea
-                  autoSize={{ minRows: 0, maxRows: 4 }}
-                  placeholder="Nhập tiêu đề"
-                  style={{ fontWeight: "600", padding: "10px" }}
-                />
+              <Form.Item name="title" rules={[validationRules.required("Vui lòng nhập tiêu đề"), validationRules.maxLength(20, "Tiêu đề không quá 20 ký tự")]}>
+                <Input.TextArea autoSize={{ minRows: 0, maxRows: 4 }} placeholder="Nhập tiêu đề" style={{ fontWeight: "600", padding: "10px" }} />
               </Form.Item>
 
               <Form.Item name="description">
-                <Input.TextArea
-                  autoSize={{ minRows: 0, maxRows: 4 }}
-                  placeholder="Nhập mô tả"
-                  style={{ fontWeight: "600", padding: "10px" }}
-                />
+                <Input.TextArea autoSize={{ minRows: 0, maxRows: 4 }} placeholder="Nhập mô tả" style={{ fontWeight: "600", padding: "10px" }} />
               </Form.Item>
               <Form.Item name="level" rules={[validationRules.selectRequired("Vui lòng chọn trình độ")]}>
-              <Dropdown menu={{items, onClick: e => handleSelectLevel(e.key)}} trigger={["click"]}>
-                <Button shape="default" style={{marginRight: '10px', padding: '20px', paddingLeft: '60px', paddingRight: '60px', marginBottom: '20px'}}>{selectedLevel || "Chọn trình độ"}</Button>
-              </Dropdown>
+                <Dropdown menu={{ items, onClick: (e) => handleSelectLevel(e.key) }} trigger={["click"]}>
+                  <Button shape="default" style={{ marginRight: "10px", padding: "20px", paddingLeft: "60px", paddingRight: "60px", marginBottom: "20px" }}>
+                    {selectedLevel || "Chọn trình độ"}
+                  </Button>
+                </Dropdown>
               </Form.Item>
-             
             </Col>
             <Col
               span={12}
@@ -165,12 +129,7 @@ export default function CreateFlashCard() {
               }}
             >
               <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  style={{ padding: "20px 50px", background: "#ffa751" }}
-                  onClick={handleFlashCard}
-                >
+                <Button type="primary" htmlType="submit" style={{ padding: "20px 50px", background: "#ffa751" }} onClick={handleFlashCard}>
                   Thêm mới
                 </Button>
               </Form.Item>
@@ -209,13 +168,7 @@ export default function CreateFlashCard() {
                     <div>
                       <Row style={{ alignItems: "center" }}>
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "terms"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập thuật ngữ!")
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "terms"]} rules={[validationRules.required("Vui lòng nhập thuật ngữ!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 3 }}
                               placeholder="Thuật ngữ"
@@ -228,13 +181,7 @@ export default function CreateFlashCard() {
                         </Col>
 
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "definitions"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập định nghĩa!")
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "definitions"]} rules={[validationRules.required("Vui lòng nhập định nghĩa!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 4 }}
                               placeholder="Định nghĩa"
@@ -246,16 +193,9 @@ export default function CreateFlashCard() {
                           </Form.Item>
                         </Col>
                         <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
-                          <Form.Item
-                            name={[field.name, "fileList"]}
-                            valuePropName="fileList"
-                            getValueFromEvent={normFile}
-                          >
+                          <Form.Item name={[field.name, "fileList"]} valuePropName="fileList" getValueFromEvent={normFile}>
                             <Upload action="/upload.do" listType="picture-card">
-                              <button
-                                style={{ border: 0, background: "none" }}
-                                type="button"
-                              >
+                              <button style={{ border: 0, background: "none" }} type="button">
                                 <PlusOutlined />
                                 <div style={{ marginTop: 8 }}>Upload</div>
                               </button>

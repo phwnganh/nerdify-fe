@@ -43,7 +43,7 @@ export default function ManageFolder() {
       messageApi.success("Tạo mới folder thành công!");
       console.log("new folder: ", response);
       const newFolder = response.data;
-      setFolders((prevFolders) => [...prevFolders, newFolder]); 
+      setFolders((prevFolders) => [...prevFolders, newFolder]);
       setIsOpenModal(false);
       setNewFolderName("");
     } catch (error) {
