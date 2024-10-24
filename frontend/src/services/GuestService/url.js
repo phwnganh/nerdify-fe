@@ -19,7 +19,7 @@ const URI_AUTH_SERVICE = {
   TOKEN: API_AUTH_PREFIXES.AUTH + "/token",
   VIEW_PROFILE: API_AUTH_PREFIXES.AUTH + "/view-profile",
   CHANGE_PROFILE: API_AUTH_PREFIXES.AUTH + "/change-profile",
-  CHANGE_PASSWORD: API_AUTH_PREFIXES.AUTH + "/change-password"
+  CHANGE_PASSWORD: API_AUTH_PREFIXES.AUTH + "/change-password",
 };
 
 export const AUTH_SERVER_URI = {

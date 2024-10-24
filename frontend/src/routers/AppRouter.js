@@ -49,6 +49,7 @@ import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
 import UserStatistics from "../pages/AccountantPage/UserStatistics";
 import Exercise from '../pages/ContentManager/Exercise'
 import { Upload } from "antd";
+import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
 export const routes = [
   // Guest urls
   {
@@ -265,6 +266,10 @@ export const routes = [
         path: CLIENT_URI.CHANGE_PASSWORD,
         element: <ChangePassword />,
       },
+      {
+        path: CLIENT_URI.MY_TRANSACTION_HISTORY,
+        element: <ViewTransactionHistoryList/>
+      }
     ],
   },
 

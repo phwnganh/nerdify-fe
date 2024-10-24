@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../../../constants";
 
 import { Col, Image, Row, Space } from "antd";
-import CardCustom from "../../../../components/Card";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import ButtonCustom from "../../../../components/Button";
+import CardCustom from "../../../../../components/Card";
+import { TextCustom, TitleCustom } from "../../../../../components/Typography";
+import ButtonCustom from "../../../../../components/Button";
+import { getAllFlashcards, getFlashcardList, getPublicFlashcardList } from "../../../../../services/LearnerService";
+import { useAuth } from "../../../../../hooks";
 
 export default function MyFlashCard() {
   const [flashcards, setFlashcards] = useState([]);
+  const {user} = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard`)
-      .then((res) => res.json())
+    getAllFlashcards()
       .then((data) => {
-        console.log("flashcards: ", data);
-        setFlashcards(data);
+        const myFlashcards = data.data.filter(flashcard => flashcard?.createdBy === user?.id && flashcard?.isPublic === false)
+        console.log("flashcards: ", myFlashcards);
+        setFlashcards(myFlashcards);
       })
       .catch((err) => console.error(err));
   }, []);
 
+  
   return (
     <div style={{ width: "100%" }}>
       <Space direction="vertical" style={{ width: "100%" }}>

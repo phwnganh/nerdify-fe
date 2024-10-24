@@ -9,7 +9,7 @@ import ButtonCustom from "../../../components/Button";
 import { CLIENT_URI } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getFlashcardList, searchFlashcard } from "../../../services/LearnerService";
+import {getPublicFlashcardList, searchFlashcard } from "../../../services/LearnerService";
 export default function Flashcard() {
   const navigate = useNavigate();
   const [inputText, setInputText] = useState("");
@@ -17,7 +17,7 @@ export default function Flashcard() {
 
   const fetchAllFlashcards = async () => {
     try {
-      const res = await getFlashcardList();
+      const res = await getPublicFlashcardList();
       setFlashcards(res?.data);
     } catch (error) {
       console.log(error);

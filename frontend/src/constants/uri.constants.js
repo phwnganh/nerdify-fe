@@ -31,6 +31,7 @@ export const CLIENT_URI = {
   CHANGE_PASSWORD: "/change-password",
   MY_SUBSCRIPTION: "/my-subscription",
   MANAGE_SUBSCRIPTION: "/manage-subscription",
+  MY_TRANSACTION_HISTORY: "/my-transaction-history",
   // ADMIN
   DASHBOARD: "/dashboard",
   // ADMIN CONTENT

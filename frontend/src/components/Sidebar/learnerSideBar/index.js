@@ -40,7 +40,7 @@ const Sidebar = () => {
         <Menu.Item key="3" icon={<BookOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FLASHCARD)}>
           Quản lý bộ flashcard
         </Menu.Item>
-        <Menu.Item key="4" icon={<TransactionOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FLASHCARD)}>
+        <Menu.Item key="4" icon={<TransactionOutlined />} onClick={() => navigate(CLIENT_URI.MY_TRANSACTION_HISTORY)}>
           Lịch sử giao dịch
         </Menu.Item>
         <SubMenu key="sub1" icon={<SettingOutlined />} title="Cài đặt">
