@@ -3,12 +3,15 @@ import { TextCustom, TitleCustom } from "../../../components/Typography";
 import CardCustom from "../../../components/Card";
 import { useEffect, useState } from "react";
 import ButtonCustom from "../../../components/Button";
-import { BASE_SERVER } from "../../../constants";
+import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { learningProgress } from "../../../services/LearnerService";
+import { useNavigate } from "react-router-dom";
+import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 export default function LearningProgress() {
   const [levelPhaseMap, setLevelPhaseMap] = useState({});
   const [allExercises, setAllExercises] = useState([]); // Store all exercises
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     // const fetchData = async () => {
     //   try {
@@ -94,6 +97,7 @@ export default function LearningProgress() {
 
   return (
     <div style={{ padding: "24px" }}>
+      <BreadCrumbHome/>
       <TitleCustom level={2}>Đang thực hiện</TitleCustom>
       <Row gutter={16}>
         {data.map((level, levelIndex) => (
@@ -118,12 +122,12 @@ export default function LearningProgress() {
                         </div>
                         <div>
                           <Progress
-                            percent={phase.progress} // Progress value from backend
+                            percent={Math.round(phase.progress).toFixed(2)} // Progress value from backend
                             size={"small"}
                           />
                         </div>
                         <Row justify={"end"} style={{ marginTop: "20px" }}>
-                          <ButtonCustom buttonType="primary">
+                          <ButtonCustom buttonType="primary" onClick={() => navigate(-1)}>
                             Tiếp tục
                           </ButtonCustom>
                         </Row>
