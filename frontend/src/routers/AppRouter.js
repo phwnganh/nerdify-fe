@@ -50,6 +50,7 @@ import UserStatistics from "../pages/AccountantPage/UserStatistics";
 import Exercise from "../pages/ContentManager/Exercise";
 import { Upload } from "antd";
 import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
+import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice";
 export const routes = [
   // Guest urls
   {
@@ -266,6 +267,10 @@ export const routes = [
       {
         path: CLIENT_URI.MY_TRANSACTION_HISTORY,
         element: <ViewTransactionHistoryList />,
+      },
+      {
+        path: CLIENT_URI.RESULTS_PRACTICE,
+        element: <ViewResultsPractice />,
       },
     ],
   },

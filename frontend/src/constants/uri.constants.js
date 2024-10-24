@@ -32,6 +32,7 @@ export const CLIENT_URI = {
   MY_SUBSCRIPTION: "/my-subscription",
   MANAGE_SUBSCRIPTION: "/manage-subscription",
   MY_TRANSACTION_HISTORY: "/my-transaction-history",
+  RESULTS_PRACTICE: "/results-practice",
   // ADMIN
   DASHBOARD: "/dashboard",
   // ADMIN CONTENT
@@ -41,5 +42,5 @@ export const CLIENT_URI = {
   SYSTEM_REVENUE: "/system-revenue",
   TRANSACTION_HISTORY: "/transaction-history",
   USER_STATISTICS: "/user-statistics",
-  TABLE_EXERCISE:"/exercise"
+  TABLE_EXERCISE: "/exercise",
 };
