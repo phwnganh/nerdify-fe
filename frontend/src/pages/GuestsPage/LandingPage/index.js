@@ -15,7 +15,8 @@ import certificate from "../../../assets/landingPage/BI-QUYET-DAT-DIEM-CAO-TRONG
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import { Courses } from "./courses/coursesList";
 import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
-
+import { CLIENT_URI } from "../../../constants";
+import { Link, useNavigate } from "react-router-dom";
 // //test modal
 // import ModalCreateAccount from "../../../components/Admin/ModalCreateAccount";
 // import { Button } from "antd";
@@ -25,6 +26,7 @@ import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
 
 export const LandingPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -124,7 +126,7 @@ export const LandingPage = () => {
               fontSize: "22px",
               fontWeight: "600",
             }}
-            // onClick={() => navigate(CLIENT_URI.LOGIN)}
+            onClick={() => navigate(CLIENT_URI.LOGIN)}
           >
             HỌC THỬ MIỄN PHÍ
           </ButtonCustom>
@@ -192,11 +194,7 @@ export const LandingPage = () => {
               </li>
             ))}
           </ul>
-          <ButtonCustom
-            buttonType="primary"
-            style={{ padding: "20px 30px", fontSize: "22px" }}
-            // onClick={() => navigate(CLIENT_URI.LOGIN)}
-          >
+          <ButtonCustom buttonType="primary" style={{ padding: "20px 30px", fontSize: "22px" }} onClick={() => navigate(CLIENT_URI.LOGIN)}>
             BẮT ĐẦU NGAY
           </ButtonCustom>
         </Col>
@@ -307,7 +305,7 @@ export const LandingPage = () => {
             fontWeight: "600",
             padding: "30px 30px",
           }}
-          // onClick={() => navigate(CLIENT_URI.LOGIN)}
+          onClick={() => navigate(CLIENT_URI.LOGIN)}
         >
           Đăng ký
         </ButtonCustom>

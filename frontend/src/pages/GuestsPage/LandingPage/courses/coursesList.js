@@ -6,20 +6,6 @@ import { BASE_SERVER } from "../../../../constants";
 
 export const Courses = () => {
   const [courses, setCourses] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchCourseLevel = async () => {
-  //     try {
-  //       const response = await getCourseLevelList();
-  //       console.log("course level list: ", response.data);
-
-  //       setCourses(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchCourseLevel();
-  // }, []);
   useEffect(() => {
     getCourseLevelList()
       .then((data) => {
