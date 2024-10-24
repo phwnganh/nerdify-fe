@@ -139,7 +139,7 @@ export default function LearningProgress() {
         </div>
       </Row>
 
-      <TitleCustom level={2}>Các bài tập khác</TitleCustom>
+      {/* <TitleCustom level={2}>Các bài tập khác</TitleCustom>
       <Row gutter={16}>
         {data.map((level, levelIndex) => (
           <Col span={24} key={levelIndex}>
@@ -173,7 +173,7 @@ export default function LearningProgress() {
         <div>
           <a href="#">Xem tất cả</a>
         </div>
-      </Row>
+      </Row> */}
     </div>
   );
 }

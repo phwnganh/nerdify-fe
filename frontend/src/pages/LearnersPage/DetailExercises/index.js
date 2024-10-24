@@ -48,7 +48,7 @@ export default function ExerciseDetail() {
       case EXERCISE_TYPE.READING:
         return <ReadingExercises exercises={exerciseData} />;
       case EXERCISE_TYPE.WRITING:
-        return <WritingExercises exercise={exerciseData} />;
+        return <WritingExercises exercises={exerciseData} />;
       case EXERCISE_TYPE.VOCABULARY:
         return <VocabularyExercises exercises={exerciseData} />;
       case EXERCISE_TYPE.GRAMMAR:

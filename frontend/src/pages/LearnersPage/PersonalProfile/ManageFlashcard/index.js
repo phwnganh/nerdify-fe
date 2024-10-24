@@ -4,7 +4,8 @@ import CardCustom from "../../../../components/Card";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
 import FlashcardList from "../../FlashCard/FlashCardList";
 import { CLIENT_URI } from "../../../../constants";
-import MyFlashCard from "../../FlashCard/MyFlashCard";
+import MyFlashCard from "./MyFlashCard";
+import FlashcardHistory from "./FlashcardHistory";
 
 export default function ManageFlashcard() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function ManageFlashcard() {
       <Sidebar />
       <div style={{ flex: 1, padding: "30px", backgroundColor: "#f0f2f5" }}>
         <CardCustom title="Lịch sử học flashcard" style={{ backgroundColor: "white" }}>
-          <FlashcardList />
+          <FlashcardHistory />
           <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
             Xem tất cả
           </ButtonCustom>

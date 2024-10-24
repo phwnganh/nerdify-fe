@@ -4,7 +4,7 @@ import CardCustom from "../../../../components/Card";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
 import FlashcardList from "../../FlashCard/FlashCardList";
 import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
-import MyFlashCard from "../../FlashCard/MyFlashCard";
+import MyFlashCard from "../ManageFlashcard/MyFlashCard";
 import Folder from "../../FlashCard/Folder";
 import { TitleCustom } from "../../../../components/Typography";
 import { useEffect, useState } from "react";

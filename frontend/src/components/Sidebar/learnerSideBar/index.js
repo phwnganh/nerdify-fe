@@ -7,7 +7,9 @@ import {
   SettingOutlined,
   UserOutlined,
   KeyOutlined,
-  LogoutOutlined
+  LogoutOutlined,
+  TransactionOutlined,
+  BookOutlined
 } from '@ant-design/icons';
 import SubMenu from 'antd/es/menu/SubMenu';
 import { useNavigate } from 'react-router-dom';
@@ -35,14 +37,17 @@ const Sidebar = () => {
         <Menu.Item key="2" icon={<FolderOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FOLDER)}>
           Quản lý thư mục
         </Menu.Item>
-        <Menu.Item key="3" icon={<SettingOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FLASHCARD)}>
+        <Menu.Item key="3" icon={<BookOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FLASHCARD)}>
           Quản lý bộ flashcard
         </Menu.Item>
+        <Menu.Item key="4" icon={<TransactionOutlined />} onClick={() => navigate(CLIENT_URI.MY_TRANSACTION_HISTORY)}>
+          Lịch sử giao dịch
+        </Menu.Item>
         <SubMenu key="sub1" icon={<SettingOutlined />} title="Cài đặt">
-          <Menu.Item key="4" icon={<UserOutlined />} onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
+          <Menu.Item key="5" icon={<UserOutlined />} onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
             Chỉnh sửa trang cá nhân
           </Menu.Item>
-          <Menu.Item key="5" icon={<KeyOutlined />} onClick={() => navigate(CLIENT_URI.CHANGE_PASSWORD)}>
+          <Menu.Item key="6" icon={<KeyOutlined />} onClick={() => navigate(CLIENT_URI.CHANGE_PASSWORD)}>
             Đổi mật khẩu
           </Menu.Item>
         </SubMenu>
