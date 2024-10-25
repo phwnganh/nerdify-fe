@@ -207,8 +207,6 @@ export default function ListeningExercise({ exercises }) {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [submissionData, setSubmissionData] = useState(null);
 
-  console.log(userSelected)
-
   const handleSelectOptions = useCallback(
     (questionId, optionId) => {
       if (!isSubmitted) {
@@ -296,7 +294,7 @@ export default function ListeningExercise({ exercises }) {
                   let backgroundColor = isUserSelected ? "#A8703E" : "";
 
                   if (isSubmitted) {
-                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer.answerOption == option._id && answer.isCorrect);
+                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
                     if (foundQuestion) {
                       backgroundColor = "#5FD855";
                     } else if (isUserSelected) {
@@ -323,10 +321,10 @@ export default function ListeningExercise({ exercises }) {
                   <div>
                     <TextCustom style={{ color: "blue" }}>
                       {submissionData?.submissionAnswer?.map((answer) => {
-                        if (answer.questionId === question._id) {
+                        if (answer.questionId._id === question._id) {
                           return (
                             <React.Fragment key={index}>
-                              {answer.correctAnswer.explanation?.split("\n")}
+                              {question.explaination?.split("\n")}
                               <br />
                             </React.Fragment>
                           );
@@ -409,7 +407,7 @@ export default function ListeningExercise({ exercises }) {
                 </div>
                 <div>
                   <TextCustom>
-                    {part?.transcript?.split("\n")?.map((line, index) => (
+                    {part?.paragraph?.split("\n")?.map((line, index) => (
                       <React.Fragment key={index}>
                         {line}
                         <br />

@@ -28,9 +28,7 @@ import part2_ques10_2 from "../../../../assets/listeningExercises/02- teil 2-10.
 import { StartQuizModal } from "../../LevelDetailPage";
 import { submitExercise } from "../../../../services/LearnerService";
 
-
 export default function CheckpointQuiz({ exercises }) {
-
   const navigate = useNavigate();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
@@ -153,8 +151,8 @@ export default function CheckpointQuiz({ exercises }) {
                 const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
                 let backgroundColor = isUserSelected ? "#A8703E" : "";
 
-                if (isSubmitted && (submissionData.score >= 50)) {
-                  const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer?.answerOption == option._id && answer.isCorrect);
+                if (isSubmitted && submissionData.score >= 50) {
+                  const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
                   if (foundQuestion) {
                     backgroundColor = "#5FD855";
                   } else if (isUserSelected) {
@@ -260,7 +258,7 @@ export default function CheckpointQuiz({ exercises }) {
                     <ButtonCustom
                       buttonType="secondary"
                       style={{ padding: "23px", marginLeft: "30px" }}
-                    // onClick={handleAchieveTrophy}
+                      // onClick={handleAchieveTrophy}
                     >
                       Chuyển sang phase tiếp theo
                     </ButtonCustom>
