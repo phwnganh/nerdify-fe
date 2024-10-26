@@ -6,6 +6,7 @@ import GrammarResults from "./GrammarResults";
 import { useEffect, useState } from "react";
 import { getSubmissionDetail } from "../../../services/LearnerService";
 import { EXERCISE_TYPE } from "../../../constants";
+import VocabularyResults from "./VocabularyResults";
 
 export default function ViewResultsDetail() {
   const {exerciseType, submissionId } = useParams();
@@ -32,6 +33,8 @@ export default function ViewResultsDetail() {
         return <WritingResults exerciseResults={resultData} />;
       case EXERCISE_TYPE.GRAMMAR:
         return <GrammarResults exerciseResults={resultData} />;
+      case EXERCISE_TYPE.VOCABULARY:
+        return <VocabularyResults exerciseResults={resultData}/>
     }
   };
   return <div>{renderResultsType()}</div>;
