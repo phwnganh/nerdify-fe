@@ -138,9 +138,9 @@ export default function LearningProgress() {
             </Row>
           </Col>
         ))}
-        <div>
+        {/* <div>
           <a href="#">Xem tất cả</a>
-        </div>
+        </div> */}
       </Row>
 
       {/* <TitleCustom level={2}>Các bài tập khác</TitleCustom>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from "antd";
+import { Form, Input } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -93,7 +93,7 @@ export const RegisterPage = () => {
                 },
               ]}
             >
-              <InputCustom placeholder="Email" prefix={<UserOutlined />} />
+              <InputCustom placeholder="Nhập email của bạn" prefix={<UserOutlined />} />
             </Form.Item>
 
             {/* input password */}
@@ -109,9 +109,9 @@ export const RegisterPage = () => {
                 },
               ]}
             >
-              <InputCustom
+              <Input.Password
                 type="password"
-                placeholder="Password"
+                placeholder="Nhập mật khẩu"
                 prefix={<LockOutlined />}
               />
             </Form.Item>
@@ -134,7 +134,7 @@ export const RegisterPage = () => {
                 }),
               ]}
             >
-              <InputCustom
+              <Input.Password
                 type="password"
                 placeholder="Xác nhận mật khẩu"
                 prefix={<LockOutlined />}

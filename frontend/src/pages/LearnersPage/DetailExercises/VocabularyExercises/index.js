@@ -43,6 +43,7 @@ const vocabImg = {
 };
 
 export default function VocabularyExercises({ exercises }) {
+  console.log(exercises);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   // part 1: matching
   const [selectedQuestions, setSelectedQuestions] = useState([]);
@@ -65,15 +66,11 @@ export default function VocabularyExercises({ exercises }) {
     });
     return initialValues;
   });
-
+  console.log(selectedAnswersPart2);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [submissionData, setSubmissionData] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [userSelected, setUserSelected] = useState([]);
-
-
-
-
 
   const shuffleArray = (array) => {
     return array
@@ -176,7 +173,6 @@ export default function VocabularyExercises({ exercises }) {
     }));
   };
 
-
   const handleInputChangePart3 = (index, value) => {
     setInputValuePart3((prev) => ({
       ...prev,
@@ -186,12 +182,11 @@ export default function VocabularyExercises({ exercises }) {
 
   //submit all part and calculate score
   const handleSubmit = () => {
-
     //submission of part 1
     const submissionAnswersPart1 = exercises.parts[0].questions.map((question) => {
       return {
         questionId: question._id,
-        userAnswer: questions.find((q) => q._id === selectedPairsPart1[question._id])?.matchedQuestion
+        userAnswer: questions.find((q) => q._id === selectedPairsPart1[question._id])?.matchedQuestion,
       };
     });
 
@@ -252,7 +247,7 @@ export default function VocabularyExercises({ exercises }) {
 
     Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
       const questionText = questions.find((q) => q._id === questionId)?.question;
-      const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.matchedQuestion;
+      const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.options[0].text;
 
       resultQuestion.push({ id: questionId, question: questionText });
       resultMatchQuestions.push({
@@ -343,7 +338,7 @@ export default function VocabularyExercises({ exercises }) {
                               userSelect: "none",
                             }}
                           >
-                            {matchQues.matchedQuestion}
+                            {matchQues.options[0].text}
                           </p>
                         </Radio.Button>
                       </Col>
@@ -360,7 +355,7 @@ export default function VocabularyExercises({ exercises }) {
               <TitleCustom level={4}>Selected Pairs:</TitleCustom>
               {Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
                 const questionText = questions.find((q) => q._id === questionId)?.question;
-                const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.matchedQuestion;
+                const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.options[0].text;
 
                 return (
                   <Row
@@ -441,6 +436,7 @@ export default function VocabularyExercises({ exercises }) {
                             }}
                           >
                             {matchQues.matchQuestion}
+                            {console.log(matchQues)}
                           </p>
                         </Radio.Button>
                       </Col>
@@ -483,7 +479,7 @@ export default function VocabularyExercises({ exercises }) {
                             >
                               Đáp án:
                               <br />
-                              {questionText} - {questions.find((m) => m._id === questionId)?.matchedQuestion}
+                              {questionText} - {questions.find((m) => m._id === questionId)?.options[0].text}
                             </p>
                           )
                         ) : (
@@ -502,7 +498,6 @@ export default function VocabularyExercises({ exercises }) {
   };
 
   const renderPart2 = (exercise) => {
-
     return (
       <div>
         {exercise.questions.map((question, index) => {
@@ -528,18 +523,17 @@ export default function VocabularyExercises({ exercises }) {
                           <ButtonCustom
                             buttonType="primary"
                             style={{
-                              backgroundColor:
-                                isSubmitted
-                                  ? selectedAnswersPart2[question._id] === question.answers[0].answerOption && option._id === question.answers[0].answerOption
-                                    ? "rgb(95, 216, 85)"
-                                    : selectedAnswersPart2[question._id] === option._id
-                                      ? "red"
-                                      : option._id === question.answers[0].answerOption
-                                        ? "rgb(95, 216, 85)"
-                                        : ""
+                              backgroundColor: isSubmitted
+                                ? selectedAnswersPart2[question._id] === option._id && option.isTrue
+                                  ? "rgb(95, 216, 85)"
                                   : selectedAnswersPart2[question._id] === option._id
-                                    ? "#A8703E"
-                                    : "",
+                                  ? "red"
+                                  : option.isTrue
+                                  ? "rgb(95, 216, 85)"
+                                  : ""
+                                : selectedAnswersPart2[question._id] === option._id
+                                ? "#A8703E"
+                                : "",
                               pointerEvents: isSubmitted ? "none" : "auto",
                             }}
                             onClick={() => handleSelectAnswersPart2(question._id, option._id)}
@@ -547,7 +541,6 @@ export default function VocabularyExercises({ exercises }) {
                             {option.text}
                           </ButtonCustom>
                           {option.optionImage && <img src={vocabImg[option.optionImage]} alt={`Option ${index + 1}`} style={{ width: "50%" }} />}
-
                         </Col>
                       );
                     })}
@@ -555,7 +548,7 @@ export default function VocabularyExercises({ exercises }) {
                 </Col>
               </Row>
 
-              {isSubmitted && (
+              {/* {isSubmitted && (
                 <Row style={{ display: "flex", alignItems: "center" }}>
                   <ButtonCustom buttonType="primary" onClick={() => toggleButtonAnswerDetail(question._id)} style={{ marginRight: "12px" }}>
                     Đáp án chi tiết
@@ -570,12 +563,12 @@ export default function VocabularyExercises({ exercises }) {
                           flex: 1,
                         }}
                       >
-                        {question.answers[0].explanation}
+                        {question.explanation}
                       </TextCustom>
                     )}
                   </div>
                 </Row>
-              )}
+              )} */}
             </>
           );
         })}
@@ -593,21 +586,20 @@ export default function VocabularyExercises({ exercises }) {
               {questions.map((question, index) => {
                 return (
                   <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
+                    <TextCustom style={{ color: "" }}>{question.question}</TextCustom>
                     <InputCustom
                       //if first question => value = answer and disabled
-                      value={index === 0 ? question.matchedQuestion
-                        : inputValuePart3[question._id]}
+                      value={index === 0 ? question.options[0].text : inputValuePart3[question._id]}
                       onChange={(e) => handleInputChangePart3(question._id, e.target.value)}
                       style={{
-                        borderColor: index === 0 || (isSubmitted ? (inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
-                          .toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
+                        borderColor: index === 0 || (isSubmitted ? (inputValuePart3[question._id]?.toLowerCase() === question.options[0].text.toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
                       }}
                       disabled={isSubmitted || index === 0}
                     />
                     {isSubmitted && (
-                      <TextCustom style={{ color: "red" }}>{index === 0 || inputValuePart3[question._id]?.toLowerCase() === question.matchedQuestion
-                        .toLowerCase() ? "" : question.matchedQuestion
-                      }</TextCustom>
+                      <TextCustom style={{ color: "red" }}>
+                        {index === 0 || inputValuePart3[question._id]?.toLowerCase() === question.options[0].text.toLowerCase() ? "" : question.options[0].text}
+                      </TextCustom>
                     )}
                   </Col>
                 );

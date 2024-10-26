@@ -15,15 +15,15 @@ export default function ManageFlashcard() {
       <div style={{ flex: 1, padding: "30px", backgroundColor: "#f0f2f5" }}>
         <CardCustom title="Lịch sử học flashcard" style={{ backgroundColor: "white" }}>
           <FlashcardHistory />
-          <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
+          {/* <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
             Xem tất cả
-          </ButtonCustom>
+          </ButtonCustom> */}
         </CardCustom>
         <CardCustom title="Quản lý bộ flashcard" style={{ backgroundColor: "white" }}>
           <MyFlashCard />
-          <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
+          {/* <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
             Xem tất cả
-          </ButtonCustom>
+          </ButtonCustom> */}
         </CardCustom>
       </div>
     </div>

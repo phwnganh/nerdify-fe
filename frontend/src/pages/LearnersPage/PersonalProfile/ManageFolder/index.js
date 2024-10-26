@@ -94,9 +94,9 @@ export default function ManageFolder() {
             <Folder folders={folders} />
           </div>
 
-          <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
+          {/* <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
             Xem tất cả
-          </ButtonCustom>
+          </ButtonCustom> */}
         </CardCustom>
       </div>
     </div>

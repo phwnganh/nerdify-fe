@@ -39,6 +39,16 @@ export const getExerciseDetail = async (exerciseId) => {
   return res.data;
 };
 
+export const getAllSubmissions = async() => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_ALL_SUBMISSIONS);
+  return res.data;
+}
+
+export const getSubmissionDetail = async(submissionId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_SUBMISSION_DETAIL + "/" + submissionId);
+  return res.data;
+}
+
 export const getPublicFlashcardList = async () => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD);
   return res.data;
@@ -63,6 +73,11 @@ export const updateFlashcard = async (flashcardId, data) => {
   const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId, data);
   return res.data;
 };
+
+export const removeFlashcard = async (flashcardId) => {
+  const res = await client.delete(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId);
+  return res.data;
+}
 
 export const createFolder = async (params) => {
   const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.CREATE_FOLDER, params);

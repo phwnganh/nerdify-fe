@@ -15,6 +15,8 @@ const URI_COURSES_SERVICE = {
   EXERCISE_DETAIL: API_PREFIXES.COURSE + "/exercises",
   SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
   SUBMIT_FINALEXAM: API_PREFIXES.COURSE + "/submissions/submit-final-exam",
+  GET_ALL_SUBMISSIONS: API_PREFIXES.COURSE + "/submissions/get-all-submission",
+  GET_SUBMISSION_DETAIL: API_PREFIXES.COURSE + "/submissions/get-submission",
   LEARNING_PROGRESS: API_PREFIXES.COURSE + "/learning-progress",
 
   GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",

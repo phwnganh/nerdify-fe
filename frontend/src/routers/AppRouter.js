@@ -272,6 +272,10 @@ export const routes = [
         path: CLIENT_URI.RESULTS_PRACTICE,
         element: <ViewResultsPractice />,
       },
+      {
+        path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
+        element: <ViewResultsDetail/>
+      }
     ],
   },
 
