@@ -5,7 +5,7 @@ import SpinCustom from "../components/Spin";
 
 export const AdminGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
-
+  console.log("hi hi");
   if (!isInitialized) {
     return <SpinCustom size="large"></SpinCustom>;
   }
@@ -14,7 +14,7 @@ export const AdminGuard = ({ children }) => {
     if (user?.role === ROLES.ADMIN_ROLE) {
       return <>{children}</>;
     }
-    return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
+    return <Navigate to={CLIENT_URI.ADMIN_DASHBOARD} replace />;
   }
 
   return <Navigate to={CLIENT_URI.LOGIN} replace />;

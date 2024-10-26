@@ -13,6 +13,7 @@ import { signin } from "../../../hooks/auth/reducers";
 import { validationRules } from "../../../helpers/validate";
 import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 import { style } from "./styled";
+import { ROLES } from "../../../constants/common.constant";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
@@ -44,7 +45,17 @@ export const LoginPage = () => {
           message: "Đăng nhập thành công",
           description: "Chào mừng bạn đến với Deutsch Nerd!",
         });
-        navigate(CLIENT_URI.COURSE_PAGE);
+        //admin - accountant - learner
+        if (resp.data.role === ROLES.ADMIN_ROLE) {
+          navigate(CLIENT_URI.ADMIN_DASHBOARD);
+          return;
+        } else if (resp.data.role === ROLES.ACCOUNTANT_ROLE) {
+          navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
+          return;
+        } else {
+          navigate(CLIENT_URI.COURSE_PAGE);
+          return;
+        }
       })
       .catch((err) => {
         notification.error({
