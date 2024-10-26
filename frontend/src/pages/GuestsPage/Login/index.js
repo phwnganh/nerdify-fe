@@ -28,46 +28,23 @@ export const LoginPage = () => {
       password: values.password,
     };
 
-    // Make a request to the fake server
-    fetch(`${BASE_SERVER}/users`)
-      .then((response) => response.json())
-      .then((users) => {
-        // Find the user with matching email and password
-        const user = users.filter((u) => u.email === data.email && u.password === data.password);
-        if (user) {
-          // dispatch(
-          //   signin({
-          //     user: {
-          //       id: user[0].id,
-          //       email: user[0].email,
-          //       fullName: user[0].fullName,
-          //       role: user[0].role,
-          //     },
-          //   }),
-          // );
-          setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
-          setStorage(STORAGE.USER_ID, JSON.stringify(user[0].id));
-          console.log("userId: ", user[0].id);
-
-          //check role account from local storage , if role is accountant, redirect to accountant dashboard , else redirect to course page
-          if (user[0].role === "accountant") {
-            navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
-          } else if (user[0].role === "admin") {
-            navigate(CLIENT_URI.ADMIN_DASHBOARD);
-          } else {
-            navigate(CLIENT_URI.COURSE_PAGE);
-          }
-
-          // if (localStorage.getItem("isPremium")) {
-          //   navigate(CLIENT_URI.PREMIUM);
-          //   localStorage.removeItem("isPremium");
-          // } else {
-          //   navigate(CLIENT_URI.COURSE_PAGE);
-          // }
-        } else {
-          // If no user found, show an error
-          throw new Error("Login failed: Invalid email or password!");
-        }
+    login(data)
+      .then((resp) => {
+        dispatch(
+          signin({
+            user: {
+              id: resp.data.id,
+              email: resp.data.email,
+              fullName: resp.data.fullName,
+              role: resp.data.role,
+            },
+          }),
+        );
+        notification.success({
+          message: "Đăng nhập thành công",
+          description: "Chào mừng bạn đến với Deutsch Nerd!",
+        });
+        navigate(CLIENT_URI.COURSE_PAGE);
       })
       .catch((err) => {
         notification.error({
