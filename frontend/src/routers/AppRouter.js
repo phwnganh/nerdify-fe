@@ -51,6 +51,13 @@ import Exercise from "../pages/ContentManager/Exercise";
 import { Upload } from "antd";
 import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
 import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice";
+
+//admin
+import Dashboard from "../pages/AdminPage/Dashboard";
+import FeedbackManagement from "../pages/AdminPage/FeedbackManagement";
+import PremiumManagement from "../pages/AdminPage/PremiumManagement";
+import AccountManagement from "../pages/AdminPage/AccountManagement";
+
 export const routes = [
   // Guest urls
   {
@@ -274,8 +281,8 @@ export const routes = [
       },
       {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
-        element: <ViewResultsDetail/>
-      }
+        element: <ViewResultsDetail />,
+      },
     ],
   },
 
@@ -288,7 +295,24 @@ export const routes = [
         </AdminLayout>
       </AdminGuard>
     ),
-    children: [],
+    children: [
+      {
+        path: CLIENT_URI.ADMIN_DASHBOARD,
+        element: <Dashboard />,
+      },
+      {
+        path: CLIENT_URI.ACCOUNT_MANAGEMENT,
+        element: <AccountManagement />,
+      },
+      {
+        path: CLIENT_URI.PREMIUM_MANAGEMENT,
+        element: <PremiumManagement />,
+      },
+      {
+        path: CLIENT_URI.FEEDBACK_MANAGEMENT,
+        element: <FeedbackManagement />,
+      },
+    ],
   },
   // Admin content
   {

@@ -36,7 +36,7 @@ const AccountantDashboard = () => {
   const tiLeHocVien = (hocVienTraPhiThangNay / tongHocVienTraPhiThang) * 100;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div>
       <UserInfo />
 
       {/* Thông tin học viên trả phí */}
@@ -66,7 +66,7 @@ const AccountantDashboard = () => {
       </div>
 
       {/* Biểu đồ */}
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <CustomLineChart dataChart={dataChart} chartTitle={chartTitle} dataKey={dataKey} />
       </div>
     </div>

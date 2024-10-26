@@ -76,7 +76,6 @@ export default function SidebarCustom({ menuItems = [] }) {
       window.location.reload();
     });
   };
-
   // Handle Menu Item Clicks
   const handleMenuClick = ({ key }) => {
     if (key === "logout") {
@@ -123,17 +122,6 @@ export default function SidebarCustom({ menuItems = [] }) {
         </LogoContainer>
 
         <CustomMenu theme="light" selectedKeys={[selectedKey]} onClick={handleMenuClick} mode="inline" items={menuItemsList} />
-
-        {/* <FooterSection>
-        <UserInfoContainer>
-          <Avatar size={64} src="https://via.placeholder.com/64" />
-          <div style={{ marginTop: 10 }}>
-            <Text strong>{user?.fullName}</Text>
-            <br />
-            <Text type="secondary">{user?.email}</Text>
-          </div>
-        </UserInfoContainer>
-      </FooterSection> */}
       </CustomSider>
     </div>
   );
