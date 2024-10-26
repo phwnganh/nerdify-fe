@@ -74,14 +74,20 @@ export default function ViewLevelDetail() {
     if (courseId) {
       getLevelDetail(courseId)
         .then((resp) => {
-          setCourse(resp.data);
-          if (resp.data.phases.length > 0) setActivePhase(resp.data.phases[0].title);
+          const phaseWithLock = resp.data.phases.map((phase, index, phases) => {
+            const isLocked = user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !phases.slice(0, index).every(prevPhase => 
+              prevPhase.exercises.every(exercise => exercise.isCompleted)
+            );
+            return {...phase, isLocked}
+          })
+          setCourse({...resp.data, phases: phaseWithLock});
+          if (phaseWithLock.length > 0) setActivePhase(phaseWithLock[0].title);
         })
         .catch((error) => {
           console.error("Error fetching course details", error);
         });
     }
-  }, [courseId]);
+  }, [courseId, user?.accountType?.type]);
 
   useEffect(() => {
     if (activePhase === "Final Exam" && courseId) {
