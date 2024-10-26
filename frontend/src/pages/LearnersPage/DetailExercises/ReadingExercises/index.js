@@ -225,7 +225,7 @@ export default function ReadingExercises({ exercises }) {
         {isSubmitted && (
           <>
             <TextCustom>Điểm: </TextCustom>
-            <span style={{ color: "red" }}>{submissionData.score}%</span>
+            <span style={{ color: "red" }}>{Math.round(exercises?.score).toFixed(2)}%</span>
           </>
         )}
       </div>

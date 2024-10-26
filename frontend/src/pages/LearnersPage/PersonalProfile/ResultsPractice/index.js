@@ -3,14 +3,19 @@ import { TitleCustom } from "../../../../components/Typography";
 import { Card, Tag, Button } from "antd";
 import { TrophyOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
-import { getAllSubmissions } from "../../../../services/LearnerService";
+import { getAllSubmissions, getUserTrophy } from "../../../../services/LearnerService";
 import moment from "moment";
 import CardCustom from "../../../../components/Card";
 import ButtonCustom from "../../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants";
+import a1_trophy from '../../../../assets/trophy/a1_trophy.png';
+import a2_trophy from '../../../../assets/trophy/a1_trophy.png';
+import b1_trophy from '../../../../assets/trophy/a1_trophy.png';
+
 export default function ViewResultsPractice() {
   const [practiceResults, setPracticeResults] = useState([]);
+  const [userTrophy, setUserTrophy] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchPracticeResults = async () => {
@@ -24,6 +29,24 @@ export default function ViewResultsPractice() {
 
     fetchPracticeResults();
   }, []);
+
+  const trophy = {
+    a1_trophy,
+    a2_trophy,
+    b1_trophy,
+  };
+
+  useEffect(() => {
+    try {
+      getUserTrophy().then(res => {
+        console.log("trophy: ", res.data);
+        
+        setUserTrophy(res.data);
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
 
   const results = practiceResults.length > 0 ? practiceResults : practiceResults;
 
@@ -80,12 +103,18 @@ export default function ViewResultsPractice() {
           </h3>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ position: "relative", width: "128px", height: "128px" }}>
-              <TrophyOutlined
+              {userTrophy.map(trophies => {
+                <span>
+                 <img src={trophy[trophies.levelTrophy]} alt="" srcset="" />
+                <h1>jfffgg</h1>
+                </span>
+              })}
+              {/* <TrophyOutlined
                 style={{
                   fontSize: "128px",
                   color: "#ffd700",
                 }}
-              />
+              /> */}
               <span
                 style={{
                   position: "absolute",

@@ -14,7 +14,7 @@ export const AdminGuard = ({ children }) => {
     if (user?.role === ROLES.ADMIN_ROLE) {
       return <>{children}</>;
     }
-    return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
+    return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
   }
 
   return <Navigate to={CLIENT_URI.LOGIN} replace />;
