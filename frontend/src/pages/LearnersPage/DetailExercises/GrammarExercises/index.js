@@ -66,8 +66,8 @@ export default function GrammarExercises({ exercises }) {
       if (questionAnswer) {
         updatedState.push({
           questionId: questionId,
-          correctAnswer: questionAnswer.correctAnswer,
-          explanation: questionAnswer.explanation,
+          correctAnswer: questionAnswer.questionId.options[0]?.text,
+          explanation: questionAnswer.questionId.explanation,
         });
       }
 

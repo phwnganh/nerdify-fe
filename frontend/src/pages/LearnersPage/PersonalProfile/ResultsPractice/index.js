@@ -9,9 +9,9 @@ import CardCustom from "../../../../components/Card";
 import ButtonCustom from "../../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants";
-import a1_trophy from '../../../../assets/trophy/a1_trophy.png';
-import a2_trophy from '../../../../assets/trophy/a1_trophy.png';
-import b1_trophy from '../../../../assets/trophy/a1_trophy.png';
+import a1_trophy from "../../../../assets/trophy/a1_trophy.png";
+import a2_trophy from "../../../../assets/trophy/a1_trophy.png";
+import b1_trophy from "../../../../assets/trophy/a1_trophy.png";
 
 export default function ViewResultsPractice() {
   const [practiceResults, setPracticeResults] = useState([]);
@@ -38,21 +38,21 @@ export default function ViewResultsPractice() {
 
   useEffect(() => {
     try {
-      getUserTrophy().then(res => {
+      getUserTrophy().then((res) => {
         console.log("trophy: ", res.data);
-        
+
         setUserTrophy(res.data);
-      })
+      });
     } catch (error) {
       console.log(error);
     }
-  }, [])
+  }, []);
 
   const results = practiceResults.length > 0 ? practiceResults : practiceResults;
 
   const handleClickResultDetail = (exerciseType, submissionId) => {
     navigate(CLIENT_URI.RESULT_DETAIL + "/" + exerciseType + "/" + submissionId);
-  }
+  };
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
@@ -60,7 +60,6 @@ export default function ViewResultsPractice() {
         <TitleCustom level={3}>KẾT QUẢ LUYỆN TẬP</TitleCustom>
 
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-
           {results.map((result) => (
             <CardCustom
               key={result.id}
@@ -70,17 +69,19 @@ export default function ViewResultsPractice() {
               }}
               bodyStyle={{ padding: "20px" }}
             >
-              <h3 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "12px" }}>{result.exerciseId.title}</h3>
+              <h3 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "12px" }}>{result?.exerciseId?.title}</h3>
               <div style={{ marginBottom: "12px" }}>
                 <Tag color="gold" style={{ marginRight: "8px" }}>
-                  {result.exerciseId.exerciseType}
+                  {result?.exerciseId?.exerciseType}
                 </Tag>
               </div>
               <div style={{ fontSize: "14px", marginBottom: "12px" }}>
                 <div>Ngày làm bài gần nhất: {moment(result.submissionDate).format("DD-MM-YYYY")}</div>
                 <div>Kết quả: {Math.round(result.score).toFixed(2)}%</div>
               </div>
-              <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(result?.exerciseId?.exerciseType, result?._id)}>Xem chi tiết</ButtonCustom>
+              <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(result?.exerciseId?.exerciseType, result?._id)}>
+                Xem chi tiết
+              </ButtonCustom>
             </CardCustom>
           ))}
         </div>
@@ -103,19 +104,19 @@ export default function ViewResultsPractice() {
           </h3>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ position: "relative", width: "128px", height: "128px" }}>
-              {userTrophy.map(trophies => {
+              {userTrophy.map((trophies) => (
                 <span>
-                 <img src={trophy[trophies.levelTrophy]} alt="" srcset="" />
-                <h1>jfffgg</h1>
+                  <div>{trophies?.trophy?.levelTrophy}</div>
+                  <img src={trophy[trophies?.trophy?.levelTrophy]} alt="" srcset="" />
                 </span>
-              })}
+              ))}
               {/* <TrophyOutlined
                 style={{
                   fontSize: "128px",
                   color: "#ffd700",
                 }}
               /> */}
-              <span
+              {/* <span
                 style={{
                   position: "absolute",
                   top: "50%",
@@ -126,7 +127,7 @@ export default function ViewResultsPractice() {
                 }}
               >
                 A1
-              </span>
+              </span> */}
             </div>
           </div>
         </div>

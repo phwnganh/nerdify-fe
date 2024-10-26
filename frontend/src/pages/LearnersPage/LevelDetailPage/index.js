@@ -75,12 +75,11 @@ export default function ViewLevelDetail() {
       getLevelDetail(courseId)
         .then((resp) => {
           const phaseWithLock = resp.data.phases.map((phase, index, phases) => {
-            const isLocked = user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !phases.slice(0, index).every(prevPhase => 
-              prevPhase.exercises.every(exercise => exercise.isCompleted)
-            );
-            return {...phase, isLocked}
-          })
-          setCourse({...resp.data, phases: phaseWithLock});
+            const isLocked =
+              user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !phases.slice(0, index).every((prevPhase) => prevPhase.exercises.every((exercise) => exercise.isCompleted));
+            return { ...phase, isLocked };
+          });
+          setCourse({ ...resp.data, phases: phaseWithLock });
           if (phaseWithLock.length > 0) setActivePhase(phaseWithLock[0].title);
         })
         .catch((error) => {
@@ -188,13 +187,13 @@ export default function ViewLevelDetail() {
                     <div style={{ textAlign: "center" }}>
                       <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                       <CheckOutlined style={{ color: "green" }} /> &nbsp;
-                      <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                      <TextCustom style={{ color: "green" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                     </div>
                   ) : (
                     <div style={{ textAlign: "center" }}>
                       <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                       <CloseOutlined style={{ color: "red" }} /> &nbsp;
-                      <TextCustom style={{ color: "red" }}>{exercise?.score}</TextCustom>
+                      <TextCustom style={{ color: "red" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                     </div>
                   )
                 ) : (
@@ -206,7 +205,7 @@ export default function ViewLevelDetail() {
                 <div style={{ textAlign: "center" }}>
                   <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                   <CheckOutlined style={{ color: "green" }} /> &nbsp;
-                  <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                  <TextCustom style={{ color: "green" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                 </div>
               ) : (
                 <TitleCustom level={4} style={{ textAlign: "center" }}>
