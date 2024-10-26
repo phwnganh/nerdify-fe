@@ -1,30 +1,34 @@
 import React from "react";
-import Navbar from "../components/Header";
-import Footer from "../components/Footer";
-import { Divider } from "antd";
+import { Layout } from "antd";
+// Import Sidebar and Header
+import AdminSidebar from "../components/Sidebar/AdminSideBar/SidebarItems";
+import AdminHeader from "../components/Header/AdminHeader";
+
+const { Content } = Layout;
 
 export const AdminLayout = ({ children }) => {
+  const styles = {
+    container: {
+      display: "flex",
+      minHeight: "100vh",
+    },
+    content: {
+      padding: "20px",
+    },
+    layout: {
+      flex: 1,
+      backgroundColor: "#f0f2f5",
+    },
+  };
+
   return (
-    <>
-      {/* Main Container */}
-      <div style={{ minHeight: "100vh", width: "100%" }}>
-        {/* Fixed Navbar */}
-        <Navbar />
-        {/* Content Area */}
-        <div style={styles.container}>
-          <div style={styles.gridContainer}>
-            {/* Left Column (spacer) */}
-            <div style={styles.column}></div>
-            {/* Middle Column (content) */}
-            <div style={styles.content}>{children}</div>
-            {/* Right Column (spacer) */}
-            <div style={styles.column}></div>
-          </div>
-          <Divider style={{ marginBottom: 5 }} />
-          <Footer />
-        </div>
-      </div>
-    </>
+    <div style={styles.container}>
+      <AdminSidebar />
+      <Layout style={styles.layout}>
+        <AdminHeader />
+        <Content style={styles.content}>{children}</Content>
+      </Layout>
+    </div>
   );
 };
 
@@ -43,9 +47,7 @@ const styles = {
     padding: "20px",
     boxSizing: "border-box",
   },
-  column: {
-
-  },
+  column: {},
   content: {
     flex: 1,
     width: "100%",
@@ -53,4 +55,3 @@ const styles = {
 };
 
 export default AdminLayout;
-

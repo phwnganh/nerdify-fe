@@ -28,30 +28,51 @@ export const LoginPage = () => {
       password: values.password,
     };
 
-    login(data)
-      .then((resp) => {
-        dispatch(
-          signin({
-            user: {
-              id: resp.data.id,
-              email: resp.data.email,
-              fullName: resp.data.fullName,
-              role: resp.data.role,
-            },
-          })
-        );
-        notification.success({
-          message: "Đăng nhập thành công",
-          description: "Chào mừng bạn đến với Deutsch Nerd!",
-        });
-        navigate(CLIENT_URI.COURSE_PAGE);
+    // Make a request to the fake server
+    fetch(`${BASE_SERVER}/users`)
+      .then((response) => response.json())
+      .then((users) => {
+        // Find the user with matching email and password
+        const user = users.filter((u) => u.email === data.email && u.password === data.password);
+        if (user) {
+          // dispatch(
+          //   signin({
+          //     user: {
+          //       id: user[0].id,
+          //       email: user[0].email,
+          //       fullName: user[0].fullName,
+          //       role: user[0].role,
+          //     },
+          //   }),
+          // );
+          setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
+          setStorage(STORAGE.USER_ID, JSON.stringify(user[0].id));
+          console.log("userId: ", user[0].id);
+
+          //check role account from local storage , if role is accountant, redirect to accountant dashboard , else redirect to course page
+          if (user[0].role === "accountant") {
+            navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
+          } else if (user[0].role === "admin") {
+            navigate(CLIENT_URI.ADMIN_DASHBOARD);
+          } else {
+            navigate(CLIENT_URI.COURSE_PAGE);
+          }
+
+          // if (localStorage.getItem("isPremium")) {
+          //   navigate(CLIENT_URI.PREMIUM);
+          //   localStorage.removeItem("isPremium");
+          // } else {
+          //   navigate(CLIENT_URI.COURSE_PAGE);
+          // }
+        } else {
+          // If no user found, show an error
+          throw new Error("Login failed: Invalid email or password!");
+        }
       })
       .catch((err) => {
         notification.error({
           message: "Đăng nhập thất bại",
-          description:
-            err.response?.data?.message ||
-            "Vui lòng kiểm tra email và mật khẩu của bạn.",
+          description: err.response?.data?.message || "Vui lòng kiểm tra email và mật khẩu của bạn.",
         });
       });
   };
@@ -74,27 +95,11 @@ export const LoginPage = () => {
         <div style={style.formLogin}>
           <img src={logo} alt="Deutsch Nerd" style={{ width: "100px", height: "50px" }} />
           <span style={{ fontSize: "28px", fontWeight: "bold", color: "#333" }}>Chào mừng đến với Deutsch Nerd</span>
-          <span style={{ color: "#555", paddingBottom: "5px", textAlign: 'center' }}>Đăng nhập để tiếp tục</span>
-          <Form
-            layout="vertical"
-            name="formLogin"
-            style={{ width: "100%", padding: "0 20px" }}
-            onFinish={onLogin}
-          >
+          <span style={{ color: "#555", paddingBottom: "5px", textAlign: "center" }}>Đăng nhập để tiếp tục</span>
+          <Form layout="vertical" name="formLogin" style={{ width: "100%", padding: "0 20px" }} onFinish={onLogin}>
             {/* input email */}
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                validationRules.required("Vui lòng nhập email"),
-                validationRules.email("Email không hợp lệ"),
-              ]}
-            >
-              <InputCustom
-                placeholder="Nhập email"
-                prefix={<UserOutlined />}
-                style={{ borderRadius: "8px" }}
-              />
+            <Form.Item label="Email" name="email" rules={[validationRules.required("Vui lòng nhập email"), validationRules.email("Email không hợp lệ")]}>
+              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* input password */}
@@ -106,17 +111,11 @@ export const LoginPage = () => {
               rules={[
                 {
                   pattern: PASSWORD_REGEX,
-                  message:
-                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                  message: "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
                 },
               ]}
             >
-              <Input.Password
-                type="password"
-                placeholder="Nhập mật khẩu"
-                prefix={<LockOutlined />}
-                style={{ borderRadius: "8px" }}
-              />
+              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* remember and forgot password */}
@@ -156,13 +155,7 @@ export const LoginPage = () => {
             {/* social login */}
             <div style={{ justifyContent: "center", marginBottom: "20px" }}>
               <span>Hoặc đăng nhập với</span>
-              <ButtonCustom
-                type="primary"
-                icon={<GoogleOutlined />}
-                shape="circle"
-                onClick={onLoginWithGoogle}
-                style={{ marginLeft: "8px", background: "#4285F4", border: "none" }}
-              />
+              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={onLoginWithGoogle} style={{ marginLeft: "8px", background: "#4285F4", border: "none" }} />
             </div>
             {/* register link */}
             <div style={{ textAlign: "center", color: "#555" }}>
