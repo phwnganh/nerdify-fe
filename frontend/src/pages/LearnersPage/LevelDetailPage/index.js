@@ -267,11 +267,8 @@ export default function ViewLevelDetail() {
           </ScrollablePhaseDiv> */}
           <ScrollablePhaseDiv>
             {course?.phases?.map((phase, index) => {
-              const isPhaseLocked = user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM &&
-              index > 0 &&
-              !course.phases.slice(0, index).every((prevPhase) =>
-                prevPhase.exercises.every((exercise) => exercise?.isCompleted)
-              );
+              const isPhaseLocked =
+                user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !course.phases.slice(0, index).every((prevPhase) => prevPhase.exercises.every((exercise) => exercise?.isCompleted));
               return (
                 <ButtonPhase
                   key={index}

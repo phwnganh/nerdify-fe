@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Card, Typography, Tag, Button, Breadcrumb } from "antd";
+import { Card, Typography, Tag, Button, Breadcrumb, Spin, message } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
-import { useParams, Link } from "react-router-dom"; // Import useParams to get the blog title from the URL
+import { useParams, Link } from "react-router-dom";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 
 const { Title, Text, Paragraph } = Typography;
@@ -89,71 +89,92 @@ const StyledQuote = styled.blockquote`
 
 // Main Component
 const BlogDetails = () => {
-  const { id } = useParams(); // Get the blog ID from the URL
-  const blogTitle = "Revenge of the Never Trumpers"; // replace this with a dynamic title based on the ID
+  const { blogId } = useParams(); // Lấy blog ID từ URL
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Hàm gọi API lấy chi tiết blog
+  const fetchBlogDetails = async () => {
+    try {
+      console.log(blogId);
+      const response = await fetch(`https://api.deustchnerd.site/api/blogs/${blogId}`);
+      // console.log("response", response);
+      const result = await response.json();
+
+      if (result.success) {
+        setBlog(result.data);
+      } else {
+        message.error("Lỗi khi lấy chi tiết blog: " + result.message);
+      }
+    } catch (error) {
+      console.error("Error fetching blog details:", error);
+      message.error("Có lỗi xảy ra khi lấy dữ liệu blog.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogDetails();
+  }, [blogId]);
+
+  if (loading) return <Spin tip="Đang tải dữ liệu..." />;
+
+  if (!blog) return <p>Không tìm thấy bài viết.</p>;
 
   return (
     <Layout>
       {/* Main Blog Content */}
       <ContentWrapper>
         {/* Breadcrumb */}
-        <BreadCrumbHome />
+        <Breadcrumb style={{ marginBottom: "16px" }}>
+          <Breadcrumb.Item>
+            <Link to="/">
+              <HomeOutlined /> Trang chủ
+            </Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/blog-study">blog học tập</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>{blog.title}</Breadcrumb.Item>
+        </Breadcrumb>
+
         <ImageBanner />
+
         <ContentCard bordered={false}>
           <TagsWrapper>
-            <Tag color="blue">Election</Tag>
-            <Tag color="blue">Politics</Tag>
+            <Tag color="blue">{blog.status}</Tag>
+            <Tag color="purple">Views: {blog.views}</Tag>
           </TagsWrapper>
 
-          <Title level={2}>{blogTitle}</Title>
+          <Title level={2}>{blog.title}</Title>
 
           <AuthorInfo type="secondary">
             Tác giả:{" "}
             <Button type="link" href="#">
-              Ahmad Sultani
+              Content Manager
             </Button>
           </AuthorInfo>
 
-          <Paragraph>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          </Paragraph>
+          <Paragraph>{blog.description}</Paragraph>
 
-          <Title level={3}>#1. What is Lorem Ipsum?</Title>
+          <StyledQuote>{blog.description.slice(0, 100)}...</StyledQuote>
 
-          <Paragraph>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book.
-          </Paragraph>
-
-          <StyledQuote>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</StyledQuote>
-
-          <Paragraph>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</Paragraph>
-
-          <TagsWrapper>
-            <Tag color="blue">#Election</Tag>
-            <Tag color="blue">#People</Tag>
-            <Tag color="blue">#Election2020</Tag>
-            <Tag color="blue">#Trump</Tag>
-            <Tag color="blue">#Joe</Tag>
-          </TagsWrapper>
+          <Paragraph>Ngày tạo: {new Date(blog.createdAt).toLocaleDateString()}</Paragraph>
         </ContentCard>
       </ContentWrapper>
 
       {/* Sidebar for Related Articles */}
       <Sidebar>
         <RelatedArticlesTitle level={4}>Bài viết liên quan</RelatedArticlesTitle>
-
         <RelatedArticleItem>
           <RelatedArticleImage src="https://via.placeholder.com/60" />
           <RelatedArticleText>10 Kênh Podcast Miễn Phí Giúp Học Tiếng Đức Dễ Dàng Hơn</RelatedArticleText>
         </RelatedArticleItem>
-
         <RelatedArticleItem>
           <RelatedArticleImage src="https://via.placeholder.com/60" />
           <RelatedArticleText>12 cụm từ tiếng Đức kỳ lạ nên biết</RelatedArticleText>
         </RelatedArticleItem>
-
         <RelatedArticleItem>
           <RelatedArticleImage src="https://via.placeholder.com/60" />
           <RelatedArticleText>10 cách học tiếng Anh nhanh và hiệu quả</RelatedArticleText>

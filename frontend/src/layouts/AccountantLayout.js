@@ -13,15 +13,10 @@ export const AccountantLayout = ({ children }) => {
       minHeight: "100vh",
     },
     content: {
-      flex: 1,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
       padding: "20px",
     },
     layout: {
       flex: 1,
-
       backgroundColor: "#f0f2f5",
     },
   };
@@ -31,7 +26,7 @@ export const AccountantLayout = ({ children }) => {
       <AccountantSidebar />
       <Layout style={styles.layout}>
         <AccountantHeader />
-        <Content>{children}</Content>
+        <Content style={styles.content}>{children}</Content>
       </Layout>
     </div>
   );

@@ -13,6 +13,7 @@ import { signin } from "../../../hooks/auth/reducers";
 import { validationRules } from "../../../helpers/validate";
 import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 import { style } from "./styled";
+import { ROLES } from "../../../constants/common.constant";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
@@ -38,20 +39,28 @@ export const LoginPage = () => {
               fullName: resp.data.fullName,
               role: resp.data.role,
             },
-          })
+          }),
         );
         notification.success({
           message: "Đăng nhập thành công",
           description: "Chào mừng bạn đến với Deutsch Nerd!",
         });
-        navigate(CLIENT_URI.COURSE_PAGE);
+        //admin - accountant - learner
+        if (resp.data.role === ROLES.ADMIN_ROLE) {
+          navigate(CLIENT_URI.ADMIN_DASHBOARD);
+          return;
+        } else if (resp.data.role === ROLES.ACCOUNTANT_ROLE) {
+          navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
+          return;
+        } else {
+          navigate(CLIENT_URI.COURSE_PAGE);
+          return;
+        }
       })
       .catch((err) => {
         notification.error({
           message: "Đăng nhập thất bại",
-          description:
-            err.response?.data?.message ||
-            "Vui lòng kiểm tra email và mật khẩu của bạn.",
+          description: err.response?.data?.message || "Vui lòng kiểm tra email và mật khẩu của bạn.",
         });
       });
   };
@@ -74,27 +83,11 @@ export const LoginPage = () => {
         <div style={style.formLogin}>
           <img src={logo} alt="Deutsch Nerd" style={{ width: "100px", height: "50px" }} />
           <span style={{ fontSize: "28px", fontWeight: "bold", color: "#333" }}>Chào mừng đến với Deutsch Nerd</span>
-          <span style={{ color: "#555", paddingBottom: "5px", textAlign: 'center' }}>Đăng nhập để tiếp tục</span>
-          <Form
-            layout="vertical"
-            name="formLogin"
-            style={{ width: "100%", padding: "0 20px" }}
-            onFinish={onLogin}
-          >
+          <span style={{ color: "#555", paddingBottom: "5px", textAlign: "center" }}>Đăng nhập để tiếp tục</span>
+          <Form layout="vertical" name="formLogin" style={{ width: "100%", padding: "0 20px" }} onFinish={onLogin}>
             {/* input email */}
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                validationRules.required("Vui lòng nhập email"),
-                validationRules.email("Email không hợp lệ"),
-              ]}
-            >
-              <InputCustom
-                placeholder="Nhập email"
-                prefix={<UserOutlined />}
-                style={{ borderRadius: "8px" }}
-              />
+            <Form.Item label="Email" name="email" rules={[validationRules.required("Vui lòng nhập email"), validationRules.email("Email không hợp lệ")]}>
+              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* input password */}
@@ -106,17 +99,11 @@ export const LoginPage = () => {
               rules={[
                 {
                   pattern: PASSWORD_REGEX,
-                  message:
-                    "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                  message: "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
                 },
               ]}
             >
-              <Input.Password
-                type="password"
-                placeholder="Nhập mật khẩu"
-                prefix={<LockOutlined />}
-                style={{ borderRadius: "8px" }}
-              />
+              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* remember and forgot password */}
@@ -156,13 +143,7 @@ export const LoginPage = () => {
             {/* social login */}
             <div style={{ justifyContent: "center", marginBottom: "20px" }}>
               <span>Hoặc đăng nhập với</span>
-              <ButtonCustom
-                type="primary"
-                icon={<GoogleOutlined />}
-                shape="circle"
-                onClick={onLoginWithGoogle}
-                style={{ marginLeft: "8px", background: "#4285F4", border: "none" }}
-              />
+              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={onLoginWithGoogle} style={{ marginLeft: "8px", background: "#4285F4", border: "none" }} />
             </div>
             {/* register link */}
             <div style={{ textAlign: "center", color: "#555" }}>
