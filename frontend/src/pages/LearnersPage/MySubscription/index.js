@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import ButtonCustom from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { ACCOUNT_TYPE, BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { useAuth } from "../../../hooks";
 import moment from 'moment'
+import { getCurrentPremiumPackage } from "../../../services/LearnerService";
 export default function MySubscription() {
   // const [user, setUser] = useState([]);
   const navigate = useNavigate();
   const {user} = useAuth();
   const accountType = user?.accountType?.type;
+  const [currentPackage, setCurrentPackage] = useState();
   console.log("accountType: ", accountType);
-  
+  useEffect(() => {
+    getCurrentPremiumPackage().then(res => {
+      setCurrentPackage(res.data);
+    })
+  }, [])
   return (
     <div style={{ padding: "20px" }}>
       <div style={{ textAlign: "center" }}>
@@ -29,7 +35,7 @@ export default function MySubscription() {
           <div>
             <div>
               <TextCustom>
-                Gói của bạn: <span style={{ fontWeight: "bold" }}>Gói Premium 6 tháng</span>
+                Gói của bạn: <span style={{ fontWeight: "bold" }}>Gói Premium {currentPackage?.packageName}</span>
               </TextCustom>
             </div>
             <div>
