@@ -8,6 +8,9 @@ import logoMini from "../../../assets/logomini.png";
 import STORAGE, { clearStorage, getStorage } from "../../../library/storage";
 import { BASE_SERVER } from "../../../constants";
 
+import { logout } from "../../../services/GuestService";
+import { signout } from "../../../hooks/auth/reducers";
+
 const { Sider } = Layout;
 const { Text } = Typography;
 
@@ -68,9 +71,12 @@ export default function SidebarCustom({ menuItems = [] }) {
   }, [userId]);
 
   const handleLogout = async () => {
-    clearStorage();
-    window.location.reload();
+    logout().then(() => {
+      signout();
+      window.location.reload();
+    });
   };
+
   // Handle Menu Item Clicks
   const handleMenuClick = ({ key }) => {
     if (key === "logout") {

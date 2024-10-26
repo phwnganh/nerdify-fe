@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
 import SpinCustom from "../components/Spin";
+import { useAuth } from "../hooks";
 
 export const AdminGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();
-  console.log("hi hi");
+
   if (!isInitialized) {
     return <SpinCustom size="large"></SpinCustom>;
   }

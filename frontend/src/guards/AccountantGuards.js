@@ -1,14 +1,17 @@
 import { Navigate } from "react-router-dom";
 import { CLIENT_URI, ROLES } from "../constants";
-import LoadingSpin from "../components/Spinning";
-import STORAGE, { getStorage } from "../library/storage";
+import SpinCustom from "../components/Spin";
+import { useAuth } from "../hooks";
 
 export const AccountantGuard = ({ children }) => {
-  const userInfo = getStorage(STORAGE.USER_INFO);
-  // console.log("userInfo", userInfo);
+  const { isInitialized, isAuthenticated, user } = useAuth();
 
-  if (userInfo) {
-    if (userInfo?.role === ROLES.ACCOUNTANT_ROLE) {
+  if (!isInitialized) {
+    return <SpinCustom size="large"></SpinCustom>;
+  }
+
+  if (isAuthenticated) {
+    if (user?.role === ROLES.ACCOUNTANT_ROLE) {
       return <>{children}</>;
     }
     return <Navigate to={CLIENT_URI.ACCOUNTANT_DASHBOARD} replace />;

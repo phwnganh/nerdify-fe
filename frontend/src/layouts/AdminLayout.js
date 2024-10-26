@@ -32,26 +32,4 @@ export const AdminLayout = ({ children }) => {
   );
 };
 
-// Styles
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "100vh",
-    marginTop: "100px",
-  },
-  gridContainer: {
-    display: "grid",
-    gridTemplateColumns: "1fr minmax(auto, 1200px) 1fr",
-    width: "100%",
-    padding: "20px",
-    boxSizing: "border-box",
-  },
-  column: {},
-  content: {
-    flex: 1,
-    width: "100%",
-  },
-};
-
 export default AdminLayout;

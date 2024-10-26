@@ -17,7 +17,6 @@ export const AccountantLayout = ({ children }) => {
     },
     layout: {
       flex: 1,
-
       backgroundColor: "#f0f2f5",
     },
   };

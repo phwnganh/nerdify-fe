@@ -66,7 +66,7 @@ const AccountantDashboard = () => {
       </div>
 
       {/* Biểu đồ */}
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <CustomLineChart dataChart={dataChart} chartTitle={chartTitle} dataKey={dataKey} />
       </div>
     </div>
