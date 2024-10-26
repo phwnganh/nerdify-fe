@@ -15,7 +15,7 @@ export const CLIENT_URI = {
   FINAL_EXAM: "/final-exam",
   PROFILE: "/personal-profile",
   EDIT_PROFILE: "/edit-personal-profile",
-  RESULT_DETAIL: "/result-detail",
+  
   FLASH_CARD: "/flash-card",
   CREATE_FLASH_CARD: "/create-flash-card",
   EDIT_FLASH_CARD: "/edit-flash-card",
@@ -33,6 +33,7 @@ export const CLIENT_URI = {
   MANAGE_SUBSCRIPTION: "/manage-subscription",
   MY_TRANSACTION_HISTORY: "/my-transaction-history",
   RESULTS_PRACTICE: "/results-practice",
+  RESULT_DETAIL: "/result-detail",
   // ADMIN
   DASHBOARD: "/dashboard",
   // ADMIN CONTENT

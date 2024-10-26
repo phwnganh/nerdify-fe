@@ -123,7 +123,7 @@ export default function EditFlashCard() {
   return (
     <>
       {contextHolder}
-      <div style={{ width: "60%" }}>
+      <div style={{ width: "100%"}}>
         <BreadCrumbHome />
         <h1 style={{ textAlign: "center" }}>CHỈNH SỬA HỌC PHẦN</h1>
         <Form

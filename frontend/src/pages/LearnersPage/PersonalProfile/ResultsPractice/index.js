@@ -3,16 +3,20 @@ import { TitleCustom } from "../../../../components/Typography";
 import { Card, Tag, Button } from "antd";
 import { TrophyOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
-
+import { getAllSubmissions } from "../../../../services/LearnerService";
+import moment from "moment";
+import CardCustom from "../../../../components/Card";
+import ButtonCustom from "../../../../components/Button";
+import { useNavigate } from "react-router-dom";
+import { CLIENT_URI } from "../../../../constants";
 export default function ViewResultsPractice() {
   const [practiceResults, setPracticeResults] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchPracticeResults = async () => {
       try {
-        const response = await fetch("your-api-endpoint");
-        const data = await response.json();
-        setPracticeResults(data);
+        const response = await getAllSubmissions();
+        setPracticeResults(response.data);
       } catch (error) {
         console.error("Error fetching practice results:", error);
       }
@@ -21,28 +25,11 @@ export default function ViewResultsPractice() {
     fetchPracticeResults();
   }, []);
 
-  const mockData = [
-    {
-      id: 1,
-      title: "Bài tập nghe 1",
-      type: "listening",
-      level: "A1",
-      lastPracticeDate: "29/08/2024",
-      result: 50,
-      backgroundColor: "white",
-    },
-    {
-      id: 2,
-      title: "Bài tập đọc 1",
-      type: "reading",
-      lastPracticeDate: "29/08/2024",
-      result: 50,
-      backgroundColor: "#f5f5f5",
-    },
-  ];
+  const results = practiceResults.length > 0 ? practiceResults : practiceResults;
 
-  const results = practiceResults.length > 0 ? practiceResults : mockData;
-
+  const handleClickResultDetail = (exerciseType, submissionId) => {
+    navigate(CLIENT_URI.RESULT_DETAIL + "/" + exerciseType + "/" + submissionId);
+  }
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
@@ -50,8 +37,9 @@ export default function ViewResultsPractice() {
         <TitleCustom level={3}>KẾT QUẢ LUYỆN TẬP</TitleCustom>
 
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+
           {results.map((result) => (
-            <Card
+            <CardCustom
               key={result.id}
               style={{
                 width: 320,
@@ -59,29 +47,24 @@ export default function ViewResultsPractice() {
               }}
               bodyStyle={{ padding: "20px" }}
             >
-              <h3 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "12px" }}>{result.title}</h3>
+              <h3 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "12px" }}>{result.exerciseId.title}</h3>
               <div style={{ marginBottom: "12px" }}>
                 <Tag color="gold" style={{ marginRight: "8px" }}>
-                  {result.type}
+                  {result.exerciseId.exerciseType}
                 </Tag>
-                {result.level && <Tag color="gold">{result.level}</Tag>}
               </div>
               <div style={{ fontSize: "14px", marginBottom: "12px" }}>
-                <div>Ngày làm bài gần nhất: {result.lastPracticeDate}</div>
-                <div>Kết quả: {result.result}%</div>
+                <div>Ngày làm bài gần nhất: {moment(result.submissionDate).format("DD-MM-YYYY")}</div>
+                <div>Kết quả: {Math.round(result.score).toFixed(2)}%</div>
               </div>
-              <Button type="primary" style={{ backgroundColor: "#f97316" }}>
-                Xem chi tiết
-              </Button>
-            </Card>
+              <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(result?.exerciseId?.exerciseType, result?._id)}>Xem chi tiết</ButtonCustom>
+            </CardCustom>
           ))}
         </div>
 
-        <div style={{ marginTop: "24px" }}>
-          <Button type="primary" style={{ backgroundColor: "#f97316" }}>
-            Xem tất cả
-          </Button>
-        </div>
+        {/* <div style={{ marginTop: "24px" }}>
+          <ButtonCustom buttonType="primary">Xem tất cả</ButtonCustom>
+        </div> */}
 
         {/* Nhan cup */}
         <div style={{ marginTop: "32px" }}>

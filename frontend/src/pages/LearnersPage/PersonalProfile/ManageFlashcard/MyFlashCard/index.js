@@ -2,28 +2,45 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../../../constants";
 
-import { Col, Image, Row, Space } from "antd";
+import { Col, Image, Modal, Row, Space } from "antd";
 import CardCustom from "../../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../../components/Typography";
 import ButtonCustom from "../../../../../components/Button";
-import { getAllFlashcards, getFlashcardList, getPublicFlashcardList } from "../../../../../services/LearnerService";
+import { getAllFlashcards, getFlashcardList, getPublicFlashcardList, removeFlashcard } from "../../../../../services/LearnerService";
 import { useAuth } from "../../../../../hooks";
 
 export default function MyFlashCard() {
   const [flashcards, setFlashcards] = useState([]);
-  const {user} = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     getAllFlashcards()
       .then((data) => {
-        const myFlashcards = data.data.filter(flashcard => flashcard?.createdBy === user?.id && flashcard?.isPublic === false)
+        const myFlashcards = data.data.filter((flashcard) => flashcard?.createdBy === user?.id && flashcard?.isPublic === false);
         console.log("flashcards: ", myFlashcards);
         setFlashcards(myFlashcards);
       })
       .catch((err) => console.error(err));
   }, []);
 
-  
+  const handleDeleteFlashcard = async (flashcardId) => {
+    try {
+      const res = await removeFlashcard(flashcardId);
+      setFlashcards(flashcards.filter((flashcard) => flashcard._id !== flashcardId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const showDeleteConfirm = (flashcardId) => {
+    Modal.confirm({
+      title: "Bạn có chắc chắn xóa flashcard này?",
+      okText: "OK",
+      cancelText: "Hủy",
+      onOk: () => handleDeleteFlashcard(flashcardId),
+    });
+  };
+
   return (
     <div style={{ width: "100%" }}>
       <Space direction="vertical" style={{ width: "100%" }}>
@@ -42,10 +59,10 @@ export default function MyFlashCard() {
               </div>
 
               <div>
-                <ButtonCustom buttonType="primary" style={{ margin: "10px", alignItem: "center" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcard.id}`)}>
+                <ButtonCustom buttonType="primary" style={{ margin: "10px", alignItem: "center" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcard._id}`)}>
                   Chỉnh sửa
                 </ButtonCustom>
-                <ButtonCustom buttonType="primary" style={{ margin: "10px" }}>
+                <ButtonCustom buttonType="primary" style={{ margin: "10px" }} onClick={() => showDeleteConfirm(flashcard?._id)}>
                   Xóa
                 </ButtonCustom>
               </div>
