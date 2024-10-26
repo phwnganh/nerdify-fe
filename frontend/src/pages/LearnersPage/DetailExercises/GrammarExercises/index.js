@@ -38,7 +38,7 @@ export default function GrammarExercises({ exercises }) {
     let borderColor = "";
 
     if (isCompleted) {
-      borderColor = submissionData.submissionAnswer.find((answer) => answer.questionId === questionId).isCorrect ? "green" : "red";
+      borderColor = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId).isCorrect ? "green" : "red";
     }
 
     return (
@@ -59,7 +59,7 @@ export default function GrammarExercises({ exercises }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId === questionId);
+      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
       const updatedState = prevState.filter((item) => item.questionId !== questionId);
 
@@ -136,7 +136,6 @@ export default function GrammarExercises({ exercises }) {
       userSelected,
     })
       .then((resp) => {
-        console.log(resp.data);
         setSubmissionData(resp.data);
         setIsCompleted(true);
       })

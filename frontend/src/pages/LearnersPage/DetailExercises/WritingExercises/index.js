@@ -43,15 +43,15 @@ export default function WritingExercises({ exercises }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId === questionId);
+      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
       const updatedState = prevState.filter((item) => item.questionId !== questionId);
 
       if (questionAnswer) {
         updatedState.push({
           questionId: questionId,
-          correctAnswer: questionAnswer.correctAnswer,
-          explanation: questionAnswer.explanation,
+          correctAnswer: questionAnswer.questionId.correctAnswer,
+          explanation: questionAnswer.questionId.explanation,
         });
       }
 
@@ -78,11 +78,11 @@ export default function WritingExercises({ exercises }) {
                         marginBottom: "10px",
                         borderWidth: "2px",
                         borderStyle: "solid",
-                        borderColor: isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId === question._id).isCorrect ? "green" : "red",
+                        borderColor: isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red",
                       }}
                       placeholder={`Điền lỗi thứ ${index + 1} tại đây`}
                       autoSize={{ minRows: 1, maxRows: 5 }}
-                      borderColor={isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId === question._id).isCorrect ? "green" : "red"}
+                      borderColor={isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red"}
                       value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer[index] || ""}
                       onChange={(e) => handleInputChange(index, question._id, e.target.value)}
                       disabled={isCompleted}
@@ -139,7 +139,6 @@ export default function WritingExercises({ exercises }) {
   };
 
   const handleSubmit = () => {
-    console.log(userSelected);
     submitExercise({
       exerciseId: exercises._id,
       userSelected: userSelected,
