@@ -5,7 +5,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-const TableUser = () => {
+const TableUser = ({ userData }) => {
   const [data, setData] = useState([
     {
       key: "1",
@@ -35,6 +35,7 @@ const TableUser = () => {
       accountStatus: "Ngừng hoạt động",
     },
   ]);
+  console.log(userData);
 
   // Columns configuration
   const columns = [
