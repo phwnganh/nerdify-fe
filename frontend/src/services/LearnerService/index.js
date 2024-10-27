@@ -1,3 +1,5 @@
+// Initial Path: src/services/index.js
+
 import client from "../client";
 import { BLOG_SERVICE_URI, COURSE_SERVER_URI, FLASHCARD_SERVER_URI, PAYMENT_SERVER_URI } from "./url";
 export const getCourseLevelList = async () => {
@@ -39,8 +41,28 @@ export const getExerciseDetail = async (exerciseId) => {
   return res.data;
 };
 
-export const getFlashcardList = async () => {
+export const getAllSubmissions = async () => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_ALL_SUBMISSIONS);
+  return res.data;
+};
+
+export const getSubmissionDetail = async (submissionId) => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_SUBMISSION_DETAIL + "/" + submissionId);
+  return res.data;
+};
+
+export const getUserTrophy = async () => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_USER_TROPHY);
+  return res.data;
+};
+
+export const getPublicFlashcardList = async () => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD);
+  return res.data;
+};
+
+export const getAllFlashcards = async () => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/all-flashcards");
   return res.data;
 };
 
@@ -56,6 +78,11 @@ export const createNewFlashcard = async (params) => {
 
 export const updateFlashcard = async (flashcardId, data) => {
   const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId, data);
+  return res.data;
+};
+
+export const removeFlashcard = async (flashcardId) => {
+  const res = await client.delete(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId);
   return res.data;
 };
 
@@ -77,6 +104,11 @@ export const updateFlashcardStatus = async (flashcardId, isPublic) => {
 
 export const getMyFolder = async () => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.GET_MY_FOLDER);
+  return res.data;
+};
+
+export const searchFlashcard = async (query) => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.SEARCH_FLASHCARD + "?query=" + query);
   return res.data;
 };
 
@@ -112,6 +144,16 @@ export const userGetTransactionDetail = async (transactionId) => {
 
 export const finishPayment = async (transactionId, params) => {
   const res = await client.post(PAYMENT_SERVER_URI.PAYMENT_SERVICE.FINISH_PAYMENT + "/" + transactionId, params);
+  return res.data;
+};
+
+export const getCurrentPremiumPackage = async () => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_GET_CURRENT_PACKAGE);
+  return res.data;
+};
+
+export const historyTransaction = async () => {
+  const res = await client.get(PAYMENT_SERVER_URI.PAYMENT_SERVICE.USER_HISTORY_TRANSACTION);
   return res.data;
 };
 

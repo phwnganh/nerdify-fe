@@ -15,7 +15,7 @@ export const CLIENT_URI = {
   FINAL_EXAM: "/final-exam",
   PROFILE: "/personal-profile",
   EDIT_PROFILE: "/edit-personal-profile",
-  RESULT_DETAIL: "/result-detail",
+  
   FLASH_CARD: "/flash-card",
   CREATE_FLASH_CARD: "/create-flash-card",
   EDIT_FLASH_CARD: "/edit-flash-card",
@@ -29,8 +29,16 @@ export const CLIENT_URI = {
   MANAGE_FOLDER: "/manage-folder",
   MANAGE_FLASHCARD: "/manage-flashcard",
   CHANGE_PASSWORD: "/change-password",
+  MY_SUBSCRIPTION: "/my-subscription",
+  MANAGE_SUBSCRIPTION: "/manage-subscription",
+  MY_TRANSACTION_HISTORY: "/my-transaction-history",
+  RESULTS_PRACTICE: "/results-practice",
+  RESULT_DETAIL: "/result-detail",
   // ADMIN
-  DASHBOARD: "/dashboard",
+  ADMIN_DASHBOARD: "/admin-dashboard",
+  ACCOUNT_MANAGEMENT: "/account-management",
+  PREMIUM_MANAGEMENT: "/premium-management",
+  FEEDBACK_MANAGEMENT: "/feedback-management",
   // ADMIN CONTENT
   TABLE_EXERCISE: "/exercise",
   // ACCOUNTANT
@@ -38,5 +46,5 @@ export const CLIENT_URI = {
   SYSTEM_REVENUE: "/system-revenue",
   TRANSACTION_HISTORY: "/transaction-history",
   USER_STATISTICS: "/user-statistics",
-  TABLE_EXERCISE:"/exercise"
+  TABLE_EXERCISE: "/exercise",
 };

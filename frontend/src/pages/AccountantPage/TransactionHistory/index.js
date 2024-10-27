@@ -116,7 +116,7 @@ const TransactionHistory = () => {
 
   return (
     <>
-      <div style={{ padding: "20px" }}>
+      <div>
         <UserInfo />
 
         {/* Thẻ thông tin */}

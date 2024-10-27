@@ -1,17 +1,15 @@
-// AccountantHeader.js
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Layout } from "antd";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../../hooks"; // Use the same hook for authentication
+import SpinCustom from "../../Spin"; // Custom loading spinner
 import { CLIENT_URI } from "../../../constants/uri.constants";
-import { BASE_SERVER } from "../../../constants";
-import STORAGE, { getStorage } from "../../../library/storage";
 
 const { Header } = Layout;
 
 const AccountantHeader = () => {
+  const { isInitialized, user } = useAuth(); // Use the same hook to get user data
   const location = useLocation();
-  const [user, setUser] = useState(null);
-  const userId = getStorage(STORAGE.USER_ID);
 
   // Map routes to their respective labels
   const routeLabels = useMemo(
@@ -24,20 +22,10 @@ const AccountantHeader = () => {
     [],
   );
 
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userId]);
-
   // Determine the current title based on the path
   const currentTitle = routeLabels[location.pathname] || "Thống Kê Tài Chính";
 
+  // Inline styles for the header
   const styles = {
     header: {
       height: "80px",
@@ -49,6 +37,11 @@ const AccountantHeader = () => {
       borderBottom: "1px solid #e8e8e8", // Optional: bottom border for separation
     },
   };
+
+  // Display a loading spinner while the auth is initializing
+  if (!isInitialized) {
+    return <SpinCustom size="large" />;
+  }
 
   return (
     <Header style={styles.header}>

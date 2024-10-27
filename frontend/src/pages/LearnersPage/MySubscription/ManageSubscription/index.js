@@ -2,8 +2,16 @@ import { Row } from "antd";
 import CardCustom from "../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
+import { useEffect, useState } from "react";
+import { getCurrentPremiumPackage } from "../../../../services/LearnerService";
 
 export default function ManageSubscription() {
+  const [currentPackage, setCurrentPackage] = useState();
+  useEffect(() => {
+    getCurrentPremiumPackage().then(res => {
+      setCurrentPackage(res.data);
+    })
+  }, [])
   return (
     <div>
       <div>
@@ -12,8 +20,8 @@ export default function ManageSubscription() {
       <div style={{ fontWeight: "bold" }}>Gói đăng ký hiện tại</div>
       <div>
         <CardCustom bordered={true} style={{ borderColor: "orange", marginTop: "20px" }}>
-          <TitleCustom level={4}>Gói Premium 12 tháng</TitleCustom>
-          <TextCustom>42,000 VNĐ / 1 tháng</TextCustom>
+          <TitleCustom level={4}>Gói Premium {currentPackage?.packageName}</TitleCustom>
+          <TextCustom>{(currentPackage?.price)?.toLocaleString("vi-VN")} VNĐ</TextCustom>
           <div>
             <TextCustom>Hủy bất cứ lúc nào</TextCustom>
           </div>

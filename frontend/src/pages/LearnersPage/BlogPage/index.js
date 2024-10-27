@@ -159,7 +159,7 @@ const BlogPage = () => {
               >
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <UserOutlined style={{ marginRight: "4px" }} />
-                  <span>Admin</span>
+                  <span>Content Manager</span>
                 </div>
                 <span>
                   <EyeOutlined style={{ marginRight: "4px" }} /> {item.views}

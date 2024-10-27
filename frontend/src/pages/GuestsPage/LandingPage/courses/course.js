@@ -12,6 +12,9 @@ import ModalRequireToLogin from "../../ModalRequireToLogin";
 export const Course = ({ course }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  }
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
@@ -54,10 +57,7 @@ export const Course = ({ course }) => {
       <ButtonCustom
         buttonType="primary"
         style={{ width: "100%" }}
-        onClick={() => {
-          // setIsModalVisible(true)
-          navigate(navigate(CLIENT_URI.LEVEL_DETAIL + `/${course.id}`));
-        }}
+        onClick={handleOpenModal}
       >
         Bắt đầu
       </ButtonCustom>

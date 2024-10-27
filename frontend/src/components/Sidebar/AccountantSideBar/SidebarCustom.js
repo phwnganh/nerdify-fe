@@ -8,6 +8,9 @@ import logoMini from "../../../assets/logomini.png";
 import STORAGE, { clearStorage, getStorage } from "../../../library/storage";
 import { BASE_SERVER } from "../../../constants";
 
+import { logout } from "../../../services/GuestService";
+import { signout } from "../../../hooks/auth/reducers";
+
 const { Sider } = Layout;
 const { Text } = Typography;
 
@@ -50,27 +53,17 @@ export default function SidebarCustom({ menuItems = [] }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedKey, setSelectedKey] = useState("/");
-  const [user, setUser] = useState(null);
-  const userId = getStorage(STORAGE.USER_ID);
   useEffect(() => {
     setSelectedKey(location.pathname);
   }, [location.pathname]);
 
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userId]);
-
   const handleLogout = async () => {
-    clearStorage();
-    window.location.reload();
+    logout().then(() => {
+      signout();
+      window.location.reload();
+    });
   };
+
   // Handle Menu Item Clicks
   const handleMenuClick = ({ key }) => {
     if (key === "logout") {

@@ -6,13 +6,15 @@ import { useAFileUpload } from "../../../../components/Upload/UploadAFile"; // I
 import { TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
 import CardCustom from "../../../../components/Card";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { finishPayment } from "../../../../services/LearnerService";
 import SpinCustom from "../../../../components/Spin";
+import { CLIENT_URI } from "../../../../constants";
 export default function ConfirmPayment() {
   const { transactionId } = useParams();
   const { file, handleFileChange, handleFileUpload } = useAFileUpload();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!file) {
@@ -30,6 +32,7 @@ export default function ConfirmPayment() {
       notification.success({
         message: "Thông tin đã gửi qua email của bạn. Vui lòng kiểm tra",
       });
+      navigate(CLIENT_URI.COURSE_PAGE);
     } catch (error) {
       setLoading(false);
       console.log(error);

@@ -44,7 +44,6 @@ const imgReadingArr = {
 };
 
 export default function ReadingExercises({ exercises }) {
-  console.log(exercises);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userSelected, setUserSelected] = useState([]);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
@@ -90,7 +89,6 @@ export default function ReadingExercises({ exercises }) {
 
   //function hien thi cau hoi va ket qua sau khi nop bai
   const renderPart = (currentPart) => {
-
     return (
       <>
         {currentPart?.paragraph && (
@@ -127,30 +125,23 @@ export default function ReadingExercises({ exercises }) {
               Câu {index + 1}: {question.question}
             </TextCustom>
 
-
             {/* Render Images */}
             {Array.isArray(question.questionImage) && question.questionImage.length > 0 && (
-              <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
+              <div style={{ display: "flex", justifyContent: "space-evenly" }}>
                 {question.questionImage.map((image, index) => (
-                  <img
-                    key={index}
-                    src={imgReadingArr[image]}
-                    style={{ padding: '10px 0px' }}
-                    alt={`question-part-${index}`}
-                  />
+                  <img key={index} src={imgReadingArr[image]} style={{ padding: "10px 0px" }} alt={`question-part-${index}`} />
                 ))}
               </div>
             )}
 
-
             {/* Render Options */}
-            <div style={{ display: 'flex', justifyContent: "space-evenly" }}>
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
               {question.options.map((option, index) => {
                 const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
                 let backgroundColor = isUserSelected ? "#A8703E" : "";
 
                 if (isSubmitted) {
-                  const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer.answerOption == option._id && answer.isCorrect);
+                  const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
                   if (foundQuestion) {
                     backgroundColor = "#5FD855";
                   } else if (isUserSelected) {
@@ -174,8 +165,6 @@ export default function ReadingExercises({ exercises }) {
               })}
             </div>
 
-
-
             {/* Show detailed answers after submission */}
             {isSubmitted && (
               <div style={{ padding: "20px" }}>
@@ -185,7 +174,7 @@ export default function ReadingExercises({ exercises }) {
                 {toggleAnswerDetail[question._id] && (
                   <div>
                     <TextCustom style={{ color: "blue" }}>
-                      {question?.answers[0].explanation.split("\n").map((line, index) => (
+                      {question?.explanation.split("\n").map((line, index) => (
                         <React.Fragment key={index}>
                           {line}
                           <br />
@@ -207,8 +196,6 @@ export default function ReadingExercises({ exercises }) {
     setCurrentPartIndex(0);
     setUserSelected([]);
   }, []);
-
-
 
   const handleSubmit = async () => {
     submitExercise({
@@ -238,7 +225,7 @@ export default function ReadingExercises({ exercises }) {
         {isSubmitted && (
           <>
             <TextCustom>Điểm: </TextCustom>
-            <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
+            <span style={{ color: "red" }}>{Math.round(submissionData?.score).toFixed(2)}%</span>
           </>
         )}
       </div>
@@ -268,7 +255,7 @@ export default function ReadingExercises({ exercises }) {
               <ButtonCustom
                 buttonType="secondary"
                 style={{ padding: "23px", marginLeft: "30px" }}
-              // onClick={handleNextExercise}
+                // onClick={handleNextExercise}
               >
                 Chuyển sang bài tập tiếp theo
               </ButtonCustom>

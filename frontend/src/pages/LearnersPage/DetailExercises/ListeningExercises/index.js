@@ -204,7 +204,6 @@ export default function ListeningExercise({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [userSelected, setUserSelected] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [submissionData, setSubmissionData] = useState(null);
 
@@ -260,7 +259,6 @@ export default function ListeningExercise({ exercises }) {
 
   const handleRetry = useCallback(() => {
     setUserSelected([]);
-    setScore(0);
     setIsSubmitted(false);
     setCurrentPartIndex(0);
   }, []);
@@ -296,7 +294,7 @@ export default function ListeningExercise({ exercises }) {
                   let backgroundColor = isUserSelected ? "#A8703E" : "";
 
                   if (isSubmitted) {
-                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.correctAnswer.answerOption == option._id && answer.isCorrect);
+                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
                     if (foundQuestion) {
                       backgroundColor = "#5FD855";
                     } else if (isUserSelected) {
@@ -307,7 +305,7 @@ export default function ListeningExercise({ exercises }) {
                   return (
                     <Col key={option._id} span={8}>
                       <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question._id, option._id)} style={{ backgroundColor }} disabled={isSubmitted}>
-                        {option.text}
+                        {index + 1}. {option.text}
                       </ButtonCustom>
                     </Col>
                   );
@@ -323,10 +321,10 @@ export default function ListeningExercise({ exercises }) {
                   <div>
                     <TextCustom style={{ color: "blue" }}>
                       {submissionData?.submissionAnswer?.map((answer) => {
-                        if (answer.questionId === question._id) {
+                        if (answer.questionId._id === question._id) {
                           return (
                             <React.Fragment key={index}>
-                              {answer.correctAnswer.explanation?.split("\n")}
+                              {answer.questionId.explanation?.split("\n")}
                               <br />
                             </React.Fragment>
                           );
@@ -409,7 +407,7 @@ export default function ListeningExercise({ exercises }) {
                 </div>
                 <div>
                   <TextCustom>
-                    {part?.transcript?.split("\n")?.map((line, index) => (
+                    {part?.paragraph?.split("\n")?.map((line, index) => (
                       <React.Fragment key={index}>
                         {line}
                         <br />
@@ -417,7 +415,6 @@ export default function ListeningExercise({ exercises }) {
                     ))}
                   </TextCustom>
                 </div>
-                <div>{submissionData.score}</div>
               </React.Fragment>
             ))
           ) : (

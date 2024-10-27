@@ -4,6 +4,16 @@ export const USERNAME_REGEX = /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-
 export const ACCESS_TOKEN_KEY_COOKIE = "access_token";
 
 export const ROLES = { ADMIN_ROLE: "admin", LEARNER_ROLE: "learner", CONTENT_MANAGER_ROLE: "content-manager", ACCOUNTANT_ROLE: "accountant" };
+export const ACCOUNT_TYPE = {
+  FREEMIUM: "Freemium",
+  PREMIUM: "Premium"
+}
+
+export const TRANSACTION_STATUS = {
+  PENDING: "pending",
+  COMPLETED: "completed",
+  FAILED: "failed"
+}
 export const BASE_SERVER = process.env.REACT_APP_ROOT_API;
 export const EXERCISE_TYPE = {
   LISTENING: "listening",

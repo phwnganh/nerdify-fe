@@ -1,3 +1,4 @@
+// Initial path: /src/services/LearnerService/url.js
 import { BASE_SERVER } from "../../constants/common.constant";
 
 const DOMAIN = BASE_SERVER;
@@ -15,8 +16,10 @@ const URI_COURSES_SERVICE = {
   EXERCISE_DETAIL: API_PREFIXES.COURSE + "/exercises",
   SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
   SUBMIT_FINALEXAM: API_PREFIXES.COURSE + "/submissions/submit-final-exam",
+  GET_ALL_SUBMISSIONS: API_PREFIXES.COURSE + "/submissions/get-all-submission",
+  GET_SUBMISSION_DETAIL: API_PREFIXES.COURSE + "/submissions/get-submission",
   LEARNING_PROGRESS: API_PREFIXES.COURSE + "/learning-progress",
-
+  GET_USER_TROPHY: API_PREFIXES.COURSE + "/user/trophy",
   GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",
 };
 
@@ -27,14 +30,16 @@ const URI_FLASHCARDS_SERVICE = {
   ADD_FLASHCARD_TO_FOLDER: API_PREFIXES.FLASHCARD + "/folders/:folderId" + "/flashcards/:flashcardId",
   GET_MY_FOLDER: API_PREFIXES.FLASHCARD + "/folders/my-folders",
   CREATE_FOLDER: API_PREFIXES.FLASHCARD + "/folders",
+  SEARCH_FLASHCARD: API_PREFIXES.FLASHCARD + "/search",
 };
 
 const URI_PAYMENT_SERVICE = {
   PACKAGE: API_PREFIXES.PAYMENT + "/packages",
   CREATE_PAYMENT: API_PREFIXES.PAYMENT + "/main/create-payment",
   FINISH_PAYMENT: API_PREFIXES.PAYMENT + "/main/finish-payment/",
-
+  USER_GET_CURRENT_PACKAGE: API_PREFIXES.PAYMENT + "/user/my-current-package",
   USER_GET_TRANSACTION: API_PREFIXES.PAYMENT + "/user/transactions",
+  USER_HISTORY_TRANSACTION: API_PREFIXES.PAYMENT + "/user",
 };
 
 const URI_BLOG_SERVICE = {
