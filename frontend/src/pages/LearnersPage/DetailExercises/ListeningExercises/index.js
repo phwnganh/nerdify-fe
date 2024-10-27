@@ -324,7 +324,7 @@ export default function ListeningExercise({ exercises }) {
                         if (answer.questionId._id === question._id) {
                           return (
                             <React.Fragment key={index}>
-                              {question.explaination?.split("\n")}
+                              {answer.questionId.explanation?.split("\n")}
                               <br />
                             </React.Fragment>
                           );

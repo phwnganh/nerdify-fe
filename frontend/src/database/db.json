@@ -1499,7 +1499,7 @@
         },
         {
           "id": 3,
-          "partName": "Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
           "partType": "multiple_choice",
           "questions": [
             {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 // Import Sidebar and Header
-import AdminSidebar from "../components/Sidebar/AdminSideBar/SidebarItems";
+import AdminSidebar from "../components/Sidebar/AdminSideBar/SidebarItems.js";
 import AdminHeader from "../components/Header/AdminHeader";
 
 const { Content } = Layout;

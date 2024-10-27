@@ -43,7 +43,6 @@ const vocabImg = {
 };
 
 export default function VocabularyExercises({ exercises }) {
-  console.log(exercises);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   // part 1: matching
   const [selectedQuestions, setSelectedQuestions] = useState([]);
@@ -66,7 +65,6 @@ export default function VocabularyExercises({ exercises }) {
     });
     return initialValues;
   });
-  console.log(selectedAnswersPart2);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [submissionData, setSubmissionData] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -186,7 +184,7 @@ export default function VocabularyExercises({ exercises }) {
     const submissionAnswersPart1 = exercises.parts[0].questions.map((question) => {
       return {
         questionId: question._id,
-        userAnswer: questions.find((q) => q._id === selectedPairsPart1[question._id])?.matchedQuestion,
+        userAnswer: [selectedPairsPart1[question._id]],
       };
     });
 
@@ -208,11 +206,11 @@ export default function VocabularyExercises({ exercises }) {
     setUserSelected([...submissionAnswersPart1, ...submissionAnswersPart2, ...submissionAnswersPart3]);
     submitExercise({
       exerciseId: exercises._id,
-      userSelected,
+      userSelected: [...submissionAnswersPart1, ...submissionAnswersPart2, ...submissionAnswersPart3],
     })
       .then((resp) => {
         setSubmissionData(resp.data);
-        setIsSubmitted(true);
+        // setIsSubmitted(true);
       })
       .catch((error) => {
         console.log(error);
@@ -327,7 +325,7 @@ export default function VocabularyExercises({ exercises }) {
                           onClick={() =>
                             handlePairSelectionPart1({
                               question: availablePairs.question,
-                              matchQuestion: matchQues._id,
+                              matchQuestion: matchQues.text,
                             })
                           }
                         >
@@ -436,7 +434,6 @@ export default function VocabularyExercises({ exercises }) {
                             }}
                           >
                             {matchQues.matchQuestion}
-                            {console.log(matchQues)}
                           </p>
                         </Radio.Button>
                       </Col>

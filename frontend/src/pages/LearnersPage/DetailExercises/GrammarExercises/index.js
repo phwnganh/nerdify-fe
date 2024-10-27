@@ -38,7 +38,7 @@ export default function GrammarExercises({ exercises }) {
     let borderColor = "";
 
     if (isCompleted) {
-      borderColor = submissionData.submissionAnswer.find((answer) => answer.questionId === questionId).isCorrect ? "green" : "red";
+      borderColor = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId).isCorrect ? "green" : "red";
     }
 
     return (
@@ -59,19 +59,26 @@ export default function GrammarExercises({ exercises }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId === questionId);
+      const isToggled = prevState.some(item => item.questionId === questionId);
+      if(isToggled){
+        return prevState.filter(item => item.questionId !== questionId);
+      }else{
+        const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
-      const updatedState = prevState.filter((item) => item.questionId !== questionId);
-
-      if (questionAnswer) {
-        updatedState.push({
-          questionId: questionId,
-          correctAnswer: questionAnswer.correctAnswer,
-          explanation: questionAnswer.explanation,
-        });
+        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
+  
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            }
+          ]
+        }
       }
-
-      return updatedState;
+      return prevState;
     });
   };
 
@@ -136,7 +143,6 @@ export default function GrammarExercises({ exercises }) {
       userSelected,
     })
       .then((resp) => {
-        console.log(resp.data);
         setSubmissionData(resp.data);
         setIsCompleted(true);
       })

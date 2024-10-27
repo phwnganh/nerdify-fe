@@ -43,19 +43,26 @@ export default function WritingExercises({ exercises }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId === questionId);
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
+        const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
-      const updatedState = prevState.filter((item) => item.questionId !== questionId);
+        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
 
-      if (questionAnswer) {
-        updatedState.push({
-          questionId: questionId,
-          correctAnswer: questionAnswer.correctAnswer,
-          explanation: questionAnswer.explanation,
-        });
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            },
+          ];
+        }
       }
-
-      return updatedState;
+      return prevState;
     });
   };
 
@@ -78,13 +85,12 @@ export default function WritingExercises({ exercises }) {
                         marginBottom: "10px",
                         borderWidth: "2px",
                         borderStyle: "solid",
-                        borderColor: isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId === question._id).isCorrect ? "green" : "red",
+                        borderColor: isCompleted ? (submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red") : "initial", // Set to default if isCompleted is false
                       }}
                       placeholder={`Điền lỗi thứ ${index + 1} tại đây`}
                       autoSize={{ minRows: 1, maxRows: 5 }}
-                      borderColor={isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId === question._id).isCorrect ? "green" : "red"}
-                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer[index] || ""}
-                      onChange={(e) => handleInputChange(index, question._id, e.target.value)}
+                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer[0] || ""}
+                      onChange={(e) => handleInputChange(0, question._id, e.target.value)}
                       disabled={isCompleted}
                     />
                   ) : (
@@ -95,12 +101,12 @@ export default function WritingExercises({ exercises }) {
                         marginTop: "16px",
                         borderWidth: "2px",
                         borderStyle: "solid",
-                        borderColor: isCompleted && submissionData.submissionAnswer.find((answer) => answer.questionId === question._id).isCorrect ? "green" : "red",
+                        borderColor: isCompleted ? (submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red") : "initial", // Set to default if isCompleted is false
                       }}
                       value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer[index] || ""}
                       disabled={isCompleted}
                       onChange={(e) => handleInputChange(index, question._id, e.target.value)}
-                    ></Input.TextArea>
+                    />
                   )}
                   {isCompleted && (
                     <div style={{ paddingTop: "20px" }}>
@@ -111,7 +117,7 @@ export default function WritingExercises({ exercises }) {
                         <div>
                           {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
                             <>
-                              Đáp án:
+                              Đáp án:&nbsp;
                               {toggleAnswerDetail
                                 .find((item) => item.questionId === question._id)
                                 .correctAnswer.split("|")
@@ -139,7 +145,6 @@ export default function WritingExercises({ exercises }) {
   };
 
   const handleSubmit = () => {
-    console.log(userSelected);
     submitExercise({
       exerciseId: exercises._id,
       userSelected: userSelected,

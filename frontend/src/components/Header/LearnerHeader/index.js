@@ -32,7 +32,7 @@ export default function LearnerHeader() {
 
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
+      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.RESULTS_PRACTICE)}>
         Xem Trang Cá Nhân
       </Menu.Item>
       <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>
