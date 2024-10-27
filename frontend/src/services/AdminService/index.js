@@ -26,3 +26,9 @@ export const updateUserRole = async (userId, role) => {
   const res = await client.put(ADMIN_SERVICE_URI.USERS.UPDATE_ROLE.replace(":userId", userId), { role });
   return res.data;
 };
+
+// Create a new user
+export const createUser = async (userData) => {
+  const res = await client.post(ADMIN_SERVICE_URI.USERS.CREATE, userData);
+  return res.data;
+};

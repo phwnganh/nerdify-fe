@@ -11,8 +11,9 @@ const URI_ADMIN_SERVICE = {
   USERS: {
     GET_ALL: API_PREFIXES.ADMIN + "/users",
     GET_DETAIL: API_PREFIXES.ADMIN + "/users/:userId",
-    BAN: API_PREFIXES.ADMIN + "/users/:userId/ban",
+    BAN: API_PREFIXES.ADMIN + "/ban-user/:userId",
     UPDATE_ROLE: API_PREFIXES.ADMIN + "/users/:userId/role",
+    CREATE: API_PREFIXES.ADMIN + "/create-user",
   },
 };
 
