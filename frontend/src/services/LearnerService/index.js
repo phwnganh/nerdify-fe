@@ -49,6 +49,11 @@ export const getSubmissionDetail = async(submissionId) => {
   return res.data;
 }
 
+export const getUserTrophy = async () => {
+  const res = await client.get(COURSE_SERVER_URI.COURSE_SERVICE.GET_USER_TROPHY);
+  return res.data;
+}
+
 export const getPublicFlashcardList = async () => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD);
   return res.data;

@@ -15,6 +15,7 @@ export const AdminGuard = ({ children }) => {
       return <>{children}</>;
     }
     return <Navigate to={CLIENT_URI.ADMIN_DASHBOARD} replace />;
+
   }
 
   return <Navigate to={CLIENT_URI.LOGIN} replace />;

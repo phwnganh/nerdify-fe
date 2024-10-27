@@ -18,7 +18,7 @@ const URI_COURSES_SERVICE = {
   GET_ALL_SUBMISSIONS: API_PREFIXES.COURSE + "/submissions/get-all-submission",
   GET_SUBMISSION_DETAIL: API_PREFIXES.COURSE + "/submissions/get-submission",
   LEARNING_PROGRESS: API_PREFIXES.COURSE + "/learning-progress",
-
+  GET_USER_TROPHY: API_PREFIXES.COURSE + "/user/trophy",
   GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",
 };
 
