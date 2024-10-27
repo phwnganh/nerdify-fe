@@ -8,10 +8,12 @@ const API_PREFIXES = {
 const URI_COURSES_SERVICE = {
   COURSE_LEVEL: API_PREFIXES.COURSE + "/levels",
   PHASES: API_PREFIXES.COURSE + "/phases",
-  PHASE_DETAIL: API_PREFIXES.COURSE + "/phases/:phaseId",
   EXERCISE: API_PREFIXES.COURSE + "/exercises",
   EXERCISE_DETAIL: API_PREFIXES.COURSE + "/exercises",
   SUBMIT_EXERCISE: API_PREFIXES.COURSE + "/submissions/submit-exercise",
+  SUBMIT_FINALEXAM: API_PREFIXES.COURSE + "/submissions/submit-final-exam",
+
+  GET_TROPHY_BY_PHASE_ID: API_PREFIXES.COURSE + "/levels/get-trophy-by-phase",
 };
 
 const URI_FLASHCARDS_SERVICE = {
@@ -24,7 +26,10 @@ const URI_FLASHCARDS_SERVICE = {
 const URI_PAYMENT_SERVICE = {
   PACKAGE: API_PREFIXES.PAYMENT + "/packages",
   CREATE_PAYMENT: API_PREFIXES.PAYMENT + "/main/create-payment",
-}
+  FINISH_PAYMENT: API_PREFIXES.PAYMENT + "/main/finish-payment/",
+
+  USER_GET_TRANSACTION: API_PREFIXES.PAYMENT + "/user/transactions",
+};
 
 export const COURSE_SERVER_URI = {
   DOMAIN: DOMAIN,
@@ -38,5 +43,5 @@ export const FLASHCARD_SERVER_URI = {
 
 export const PAYMENT_SERVER_URI = {
   DOMAIN: DOMAIN,
-  PAYMENT_SERVICE: URI_PAYMENT_SERVICE
-}
+  PAYMENT_SERVICE: URI_PAYMENT_SERVICE,
+};

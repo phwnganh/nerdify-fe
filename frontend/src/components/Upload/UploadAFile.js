@@ -1,12 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 
-
 export const useAFileUpload = () => {
   const [file, setFile] = useState(null);
 
-  
-  const handleFileChange = ({file}) => {
+  const handleFileChange = ({ file }) => {
     setFile(file); // Lấy tệp đầu tiên từ danh sách
     console.log("file: ", file.originFileObj);
   };
@@ -35,7 +33,5 @@ export const useAFileUpload = () => {
     }
   };
 
-
-
-  return { file, handleFileChange, handleFileUpload, };
+  return { file, handleFileChange, handleFileUpload };
 };

@@ -5136,7 +5136,7 @@
             },
             {
               "id": 19,
-              "question": "Marie, kommst ____ bitte? Nein,_____ habe keine Zeit.",
+              "question": "Marie, kommst _ bitte? Nein,_ habe keine Zeit.",
               "options": [
                 {
                   "id": "A",
@@ -5164,7 +5164,7 @@
             },
             {
               "id": 20,
-              "question": "Der Schrank ist teuer. ______ kommt aus Italien.",
+              "question": "Der Schrank ist teuer. _ kommt aus Italien.",
               "options": [
                 {
                   "id": "A",
