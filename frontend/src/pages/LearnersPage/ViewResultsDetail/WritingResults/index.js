@@ -19,20 +19,27 @@ export default function WritingResults({ exerciseResults }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = exerciseResults.submissionAnswer.find((answer) => answer.questionId._id === questionId);
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
+        const questionAnswer = exerciseResults.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
-      const updatedState = prevState.filter((item) => item.questionId !== questionId);
-      console.log(questionAnswer);
-      console.log(updatedState);
-      if (questionAnswer) {
-        updatedState.push({
-          questionId: questionId,
-          correctAnswer: questionAnswer.questionId.options[0]?.text,
-          explanation: questionAnswer.questionId.explanation,
-        });
+        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
+        console.log(questionAnswer);
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            },
+          ];
+        }
       }
 
-      return updatedState;
+      return prevState;
     });
   };
 
@@ -73,10 +80,9 @@ export default function WritingResults({ exerciseResults }) {
                         borderColor: isCompleted ? (exerciseResults.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red") : "initial", // Set to default if isCompleted is false
                       }}
                       value={exerciseResults.submissionAnswer.find((answer) => answer.questionId._id === question._id)?.userAnswer}
-                      disabled={isCompleted}
+                      disabled={true}
                     ></Input.TextArea>
                   )}
-                  {isCompleted && (
                     <div style={{ paddingTop: "20px" }}>
                       <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
                         Đáp án chi tiết
@@ -85,7 +91,7 @@ export default function WritingResults({ exerciseResults }) {
                         <div>
                           {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
                             <>
-                              Đáp án:
+                              Đáp án:&nbsp;
                               {toggleAnswerDetail
                                 .find((item) => item.questionId === question._id)
                                 .correctAnswer.split("|")
@@ -102,7 +108,6 @@ export default function WritingResults({ exerciseResults }) {
                         </div>
                       )}
                     </div>
-                  )}
                 </div>
               ))}
             </Col>

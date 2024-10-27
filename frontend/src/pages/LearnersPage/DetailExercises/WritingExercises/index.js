@@ -43,19 +43,26 @@ export default function WritingExercises({ exercises }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
+        const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
-      const updatedState = prevState.filter((item) => item.questionId !== questionId);
+        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
 
-      if (questionAnswer) {
-        updatedState.push({
-          questionId: questionId,
-          correctAnswer: questionAnswer.questionId.options[0]?.text,
-          explanation: questionAnswer.questionId.explanation,
-        });
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            },
+          ];
+        }
       }
-
-      return updatedState;
+      return prevState;
     });
   };
 
@@ -110,7 +117,7 @@ export default function WritingExercises({ exercises }) {
                         <div>
                           {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
                             <>
-                              Đáp án:
+                              Đáp án:&nbsp;
                               {toggleAnswerDetail
                                 .find((item) => item.questionId === question._id)
                                 .correctAnswer.split("|")

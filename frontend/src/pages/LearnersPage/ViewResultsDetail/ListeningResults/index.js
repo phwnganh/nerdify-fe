@@ -272,7 +272,7 @@ export default function ListeningResults({ exerciseResults }) {
                         if (answer.questionId._id === question._id) {
                           return (
                             <React.Fragment key={idx}>
-                            {question?.explaination?.split("\n").map((line, idx) => (
+                            {question?.explanation?.split("\n").map((line, idx) => (
                               <React.Fragment key={idx}>
                                 {line}
                                 <br />

@@ -4,12 +4,14 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { PART_TYPE } from "../../../../constants";
 import InputCustom from "../../../../components/Input";
+import { useNavigate } from "react-router-dom";
 
 export default function GrammarResults({ exerciseResults }) {
   const [userSelected, setUserSelected] = useState([]);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState([]);
   const [isCompleted, setIsCompleted] = useState(true);
+  const navigate = useNavigate();
 
   const handleInputChange = useCallback((questionId, inputIndex, value) => {
     setUserSelected((prevAnswers) => {
@@ -56,20 +58,26 @@ export default function GrammarResults({ exerciseResults }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const questionAnswer = exerciseResults.submissionAnswer.find((answer) => answer.questionId._id === questionId);
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
+        const questionAnswer = exerciseResults.submissionAnswer.find((answer) => answer.questionId._id === questionId);
+        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
+        console.log(questionAnswer);
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            },
+          ];
+        }
 
-      const updatedState = prevState.filter((item) => item.questionId !== questionId);
-      console.log(questionAnswer);
-      console.log(updatedState);
-      if (questionAnswer) {
-        updatedState.push({
-          questionId: questionId,
-          correctAnswer: questionAnswer.questionId.options[0]?.text,
-          explanation: questionAnswer.questionId.explanation,
-        });
+        return prevState;
       }
-
-      return updatedState;
     });
   };
 
@@ -102,7 +110,7 @@ export default function GrammarResults({ exerciseResults }) {
                     <div>
                       {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
                         <>
-                          Đáp án:
+                          Đáp án:&nbsp;
                           {toggleAnswerDetail
                             .find((item) => item.questionId === question._id)
                             .correctAnswer.split("|")
@@ -174,6 +182,9 @@ export default function GrammarResults({ exerciseResults }) {
           disabled={!exerciseResults?.exerciseId || currentPartIndex === exerciseResults?.exerciseId.parts.length - 1}
         >
           Phần tiếp theo
+        </ButtonCustom>
+        <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={() => navigate(-1)}>
+          Quay lại
         </ButtonCustom>
         {/* {isCompleted ? (
           <>

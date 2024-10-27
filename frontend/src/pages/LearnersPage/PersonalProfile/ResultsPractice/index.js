@@ -102,12 +102,10 @@ export default function ViewResultsPractice() {
           >
             Cúp hoàn thành tiến độ
           </h3>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ position: "relative", width: "128px", height: "128px" }}>
+            <div>
               {userTrophy.map((trophies) => (
                 <span>
-                  <div>{trophies?.trophy?.levelTrophy}</div>
-                  <img src={trophy[trophies?.trophy?.levelTrophy]} alt="" srcset="" />
+                  <img src={trophy[trophies?.trophy?.levelTrophy]} alt="" srcset="" width={"40%"} />
                 </span>
               ))}
               {/* <TrophyOutlined
@@ -129,7 +127,6 @@ export default function ViewResultsPractice() {
                 A1
               </span> */}
             </div>
-          </div>
         </div>
       </div>
     </div>
