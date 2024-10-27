@@ -409,7 +409,6 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
           <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
         </div>
-        <Dropdown menu={{ items }} trigger={["click"]}>
           <ButtonCustom
             style={{
               background: "rgb(13 164 184 / 87%)",
@@ -417,10 +416,10 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
               width: "200px",
               margin: "20px",
             }}
+            onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}
           >
             Tạo bộ flashcard mới
           </ButtonCustom>
-        </Dropdown>
         <ButtonCustom
           style={{
             background: "#088d2b",
