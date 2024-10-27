@@ -1,3 +1,5 @@
+//Initial path src/services/client.js
+
 import axios from "axios";
 import { AUTH_SERVER_URI } from "./GuestService/url";
 const client = axios.create({
