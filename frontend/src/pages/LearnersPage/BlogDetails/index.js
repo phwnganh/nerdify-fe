@@ -87,6 +87,10 @@ const StyledQuote = styled.blockquote`
   color: #1890ff;
 `;
 
+const BreadcrumbItemOrange = styled(Breadcrumb.Item)`
+  color: orange;
+`;
+
 // Main Component
 const BlogDetails = () => {
   const { blogId } = useParams(); // Lấy blog ID từ URL
@@ -127,16 +131,16 @@ const BlogDetails = () => {
       {/* Main Blog Content */}
       <ContentWrapper>
         {/* Breadcrumb */}
-        <Breadcrumb style={{ marginBottom: "16px" }}>
+        <Breadcrumb>
           <Breadcrumb.Item>
-            <Link to="/">
-              <HomeOutlined /> Trang chủ
-            </Link>
+            <Link to="/">Trang chủ</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <Link to="/blog-study">blog học tập</Link>
+            <Link to="/blog-study">Danh sách Blogs</Link>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>{blog.title}</Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <span style={{ color: "#F78F2E", fontWeight: "bold", textDecoration: "none" }}>{blog.title}</span>
+          </Breadcrumb.Item>
         </Breadcrumb>
 
         <ImageBanner />

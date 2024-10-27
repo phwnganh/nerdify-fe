@@ -20,7 +20,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 // ====================================================================== |
 
 const CustomLineChart = ({ dataChart, chartTitle, dataKey }) => {
-  console.log(dataChart);
   return (
     <div
       style={{

@@ -53,22 +53,9 @@ export default function SidebarCustom({ menuItems = [] }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedKey, setSelectedKey] = useState("/");
-  const [user, setUser] = useState(null);
-  const userId = getStorage(STORAGE.USER_ID);
   useEffect(() => {
     setSelectedKey(location.pathname);
   }, [location.pathname]);
-
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userId]);
 
   const handleLogout = async () => {
     logout().then(() => {
