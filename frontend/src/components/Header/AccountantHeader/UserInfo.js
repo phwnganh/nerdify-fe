@@ -1,24 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Layout } from "antd";
-import { useLocation } from "react-router-dom";
-import { CLIENT_URI } from "../../../constants/uri.constants";
-import { BASE_SERVER } from "../../../constants";
-import STORAGE, { getStorage } from "../../../library/storage";
+import { useAuth } from "../../../hooks";
+import SpinCustom from "../../Spin";
 
 const UserInfo = () => {
-  const location = useLocation();
-  const [user, setUser] = useState(null);
-  const userId = getStorage(STORAGE.USER_ID);
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userId]);
+  const { isInitialized, isAuthenticated, user } = useAuth();
+
+  if (!isInitialized) {
+    return <SpinCustom size="large"></SpinCustom>;
+  }
 
   return (
     <>

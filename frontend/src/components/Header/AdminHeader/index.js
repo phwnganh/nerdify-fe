@@ -1,26 +1,19 @@
-// AccountantHeader.js
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Layout } from "antd";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../../hooks"; // Use the same hook for user data
+import SpinCustom from "../../Spin"; // Custom loading spinner
 import { CLIENT_URI } from "../../../constants/uri.constants";
-import { BASE_SERVER } from "../../../constants";
-import STORAGE, { getStorage } from "../../../library/storage";
 
 const { Header } = Layout;
 
-const AccountantHeader = () => {
+const AdminHeader = () => {
+  const { isInitialized, user } = useAuth(); // Fetch user from auth hook
   const location = useLocation();
-  const [user, setUser] = useState(null);
-  const userId = getStorage(STORAGE.USER_ID);
 
   // Map routes to their respective labels
   const routeLabels = useMemo(
     () => ({
-      // [CLIENT_URI.ACCOUNTANT_DASHBOARD]: "Trang Chủ",
-      // [CLIENT_URI.SYSTEM_REVENUE]: "Doanh Thu Hệ Thống",
-      // [CLIENT_URI.TRANSACTION_HISTORY]: "Lịch Sử Giao Dịch",
-      // [CLIENT_URI.USER_STATISTICS]: "Thống Kê Người Dùng",
-
       [CLIENT_URI.ADMIN_DASHBOARD]: "Bảng điều khiển",
       [CLIENT_URI.ACCOUNT_MANAGEMENT]: "DS Tài khoản Hệ Thống",
       [CLIENT_URI.PREMIUM_MANAGEMENT]: "Quản Lý gói Premium",
@@ -29,20 +22,10 @@ const AccountantHeader = () => {
     [],
   );
 
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/users/${userId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [userId]);
-
   // Determine the current title based on the path
   const currentTitle = routeLabels[location.pathname] || "Thống Kê Tài Chính";
 
+  // Inline styles for the header
   const styles = {
     header: {
       height: "80px",
@@ -55,6 +38,11 @@ const AccountantHeader = () => {
     },
   };
 
+  // Display a loading spinner while the auth is initializing
+  if (!isInitialized) {
+    return <SpinCustom size="large" />;
+  }
+
   return (
     <Header style={styles.header}>
       <h2 style={{ margin: 0 }}>{currentTitle}</h2> {/* Dynamic Header Title */}
@@ -65,4 +53,4 @@ const AccountantHeader = () => {
   );
 };
 
-export default AccountantHeader;
+export default AdminHeader;
