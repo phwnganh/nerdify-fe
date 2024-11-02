@@ -101,7 +101,7 @@ const BlogDetails = () => {
   const fetchBlogDetails = async () => {
     try {
       console.log(blogId);
-      const response = await fetch(`https://api.deustchnerd.site/api/blogs/${blogId}`);
+      const response = await fetch(`http://localhost:80/api/blogs/${blogId}`);
       // console.log("response", response);
       const result = await response.json();
 
@@ -162,7 +162,7 @@ const BlogDetails = () => {
 
           <Paragraph>{blog.description}</Paragraph>
 
-          <StyledQuote>{blog.description.slice(0, 100)}...</StyledQuote>
+          {/* <StyledQuote>{blog.description.slice(0, 100)}...</StyledQuote> */}
 
           <Paragraph>Ngày tạo: {new Date(blog.createdAt).toLocaleDateString()}</Paragraph>
         </ContentCard>
@@ -170,7 +170,7 @@ const BlogDetails = () => {
 
       {/* Sidebar for Related Articles */}
       <Sidebar>
-        <RelatedArticlesTitle level={4}>Bài viết liên quan</RelatedArticlesTitle>
+        <RelatedArticlesTitle level={4}>Bài viết khác</RelatedArticlesTitle>
         <RelatedArticleItem>
           <RelatedArticleImage src="https://via.placeholder.com/60" />
           <RelatedArticleText>10 Kênh Podcast Miễn Phí Giúp Học Tiếng Đức Dễ Dàng Hơn</RelatedArticleText>
