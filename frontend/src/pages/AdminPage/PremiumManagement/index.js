@@ -5,7 +5,7 @@ import { BellOutlined } from "@ant-design/icons";
 import UserInfo from "../../../components/Header/AdminHeader/UserInfo";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import TablePremiumPack from "../../../components/Table/TablePremiumPack";
-import { getAllPackages, createPackage } from "../../../services/AdminService";
+import { getAllPackages, createPackage, updatePackage as updatePackageService, deletePackage as deletePackageService } from "../../../services/AdminService";
 
 const PremiumManagement = () => {
   // Dữ liệu thẻ thông tin
@@ -71,13 +71,24 @@ const PremiumManagement = () => {
   };
 
   // Function to update an existing package
-  const updatePackage = (updatedPackageData) => {
-    setPackages((prevPackages) => prevPackages.map((pkg) => (pkg._id === updatedPackageData._id ? updatedPackageData : pkg)));
+  const handleUpdatePackage = async (packageId, updatedPackageData) => {
+    try {
+      const response = await updatePackageService(packageId, updatedPackageData);
+      const updatedPackage = response.data; // Adjusted based on API response
+      setPackages((prevPackages) => prevPackages.map((pkg) => (pkg._id === packageId ? updatedPackage : pkg)));
+    } catch (error) {
+      console.error("Error updating package:", error);
+    }
   };
 
   // Function to delete a package
-  const deletePackage = (packageId) => {
-    setPackages((prevPackages) => prevPackages.filter((pkg) => pkg._id !== packageId));
+  const handleDeletePackage = async (packageId) => {
+    try {
+      await deletePackageService(packageId);
+      setPackages((prevPackages) => prevPackages.filter((pkg) => pkg._id !== packageId));
+    } catch (error) {
+      console.error("Error deleting package:", error);
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -95,7 +106,7 @@ const PremiumManagement = () => {
       </div>
       {/* Premium control panel */}
       <div style={{ marginTop: "20px" }}>
-        <TablePremiumPack packages={packages} addPackage={addPackage} updatePackage={updatePackage} deletePackage={deletePackage} />
+        <TablePremiumPack packages={packages} addPackage={addPackage} updatePackage={handleUpdatePackage} deletePackage={handleDeletePackage} />
       </div>
     </div>
   );

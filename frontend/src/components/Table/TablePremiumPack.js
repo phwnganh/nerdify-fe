@@ -5,8 +5,6 @@ import { Table, Button, Modal, Form, Input, InputNumber, Popconfirm, Space, mess
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 
 const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }) => {
-  // console.log("TablePremiumPack re-rendered with packages:", packages);
-
   const [isPackageModalOpen, setIsPackageModalOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [editingPackage, setEditingPackage] = useState(null);
@@ -24,8 +22,8 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
   // Handle adding or editing packages
   const handlePackageSubmit = async (values) => {
     const { price, duration } = values;
-    const discount = values.discount ?? 0; // Use nullish coalescing to set default value
-    const benefits = values.benefits || "Không có"; // Set default value for benefits
+    const discount = values.discount ?? 0;
+    const benefits = values.benefits || "Không có";
     const totalPrice = price * duration * (1 - discount / 100);
     const newPackageData = {
       ...values,
@@ -35,8 +33,13 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
     };
     if (editingPackage) {
       // Update existing package
-      updatePackage({ ...editingPackage, ...newPackageData });
-      message.success("Gói đã được cập nhật thành công!");
+      try {
+        await updatePackage(editingPackage._id, newPackageData);
+        message.success("Gói đã được cập nhật thành công!");
+      } catch (error) {
+        console.error("Error updating package:", error);
+        message.error("Đã xảy ra lỗi khi cập nhật gói.");
+      }
     } else {
       if (packages.length >= 15) {
         message.warning("Tối đa chỉ được thêm 15 gói.");
@@ -56,9 +59,14 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
   };
 
   // Delete package
-  const handleDeletePackage = (packageId) => {
-    deletePackage(packageId);
-    message.success("Gói đã được xóa thành công!");
+  const handleDeletePackage = async (packageId) => {
+    try {
+      await deletePackage(packageId);
+      message.success("Gói đã được xóa thành công!");
+    } catch (error) {
+      console.error("Error deleting package:", error);
+      message.error("Đã xảy ra lỗi khi xóa gói.");
+    }
   };
 
   // Open modal to edit package
@@ -188,13 +196,7 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
           Thêm Gói Mới
         </Button>
       </Space>
-      <Table
-        dataSource={packagesWithKeys}
-        columns={columns}
-        pagination={false}
-        rowKey="key" // Use 'key' as the rowKey
-        bordered
-      />
+      <Table dataSource={packagesWithKeys} columns={columns} pagination={false} rowKey="key" bordered />
       <Modal title={editingPackage ? "Chỉnh Sửa Gói" : "Thêm Gói Mới"} open={isPackageModalOpen} onCancel={() => setIsPackageModalOpen(false)} footer={null}>
         <Form form={form} layout="vertical" onFinish={handlePackageSubmit}>
           <Form.Item name="packageName" label="Tên Gói" rules={[{ required: true, message: "Vui lòng nhập tên gói!" }]}>

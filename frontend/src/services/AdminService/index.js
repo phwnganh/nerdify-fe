@@ -44,3 +44,15 @@ export const createPackage = async (packageData) => {
   const res = await client.post(ADMIN_SERVICE_URI.PACKAGES.CREATE, packageData);
   return res.data;
 };
+
+// Update package by ID
+export const updatePackage = async (packageId, packageData) => {
+  const res = await client.put(ADMIN_SERVICE_URI.PACKAGES.UPDATE.replace(":packageId", packageId), packageData);
+  return res.data;
+};
+
+// Delete package by ID
+export const deletePackage = async (packageId) => {
+  const res = await client.delete(ADMIN_SERVICE_URI.PACKAGES.DELETE.replace(":packageId", packageId));
+  return res.data;
+};
