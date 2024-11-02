@@ -1,64 +1,54 @@
+// File: src/components/Table/TablePremiumPack.js
+
 import React, { useState } from "react";
 import { Table, Button, Modal, Form, Input, InputNumber, Popconfirm, Space, message } from "antd";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 
-// Initial Data
-const initialPackages2 = [
-  {
-    discount: 0,
-    _id: "66fd74d06d8c890efb023393",
-    packageName: "6 tháng",
-    price: 299000,
-    duration: 6,
-  },
-  {
-    discount: 10,
-    _id: "66fd750e6d8c890efb023394",
-    packageName: "12 tháng",
-    price: 499000,
-    duration: 12,
-  },
-  {
-    _id: "67235c5e616e068d900a3848",
-    packageName: "Basic Package",
-    price: 100,
-    duration: 30,
-    benefits: "Access to basic features",
-    discount: 0,
-    createdAt: "2024-10-31T10:30:54.242Z",
-    updatedAt: "2024-10-31T10:30:54.242Z",
-    __v: 0,
-  },
-];
+const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }) => {
+  // console.log("TablePremiumPack re-rendered with packages:", packages);
 
-const TablePremiumPack = (dataResponse) => {
-  // console.log("dataResponse", dataResponse.dataResponse);
-
-  const [packages, setPackages] = useState(dataResponse.dataResponse);
   const [isPackageModalOpen, setIsPackageModalOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [editingPackage, setEditingPackage] = useState(null);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [form] = Form.useForm();
 
-  // Handle adding or editing packages
-  const handlePackageSubmit = (values) => {
-    const { price, duration, discount } = values;
-    const totalPrice = price * duration * (1 - (discount || 0) / 100);
-    const newPackageData = { ...values, totalPrice };
+  // Custom validator for price input
+  const validatePrice = (_, value) => {
+    if (!value || value < 1000 || !/^\d+$/.test(value)) {
+      return Promise.reject(new Error("Giá tiền phải lớn hơn hoặc bằng 1000 và chỉ chứa số hợp lệ."));
+    }
+    return Promise.resolve();
+  };
 
+  // Handle adding or editing packages
+  const handlePackageSubmit = async (values) => {
+    const { price, duration } = values;
+    const discount = values.discount ?? 0; // Use nullish coalescing to set default value
+    const benefits = values.benefits || "Không có"; // Set default value for benefits
+    const totalPrice = price * duration * (1 - discount / 100);
+    const newPackageData = {
+      ...values,
+      discount,
+      benefits,
+      totalPrice,
+    };
     if (editingPackage) {
-      setPackages((prev) => prev.map((pkg) => (pkg._id === editingPackage._id ? { ...pkg, ...newPackageData } : pkg)));
+      // Update existing package
+      updatePackage({ ...editingPackage, ...newPackageData });
+      message.success("Gói đã được cập nhật thành công!");
     } else {
-      if (packages.length >= 5) {
-        message.warning("Tối đa chỉ được thêm 5 gói.");
+      if (packages.length >= 15) {
+        message.warning("Tối đa chỉ được thêm 15 gói.");
         return;
       }
-      const newPackage = {
-        _id: `${packages.length + 1}`,
-        ...newPackageData,
-      };
-      setPackages((prev) => [...prev, newPackage]);
+      try {
+        await addPackage(newPackageData);
+        message.success("Gói mới đã được tạo thành công!");
+      } catch (error) {
+        console.error("Error adding package:", error);
+        message.error("Đã xảy ra lỗi khi thêm gói.");
+      }
     }
     setIsPackageModalOpen(false);
     form.resetFields();
@@ -66,8 +56,9 @@ const TablePremiumPack = (dataResponse) => {
   };
 
   // Delete package
-  const handleDeletePackage = (key) => {
-    setPackages((prev) => prev.filter((pkg) => pkg._id !== key));
+  const handleDeletePackage = (packageId) => {
+    deletePackage(packageId);
+    message.success("Gói đã được xóa thành công!");
   };
 
   // Open modal to edit package
@@ -78,6 +69,7 @@ const TablePremiumPack = (dataResponse) => {
       price: pkg.price,
       duration: pkg.duration,
       discount: pkg.discount || 0,
+      benefits: pkg.benefits || "Không có",
     });
     setIsPackageModalOpen(true);
   };
@@ -87,6 +79,12 @@ const TablePremiumPack = (dataResponse) => {
     setSelectedPackage(pkg);
     setIsDetailModalOpen(true);
   };
+
+  // Ensure each package has a unique 'key' property
+  const packagesWithKeys = packages.map((pkg, index) => ({
+    ...pkg,
+    key: pkg._id || index,
+  }));
 
   // Table columns
   const columns = [
@@ -100,7 +98,7 @@ const TablePremiumPack = (dataResponse) => {
       title: "Giá (VND)",
       dataIndex: "price",
       key: "price",
-      render: (price) => <span>{price.toLocaleString()} VND</span>,
+      render: (price) => (price ? <span>{price.toLocaleString()} VND</span> : "N/A"),
     },
     {
       title: "Thời gian (tháng)",
@@ -116,7 +114,7 @@ const TablePremiumPack = (dataResponse) => {
     {
       title: "Tổng Giá (VND)",
       key: "totalPrice",
-      render: (_, pkg) => <span>{(pkg.price * pkg.duration * (1 - (pkg.discount || 0) / 100)).toLocaleString()} VND</span>,
+      render: (_, pkg) => <span>{pkg.price ? (pkg.price * pkg.duration * (1 - (pkg.discount || 0) / 100)).toLocaleString() : "N/A"} VND</span>,
     },
     {
       title: "Hành Động",
@@ -185,24 +183,44 @@ const TablePremiumPack = (dataResponse) => {
             form.resetFields();
             setIsPackageModalOpen(true);
           }}
-          disabled={packages.length >= 5}
+          disabled={packages.length >= 15}
         >
           Thêm Gói Mới
         </Button>
       </Space>
-      <Table dataSource={packages} columns={columns} pagination={false} rowKey="_id" bordered />
+      <Table
+        dataSource={packagesWithKeys}
+        columns={columns}
+        pagination={false}
+        rowKey="key" // Use 'key' as the rowKey
+        bordered
+      />
       <Modal title={editingPackage ? "Chỉnh Sửa Gói" : "Thêm Gói Mới"} open={isPackageModalOpen} onCancel={() => setIsPackageModalOpen(false)} footer={null}>
         <Form form={form} layout="vertical" onFinish={handlePackageSubmit}>
           <Form.Item name="packageName" label="Tên Gói" rules={[{ required: true, message: "Vui lòng nhập tên gói!" }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="price" label="Giá (VND)" rules={[{ required: true, message: "Vui lòng nhập giá!" }]}>
-            <InputNumber style={{ width: "100%" }} min={0} />
+          <Form.Item name="price" label="Giá (VND)" rules={[{ required: true, validator: validatePrice }]}>
+            <InputNumber style={{ width: "100%" }} min={1000} />
           </Form.Item>
           <Form.Item name="duration" label="Số tháng" rules={[{ required: true, message: "Vui lòng nhập số tháng!" }]}>
             <InputNumber style={{ width: "100%" }} min={1} />
           </Form.Item>
-          <Form.Item name="discount" label="Giảm Giá (%)" rules={[{ type: "number", min: 0, max: 100, message: "Giảm giá phải nằm trong khoảng 0-100%" }]}>
+          <Form.Item name="benefits" label="Lợi Ích">
+            <Input.TextArea placeholder="Nhập lợi ích của gói" />
+          </Form.Item>
+          <Form.Item
+            name="discount"
+            label="Giảm Giá (%)"
+            rules={[
+              {
+                type: "number",
+                min: 0,
+                max: 100,
+                message: "Giảm giá phải nằm trong khoảng 0-100%",
+              },
+            ]}
+          >
             <InputNumber style={{ width: "100%" }} min={0} max={100} />
           </Form.Item>
           <Form.Item>
@@ -216,16 +234,49 @@ const TablePremiumPack = (dataResponse) => {
         {selectedPackage && (
           <Table
             dataSource={[
-              { key: "1", label: "Tên Gói", value: selectedPackage.packageName },
-              { key: "2", label: "Giá", value: `${selectedPackage.price.toLocaleString()} VND` },
-              { key: "3", label: "Thời gian", value: `${selectedPackage.duration} tháng` },
-              { key: "4", label: "Giảm Giá", value: selectedPackage.discount ? `${selectedPackage.discount}%` : "Không có discount" },
-              { key: "5", label: "Tổng Giá", value: `${(selectedPackage.price * selectedPackage.duration * (1 - (selectedPackage.discount || 0) / 100)).toLocaleString()} VND` },
-              { key: "6", label: "Lợi Ích", value: selectedPackage.benefits || "Không có" },
+              {
+                key: "1",
+                label: "Tên Gói",
+                value: selectedPackage.packageName,
+              },
+              {
+                key: "2",
+                label: "Giá",
+                value: `${selectedPackage.price ? selectedPackage.price.toLocaleString() : "N/A"} VND`,
+              },
+              {
+                key: "3",
+                label: "Thời gian",
+                value: `${selectedPackage.duration} tháng`,
+              },
+              {
+                key: "4",
+                label: "Giảm Giá",
+                value: selectedPackage.discount ? `${selectedPackage.discount}%` : "Không có discount",
+              },
+              {
+                key: "5",
+                label: "Tổng Giá",
+                value: `${selectedPackage.price ? (selectedPackage.price * selectedPackage.duration * (1 - (selectedPackage.discount || 0) / 100)).toLocaleString() : "N/A"} VND`,
+              },
+              {
+                key: "6",
+                label: "Lợi Ích",
+                value: selectedPackage.benefits || "Không có",
+              },
             ]}
             columns={[
-              { title: "", dataIndex: "label", key: "label", render: (text) => <strong>{text}</strong> },
-              { title: "", dataIndex: "value", key: "value" },
+              {
+                title: "",
+                dataIndex: "label",
+                key: "label",
+                render: (text) => <strong>{text}</strong>,
+              },
+              {
+                title: "",
+                dataIndex: "value",
+                key: "value",
+              },
             ]}
             pagination={false}
             showHeader={false}

@@ -38,3 +38,9 @@ export const getAllPackages = async () => {
   const res = await client.get(ADMIN_SERVICE_URI.PACKAGES.GET_ALL);
   return res.data;
 };
+
+// Create a new package
+export const createPackage = async (packageData) => {
+  const res = await client.post(ADMIN_SERVICE_URI.PACKAGES.CREATE, packageData);
+  return res.data;
+};

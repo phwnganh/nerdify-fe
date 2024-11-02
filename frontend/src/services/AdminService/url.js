@@ -18,6 +18,7 @@ const URI_ADMIN_SERVICE = {
   },
   PACKAGES: {
     GET_ALL: API_PREFIXES.PAYMENT + "/packages",
+    CREATE: API_PREFIXES.PAYMENT + "/packages",
   },
 };
 
