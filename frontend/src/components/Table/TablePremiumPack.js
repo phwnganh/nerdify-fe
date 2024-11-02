@@ -1,5 +1,4 @@
 // File: src/components/Table/TablePremiumPack.js
-
 import React, { useState } from "react";
 import { Table, Button, Modal, Form, Input, InputNumber, Popconfirm, Space, message } from "antd";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
@@ -24,13 +23,13 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
     const { price, duration } = values;
     const discount = values.discount ?? 0;
     const benefits = values.benefits || "Không có";
-    const totalPrice = price * duration * (1 - discount / 100);
+
     const newPackageData = {
       ...values,
       discount,
       benefits,
-      totalPrice,
     };
+
     if (editingPackage) {
       // Update existing package
       try {
@@ -120,9 +119,9 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
       render: (discount) => (discount ? `${discount}%` : <span>Không có discount</span>),
     },
     {
-      title: "Tổng Giá (VND)",
-      key: "totalPrice",
-      render: (_, pkg) => <span>{pkg.price ? (pkg.price * pkg.duration * (1 - (pkg.discount || 0) / 100)).toLocaleString() : "N/A"} VND</span>,
+      title: "Giá Khuyến Mãi (VND)",
+      key: "promotionalPrice",
+      render: (_, pkg) => <span>{pkg.price ? (pkg.price * (1 - (pkg.discount || 0) / 100)).toLocaleString() : "N/A"} VND</span>,
     },
     {
       title: "Hành Động",
@@ -258,8 +257,8 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
               },
               {
                 key: "5",
-                label: "Tổng Giá",
-                value: `${selectedPackage.price ? (selectedPackage.price * selectedPackage.duration * (1 - (selectedPackage.discount || 0) / 100)).toLocaleString() : "N/A"} VND`,
+                label: "Giá Khuyến Mãi",
+                value: `${selectedPackage.price ? (selectedPackage.price * (1 - (selectedPackage.discount || 0) / 100)).toLocaleString() : "N/A"} VND`,
               },
               {
                 key: "6",
