@@ -32,3 +32,9 @@ export const createUser = async (userData) => {
   const res = await client.post(ADMIN_SERVICE_URI.USERS.CREATE, userData);
   return res.data;
 };
+
+// Get all packages
+export const getAllPackages = async () => {
+  const res = await client.get(ADMIN_SERVICE_URI.PACKAGES.GET_ALL);
+  return res.data;
+};

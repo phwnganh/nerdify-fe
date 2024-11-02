@@ -5,6 +5,7 @@ import { BASE_SERVER } from "../../constants/common.constant";
 const DOMAIN = BASE_SERVER;
 const API_PREFIXES = {
   ADMIN: "/api/auth/admin",
+  PAYMENT: "/api/payment",
 };
 
 const URI_ADMIN_SERVICE = {
@@ -15,9 +16,15 @@ const URI_ADMIN_SERVICE = {
     UPDATE_ROLE: API_PREFIXES.ADMIN + "/users/:userId/role",
     CREATE: API_PREFIXES.ADMIN + "/create-user",
   },
+  PACKAGES: {
+    GET_ALL: API_PREFIXES.PAYMENT + "/packages",
+  },
 };
 
 export const ADMIN_SERVICE_URI = {
   DOMAIN: DOMAIN,
   USERS: URI_ADMIN_SERVICE.USERS,
+
+  // Get all packages
+  PACKAGES: URI_ADMIN_SERVICE.PACKAGES,
 };

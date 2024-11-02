@@ -31,8 +31,10 @@ const initialPackages2 = [
   },
 ];
 
-const TablePremiumPack = () => {
-  const [packages, setPackages] = useState(initialPackages2);
+const TablePremiumPack = (dataResponse) => {
+  // console.log("dataResponse", dataResponse.dataResponse);
+
+  const [packages, setPackages] = useState(dataResponse.dataResponse);
   const [isPackageModalOpen, setIsPackageModalOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [editingPackage, setEditingPackage] = useState(null);
