@@ -11,6 +11,8 @@ const URI_ACCOUNTANT_SERVICE = {
   TRANSACTIONS: {
     GET_ALL: API_PREFIXES.ACCOUNTANT + "/transactions",
     UPDATE: API_PREFIXES.ACCOUNTANT + "/transactions/:transactionId",
+
+    STATISTICS: API_PREFIXES.ACCOUNTANT + "/transactions/statistic",
   },
 };
 
