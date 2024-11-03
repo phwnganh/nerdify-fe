@@ -3,38 +3,6 @@ import React, { useState } from "react";
 export const HoverableCard = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // const dataSample = () => {
-  //   const doanhThu = [
-  //     {
-  //       id: 1,
-  //       title: "Doanh thu tháng này",
-  //       value: "1,000,000,000 VND",
-  //       icon: <BellOutlined />,
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Doanh thu trong năm",
-  //       value: "1,000,000,000 VND",
-  //       icon: <BellOutlined />,
-  //     },
-  //   ];
-
-  //   const taiKhoanDangKyGoi = [
-  //     {
-  //       id: 1,
-  //       title: "Tài khoản đăng ký gói 6 tháng",
-  //       value: "100",
-  //       icon: <BellOutlined />,
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Tài khoản đăng ký gói 12 tháng",
-  //       value: "100",
-  //       icon: <BellOutlined />,
-  //     },
-  //   ];
-  // };
-
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
