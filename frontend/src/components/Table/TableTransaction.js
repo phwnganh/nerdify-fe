@@ -1,41 +1,102 @@
 import React, { useState, useEffect } from "react";
-import { Table, Tag, Input, Select, Button, Space, Modal, Descriptions } from "antd";
-import { EyeOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Table, Tag, Input, Select, Button, Space, Modal, Descriptions, message } from "antd";
+import { EyeOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { getAllTransactions, updateTransaction } from "../../services/AccountantService";
 
 const { Option } = Select;
+const { confirm } = Modal;
 
-const TableTransaction = ({ tableData }) => {
+const TableTransaction = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [isImageModalVisible, setIsImageModalVisible] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
 
-  useEffect(() => {
-    const newData = tableData.map((item, index) => ({
-      key: index + 1,
-      transactionNumber: index + 1,
-      transactionDate: item.createdAt || item.startDate,
-      packageName: item.packageId.packageName,
-      totalPrice: item.totalPrice,
-      processingContent: item.processingContent,
-      evidence: item.evidence,
-      // Include other necessary fields
-    }));
-    setData(newData);
-  }, [tableData]);
+  const fetchTransactions = async () => {
+    try {
+      const result = await getAllTransactions();
+      const formattedData = result.data.map((item, index) => ({
+        key: index + 1,
+        transactionId: item._id, // Ensure the ID is present for API updates
+        transactionNumber: index + 1,
+        transactionDate: item.createdAt || item.startDate,
+        packageName: item.packageId.packageName,
+        totalPrice: item.totalPrice,
+        processingContent: item.processingContent,
+        evidence: item.evidence,
+        // Include other necessary fields if needed
+      }));
+      setData(formattedData);
+    } catch (error) {
+      console.error("Error fetching transactions:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const handleStatusChange = (newStatus) => {
-    const updatedData = data.map((item) => {
-      if (item.key === selectedTransaction.key) {
-        return {
-          ...item,
-          processingContent: newStatus,
-        };
-      }
-      return item;
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
+  const showConfirmationDialog = (newStatus) => {
+    confirm({
+      title: `Bạn có chắc chắn muốn ${newStatus === "completed" ? "phê duyệt" : "từ chối"} giao dịch này không?`,
+      icon: <ExclamationCircleOutlined />,
+      content: `Thao tác này sẽ ${newStatus === "completed" ? "chấp nhận" : "từ chối"} giao dịch.`,
+      okText: "Xác nhận",
+      cancelText: "Hủy",
+      onOk() {
+        handleStatusChange(newStatus);
+      },
     });
-    setData(updatedData);
-    setIsDetailModalVisible(false);
+  };
+
+  const handleStatusChange = async (newStatus) => {
+    if (!selectedTransaction || !selectedTransaction.transactionId) {
+      message.error("Không tìm thấy ID giao dịch.");
+      return;
+    }
+
+    try {
+      // Immediately update the UI for optimistic feedback
+      const updatedData = data.map((item) => {
+        if (item.transactionId === selectedTransaction.transactionId) {
+          return {
+            ...item,
+            processingContent: newStatus, // Update the status in the UI
+          };
+        }
+        return item;
+      });
+
+      setData(updatedData);
+
+      // Call the update API with the correct transaction ID (_id)
+      await updateTransaction(selectedTransaction.transactionId, {
+        processingContent: newStatus,
+      });
+
+      message.success(`Trạng thái giao dịch đã được cập nhật thành công.`);
+    } catch (error) {
+      console.error("Error updating transaction:", error);
+      message.error("Đã xảy ra lỗi khi cập nhật trạng thái giao dịch.");
+
+      // Revert the UI update in case of an error
+      const revertedData = data.map((item) => {
+        if (item.transactionId === selectedTransaction.transactionId) {
+          return {
+            ...item,
+            processingContent: selectedTransaction.processingContent, // Revert to original status
+          };
+        }
+        return item;
+      });
+
+      setData(revertedData);
+    } finally {
+      setIsDetailModalVisible(false);
+    }
   };
 
   const columns = [
@@ -50,17 +111,7 @@ const TableTransaction = ({ tableData }) => {
       title: "Giao dịch số",
       dataIndex: "transactionNumber",
       key: "transactionNumber",
-      render: (text) => (
-        <p
-          style={{
-            color: "blue",
-            cursor: "pointer",
-            fontWeight: "600",
-          }}
-        >
-          Giao dịch số {text}
-        </p>
-      ),
+      render: (text) => <p style={{ color: "blue", cursor: "pointer", fontWeight: "600" }}>Giao dịch số {text}</p>,
     },
     {
       title: "Ngày giờ giao dịch",
@@ -172,7 +223,7 @@ const TableTransaction = ({ tableData }) => {
           </Select>
         </div>
       </Space>
-      <Table columns={columns} dataSource={data} pagination={{ pageSize: 10 }} footer={() => `Tổng số ${data.length} bản ghi`} />
+      <Table columns={columns} dataSource={data} loading={loading} pagination={{ pageSize: 10 }} footer={() => `Tổng số ${data.length} bản ghi`} />
       {/* Detail Modal */}
       <Modal
         title="Chi tiết giao dịch"
@@ -181,10 +232,10 @@ const TableTransaction = ({ tableData }) => {
         footer={
           selectedTransaction && selectedTransaction.processingContent === "pending"
             ? [
-                <Button key="reject" onClick={() => handleStatusChange("failed")}>
+                <Button key="reject" onClick={() => showConfirmationDialog("failed")}>
                   Từ chối
                 </Button>,
-                <Button key="approve" type="primary" onClick={() => handleStatusChange("completed")}>
+                <Button key="approve" type="primary" onClick={() => showConfirmationDialog("completed")}>
                   Phê duyệt
                 </Button>,
               ]
@@ -233,7 +284,6 @@ const TableTransaction = ({ tableData }) => {
                 );
               })()}
             </Descriptions.Item>
-            {/* Add more details if needed */}
           </Descriptions>
         )}
       </Modal>
