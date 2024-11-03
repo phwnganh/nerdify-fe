@@ -10,9 +10,9 @@ export default function MySubscription() {
   // const [user, setUser] = useState([]);
   const navigate = useNavigate();
   const {user} = useAuth();
-  const accountType = user?.accountType?.type;
+  const accountType = user?.accountType;
   const [currentPackage, setCurrentPackage] = useState();
-  console.log("accountType: ", accountType);
+  console.log("accountType: ", user?.accountType?.endDate);
   useEffect(() => {
     getCurrentPremiumPackage().then(res => {
       setCurrentPackage(res.data);
@@ -24,8 +24,8 @@ export default function MySubscription() {
         <TitleCustom level={2}>GÓI ĐĂNG KÝ VÀ THANH TOÁN</TitleCustom>
       </div>
       <div style={{ textAlign: "center" }}>
-        <TitleCustom level={5}>Trạng thái tài khoản: {accountType}</TitleCustom>
-        {accountType ===  ACCOUNT_TYPE.FREEMIUM ? (
+        <TitleCustom level={5}>Trạng thái tài khoản: {accountType?.type}</TitleCustom>
+        {accountType?.type ===  ACCOUNT_TYPE.FREEMIUM ? (
           <div>
             <ButtonCustom buttonType="primary" style={{ padding: "20px" }} onClick={() => navigate(CLIENT_URI.PREMIUM)}>
               Nâng cấp gói Premium

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown } from "antd";
+import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown, notification } from "antd";
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
@@ -61,8 +61,15 @@ export default function EditFlashCard() {
     };
 
     updateFlashcard(flashcardId, data)
-      .then((res) => messageApi.success("Cập nhật flashcard thành công!"))
+      .then((res) => {
+        notification.success({
+          message: res.message
+        })
+        messageApi.success("Cập nhật flashcard thành công!")})
       .catch((err) => {
+        notification.error({
+          message: err.message
+        })
         const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
         messageApi.error(errorMessage);
         console.error("Error:", err);

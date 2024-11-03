@@ -3,39 +3,39 @@ import CardCustom from "../../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../../components/Typography";
 import { Alert, Col, Row } from "antd";
 import ButtonCustom from "../../../../../components/Button";
-import { LockOutlined, UnlockOutlined } from "@ant-design/icons";
+import { CaretLeftOutlined, LockOutlined, UnlockOutlined } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../../constants";
-import { Navigate, useNavigate } from "react-router-dom";
-import { getPublicFlashcardList } from "../../../../../services/LearnerService";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { getMyFolderDetail, getPublicFlashcardList } from "../../../../../services/LearnerService";
 
-export default function FlashcardHistory() {
-  const [flashcards, setFlashcards] = useState([]);
+export default function FlashcardsInFolder() {
+  const [flashcards, setFlashcards] = useState([]);    
   const navigate = useNavigate();
+  const {folderId} = useParams();    
   const handleViewFlashcardDetail = (id) => {
     navigate(`${CLIENT_URI.FLASH_CARD}/${id}`);
   };
   useEffect(() => {
-    getPublicFlashcardList()
-      .then((data) => {
-        const sortedFlashcards = data.data.sort((a, b) => {
-          const lastAccessA = new Date(a.historyLearning[a.historyLearning.length - 1]);
-          const lastAccessB = new Date(b.historyLearning[b.historyLearning.length - 1]);
-          return lastAccessB - lastAccessA;
-        });
-        setFlashcards(sortedFlashcards);
+      getMyFolderDetail(folderId).then(res => {
+            setFlashcards(res?.data?.flashcards);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  }, [folderId]);
   return (
     <div>
+      <Row>
+        <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
+      </Row>
       {flashcards.length === 0 ? (
-        <Alert message="Không có bộ flashcard nào!" type="info" showIcon />
+        <Alert
+          message="Không có flashcard nào trong thư mục này."
+          type="info"
+          showIcon
+          style={{ marginTop: "20px" }}
+        />
       ) : (
         <Row gutter={[24, 24]} style={{ paddingTop: "30px" }}>
-          {flashcards?.map((flashcard, index) => (
-            <Col span={12}>
+          {flashcards.map((flashcard) => (
+            <Col span={12} key={flashcard._id}>
               <CardCustom style={{ background: "rgb(240, 242, 245)" }}>
                 <div>
                   <TitleCustom style={{ margin: "0px" }} level={3}>
@@ -43,10 +43,12 @@ export default function FlashcardHistory() {
                   </TitleCustom>
                   <TitleCustom level={5}>Trình độ {flashcard?.level}</TitleCustom>
                   <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
-                  <span style={{ marginLeft: "10px" }}>{flashcard?.isPublic ? <UnlockOutlined /> : <LockOutlined />}</span>
+                  <span style={{ marginLeft: "10px" }}>
+                    {flashcard?.isPublic ? <UnlockOutlined /> : <LockOutlined />}
+                  </span>
                 </div>
                 <div style={{ marginTop: "10px" }}>
-                  <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?._id)}>
+                  <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard._id)}>
                     Xem chi tiết
                   </ButtonCustom>
                 </div>

@@ -47,10 +47,10 @@ export default function TransactionDetailModal({ visible, onClose, transaction }
                   <Col style={{ paddingRight: "10px" }}>Ngày Kết Thúc:</Col>
                   <Col>{moment(transaction?.endDate).format("DD-MM-YYYY")}</Col>
                 </Row>
-                <Row style={{ whiteSpace: "nowrap", marginTop: "10px" }}>
+                {/* <Row style={{ whiteSpace: "nowrap", marginTop: "10px" }}>
                   <Col style={{ paddingRight: "45px" }}>Discount:</Col>
                   <Col>{transaction?.packageId?.discount}%</Col>
-                </Row>
+                </Row> */}
                 <Row style={{ whiteSpace: "nowrap", marginTop: "10px" }}>
                   <Col style={{ paddingRight: "37px" }}>Trạng thái:</Col>
                   <Col>{renderTransactionStatus(transaction?.processingContent)}</Col>

@@ -20,6 +20,7 @@ const URI_AUTH_SERVICE = {
   VIEW_PROFILE: API_AUTH_PREFIXES.AUTH + "/view-profile",
   CHANGE_PROFILE: API_AUTH_PREFIXES.AUTH + "/change-profile",
   CHANGE_PASSWORD: API_AUTH_PREFIXES.AUTH + "/change-password",
+  CANCEL_PREMIUM: API_AUTH_PREFIXES.AUTH + "/user/cancel-premium"
 };
 
 export const AUTH_SERVER_URI = {

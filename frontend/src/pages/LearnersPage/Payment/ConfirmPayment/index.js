@@ -32,7 +32,7 @@ export default function ConfirmPayment() {
       notification.success({
         message: "Thông tin đã gửi qua email của bạn. Vui lòng kiểm tra",
       });
-      navigate(CLIENT_URI.COURSE_PAGE);
+      navigate(CLIENT_URI.SUCCESS_PAYMENT + "/" + transactionId);
     } catch (error) {
       setLoading(false);
       console.log(error);

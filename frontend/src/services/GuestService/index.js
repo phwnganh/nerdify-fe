@@ -66,3 +66,8 @@ export const changePassword = async (params) => {
   const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PASSWORD, params);
   return res.data;
 }
+
+export const cancelPremium = async() => {
+  const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.CANCEL_PREMIUM);
+  return res.data;
+}
