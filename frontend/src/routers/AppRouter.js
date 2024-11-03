@@ -34,11 +34,8 @@ import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
-import SidebarCustom from "../components/SidebarAdmin/SidebarCustom";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import AdminContentLayout from "../layouts/AdminContentLayout";
-import { AdminContentSidebar } from "../components/SidebarAdmin/SidebarItems";
-import TableExercise from "../components/Table/TableExercise";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
