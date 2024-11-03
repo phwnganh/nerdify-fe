@@ -118,7 +118,6 @@ const TransactionHistory = () => {
     <>
       <div>
         <UserInfo />
-
         {/* Thẻ thông tin */}
         <div style={{ marginTop: "20px" }}>
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
@@ -129,29 +128,7 @@ const TransactionHistory = () => {
         </div>
 
         {/* Bảng thông tin giao dịch */}
-        <div
-          style={{
-            marginTop: "20px",
-            backgroundColor: "#fff",
-            padding: "20px",
-            borderRadius: "8px",
-            boxShadow: "0 0 1px rgba(0, 0, 0, 0.1)",
-            width: "100%",
-            height: "500px",
-            overflow: "auto",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <style>
-            {`
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      div::-webkit-scrollbar {
-        display: none;
-      }
-    `}
-          </style>
-          {/* Your content goes here */}
+        <div style={{ paddingTop: "20px" }}>
           <TableTransaction tableData={tableData} />
         </div>
       </div>

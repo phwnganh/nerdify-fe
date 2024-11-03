@@ -6,7 +6,7 @@ const API_PREFIXES = {
   COURSE: "/api/courses",
   FLASHCARD: "/api/flashcards",
   PAYMENT: "/api/payment",
-  BLOG: "/api/blog",
+  BLOG: "/api/blogs",
 };
 
 const URI_COURSES_SERVICE = {
@@ -44,6 +44,7 @@ const URI_PAYMENT_SERVICE = {
 
 const URI_BLOG_SERVICE = {
   BLOG: API_PREFIXES.BLOG,
+  BLOG_DETAILS: API_PREFIXES.BLOG + "/:blogId",
 };
 
 export const COURSE_SERVER_URI = {

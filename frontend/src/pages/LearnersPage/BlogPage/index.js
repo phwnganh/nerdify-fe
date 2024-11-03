@@ -64,6 +64,7 @@ import { EyeOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { BASE_SERVER } from "../../../constants";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+import { getBlogList } from "../../../services/LearnerService";
 
 const formatTime = (isoString) => {
   const date = new Date(isoString); // Convert ISO string to Date object
@@ -86,13 +87,9 @@ const BlogPage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch("http://localhost:80/api/blogs"); // Fetch all blogs from the server BE API
-      const result = await response.json();
-      if (result.success) {
-        setBlogs(result.data);
-      } else {
-        console.error("Failed to fetch blogs:", result.message);
-      }
+      const result = await getBlogList();
+
+      setBlogs(result.data);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     } finally {

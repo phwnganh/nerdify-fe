@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Card, Typography, Tag, Button, Breadcrumb, Spin, message } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
-import { useParams, Link } from "react-router-dom";
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+import { Link, useParams } from "react-router-dom";
+import { getBlogDetail, getBlogList } from "../../../services/LearnerService";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -25,8 +24,10 @@ const Sidebar = styled.div`
   padding: 16px;
   background-color: #f5f5f5;
   border-radius: 8px;
-  position: sticky;
-  top: 20px;
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: 200px;
   height: fit-content;
 `;
 
@@ -79,37 +80,18 @@ const AuthorInfo = styled(Text)`
   margin-bottom: 24px;
 `;
 
-const StyledQuote = styled.blockquote`
-  border-left: 4px solid #1890ff;
-  padding-left: 16px;
-  margin: 16px 0;
-  font-style: italic;
-  color: #1890ff;
-`;
-
-const BreadcrumbItemOrange = styled(Breadcrumb.Item)`
-  color: orange;
-`;
-
 // Main Component
 const BlogDetails = () => {
-  const { blogId } = useParams(); // Lấy blog ID từ URL
+  const { blogId } = useParams();
   const [blog, setBlog] = useState(null);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Hàm gọi API lấy chi tiết blog
+  // Fetch blog details
   const fetchBlogDetails = async () => {
     try {
-      console.log(blogId);
-      const response = await fetch(`http://localhost:80/api/blogs/${blogId}`);
-      // console.log("response", response);
-      const result = await response.json();
-
-      if (result.success) {
-        setBlog(result.data);
-      } else {
-        message.error("Lỗi khi lấy chi tiết blog: " + result.message);
-      }
+      const response = await getBlogDetail(blogId);
+      setBlog(response.data);
     } catch (error) {
       console.error("Error fetching blog details:", error);
       message.error("Có lỗi xảy ra khi lấy dữ liệu blog.");
@@ -118,19 +100,33 @@ const BlogDetails = () => {
     }
   };
 
+  // Fetch all blogs and select 5 random ones
+  const fetchRelatedBlogs = async () => {
+    try {
+      const result = await getBlogList();
+
+      const allBlogs = result.data;
+
+      // Ensure each blog entry has an ID property; adjust this if necessary (e.g., relatedBlog._id)
+      const shuffled = allBlogs.sort(() => 0.5 - Math.random());
+      setRelatedBlogs(shuffled.slice(0, 5));
+    } catch (error) {
+      console.error("Error fetching related blogs:", error);
+    }
+  };
+
   useEffect(() => {
     fetchBlogDetails();
+    fetchRelatedBlogs();
   }, [blogId]);
 
   if (loading) return <Spin tip="Đang tải dữ liệu..." />;
-
   if (!blog) return <p>Không tìm thấy bài viết.</p>;
 
   return (
     <Layout>
       {/* Main Blog Content */}
       <ContentWrapper>
-        {/* Breadcrumb */}
         <Breadcrumb>
           <Breadcrumb.Item>
             <Link to="/">Trang chủ</Link>
@@ -142,28 +138,20 @@ const BlogDetails = () => {
             <span style={{ color: "#F78F2E", fontWeight: "bold", textDecoration: "none" }}>{blog.title}</span>
           </Breadcrumb.Item>
         </Breadcrumb>
-
         <ImageBanner />
-
         <ContentCard bordered={false}>
           <TagsWrapper>
             <Tag color="blue">{blog.status}</Tag>
             <Tag color="purple">Views: {blog.views}</Tag>
           </TagsWrapper>
-
           <Title level={2}>{blog.title}</Title>
-
           <AuthorInfo type="secondary">
             Tác giả:{" "}
             <Button type="link" href="#">
               Content Manager
             </Button>
           </AuthorInfo>
-
           <Paragraph>{blog.description}</Paragraph>
-
-          {/* <StyledQuote>{blog.description.slice(0, 100)}...</StyledQuote> */}
-
           <Paragraph>Ngày tạo: {new Date(blog.createdAt).toLocaleDateString()}</Paragraph>
         </ContentCard>
       </ContentWrapper>
@@ -171,18 +159,14 @@ const BlogDetails = () => {
       {/* Sidebar for Related Articles */}
       <Sidebar>
         <RelatedArticlesTitle level={4}>Bài viết khác</RelatedArticlesTitle>
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>10 Kênh Podcast Miễn Phí Giúp Học Tiếng Đức Dễ Dàng Hơn</RelatedArticleText>
-        </RelatedArticleItem>
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>12 cụm từ tiếng Đức kỳ lạ nên biết</RelatedArticleText>
-        </RelatedArticleItem>
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>10 cách học tiếng Anh nhanh và hiệu quả</RelatedArticleText>
-        </RelatedArticleItem>
+        {relatedBlogs.map((relatedBlog, index) => (
+          <Link to={`/blog-study/${relatedBlog.id || relatedBlog._id}`} key={index} style={{ textDecoration: "none" }}>
+            <RelatedArticleItem>
+              <RelatedArticleImage src={relatedBlog.image || "https://via.placeholder.com/60"} />
+              <RelatedArticleText>{relatedBlog.title}</RelatedArticleText>
+            </RelatedArticleItem>
+          </Link>
+        ))}
       </Sidebar>
     </Layout>
   );

@@ -125,7 +125,7 @@ const TableTransaction = ({ tableData }) => {
       title: "Tên tài khoản",
       dataIndex: "accountName",
       key: "accountName",
-      render: (text) => <a>{text}</a>,
+      render: (text) => <p>{text}</p>,
     },
     { title: "Email", dataIndex: "email", key: "email" },
     {
@@ -179,8 +179,8 @@ const TableTransaction = ({ tableData }) => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <Space style={{ marginBottom: 16, width: "100%", display: "flex", justifyContent: "space-between", width: "100%" }} direction="horizontal" size="large">
+    <div>
+      <Space style={{ marginBottom: 16, display: "flex", justifyContent: "space-between", width: "100%" }} direction="horizontal" size="large">
         <Input.Search placeholder="Tìm kiếm bằng tên hoặc email" style={{ width: 300 }} />
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <label style={{ whiteSpace: "nowrap" }}>Ngày tạo</label>
