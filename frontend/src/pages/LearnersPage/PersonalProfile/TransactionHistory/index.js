@@ -1,4 +1,4 @@
-import { Col, Dropdown, Menu, Row, Select, Space } from "antd";
+import { Alert, Col, Dropdown, Menu, Row, Select, Space } from "antd";
 import InputCustom from "../../../../components/Input";
 import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import { TextCustom } from "../../../../components/Typography";
@@ -41,12 +41,12 @@ export default function ViewTransactionHistoryList() {
       key: "endDate",
       render: (endDate) => moment(endDate).format("DD-MM-YYYY"),
     },
-    {
-      title: "Discount",
-      dataIndex: "packageId",
-      key: "discount",
-      render: packageId => `${packageId?.discount}%`
-    },
+    // {
+    //   title: "Discount",
+    //   dataIndex: "packageId",
+    //   key: "discount",
+    //   render: packageId => `${packageId?.discount}%`
+    // },
     {
       title: "Tổng",
       dataIndex: "totalPrice",
@@ -86,24 +86,34 @@ export default function ViewTransactionHistoryList() {
         </TextCustom>
 
         {/* Search Bar and Dropdown */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", marginTop: "20px" }}>
+        {/* <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", marginTop: "20px" }}> */}
           {/* Search Input */}
-          <InputCustom placeholder="Tìm kiếm bằng tiêu đề" style={{ width: 300 }} prefix={<SearchOutlined />} />
+          {/* <InputCustom placeholder="Tìm kiếm bằng tiêu đề" style={{ width: 300 }} prefix={<SearchOutlined />} /> */}
 
           {/* Dropdown for Sorting */}
-          <Select
+          {/* <Select
             style={{ width: 200 }}
             defaultValue="newest"
             onChange={(value) => console.log("Selected:", value)} // Add sorting logic here
           >
             <Option value="newest">Ngày Giao Dịch Mới nhất</Option>
             <Option value="oldest">Ngày Giao Dịch Cũ nhất</Option>
-          </Select>
-        </div>
+          </Select> */}
+        {/* </div> */}
 
         {/* Table for Transaction History */}
         <div>
-          <TableCustom dataSource={transactions} columns={transactionColumns} rowKey="id"/>
+        {transactions.length > 0 ? (
+            <TableCustom dataSource={transactions} columns={transactionColumns} rowKey="id" style={{ marginTop: '30px' }} />
+          ) : (
+            <Alert
+              message="Không có lịch sử giao dịch"
+              description="Hiện tại không có giao dịch nào để hiển thị."
+              type="info"
+              showIcon
+              style={{ marginTop: '30px' }}
+            />
+          )}
         </div>
         <TransactionDetailModal visible={isModalVisible} onClose={handleCancelModal} transaction={selectedTransaction}></TransactionDetailModal>
       </div>

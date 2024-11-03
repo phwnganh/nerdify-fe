@@ -54,6 +54,8 @@ import Dashboard from "../pages/AdminPage/Dashboard";
 import FeedbackManagement from "../pages/AdminPage/FeedbackManagement";
 import PremiumManagement from "../pages/AdminPage/PremiumManagement";
 import AccountManagement from "../pages/AdminPage/AccountManagement";
+import PaymentSuccess from "../pages/LearnersPage/Payment/SuccessPayment";
+import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder";
 
 export const routes = [
   // Guest urls
@@ -252,6 +254,10 @@ export const routes = [
         element: <ConfirmPayment />,
       },
       {
+        path: `${CLIENT_URI.SUCCESS_PAYMENT}/:transactionId`,
+        element: <PaymentSuccess />,
+      },
+      {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
       },
@@ -263,6 +269,10 @@ export const routes = [
       {
         path: CLIENT_URI.MANAGE_FOLDER,
         element: <ManageFolder />,
+      },
+      {
+        path: `${CLIENT_URI.VIEW_FLASHCARDS_IN_FOLDER}/:folderId`,
+        element: <FlashcardsInFolder />,
       },
       {
         path: CLIENT_URI.CHANGE_PASSWORD,

@@ -15,29 +15,29 @@ const Sidebar = () => {
   const userInfo = user?.fullName;
   const navigate = useNavigate();
   return (
-    <Sider width={250} style={{ background: "#f97316" }}>
+    <Sider width={250} style={{ background: "#ffa751" }}>
       <div style={{ padding: "16px", textAlign: "center" }}>
         <Avatar size={64} icon={<UserOutlined />} style={{ backgroundColor: "#fff", color: "#f97316" }} />
         <h3 style={{ color: "#fff", margin: "16px 0" }}>{userInfo}</h3>
       </div>
-      <Menu mode="inline" style={{ background: "#f97316", color: "#fff" }} selectable={false}>
-        <Menu.Item key="1" icon={<BarChartOutlined />} onClick={() => navigate(CLIENT_URI.RESULTS_PRACTICE)}>
+      <Menu mode="inline" style={{ background: "#ffa751", color: "#fff" }} selectable={false}>
+        <Menu.Item key="1" icon={<BarChartOutlined />} onClick={() => navigate(CLIENT_URI.RESULTS_PRACTICE)} style={{color: 'white', fontWeight: 'bold'}}>
           Kết quả luyện tập
         </Menu.Item>
-        <Menu.Item key="2" icon={<FolderOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FOLDER)}>
+        <Menu.Item key="2" icon={<FolderOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FOLDER)} style={{color: 'white', fontWeight: 'bold'}}>
           Quản lý thư mục
         </Menu.Item>
-        <Menu.Item key="3" icon={<BookOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FLASHCARD)}>
+        <Menu.Item key="3" icon={<BookOutlined />} onClick={() => navigate(CLIENT_URI.MANAGE_FLASHCARD)} style={{color: 'white', fontWeight: 'bold'}}>
           Quản lý bộ flashcard
         </Menu.Item>
-        <Menu.Item key="4" icon={<TransactionOutlined />} onClick={() => navigate(CLIENT_URI.MY_TRANSACTION_HISTORY)}>
+        <Menu.Item key="4" icon={<TransactionOutlined />} onClick={() => navigate(CLIENT_URI.MY_TRANSACTION_HISTORY)} style={{color: 'white', fontWeight: 'bold'}}>
           Lịch sử giao dịch
         </Menu.Item>
-        <SubMenu key="sub1" icon={<SettingOutlined />} title="Cài đặt">
-          <Menu.Item key="5" icon={<UserOutlined />} onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
+        <SubMenu key="sub1" icon={<SettingOutlined />} title="Cài đặt" style={{color: 'white', fontWeight: 'bold'}}>
+          <Menu.Item key="5" icon={<UserOutlined />} onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)} style={{color: 'white', fontWeight: 'bold'}}>
             Chỉnh sửa trang cá nhân
           </Menu.Item>
-          <Menu.Item key="6" icon={<KeyOutlined />} onClick={() => navigate(CLIENT_URI.CHANGE_PASSWORD)}>
+          <Menu.Item key="6" icon={<KeyOutlined />} onClick={() => navigate(CLIENT_URI.CHANGE_PASSWORD)} style={{color: 'white', fontWeight: 'bold'}}>
             Đổi mật khẩu
           </Menu.Item>
         </SubMenu>

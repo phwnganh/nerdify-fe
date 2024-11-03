@@ -1,4 +1,4 @@
-import { Carousel, Col, Progress, Row } from "antd";
+import { Alert, Carousel, Col, Progress, Row } from "antd";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import CardCustom from "../../../components/Card";
 import { useEffect, useState } from "react";
@@ -46,39 +46,47 @@ export default function LearningProgress() {
       <BreadCrumbHome />
       <TitleCustom level={2}>Đang thực hiện</TitleCustom>
       <Row gutter={16}>
-        {data.map((level, levelIndex) => (
-          <Col span={24} key={levelIndex}>
-            <Row gutter={16}>
-              {level.phases.map(
-                (phase, phaseIndex) =>
-                  phase.completedExercises > 0 &&
-                  phase.title !== "Final Exam" && (
-                    <Col span={12} key={phaseIndex}>
-                      <CardCustom title={`${level.title}`} bordered={true} style={{ marginBottom: 16, borderColor: "#ffa751" }}>
-                        <div>
-                          <TextCustom style={{ fontWeight: "bold" }}>{phase.title}</TextCustom>
-                        </div>
-                        <div>
-                          <TextCustom>Tiến độ tổng thể</TextCustom>
-                        </div>
-                        <div>
-                          <Progress
-                            percent={Math.round(phase.progress).toFixed(2)} // Progress value from backend
-                            size={"small"}
-                          />
-                        </div>
-                        <Row justify={"end"} style={{ marginTop: "20px" }}>
-                          <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/${level._id}`)}>
-                            Tiếp tục
-                          </ButtonCustom>
-                        </Row>
-                      </CardCustom>
-                    </Col>
-                  ),
-              )}
-            </Row>
-          </Col>
-        ))}
+        {data.length === 0 ? (
+          <Alert message="Bạn chưa làm bài tập nào!" type="info" showIcon style={{ marginTop: "20px" }} />
+        ) : (
+          <>
+            {" "}
+            {data.map((level, levelIndex) => (
+              <Col span={24} key={levelIndex}>
+                <Row gutter={16}>
+                  {level.phases.map(
+                    (phase, phaseIndex) =>
+                      phase.completedExercises > 0 &&
+                      phase.title !== "Final Exam" && (
+                        <Col span={12} key={phaseIndex}>
+                          <CardCustom title={`${level.title}`} bordered={true} style={{ marginBottom: 16, borderColor: "#ffa751" }}>
+                            <div>
+                              <TextCustom style={{ fontWeight: "bold" }}>{phase.title}</TextCustom>
+                            </div>
+                            <div>
+                              <TextCustom>Tiến độ tổng thể</TextCustom>
+                            </div>
+                            <div>
+                              <Progress
+                                percent={Math.round(phase.progress).toFixed(2)} // Progress value from backend
+                                size={"small"}
+                              />
+                            </div>
+                            <Row justify={"end"} style={{ marginTop: "20px" }}>
+                              <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.LEVEL_DETAIL}/${level._id}`)}>
+                                Tiếp tục
+                              </ButtonCustom>
+                            </Row>
+                          </CardCustom>
+                        </Col>
+                      ),
+                  )}
+                </Row>
+              </Col>
+            ))}
+          </>
+        )}
+
         {/* <div>
           <a href="#">Xem tất cả</a>
         </div> */}

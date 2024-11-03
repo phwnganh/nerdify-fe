@@ -107,6 +107,11 @@ export const getMyFolder = async () => {
   return res.data;
 };
 
+export const getMyFolderDetail = async (folderId) => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.GET_MY_FOLDER + "/" + folderId);
+  return res.data;
+}
+
 export const searchFlashcard = async (query) => {
   const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.SEARCH_FLASHCARD + "?query=" + query);
   return res.data;

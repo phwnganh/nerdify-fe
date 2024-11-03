@@ -8,6 +8,12 @@ export const ACCOUNT_TYPE = {
   FREEMIUM: "Freemium",
   PREMIUM: "Premium"
 }
+
+export const TRANSACTION_STATUS = {
+  PENDING: "pending",
+  COMPLETED: "completed",
+  FAILED: "failed"
+}
 export const BASE_SERVER = process.env.REACT_APP_ROOT_API;
 export const EXERCISE_TYPE = {
   LISTENING: "listening",
