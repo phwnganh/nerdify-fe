@@ -8,17 +8,21 @@ const { confirm } = Modal;
 
 const TableTransaction = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [isImageModalVisible, setIsImageModalVisible] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [dateFilter, setDateFilter] = useState("newest");
+  const [packageFilter, setPackageFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
 
   const fetchTransactions = async () => {
     try {
       const result = await getAllTransactions();
       const formattedData = result.data.map((item, index) => ({
         key: index + 1,
-        transactionId: item._id, // Ensure the ID is present for API updates
+        transactionId: item._id, // Correctly use _id here
         transactionNumber: index + 1,
         transactionDate: item.createdAt || item.startDate,
         packageName: item.packageId.packageName,
@@ -28,6 +32,7 @@ const TableTransaction = () => {
         // Include other necessary fields if needed
       }));
       setData(formattedData);
+      setFilteredData(formattedData);
     } catch (error) {
       console.error("Error fetching transactions:", error);
     } finally {
@@ -38,6 +43,29 @@ const TableTransaction = () => {
   useEffect(() => {
     fetchTransactions();
   }, []);
+
+  useEffect(() => {
+    let filtered = [...data];
+
+    // Filter by date
+    if (dateFilter === "oldest") {
+      filtered.sort((a, b) => new Date(a.transactionDate) - new Date(b.transactionDate));
+    } else {
+      filtered.sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
+    }
+
+    // Filter by package
+    if (packageFilter !== "all") {
+      filtered = filtered.filter((item) => item.packageName.includes(packageFilter));
+    }
+
+    // Filter by status
+    if (statusFilter !== "all") {
+      filtered = filtered.filter((item) => item.processingContent === statusFilter);
+    }
+
+    setFilteredData(filtered);
+  }, [dateFilter, packageFilter, statusFilter, data]);
 
   const showConfirmationDialog = (newStatus) => {
     confirm({
@@ -217,13 +245,26 @@ const TableTransaction = () => {
         <Input.Search placeholder="Tìm kiếm giao dịch" style={{ width: 300 }} />
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <label style={{ whiteSpace: "nowrap" }}>Ngày tạo</label>
-          <Select defaultValue="Mới nhất" style={{ width: 120 }}>
+          <Select value={dateFilter} onChange={setDateFilter} style={{ width: 120 }}>
             <Option value="newest">Mới nhất</Option>
             <Option value="oldest">Cũ nhất</Option>
           </Select>
+          <label style={{ whiteSpace: "nowrap" }}>Gói đăng ký</label>
+          <Select value={packageFilter} onChange={setPackageFilter} style={{ width: 150 }}>
+            <Option value="all">Tất cả</Option>
+            <Option value="6 tháng">6 tháng</Option>
+            <Option value="12 tháng">12 tháng</Option>
+          </Select>
+          <label style={{ whiteSpace: "nowrap" }}>Trạng thái</label>
+          <Select value={statusFilter} onChange={setStatusFilter} style={{ width: 150 }}>
+            <Option value="all">Tất cả</Option>
+            <Option value="completed">Chấp nhận</Option>
+            <Option value="pending">Đang chờ</Option>
+            <Option value="failed">Từ chối</Option>
+          </Select>
         </div>
       </Space>
-      <Table columns={columns} dataSource={data} loading={loading} pagination={{ pageSize: 10 }} footer={() => `Tổng số ${data.length} bản ghi`} />
+      <Table columns={columns} dataSource={filteredData} loading={loading} pagination={{ pageSize: 10 }} footer={() => `Tổng số ${filteredData.length} bản ghi`} />
       {/* Detail Modal */}
       <Modal
         title="Chi tiết giao dịch"
