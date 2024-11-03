@@ -1,234 +1,246 @@
 import React, { useState, useEffect } from "react";
-import { Table, Tag, Input, Select, Button, Space } from "antd";
+import { Table, Tag, Input, Select, Button, Space, Modal, Descriptions } from "antd";
 import { EyeOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
 const TableTransaction = ({ tableData }) => {
-  //data mẫu
-  //   const initialData = [
-  //     {
-  //       key: 1,
-  //       accountName: "Hoàng Huy Linh",
-  //       email: "linhnhha24@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 2,
-  //       accountName: "Đặng Tuấn Anh",
-  //       email: "anhdth14@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 3,
-  //       accountName: "Sỹ Danh Tiến",
-  //       email: "tiensdh12@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Ngừng hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 4,
-  //       accountName: "Trần Thị Thủy",
-  //       email: "thuythte15@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 5,
-  //       accountName: "Phạm Thị Tâm",
-  //       email: "tampthe10@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 6,
-  //       accountName: "Hoàng Mẫn Nhi",
-  //       email: "nhinhm8@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Ngừng hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 7,
-  //       accountName: "Hoàng Mẫn Tiến",
-  //       email: "tienhmhe9@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 8,
-  //       accountName: "Phạm Thị Nguyệt Huế",
-  //       email: "huept4@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 9,
-  //       accountName: "Nguyễn Thị Thu Hằng",
-  //       email: "hangnt12@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "1 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 3,
-  //       totalAmountPaid: "100.000vnd",
-  //     },
-  //     {
-  //       key: 10,
-  //       accountName: "Nguyễn Phương Thủy",
-  //       email: "thuynp8@fe.edu.vn",
-  //       transactionDate: "20/01/2025",
-  //       registeredPackage: "6 tháng",
-  //       accountStatus: "Đang hoạt động",
-  //       totalRegisteredPackages: 1,
-  //       totalAmountPaid: "600.000vnd",
-  //     },
-  //   ];
-
   const [data, setData] = useState([]);
+  const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
+  const [isImageModalVisible, setIsImageModalVisible] = useState(false);
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   useEffect(() => {
     const newData = tableData.map((item, index) => ({
-      ...item,
-      key: item.key || index + 1,
+      key: index + 1,
+      transactionNumber: index + 1,
+      transactionDate: item.createdAt || item.startDate,
+      packageName: item.packageId.packageName,
+      totalPrice: item.totalPrice,
+      processingContent: item.processingContent,
+      evidence: item.evidence,
+      // Include other necessary fields
     }));
     setData(newData);
   }, [tableData]);
 
+  const handleStatusChange = (newStatus) => {
+    const updatedData = data.map((item) => {
+      if (item.key === selectedTransaction.key) {
+        return {
+          ...item,
+          processingContent: newStatus,
+        };
+      }
+      return item;
+    });
+    setData(updatedData);
+    setIsDetailModalVisible(false);
+  };
+
   const columns = [
-    { title: "#", dataIndex: "key", key: "key", width: 50, align: "center" },
     {
-      title: "Tên tài khoản",
-      dataIndex: "accountName",
-      key: "accountName",
-      render: (text) => <p>{text}</p>,
+      title: "#",
+      dataIndex: "key",
+      key: "key",
+      width: 50,
+      align: "center",
     },
-    { title: "Email", dataIndex: "email", key: "email" },
     {
-      title: "Ngày giao dịch (dd/mm/yyyy)",
+      title: "Giao dịch số",
+      dataIndex: "transactionNumber",
+      key: "transactionNumber",
+      render: (text) => (
+        <p
+          style={{
+            color: "blue",
+            cursor: "pointer",
+            fontWeight: "600",
+          }}
+        >
+          Giao dịch số {text}
+        </p>
+      ),
+    },
+    {
+      title: "Ngày giờ giao dịch",
       dataIndex: "transactionDate",
       key: "transactionDate",
       align: "center",
+      render: (date) => <p>{new Date(date).toLocaleString("vi-VN")}</p>,
     },
     {
       title: "Gói đăng ký",
-      dataIndex: "registeredPackage",
-      key: "registeredPackage",
+      dataIndex: "packageName",
+      key: "packageName",
       align: "center",
     },
     {
-      title: "Trạng thái tài khoản",
-      dataIndex: "accountStatus",
-      key: "accountStatus",
+      title: "Tổng tiền",
+      dataIndex: "totalPrice",
+      key: "totalPrice",
       align: "center",
-      render: (status) => <Tag color={status === "Đang hoạt động" ? "green" : "red"}>{status}</Tag>,
+      render: (price) => <p>{price.toLocaleString("vi-VN")} VND</p>,
     },
     {
-      title: "Tổng số gói đã đăng ký",
-      dataIndex: "totalRegisteredPackages",
-      key: "totalRegisteredPackages",
+      title: "Trạng thái",
+      dataIndex: "processingContent",
+      key: "processingContent",
       align: "center",
+      render: (status) => {
+        let color;
+        let displayText;
+        switch (status) {
+          case "completed":
+            color = "green";
+            displayText = "Chấp nhận";
+            break;
+          case "pending":
+            color = "gold";
+            displayText = "Đang chờ";
+            break;
+          case "failed":
+            color = "red";
+            displayText = "Từ chối";
+            break;
+          default:
+            color = "gray";
+            displayText = status;
+        }
+        return (
+          <Tag color={color} style={{ fontWeight: "600" }}>
+            {displayText}
+          </Tag>
+        );
+      },
     },
     {
-      title: "Tổng tiền đã đóng",
-      dataIndex: "totalAmountPaid",
-      key: "totalAmountPaid",
+      title: "Ảnh chuyển khoản",
+      dataIndex: "evidence",
+      key: "evidence",
       align: "center",
+      render: (_, record) => (
+        <Button
+          type="text"
+          icon={<EyeOutlined />}
+          key={`image-${record.key}`}
+          onClick={() => {
+            setSelectedTransaction(record);
+            setIsImageModalVisible(true);
+          }}
+        />
+      ),
     },
     {
-      title: "Chức năng",
+      title: "Chi tiết giao dịch",
       key: "action",
       align: "center",
       render: (_, record) => (
         <Space size="middle">
-          <Button type="text" icon={<EyeOutlined />} key={`view-${record.key}`} />
-          <Button type="text" icon={<DeleteOutlined />} key={`delete-${record.key}`} onClick={() => handleDelete(record.key)} />
-          <Button type="text" icon={<EditOutlined />} key={`edit-${record.key}`} />
+          <Button
+            type="text"
+            icon={<EyeOutlined />}
+            key={`view-${record.key}`}
+            onClick={() => {
+              setSelectedTransaction(record);
+              setIsDetailModalVisible(true);
+            }}
+          />
         </Space>
       ),
     },
   ];
 
-  const handleDelete = (key) => {
-    const newData = data.filter((item) => item.key !== key);
-    setData(newData);
-  };
-
   return (
     <div>
-      <Space style={{ marginBottom: 16, display: "flex", justifyContent: "space-between", width: "100%" }} direction="horizontal" size="large">
-        <Input.Search placeholder="Tìm kiếm bằng tên hoặc email" style={{ width: 300 }} />
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <label style={{ whiteSpace: "nowrap" }}>Ngày tạo</label>
-          <Select defaultValue="Mới nhất" style={{ width: 120 }}>
-            <Option value="newest">Mới nhất</Option>
-            <Option value="oldest">Cũ nhất</Option>
-          </Select>
-        </div>
-      </Space>
-
       <Space
         style={{
           marginBottom: 16,
-          width: "100%",
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
+          width: "100%",
         }}
+        direction="horizontal"
         size="large"
       >
-        {/* <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <Select defaultValue="Tất cả" style={{ width: 120 }}>
-            <Option value="all">Tất cả</Option>
-            <Option value="yes">Có</Option>
-            <Option value="no">Không</Option>
-          </Select>
-          <label style={{ whiteSpace: "nowrap" }}>Tài khoản trả phí</label>
-        </div> */}
-
+        <Input.Search placeholder="Tìm kiếm giao dịch" style={{ width: 300 }} />
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <Select defaultValue="Tất cả" style={{ width: 120 }}>
-            <Option value="all">Tất cả</Option>
-            <Option value="active">Đang hoạt động</Option>
-            <Option value="inactive">Ngừng hoạt động</Option>
-          </Select>
-          <label style={{ whiteSpace: "nowrap" }}>Trạng thái tài khoản</label>
-        </div>
-
-        {/* <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <label style={{ whiteSpace: "nowrap" }}>Ngày tạo</label>
           <Select defaultValue="Mới nhất" style={{ width: 120 }}>
             <Option value="newest">Mới nhất</Option>
             <Option value="oldest">Cũ nhất</Option>
           </Select>
-          <label style={{ whiteSpace: "nowrap" }}>Ngày tạo</label>
-        </div> */}
+        </div>
       </Space>
-
       <Table columns={columns} dataSource={data} pagination={{ pageSize: 10 }} footer={() => `Tổng số ${data.length} bản ghi`} />
+      {/* Detail Modal */}
+      <Modal
+        title="Chi tiết giao dịch"
+        open={isDetailModalVisible}
+        onCancel={() => setIsDetailModalVisible(false)}
+        footer={
+          selectedTransaction && selectedTransaction.processingContent === "pending"
+            ? [
+                <Button key="reject" onClick={() => handleStatusChange("failed")}>
+                  Từ chối
+                </Button>,
+                <Button key="approve" type="primary" onClick={() => handleStatusChange("completed")}>
+                  Phê duyệt
+                </Button>,
+              ]
+            : null
+        }
+      >
+        {selectedTransaction && (
+          <Descriptions bordered>
+            <Descriptions.Item label="Giao dịch số" span={3}>
+              {selectedTransaction.transactionNumber}
+            </Descriptions.Item>
+            <Descriptions.Item label="Ngày giờ giao dịch" span={3}>
+              {new Date(selectedTransaction.transactionDate).toLocaleString("vi-VN")}
+            </Descriptions.Item>
+            <Descriptions.Item label="Gói đăng ký" span={3}>
+              {selectedTransaction.packageName}
+            </Descriptions.Item>
+            <Descriptions.Item label="Tổng tiền" span={3}>
+              {selectedTransaction.totalPrice.toLocaleString("vi-VN")} VND
+            </Descriptions.Item>
+            <Descriptions.Item label="Trạng thái" span={3}>
+              {(() => {
+                let color;
+                let displayText;
+                switch (selectedTransaction.processingContent) {
+                  case "completed":
+                    color = "green";
+                    displayText = "Chấp nhận";
+                    break;
+                  case "pending":
+                    color = "gold";
+                    displayText = "Đang chờ";
+                    break;
+                  case "failed":
+                    color = "red";
+                    displayText = "Từ chối";
+                    break;
+                  default:
+                    color = "gray";
+                    displayText = selectedTransaction.processingContent;
+                }
+                return (
+                  <Tag color={color} style={{ fontWeight: "600" }}>
+                    {displayText}
+                  </Tag>
+                );
+              })()}
+            </Descriptions.Item>
+            {/* Add more details if needed */}
+          </Descriptions>
+        )}
+      </Modal>
+      {/* Image Modal */}
+      <Modal title="Ảnh chuyển khoản" open={isImageModalVisible} onCancel={() => setIsImageModalVisible(false)} footer={null}>
+        {selectedTransaction && <img src={selectedTransaction.evidence} alt="Ảnh chuyển khoản" style={{ width: "100%" }} />}
+      </Modal>
     </div>
   );
 };
