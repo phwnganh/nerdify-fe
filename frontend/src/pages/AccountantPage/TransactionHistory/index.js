@@ -1,116 +1,107 @@
-// Danh sách giao dịch trong hệ thống
-import React from "react";
+import React, { useState, useEffect } from "react";
 import UserInfo from "../../../components/Header/AccountantHeader/UserInfo";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import { BellOutlined } from "@ant-design/icons";
 import TableTransaction from "../../../components/Table/TableTransaction";
+import { getAllTransactions } from "../../../services/AccountantService";
 
 const TransactionHistory = () => {
-  // Dữ liệu thẻ thông tin
-  const doanhThu = [
-    { id: 1, title: "Tổng số giao dịch tháng này", value: "35 giao dịch", icon: <BellOutlined /> },
-    { id: 2, title: "Doanh thu trong tháng", value: "1,000,000 VND", icon: <BellOutlined /> },
-  ];
-  const tableData = [
+  const [stats, setStats] = useState({
+    totalTransactions: 0,
+    totalRevenue: 0,
+    statusCounts: {
+      pending: 0,
+      completed: 0,
+      failed: 0,
+      others: 0,
+    },
+  });
+
+  useEffect(() => {
+    fetchAndCalculateStats();
+  }, []);
+
+  const fetchAndCalculateStats = async () => {
+    try {
+      const result = await getAllTransactions();
+      console.log("API response:", result);
+
+      const transactions = result.data; // Access all transactions directly
+
+      // Calculate total number of transactions and total revenue
+      const totalTransactions = transactions.length;
+      const totalRevenue = transactions.reduce((sum, transaction) => {
+        return sum + (transaction.totalPrice || 0);
+      }, 0);
+
+      // Calculate number of transactions by status
+      const statusCounts = transactions.reduce(
+        (acc, transaction) => {
+          switch (transaction.processingContent) {
+            case "pending":
+              acc.pending += 1;
+              break;
+            case "completed":
+              acc.completed += 1;
+              break;
+            case "failed":
+              acc.failed += 1;
+              break;
+            default:
+              acc.others += 1;
+              break;
+          }
+          return acc;
+        },
+        { pending: 0, completed: 0, failed: 0, others: 0 },
+      );
+
+      setStats({
+        totalTransactions,
+        totalRevenue,
+        statusCounts,
+      });
+    } catch (error) {
+      console.error("Error fetching and calculating statistics:", error);
+    }
+  };
+
+  const leftCards = [
     {
       id: 1,
-      accountName: "Hoàng Huy Linh",
-      email: "linhnhha24@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
+      title: "Tổng số giao dịch",
+      value: `${stats.totalTransactions} giao dịch`,
+      icon: <BellOutlined />,
     },
     {
       id: 2,
-      accountName: "Đặng Tuấn Anh",
-      email: "anhdth14@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
+      title: "Tổng doanh thu",
+      value: `${stats.totalRevenue.toLocaleString("vi-VN")} VND`,
+      icon: <BellOutlined />,
     },
+  ];
+
+  const rightCards = [
     {
       id: 3,
-      accountName: "Sỹ Danh Tiến",
-      email: "tiensdh12@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Ngừng hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
+      title: "Giao dịch đang chờ duyệt",
+      value: `${stats.statusCounts.pending} giao dịch`,
+      icon: <BellOutlined />,
+      color: "gold", // Color for pending status
     },
     {
       id: 4,
-      accountName: "Trần Thị Thủy",
-      email: "thuythte15@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
+      title: "Giao dịch đã chấp nhận",
+      value: `${stats.statusCounts.completed} giao dịch`,
+      icon: <BellOutlined />,
+      color: "green", // Color for completed status
     },
     {
       id: 5,
-      accountName: "Phạm Thị Tâm",
-      email: "tampthe10@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
-    },
-    {
-      id: 6,
-      accountName: "Hoàng Mẫn Nhi",
-      email: "nhinhm8@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Ngừng hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
-    },
-    {
-      id: 7,
-      accountName: "Hoàng Mẫn Tiến",
-      email: "tienhmhe9@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
-    },
-    {
-      id: 8,
-      accountName: "Phạm Thị Nguyệt Huế",
-      email: "huept4@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
-    },
-    {
-      id: 9,
-      accountName: "Nguyễn Thị Thu Hằng",
-      email: "hangnt12@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "1 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 3,
-      totalAmountPaid: "100.000vnd",
-    },
-    {
-      id: 10,
-      accountName: "Nguyễn Phương Thủy",
-      email: "thuynp8@fe.edu.vn",
-      transactionDate: "20/01/2025",
-      registeredPackage: "6 tháng",
-      accountStatus: "Đang hoạt động",
-      totalRegisteredPackages: 1,
-      totalAmountPaid: "600.000vnd",
+      title: "Giao dịch bị từ chối",
+      value: `${stats.statusCounts.failed} giao dịch`,
+      icon: <BellOutlined />,
+      color: "red", // Color for failed status
     },
   ];
 
@@ -118,18 +109,31 @@ const TransactionHistory = () => {
     <>
       <div>
         <UserInfo />
-        {/* Thẻ thông tin */}
-        <div style={{ marginTop: "20px" }}>
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            {doanhThu.map((item) => (
+        <div style={{ marginTop: "20px", display: "grid", gridTemplateColumns: "1fr 2fr", gap: "10px" }}>
+          {/* Left side */}
+          <div style={{ display: "grid", gap: "20px" }}>
+            {leftCards.map((item) => (
               <HoverableCard key={item.id} item={item} />
+            ))}
+          </div>
+
+          {/* Right side */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "20px",
+              justifyContent: "space-around",
+            }}
+          >
+            {rightCards.map((item) => (
+              <HoverableCard key={item.id} item={item} style={{ borderColor: item.color, flex: "1 1 200px" }} />
             ))}
           </div>
         </div>
 
-        {/* Bảng thông tin giao dịch */}
         <div style={{ paddingTop: "20px" }}>
-          <TableTransaction tableData={tableData} />
+          <TableTransaction />
         </div>
       </div>
     </>

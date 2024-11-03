@@ -50,7 +50,7 @@ export const LoginPage = () => {
           navigate(CLIENT_URI.ADMIN_DASHBOARD);
           return;
         } else if (resp.data.role === ROLES.ACCOUNTANT_ROLE) {
-          navigate(CLIENT_URI.ACCOUNTANT_DASHBOARD);
+          navigate(CLIENT_URI.SYSTEM_REVENUE);
           return;
         } else {
           navigate(CLIENT_URI.COURSE_PAGE);
