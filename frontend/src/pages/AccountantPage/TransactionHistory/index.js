@@ -124,6 +124,8 @@ const TransactionHistory = () => {
               flexWrap: "wrap",
               gap: "20px",
               justifyContent: "space-around",
+              height: "50%",
+              alignSelf: "start",
             }}
           >
             {rightCards.map((item) => (
