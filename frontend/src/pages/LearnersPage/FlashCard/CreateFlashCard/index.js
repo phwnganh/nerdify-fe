@@ -192,7 +192,7 @@ export default function CreateFlashCard() {
                             />
                           </Form.Item>
                         </Col>
-                        <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
+                        {/* <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
                           <Form.Item name={[field.name, "fileList"]} valuePropName="fileList" getValueFromEvent={normFile}>
                             <Upload action="/upload.do" listType="picture-card">
                               <button style={{ border: 0, background: "none" }} type="button">
@@ -201,7 +201,7 @@ export default function CreateFlashCard() {
                               </button>
                             </Upload>
                           </Form.Item>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </div>
                   </Card>
