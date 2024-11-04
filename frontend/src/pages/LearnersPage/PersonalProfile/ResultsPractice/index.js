@@ -80,7 +80,7 @@ export default function ViewResultsPractice() {
                   </div>
                   <div style={{ fontSize: "14px", marginBottom: "12px" }}>
                     <div>Ngày làm bài gần nhất: {moment(result.submissionDate).format("DD-MM-YYYY")}</div>
-                    <div>Kết quả: {Math.round(result.score).toFixed(2)}%</div>
+                    <div>Kết quả: {result.score}%</div>
                   </div>
                   <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(result?.exerciseId?.exerciseType, result?._id)}>
                     Xem chi tiết
