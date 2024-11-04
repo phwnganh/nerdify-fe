@@ -122,82 +122,94 @@ export default function CheckpointQuiz({ exercises }) {
     setCurrentPartIndex(0);
     setTimeLeft(15 * 60);
   }, []);
-  const renderPart = (part) => (
-    <>
-      {part.questions.map((question, index) => (
-        <div key={index}>
-          <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
-            Câu {index + 1}: {question.question}
-          </TextCustom>
-          {question.questionParagraph && (
-            <ParagraphCustom>
-              {question?.questionParagraph.split("\n").map((line, index) => (
-                <React.Fragment key={index}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </ParagraphCustom>
-          )}
-          {question?.audioUrl && (
-            <audio controls style={{ marginTop: "20px", width: "100%" }}>
-              <source src={audioArr[question?.audioUrl]} type="audio/mp3" />
-              Trình duyệt của bạn không hỗ trợ phần tử audio.
-            </audio>
-          )}
-          <div style={{ marginTop: "20px" }}>
-            <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
-              {question.options.map((option, index) => {
-                const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
-                let backgroundColor = isUserSelected ? "#A8703E" : "";
-
-                if (isSubmitted && submissionData.score >= 50) {
-                  const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
-                  if (foundQuestion) {
-                    backgroundColor = "#5FD855";
-                  } else if (isUserSelected) {
-                    backgroundColor = "red";
-                  }
-                }
-
-                return (
-                  <Col key={index} span={8}>
-                    <ButtonCustom
-                      buttonType="primary"
-                      onClick={() => handleSelectOptions(question._id, option._id)}
-                      style={{
-                        backgroundColor,
-                      }}
-                      disabled={isSubmitted}
-                    >
-                      {option.optionImage ? (
-                        <span>{index + 1}</span>
-                      ) : (
-                        <div>
-                          <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
-                        </div>
-                      )}
-                    </ButtonCustom>
-                  </Col>
-                );
-              })}
-            </Row>
-            {question.options.some((option) => option.optionImage) && (
-              <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
-                {question.options
-                  .filter((option) => option.optionImage)
-                  .map((option, index) => (
-                    <Col key={index} span={8}>
-                      <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
-                    </Col>
-                  ))}
-              </Row>
+  const renderPart = (part) => {
+    return (
+      <div>
+        {part?.paragraph && (
+          <ParagraphCustom>
+            {part?.paragraph.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </ParagraphCustom>
+        )}
+        {part.questions.map((question, index) => (
+          <div key={index}>
+            <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
+              Câu {index + 1}: {question.question}
+            </TextCustom>
+            {question.questionParagraph && (
+              <ParagraphCustom>
+                {question?.questionParagraph.split("\n").map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </ParagraphCustom>
             )}
+            {question?.mediaUrl && (
+              <audio controls style={{ marginTop: "20px", width: "100%" }}>
+                <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
+                Trình duyệt của bạn không hỗ trợ phần tử audio.
+              </audio>
+            )}
+            <div style={{ marginTop: "20px" }}>
+              <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+                {question.options.map((option, index) => {
+                  const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
+                  let backgroundColor = isUserSelected ? "#A8703E" : "";
+
+                  if (isSubmitted && submissionData.score >= 50) {
+                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
+                    if (foundQuestion) {
+                      backgroundColor = "#5FD855";
+                    } else if (isUserSelected) {
+                      backgroundColor = "red";
+                    }
+                  }
+
+                  return (
+                    <Col key={index} span={8}>
+                      <ButtonCustom
+                        buttonType="primary"
+                        onClick={() => handleSelectOptions(question._id, option._id)}
+                        style={{
+                          backgroundColor,
+                        }}
+                        disabled={isSubmitted}
+                      >
+                        {option.optionImage ? (
+                          <span>{index + 1}</span>
+                        ) : (
+                          <div>
+                            <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
+                          </div>
+                        )}
+                      </ButtonCustom>
+                    </Col>
+                  );
+                })}
+              </Row>
+              {question.options.some((option) => option.optionImage) && (
+                <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
+                  {question.options
+                    .filter((option) => option.optionImage)
+                    .map((option, index) => (
+                      <Col key={index} span={8}>
+                        <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
+                      </Col>
+                    ))}
+                </Row>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
-    </>
-  );
+        ))}
+      </div>
+    );
+  };
 
   if (!exercises?.parts) {
     return <div>Loading...</div>;

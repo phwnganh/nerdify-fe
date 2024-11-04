@@ -20,7 +20,7 @@ export const useAFileUpload = () => {
     formData.append("file", file); // Thêm tệp vào formData với key là 'file'
 
     try {
-      const response = await axios.post("http://localhost:80/api/courses/uploadfile", formData, {
+      const response = await axios.post("https://api.deustchnerd.site/api/courses/uploadfile", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

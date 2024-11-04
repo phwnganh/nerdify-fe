@@ -53,4 +53,3 @@ const styles = {
 };
 
 export default AdminContentLayout;
-

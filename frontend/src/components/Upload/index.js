@@ -21,7 +21,7 @@ function UploadForm() {
     }
   
     try {
-      const res = await axios.post("http://localhost:80/api/courses/uploadfiles", formData, {
+      const res = await axios.post("https://api.deustchnerd.site/api/courses/uploadfiles", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -74,7 +74,7 @@ function UploadForm() {
     formData.append("file", file); // Thêm tệp vào formData với key là 'file'
 
     try {
-      const response = await axios.post("http://localhost:80/api/courses/uploadfiles", formData, {
+      const response = await axios.post("https://api.deustchnerd.site/api/courses/uploadfiles", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

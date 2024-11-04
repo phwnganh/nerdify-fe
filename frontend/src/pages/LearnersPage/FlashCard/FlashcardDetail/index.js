@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Dropdown, List, Row, Modal, Select } from "antd";
+import { Button, Col, Dropdown, List, Row, Modal, Select, message } from "antd";
 import {
   EditOutlined,
   FileOutlined,
@@ -14,6 +14,7 @@ import {
   RightOutlined,
   ShareAltOutlined,
   SoundOutlined,
+  UnlockOutlined,
 } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,14 +27,14 @@ import InputCustom from "../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../constants";
 import { Option } from "antd/es/mentions";
-import { getFlashcardDetail } from "../../../../services/LearnerService";
+import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
 import { useAuth } from "../../../../hooks";
 import moment from "moment";
 
 export default function FlashCardDetail({ modalToChooseFolder }) {
   const navigate = useNavigate();
-  const { flashcardId } = useParams();
-  const {user} = useAuth();
+  const {flashcardId } = useParams();
+  const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,14 +45,33 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   const [numberOfCard, setNumberOfCard] = useState("");
   const [isVisibleFolderList, setIsVisibleFolderList] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState(null);
   const [folders, setFolders] = useState([]);
+  const [isPublic, setIsPublic] = useState(false);
+
+
   const displayModalToChooseFolders = () => {
     console.log("Modal is opening");
     setIsVisibleFolderList(true);
   };
 
   const handleOkToChooseFolders = () => {
-    setIsVisibleFolderList(false);
+    if (!selectedFolderId) {
+      message.error("Vui lòng chọn một folder trước khi thêm.");
+      return;
+  }
+    addFlashcardToFolder(selectedFolderId, flashcardId)
+      .then((res) => {
+        message.success("Thêm vào folder thành công!");
+        setIsVisibleFolderList(false); // Close modal on success
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể thêm vào folder.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+
+    // setIsVisibleFolderList(false);
   };
 
   const handleCancelToChooseFolders = () => {
@@ -77,17 +97,35 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
   useEffect(() => {
     if (flashcardId) {
       getFlashcardDetail(flashcardId)
-        .then((data) => setFlashcard(data.data))
+        .then((data) => {
+          setFlashcard(data.data);
+          setIsPublic(data.data.isPublic);
+        })
         .catch((err) => console.error(err));
     }
   }, [flashcardId]);
 
+  const handleChangStatus = () => {
+    const newStatus = !isPublic;
+    console.log(isPublic);
+
+    updateFlashcardStatus(flashcardId, newStatus)
+      .then((res) => {
+        setIsPublic(newStatus);
+        message.success("Cập nhật trạng thái flashcard thành công!");
+      })
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || "Không thể cập nhật trạng thái flashcard.";
+        message.error(errorMessage);
+        console.error("Error:", err);
+      });
+  };
+
   useEffect(() => {
-    fetch(`${BASE_SERVER}/folders`)
-      .then((data) => data.json())
-      .then((data) => {setFolders(data)
-        console.log("folders:" , folders);
-        
+    getMyFolder()
+      .then((data) => {
+        setFolders(data.data);
+        console.log("folders:", folders);
       })
       .catch((err) => {
         console.log(err);
@@ -214,7 +252,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
           </Row>
           <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
             <Col style={{ marginRight: "20px" }}>
-              <Button icon={<ShareAltOutlined />} shape="circle" />
+              {/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}
             </Col>
             <Col>
               <Button
@@ -284,7 +322,7 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
           </Row>
           <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
             <Col style={{ marginRight: "20px" }}>
-              <Button icon={<ShareAltOutlined />} shape="circle" />
+              {/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}
             </Col>
             <Col>
               <Button
@@ -358,16 +396,16 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
             <Button key={"cancel"} style={{ marginRight: "20px" }} onClick={handleCancelToChooseFolders}>
               Hủy
             </Button>
-            <ButtonCustom buttonType="primary" key="add">
+            <ButtonCustom buttonType="primary" key="add" onClick={handleOkToChooseFolders}>
               Thêm vào folder
             </ButtonCustom>
-          </div>
+          </div>,
         ]}
       >
         <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}>
-          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }}>
-            {folders.map(folder => (
-              <Option key={folder.id}>{folder.name}</Option>
+          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }} onChange={value => setSelectedFolderId(value)}>
+            {folders.map((folder) => (
+              <Option key={folder._id} value={folder._id}>{folder.name}</Option>
             ))}
           </Select>
         </div>
@@ -377,7 +415,6 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
           <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
         </div>
-        <Dropdown menu={{ items }} trigger={["click"]}>
           <ButtonCustom
             style={{
               background: "rgb(13 164 184 / 87%)",
@@ -385,10 +422,10 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
               width: "200px",
               margin: "20px",
             }}
+            onClick={displayModalToChooseFolders}
           >
-            Tạo bộ flashcard mới
+            Thêm vào folder sẵn có
           </ButtonCustom>
-        </Dropdown>
         <ButtonCustom
           style={{
             background: "#088d2b",
@@ -411,18 +448,16 @@ export default function FlashCardDetail({ modalToChooseFolder }) {
               <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
             </div>
             <div>
-              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{user?.fullName}</TextCustom>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{(flashcard?.createdBy === user?.id) ? user?.fullName : "Anonymous Users"}</TextCustom>
             </div>
             <div>
               <TextCustom style={{ fontSize: "12px" }}>Đã tạo {moment(user?.updatedAt).format("DD-MM-YYYY")}</TextCustom>
             </div>
           </Col>
           <Col>
-            <Button icon={<LockOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
-            <Button icon={<MinusCircleOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button>
-            <Button icon={<EditOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`)}></Button>
+            {/* <Button icon={<MinusCircleOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button> */}
             {/* <Dropdown menu={{ items: folderSelected }} trigger={["click"]}> */}
-            <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }} onClick={displayModalToChooseFolders}></Button>
+            {/* <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }} onClick={displayModalToChooseFolders}></Button> */}
             {/* </Dropdown> */}
           </Col>
         </Row>

@@ -1,26 +1,8 @@
-//sample data from api
-// const dataSample = {
-//   data: {
-//     _id: "6706d47e09b1c0b43cb240fc",
-//     title: "Learning German 123",
-//     description:
-//       "This course is designed for learners aiming to achieve C1 level proficiency in German. It includes detailed lessons on grammar, vocabulary, and advanced communication skills. Additionally, the course offers numerous exercises to reinforce understanding and improve fluency. Each module of the course focuses on real-life scenarios to help learners apply what they’ve learned in practical settings.",
-//     createdBy: "6706bd968b22c99d1f5ccfe5",
-//     status: "Active",
-//     views: 5,
-//     createdAt: "2024-10-09T19:07:42.898Z",
-//     updatedAt: "2024-10-13T04:55:12.850Z",
-//     __v: 0,
-//   },
-//   success: true,
-//   message: "Fetched blog details",
-// };
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Card, Typography, Tag, Button, Breadcrumb } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
-import { useParams, Link } from "react-router-dom"; // Import useParams to get the blog title from the URL
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+import { Card, Typography, Tag, Button, Breadcrumb, Spin, message } from "antd";
+import { Link, useParams } from "react-router-dom";
+import { getBlogDetail, getBlogList } from "../../../services/LearnerService";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -42,8 +24,10 @@ const Sidebar = styled.div`
   padding: 16px;
   background-color: #f5f5f5;
   border-radius: 8px;
-  position: sticky;
-  top: 20px;
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: 200px;
   height: fit-content;
 `;
 
@@ -96,85 +80,93 @@ const AuthorInfo = styled(Text)`
   margin-bottom: 24px;
 `;
 
-const StyledQuote = styled.blockquote`
-  border-left: 4px solid #1890ff;
-  padding-left: 16px;
-  margin: 16px 0;
-  font-style: italic;
-  color: #1890ff;
-`;
-
 // Main Component
 const BlogDetails = () => {
-  const { id } = useParams(); // Get the blog ID from the URL
-  const blogTitle = "Revenge of the Never Trumpers"; // replace this with a dynamic title based on the ID
+  const { blogId } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch blog details
+  const fetchBlogDetails = async () => {
+    try {
+      const response = await getBlogDetail(blogId);
+      setBlog(response.data);
+    } catch (error) {
+      console.error("Error fetching blog details:", error);
+      message.error("Có lỗi xảy ra khi lấy dữ liệu blog.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch all blogs and select 5 random ones
+  const fetchRelatedBlogs = async () => {
+    try {
+      const result = await getBlogList();
+
+      const allBlogs = result.data;
+
+      // Ensure each blog entry has an ID property; adjust this if necessary (e.g., relatedBlog._id)
+      const shuffled = allBlogs.sort(() => 0.5 - Math.random());
+      setRelatedBlogs(shuffled.slice(0, 5));
+    } catch (error) {
+      console.error("Error fetching related blogs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogDetails();
+    fetchRelatedBlogs();
+  }, [blogId]);
+
+  if (loading) return <Spin tip="Đang tải dữ liệu..." />;
+  if (!blog) return <p>Không tìm thấy bài viết.</p>;
 
   return (
     <Layout>
       {/* Main Blog Content */}
       <ContentWrapper>
-        {/* Breadcrumb */}
-        <BreadCrumbHome/>
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to="/">Trang chủ</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/blog-study">Danh sách Blogs</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <span style={{ color: "#F78F2E", fontWeight: "bold", textDecoration: "none" }}>{blog.title}</span>
+          </Breadcrumb.Item>
+        </Breadcrumb>
         <ImageBanner />
         <ContentCard bordered={false}>
           <TagsWrapper>
-            <Tag color="blue">Election</Tag>
-            <Tag color="blue">Politics</Tag>
+            <Tag color="blue">{blog.status}</Tag>
+            <Tag color="purple">Views: {blog.views}</Tag>
           </TagsWrapper>
-
-          <Title level={2}>{blogTitle}</Title>
-
+          <Title level={2}>{blog.title}</Title>
           <AuthorInfo type="secondary">
             Tác giả:{" "}
             <Button type="link" href="#">
-              Ahmad Sultani
+              Content Manager
             </Button>
           </AuthorInfo>
-
-          <Paragraph>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          </Paragraph>
-
-          <Title level={3}>#1. What is Lorem Ipsum?</Title>
-
-          <Paragraph>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book.
-          </Paragraph>
-
-          <StyledQuote>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</StyledQuote>
-
-          <Paragraph>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</Paragraph>
-
-          <TagsWrapper>
-            <Tag color="blue">#Election</Tag>
-            <Tag color="blue">#People</Tag>
-            <Tag color="blue">#Election2020</Tag>
-            <Tag color="blue">#Trump</Tag>
-            <Tag color="blue">#Joe</Tag>
-          </TagsWrapper>
+          <Paragraph>{blog.description}</Paragraph>
+          <Paragraph>Ngày tạo: {new Date(blog.createdAt).toLocaleDateString()}</Paragraph>
         </ContentCard>
       </ContentWrapper>
 
       {/* Sidebar for Related Articles */}
       <Sidebar>
-        <RelatedArticlesTitle level={4}>Bài viết liên quan</RelatedArticlesTitle>
-
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>10 Kênh Podcast Miễn Phí Giúp Học Tiếng Đức Dễ Dàng Hơn</RelatedArticleText>
-        </RelatedArticleItem>
-
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>12 cụm từ tiếng Đức kỳ lạ nên biết</RelatedArticleText>
-        </RelatedArticleItem>
-
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>10 cách học tiếng Anh nhanh và hiệu quả</RelatedArticleText>
-        </RelatedArticleItem>
+        <RelatedArticlesTitle level={4}>Bài viết khác</RelatedArticlesTitle>
+        {relatedBlogs.map((relatedBlog, index) => (
+          <Link to={`/blog-study/${relatedBlog.id || relatedBlog._id}`} key={index} style={{ textDecoration: "none" }}>
+            <RelatedArticleItem>
+              <RelatedArticleImage src={relatedBlog.image || "https://via.placeholder.com/60"} />
+              <RelatedArticleText>{relatedBlog.title}</RelatedArticleText>
+            </RelatedArticleItem>
+          </Link>
+        ))}
       </Sidebar>
     </Layout>
   );

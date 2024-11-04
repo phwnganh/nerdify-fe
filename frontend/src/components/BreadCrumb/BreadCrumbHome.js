@@ -120,6 +120,21 @@ export default function BreadCrumbHome() {
           label: "Blog Cụ Thể"
         }
       ])
+    }else if(location.pathname === CLIENT_URI.LEARNING_PROGRESS){
+      setBreadCrumb([
+        {
+          path: "/",
+          label: "Trang chủ"
+        },
+        {
+          path: `${CLIENT_URI.LEVEL_DETAIL}/${storedCourseId}`,
+          label: "Trình độ"
+        },
+        {
+          path: location.pathname,
+          label: "Tiến độ học tập"
+        }
+      ])
     }
   }, [location.pathname, exerciseType]);
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown } from "antd";
+import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown, notification } from "antd";
 import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
@@ -14,16 +14,16 @@ export default function EditFlashCard() {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
-   getFlashcardDetail(flashcardId)
+    getFlashcardDetail(flashcardId)
       .then((data) => {
         setFlashcard(data.data);
         console.log("flashcard: ", data.data);
-        
+
         form.setFieldsValue({
           title: data?.data?.title,
           description: data?.data?.description,
           level: data?.data?.level,
-          cards: data?.data?.cards?.map(card => ({
+          cards: data?.data?.cards?.map((card) => ({
             _id: card._id, // include the ID if needed
             terms: card.term,
             definitions: card.definition,
@@ -46,28 +46,34 @@ export default function EditFlashCard() {
   };
 
   const handleSubmit = (values) => {
-    const {title, description, cards, level} = values;
-    const formattedCards = cards.map(card => ({
+    const { title, description, cards, level } = values;
+    const formattedCards = cards.map((card) => ({
       _id: card._id,
       term: card?.terms,
-      definition: card?.definitions
-    }))
+      definition: card?.definitions,
+    }));
 
     const data = {
       title,
       description,
       cards: formattedCards,
       level,
-      isPublic: true
-    }
+    };
 
-    updateFlashcard(flashcardId, data).then(res => 
-      messageApi.success("Cập nhật flashcard thành công!")
-    ).catch(err => {
-      const errorMessage = err.response?.data?.message || 'Failed to create flashcard.';
-      messageApi.error(errorMessage);
-      console.error('Error:', err); 
-    })
+    updateFlashcard(flashcardId, data)
+      .then((res) => {
+        notification.success({
+          message: res.message
+        })
+        messageApi.success("Cập nhật flashcard thành công!")})
+      .catch((err) => {
+        notification.error({
+          message: err.message
+        })
+        const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
+        messageApi.error(errorMessage);
+        console.error("Error:", err);
+      });
     // fetch(`${BASE_SERVER}/flashcard/${flashcardId}`, {
     //   method: "PUT",
     //   headers: {
@@ -124,7 +130,7 @@ export default function EditFlashCard() {
   return (
     <>
       {contextHolder}
-      <div style={{ width: "60%" }}>
+      <div style={{ width: "100%"}}>
         <BreadCrumbHome />
         <h1 style={{ textAlign: "center" }}>CHỈNH SỬA HỌC PHẦN</h1>
         <Form
@@ -204,13 +210,7 @@ export default function EditFlashCard() {
                     <div>
                       <Row style={{ alignItems: "center" }}>
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "terms"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập thuật ngữ!")
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "terms"]} rules={[validationRules.required("Vui lòng nhập thuật ngữ!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 3 }}
                               placeholder="Thuật ngữ"
@@ -223,13 +223,7 @@ export default function EditFlashCard() {
                         </Col>
 
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "definitions"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập định nghĩa!"),
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "definitions"]} rules={[validationRules.required("Vui lòng nhập định nghĩa!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 4 }}
                               placeholder="Định nghĩa"
@@ -240,7 +234,7 @@ export default function EditFlashCard() {
                             />
                           </Form.Item>
                         </Col>
-                        <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
+                        {/* <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
                           <Form.Item name={[field.name, "fileList"]} valuePropName="fileList" getValueFromEvent={normFile}>
                             <Upload action="/upload.do" listType="picture-card">
                               <button style={{ border: 0, background: "none" }} type="button">
@@ -249,7 +243,7 @@ export default function EditFlashCard() {
                               </button>
                             </Upload>
                           </Form.Item>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </div>
                   </Card>

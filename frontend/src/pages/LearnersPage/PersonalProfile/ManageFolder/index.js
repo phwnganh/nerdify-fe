@@ -4,59 +4,55 @@ import CardCustom from "../../../../components/Card";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
 import FlashcardList from "../../FlashCard/FlashCardList";
 import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
-import MyFlashCard from "../../FlashCard/MyFlashCard";
+import MyFlashCard from "../ManageFlashcard/MyFlashCard";
 import Folder from "../../FlashCard/Folder";
 import { TitleCustom } from "../../../../components/Typography";
 import { useEffect, useState } from "react";
 import ModalCustom from "../../../../components/Modal";
-import { Button, message } from "antd";
+import { Button, message, notification } from "antd";
 import InputCustom from "../../../../components/Input";
+import { createFolder, getMyFolder } from "../../../../services/LearnerService";
 
 export default function ManageFolder() {
   const navigate = useNavigate();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
-  const [folders, setFolders] = useState([]); 
+  const [folders, setFolders] = useState([]);
   const [messageApi, contextHolder] = message.useMessage();
   const handleDisplayModal = () => {
     setIsOpenModal(true);
   };
 
   useEffect(() => {
-    fetch(`${BASE_SERVER}/folders`)
-      .then((res) => res.json())
+    getMyFolder()
       .then((data) => {
-        console.log("folders: ", data);
-        setFolders(data);
+        console.log("folders: ", data.data);
+        setFolders(data.data);
       })
       .catch((err) => console.error(err));
   }, []);
 
-  const handleOk = () => {
-    if (newFolderName.trim() !== "") {
-      fetch(`${BASE_SERVER}/folders`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: newFolderName,
-        }),
+  const handleOk = async () => {
+    if (newFolderName.trim() === "") {
+      messageApi.error("Tên folder không được để trống");
+      return;
+    }
+
+    try {
+      const response = await createFolder({ name: newFolderName.trim() });
+      notification.success({message: response.message});
+      messageApi.success("Tạo mới folder thành công!");
+      console.log("new folder: ", response);
+      const newFolder = response.data;
+      setFolders((prevFolders) => [...prevFolders, newFolder]);
+      setIsOpenModal(false);
+      setNewFolderName("");
+    } catch (error) {
+      console.error("Lỗi khi tạo folder:", error);
+      notification.error({
+        message: error.message
       })
-        .then((res) => res.json())
-        .then((res) => {
-          messageApi.open({
-            type: 'success',
-            content: 'Tạo mới folder thành công!',
-          });
-          console.log("new folder: ", res);
-          setFolders((prevFolders) => [...prevFolders, res]);
-          setIsOpenModal(false);
-          setNewFolderName("");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      messageApi.error("Không thể tạo folder. Vui lòng thử lại sau.");
     }
   };
 
@@ -99,12 +95,12 @@ export default function ManageFolder() {
             </ButtonCustom>
           </div>
           <div style={{ marginTop: "20px" }}>
-            <Folder folders={folders}/>
+            <Folder folders={folders} />
           </div>
 
-          <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
+          {/* <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
             Xem tất cả
-          </ButtonCustom>
+          </ButtonCustom> */}
         </CardCustom>
       </div>
     </div>

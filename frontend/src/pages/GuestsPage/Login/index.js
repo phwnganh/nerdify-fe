@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Checkbox, Input, notification } from "antd"; // Import notification here
+import { Form, Checkbox, Input, notification } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -11,8 +11,9 @@ import { useAuth } from "../../../hooks";
 import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
 import { validationRules } from "../../../helpers/validate";
-import { style } from "./styled";
 import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
+import { style } from "./styled";
+import { ROLES } from "../../../constants/common.constant";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
@@ -44,7 +45,17 @@ export const LoginPage = () => {
           message: "Đăng nhập thành công",
           description: "Chào mừng bạn đến với Deutsch Nerd!",
         });
-        navigate(CLIENT_URI.COURSE_PAGE);
+        //admin - accountant - learner
+        if (resp.data.role === ROLES.ADMIN_ROLE) {
+          navigate(CLIENT_URI.ADMIN_DASHBOARD);
+          return;
+        } else if (resp.data.role === ROLES.ACCOUNTANT_ROLE) {
+          navigate(CLIENT_URI.SYSTEM_REVENUE);
+          return;
+        } else {
+          navigate(CLIENT_URI.COURSE_PAGE);
+          return;
+        }
       })
       .catch((err) => {
         notification.error({
@@ -71,12 +82,12 @@ export const LoginPage = () => {
       <div style={style.rightSide}>
         <div style={style.formLogin}>
           <img src={logo} alt="Deutsch Nerd" style={{ width: "100px", height: "50px" }} />
-          <span style={{ fontSize: "30px", fontWeight: "bold" }}>Chào mừng đến với Deutsch Nerd</span>
-          <span>Đăng nhập để tiếp tục</span>
-          <Form layout="vertical" name="formLogin" style={{ width: "100%" }} onFinish={onLogin}>
+          <span style={{ fontSize: "28px", fontWeight: "bold", color: "#333" }}>Chào mừng đến với Deutsch Nerd</span>
+          <span style={{ color: "#555", paddingBottom: "5px", textAlign: "center" }}>Đăng nhập để tiếp tục</span>
+          <Form layout="vertical" name="formLogin" style={{ width: "100%", padding: "0 20px" }} onFinish={onLogin}>
             {/* input email */}
             <Form.Item label="Email" name="email" rules={[validationRules.required("Vui lòng nhập email"), validationRules.email("Email không hợp lệ")]}>
-              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} />
+              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* input password */}
@@ -92,7 +103,7 @@ export const LoginPage = () => {
                 },
               ]}
             >
-              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} />
+              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* remember and forgot password */}
@@ -107,25 +118,39 @@ export const LoginPage = () => {
               <Form.Item name="remember" valuePropName="checked">
                 <Checkbox>Ghi nhớ đăng nhập</Checkbox>
               </Form.Item>
-              <Link to={CLIENT_URI.FORGOT_PASSWORD}>Quên mật khẩu</Link>
+              <Link to={CLIENT_URI.FORGOT_PASSWORD} style={{ color: "#ffa454" }}>
+                Quên mật khẩu
+              </Link>
             </div>
 
             {/* button login */}
             <Form.Item>
-              <ButtonCustom htmlType="submit" type="primary" style={{ width: "100%", background: "#ffa454" }}>
+              <ButtonCustom
+                htmlType="submit"
+                type="primary"
+                style={{
+                  width: "100%",
+                  background: "#ffa454",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  height: "40px",
+                }}
+              >
                 Đăng nhập
               </ButtonCustom>
             </Form.Item>
 
             {/* social login */}
-            <div style={{ justifyContent: "space-between" }}>
+            <div style={{ justifyContent: "center", marginBottom: "20px" }}>
               <span>Hoặc đăng nhập với</span>
-              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={() => onLoginWithGoogle()} />
+              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={onLoginWithGoogle} style={{ marginLeft: "8px", background: "#4285F4", border: "none" }} />
             </div>
             {/* register link */}
-            <div>
-              <span>Bạn không có tài khoản?</span>
-              <Link to={CLIENT_URI.REGISTER}>Đăng ký tại đây</Link>
+            <div style={{ textAlign: "center", color: "#555" }}>
+              <span>Bạn không có tài khoản? </span>
+              <Link to={CLIENT_URI.REGISTER} style={{ color: "#ffa454" }}>
+                Đăng ký tại đây
+              </Link>
             </div>
           </Form>
         </div>
@@ -133,5 +158,3 @@ export const LoginPage = () => {
     </div>
   );
 };
-
-export default LoginPage;
