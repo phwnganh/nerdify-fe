@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Col, Row } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { ParagraphCustom, TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { CLIENT_URI } from "../../../../constants";
 
 // Import images
 import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
@@ -52,6 +51,7 @@ export default function CheckpointQuiz({ exercises }) {
   useEffect(() => {
     if (!hasStarted) return;
     if (isSubmitted) return;
+    if (isSubmitted) return;
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime > 0) {
@@ -95,6 +95,34 @@ export default function CheckpointQuiz({ exercises }) {
     },
     [isSubmitted, userSelected],
   );
+  // const handleSelectOptions = useCallback(
+  //   (questionId, optionId) => {
+  //     if (!isSubmitted) {
+  //       const foundQuestion = userSelected.some((selected) => selected.questionId === questionId);
+  //       if (foundQuestion) {
+  //         const newSelected = userSelected.map((userAnswers) => {
+  //           if (userAnswers.questionId === questionId) {
+  //             return {
+  //               ...userAnswers,
+  //               userAnswer: optionId,
+  //             };
+  //           }
+  //           return userAnswers;
+  //         });
+  //         setUserSelected(newSelected);
+  //       } else {
+  //         setUserSelected((prev) => [
+  //           ...prev,
+  //           {
+  //             questionId,
+  //             userAnswer: optionId,
+  //           },
+  //         ]);
+  //       }
+  //     }
+  //   },
+  //   [isSubmitted, userSelected],
+  // );
 
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -106,185 +134,199 @@ export default function CheckpointQuiz({ exercises }) {
     submitExercise({
       exerciseId: exercises._id,
       userSelected,
-    })
-      .then((resp) => {
+    }).then(
+      (resp) => {
         setSubmissionData(resp.data);
         setIsSubmitted(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [exercises, userSelected]);
+        submitExercise({
+          exerciseId: exercises._id,
+          userSelected,
+        })
+          .then((resp) => {
+            setSubmissionData(resp.data);
+            setIsSubmitted(true);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      [exercises, userSelected],
+    );
 
-  const handleRetry = useCallback(() => {
-    setUserSelected([]);
-    setIsSubmitted(false);
-    setCurrentPartIndex(0);
-    setTimeLeft(15 * 60);
-  }, []);
-  const renderPart = (part) => {
+    const handleRetry =
+      (() => {
+        setUserSelected([]);
+        setIsSubmitted(false);
+        setUserSelected([]);
+        setIsSubmitted(false);
+        setCurrentPartIndex(0);
+        setTimeLeft(15 * 60);
+      },
+      []);
+    const renderPart = (part) => {
+      return (
+        <div>
+          {part?.paragraph && (
+            <ParagraphCustom>
+              {part?.paragraph.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </ParagraphCustom>
+          )}
+          {part.questions.map((question, index) => (
+            <div key={index}>
+              <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
+                Câu {index + 1}: {question.question}
+              </TextCustom>
+              {question.questionParagraph && (
+                <ParagraphCustom>
+                  {question?.questionParagraph.split("\n").map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </ParagraphCustom>
+              )}
+              {question?.mediaUrl && (
+                <audio controls style={{ marginTop: "20px", width: "100%" }}>
+                  <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
+                  Trình duyệt của bạn không hỗ trợ phần tử audio.
+                </audio>
+              )}
+              <div style={{ marginTop: "20px" }}>
+                <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+                  {question.options.map((option, index) => {
+                    const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
+                    let backgroundColor = isUserSelected ? "#A8703E" : "";
+
+                    if (isSubmitted && submissionData.score >= 50) {
+                      const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
+                      if (foundQuestion) {
+                        backgroundColor = "#5FD855";
+                      } else if (isUserSelected) {
+                        backgroundColor = "red";
+                      }
+                    }
+
+                    return (
+                      <Col key={index} span={8}>
+                        <ButtonCustom
+                          buttonType="primary"
+                          onClick={() => handleSelectOptions(question._id, option._id)}
+                          style={{
+                            backgroundColor,
+                          }}
+                          disabled={isSubmitted}
+                        >
+                          {option.optionImage ? (
+                            <span>{index + 1}</span>
+                          ) : (
+                            <div>
+                              <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
+                            </div>
+                          )}
+                        </ButtonCustom>
+                      </Col>
+                    );
+                  })}
+                </Row>
+                {question.options.some((option) => option.optionImage) && (
+                  <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
+                    {question.options
+                      .filter((option) => option.optionImage)
+                      .map((option, index) => (
+                        <Col key={index} span={8}>
+                          <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
+                        </Col>
+                      ))}
+                  </Row>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    };
+
+    if (!exercises?.parts) {
+      return <div>Loading...</div>;
+    }
+
+    const currentPart = exercises.parts[currentPartIndex];
+
     return (
       <div>
-        {part?.paragraph && (
-          <ParagraphCustom>
-            {part?.paragraph.split("\n").map((line, index) => (
-              <React.Fragment key={index}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
-          </ParagraphCustom>
-        )}
-        {part.questions.map((question, index) => (
-          <div key={index}>
-            <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
-              Câu {index + 1}: {question.question}
-            </TextCustom>
-            {question.questionParagraph && (
-              <ParagraphCustom>
-                {question?.questionParagraph.split("\n").map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </ParagraphCustom>
-            )}
-            {question?.mediaUrl && (
-              <audio controls style={{ marginTop: "20px", width: "100%" }}>
-                <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
-                Trình duyệt của bạn không hỗ trợ phần tử audio.
-              </audio>
-            )}
-            <div style={{ marginTop: "20px" }}>
-              <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
-                {question.options.map((option, index) => {
-                  const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
-                  let backgroundColor = isUserSelected ? "#A8703E" : "";
-
-                  if (isSubmitted && submissionData.score >= 50) {
-                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
-                    if (foundQuestion) {
-                      backgroundColor = "#5FD855";
-                    } else if (isUserSelected) {
-                      backgroundColor = "red";
-                    }
-                  }
-
-                  return (
-                    <Col key={index} span={8}>
-                      <ButtonCustom
-                        buttonType="primary"
-                        onClick={() => handleSelectOptions(question._id, option._id)}
-                        style={{
-                          backgroundColor,
-                        }}
-                        disabled={isSubmitted}
-                      >
-                        {option.optionImage ? (
-                          <span>{index + 1}</span>
-                        ) : (
-                          <div>
-                            <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
-                          </div>
-                        )}
-                      </ButtonCustom>
-                    </Col>
-                  );
-                })}
-              </Row>
-              {question.options.some((option) => option.optionImage) && (
-                <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
-                  {question.options
-                    .filter((option) => option.optionImage)
-                    .map((option, index) => (
-                      <Col key={index} span={8}>
-                        <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
-                      </Col>
-                    ))}
-                </Row>
+        {!hasStarted && <StartQuizModal exerciseId={exercises._id} onClose={() => setHasStarted(!hasStarted)}></StartQuizModal>}
+        {hasStarted && (
+          <div style={{ padding: "24px" }}>
+            <BreadCrumbHome />
+            <TitleCustom level={2} style={{ fontWeight: "bold" }}>
+              {exercises.title}
+            </TitleCustom>
+            <div style={{ textAlign: "center" }}>
+              {!isSubmitted ? (
+                <TextCustom>
+                  Thời gian làm bài: <span style={{ color: "red", fontWeight: "bold" }}>{formattedTime(timeLeft)}</span>
+                </TextCustom>
+              ) : (
+                <>
+                  <TextCustom>
+                    Điểm: <span style={{ color: "red" }}>{submissionData.score}%</span>
+                  </TextCustom>
+                </>
               )}
             </div>
+
+            <div>
+              <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}>{currentPart.partName}</TextCustom>
+              {renderPart(currentPart)}
+              <div style={{ textAlign: "center", paddingTop: "50px" }}>
+                <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => prev - 1)} disabled={currentPartIndex === 0}>
+                  Phần trước
+                </ButtonCustom>
+                <ButtonCustom
+                  buttonType="secondary"
+                  style={{ padding: "23px", marginLeft: "30px" }}
+                  onClick={() => setCurrentPartIndex((prev) => prev + 1)}
+                  disabled={currentPartIndex === exercises.parts.length - 1}
+                >
+                  Phần tiếp theo
+                </ButtonCustom>
+                {isSubmitted ? (
+                  <>
+                    {submissionData.score < 50 ? (
+                      <>
+                        <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
+                          Làm lại bài tập này
+                        </ButtonCustom>
+                        <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={() => navigate(-1)}>
+                          Quay về luyện tập
+                        </ButtonCustom>
+                      </>
+                    ) : (
+                      <ButtonCustom
+                        buttonType="secondary"
+                        style={{ padding: "23px", marginLeft: "30px" }}
+                        // onClick={handleAchieveTrophy}
+                      >
+                        Chuyển sang phase tiếp theo
+                      </ButtonCustom>
+                    )}
+                  </>
+                ) : (
+                  <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={!(currentPartIndex === exercises.parts.length - 1)}>
+                    Nộp bài
+                  </ButtonCustom>
+                )}
+              </div>
+            </div>
           </div>
-        ))}
+        )}
       </div>
     );
-  };
-
-  if (!exercises?.parts) {
-    return <div>Loading...</div>;
-  }
-
-  const currentPart = exercises.parts[currentPartIndex];
-
-  return (
-    <div>
-      {!hasStarted && <StartQuizModal exerciseId={exercises._id} onClose={() => setHasStarted(!hasStarted)}></StartQuizModal>}
-      {hasStarted && (
-        <div style={{ padding: "24px" }}>
-          <BreadCrumbHome />
-          <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-            {exercises.title}
-          </TitleCustom>
-          <div style={{ textAlign: "center" }}>
-            {!isSubmitted ? (
-              <TextCustom>
-                Thời gian làm bài: <span style={{ color: "red", fontWeight: "bold" }}>{formattedTime(timeLeft)}</span>
-              </TextCustom>
-            ) : (
-              <>
-                <TextCustom>
-                  Điểm: <span style={{ color: "red" }}>{submissionData.score}%</span>
-                </TextCustom>
-              </>
-            )}
-          </div>
-
-          <div>
-            <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "20px" }}>{currentPart.partName}</TextCustom>
-            {renderPart(currentPart)}
-            <div style={{ textAlign: "center", paddingTop: "50px" }}>
-              <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => prev - 1)} disabled={currentPartIndex === 0}>
-                Phần trước
-              </ButtonCustom>
-              <ButtonCustom
-                buttonType="secondary"
-                style={{ padding: "23px", marginLeft: "30px" }}
-                onClick={() => setCurrentPartIndex((prev) => prev + 1)}
-                disabled={currentPartIndex === exercises.parts.length - 1}
-              >
-                Phần tiếp theo
-              </ButtonCustom>
-              {isSubmitted ? (
-                <>
-                  {submissionData.score < 50 ? (
-                    <>
-                      <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleRetry}>
-                        Làm lại bài tập này
-                      </ButtonCustom>
-                      <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={() => navigate(-1)}>
-                        Quay về luyện tập
-                      </ButtonCustom>
-                    </>
-                  ) : (
-                    <ButtonCustom
-                      buttonType="secondary"
-                      style={{ padding: "23px", marginLeft: "30px" }}
-                      // onClick={handleAchieveTrophy}
-                    >
-                      Chuyển sang phase tiếp theo
-                    </ButtonCustom>
-                  )}
-                </>
-              ) : (
-                <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={handleSubmit} disabled={!(currentPartIndex === exercises.parts.length - 1)}>
-                  Nộp bài
-                </ButtonCustom>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+  });
 }
