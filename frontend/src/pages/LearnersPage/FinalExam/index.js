@@ -169,13 +169,22 @@ export default function FinalExam() {
                 Trình duyệt của bạn không hỗ trợ phần tử audio.
               </audio>
             )}
+            <div style={{ display: "flex", flexWrap: "nowrap", justifyContent: "space-between" }}>
+              {question?.questionImage &&
+                question?.questionImage.map((image, index) => (
+                  <div key={index} style={{ flex: "1 1 auto", marginRight: index !== question.questionImage.length - 1 ? "12px" : "0" }}>
+                    <img src={imgArrVocab[index]} width="80%" style={{ marginBottom: "12px" }} alt={`Question ${question._id}`} />
+                  </div>
+                ))}
+            </div>
+
             <div style={{ marginTop: "20px" }}>
               <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
                 {question.options.map((option, index) => {
                   const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
                   let backgroundColor = isUserSelected ? "#A8703E" : "";
 
-                  if (isSubmitted && submissionData.score >= 50) {
+                  if (isSubmitted && submissionData.score >= 60) {
                     const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
                     if (foundQuestion) {
                       backgroundColor = "#5FD855";
@@ -194,19 +203,15 @@ export default function FinalExam() {
                         }}
                         disabled={isSubmitted}
                       >
-                        {option.optionImage ? (
-                          <span>{index + 1}</span>
-                        ) : (
-                          <div>
-                            <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
-                          </div>
-                        )}
+                        <div>
+                          <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
+                        </div>
                       </ButtonCustom>
                     </Col>
                   );
                 })}
               </Row>
-              {question.options.some((option) => option.optionImage) && (
+              {/* {question.options.some((option) => option.optionImage) && (
                 <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
                   {question.options
                     .filter((option) => option.optionImage)
@@ -216,7 +221,7 @@ export default function FinalExam() {
                       </Col>
                     ))}
                 </Row>
-              )}
+              )} */}
             </div>
           </div>
         ))}
