@@ -1,7 +1,7 @@
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import InputCustom from "../../../../components/Input";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, { useCallback, useState, useMemo } from "react";
 import ButtonCustom from "../../../../components/Button";
 import { PART_TYPE } from "../../../../constants";
 import { submitExercise } from "../../../../services/LearnerService";
@@ -13,27 +13,27 @@ export default function GrammarExercises({ exercises }) {
   const [submissionData, setSubmissionData] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const handleInputChange = useCallback((questionId, inputIndex, value) => {
+  const handleInputChange = (questionId, value) => {
     setUserSelected((prevAnswers) => {
       const questionIndex = prevAnswers.findIndex((answer) => answer.questionId === questionId);
       if (questionIndex > -1) {
         const updatedAnswers = [...prevAnswers];
-        updatedAnswers[questionIndex].userAnswer[inputIndex] = value;
+        updatedAnswers[questionIndex].userAnswer = value;
         return updatedAnswers;
       }
       return [
         ...prevAnswers,
         {
           questionId: questionId,
-          userAnswer: new Array(inputIndex + 1).fill("").map((ans, idx) => (idx === inputIndex ? value : "")),
+          userAnswer: value,
         },
       ];
     });
-  }, []);
+  };
 
-  const renderInputField = (questionId, subIndex, isCompleted) => {
+  const renderInputField = (questionId, isCompleted) => {
     const questionData = userSelected.find((answer) => answer.questionId === questionId);
-    const userAnswer = questionData?.userAnswer[subIndex] || "";
+    const userAnswer = questionData?.userAnswer || "";
 
     let borderColor = "";
 
@@ -51,7 +51,7 @@ export default function GrammarExercises({ exercises }) {
           borderStyle: "solid",
         }}
         value={userAnswer}
-        onChange={(e) => handleInputChange(questionId, subIndex, e.target.value)}
+        onChange={(e) => handleInputChange(questionId, e.target.value)}
         disabled={isCompleted}
       />
     );
@@ -59,14 +59,12 @@ export default function GrammarExercises({ exercises }) {
 
   const handleToggleAnswerDetail = (questionId) => {
     setToggleAnswerDetail((prevState) => {
-      const isToggled = prevState.some(item => item.questionId === questionId);
-      if(isToggled){
-        return prevState.filter(item => item.questionId !== questionId);
-      }else{
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
         const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
 
-        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
-  
         if (questionAnswer) {
           return [
             ...prevState,
@@ -74,8 +72,8 @@ export default function GrammarExercises({ exercises }) {
               questionId: questionId,
               correctAnswer: questionAnswer.questionId.options[0]?.text,
               explanation: questionAnswer.questionId.explanation,
-            }
-          ]
+            },
+          ];
         }
       }
       return prevState;
@@ -92,14 +90,14 @@ export default function GrammarExercises({ exercises }) {
               {question.question.includes("___") ? (
                 question.question.split("___").map((text, indexBlank) => (
                   <span key={indexBlank}>
-                    {indexBlank > 0 && renderInputField(question._id, indexBlank - 1, isCompleted)}
+                    {indexBlank > 0 && renderInputField(question._id, isCompleted)}
                     {text}
                   </span>
                 ))
               ) : (
                 <span>
                   {question.question}
-                  {renderInputField(question._id, 0, isCompleted)}
+                  {renderInputField(question._id, isCompleted)}
                 </span>
               )}
               {isCompleted && (
@@ -151,7 +149,6 @@ export default function GrammarExercises({ exercises }) {
       });
   };
 
-  // Ensure exercises is set and has parts before trying to access them
   const currentPart = useMemo(() => exercises?.parts?.[currentPartIndex], [exercises, currentPartIndex]);
 
   const handleRetry = useCallback(() => {

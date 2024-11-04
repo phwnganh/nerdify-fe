@@ -16,7 +16,6 @@ import demo_5_2 from "../../../../assets/vocabExercises/5_2.png";
 import demo_5_3 from "../../../../assets/vocabExercises/5_3.png";
 
 import { PART_TYPE } from "../../../../constants";
-import { useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
@@ -44,7 +43,6 @@ const vocabImg = {
 
 export default function VocabularyExercises({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  // part 1: matching
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [selectedMatches, setSelectedMatches] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -52,23 +50,20 @@ export default function VocabularyExercises({ exercises }) {
   const [shuffleQuestions, setShuffleQuestions] = useState([]);
   const [selectedPairsPart1, setSelectedPairsPart1] = useState({});
   const [availablePairs, setAvailablePairs] = useState([{}]);
-  const [resultQuestionPart1, setResultQuestionPart1] = useState([]);
-  const [resultMatchQuestionPart1, setResultMatchQuestionPart1] = useState([]);
-  //part hai multiple choice
   const [selectedAnswersPart2, setSelectedAnswersPart2] = useState({});
-  //part 3 fill in the blank
-  // const [inputValuePart3, setInputValuePart3] = useState({});
   const [inputValuePart3, setInputValuePart3] = useState(() => {
     const initialValues = {};
     exercises.parts[2].questions.forEach((question, index) => {
-      initialValues[question._id] = index === 0 ? question.matchedQuestion : "";
+      initialValues[question._id] = index === 0 ? question.options[0].text : "";
     });
     return initialValues;
   });
-  const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
   const [submissionData, setSubmissionData] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [userSelected, setUserSelected] = useState([]);
+
+  console.log("exercises", exercises);
+  console.log("submissionData", submissionData);
+  console.log("questions", questions);
 
   const shuffleArray = (array) => {
     return array
@@ -111,7 +106,6 @@ export default function VocabularyExercises({ exercises }) {
     return <div>Loading...</div>;
   }
 
-  //when select question, set question to available pairs and clear match question
   const onChangeQues = (e) => {
     const selectedQuestionId = e.target.value;
     setAvailablePairs((prev) => ({
@@ -126,8 +120,6 @@ export default function VocabularyExercises({ exercises }) {
     }
   };
 
-  //when select match question, set match question to available pairs.
-  // If question is already set, perform pairing
   const onChangeMatchQues = (e) => {
     const selectedMatchQuestionId = e.target.value;
     setAvailablePairs((prev) => ({
@@ -142,7 +134,6 @@ export default function VocabularyExercises({ exercises }) {
     }
   };
 
-  // Handle pairing of questions and match questions at matching part and set available pairs to empty
   const handlePairSelectionPart1 = (pair) => {
     if (pair.question && pair.matchQuestion) {
       setSelectedPairsPart1((prev) => {
@@ -178,17 +169,14 @@ export default function VocabularyExercises({ exercises }) {
     }));
   };
 
-  //submit all part and calculate score
   const handleSubmit = () => {
-    //submission of part 1
     const submissionAnswersPart1 = exercises.parts[0].questions.map((question) => {
       return {
         questionId: question._id,
-        userAnswer: [selectedPairsPart1[question._id]],
+        userAnswer: questions.find((q) => q._id === selectedPairsPart1[question._id])?.options[0].text,
       };
     });
 
-    //submission of part 2
     const submissionAnswersPart2 = exercises.parts[1].questions.map((question) => {
       return {
         questionId: question._id,
@@ -203,23 +191,19 @@ export default function VocabularyExercises({ exercises }) {
       };
     });
 
-    setUserSelected([...submissionAnswersPart1, ...submissionAnswersPart2, ...submissionAnswersPart3]);
     submitExercise({
       exerciseId: exercises._id,
       userSelected: [...submissionAnswersPart1, ...submissionAnswersPart2, ...submissionAnswersPart3],
     })
       .then((resp) => {
         setSubmissionData(resp.data);
-        // setIsSubmitted(true);
+        setIsSubmitted(true);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    handleAnswerPart1();
   };
 
-  //redo exercises
   const handleDoAgain = () => {
     setSelectedPairsPart1({});
     setSelectedQuestions([]);
@@ -228,36 +212,10 @@ export default function VocabularyExercises({ exercises }) {
     setInputValuePart3({});
     setCurrentPartIndex(0);
     setIsSubmitted(false);
-    setUserSelected([]);
-  };
-
-  // dispaly detail answer for multiple choice
-  const toggleButtonAnswerDetail = (questionId) => {
-    setToggleAnswerDetail((prevState) => ({
-      ...prevState,
-      [questionId]: !prevState[questionId],
-    }));
-  };
-
-  const handleAnswerPart1 = () => {
-    const resultQuestion = [];
-    const resultMatchQuestions = [];
-
-    Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
-      const questionText = questions.find((q) => q._id === questionId)?.question;
-      const matchQuestionText = questions.find((m) => m._id === matchQuestionId)?.options[0].text;
-
-      resultQuestion.push({ id: questionId, question: questionText });
-      resultMatchQuestions.push({
-        id: matchQuestionId,
-        matchQuestion: matchQuestionText,
-      });
-    });
-    setResultQuestionPart1(resultQuestion);
-    setResultMatchQuestionPart1(resultMatchQuestions);
   };
 
   const renderPart1 = (part) => {
+    const totalQuestion = isSubmitted && submissionData?.partLengths[0];
     return (
       <>
         {!isSubmitted && (
@@ -325,7 +283,7 @@ export default function VocabularyExercises({ exercises }) {
                           onClick={() =>
                             handlePairSelectionPart1({
                               question: availablePairs.question,
-                              matchQuestion: matchQues.text,
+                              matchQuestion: matchQues._id,
                             })
                           }
                         >
@@ -346,8 +304,6 @@ export default function VocabularyExercises({ exercises }) {
               </Col>
               <Col span={4}></Col>
             </Row>
-
-            {/* Display Selected Pairs */}
 
             <div style={{ marginTop: "30px" }}>
               <TitleCustom level={4}>Selected Pairs:</TitleCustom>
@@ -383,109 +339,113 @@ export default function VocabularyExercises({ exercises }) {
             >
               <Col span={8}>
                 <Radio.Group>
-                  {resultQuestionPart1.map((ques, index) => (
-                    <Row key={index} align="middle">
-                      <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
-                        <Radio.Button
-                          value={ques._id}
-                          style={{
-                            backgroundColor: "#ff855d",
-                            borderRadius: "100px",
-                            border: "none",
-                            color: "white",
-                            pointerEvents: "none",
-                          }}
-                        >
-                          <p
-                            style={{
-                              margin: "0",
-                              whiteSpace: "nowrap",
-                              userSelect: "none",
-                            }}
-                          >
-                            {ques.question}
-                          </p>
-                        </Radio.Button>
-                      </Col>
-                    </Row>
-                  ))}
+                  {submissionData.submissionAnswer.slice(0, totalQuestion).map(
+                    (submission, index) =>
+                      submission.userAnswer && (
+                        <Row key={index} align="middle">
+                          <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
+                            <Radio.Button
+                              value={submission.questionId._id}
+                              style={{
+                                backgroundColor: "#ff855d",
+                                borderRadius: "100px",
+                                border: "none",
+                                color: "white",
+                                pointerEvents: "none",
+                              }}
+                            >
+                              <p
+                                style={{
+                                  margin: "0",
+                                  whiteSpace: "nowrap",
+                                  userSelect: "none",
+                                }}
+                              >
+                                {submission.questionId.question}
+                              </p>
+                            </Radio.Button>
+                          </Col>
+                        </Row>
+                      ),
+                  )}
                 </Radio.Group>
               </Col>
               <Col span={8}>
                 <Radio.Group>
-                  {resultMatchQuestionPart1.map((matchQues, index) => (
-                    <Row key={index} align="middle">
-                      <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
-                        <Radio.Button
-                          value={matchQues._id}
-                          style={{
-                            backgroundColor: "#ff855d",
-                            borderRadius: "100px",
-                            border: "none",
-                            color: "white",
-                            pointerEvents: "none",
-                          }}
-                        >
-                          <p
-                            style={{
-                              margin: "0",
-                              whiteSpace: "nowrap",
-                              userSelect: "none",
-                            }}
-                          >
-                            {matchQues.matchQuestion}
-                          </p>
-                        </Radio.Button>
-                      </Col>
-                    </Row>
-                  ))}
+                  {submissionData.submissionAnswer.slice(0, totalQuestion).map(
+                    (submission, index) =>
+                      submission.userAnswer && (
+                        <Row key={index} align="middle">
+                          <Col span={24} style={{ paddingBottom: "24px", paddingLeft: "12px" }}>
+                            <Radio.Button
+                              value={submission.questionId._id}
+                              style={{
+                                backgroundColor: "#ff855d",
+                                borderRadius: "100px",
+                                border: "none",
+                                color: "white",
+                                pointerEvents: "none",
+                              }}
+                            >
+                              <p
+                                style={{
+                                  margin: "0",
+                                  whiteSpace: "nowrap",
+                                  userSelect: "none",
+                                }}
+                              >
+                                {submission.userAnswer}
+                              </p>
+                            </Radio.Button>
+                          </Col>
+                        </Row>
+                      ),
+                  )}
                 </Radio.Group>
               </Col>
 
               <Col span={4}>
-                {Object.entries(selectedPairsPart1).map(([questionId, matchQuestionId]) => {
-                  const questionText = questions.find((q) => q._id === questionId)?.question;
-
-                  return (
-                    <Row
-                      key={`${questionId}-${matchQuestionId}`}
-                      style={{
-                        color: isSubmitted ? (questionId == matchQuestionId ? "rgb(95, 216, 85)" : "red") : "",
-                      }}
-                    >
-                      <Col
+                {submissionData.submissionAnswer.slice(0, totalQuestion).map(
+                  (submission, index) =>
+                    submission.userAnswer && (
+                      <Row
+                        key={submission._id}
                         style={{
-                          paddingBottom: "24px",
-                          paddingLeft: "12px",
-                          height: "56px",
-                          display: "flex",
-                          alignItems: "center",
+                          color: isSubmitted ? (submission.isCorrect ? "rgb(95, 216, 85)" : "red") : "",
                         }}
                       >
-                        {isSubmitted ? (
-                          questionId == matchQuestionId ? (
-                            "Đúng"
+                        <Col
+                          style={{
+                            paddingBottom: "24px",
+                            paddingLeft: "12px",
+                            height: "56px",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          {isSubmitted ? (
+                            submission.isCorrect ? (
+                              "Đúng"
+                            ) : (
+                              <p
+                                style={{
+                                  margin: "0",
+                                  whiteSpace: "nowrap",
+                                  userSelect: "none",
+                                  width: "100%",
+                                }}
+                              >
+                                Đáp án:
+                                <br /> {submission.questionId.question} - {submission.questionId.options[0].text}
+                              </p>
+                            )
                           ) : (
-                            <p
-                              style={{
-                                margin: "0",
-                                whiteSpace: "nowrap",
-                                userSelect: "none",
-                                width: "100%",
-                              }}
-                            >
-                              Đáp án:
-                              <br />
-                              {questionText} - {questions.find((m) => m._id === questionId)?.options[0].text}
-                            </p>
-                          )
-                        ) : (
-                          ""
-                        )}
-                      </Col>
-                    </Row>
-                  );
-                })}
+                            ""
+                          )}
+                        </Col>
+                      </Row>
+                    ),
+                )}
               </Col>
             </Row>
           </>
@@ -498,75 +458,59 @@ export default function VocabularyExercises({ exercises }) {
     return (
       <div>
         {exercise.questions.map((question, index) => {
+          const submission = submissionData?.submissionAnswer.find((answer) => answer.questionId._id === question._id);
           return (
-            <>
-              <Row
-                key={index}
-                gutter={[16, 16]}
-                style={{
-                  paddingTop: "25px",
-                  paddingLeft: "40px",
-                  paddingRight: "40px",
-                }}
-              >
-                <Col span={24} style={{ paddingBottom: "24px" }}>
-                  <TextCustom style={{ fontWeight: "bold" }}>
-                    Câu {index + 1}: {question.question}
-                  </TextCustom>
-                  <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-                    {question.options.map((option, index) => {
-                      return (
-                        <Col span={8} key={index} style={{ textAlign: "center" }}>
-                          <ButtonCustom
-                            buttonType="primary"
-                            style={{
-                              backgroundColor: isSubmitted
-                                ? selectedAnswersPart2[question._id] === option._id && option.isTrue
-                                  ? "rgb(95, 216, 85)"
-                                  : selectedAnswersPart2[question._id] === option._id
-                                  ? "red"
-                                  : option.isTrue
-                                  ? "rgb(95, 216, 85)"
-                                  : ""
-                                : selectedAnswersPart2[question._id] === option._id
-                                ? "#A8703E"
-                                : "",
-                              pointerEvents: isSubmitted ? "none" : "auto",
-                            }}
-                            onClick={() => handleSelectAnswersPart2(question._id, option._id)}
-                          >
-                            {option.text}
-                          </ButtonCustom>
-                          {option.optionImage && <img src={vocabImg[option.optionImage]} alt={`Option ${index + 1}`} style={{ width: "50%" }} />}
-                        </Col>
-                      );
-                    })}
-                  </Row>
-                </Col>
-              </Row>
-
-              {/* {isSubmitted && (
-                <Row style={{ display: "flex", alignItems: "center" }}>
-                  <ButtonCustom buttonType="primary" onClick={() => toggleButtonAnswerDetail(question._id)} style={{ marginRight: "12px" }}>
-                    Đáp án chi tiết
-                  </ButtonCustom>
-                  <div>
-                    {toggleAnswerDetail[question._id] && (
-                      <TextCustom
-                        style={{
-                          color: "blue",
-                          display: "flex",
-                          alignItems: "center",
-                          flex: 1,
-                        }}
-                      >
-                        {question.explanation}
-                      </TextCustom>
-                    )}
-                  </div>
+            <Row
+              key={index}
+              gutter={[16, 16]}
+              style={{
+                paddingTop: "25px",
+                paddingLeft: "40px",
+                paddingRight: "40px",
+              }}
+            >
+              <Col span={24} style={{ paddingBottom: "24px" }}>
+                <TextCustom style={{ fontWeight: "bold" }}>
+                  Câu {index + 1}: {question.question}
+                </TextCustom>
+                <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
+                  {question.questionImage &&
+                    question.questionImage.map((image, index) => (
+                      <Col key={index} span={8} style={{ textAlign: "center" }}>
+                        <img src={vocabImg[image]} width={"50%"} alt={`Question ${question._id}`} />
+                      </Col>
+                    ))}
+                  {question.options.map((option, index) => {
+                    const isSelected = submission?.userAnswer === option._id;
+                    const isCorrect = option.isTrue;
+                    return (
+                      <Col span={8} key={index} style={{ textAlign: "center" }}>
+                        <ButtonCustom
+                          buttonType="primary"
+                          style={{
+                            backgroundColor: isSubmitted
+                              ? isSelected && isCorrect
+                                ? "rgb(95, 216, 85)"
+                                : isSelected
+                                ? "red"
+                                : isCorrect
+                                ? "rgb(95, 216, 85)"
+                                : ""
+                              : selectedAnswersPart2[question._id] === option._id
+                              ? "#A8703E"
+                              : "",
+                            pointerEvents: isSubmitted ? "none" : "auto",
+                          }}
+                          onClick={() => handleSelectAnswersPart2(question._id, option._id)}
+                        >
+                          {option.text}
+                        </ButtonCustom>
+                      </Col>
+                    );
+                  })}
                 </Row>
-              )} */}
-            </>
+              </Col>
+            </Row>
           );
         })}
       </div>
@@ -575,38 +519,90 @@ export default function VocabularyExercises({ exercises }) {
 
   const renderPart3 = (part) => {
     const { questions } = part;
+    const totalQuestion = isSubmitted && submissionData?.partLengths[2];
+
     return (
       <div style={{ marginLeft: "80px", marginRight: "80px" }}>
         <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
           <Col span={24}>
             <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
-              {questions.map((question, index) => {
-                return (
-                  <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
-                    <TextCustom style={{ color: "" }}>{question.question}</TextCustom>
-                    <InputCustom
-                      //if first question => value = answer and disabled
-                      value={index === 0 ? question.options[0].text : inputValuePart3[question._id]}
-                      onChange={(e) => handleInputChangePart3(question._id, e.target.value)}
-                      style={{
-                        borderColor: index === 0 || (isSubmitted ? (inputValuePart3[question._id]?.toLowerCase() === question.options[0].text.toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
-                      }}
-                      disabled={isSubmitted || index === 0}
-                    />
-                    {isSubmitted && (
-                      <TextCustom style={{ color: "red" }}>
-                        {index === 0 || inputValuePart3[question._id]?.toLowerCase() === question.options[0].text.toLowerCase() ? "" : question.options[0].text}
-                      </TextCustom>
-                    )}
-                  </Col>
-                );
-              })}
+              {!isSubmitted &&
+                questions.map((question, index) => {
+                  return (
+                    <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
+                      <TextCustom style={{ color: "" }}>{question.question}</TextCustom>
+                      <InputCustom
+                        //if first question => value = answer and disabled
+                        value={index === 0 ? question.options[0].text : inputValuePart3[question._id]}
+                        onChange={(e) => handleInputChangePart3(question._id, e.target.value)}
+                        style={{
+                          borderColor: index === 0 || (isSubmitted ? (inputValuePart3[question._id]?.toLowerCase() === question.options[0].text.toLowerCase() ? "rgb(95, 216, 85)" : "red") : ""),
+                        }}
+                        disabled={isSubmitted || index === 0}
+                      />
+                      {isSubmitted && (
+                        <TextCustom style={{ color: "red" }}>
+                          {index === 0 || inputValuePart3[question._id]?.toLowerCase() === question.options[0].text.toLowerCase() ? "" : question.options[0].text}
+                        </TextCustom>
+                      )}
+                    </Col>
+                  );
+                })}
+              {isSubmitted &&
+                submissionData?.submissionAnswer.slice(-totalQuestion).map((submission, index) => {
+                  return (
+                    <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
+                      <TextCustom style={{ color: "" }}> {submission.questionId.question}</TextCustom>
+                      <InputCustom
+                        value={submission.userAnswer}
+                        style={{
+                          borderColor: submission.isCorrect ? "rgb(95, 216, 85)" : "red",
+                        }}
+                        disabled
+                      />
+                      {submission.isCorrect || <TextCustom style={{ color: "red" }}>{submission.questionId.options[0].text}</TextCustom>}
+                    </Col>
+                  );
+                })}
             </Row>
           </Col>
         </Row>
       </div>
     );
   };
+  // const renderPart3 = (part) => {
+  //   const { questions } = part;
+  //   return (
+  //     <div style={{ marginLeft: "80px", marginRight: "80px" }}>
+  //       <Row gutter={[16, 16]} style={{ paddingTop: "25px" }}>
+  //         <Col span={24}>
+  //           <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
+  //             {questions.map((question, index) => {
+  //               const submission = submissionData?.submissionAnswer.find((answer) => answer.questionId._id === question._id);
+  //               const userAnswer = submission?.userAnswer || "";
+  //               const correctAnswer = question.options[0].text;
+  //               const isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+  //               return (
+  //                 <Col span={6} key={index} style={{ paddingBottom: "24px" }}>
+  //                   <TextCustom style={{ color: "" }}>{question.question}</TextCustom>
+  //                   <InputCustom
+  //                     value={index === 0 ? question.options[0].text : inputValuePart3[question._id]}
+  //                     onChange={(e) => handleInputChangePart3(question._id, e.target.value)}
+  //                     style={{
+  //                       borderColor: index === 0 || (isSubmitted ? (isCorrect ? "rgb(95, 216, 85)" : "red") : ""),
+  //                     }}
+  //                     disabled={isSubmitted || index === 0}
+  //                   />
+  //                   {isSubmitted && !isCorrect && <TextCustom style={{ color: "red" }}>{correctAnswer}</TextCustom>}
+  //                 </Col>
+  //               );
+  //             })}
+  //           </Row>
+  //         </Col>
+  //       </Row>
+  //     </div>
+  //   );
+  // };
 
   const renderPart = () => {
     const currentPart = exercises.parts[currentPartIndex];

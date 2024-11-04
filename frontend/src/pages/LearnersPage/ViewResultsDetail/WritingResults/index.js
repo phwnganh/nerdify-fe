@@ -13,6 +13,8 @@ export default function WritingResults({ exerciseResults }) {
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState([]);
   const navigate = useNavigate();
 
+  console.log(exerciseResults);
+
   if (!exerciseResults?.exerciseId?.parts) {
     return <div>Loading...</div>;
   }
@@ -83,31 +85,31 @@ export default function WritingResults({ exerciseResults }) {
                       disabled={true}
                     ></Input.TextArea>
                   )}
-                    <div style={{ paddingTop: "20px" }}>
-                      <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
-                        Đáp án chi tiết
-                      </ButtonCustom>
-                      {toggleAnswerDetail.some((item) => item.questionId === question._id) && (
-                        <div>
-                          {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
-                            <>
-                              Đáp án:&nbsp;
-                              {toggleAnswerDetail
-                                .find((item) => item.questionId === question._id)
-                                .correctAnswer.split("|")
-                                .map((part, index) => (
-                                  <TextCustom key={index} style={{ color: "blue" }}>
-                                    {part}
-                                    {index < toggleAnswerDetail.find((item) => item.questionId === question._id).correctAnswer.split("|").length - 1 && ", "}
-                                  </TextCustom>
-                                ))}{" "}
-                              <br />
-                              Giải thích: {toggleAnswerDetail.find((item) => item.questionId === question._id).explanation}
-                            </>
-                          )}
-                        </div>
-                      )}
-                    </div>
+                  <div style={{ paddingTop: "20px" }}>
+                    <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
+                      Đáp án chi tiết
+                    </ButtonCustom>
+                    {toggleAnswerDetail.some((item) => item.questionId === question._id) && (
+                      <div>
+                        {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
+                          <>
+                            Đáp án:&nbsp;
+                            {toggleAnswerDetail
+                              .find((item) => item.questionId === question._id)
+                              .correctAnswer.split("|")
+                              .map((part, index) => (
+                                <TextCustom key={index} style={{ color: "blue" }}>
+                                  {part}
+                                  {index < toggleAnswerDetail.find((item) => item.questionId === question._id).correctAnswer.split("|").length - 1 && ", "}
+                                </TextCustom>
+                              ))}{" "}
+                            <br />
+                            Giải thích: {toggleAnswerDetail.find((item) => item.questionId === question._id).explanation}
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </Col>
