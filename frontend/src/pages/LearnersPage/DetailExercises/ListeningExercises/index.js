@@ -305,7 +305,7 @@ export default function ListeningExercise({ exercises }) {
                   return (
                     <Col key={option._id} span={8}>
                       <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question._id, option._id)} style={{ backgroundColor }} disabled={isSubmitted}>
-                        {option.text}
+                        {index + 1}. {option.text}
                       </ButtonCustom>
                     </Col>
                   );
@@ -324,7 +324,7 @@ export default function ListeningExercise({ exercises }) {
                         if (answer.questionId._id === question._id) {
                           return (
                             <React.Fragment key={index}>
-                              {question.explaination?.split("\n")}
+                              {answer.questionId.explanation?.split("\n")}
                               <br />
                             </React.Fragment>
                           );
@@ -415,7 +415,6 @@ export default function ListeningExercise({ exercises }) {
                     ))}
                   </TextCustom>
                 </div>
-                <div>{submissionData.score}</div>
               </React.Fragment>
             ))
           ) : (

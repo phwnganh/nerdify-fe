@@ -1,164 +1,203 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import { Col, Row } from "antd";
-// import demo_part2_1 from "../../../../assets/readingExercises/demo_part2_1.png";
-// import demo_part2_2 from "../../../../assets/readingExercises/demo_part2_2.png";
+import { useNavigate, useParams } from "react-router-dom";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER } from "../../../../constants";
-export default function ReadingResults() {
-  const [exerciseResults, setExerciseResults] = useState(null);
-  const { submissionId } = useParams();
+import { PART_TYPE } from "../../../../constants";
+import demo_part2_6_1 from "../../../../assets/readingExercises/demo_part2_6_1.png";
+import demo_part2_6_2 from "../../../../assets/readingExercises/demo_part2_6_2.png";
+import demo_part2_7_1 from "../../../../assets/readingExercises/demo_part2_7_1.png";
+import demo_part2_7_2 from "../../../../assets/readingExercises/demo_part2_7_2.png";
+import demo_part2_8_1 from "../../../../assets/readingExercises/demo_part2_8_1.png";
+import demo_part2_8_2 from "../../../../assets/readingExercises/demo_part2_8_2.png";
+import demo_part2_9_1 from "../../../../assets/readingExercises/demo_part2_9_1.png";
+import demo_part2_9_2 from "../../../../assets/readingExercises/demo_part2_9_2.png";
+import demo_part2_10_1 from "../../../../assets/readingExercises/demo_part2_10_1.png";
+import demo_part2_10_2 from "../../../../assets/readingExercises/demo_part2_10_2.png";
+
+import demo_part3_1 from "../../../../assets/readingExercises/demo_part3_1.png";
+import demo_part3_2 from "../../../../assets/readingExercises/demo_part3_2.png";
+import demo_part3_3 from "../../../../assets/readingExercises/demo_part3_3.png";
+import demo_part3_4 from "../../../../assets/readingExercises/demo_part3_4.png";
+import demo_part3_5 from "../../../../assets/readingExercises/demo_part3_5.png";
+
+//A2 exercises
+import { Col, Row } from "antd";
+import { submitExercise } from "../../../../services/LearnerService";
+
+const imgReadingArr = {
+  demo_part2_6_1,
+  demo_part2_6_2,
+  demo_part2_7_1,
+  demo_part2_7_2,
+  demo_part2_8_1,
+  demo_part2_8_2,
+  demo_part2_9_1,
+  demo_part2_9_2,
+  demo_part2_10_1,
+  demo_part2_10_2,
+  demo_part3_1,
+  demo_part3_2,
+  demo_part3_3,
+  demo_part3_4,
+  demo_part3_5,
+};
+
+export default function ReadingResults({ exerciseResults }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [isAnswerDetail, setIsAnswerDetail] = useState({});
-  // const imgReadingArr = {
-  //   demo_part2_1,
-  //   demo_part2_2,
-  // };
-  const handleNextPart = () => {
-    if (exerciseResults && currentPartIndex < exerciseResults.exercise.parts.length - 1) {
-      setCurrentPartIndex((prevIndex) => prevIndex + 1);
-    }
-  };
-
-  const handlePreviousPart = () => {
-    setCurrentPartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  useEffect(() => {
-    const fetchReadingSubmissionData = async () => {
-      const submissionsResponse = await fetch(`${BASE_SERVER}/readingExercisesSubmission?id=${submissionId}&userId=1`);
-      const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`);
-      const submissions = await submissionsResponse.json();
-      const exercises = await exercisesResponse.json();
-
-      const joinedData = submissions.map((submission) => {
-        const exercise = exercises.find((exercise) => exercise.id === submission.exerciseId);
-        return {
-          ...submission,
-          exercise,
-        };
-      });
-      console.log(joinedData[0]);
-      setExerciseResults(joinedData[0]);
-    };
-    fetchReadingSubmissionData();
-  }, [submissionId]);
-
-  const currentPart = exerciseResults?.exercise?.parts[currentPartIndex];
-  const handleToggleAnswerDetail = (questionId) => {
-    setIsAnswerDetail((prevState) => ({
+  const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
+  const navigate = useNavigate();
+  //function toggle answer detail/explanation
+  const handleToggleAnswerDetail = useCallback((questionId) => {
+    setToggleAnswerDetail((prevState) => ({
       ...prevState,
       [questionId]: !prevState[questionId],
     }));
-  };
-  return (
-    <div style={{ padding: "24px" }}>
-      {exerciseResults && (
-        <div>
-          <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-            {exerciseResults.exercise.title}
-          </TitleCustom>
-          {currentPart && (
-            <>
-              <div style={{ textAlign: "center" }}>
-                <TextCustom style={{ textAlign: "center" }}>
-                  Điểm: &nbsp;
-                  <span style={{ color: "red" }}>{exerciseResults.score}</span>
-                </TextCustom>
+  }, []);
+
+  //function hien thi cau hoi va ket qua sau khi nop bai
+  const renderPart = (currentPart) => {
+    return (
+      <>
+        {currentPart?.paragraph && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "#f9fafb",
+                padding: "20px",
+                borderRadius: "10px",
+                margin: "20px 0 20px 0",
+                width: "fit-content",
+              }}
+            >
+              {currentPart?.paragraph.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        )}
+        {currentPart.questions.map((question, index) => (
+          <div key={index + 1} style={{ marginBottom: "30px" }}>
+            {/* Display the question label */}
+            <TextCustom style={{ fontWeight: "bold", marginBottom: "10px" }}>
+              Câu {index + 1}: {question.question}
+            </TextCustom>
+
+            {/* Render Images */}
+            {Array.isArray(question.questionImage) && question.questionImage.length > 0 && (
+              <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                {question.questionImage.map((image, index) => (
+                  <img key={index} src={imgReadingArr[image]} style={{ padding: "10px 0px" }} alt={`question-part-${index}`} />
+                ))}
               </div>
-              <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
-              {currentPart.questions.map((question) => {
-                const userAnswer = exerciseResults?.submissionAnswers?.find((ans) => ans.quesionId === question.id);
-                const correctAnswer = currentPart.answers.find((ans) => ans.id === question.id);
-                const isCorrect = userAnswer?.isCorrect;
+            )}
+
+            {/* Render Options */}
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+              {question.options.map((option, index) => {
+                const isUserSelected = exerciseResults?.userAnswer;
+                let backgroundColor = isUserSelected ? "#A8703E" : "";
+
+                const foundQuestion = exerciseResults?.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
+                if (foundQuestion) {
+                  backgroundColor = "#5FD855";
+                } else if (isUserSelected) {
+                  backgroundColor = "red";
+                }
+
                 return (
-                  <div key={question.id}>
-                    <div style={{ marginTop: "20px" }}>
-                      <Row style={{ textAlign: "center" }}>
-                        {/* {question.questionParagraph && <p>{question.questionParagraph}</p>}
-                        {question.questionImage && (
-                          <div>
-                            {question.questionImage && (
-                              <div>
-                                {question.questionImage.map((img, imgIndex) => (
-                                  <img
-                                    key={imgIndex}
-                                    src={imgReadingArr[img]}
-                                    style={{
-                                      width: "100px",
-                                      marginRight: "10px",
-                                    }}
-                                  />
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        )} */}
-                        <TextCustom style={{ paddingTop: "20px" }}>
-                          Câu {question.id}: {question.question}
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-around",
-                              paddingTop: "12px",
-                            }}
-                          >
-                            {question.options.map((option, index) => {
-                              const backgroundColor = userAnswer?.userAnswer === option.id ? (isCorrect ? "#5FD855" : "#FF4D4F") : "transparent";
-                              console.log("userAnswer:", userAnswer, "option.id:", option.id, "backgroundColor:", backgroundColor);
-                              return (
-                                <Col key={option.id} span={8}>
-                                  <ButtonCustom buttonType="primary" style={{ backgroundColor }} disabled>
-                                    {option.id}. {option.text}
-                                  </ButtonCustom>
-                                </Col>
-                              );
-                            })}
-                          </div>
-                        </TextCustom>
-                      </Row>
-                      <Row style={{ marginTop: "20px", marginBottom: "20px" }}>
-                        <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
-                          Đáp án chi tiết
-                        </ButtonCustom>
-                      </Row>
-                      {isAnswerDetail[question.id] && correctAnswer && (
-                        <div style={{ paddingLeft: "20px" }}>
-                          <TextCustom>Đáp án đúng: {userAnswer?.correctAnswer}</TextCustom>
-                          <div>
-                            {" "}
-                            <TextCustom>
-                              Lời giải: <span style={{ color: "blue" }}>{correctAnswer?.answerDetail}</span>
-                            </TextCustom>
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                  <div>
+                    <ButtonCustom key={option._id} buttonType="primary" style={{ marginTop: "10px", width: "200px", backgroundColor }} disabled={true}>
+                      {index + 1}. {option?.text}
+                    </ButtonCustom>
                   </div>
                 );
               })}
-              <div style={{ textAlign: "center", paddingTop: "50px" }}>
-                <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handlePreviousPart} disabled={currentPartIndex === 0}>
-                  Phần trước
-                </ButtonCustom>
-                <ButtonCustom
-                  buttonType="secondary"
-                  style={{
-                    marginRight: "100px",
-                    padding: "23px",
-                    marginLeft: "23px",
-                  }}
-                  onClick={handleNextPart}
-                  disabled={currentPartIndex === exerciseResults.exercise.parts.length - 1}
-                >
-                  Phần sau
-                </ButtonCustom>
-              </div>
-            </>
-          )}
+            </div>
+
+            {/* Show detailed answers after submission */}
+            <div style={{ padding: "20px" }}>
+              <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
+                Đáp án chi tiết
+              </ButtonCustom>
+              {toggleAnswerDetail[question._id] && (
+                <div>
+                  <TextCustom style={{ color: "blue" }}>
+                    {exerciseResults?.submissionAnswer?.map((answer, idx) => {
+                      if (answer.questionId._id === question._id) {
+                        return (
+                          <React.Fragment key={idx}>
+                            {question?.explanation?.split("\n").map((line, idx) => (
+                              <React.Fragment key={idx}>
+                                {line}
+                                <br />
+                              </React.Fragment>
+                            ))}
+                          </React.Fragment>
+                        );
+                      }
+                    })}
+                  </TextCustom>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </>
+    );
+  };
+
+  if (!exerciseResults?.exerciseId?.parts) {
+    return <div>Loading...</div>;
+  }
+
+  const currentPart = exerciseResults?.exerciseId?.parts[currentPartIndex];
+
+  return (
+    <div style={{ padding: "24px" }}>
+      <BreadCrumbHome />
+      <TitleCustom level={2} style={{ fontWeight: "bold" }}>
+        {exerciseResults?.exerciseId?.title}
+      </TitleCustom>
+      <div style={{ textAlign: "center" }}>
+          <>
+            <TextCustom>Điểm: </TextCustom>
+            <span style={{ color: "red" }}>{Math.round(exerciseResults?.score).toFixed(2)}%</span>
+          </>
+      </div>
+      <div>
+        {/* part name  */}
+        <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart?.partName}</TextCustom>
+        {/* content  */}
+        {currentPart?.partType === PART_TYPE.MULTIPLE_CHOICE && renderPart(currentPart, `part${currentPartIndex + 1}`)}
+        {/* button control */}
+        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+          <ButtonCustom buttonType="secondary" style={{ padding: "23px" }} onClick={() => setCurrentPartIndex((prev) => prev - 1)} disabled={currentPartIndex === 0}>
+            Phần trước
+          </ButtonCustom>
+          <ButtonCustom
+            buttonType="secondary"
+            style={{ padding: "23px", marginLeft: "30px" }}
+            onClick={() => setCurrentPartIndex((prev) => prev + 1)}
+            disabled={currentPartIndex === exerciseResults?.exerciseId?.parts.length - 1}
+          >
+            Phần tiếp theo
+          </ButtonCustom>
+          <ButtonCustom buttonType="secondary" style={{ padding: "23px", marginLeft: "30px" }} onClick={() => navigate(-1)}>
+            Quay lại
+          </ButtonCustom>
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function EditPersonalProfile() {
   const [avatarPhoto, setAvatarPhoto] = useState("");
   const [users, setUsers] = useState({});
   const { user } = useAuth();
-  const userId = user?._id;
+  const userId = user?.id;
   // const userId = getStorage(STORAGE.USER_ID);
 
   useEffect(() => {

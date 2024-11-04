@@ -32,7 +32,7 @@ export default function LearnerHeader() {
 
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
+      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.RESULTS_PRACTICE)}>
         Xem Trang Cá Nhân
       </Menu.Item>
       <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>
@@ -136,7 +136,7 @@ export default function LearnerHeader() {
               {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
             </div>
 
-            <BellOutlined style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }} />
+            {/* <BellOutlined style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }} /> */}
 
             <Dropdown overlay={userMenu} trigger={["click"]}>
               <UserOutlined style={{ fontSize: "25px", cursor: "pointer" }} />

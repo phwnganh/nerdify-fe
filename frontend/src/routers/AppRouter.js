@@ -5,13 +5,14 @@ import { Outlet } from "react-router-dom";
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import BlogPage from "../pages/LearnersPage/BlogPage";
 import BlogDetails from "../pages/LearnersPage/BlogDetails";
+import { CLIENT_URI } from "../constants";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
-import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard, AccountantGuard } from "../guards";
 
 // Importing Layouts for different user roles
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AdminContentLayout } from "../layouts";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AccountantLayout } from "../layouts";
 
 // Importing Pages for Learners
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
@@ -33,14 +34,32 @@ import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword
 import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
+import SidebarCustom from "../components/SidebarAdmin/SidebarCustom";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import AdminContentLayout from "../layouts/AdminContentLayout";
+import { AdminContentSidebar } from "../components/SidebarAdmin/SidebarItems";
+import TableExercise from "../components/Table/TableExercise";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-import { CLIENT_URI } from "../constants";
-import Exercise from "../pages/ContentManager/Exercise";
-import UploadForm from "../components/Upload";
 import ConfirmPayment from "../pages/LearnersPage/Payment/ConfirmPayment";
+import AccountantDashboard from "../pages/AccountantPage/Dashboard";
+import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
+import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
+import UserStatistics from "../pages/AccountantPage/UserStatistics";
+import Exercise from "../pages/ContentManager/Exercise";
+import { Upload } from "antd";
+import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
+import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice";
+
+//admin
+import Dashboard from "../pages/AdminPage/Dashboard";
+import FeedbackManagement from "../pages/AdminPage/FeedbackManagement";
+import PremiumManagement from "../pages/AdminPage/PremiumManagement";
+import AccountManagement from "../pages/AdminPage/AccountManagement";
+import PaymentSuccess from "../pages/LearnersPage/Payment/SuccessPayment";
+import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder";
+
 export const routes = [
   // Guest urls
   {
@@ -74,6 +93,11 @@ export const routes = [
           {
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
+          },
+
+          {
+            path: CLIENT_URI.TROPHY,
+            element: <TakeATrophy />,
           },
         ],
       },
@@ -126,7 +150,7 @@ export const routes = [
       },
       {
         path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
-        element: <FinalExam/>,
+        element: <FinalExam />,
       },
       {
         path: CLIENT_URI.FLASH_CARD,
@@ -233,8 +257,41 @@ export const routes = [
         element: <ConfirmPayment />,
       },
       {
+        path: `${CLIENT_URI.SUCCESS_PAYMENT}/:transactionId`,
+        element: <PaymentSuccess />,
+      },
+      {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
+      },
+
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+      },
+      {
+        path: `${CLIENT_URI.VIEW_FLASHCARDS_IN_FOLDER}/:folderId`,
+        element: <FlashcardsInFolder />,
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
+      },
+      {
+        path: CLIENT_URI.MY_TRANSACTION_HISTORY,
+        element: <ViewTransactionHistoryList />,
+      },
+      {
+        path: CLIENT_URI.RESULTS_PRACTICE,
+        element: <ViewResultsPractice />,
+      },
+      {
+        path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
+        element: <ViewResultsDetail />,
       },
     ],
   },
@@ -248,7 +305,24 @@ export const routes = [
         </AdminLayout>
       </AdminGuard>
     ),
-    children: [],
+    children: [
+      {
+        path: CLIENT_URI.ADMIN_DASHBOARD,
+        element: <Dashboard />,
+      },
+      {
+        path: CLIENT_URI.ACCOUNT_MANAGEMENT,
+        element: <AccountManagement />,
+      },
+      {
+        path: CLIENT_URI.PREMIUM_MANAGEMENT,
+        element: <PremiumManagement />,
+      },
+      {
+        path: CLIENT_URI.FEEDBACK_MANAGEMENT,
+        element: <FeedbackManagement />,
+      },
+    ],
   },
   // Admin content
   {
@@ -269,7 +343,35 @@ export const routes = [
       },
       {
         path: `/upload`,
-        element: <UploadForm />,
+        element: <Upload />,
+      },
+    ],
+  },
+  // Accountant urls
+  {
+    element: (
+      <AccountantGuard>
+        <AccountantLayout>
+          <Outlet />
+        </AccountantLayout>
+      </AccountantGuard>
+    ),
+    children: [
+      {
+        path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
+        element: <AccountantDashboard />,
+      },
+      {
+        path: CLIENT_URI.SYSTEM_REVENUE,
+        element: <SystemRevenue />,
+      },
+      {
+        path: CLIENT_URI.TRANSACTION_HISTORY,
+        element: <TransactionHistory />,
+      },
+      {
+        path: CLIENT_URI.USER_STATISTICS,
+        element: <UserStatistics />,
       },
     ],
   },

@@ -2,32 +2,22 @@ import React, { useEffect, useState } from "react";
 import { List, Spin, Alert } from "antd";
 import CourseList from "./CourseList";
 import { getCourseLevelList } from "../../../services/LearnerService";
+import SpinCustom from "../../../components/Spin";
 
 export default function CoursePage() {
   const [course, setCourse] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     getCourseLevelList()
       .then((resp) => {
         setCourse(resp.data);
-        setLoading(false);
       })
       .catch((error) => {
         setError("Không thể tải dữ liệu khóa học. Vui lòng thử lại sau.");
-        setLoading(false);
       });
   }, []);
 
-  if (loading) {
-    return (
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <Spin size="large" />
-        <p>Đang tải dữ liệu, vui lòng đợi...</p>
-      </div>
-    );
-  }
 
   if (error) {
     return (

@@ -13,8 +13,7 @@ export default function ViewPersonalProfile() {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
   const [latestReadingSubmission, setLatestReadingSubmission] = useState(null);
-  const [latestListeningSubmission, setLatestListeningSubmission] =
-    useState(null);
+  const [latestListeningSubmission, setLatestListeningSubmission] = useState(null);
   useEffect(() => {
     // fetch(`http://localhost:9999/users/1`).then(res => res.json()).then(res => setUser(res));
     const fetchCurrentUser = async () => {
@@ -32,18 +31,14 @@ export default function ViewPersonalProfile() {
 
   useEffect(() => {
     const fetchReadingSubmissionData = async () => {
-      const submissionsResponse = await fetch(
-        `${BASE_SERVER}/readingExercisesSubmission?userId=1`
-      );
+      const submissionsResponse = await fetch(`${BASE_SERVER}/readingExercisesSubmission?userId=1`);
       const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`);
 
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
 
       const joinedData = submissions.map((submission) => {
-        const exercise = exercises.find(
-          (exercise) => exercise.id === submission.exerciseId
-        );
+        const exercise = exercises.find((exercise) => exercise.id === submission.exerciseId);
         return {
           ...submission,
           exerciseType: exercise?.exerciseType,
@@ -52,26 +47,19 @@ export default function ViewPersonalProfile() {
       });
 
       const latestSubmission = joinedData.reduce((latest, current) => {
-        return new Date(current.submissionDate) >
-          new Date(latest.submissionDate)
-          ? current
-          : latest;
+        return new Date(current.submissionDate) > new Date(latest.submissionDate) ? current : latest;
       }, joinedData[0]);
 
       setLatestReadingSubmission(latestSubmission);
     };
 
     const fetchListeningSubmissionData = async () => {
-      const submissionsResponse = await fetch(
-        `${BASE_SERVER}/listeningExercisesSubmission?userId=1`
-      );
+      const submissionsResponse = await fetch(`${BASE_SERVER}/listeningExercisesSubmission?userId=1`);
       const exercisesResponse = await fetch(`${BASE_SERVER}/exercises`);
       const submissions = await submissionsResponse.json();
       const exercises = await exercisesResponse.json();
       const joinedData = submissions?.map((submission) => {
-        const exercise = exercises.find(
-          (exercise) => exercise.id === submission.exerciseId
-        );
+        const exercise = exercises.find((exercise) => exercise.id === submission.exerciseId);
         return {
           ...submission,
           exerciseType: exercise?.exerciseType,
@@ -79,10 +67,7 @@ export default function ViewPersonalProfile() {
         };
       });
       const latestSubmission = joinedData.reduce((latest, current) => {
-        return new Date(current.submissionDate) >
-          new Date(latest.submissionDate)
-          ? latest
-          : current;
+        return new Date(current.submissionDate) > new Date(latest.submissionDate) ? latest : current;
       }, joinedData[0]);
 
       setLatestListeningSubmission(latestSubmission);
@@ -104,8 +89,8 @@ export default function ViewPersonalProfile() {
   };
 
   const handleClickResultDetail = (exerciseType, submissionId) => {
-    navigate(`${CLIENT_URI.RESULT_DETAIL}/${exerciseType}/${submissionId}`)
-  }
+    navigate(`${CLIENT_URI.RESULT_DETAIL}/${exerciseType}/${submissionId}`);
+  };
 
   return (
     <div style={{ padding: "30px" }}>
@@ -116,17 +101,11 @@ export default function ViewPersonalProfile() {
           position: "relative",
         }}
       >
-        <Avatar
-          size={80}
-          style={{ position: "absolute", bottom: "-40px", left: "20px" }}
-        ></Avatar>
+        <Avatar size={80} style={{ position: "absolute", bottom: "-40px", left: "20px" }}></Avatar>
       </div>
       <div style={{ padding: "50px 20px 20px" }}>
         <TitleCustom level={2}>{user?.fullName}</TitleCustom>
-        <ButtonCustom
-          buttonType="primary"
-          onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}
-        >
+        <ButtonCustom buttonType="primary" onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
           Chỉnh sửa trang cá nhân
         </ButtonCustom>
       </div>
@@ -139,19 +118,10 @@ export default function ViewPersonalProfile() {
                 title={latestListeningSubmission?.title}
                 description={
                   <>
-                    <TextCustom style={{ color: "red" }}>
-                      {displayExerciseType(
-                        latestListeningSubmission?.exerciseType
-                      )}
-                    </TextCustom>
-                    <p>
-                      Ngày làm bài gần nhất:{" "}
-                      {moment(latestListeningSubmission?.submissionDate).format(
-                        "DD-MM-YYYY"
-                      )}
-                    </p>
+                    <TextCustom style={{ color: "red" }}>{displayExerciseType(latestListeningSubmission?.exerciseType)}</TextCustom>
+                    <p>Ngày làm bài gần nhất: {moment(latestListeningSubmission?.submissionDate).format("DD-MM-YYYY")}</p>
                     <p>Kết quả: {latestListeningSubmission?.score}</p>
-                    <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(latestListeningSubmission?.exerciseType ,latestListeningSubmission?.id)}>
+                    <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(latestListeningSubmission?.exerciseType, latestListeningSubmission?.id)}>
                       Xem chi tiết
                     </ButtonCustom>
                   </>
@@ -166,17 +136,8 @@ export default function ViewPersonalProfile() {
                   title={latestReadingSubmission?.title}
                   description={
                     <>
-                      <p style={{ color: "red" }}>
-                        {displayExerciseType(
-                          latestReadingSubmission?.exerciseType
-                        )}
-                      </p>
-                      <p>
-                        Ngày làm bài gần nhất:{" "}
-                        {moment(latestReadingSubmission?.submissionDate).format(
-                          "DD-MM-YYYY"
-                        )}
-                      </p>
+                      <p style={{ color: "red" }}>{displayExerciseType(latestReadingSubmission?.exerciseType)}</p>
+                      <p>Ngày làm bài gần nhất: {moment(latestReadingSubmission?.submissionDate).format("DD-MM-YYYY")}</p>
                       <p>Kết quả: {latestReadingSubmission?.score}</p>
                       <ButtonCustom buttonType="primary" onClick={() => handleClickResultDetail(latestReadingSubmission?.exerciseType, latestReadingSubmission?.id)}>
                         Xem chi tiết

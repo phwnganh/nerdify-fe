@@ -98,7 +98,9 @@ export default function Navbar() {
               alignItems: "center",
               justifyContent: "center",
               width: "100px",
+              cursor: 'pointer'
             }}
+            onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}
           >
             <img src={logo} alt="Deutsch Nerd" style={logoStyle} />
           </div>
@@ -126,7 +128,7 @@ export default function Navbar() {
                 TIẾN ĐỘ HỌC TẬP
               </MenuItem>
               <MenuItem key="blog" onClick={handleLearningProgressClick}>BLOG HỌC TẬP</MenuItem>
-              <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
+              <MenuItem key="payment" onClick={handleLearningProgressClick}>
                 GÓI PREMIUM
               </MenuItem>
             </MenuBar>

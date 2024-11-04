@@ -77,7 +77,7 @@ export default function FinalExam() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, isSubmitted]);
 
   const formattedTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -140,7 +140,7 @@ export default function FinalExam() {
       <div>
         {part?.paragraph && (
           <ParagraphCustom>
-            {part.paragraph.split("\n").map((line, index) => (
+            {part?.paragraph.split("\n").map((line, index) => (
               <React.Fragment key={index}>
                 {line}
                 <br />
@@ -148,88 +148,78 @@ export default function FinalExam() {
             ))}
           </ParagraphCustom>
         )}
+        {part.questions.map((question, index) => (
+          <div key={index}>
+            <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
+              Câu {index + 1}: {question.question}
+            </TextCustom>
+            {question.questionParagraph && (
+              <ParagraphCustom>
+                {question?.questionParagraph.split("\n").map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </ParagraphCustom>
+            )}
+            {question?.mediaUrl && (
+              <audio controls style={{ marginTop: "20px", width: "100%" }}>
+                <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
+                Trình duyệt của bạn không hỗ trợ phần tử audio.
+              </audio>
+            )}
+            <div style={{ marginTop: "20px" }}>
+              <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+                {question.options.map((option, index) => {
+                  const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
+                  let backgroundColor = isUserSelected ? "#A8703E" : "";
 
-        {part.questions.map((question, index) => {
-          // Lấy answerOption.text từ câu hỏi nếu tồn tại
-          const correctAnswer = question.answers?.answerOption?.text || null;
-
-          return (
-            <div key={question._id}>
-              <TextCustom style={{ paddingTop: "20px", fontWeight: "bold" }}>
-                Câu {index + 1}: {question.question}
-              </TextCustom>
-
-              {question?.mediaUrl && (
-                <audio controls style={{ marginTop: "20px", width: "100%" }}>
-                  <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
-                  Trình duyệt của bạn không hỗ trợ phần tử audio.
-                </audio>
-              )}
-
-              <div style={{ marginTop: "20px" }}>
-                <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
-                  {question.options.map((option, optionIndex) => {
-                    // const userAnswer = userAnswers[question._id] === option._id;
-                    // const isCorrect = option._id === correctAnswer;
-                    // const isUserSelectedWrong = userAnswer && !isCorrect;
-
-                    // let backgroundColor = userAnswer ? "#A8703E" : ""; // màu nền khi người dùng chọn
-                    // if (isCompleted) {
-                    //   if (isCorrect) {
-                    //     backgroundColor = "#5FD855"; // màu nền cho câu trả lời đúng
-                    //   } else if (isUserSelectedWrong) {
-                    //     backgroundColor = "red"; // màu nền cho câu trả lời sai
-                    //   }
-                    // }
-                    const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
-                    let backgroundColor = isUserSelected ? "#A8703E" : "";
-                    if (isSubmitted) {
-                      const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer?.correctAnswer?.answerOption === option._id && answer?.isCorrect);
-                      if (foundQuestion) {
-                        backgroundColor = "#5FD855";
-                      } else if (isUserSelected) {
-                        backgroundColor = "red";
-                      }
+                  if (isSubmitted && submissionData.score >= 50) {
+                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
+                    if (foundQuestion) {
+                      backgroundColor = "#5FD855";
+                    } else if (isUserSelected) {
+                      backgroundColor = "red";
                     }
+                  }
 
-                    return (
-                      <Col key={optionIndex} span={8}>
-                        <ButtonCustom
-                          buttonType="primary"
-                          onClick={() => handleSelectOptions(question._id, option._id)}
-                          style={{
-                            backgroundColor,
-                          }}
-                          disabled={isSubmitted}
-                        >
-                          {option.optionImage ? (
-                            <span>{option.text}</span>
-                          ) : (
-                            <div>
-                              <span>{option.text}</span>
-                            </div>
-                          )}
-                        </ButtonCustom>
+                  return (
+                    <Col key={index} span={8}>
+                      <ButtonCustom
+                        buttonType="primary"
+                        onClick={() => handleSelectOptions(question._id, option._id)}
+                        style={{
+                          backgroundColor,
+                        }}
+                        disabled={isSubmitted}
+                      >
+                        {option.optionImage ? (
+                          <span>{index + 1}</span>
+                        ) : (
+                          <div>
+                            <span>{Array.isArray(option.text) ? `${index + 1}. ${option.text.join(" - ")}` : `${option.text}`}</span>
+                          </div>
+                        )}
+                      </ButtonCustom>
+                    </Col>
+                  );
+                })}
+              </Row>
+              {question.options.some((option) => option.optionImage) && (
+                <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
+                  {question.options
+                    .filter((option) => option.optionImage)
+                    .map((option, index) => (
+                      <Col key={index} span={8}>
+                        <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
                       </Col>
-                    );
-                  })}
+                    ))}
                 </Row>
-
-                {question.options.some((option) => option.optionImage) && (
-                  <Row gutter={[16, 16]} style={{ marginTop: "20px", textAlign: "center" }}>
-                    {question.options
-                      .filter((option) => option.optionImage)
-                      .map((option, optionIndex) => (
-                        <Col key={optionIndex} span={8}>
-                          <img src={imgArrVocab[optionIndex]} style={{ width: "50%" }} />
-                        </Col>
-                      ))}
-                  </Row>
-                )}
-              </div>
+              )}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     );
   };
@@ -262,8 +252,6 @@ export default function FinalExam() {
       navigate(CLIENT_URI.TROPHY, {
         state: { examId: examId, title: exam?.title },
       });
-    } else {
-      alert("Bạn chưa đủ điểm để nhận cup");
     }
   };
   const currentPart = exam.parts?.[currentPartIndex];
@@ -307,7 +295,7 @@ export default function FinalExam() {
                 </ButtonCustom>
               ) : (
                 <>
-                  {submissionData?.conditionStatus < 60 ? (
+                  {submissionData?.score < 60 ? (
                     <>
                       <ButtonCustom buttonType="secondary" style={{ marginRight: "100px", padding: "23px" }} onClick={handleRetry}>
                         Làm lại bài kiểm tra

@@ -28,13 +28,14 @@ import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 
 // Constants
 import { CLIENT_URI } from "../../../constants/uri.constants";
-import { EXERCISE_TYPE } from "../../../constants/common.constant";
+import { ACCOUNT_TYPE, EXERCISE_TYPE } from "../../../constants/common.constant";
 import { getFinalExamDetailByCourseId, getLevelDetail } from "../../../services/LearnerService";
 import ModalCustom from "../../../components/Modal";
-import FinalExam from "../FinalExam";
+import { useAuth } from "../../../hooks";
 
 export function StartQuizModal({ exerciseId, onClose }) {
   const navigate = useNavigate();
+
   const handleStartQuiz = () => {
     onClose();
     navigate(`${CLIENT_URI.ONE_EXERCISE}/${EXERCISE_TYPE.QUIZ}/${exerciseId}`);
@@ -63,6 +64,8 @@ export default function ViewLevelDetail() {
   const [selectedExerciseId, setSelectedExerciseId] = useState(null);
   const [finalExamDetail, setFinalExamDetail] = useState(null);
   const { courseId } = useParams();
+  const { user } = useAuth();
+  console.log("check user type: ", user?.accountType?.type);
   const navigate = useNavigate();
 
   const imgLevelArr = { a1: a1, a2: a2, b1: b1 };
@@ -71,14 +74,19 @@ export default function ViewLevelDetail() {
     if (courseId) {
       getLevelDetail(courseId)
         .then((resp) => {
-          setCourse(resp.data);
-          if (resp.data.phases.length > 0) setActivePhase(resp.data.phases[0].title);
+          const phaseWithLock = resp.data.phases.map((phase, index, phases) => {
+            const isLocked =
+              user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !phases.slice(0, index).every((prevPhase) => prevPhase.exercises.every((exercise) => exercise.isCompleted));
+            return { ...phase, isLocked };
+          });
+          setCourse({ ...resp.data, phases: phaseWithLock });
+          if (phaseWithLock.length > 0) setActivePhase(phaseWithLock[0].title);
         })
         .catch((error) => {
           console.error("Error fetching course details", error);
         });
     }
-  }, [courseId]);
+  }, [courseId, user?.accountType?.type]);
 
   useEffect(() => {
     if (activePhase === "Final Exam" && courseId) {
@@ -94,6 +102,15 @@ export default function ViewLevelDetail() {
   }, [activePhase, courseId]);
 
   const handlePhaseClick = (phaseTitle) => {
+    if (user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM) {
+      // Find the current index of the clicked phase
+      const currentIndex = course.phases.findIndex((phase) => phase.title === phaseTitle);
+      // Find the index of the last completed phase for Freemium users
+      const lastCompletedPhaseIndex = course.phases.findIndex((phase) => phase?.exercises.every((exercise) => exercise?.isCompleted));
+
+      // Check if the clicked phase is allowed
+      if (currentIndex > lastCompletedPhaseIndex + 1) return; // Do not allow clicking on locked phases
+    }
     setActivePhase(phaseTitle);
   };
 
@@ -118,26 +135,28 @@ export default function ViewLevelDetail() {
     const selectedPhase = course?.phases.find((phase) => phase.title === activePhase);
 
     if (!selectedPhase) return null;
-
     if (selectedPhase.title === "Final Exam") {
       const examId = finalExamDetail?.exercises[0]?._id;
       console.log("examId: ", examId);
-      return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <CardCustom
-            bordered={true}
-            style={{
-              marginTop: 20,
-              marginBottom: 20,
-              textAlign: "center",
-              backgroundColor: "#EAA68D",
-            }}
-          >
-            <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
-            <ButtonToDoExam onClick={() => handleFinalExamClick(selectedPhase?._id)}>Vào làm bài</ButtonToDoExam>
-          </CardCustom>
-        </div>
-      );
+      return selectedPhase.exercises.map((exercise, index) => {
+        const isLocked = user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 1 && !exercise?.isCompleted;
+        return (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <CardCustom
+              bordered={true}
+              style={{
+                marginTop: 20,
+                marginBottom: 20,
+                textAlign: "center",
+                backgroundColor: "#EAA68D",
+              }}
+            >
+              <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
+              <ButtonToDoExam onClick={() => handleFinalExamClick(selectedPhase?._id)}>Vào làm bài</ButtonToDoExam>
+            </CardCustom>
+          </div>
+        );
+      });
     } else {
       return selectedPhase.exercises.map((exercise, index) => (
         <CardCustom key={index} bordered={true} style={{ marginBottom: 20, cursor: "pointer", width: "800px" }} onClick={() => handleExerciseClick(exercise.exerciseType, exercise._id)}>
@@ -168,13 +187,13 @@ export default function ViewLevelDetail() {
                     <div style={{ textAlign: "center" }}>
                       <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                       <CheckOutlined style={{ color: "green" }} /> &nbsp;
-                      <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                      <TextCustom style={{ color: "green" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                     </div>
                   ) : (
                     <div style={{ textAlign: "center" }}>
                       <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                       <CloseOutlined style={{ color: "red" }} /> &nbsp;
-                      <TextCustom style={{ color: "red" }}>{exercise?.score}</TextCustom>
+                      <TextCustom style={{ color: "red" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                     </div>
                   )
                 ) : (
@@ -186,7 +205,7 @@ export default function ViewLevelDetail() {
                 <div style={{ textAlign: "center" }}>
                   <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                   <CheckOutlined style={{ color: "green" }} /> &nbsp;
-                  <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                  <TextCustom style={{ color: "green" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                 </div>
               ) : (
                 <TitleCustom level={4} style={{ textAlign: "center" }}>
@@ -229,7 +248,7 @@ export default function ViewLevelDetail() {
         </div>
 
         <div style={{ width: "100%" }}>
-          <ScrollablePhaseDiv>
+          {/* <ScrollablePhaseDiv>
             <div style={{ display: "flex", justifyContent: "center" }}>
               {course?.phases?.map((phase, index) => (
                 <ButtonPhase
@@ -244,6 +263,25 @@ export default function ViewLevelDetail() {
                 </ButtonPhase>
               ))}
             </div>
+          </ScrollablePhaseDiv> */}
+          <ScrollablePhaseDiv>
+            {course?.phases?.map((phase, index) => {
+              const isPhaseLocked =
+                user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !course.phases.slice(0, index).every((prevPhase) => prevPhase.exercises.every((exercise) => exercise?.isCompleted));
+              return (
+                <ButtonPhase
+                  key={index}
+                  style={{
+                    backgroundColor: activePhase === phase.title ? "#ff855d" : "#ffa751",
+                    cursor: isPhaseLocked ? "not-allowed" : "pointer",
+                    opacity: isPhaseLocked ? 0.5 : 1,
+                  }}
+                  onClick={() => !isPhaseLocked && handlePhaseClick(phase.title)}
+                >
+                  {phase.title}
+                </ButtonPhase>
+              );
+            })}
           </ScrollablePhaseDiv>
         </div>
 
