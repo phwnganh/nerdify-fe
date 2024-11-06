@@ -56,3 +56,9 @@ export const deletePackage = async (packageId) => {
   const res = await client.delete(ADMIN_SERVICE_URI.PACKAGES.DELETE.replace(":packageId", packageId));
   return res.data;
 };
+
+// get statistics
+export const getStatistics = async () => {
+  const res = await client.get(ADMIN_SERVICE_URI.STATISTICS.GET_ALL);
+  return res.data;
+};

@@ -1,38 +1,63 @@
-import React from "react";
+//path : src/pages/AdminPage/Dashboard/index.js
+
+import React, { useEffect, useState } from "react";
 import UserInfo from "../../../components/Header/AdminHeader/UserInfo";
 import HoverableCard from "../../../components/Card/HoverableCard";
 import CustomLineChart from "../../../components/Chart/CustomLineChart";
 import CustomPieChart from "../../../components/Chart/CustomPieChart"; // Import the Pie Chart
 import { BellOutlined } from "@ant-design/icons";
 import { Row, Col } from "antd";
+import { getAllUsers, getStatistics } from "../../../services/AdminService";
+import { set } from "js-cookie";
+
+const hoverableCardData = [
+  { id: 1, title: "Tổng số học viên trong hệ thống", value: 1200, icon: <BellOutlined /> },
+  { id: 2, title: "Tổng số học viên mới trong tháng", value: 150, icon: <BellOutlined /> },
+  { id: 3, title: "Tổng số học viên trả phí trong tháng", value: 80, icon: <BellOutlined /> },
+  { id: 4, title: "Tổng số học viên miễn phí trong tháng", value: 70, icon: <BellOutlined /> },
+];
+
+const dataChart = [
+  { month: "Tháng 7", "Gói 6 tháng": 10, "Gói 12 tháng": 5 },
+  { month: "Tháng 8", "Gói 6 tháng": 15, "Gói 12 tháng": 7 },
+  { month: "Tháng 9", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
+  { month: "Tháng 10", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
+  { month: "Tháng 11", "Gói 6 tháng": 12, "Gói 12 tháng": 5 },
+  { month: "Tháng 12", "Gói 6 tháng": 13, "Gói 12 tháng": 5 },
+  { month: "Tháng 1", "Gói 6 tháng": 11, "Gói 12 tháng": 4 },
+];
+
+const dataKey = [
+  { dataKey: "Gói 6 tháng", color: "#fa8c16" },
+  { dataKey: "Gói 12 tháng", color: "#722ed1" },
+];
+
+const pieData01 = [
+  { name: "Học viên trả phí", value: 2400, fill: "#52c41a" }, // Green color
+  { name: "Học viên miễn phí", value: 4567, fill: "#d9d9d9" }, // Light gray color
+];
 
 const Dashboard = () => {
-  const hoverableCardData = [
-    { id: 1, title: "Tổng số học viên trong hệ thống", value: 1200, icon: <BellOutlined /> },
-    { id: 2, title: "Tổng số học viên mới trong tháng", value: 150, icon: <BellOutlined /> },
-    { id: 3, title: "Tổng số học viên trả phí trong tháng", value: 80, icon: <BellOutlined /> },
-    { id: 4, title: "Tổng số học viên miễn phí trong tháng", value: 70, icon: <BellOutlined /> },
-  ];
+  const [loading, setLoading] = useState(true);
+  const [statistics, setStatistics] = useState([]);
 
-  const dataChart = [
-    { month: "Tháng 7", "Gói 6 tháng": 10, "Gói 12 tháng": 5 },
-    { month: "Tháng 8", "Gói 6 tháng": 15, "Gói 12 tháng": 7 },
-    { month: "Tháng 9", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
-    { month: "Tháng 10", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
-    { month: "Tháng 11", "Gói 6 tháng": 12, "Gói 12 tháng": 5 },
-    { month: "Tháng 12", "Gói 6 tháng": 13, "Gói 12 tháng": 5 },
-    { month: "Tháng 1", "Gói 6 tháng": 11, "Gói 12 tháng": 4 },
-  ];
+  const fetchStatistics = async () => {
+    try {
+      const result = await getStatistics();
+      setStatistics(result.data);
+      console.log("Statistics:", result.data);
+    } catch (error) {
+      console.error("Error fetching statistics:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const dataKey = [
-    { dataKey: "Gói 6 tháng", color: "#fa8c16" },
-    { dataKey: "Gói 12 tháng", color: "#722ed1" },
-  ];
+  useEffect(() => {
+    fetchStatistics();
+  }, []);
 
-  const pieData01 = [
-    { name: "Học viên trả phí", value: 2400, fill: "#52c41a" }, // Green color
-    { name: "Học viên miễn phí", value: 4567, fill: "#d9d9d9" }, // Light gray color
-  ];
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div style={{ padding: "20px" }}>
