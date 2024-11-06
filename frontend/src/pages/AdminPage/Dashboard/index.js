@@ -1,14 +1,119 @@
-//path : src/pages/AdminPage/Dashboard/index.js
+// //path : src/pages/AdminPage/Dashboard/index.js
+
+// import React, { useEffect, useState } from "react";
+// import UserInfo from "../../../components/Header/AdminHeader/UserInfo";
+// import HoverableCard from "../../../components/Card/HoverableCard";
+// import { BellOutlined } from "@ant-design/icons";
+
+// import { Card, Row, Col } from "antd";
+
+// import { getStatistics } from "../../../services/AdminService";
+// import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
+
+// const hoverableCardData = [
+//   { id: 1, title: "Tổng số học viên trong hệ thống", value: 1200, icon: <BellOutlined /> },
+//   { id: 2, title: "Tổng số học viên mới trong tháng", value: 150, icon: <BellOutlined /> },
+//   { id: 3, title: "Tổng số học viên trả phí trong tháng", value: 80, icon: <BellOutlined /> },
+//   { id: 4, title: "Tổng số học viên miễn phí trong tháng", value: 70, icon: <BellOutlined /> },
+// ];
+
+// const Dashboard = () => {
+//   const [loading, setLoading] = useState(true);
+//   const [statistics, setStatistics] = useState(null);
+
+//   const fetchStatistics = async () => {
+//     try {
+//       const result = await getStatistics();
+//       setStatistics(result.data);
+//       console.log("Statistics:", result.data);
+//     } catch (error) {
+//       console.error("Error fetching statistics:", error);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchStatistics();
+//   }, []);
+
+//   if (loading) return <p>Loading...</p>;
+//   if (!statistics) return <p>No data available</p>;
+
+//   // Prepare data for the charts
+//   const barChartData = statistics.formattedMonthsData.map((item) => ({
+//     month: item.month,
+//     newUsers: item.newUsers,
+//   }));
+
+//   const pieChartData = [
+//     { name: "Học viên trả phí", value: statistics.totalPremiumUsers },
+//     { name: "Học viên miễn phí", value: statistics.totalFreemiumUsers },
+//   ];
+
+//   return (
+//     <div style={{ padding: "20px" }}>
+//       <UserInfo />
+
+//       {/* Hoverable Cards Section */}
+//       <div style={{ marginTop: "20px" }}>
+//         <Row gutter={[20, 20]}>
+//           {hoverableCardData.map((item) => (
+//             <Col xs={24} sm={12} md={6} key={item.id}>
+//               <HoverableCard item={item} />
+//             </Col>
+//           ))}
+//         </Row>
+//       </div>
+
+//       {/* Charts Section */}
+//       <div style={{ marginTop: "20px" }}>
+//         <Row gutter={16}>
+//           {/* Bar Chart - occupies 3/4 of the width */}
+//           <Col xs={24} sm={24} md={18}>
+//             <Card style={{ marginBottom: "20px" }} title="New Users per Month">
+//               <ResponsiveContainer width="100%" height={300}>
+//                 <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+//                   <XAxis dataKey="month" />
+//                   <YAxis />
+//                   <Tooltip />
+//                   <Bar dataKey="newUsers" fill="#8884d8" />
+//                 </BarChart>
+//               </ResponsiveContainer>
+//             </Card>
+//           </Col>
+
+//           {/* Pie Chart - occupies 1/4 of the width */}
+//           <Col xs={24} sm={24} md={6}>
+//             <Card title="User Distribution">
+//               <ResponsiveContainer width="100%" height={300}>
+//                 <PieChart>
+//                   <Pie data={pieChartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}>
+//                     {pieChartData.map((entry, index) => (
+//                       <Cell key={`cell-${index}`} fill={index === 0 ? "#0088FE" : "#00C49F"} />
+//                     ))}
+//                   </Pie>
+//                   <Tooltip />
+//                   <Legend verticalAlign="bottom" height={36} />
+//                 </PieChart>
+//               </ResponsiveContainer>
+//             </Card>
+//           </Col>
+//         </Row>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Dashboard;
 
 import React, { useEffect, useState } from "react";
 import UserInfo from "../../../components/Header/AdminHeader/UserInfo";
 import HoverableCard from "../../../components/Card/HoverableCard";
-import CustomLineChart from "../../../components/Chart/CustomLineChart";
-import CustomPieChart from "../../../components/Chart/CustomPieChart"; // Import the Pie Chart
 import { BellOutlined } from "@ant-design/icons";
-import { Row, Col } from "antd";
-import { getAllUsers, getStatistics } from "../../../services/AdminService";
-import { set } from "js-cookie";
+import { Card, Row, Col } from "antd";
+import { getStatistics } from "../../../services/AdminService";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 
 const hoverableCardData = [
   { id: 1, title: "Tổng số học viên trong hệ thống", value: 1200, icon: <BellOutlined /> },
@@ -17,29 +122,9 @@ const hoverableCardData = [
   { id: 4, title: "Tổng số học viên miễn phí trong tháng", value: 70, icon: <BellOutlined /> },
 ];
 
-const dataChart = [
-  { month: "Tháng 7", "Gói 6 tháng": 10, "Gói 12 tháng": 5 },
-  { month: "Tháng 8", "Gói 6 tháng": 15, "Gói 12 tháng": 7 },
-  { month: "Tháng 9", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
-  { month: "Tháng 10", "Gói 6 tháng": 14, "Gói 12 tháng": 6 },
-  { month: "Tháng 11", "Gói 6 tháng": 12, "Gói 12 tháng": 5 },
-  { month: "Tháng 12", "Gói 6 tháng": 13, "Gói 12 tháng": 5 },
-  { month: "Tháng 1", "Gói 6 tháng": 11, "Gói 12 tháng": 4 },
-];
-
-const dataKey = [
-  { dataKey: "Gói 6 tháng", color: "#fa8c16" },
-  { dataKey: "Gói 12 tháng", color: "#722ed1" },
-];
-
-const pieData01 = [
-  { name: "Học viên trả phí", value: 2400, fill: "#52c41a" }, // Green color
-  { name: "Học viên miễn phí", value: 4567, fill: "#d9d9d9" }, // Light gray color
-];
-
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
-  const [statistics, setStatistics] = useState([]);
+  const [statistics, setStatistics] = useState(null);
 
   const fetchStatistics = async () => {
     try {
@@ -58,6 +143,41 @@ const Dashboard = () => {
   }, []);
 
   if (loading) return <p>Loading...</p>;
+  if (!statistics) return <p>No data available</p>;
+
+  // Helper function to convert English month names to Vietnamese abbreviations
+  const convertMonthToVietnamese = (monthString) => {
+    const monthMapping = {
+      January: "T1",
+      February: "T2",
+      March: "T3",
+      April: "T4",
+      May: "T5",
+      June: "T6",
+      July: "T7",
+      August: "T8",
+      September: "T9",
+      October: "T10",
+      November: "T11",
+      December: "T12",
+    };
+
+    const [monthName, year] = monthString.split(" ");
+    const vietnameseMonth = monthMapping[monthName];
+
+    return `${vietnameseMonth}/${year}`;
+  };
+
+  // Prepare data for the charts
+  const barChartData = statistics.formattedMonthsData.map((item) => ({
+    month: convertMonthToVietnamese(item.month),
+    newUsers: item.newUsers,
+  }));
+
+  const pieChartData = [
+    { name: "Học viên trả phí", value: statistics.totalPremiumUsers },
+    { name: "Học viên miễn phí", value: statistics.totalFreemiumUsers },
+  ];
 
   return (
     <div style={{ padding: "20px" }}>
@@ -68,7 +188,6 @@ const Dashboard = () => {
         <Row gutter={[20, 20]}>
           {hoverableCardData.map((item) => (
             <Col xs={24} sm={12} md={6} key={item.id}>
-              {/* 6 columns on large screens */}
               <HoverableCard item={item} />
             </Col>
           ))}
@@ -77,15 +196,36 @@ const Dashboard = () => {
 
       {/* Charts Section */}
       <div style={{ marginTop: "20px" }}>
-        <Row gutter={[20, 20]}>
-          {/* Line Chart - Takes 3/4 of the screen */}
-          <Col xs={24} md={18}>
-            <CustomLineChart dataChart={dataChart} chartTitle="Lượng học viên mới đăng ký gói Premium trong tháng" dataKey={dataKey} />
+        <Row gutter={16}>
+          {/* Bar Chart - occupies 3/4 of the width */}
+          <Col xs={24} sm={24} md={18}>
+            <Card style={{ marginBottom: "20px" }} title="Số lượng học viên mới theo tháng">
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={barChartData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip formatter={(value) => `${value} học viên`} />
+                  <Bar dataKey="newUsers" name="Học viên mới" fill="#8884d8" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Card>
           </Col>
 
-          {/* Pie Chart - Takes 1/4 of the screen */}
-          <Col xs={24} md={6}>
-            <CustomPieChart data01={pieData01} chartTitle="Phân tích nhóm học viên" />
+          {/* Pie Chart - occupies 1/4 of the width */}
+          <Col xs={24} sm={24} md={6}>
+            <Card title="Tỷ lệ học viên trả phí và miễn phí">
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie data={pieChartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}>
+                    {pieChartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={index === 0 ? "#0088FE" : "#00C49F"} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value, name) => [`${value} học viên`, `${name}`]} />
+                  <Legend verticalAlign="bottom" height={36} />
+                </PieChart>
+              </ResponsiveContainer>
+            </Card>
           </Col>
         </Row>
       </div>
