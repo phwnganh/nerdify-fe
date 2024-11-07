@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Dropdown, List, Row, Modal, Select, message } from "antd";
 import {
+      CaretLeftOutlined,
   EditOutlined,
   FileOutlined,
   FolderAddFilled,
@@ -16,24 +17,24 @@ import {
   SoundOutlined,
   UnlockOutlined,
 } from "@ant-design/icons";
-import { CLIENT_URI } from "../../../../constants/uri.constants";
+import { CLIENT_URI } from "../../../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
-import ButtonCustom from "../../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
+import ButtonCustom from "../../../../../../components/Button";
+import { TextCustom, TitleCustom } from "../../../../../../components/Typography";
 import { Container } from "./styled";
-import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
-import ModalCustom from "../../../../components/Modal";
-import InputCustom from "../../../../components/Input";
+import BreadCrumbHome from "../../../../../../components/BreadCrumb/BreadCrumbHome";
+import ModalCustom from "../../../../../../components/Modal";
+import InputCustom from "../../../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
-import { BASE_SERVER } from "../../../../constants";
+import { BASE_SERVER } from "../../../../../../constants";
 import { Option } from "antd/es/mentions";
-import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../services/LearnerService";
-import { useAuth } from "../../../../hooks";
+import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardStatus } from "../../../../../../services/LearnerService";
+import { useAuth } from "../../../../../../hooks";
 import moment from "moment";
 
-export default function FlashCardDetail() {
+export default function FlashcardHistoryDetail() {
   const navigate = useNavigate();
-  const {flashcardId } = useParams();
+  const { flashcardId } = useParams();
   const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
@@ -49,7 +50,6 @@ export default function FlashCardDetail() {
   const [folders, setFolders] = useState([]);
   const [isPublic, setIsPublic] = useState(false);
 
-
   const displayModalToChooseFolders = () => {
     console.log("Modal is opening");
     setIsVisibleFolderList(true);
@@ -59,7 +59,7 @@ export default function FlashCardDetail() {
     if (!selectedFolderId) {
       message.error("Vui lòng chọn một folder trước khi thêm.");
       return;
-  }
+    }
     addFlashcardToFolder(selectedFolderId, flashcardId)
       .then((res) => {
         message.success("Thêm vào folder thành công!");
@@ -251,9 +251,7 @@ export default function FlashCardDetail() {
             </Col>
           </Row>
           <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-            <Col style={{ marginRight: "20px" }}>
-              {/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}
-            </Col>
+            <Col style={{ marginRight: "20px" }}>{/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}</Col>
             <Col>
               <Button
                 icon={isFullScreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
@@ -321,9 +319,7 @@ export default function FlashCardDetail() {
             </Col>
           </Row>
           <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-            <Col style={{ marginRight: "20px" }}>
-              {/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}
-            </Col>
+            <Col style={{ marginRight: "20px" }}>{/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}</Col>
             <Col>
               <Button
                 icon={isFullScreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
@@ -343,7 +339,7 @@ export default function FlashCardDetail() {
   return (
     <div style={{ padding: "24px" }}>
       <div style={{ marginLeft: 235 }}>
-        <BreadCrumbHome />
+      <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
       </div>
       {/* Test Modal */}
       <ModalCustom
@@ -403,9 +399,11 @@ export default function FlashCardDetail() {
         ]}
       >
         <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}>
-          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }} onChange={value => setSelectedFolderId(value)}>
+          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }} onChange={(value) => setSelectedFolderId(value)}>
             {folders.map((folder) => (
-              <Option key={folder._id} value={folder._id}>{folder.name}</Option>
+              <Option key={folder._id} value={folder._id}>
+                {folder.name}
+              </Option>
             ))}
           </Select>
         </div>
@@ -415,17 +413,17 @@ export default function FlashCardDetail() {
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
           <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
         </div>
-          <ButtonCustom
-            style={{
-              background: "rgb(13 164 184 / 87%)",
-              color: "white",
-              width: "200px",
-              margin: "20px",
-            }}
-            onClick={displayModalToChooseFolders}
-          >
-            Thêm vào folder sẵn có
-          </ButtonCustom>
+        <ButtonCustom
+          style={{
+            background: "rgb(13 164 184 / 87%)",
+            color: "white",
+            width: "200px",
+            margin: "20px",
+          }}
+          onClick={displayModalToChooseFolders}
+        >
+          Thêm vào folder sẵn có
+        </ButtonCustom>
         <ButtonCustom
           style={{
             background: "#088d2b",
@@ -448,7 +446,7 @@ export default function FlashCardDetail() {
               <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
             </div>
             <div>
-              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{(flashcard?.createdBy === user?.id) ? user?.fullName : "Anonymous Users"}</TextCustom>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{flashcard?.createdBy === user?.id ? user?.fullName : "Anonymous Users"}</TextCustom>
             </div>
             <div>
               <TextCustom style={{ fontSize: "12px" }}>Đã tạo {moment(user?.updatedAt).format("DD-MM-YYYY")}</TextCustom>

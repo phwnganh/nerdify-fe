@@ -19,12 +19,29 @@ export default function ManageFlashcard() {
             Xem tất cả
           </ButtonCustom> */}
         </CardCustom>
-        <CardCustom title="Quản lý bộ flashcard" style={{ backgroundColor: "white" }}>
+        {/* <CardCustom title="Quản lý bộ flashcard" style={{ backgroundColor: "white" }}>
           <MyFlashCard />
-          {/* <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
+          <ButtonCustom buttonType="primary" onClick={() => navigate(`${CLIENT_URI.FLASH_CARD}`)} style={{ marginTop: "20px" }}>
             Xem tất cả
-          </ButtonCustom> */}
-        </CardCustom>
+          </ButtonCustom>
+        </CardCustom> */}
+        <CardCustom
+  title={
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <span>Quản lý bộ flashcard</span>
+      <ButtonCustom
+        onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}
+        buttonType="primary"
+        style={{ padding: "10px 20px" }}
+      >
+        Tạo bộ flashcard mới
+      </ButtonCustom>
+    </div>
+  }
+  style={{ backgroundColor: "white" }}
+>
+  <MyFlashCard />
+</CardCustom>
       </div>
     </div>
   );

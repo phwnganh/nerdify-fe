@@ -12,7 +12,7 @@ export default function FlashcardHistory() {
   const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
   const handleViewFlashcardDetail = (id) => {
-    navigate(`${CLIENT_URI.FLASH_CARD}/${id}`);
+    navigate(`${CLIENT_URI.VIEW_FLASHCARD_HISTORY_DETAIL}/${id}`);
   };
   useEffect(() => {
     getPublicFlashcardList()

@@ -56,6 +56,8 @@ import PremiumManagement from "../pages/AdminPage/PremiumManagement";
 import AccountManagement from "../pages/AdminPage/AccountManagement";
 import PaymentSuccess from "../pages/LearnersPage/Payment/SuccessPayment";
 import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder";
+import MyFlashcardDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/MyFlashcardDetail";
+import FlashcardHistoryDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/FlashcardHistory/FlashcardHistoryDetail";
 
 export const routes = [
   // Guest urls
@@ -92,10 +94,7 @@ export const routes = [
             element: <ResetPasswordPage />,
           },
 
-          {
-            path: CLIENT_URI.TROPHY,
-            element: <TakeATrophy />,
-          },
+
         ],
       },
       // {
@@ -150,6 +149,10 @@ export const routes = [
         element: <FinalExam />,
       },
       {
+        path: CLIENT_URI.TROPHY,
+        element: <TakeATrophy />,
+      },
+      {
         path: CLIENT_URI.FLASH_CARD,
         element: <Flashcard />,
       },
@@ -197,30 +200,10 @@ export const routes = [
         path: CLIENT_URI.CHANGE_PASSWORD,
         element: <ChangePassword />,
       },
-      // {
-      //   path: CLIENT_URI.FINAL_EXAM,
-      //   element: <FinalExam />,
-      // },
-      // {
-      //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-      //   element: <ExerciseDetail />,
-      // },
-      // {
-      //   path: CLIENT_URI.CREATE_FLASH_CARD,
-      //   element: <CreateFlashCard />,
-      // },
-      // {
-      //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
-      //   element: <EditFlashCard />,
-      // },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
       },
-      // {
-      //   path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
-      //   element: <TestFlashCard />,
-      // },
       {
         path: `${CLIENT_URI.PROFILE}`,
         element: <ViewPersonalProfile />,
@@ -265,6 +248,14 @@ export const routes = [
       {
         path: CLIENT_URI.MANAGE_FLASHCARD,
         element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.VIEW_MY_FLASHCARD_DETAIL + "/:flashcardId",
+        element: <MyFlashcardDetail/>
+      },
+      {
+        path: CLIENT_URI.VIEW_FLASHCARD_HISTORY_DETAIL + "/:flashcardId",
+        element: <FlashcardHistoryDetail/>
       },
       {
         path: CLIENT_URI.MANAGE_FOLDER,

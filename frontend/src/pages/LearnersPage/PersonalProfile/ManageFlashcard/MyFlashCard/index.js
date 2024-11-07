@@ -23,16 +23,23 @@ export default function MyFlashCard() {
       .catch((err) => console.error(err));
   }, []);
 
-  const handleDeleteFlashcard = async (flashcardId) => {
+  const handleDeleteFlashcard = async (flashcardId, e) => {
     try {
       const res = await removeFlashcard(flashcardId);
       setFlashcards(flashcards.filter((flashcard) => flashcard._id !== flashcardId));
+      e.stopPropagation();
     } catch (error) {
       console.log(error);
     }
   };
 
-  const showDeleteConfirm = (flashcardId) => {
+  const handleEditFlashCard = async (flashcardId, e) => {
+    e.stopPropagation();
+    navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcardId}`);
+  };
+
+  const showDeleteConfirm = (flashcardId, e) => {
+    e.stopPropagation();
     Modal.confirm({
       title: "Bạn có chắc chắn xóa flashcard này?",
       okText: "OK",
@@ -42,7 +49,7 @@ export default function MyFlashCard() {
   };
 
   const handleClickFlashcardDetail = (id) => {
-    navigate(`${CLIENT_URI.FLASH_CARD}/${id}`);
+    navigate(`${CLIENT_URI.VIEW_MY_FLASHCARD_DETAIL}/${id}`);
   };
 
   return (
@@ -67,10 +74,10 @@ export default function MyFlashCard() {
                   </div>
 
                   <div>
-                    <ButtonCustom buttonType="primary" style={{ margin: "10px", alignItem: "center" }} onClick={() => navigate(`${CLIENT_URI.EDIT_FLASH_CARD}/${flashcard._id}`)}>
+                    <ButtonCustom buttonType="primary" style={{ margin: "10px", alignItem: "center" }} onClick={(e) => handleEditFlashCard(flashcard?._id, e)}>
                       Chỉnh sửa
                     </ButtonCustom>
-                    <ButtonCustom buttonType="primary" style={{ margin: "10px" }} onClick={() => showDeleteConfirm(flashcard?._id)}>
+                    <ButtonCustom buttonType="primary" style={{ margin: "10px" }} onClick={(e) => showDeleteConfirm(flashcard?._id, e)}>
                       Xóa
                     </ButtonCustom>
                   </div>

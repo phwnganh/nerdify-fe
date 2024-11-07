@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown, notification } from "antd";
-import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
-import { useParams } from "react-router-dom";
+import { CaretLeftOutlined, DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
+import { useNavigate, useParams } from "react-router-dom";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../helpers/validate";
 import { BASE_SERVER } from "../../../../constants";
 import { getFlashcardDetail, updateFlashcard } from "../../../../services/LearnerService";
+import ButtonCustom from "../../../../components/Button";
 
 export default function EditFlashCard() {
+  const navigate = useNavigate();
   const { flashcardId } = useParams();
   const [flashcard, setFlashcard] = useState(null);
   const [form] = Form.useForm();
@@ -131,7 +133,8 @@ export default function EditFlashCard() {
     <>
       {contextHolder}
       <div style={{ width: "100%"}}>
-        <BreadCrumbHome />
+        {/* <BreadCrumbHome /> */}
+        <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
         <h1 style={{ textAlign: "center" }}>CHỈNH SỬA HỌC PHẦN</h1>
         <Form
           form={form}

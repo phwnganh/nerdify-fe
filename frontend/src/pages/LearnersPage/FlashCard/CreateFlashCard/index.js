@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Input, Row, Upload, Typography, Card, Space, message, Dropdown, Menu, notification } from "antd";
 
-import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
+import { CaretLeftOutlined, DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../helpers/validate";
 import { BASE_SERVER } from "../../../../constants";
 import { createNewFlashcard } from "../../../../services/LearnerService";
+import ButtonCustom from "../../../../components/Button";
+import { useNavigate } from "react-router-dom";
 export default function CreateFlashCard() {
+  const navigate = useNavigate();
   const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
@@ -106,7 +109,9 @@ export default function CreateFlashCard() {
       {contextHolder}
 
       <div style={{ padding: "20px" }}>
-        <BreadCrumbHome />
+        {/* <BreadCrumbHome /> */}
+        <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
+
         <h1 style={{ textAlign: "center" }}>TẠO HỌC PHẦN MỚI</h1>
         <Form form={form} onFinish={handleSubmit} scrollToFirstError initialValues={{ cards: [{}], level: null }}>
           <Row>
