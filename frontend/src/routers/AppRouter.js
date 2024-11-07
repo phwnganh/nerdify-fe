@@ -58,6 +58,7 @@ import PaymentSuccess from "../pages/LearnersPage/Payment/SuccessPayment";
 import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder";
 import MyFlashcardDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/MyFlashcardDetail";
 import FlashcardHistoryDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/FlashcardHistory/FlashcardHistoryDetail";
+import ViewFlashcardInFolderDetail from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder/FlashcardInFolderDetail";
 
 export const routes = [
   // Guest urls
@@ -264,6 +265,10 @@ export const routes = [
       {
         path: `${CLIENT_URI.VIEW_FLASHCARDS_IN_FOLDER}/:folderId`,
         element: <FlashcardsInFolder />,
+      },
+      {
+        path: CLIENT_URI.VIEW_FLASHCARD_IN_FOLDER_DETAIL + "/:flashcardId",
+        element: <ViewFlashcardInFolderDetail/>
       },
       {
         path: CLIENT_URI.CHANGE_PASSWORD,

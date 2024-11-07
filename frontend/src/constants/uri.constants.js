@@ -32,6 +32,7 @@ export const CLIENT_URI = {
   MANAGE_FLASHCARD: "/manage-flashcard",
   VIEW_MY_FLASHCARD_DETAIL: "/view-my-flashcard-detail",
   VIEW_FLASHCARD_HISTORY_DETAIL: "/view-flashcard-history-detail",
+  VIEW_FLASHCARD_IN_FOLDER_DETAIL: "/view-flashcard-in-folder-detail",
   CHANGE_PASSWORD: "/change-password",
   MY_SUBSCRIPTION: "/my-subscription",
   MANAGE_SUBSCRIPTION: "/manage-subscription",

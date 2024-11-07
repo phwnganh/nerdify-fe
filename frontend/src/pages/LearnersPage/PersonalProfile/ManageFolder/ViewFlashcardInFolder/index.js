@@ -13,7 +13,7 @@ export default function FlashcardsInFolder() {
   const navigate = useNavigate();
   const {folderId} = useParams();    
   const handleViewFlashcardDetail = (id) => {
-    navigate(`${CLIENT_URI.FLASH_CARD}/${id}`);
+    navigate(`${CLIENT_URI.VIEW_FLASHCARD_IN_FOLDER_DETAIL}/${id}`);
   };
   useEffect(() => {
       getMyFolderDetail(folderId).then(res => {
