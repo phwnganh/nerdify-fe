@@ -4,8 +4,8 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import { Col, Input, Row } from "antd";
-import React, { useCallback, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
 import { PART_TYPE } from "../../../../constants";
 import { submitExercise } from "../../../../services/LearnerService";
@@ -13,9 +13,7 @@ import { submitExercise } from "../../../../services/LearnerService";
 export default function WritingExercises({ exercises }) {
   const [userSelected, setUserSelected] = useState([]);
   const [submissionData, setSubmissionData] = useState(null);
-  const [answerStatus, setAnswerStatus] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
-  const [userScore, setUserScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState([]);
   const navigate = useNavigate();
 
@@ -23,19 +21,19 @@ export default function WritingExercises({ exercises }) {
     return <div>Loading...</div>;
   }
 
-  const handleInputChange = (inputIndex, questionId, value) => {
+  const handleInputChange = (questionId, value) => {
     setUserSelected((prevAnswers) => {
       const questionIndex = prevAnswers.findIndex((answer) => answer.questionId === questionId);
       if (questionIndex > -1) {
         const updatedAnswers = [...prevAnswers];
-        updatedAnswers[questionIndex].userAnswer[inputIndex] = value;
+        updatedAnswers[questionIndex].userAnswer = value;
         return updatedAnswers;
       }
       return [
         ...prevAnswers,
         {
           questionId: questionId,
-          userAnswer: new Array(inputIndex + 1).fill("").map((ans, idx) => (idx === inputIndex ? value : "")),
+          userAnswer: value,
         },
       ];
     });
@@ -48,8 +46,6 @@ export default function WritingExercises({ exercises }) {
         return prevState.filter((item) => item.questionId !== questionId);
       } else {
         const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
-
-        // const updatedState = prevState.filter((item) => item.questionId !== questionId);
 
         if (questionAnswer) {
           return [
@@ -89,8 +85,8 @@ export default function WritingExercises({ exercises }) {
                       }}
                       placeholder={`Điền lỗi thứ ${index + 1} tại đây`}
                       autoSize={{ minRows: 1, maxRows: 5 }}
-                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer[0] || ""}
-                      onChange={(e) => handleInputChange(0, question._id, e.target.value)}
+                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer || ""}
+                      onChange={(e) => handleInputChange(question._id, e.target.value)}
                       disabled={isCompleted}
                     />
                   ) : (
@@ -103,9 +99,9 @@ export default function WritingExercises({ exercises }) {
                         borderStyle: "solid",
                         borderColor: isCompleted ? (submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red") : "initial", // Set to default if isCompleted is false
                       }}
-                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer[index] || ""}
+                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer || ""}
                       disabled={isCompleted}
-                      onChange={(e) => handleInputChange(index, question._id, e.target.value)}
+                      onChange={(e) => handleInputChange(question._id, e.target.value)}
                     />
                   )}
                   {isCompleted && (
@@ -160,9 +156,7 @@ export default function WritingExercises({ exercises }) {
 
   const handleRetry = () => {
     setUserSelected([]);
-    setAnswerStatus({});
     setIsCompleted(false);
-    setUserScore(0);
   };
 
   return (

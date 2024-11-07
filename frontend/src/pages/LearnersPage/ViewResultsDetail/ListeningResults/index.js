@@ -313,7 +313,7 @@ export default function ListeningResults({ exerciseResults }) {
         <TabPane tab="Questions and Answers" key="questionsAnswers">
             <div style={{ textAlign: "center" }}>
               <TextCustom>
-                Điểm: <span style={{ color: "red" }}>{Math.round(exerciseResults?.score).toFixed(2)}%</span>
+                Điểm: <span style={{ color: "red" }}>{exerciseResults?.score}%</span>
               </TextCustom>
             </div>
           <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart?.partName}</TextCustom>
