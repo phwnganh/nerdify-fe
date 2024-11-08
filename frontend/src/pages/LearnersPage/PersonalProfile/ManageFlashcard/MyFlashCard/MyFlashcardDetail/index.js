@@ -453,6 +453,7 @@ export default function MyFlashcardDetail() {
             </div>
           </Col>
           <Col>
+          <Button icon={isPublic ? <UnlockOutlined /> : <LockOutlined />} shape="circle" style={{ marginRight: "20px" }} onClick={handleChangStatus} title={isPublic ? "Công khai" : "Riêng tư"} />
             {/* <Button icon={<MinusCircleOutlined />} shape="circle" style={{ marginRight: "20px" }}></Button> */}
             {/* <Dropdown menu={{ items: folderSelected }} trigger={["click"]}> */}
             {/* <Button icon={<FolderOutlined />} shape="circle" style={{ marginRight: "10px" }} onClick={displayModalToChooseFolders}></Button> */}

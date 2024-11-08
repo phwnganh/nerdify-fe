@@ -76,6 +76,11 @@ export const createNewFlashcard = async (params) => {
   return res.data;
 };
 
+export const viewFlashcardHistory = async () => {
+  const res = await client.get(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.VIEW_FLASHCARD_HISTORY);
+  return res.data;
+}
+
 export const updateFlashcard = async (flashcardId, data) => {
   const res = await client.put(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.FLASHCARD + "/" + flashcardId, data);
   return res.data;

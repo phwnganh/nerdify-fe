@@ -231,7 +231,7 @@ export default function ViewLevelDetail() {
           <CardCustom bordered={false}>
             <Row gutter={[16, 16]}>
               <Col md={12}>
-                <img src={imgLevelArr[course?.levelImage]} alt="" width={"50%"} height="auto" />
+                <img src={course?.levelImage} alt="" width={"50%"} height="auto" />
               </Col>
               <Col md={12}>
                 <TitleCustom level={2}>{course?.title}</TitleCustom>

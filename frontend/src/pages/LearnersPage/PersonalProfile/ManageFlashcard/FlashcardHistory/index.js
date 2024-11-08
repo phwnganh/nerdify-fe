@@ -6,22 +6,31 @@ import ButtonCustom from "../../../../../components/Button";
 import { LockOutlined, UnlockOutlined } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../../constants";
 import { Navigate, useNavigate } from "react-router-dom";
-import { getPublicFlashcardList } from "../../../../../services/LearnerService";
+import { getAllFlashcards, getPublicFlashcardList, viewFlashcardHistory } from "../../../../../services/LearnerService";
+import { useAuth } from "../../../../../hooks";
 
 export default function FlashcardHistory() {
   const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
+  const {user} = useAuth();
   const handleViewFlashcardDetail = (id) => {
     navigate(`${CLIENT_URI.VIEW_FLASHCARD_HISTORY_DETAIL}/${id}`);
   };
   useEffect(() => {
-    getPublicFlashcardList()
+    getAllFlashcards()
       .then((data) => {
-        const sortedFlashcards = data.data.sort((a, b) => {
-          const lastAccessA = new Date(a.historyLearning[a.historyLearning.length - 1]);
-          const lastAccessB = new Date(b.historyLearning[b.historyLearning.length - 1]);
-          return lastAccessB - lastAccessA;
+        const userId = user?.id;
+        const filteredFlashcards = data?.data?.filter(flashcard => flashcard.isPublic || flashcard.createdBy === userId);
+        const sortedFlashcards = filteredFlashcards.sort((a, b) => {
+          const lastAccessA = a.historyLearning.length > 0 
+            ? new Date(a.historyLearning.at(-1)) 
+            : new Date(0); // Set to a very old date if no access history
+          const lastAccessB = b.historyLearning.length > 0 
+            ? new Date(b.historyLearning.at(-1)) 
+            : new Date(0);
+          return lastAccessB - lastAccessA; // Sort descending by date
         });
+
         setFlashcards(sortedFlashcards);
       })
       .catch((err) => {

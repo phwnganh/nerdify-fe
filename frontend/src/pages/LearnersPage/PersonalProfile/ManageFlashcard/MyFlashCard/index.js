@@ -16,7 +16,7 @@ export default function MyFlashCard() {
   useEffect(() => {
     getAllFlashcards()
       .then((data) => {
-        const myFlashcards = data.data.filter((flashcard) => flashcard?.createdBy === user?.id && flashcard?.isPublic === false);
+        const myFlashcards = data.data.filter((flashcard) => flashcard?.createdBy === user?.id);
         console.log("flashcards: ", myFlashcards);
         setFlashcards(myFlashcards);
       })

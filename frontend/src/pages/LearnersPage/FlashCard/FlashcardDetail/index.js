@@ -66,7 +66,7 @@ export default function FlashCardDetail() {
         setIsVisibleFolderList(false); // Close modal on success
       })
       .catch((err) => {
-        const errorMessage = err.response?.data?.message || "Không thể thêm vào folder.";
+        const errorMessage = err.response?.data?.message || "Flashcard đã tồn tại trong folder.";
         message.error(errorMessage);
         console.error("Error:", err);
       });

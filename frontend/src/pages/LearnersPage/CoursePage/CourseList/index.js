@@ -12,7 +12,7 @@ import { useAuth } from "../../../../hooks";
 
 export default function CourseList({ course }) {
   const levelImgArr = { a1: a1, a2: a2, b1: b1 };
-  const levelImage = levelImgArr[course.levelType?.toLowerCase()] || a1;
+  const levelImage = course.levelImage;
   const [isEnrolled, setIsEnrolled] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();

@@ -28,7 +28,7 @@ export const Course = ({ course }) => {
     <CardCustom
       cover={
         <img
-          src={levelImgArr[course.levelImage]}
+          src={course.levelImage}
           height={150}
           style={{ objectFit: "cover" }}
           alt=""
