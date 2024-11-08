@@ -129,7 +129,7 @@ export default function ReadingExercises({ exercises }) {
             {Array.isArray(question.questionImage) && question.questionImage.length > 0 && (
               <div style={{ display: "flex", justifyContent: "space-evenly" }}>
                 {question.questionImage.map((image, index) => (
-                  <img key={index} src={imgReadingArr[image]} style={{ padding: "10px 0px" }} alt={`question-part-${index}`} />
+                  <img key={index} src={image} style={{ padding: "10px 0px" }} alt={`question-part-${index}`} />
                 ))}
               </div>
             )}
