@@ -42,11 +42,23 @@ const PremiumManagement = () => {
     }
   };
 
+  // // Function to update an existing package
+  // const handleUpdatePackage = async (packageId, updatedPackageData) => {
+  //   try {
+  //     const response = await updatePackageService(packageId, updatedPackageData);
+  //     const updatedPackage = response.data; // Adjusted based on API response
+  //     setPackages((prevPackages) => prevPackages.map((pkg) => (pkg._id === packageId ? updatedPackage : pkg)));
+  //   } catch (error) {
+  //     console.error("Error updating package:", error);
+  //   }
+  // };
   // Function to update an existing package
   const handleUpdatePackage = async (packageId, updatedPackageData) => {
     try {
       const response = await updatePackageService(packageId, updatedPackageData);
-      const updatedPackage = response.data; // Adjusted based on API response
+      const updatedPackage = response.data;
+
+      // Update packages state
       setPackages((prevPackages) => prevPackages.map((pkg) => (pkg._id === packageId ? updatedPackage : pkg)));
     } catch (error) {
       console.error("Error updating package:", error);
