@@ -67,9 +67,9 @@ export default function EditPersonalProfile() {
   const handleAvatarPhotoChange = (info) => {
     const file = info.file.originFileObj;
     if (file) {
-      setAvatarFile(file); // Đặt file mới vào state
+      setAvatarFile(file);
       const newAvatarPhotoUrl = URL.createObjectURL(file);
-      setAvatarPhoto(newAvatarPhotoUrl); // Hiển thị ảnh tạm thời
+      setAvatarPhoto(newAvatarPhotoUrl);
     }
   };
 
