@@ -17,7 +17,7 @@ const URI_ADMIN_SERVICE = {
     CREATE: API_PREFIXES.ADMIN + "/create-user",
   },
   PACKAGES: {
-    GET_ALL: API_PREFIXES.PAYMENT + "/packages",
+    GET_ALL: API_PREFIXES.PAYMENT + "/packages/admin",
     CREATE: API_PREFIXES.PAYMENT + "/packages",
     UPDATE: API_PREFIXES.PAYMENT + "/packages/:packageId",
     DELETE: API_PREFIXES.PAYMENT + "/packages/:packageId",
