@@ -4,28 +4,23 @@ import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, UploadOutlined } from "@ant-design/icons";
 import moment from "moment";
-import STORAGE, { getStorage } from "../../../../library/storage";
 import dayjs from "dayjs";
-import { BASE_SERVER } from "../../../../constants";
 import { changeUserProfile, viewUserProfile } from "../../../../services/GuestService";
 import { useAuth } from "../../../../hooks";
 
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
+  const [avatarFile, setAvatarFile] = useState(null);
   const [users, setUsers] = useState({});
   const { user } = useAuth();
-  const userId = user?.id;
-  // const userId = getStorage(STORAGE.USER_ID);
 
   useEffect(() => {
     viewUserProfile()
       .then((res) => {
-        if(res && res.data && res.data[0]){
-          console.log("user profile", res.data[0]);
-
+        if (res && res.data && res.data[0]) {
           setUsers(res.data[0]);
           const dob = res?.data[0]?.dateOfBirth && dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD") : null;
           form.setFieldsValue({
@@ -35,39 +30,46 @@ export default function EditPersonalProfile() {
             phone: res?.data[0]?.phone,
             email: res?.data[0]?.email,
           });
+          setAvatarPhoto(res.data[0]?.avatar || "");
         }
-        
       })
       .catch((err) => console.log(err));
-  }, [form, userId]);
+  }, [form, user]);
 
   const handleChangeInformation = async (values) => {
     try {
-      const updatedUserData = {
-        ...users,
-        fullName: values.fullname,
-        gender: values.gender,
-        dateOfBirth: values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null,
-        phone: values.phone,
-      };
+      const formData = new FormData();
+      formData.append("fullName", values.fullname);
+      formData.append("gender", values.gender);
+      formData.append("dateOfBirth", values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null);
+      formData.append("phone", values.phone);
+      if (avatarFile) {
+        formData.append("avatar", avatarFile);
+      }
 
-      const res = await changeUserProfile(updatedUserData)
+      const res = await changeUserProfile(formData);
       notification.success({
         message: "Cập nhật thông tin thành công!",
-        description: "Cập nhật thông tin cá nhân thành công"
-      })
+        description: "Cập nhật thông tin cá nhân thành công",
+      });
+      if (res.data?.avatarUrl) {
+        setAvatarPhoto(res.data.avatarUrl);
+      }
     } catch (error) {
+      console.error("Error updating profile:", error);
       notification.error({
-        message: "Cập nhật thông tin thất bại!"
-      })
+        message: "Cập nhật thông tin thất bại!",
+        description: error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại.",
+      });
     }
-
   };
 
   const handleAvatarPhotoChange = (info) => {
-    if (info.file.status === "done") {
-      const newAvatarPhotoUrl = URL.createObjectURL(info.file.originFileObj);
-      setAvatarPhoto(newAvatarPhotoUrl);
+    const file = info.file.originFileObj;
+    if (file) {
+      setAvatarFile(file); // Đặt file mới vào state
+      const newAvatarPhotoUrl = URL.createObjectURL(file);
+      setAvatarPhoto(newAvatarPhotoUrl); // Hiển thị ảnh tạm thời
     }
   };
 
@@ -78,12 +80,21 @@ export default function EditPersonalProfile() {
         <CardCustom title="CHỈNH SỬA THÔNG TIN CÁ NHÂN" style={{ backgroundColor: "white" }}>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
             <div style={{ position: "relative" }}>
-              <Avatar size={100} style={{ backgroundColor: "#ffd54f" }} icon={<img src={avatarPhoto || "avatar-url"} alt="avatar" />} />
-              <Upload showUploadList={false} onChange={handleAvatarPhotoChange}>
+              <Avatar size={100} src={avatarPhoto || "avatar-url"} alt="avatar" />
+              <Upload
+                showUploadList={false}
+                beforeUpload={(file) => {
+                  setAvatarFile(file);
+                  const newAvatarPhotoUrl = URL.createObjectURL(file);
+                  setAvatarPhoto(newAvatarPhotoUrl);
+                  return false; // Ngăn việc tải lên tự động
+                }}
+                onChange={handleAvatarPhotoChange}
+              >
                 <ButtonCustom
                   buttonType="primary"
                   shape="circle"
-                  icon={<EditOutlined />}
+                  icon={<UploadOutlined />}
                   style={{
                     position: "absolute",
                     right: -10,
