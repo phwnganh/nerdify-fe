@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CardCustom from "../../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../../components/Typography";
-import { Alert, Col, Row } from "antd";
+import { Alert, Col, Row, Pagination } from "antd";
 import ButtonCustom from "../../../../../components/Button";
 import { LockOutlined, UnlockOutlined } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../../constants";
@@ -11,11 +11,15 @@ import { useAuth } from "../../../../../hooks";
 
 export default function FlashcardHistory() {
   const [flashcards, setFlashcards] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2; // Show 2 flashcards per page
   const navigate = useNavigate();
-  const {user} = useAuth();
+  const { user } = useAuth();
+
   const handleViewFlashcardDetail = (id) => {
     navigate(`${CLIENT_URI.VIEW_FLASHCARD_HISTORY_DETAIL}/${id}`);
   };
+
   useEffect(() => {
     getAllFlashcards()
       .then((data) => {
@@ -37,32 +41,53 @@ export default function FlashcardHistory() {
         console.log(err);
       });
   }, []);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Calculate flashcards for the current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const flashcardsToDisplay = flashcards.slice(startIndex, endIndex);
+
   return (
     <div>
       {flashcards.length === 0 ? (
         <Alert message="Không có bộ flashcard nào!" type="info" showIcon />
       ) : (
-        <Row gutter={[24, 24]} style={{ paddingTop: "30px" }}>
-          {flashcards?.map((flashcard, index) => (
-            <Col span={12}>
-              <CardCustom style={{ background: "rgb(240, 242, 245)" }}>
-                <div>
-                  <TitleCustom style={{ margin: "0px" }} level={3}>
-                    {flashcard?.title}
-                  </TitleCustom>
-                  <TitleCustom level={5}>Trình độ {flashcard?.level}</TitleCustom>
-                  <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
-                  <span style={{ marginLeft: "10px" }}>{flashcard?.isPublic ? <UnlockOutlined /> : <LockOutlined />}</span>
-                </div>
-                <div style={{ marginTop: "10px" }}>
-                  <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?._id)}>
-                    Xem chi tiết
-                  </ButtonCustom>
-                </div>
-              </CardCustom>
-            </Col>
-          ))}
-        </Row>
+        <>
+          <Row gutter={[24, 24]} style={{ paddingTop: "30px" }}>
+            {flashcardsToDisplay.map((flashcard, index) => (
+              <Col span={12} key={index}>
+                <CardCustom style={{ background: "rgb(240, 242, 245)" }}>
+                  <div>
+                    <TitleCustom style={{ margin: "0px" }} level={3}>
+                      {flashcard?.title}
+                    </TitleCustom>
+                    <TitleCustom level={5}>Trình độ {flashcard?.level}</TitleCustom>
+                    <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
+                    <span style={{ marginLeft: "10px" }}>
+                      {flashcard?.isPublic ? <UnlockOutlined /> : <LockOutlined />}
+                    </span>
+                  </div>
+                  <div style={{ marginTop: "10px" }}>
+                    <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?._id)}>
+                      Xem chi tiết
+                    </ButtonCustom>
+                  </div>
+                </CardCustom>
+              </Col>
+            ))}
+          </Row>
+          <Pagination
+            current={currentPage}
+            pageSize={itemsPerPage}
+            total={flashcards.length}
+            onChange={handlePageChange}
+            style={{ textAlign: "center", marginTop: "20px" }}
+          />
+        </>
       )}
     </div>
   );

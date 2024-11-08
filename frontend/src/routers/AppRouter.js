@@ -23,7 +23,6 @@ import Flashcard from "../pages/LearnersPage/FlashCard";
 import CoursePage from "../pages/LearnersPage/CoursePage";
 import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
-import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
@@ -204,10 +203,6 @@ export const routes = [
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
-      },
-      {
-        path: `${CLIENT_URI.PROFILE}`,
-        element: <ViewPersonalProfile />,
       },
       {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,

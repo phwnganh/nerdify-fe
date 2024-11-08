@@ -21,6 +21,8 @@ export default function ExerciseDetail() {
       getExerciseDetail(exerciseId)
         .then((resp) => {
           setExerciseData(resp.data);
+          console.log("test checkpoint: ", resp.data);
+          
           setLoading(false);
         })
         .catch((error) => {

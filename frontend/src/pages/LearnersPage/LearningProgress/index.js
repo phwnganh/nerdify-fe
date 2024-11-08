@@ -1,4 +1,4 @@
-import { Alert, Carousel, Col, Progress, Row } from "antd";
+import { Alert, Carousel, Col, Progress, Row, Pagination } from "antd";
 import { TextCustom, TitleCustom } from "../../../components/Typography";
 import CardCustom from "../../../components/Card";
 import { useEffect, useState } from "react";
@@ -7,11 +7,15 @@ import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { learningProgress } from "../../../services/LearnerService";
 import { useNavigate } from "react-router-dom";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+
 export default function LearningProgress() {
   const [levelPhaseMap, setLevelPhaseMap] = useState({});
   const [allExercises, setAllExercises] = useState([]); // Store all exercises
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // State for current page
+  const itemsPerPage = 2; // Items per page
   const navigate = useNavigate();
+
   useEffect(() => {
     const fetchProgress = async () => {
       try {
@@ -26,7 +30,6 @@ export default function LearningProgress() {
     fetchProgress(); // Call the fetch function inside useEffect
   }, []);
 
-  // Find exercise objects by their IDs
   const findExercisesByIds = (exerciseIds) => {
     if (!exerciseIds || !Array.isArray(exerciseIds)) return [];
     return allExercises.filter((exercise) => exerciseIds.includes(Number(exercise.id)));
@@ -34,11 +37,17 @@ export default function LearningProgress() {
 
   const calculateProgressForIds = (exerciseIds) => {
     const exercisesToConsider = findExercisesByIds(exerciseIds);
-
     const totalExercises = exercisesToConsider.length || 0;
     const completedExercises = exercisesToConsider.filter((exercise) => exercise.isCompleted).length || 0;
-
     return totalExercises > 0 ? Math.round((completedExercises / totalExercises) * 100) : 0;
+  };
+
+  // Paginated data for the current page
+  const paginatedData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  // Function to handle page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -50,8 +59,7 @@ export default function LearningProgress() {
           <Alert message="Bạn chưa làm bài tập nào!" type="info" showIcon style={{ marginTop: "20px" }} />
         ) : (
           <>
-            {" "}
-            {data.map((level, levelIndex) => (
+            {paginatedData.map((level, levelIndex) => (
               <Col span={24} key={levelIndex}>
                 <Row gutter={16}>
                   {level.phases.map(
@@ -86,47 +94,16 @@ export default function LearningProgress() {
             ))}
           </>
         )}
-
-        {/* <div>
-          <a href="#">Xem tất cả</a>
-        </div> */}
       </Row>
 
-      {/* <TitleCustom level={2}>Các bài tập khác</TitleCustom>
-      <Row gutter={16}>
-        {data.map((level, levelIndex) => (
-          <Col span={24} key={levelIndex}>
-            <Row gutter={16}>
-              {level.phases.map(
-                (phase, phaseIndex) =>
-                  phase.completedExercises === 0 && phase.title !== "Final Exam" && (
-                    <Col span={12} key={phaseIndex}>
-                      <CardCustom
-                        title={`${level.title}`}
-                        bordered={true}
-                        style={{ marginBottom: 16, borderColor: "#ffa751" }}
-                      >
-                        <div>
-                          <TextCustom style={{ fontWeight: "bold" }}>
-                            {phase.title}
-                          </TextCustom>
-                        </div>
-                        <Row justify={"end"}>
-                          <ButtonCustom buttonType="primary">
-                            Bắt đầu làm
-                          </ButtonCustom>
-                        </Row>
-                      </CardCustom>
-                    </Col>
-                  )
-              )}
-            </Row>
-          </Col>
-        ))}
-        <div>
-          <a href="#">Xem tất cả</a>
-        </div>
-      </Row> */}
+      {/* Ant Design Pagination */}
+      <Pagination
+        current={currentPage}
+        pageSize={itemsPerPage}
+        total={data.length}
+        onChange={handlePageChange}
+        style={{ textAlign: "center", marginTop: "20px" }}
+      />
     </div>
   );
 }

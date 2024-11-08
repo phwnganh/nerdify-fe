@@ -87,6 +87,30 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
     setIsDetailModalOpen(true);
   };
 
+  // Publish package
+  const handlePublishPackage = async (packageId) => {
+    try {
+      await updatePackage(packageId, { isPublic: true });
+      message.success("Gói đã được xuất bản thành công!");
+      setIsDetailModalOpen(false);
+    } catch (error) {
+      console.error("Error publishing package:", error);
+      message.error("Đã xảy ra lỗi khi xuất bản gói.");
+    }
+  };
+
+  // Unpublish package
+  const handleUnpublishPackage = async (packageId) => {
+    try {
+      await updatePackage(packageId, { isPublic: false });
+      message.success("Gói đã được ẩn thành công!");
+      setIsDetailModalOpen(false);
+    } catch (error) {
+      console.error("Error unpublishing package:", error);
+      message.error("Đã xảy ra lỗi khi ẩn gói.");
+    }
+  };
+
   // Ensure each package has a unique 'key' property
   const packagesWithKeys = packages.map((pkg, index) => ({
     ...pkg,
@@ -233,56 +257,91 @@ const TablePremiumPack = ({ packages, addPackage, updatePackage, deletePackage }
       </Modal>
       <Modal title="Chi Tiết Gói" open={isDetailModalOpen} onCancel={() => setIsDetailModalOpen(false)} footer={null}>
         {selectedPackage && (
-          <Table
-            dataSource={[
-              {
-                key: "1",
-                label: "Tên Gói",
-                value: selectedPackage.packageName,
-              },
-              {
-                key: "2",
-                label: "Giá",
-                value: `${selectedPackage.price ? selectedPackage.price.toLocaleString() : "N/A"} VND`,
-              },
-              {
-                key: "3",
-                label: "Thời gian",
-                value: `${selectedPackage.duration} tháng`,
-              },
-              {
-                key: "4",
-                label: "Giảm Giá",
-                value: selectedPackage.discount ? `${selectedPackage.discount}%` : "Không có discount",
-              },
-              {
-                key: "5",
-                label: "Giá Khuyến Mãi",
-                value: `${selectedPackage.price ? (selectedPackage.price * (1 - (selectedPackage.discount || 0) / 100)).toLocaleString() : "N/A"} VND`,
-              },
-              {
-                key: "6",
-                label: "Lợi Ích",
-                value: selectedPackage.benefits || "Không có",
-              },
-            ]}
-            columns={[
-              {
-                title: "",
-                dataIndex: "label",
-                key: "label",
-                render: (text) => <strong>{text}</strong>,
-              },
-              {
-                title: "",
-                dataIndex: "value",
-                key: "value",
-              },
-            ]}
-            pagination={false}
-            showHeader={false}
-            bordered
-          />
+          <>
+            <Table
+              dataSource={[
+                {
+                  key: "1",
+                  label: "Tên Gói",
+                  value: selectedPackage.packageName,
+                },
+                {
+                  key: "2",
+                  label: "Giá",
+                  value: `${selectedPackage.price ? selectedPackage.price.toLocaleString() : "N/A"} VND`,
+                },
+                {
+                  key: "3",
+                  label: "Thời gian",
+                  value: `${selectedPackage.duration} tháng`,
+                },
+                {
+                  key: "4",
+                  label: "Giảm Giá",
+                  value: selectedPackage.discount ? `${selectedPackage.discount}%` : "Không có discount",
+                },
+                {
+                  key: "5",
+                  label: "Giá Khuyến Mãi",
+                  value: `${selectedPackage.price ? (selectedPackage.price * (1 - (selectedPackage.discount || 0) / 100)).toLocaleString() : "N/A"} VND`,
+                },
+                {
+                  key: "6",
+                  label: "Lợi Ích",
+                  value: selectedPackage.benefits || "Không có",
+                },
+                {
+                  key: "7",
+                  label: "Trạng Thái",
+                  value: selectedPackage.isPublic ? "Đã Xuất Bản" : "Chưa Xuất Bản",
+                },
+              ]}
+              columns={[
+                {
+                  title: "",
+                  dataIndex: "label",
+                  key: "label",
+                  render: (text) => <strong>{text}</strong>,
+                },
+                {
+                  title: "",
+                  dataIndex: "value",
+                  key: "value",
+                },
+              ]}
+              pagination={false}
+              showHeader={false}
+              bordered
+            />
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                marginTop: "16px",
+              }}
+            >
+              {selectedPackage.isPublic ? (
+                <Button
+                  style={{
+                    color: "red",
+                  }}
+                  onClick={() => handleUnpublishPackage(selectedPackage._id)}
+                >
+                  Ẩn
+                </Button>
+              ) : (
+                <Button
+                  style={{
+                    color: "green",
+                  }}
+                  onClick={() => handlePublishPackage(selectedPackage._id)}
+                >
+                  Xuất Bản
+                </Button>
+              )}
+            </div>
+          </>
         )}
       </Modal>
     </div>
