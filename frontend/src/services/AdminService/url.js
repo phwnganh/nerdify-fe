@@ -22,6 +22,9 @@ const URI_ADMIN_SERVICE = {
     UPDATE: API_PREFIXES.PAYMENT + "/packages/:packageId",
     DELETE: API_PREFIXES.PAYMENT + "/packages/:packageId",
   },
+  STATISTICS: {
+    GET_ALL: API_PREFIXES.ADMIN + "/get-statistics",
+  },
 };
 
 export const ADMIN_SERVICE_URI = {
@@ -30,4 +33,5 @@ export const ADMIN_SERVICE_URI = {
 
   // Get all packages
   PACKAGES: URI_ADMIN_SERVICE.PACKAGES,
+  STATISTICS: URI_ADMIN_SERVICE.STATISTICS,
 };

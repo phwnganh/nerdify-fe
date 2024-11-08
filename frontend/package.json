@@ -21,7 +21,8 @@
     "react-use": "^17.5.1",
     "recharts": "^2.13.0",
     "styled-components": "^6.1.12",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
