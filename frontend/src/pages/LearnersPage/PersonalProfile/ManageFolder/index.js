@@ -40,8 +40,7 @@ export default function ManageFolder() {
 
     try {
       const response = await createFolder({ name: newFolderName.trim() });
-      notification.success({message: response.message});
-      messageApi.success("Tạo mới folder thành công!");
+      notification.success({message: "Tạo mới folder thành công!"});
       console.log("new folder: ", response);
       const newFolder = response.data;
       setFolders((prevFolders) => [...prevFolders, newFolder]);
@@ -50,9 +49,8 @@ export default function ManageFolder() {
     } catch (error) {
       console.error("Lỗi khi tạo folder:", error);
       notification.error({
-        message: error.message
+        message: "Không thể tạo folder. Vui lòng thử lại sau."
       })
-      messageApi.error("Không thể tạo folder. Vui lòng thử lại sau.");
     }
   };
 

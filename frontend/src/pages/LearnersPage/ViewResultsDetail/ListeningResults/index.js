@@ -103,6 +103,7 @@ import part2_ques9_A2 from "../../../../assets/listeningExercises/a2-teil2-9.mp3
 import part2_ques10_A2 from "../../../../assets/listeningExercises/a2-teil2-10.mp3";
 import part3_A2 from "../../../../assets/listeningExercises/part3_A2.mp3";
 import { submitExercise } from "../../../../services/LearnerService";
+import { CaretLeftOutlined } from "@ant-design/icons";
 
 const imagesArr = {
   demo1_1,
@@ -222,7 +223,7 @@ export default function ListeningResults({ exerciseResults }) {
             </TextCustom>
             {question.mediaUrl && (
               <audio controls style={{ marginTop: "20px", width: "100%" }}>
-                <source src={audioArr[question.mediaUrl]} type="audio/mp3" />
+                <source src={question.mediaUrl} type="audio/mp3" />
                 Trình duyệt của bạn không hỗ trợ phần tử audio.
               </audio>
             )}
@@ -232,7 +233,7 @@ export default function ListeningResults({ exerciseResults }) {
                 {question.questionImage &&
                   question.questionImage.map((image, index) => (
                     <Col key={index} span={8}>
-                      <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question._id}`} />
+                      <img src={image} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question._id}`} />
                     </Col>
                   ))}
               </Row>
@@ -304,7 +305,8 @@ export default function ListeningResults({ exerciseResults }) {
 
   return (
     <div style={{ padding: "24px" }}>
-      <BreadCrumbHome />
+            <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
+
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
         {exerciseResults?.exerciseId?.title}
       </TitleCustom>

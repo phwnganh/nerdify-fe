@@ -165,7 +165,7 @@ export default function FinalExam() {
             )}
             {question?.mediaUrl && (
               <audio controls style={{ marginTop: "20px", width: "100%" }}>
-                <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
+                <source src={question?.mediaUrl} type="audio/mp3" />
                 Trình duyệt của bạn không hỗ trợ phần tử audio.
               </audio>
             )}
@@ -173,7 +173,7 @@ export default function FinalExam() {
               {question?.questionImage &&
                 question?.questionImage.map((image, index) => (
                   <div key={index} style={{ flex: "1 1 auto", marginRight: index !== question.questionImage.length - 1 ? "12px" : "0" }}>
-                    <img src={imgArrVocab[index]} width="80%" style={{ marginBottom: "12px" }} alt={`Question ${question._id}`} />
+                    <img src={image} width="80%" style={{ marginBottom: "12px" }} alt={`Question ${question._id}`} />
                   </div>
                 ))}
             </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../../../constants";
 
-import { Alert, Col, Image, Modal, Row, Space } from "antd";
+import { Alert, Col, Image, Modal, notification, Row, Space, Pagination } from "antd";
 import CardCustom from "../../../../../components/Card";
 import { TextCustom, TitleCustom } from "../../../../../components/Typography";
 import ButtonCustom from "../../../../../components/Button";
@@ -11,13 +11,15 @@ import { useAuth } from "../../../../../hooks";
 
 export default function MyFlashCard() {
   const [flashcards, setFlashcards] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // State for current page
+  const itemsPerPage = 3; // Number of items per page
   const { user } = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
     getAllFlashcards()
       .then((data) => {
         const myFlashcards = data.data.filter((flashcard) => flashcard?.createdBy === user?.id);
-        console.log("flashcards: ", myFlashcards);
         setFlashcards(myFlashcards);
       })
       .catch((err) => console.error(err));
@@ -25,11 +27,15 @@ export default function MyFlashCard() {
 
   const handleDeleteFlashcard = async (flashcardId, e) => {
     try {
-      const res = await removeFlashcard(flashcardId);
+      await removeFlashcard(flashcardId);
       setFlashcards(flashcards.filter((flashcard) => flashcard._id !== flashcardId));
-      e.stopPropagation();
+      notification.success({
+        message: "Xóa flashcard thành công!"
+      });
     } catch (error) {
-      console.log(error);
+      notification.error({
+        message: "Xóa flashcard thất bại!"
+      });
     }
   };
 
@@ -52,6 +58,10 @@ export default function MyFlashCard() {
     navigate(`${CLIENT_URI.VIEW_MY_FLASHCARD_DETAIL}/${id}`);
   };
 
+  // Pagination logic
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentFlashcards = flashcards.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <div style={{ width: "100%" }}>
       <Space direction="vertical" style={{ width: "100%" }}>
@@ -59,8 +69,8 @@ export default function MyFlashCard() {
           <Alert message="Không có bộ flashcard nào!" type="info" showIcon style={{ marginTop: "20px" }} />
         ) : (
           <>
-            {flashcards?.map((flashcard, index) => (
-              <CardCustom style={{ background: "rgb(240, 242, 245)" }} onClick={() => handleClickFlashcardDetail(flashcard?._id)}>
+            {currentFlashcards.map((flashcard) => (
+              <CardCustom key={flashcard._id} style={{ background: "rgb(240, 242, 245)" }} onClick={() => handleClickFlashcardDetail(flashcard?._id)}>
                 <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Image style={{ alignContent: "center" }} width={70} height={70} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
@@ -84,6 +94,13 @@ export default function MyFlashCard() {
                 </div>
               </CardCustom>
             ))}
+            <Pagination
+              current={currentPage}
+              pageSize={itemsPerPage}
+              total={flashcards.length}
+              onChange={(page) => setCurrentPage(page)}
+              style={{ textAlign: "center", marginTop: "20px" }}
+            />
           </>
         )}
       </Space>

@@ -29,6 +29,7 @@ import { submitExercise } from "../../../../services/LearnerService";
 
 export default function CheckpointQuiz({ exercises }) {
   const navigate = useNavigate();
+  
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [userSelected, setUserSelected] = useState([]);
@@ -152,6 +153,7 @@ export default function CheckpointQuiz({ exercises }) {
       },
       [exercises, userSelected],
     );
+  });
 
     const handleRetry =
       (() => {
@@ -193,7 +195,7 @@ export default function CheckpointQuiz({ exercises }) {
               )}
               {question?.mediaUrl && (
                 <audio controls style={{ marginTop: "20px", width: "100%" }}>
-                  <source src={audioArr[question?.mediaUrl]} type="audio/mp3" />
+                  <source src={question?.mediaUrl} type="audio/mp3" />
                   Trình duyệt của bạn không hỗ trợ phần tử audio.
                 </audio>
               )}
@@ -240,7 +242,7 @@ export default function CheckpointQuiz({ exercises }) {
                       .filter((option) => option.optionImage)
                       .map((option, index) => (
                         <Col key={index} span={8}>
-                          <img src={imgArrVocab[index]} style={{ width: "50%" }} alt={`Option ${option._id}`} />
+                          <img src={option.optionImage} style={{ width: "50%" }} alt={`Option ${option._id}`} />
                         </Col>
                       ))}
                   </Row>
@@ -258,6 +260,7 @@ export default function CheckpointQuiz({ exercises }) {
 
     const currentPart = exercises.parts[currentPartIndex];
 
+    
     return (
       <div>
         {!hasStarted && <StartQuizModal exerciseId={exercises._id} onClose={() => setHasStarted(!hasStarted)}></StartQuizModal>}
@@ -328,5 +331,5 @@ export default function CheckpointQuiz({ exercises }) {
         )}
       </div>
     );
-  });
+
 }

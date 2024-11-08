@@ -24,6 +24,7 @@ import demo_part3_5 from "../../../../assets/readingExercises/demo_part3_5.png";
 //A2 exercises
 import { Col, Row } from "antd";
 import { submitExercise } from "../../../../services/LearnerService";
+import { CaretLeftOutlined } from "@ant-design/icons";
 
 const imgReadingArr = {
   demo_part2_6_1,
@@ -97,7 +98,7 @@ export default function ReadingResults({ exerciseResults }) {
             {Array.isArray(question.questionImage) && question.questionImage.length > 0 && (
               <div style={{ display: "flex", justifyContent: "space-evenly" }}>
                 {question.questionImage.map((image, index) => (
-                  <img key={index} src={imgReadingArr[image]} style={{ padding: "10px 0px" }} alt={`question-part-${index}`} />
+                  <img key={index} src={image} style={{ padding: "10px 0px" }} alt={`question-part-${index}`} />
                 ))}
               </div>
             )}
@@ -165,7 +166,9 @@ export default function ReadingResults({ exerciseResults }) {
 
   return (
     <div style={{ padding: "24px" }}>
-      <BreadCrumbHome />
+      {/* <BreadCrumbHome /> */}
+      <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
+
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
         {exerciseResults?.exerciseId?.title}
       </TitleCustom>

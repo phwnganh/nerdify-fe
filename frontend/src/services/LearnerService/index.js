@@ -96,6 +96,16 @@ export const createFolder = async (params) => {
   return res.data;
 };
 
+export const removeFolder = async(folderId) => {
+  const res = await client.delete(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.REMOVE_FOLDER + "/" + folderId);
+  return res.data;
+}
+
+export const removeFlashcardInFolder = async(folderId, flashcardId) => {
+  const res = await client.delete(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.REMOVE_FLASHCARD_IN_FOLDER + "/" + folderId + "/" + flashcardId);
+  return res.data;
+}
+
 export const addFlashcardToFolder = async (folderId, flashcardId) => {
   const res = await client.post(FLASHCARD_SERVER_URI.FLASHCARD_SERVICE.ADD_FLASHCARD_TO_FOLDER.replace(":folderId", folderId).replace(":flashcardId", flashcardId));
   return res.data;

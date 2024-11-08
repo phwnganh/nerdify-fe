@@ -42,7 +42,7 @@ export default function TakeATrophy() {
       </Row>
 
       <Row justify="center" style={{ marginTop: "20px" }}>
-        <Col>{levelTrophy && <img src={trophy[levelTrophy]} alt="Trophy" style={{ width: "250px", height: "auto" }} />}</Col>
+        <Col>{levelTrophy && <img src={levelTrophy} alt="Trophy" style={{ width: "250px", height: "auto" }} />}</Col>
       </Row>
       <Row justify={"center"} style={{ marginTop: "30px" }}>
         <Col>
