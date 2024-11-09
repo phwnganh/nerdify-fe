@@ -4,7 +4,7 @@ import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import { EditOutlined, UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined } from "@ant-design/icons";
 import moment from "moment";
 import dayjs from "dayjs";
 import { changeUserProfile, viewUserProfile } from "../../../../services/GuestService";
@@ -13,24 +13,23 @@ import { useAuth } from "../../../../hooks";
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
-  const [avatarFile, setAvatarFile] = useState(null);
-  const [users, setUsers] = useState({});
+  const [avatarBase64, setAvatarBase64] = useState("");
   const { user } = useAuth();
 
   useEffect(() => {
     viewUserProfile()
       .then((res) => {
         if (res && res.data && res.data[0]) {
-          setUsers(res.data[0]);
-          const dob = res?.data[0]?.dateOfBirth && dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD") : null;
+          const userData = res.data[0];
+          const dob = userData.dateOfBirth && dayjs(userData.dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(userData.dateOfBirth, "YYYY-MM-DD") : null;
           form.setFieldsValue({
-            fullname: res?.data[0]?.fullName,
-            gender: res?.data[0]?.gender,
+            fullname: userData.fullName,
+            gender: userData.gender,
             dateOfBirth: dob,
-            phone: res?.data[0]?.phone,
-            email: res?.data[0]?.email,
+            phone: userData.phone,
+            email: userData.email,
           });
-          setAvatarPhoto(res.data[0]?.avatar || "");
+          setAvatarPhoto(userData.avatar || "");
         }
       })
       .catch((err) => console.log(err));
@@ -38,22 +37,25 @@ export default function EditPersonalProfile() {
 
   const handleChangeInformation = async (values) => {
     try {
-      const formData = new FormData();
-      formData.append("fullName", values.fullname);
-      formData.append("gender", values.gender);
-      formData.append("dateOfBirth", values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null);
-      formData.append("phone", values.phone);
-      if (avatarFile) {
-        formData.append("avatar", avatarFile);
-      }
+      const formData = {
+        fullName: values.fullname,
+        gender: values.gender,
+        dateOfBirth: values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null,
+        phone: values.phone,
+        avatar: avatarBase64 || undefined,
+      };
 
       const res = await changeUserProfile(formData);
-      notification.success({
-        message: "Cập nhật thông tin thành công!",
-        description: "Cập nhật thông tin cá nhân thành công",
-      });
-      if (res.data?.avatarUrl) {
-        setAvatarPhoto(res.data.avatarUrl);
+      if (res && res.status === 200) {
+        notification.success({
+          message: "Cập nhật thông tin thành công!",
+          description: "Cập nhật thông tin cá nhân thành công",
+        });
+        if (res.data?.avatar) {
+          setAvatarPhoto(res.data.avatar); // Cập nhật ảnh mới từ phản hồi
+        }
+      } else {
+        throw new Error("Unexpected response status");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -67,9 +69,13 @@ export default function EditPersonalProfile() {
   const handleAvatarPhotoChange = (info) => {
     const file = info.file.originFileObj;
     if (file) {
-      setAvatarFile(file);
-      const newAvatarPhotoUrl = URL.createObjectURL(file);
-      setAvatarPhoto(newAvatarPhotoUrl);
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result;
+        setAvatarBase64(base64); // Gửi chuỗi base64 đầy đủ (bao gồm tiền tố)
+        setAvatarPhoto(base64); // Hiển thị ảnh với tiền tố đầy đủ
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -84,10 +90,14 @@ export default function EditPersonalProfile() {
               <Upload
                 showUploadList={false}
                 beforeUpload={(file) => {
-                  setAvatarFile(file);
-                  const newAvatarPhotoUrl = URL.createObjectURL(file);
-                  setAvatarPhoto(newAvatarPhotoUrl);
-                  return false; // Ngăn việc tải lên tự động
+                  const reader = new FileReader();
+                  reader.onload = () => {
+                    const base64 = reader.result;
+                    setAvatarBase64(base64);
+                    setAvatarPhoto(base64);
+                  };
+                  reader.readAsDataURL(file);
+                  return false;
                 }}
                 onChange={handleAvatarPhotoChange}
               >
@@ -127,13 +137,12 @@ export default function EditPersonalProfile() {
                     placeholder="Ngày sinh"
                     format="YYYY-MM-DD"
                     allowClear
-                    disabledDate={(current) => current && current > moment().endOf("day")} // Chặn ngày trong tương lai
+                    disabledDate={(current) => current && current > moment().endOf("day")}
                     showToday={true}
-                    inputReadOnly={true} // Không cho phép nhập bằng tay
+                    inputReadOnly={true}
                   />
                 </Form.Item>
               </Col>
-
               <Col span={12}>
                 <Form.Item label="Điện thoại" name="phone">
                   <InputCustom placeholder="Điện thoại" />

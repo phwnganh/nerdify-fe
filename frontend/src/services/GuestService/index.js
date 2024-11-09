@@ -52,8 +52,11 @@ export const viewUserProfile = async () => {
 };
 
 export const changeUserProfile = async (params) => {
-  const res = await client.put(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PROFILE, params);
-  return res.data;
+  return client.put(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PROFILE, params, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 export const changePassword = async (params) => {
