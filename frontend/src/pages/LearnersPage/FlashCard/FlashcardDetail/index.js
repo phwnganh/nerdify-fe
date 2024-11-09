@@ -494,8 +494,6 @@ export default function FlashCardDetail() {
                         borderRadius: "8px", // Optional: make it look more polished
                         objectFit: "cover", 
                       }}
-                      width={70}
-                      height={70}
                       src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                     />
                     <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} style={{ marginLeft: "10px" }} />
