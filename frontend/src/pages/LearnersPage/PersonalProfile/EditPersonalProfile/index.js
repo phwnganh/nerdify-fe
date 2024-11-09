@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Col, DatePicker, Form, Input, notification, Radio, Row, Upload } from "antd";
+import { Avatar, Col, DatePicker, Form, Input, Modal, notification, Radio, Row, Upload } from "antd";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
@@ -15,23 +15,34 @@ export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
   const [avatarFile, setAvatarFile] = useState(null);
-  const [users, setUsers] = useState({});
+  const [initialValues, setInitialValues] = useState(null); 
   const { user } = useAuth();
 
+  const showCancelConfirm = () => {
+    Modal.confirm({
+      title: "Bạn có chắc chắn hủy cập nhật thông tin?",
+      okText: "OK",
+      cancelText: "Hủy",
+      onOk: () => {
+        form.setFieldsValue(initialValues); // Đặt lại form về giá trị ban đầu
+      }
+    })
+  }
   useEffect(() => {
     viewUserProfile()
       .then((res) => {
         if (res && res.data && res.data[0]) {
-          setUsers(res.data[0]);
           const dob = res?.data[0]?.dateOfBirth && dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD") : null;
-          form.setFieldsValue({
+          const values = {
             fullname: res?.data[0]?.fullName,
             gender: res?.data[0]?.gender,
             dateOfBirth: dob,
             phone: res?.data[0]?.phone,
             email: res?.data[0]?.email,
-          });
+          };
+          form.setFieldsValue(values);
           setAvatarPhoto(res.data[0]?.avatar || "");
+          setInitialValues(values); // Lưu lại giá trị ban đầu
         }
         
         
@@ -60,6 +71,7 @@ export default function EditPersonalProfile() {
       if (res.data?.avatar) {
         setAvatarPhoto(res.data.avatar);
       }
+      setInitialValues(values);
       console.log(res.data.avatar);
       
     } catch (error) {
@@ -153,7 +165,7 @@ export default function EditPersonalProfile() {
               </Col>
             </Row>
             <Row justify="start" style={{ marginTop: 20 }}>
-              <ButtonCustom type="primary" style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }}>
+              <ButtonCustom type="primary" style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }} onClick={showCancelConfirm}>
                 Hủy
               </ButtonCustom>
               <ButtonCustom type="primary" htmlType="submit" style={{ backgroundColor: "#dc3545", borderColor: "#dc3545" }}>
