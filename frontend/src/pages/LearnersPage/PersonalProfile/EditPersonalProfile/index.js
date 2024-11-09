@@ -42,14 +42,19 @@ export default function EditPersonalProfile() {
             email: res?.data[0]?.email,
             role: res?.data[0]?.role,
             address: res?.data[0]?.address,
-            status: res?.data[0]?.status,
           };
           form.setFieldsValue(values);
           setAvatarPhoto(res.data[0]?.avatar || "");
           setInitialValues(values); // Lưu lại giá trị ban đầu
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error("Error fetching user profile:", err);
+        notification.error({
+          message: "Lỗi tải thông tin",
+          description: "Không thể tải thông tin cá nhân. Vui lòng thử lại sau.",
+        });
+      });
   }, [form, user]);
 
   const handleChangeInformation = async (values) => {
@@ -61,7 +66,6 @@ export default function EditPersonalProfile() {
       formData.append("phone", values.phone);
       formData.append("address", values.address);
       formData.append("role", values.role);
-      formData.append("status", values.status);
       if (avatarFile) {
         formData.append("avatar", avatarFile);
       }
@@ -80,9 +84,10 @@ export default function EditPersonalProfile() {
       console.log(res.data.avatar);
     } catch (error) {
       console.error("Error updating profile:", error);
+      const errorMsg = error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại.";
       notification.error({
         message: "Cập nhật thông tin thất bại!",
-        description: error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại.",
+        description: errorMsg,
       });
     }
   };
@@ -175,11 +180,6 @@ export default function EditPersonalProfile() {
               <Col span={24}>
                 <Form.Item label="Email hiện tại" name="email">
                   <InputCustom placeholder="Email hiện tại" disabled />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Trạng thái" name="status">
-                  <InputCustom placeholder="Trạng thái" disabled />
                 </Form.Item>
               </Col>
             </Row>
