@@ -136,7 +136,7 @@ export const LandingPage = () => {
             }}
             onClick={() => navigate(CLIENT_URI.LOGIN)}
           >
-            HỌC THỬ MIỄN PHÍ
+            BẮT ĐẦU HỌC
           </ButtonCustom>
         </Col>
         <Col span={8}>

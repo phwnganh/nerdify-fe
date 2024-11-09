@@ -86,7 +86,7 @@ export default function ManageFolder() {
         <CardCustom style={{ backgroundColor: "white" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <TitleCustom level={2} style={{ margin: 0 }}>
-              Quản lý thư mục
+              Quản lý thư mục của tôi
             </TitleCustom>
             <ButtonCustom buttonType="primary" onClick={handleDisplayModal}>
               Thêm folder mới

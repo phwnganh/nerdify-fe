@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Layout, Typography, Card, Radio, List } from "antd";
+import { Layout, Typography, Card, Radio, List, notification } from "antd";
 import ButtonCustom from "../../../components/Button";
 import { AudioOutlined, BookOutlined, EditOutlined, ReadOutlined } from "@ant-design/icons";
 import CardCustom from "../../../components/Card";
@@ -46,7 +46,9 @@ export const PremiumPage = () => {
         };
         // Create a new payment and get the transaction response
         const transaction = await createPayment(newTransaction);
-
+        notification.success({
+          message: "Tạo hóa đơn thành công!"
+        })
         // Navigate to the bill info page using the returned transaction ID
         navigate(`${CLIENT_URI.BILLINFO}/${transaction?.data?._id}`);
       } catch (err) {

@@ -4,6 +4,7 @@ import CardCustom from "../../../../components/Card";
 import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
 import { changePassword } from "../../../../services/GuestService";
+import { PASSWORD_REGEX } from "../../../../constants";
 
 export default function ChangePassword() {
   const [form] = Form.useForm();
@@ -37,14 +38,24 @@ export default function ChangePassword() {
             <Form.Item name="oldPassword" label="Mật khẩu hiện tại" >
               <Input.Password placeholder="Mật khẩu hiện tại" />
             </Form.Item>
-            <Form.Item name="newPassword" label="Mật khẩu mới" >
+            <Form.Item name="newPassword" label="Mật khẩu mới" rules={[
+                {
+                  pattern: PASSWORD_REGEX,
+                  message: "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                },
+              ]}>
               <Input.Password placeholder="Mật khẩu mới" />
             </Form.Item>
             <Form.Item
               name="newConfirmationPassword"
               label="Nhập lại mật khẩu mới"
               dependencies={["newPassword"]}
-              
+              rules={[
+                {
+                  pattern: PASSWORD_REGEX,
+                  message: "Mật khẩu phải có ít nhất 8 kí tự trong đó ít nhất 1 chữ cái thường, 1 chữ cái in hoa, 1 số và 1 kí tự đặc biệt",
+                },
+              ]}
             >
               <Input.Password placeholder="Nhập lại mật khẩu mới" />
             </Form.Item>

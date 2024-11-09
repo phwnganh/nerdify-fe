@@ -24,7 +24,7 @@ export default function PaymentSuccess() {
   return (
     <div style={{ padding: "50px", textAlign: "center", minHeight: "100vh", backgroundColor: "#f7f7f7",display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"  }}>
       <TitleCustom level={2}>Cảm ơn bạn đã tin tưởng và lựa chọn gói Premium của chúng tôi!</TitleCustom>
-      <TitleCustom level={4}>Tài khoản của bạn sẽ được nâng cấp sau 1 ngày. Xin vui lòng chờ đợi!</TitleCustom>
+      <TitleCustom level={4}>Tài khoản của bạn đang được chúng tôi xác nhận và phê duyệt! Chúng tôi sẽ cập nhật sớm nhất có thể!</TitleCustom>
       <CardCustom style={{ marginTop: "30px", maxWidth: "500px", borderRadius: "10px", width: "100%" }}>
         <Row>
           <Col span={12} style={{ padding: "10px" }}>

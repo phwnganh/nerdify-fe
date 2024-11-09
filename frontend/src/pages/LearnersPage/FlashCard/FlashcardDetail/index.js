@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Dropdown, List, Row, Modal, Select, message } from "antd";
+import { Button, Col, Dropdown, List, Row, Modal, Select, message, Image } from "antd";
 import {
   EditOutlined,
   FileOutlined,
@@ -33,7 +33,7 @@ import moment from "moment";
 
 export default function FlashCardDetail() {
   const navigate = useNavigate();
-  const {flashcardId } = useParams();
+  const { flashcardId } = useParams();
   const { user } = useAuth();
 
   const [flashcard, setFlashcard] = useState(null);
@@ -49,7 +49,6 @@ export default function FlashCardDetail() {
   const [folders, setFolders] = useState([]);
   const [isPublic, setIsPublic] = useState(false);
 
-
   const displayModalToChooseFolders = () => {
     console.log("Modal is opening");
     setIsVisibleFolderList(true);
@@ -59,7 +58,7 @@ export default function FlashCardDetail() {
     if (!selectedFolderId) {
       message.error("Vui lòng chọn một folder trước khi thêm.");
       return;
-  }
+    }
     addFlashcardToFolder(selectedFolderId, flashcardId)
       .then((res) => {
         message.success("Thêm vào folder thành công!");
@@ -154,7 +153,7 @@ export default function FlashCardDetail() {
     {
       key: "2",
       icon: <FolderOpenFilled />,
-      label: <div>Thêm vào folder sẵn có</div>,
+      label: <div>Thêm vào folder của tôi</div>,
     },
   ];
 
@@ -251,9 +250,7 @@ export default function FlashCardDetail() {
             </Col>
           </Row>
           <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-            <Col style={{ marginRight: "20px" }}>
-              {/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}
-            </Col>
+            <Col style={{ marginRight: "20px" }}>{/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}</Col>
             <Col>
               <Button
                 icon={isFullScreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
@@ -321,9 +318,7 @@ export default function FlashCardDetail() {
             </Col>
           </Row>
           <Row justify={"end"} align={"end"} style={{ marginTop: "20px" }}>
-            <Col style={{ marginRight: "20px" }}>
-              {/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}
-            </Col>
+            <Col style={{ marginRight: "20px" }}>{/* <Button icon={<ShareAltOutlined />} shape="circle" /> */}</Col>
             <Col>
               <Button
                 icon={isFullScreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
@@ -403,9 +398,11 @@ export default function FlashCardDetail() {
         ]}
       >
         <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "20px" }}>
-          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }} onChange={value => setSelectedFolderId(value)}>
+          <Select placeholder="Vui lòng chọn folder dưới đây" style={{ width: 250 }} onChange={(value) => setSelectedFolderId(value)}>
             {folders.map((folder) => (
-              <Option key={folder._id} value={folder._id}>{folder.name}</Option>
+              <Option key={folder._id} value={folder._id}>
+                {folder.name}
+              </Option>
             ))}
           </Select>
         </div>
@@ -415,17 +412,17 @@ export default function FlashCardDetail() {
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
           <TitleCustom level={4}>Trình độ {flashcard?.level}</TitleCustom>
         </div>
-          <ButtonCustom
-            style={{
-              background: "rgb(13 164 184 / 87%)",
-              color: "white",
-              width: "200px",
-              margin: "20px",
-            }}
-            onClick={displayModalToChooseFolders}
-          >
-            Thêm vào folder sẵn có
-          </ButtonCustom>
+        <ButtonCustom
+          style={{
+            background: "rgb(13 164 184 / 87%)",
+            color: "white",
+            width: "200px",
+            margin: "20px",
+          }}
+          onClick={displayModalToChooseFolders}
+        >
+          Thêm vào folder của tôi
+        </ButtonCustom>
         <ButtonCustom
           style={{
             background: "#088d2b",
@@ -448,7 +445,7 @@ export default function FlashCardDetail() {
               <TextCustom style={{ fontSize: "12px" }}>Tạo bởi</TextCustom>
             </div>
             <div>
-              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{(flashcard?.createdBy === user?.id) ? user?.fullName : "Anonymous Users"}</TextCustom>
+              <TextCustom style={{ fontWeight: "bold", fontSize: "16px", color: "#ffa751" }}>{flashcard?.createdBy === user?.id ? user?.fullName : "Anonymous Users"}</TextCustom>
             </div>
             <div>
               <TextCustom style={{ fontSize: "12px" }}>Đã tạo {moment(user?.updatedAt).format("DD-MM-YYYY")}</TextCustom>
@@ -489,7 +486,19 @@ export default function FlashCardDetail() {
                     }}
                   >
                     <span style={{ marginRight: "10px" }}>{item.definition}</span>
-                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} />
+                    <Image
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "10px",
+                        borderRadius: "8px", // Optional: make it look more polished
+                        objectFit: "cover", 
+                      }}
+                      width={70}
+                      height={70}
+                      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} style={{ marginLeft: "10px" }} />
                   </Col>
                 </Row>
               </List.Item>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Form } from "antd";
+import { Form, Input, notification } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
 import registerImage from "../../../assets/registerImage.png";
 import { CLIENT_URI, EMAIL_REGEX, PASSWORD_REGEX } from "../../../constants";
@@ -16,6 +16,8 @@ export const RegisterPage = () => {
     message: "",
   });
 
+  const navigate = useNavigate();
+
   const onRegister = (values) => {
     const data = {
       fullName: values.fullName,
@@ -26,15 +28,15 @@ export const RegisterPage = () => {
     console.log("Success:", values);
     register(data)
       .then((resp) => {
-        setMessageResp({
-          type: "success",
-          message: resp.data.message,
-        });
+        notification.success({
+          message: "Đăng ký tài khoản thành công!"
+        })
       })
+      navigate(CLIENT_URI.LOGIN)
       .catch((err) => {
         setMessageResp({
           type: "error",
-          message: err.response.data.message || err.message || "Đăng ký tài khoản không thành công",
+          message: err.response.data.message || err.message || "Đăng ký tài khoản thất bại!",
         });
       });
   };
@@ -81,7 +83,7 @@ export const RegisterPage = () => {
               },
             ]}
           >
-            <InputCustom type="password" placeholder="Password" prefix={<LockOutlined />} />
+            <Input.Password type="password" placeholder="Password" prefix={<LockOutlined />} />
           </Form.Item>
 
           <Form.Item
@@ -100,7 +102,7 @@ export const RegisterPage = () => {
               }),
             ]}
           >
-            <InputCustom type="password" placeholder="Xác nhận mật khẩu" prefix={<LockOutlined />} />
+            <Input.Password type="password" placeholder="Xác nhận mật khẩu" prefix={<LockOutlined />} />
           </Form.Item>
 
           <Form.Item>

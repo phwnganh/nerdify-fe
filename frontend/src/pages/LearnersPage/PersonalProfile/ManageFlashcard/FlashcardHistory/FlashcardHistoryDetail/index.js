@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Dropdown, List, Row, Modal, Select, message } from "antd";
+import { Button, Col, Dropdown, List, Row, Modal, Select, message, Image } from "antd";
 import {
       CaretLeftOutlined,
   EditOutlined,
@@ -422,7 +422,7 @@ export default function FlashcardHistoryDetail() {
           }}
           onClick={displayModalToChooseFolders}
         >
-          Thêm vào folder sẵn có
+          Thêm vào folder của tôi
         </ButtonCustom>
         <ButtonCustom
           style={{
@@ -466,31 +466,43 @@ export default function FlashcardHistoryDetail() {
             dataSource={flashcard?.cards}
             renderItem={(item) => (
               <List.Item>
-                <Row style={{ width: "100%" }} align="middle">
-                  <Col
+              <Row style={{ width: "100%" }} align="middle">
+                <Col
+                  style={{
+                    flex: 1,
+                    textAlign: "left",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.term)} />
+                  <span style={{ marginRight: "15px" }}>{item.term}</span>
+                </Col>
+                <Col
+                  style={{
+                    flex: 1,
+                    textAlign: "right",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                  }}
+                >
+                  <span style={{ marginRight: "10px" }}>{item.definition}</span>
+                  <Image
                     style={{
-                      flex: 1,
-                      textAlign: "left",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <Button style={{ marginRight: "15px" }} shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.term)} />
-                    <span style={{ marginRight: "15px" }}>{item.term}</span>
-                  </Col>
-                  <Col
-                    style={{
-                      flex: 1,
-                      textAlign: "right",
                       display: "flex",
-                      justifyContent: "flex-end",
                       alignItems: "center",
+                      marginLeft: "10px",
+                      borderRadius: "8px", // Optional: make it look more polished
+                      objectFit: "cover", 
                     }}
-                  >
-                    <span style={{ marginRight: "10px" }}>{item.definition}</span>
-                    <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} />
-                  </Col>
-                </Row>
-              </List.Item>
+                    width={70}
+                    height={70}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                  />
+                  <Button shape="circle" icon={<SoundOutlined />} onClick={() => handleSpeak(item.definition)} style={{ marginLeft: "10px" }} />
+                </Col>
+              </Row>
+            </List.Item>
             )}
           ></List>
         </div>

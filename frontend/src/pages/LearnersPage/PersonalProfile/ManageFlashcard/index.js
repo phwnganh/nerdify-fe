@@ -28,7 +28,7 @@ export default function ManageFlashcard() {
         <CardCustom
   title={
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <span>Quản lý bộ flashcard</span>
+      <span>Quản lý bộ flashcard của tôi</span>
       <ButtonCustom
         onClick={() => navigate(CLIENT_URI.CREATE_FLASH_CARD)}
         buttonType="primary"
