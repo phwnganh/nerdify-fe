@@ -1,11 +1,11 @@
 // Importing components from react-router-dom
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import BlogPage from "../pages/LearnersPage/BlogPage";
 import BlogDetails from "../pages/LearnersPage/BlogDetails";
-import { CLIENT_URI } from "../constants";
+import { CLIENT_URI, ROLES } from "../constants";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
@@ -59,15 +59,19 @@ import MyFlashcardDetail from "../pages/LearnersPage/PersonalProfile/ManageFlash
 import FlashcardHistoryDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/FlashcardHistory/FlashcardHistoryDetail";
 import ViewFlashcardInFolderDetail from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder/FlashcardInFolderDetail";
 
+
 export const routes = [
   // Guest urls
   {
     element: (
+      
       <GuestGuard>
         <GuestLayout>
           <Outlet />
         </GuestLayout>
       </GuestGuard>
+      
+
     ),
     children: [
       {
@@ -125,11 +129,13 @@ export const routes = [
   // Learner urls
   {
     element: (
+     
       <LearnerGuard>
         <LearnerLayout>
           <Outlet />
         </LearnerLayout>
       </LearnerGuard>
+
     ),
     children: [
       {
@@ -343,6 +349,7 @@ export const routes = [
           <Outlet />
         </AccountantLayout>
       </AccountantGuard>
+
     ),
     children: [
       {

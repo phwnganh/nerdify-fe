@@ -64,15 +64,13 @@ export default function CreateFlashCard() {
     createNewFlashcard(data)
       .then((res) => {
         notification.success({
-          message: res.message
-        })
-        messageApi.success("Tạo flash card thành công")})
+          message: "Tạo flash card thành công"
+        })})
       .catch((err) => {
-        const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
         notification.error({
-          message: err.message
+          message: "Tạo flashcard thất bại.",
+          description: "Vui lòng thử lại!"
         })
-        messageApi.error(errorMessage);
         console.error("Error:", err);
       });
   };

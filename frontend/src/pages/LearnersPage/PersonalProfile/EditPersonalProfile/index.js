@@ -9,6 +9,7 @@ import moment from "moment";
 import dayjs from "dayjs";
 import { changeUserProfile, viewUserProfile } from "../../../../services/GuestService";
 import { useAuth } from "../../../../hooks";
+import { validationRules } from "../../../../helpers/validate";
 
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
@@ -32,6 +33,8 @@ export default function EditPersonalProfile() {
           });
           setAvatarPhoto(res.data[0]?.avatar || "");
         }
+        
+        
       })
       .catch((err) => console.log(err));
   }, [form, user]);
@@ -47,14 +50,18 @@ export default function EditPersonalProfile() {
         formData.append("avatar", avatarFile);
       }
 
+      console.log("form data:", [...formData]);
+
       const res = await changeUserProfile(formData);
       notification.success({
         message: "Cập nhật thông tin thành công!",
         description: "Cập nhật thông tin cá nhân thành công",
       });
-      if (res.data?.avatarUrl) {
-        setAvatarPhoto(res.data.avatarUrl);
+      if (res.data?.avatar) {
+        setAvatarPhoto(res.data.avatar);
       }
+      console.log(res.data.avatar);
+      
     } catch (error) {
       console.error("Error updating profile:", error);
       notification.error({
@@ -108,7 +115,7 @@ export default function EditPersonalProfile() {
           <Form form={form} layout="vertical" onFinish={handleChangeInformation}>
             <Row gutter={16}>
               <Col span={12}>
-                <Form.Item label="Họ tên" name="fullname">
+                <Form.Item label="Họ tên" name="fullname" rules={[validationRules.required("Vui lòng nhập họ tên")]}>
                   <InputCustom placeholder="Họ tên" />
                 </Form.Item>
               </Col>
@@ -121,7 +128,7 @@ export default function EditPersonalProfile() {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Ngày sinh" name="dateOfBirth">
+                <Form.Item label="Ngày sinh" name="dateOfBirth" rules={[validationRules.required("Vui lòng chọn ngày sinh!")]}>
                   <DatePicker
                     style={{ width: "100%" }}
                     placeholder="Ngày sinh"
