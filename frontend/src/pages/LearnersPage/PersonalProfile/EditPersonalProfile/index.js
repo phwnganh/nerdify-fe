@@ -1,35 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Col, DatePicker, Form, Input, notification, Radio, Row, Upload } from "antd";
+import { Avatar, Col, DatePicker, Form, Input, Modal, notification, Radio, Row, Upload } from "antd";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import ButtonCustom from "../../../../components/Button";
 import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import { UploadOutlined } from "@ant-design/icons";
+import { EditOutlined, UploadOutlined } from "@ant-design/icons";
 import moment from "moment";
 import dayjs from "dayjs";
 import { changeUserProfile, viewUserProfile } from "../../../../services/GuestService";
 import { useAuth } from "../../../../hooks";
+import { validationRules } from "../../../../helpers/validate";
 
 export default function EditPersonalProfile() {
   const [form] = Form.useForm();
   const [avatarPhoto, setAvatarPhoto] = useState("");
-  const [avatarBase64, setAvatarBase64] = useState("");
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [initialValues, setInitialValues] = useState(null);
   const { user } = useAuth();
+
+  const showCancelConfirm = () => {
+    Modal.confirm({
+      title: "Bạn có chắc chắn hủy cập nhật thông tin?",
+      okText: "OK",
+      cancelText: "Hủy",
+      onOk: () => {
+        form.setFieldsValue(initialValues); // Đặt lại form về giá trị ban đầu
+      },
+    });
+  };
 
   useEffect(() => {
     viewUserProfile()
       .then((res) => {
         if (res && res.data && res.data[0]) {
-          const userData = res.data[0];
-          const dob = userData.dateOfBirth && dayjs(userData.dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(userData.dateOfBirth, "YYYY-MM-DD") : null;
-          form.setFieldsValue({
-            fullname: userData.fullName,
-            gender: userData.gender,
+          const dob = res?.data[0]?.dateOfBirth && dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD").isValid() ? dayjs(res.data[0].dateOfBirth, "YYYY-MM-DD") : null;
+          const values = {
+            fullname: res?.data[0]?.fullName,
+            gender: res?.data[0]?.gender,
             dateOfBirth: dob,
-            phone: userData.phone,
-            email: userData.email,
-          });
-          setAvatarPhoto(userData.avatar || "");
+            phone: res?.data[0]?.phone,
+            email: res?.data[0]?.email,
+            role: res?.data[0]?.role,
+            address: res?.data[0]?.address,
+            status: res?.data[0]?.status,
+          };
+          form.setFieldsValue(values);
+          setAvatarPhoto(res.data[0]?.avatar || "");
+          setInitialValues(values); // Lưu lại giá trị ban đầu
         }
       })
       .catch((err) => console.log(err));
@@ -37,26 +54,30 @@ export default function EditPersonalProfile() {
 
   const handleChangeInformation = async (values) => {
     try {
-      const formData = {
-        fullName: values.fullname,
-        gender: values.gender,
-        dateOfBirth: values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null,
-        phone: values.phone,
-        avatar: avatarBase64 || undefined,
-      };
+      const formData = new FormData();
+      formData.append("fullName", values.fullname);
+      formData.append("gender", values.gender);
+      formData.append("dateOfBirth", values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null);
+      formData.append("phone", values.phone);
+      formData.append("address", values.address);
+      formData.append("role", values.role);
+      formData.append("status", values.status);
+      if (avatarFile) {
+        formData.append("avatar", avatarFile);
+      }
+
+      console.log("form data:", [...formData]);
 
       const res = await changeUserProfile(formData);
-      if (res && res.status === 200) {
-        notification.success({
-          message: "Cập nhật thông tin thành công!",
-          description: "Cập nhật thông tin cá nhân thành công",
-        });
-        if (res.data?.avatar) {
-          setAvatarPhoto(res.data.avatar); // Cập nhật ảnh mới từ phản hồi
-        }
-      } else {
-        throw new Error("Unexpected response status");
+      notification.success({
+        message: "Cập nhật thông tin thành công!",
+        description: "Cập nhật thông tin cá nhân thành công",
+      });
+      if (res.data?.avatar) {
+        setAvatarPhoto(res.data.avatar);
       }
+      setInitialValues(values);
+      console.log(res.data.avatar);
     } catch (error) {
       console.error("Error updating profile:", error);
       notification.error({
@@ -69,13 +90,9 @@ export default function EditPersonalProfile() {
   const handleAvatarPhotoChange = (info) => {
     const file = info.file.originFileObj;
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64 = reader.result;
-        setAvatarBase64(base64); // Gửi chuỗi base64 đầy đủ (bao gồm tiền tố)
-        setAvatarPhoto(base64); // Hiển thị ảnh với tiền tố đầy đủ
-      };
-      reader.readAsDataURL(file);
+      setAvatarFile(file);
+      const newAvatarPhotoUrl = URL.createObjectURL(file);
+      setAvatarPhoto(newAvatarPhotoUrl);
     }
   };
 
@@ -90,14 +107,10 @@ export default function EditPersonalProfile() {
               <Upload
                 showUploadList={false}
                 beforeUpload={(file) => {
-                  const reader = new FileReader();
-                  reader.onload = () => {
-                    const base64 = reader.result;
-                    setAvatarBase64(base64);
-                    setAvatarPhoto(base64);
-                  };
-                  reader.readAsDataURL(file);
-                  return false;
+                  setAvatarFile(file);
+                  const newAvatarPhotoUrl = URL.createObjectURL(file);
+                  setAvatarPhoto(newAvatarPhotoUrl);
+                  return false; // Ngăn việc tải lên tự động
                 }}
                 onChange={handleAvatarPhotoChange}
               >
@@ -118,7 +131,7 @@ export default function EditPersonalProfile() {
           <Form form={form} layout="vertical" onFinish={handleChangeInformation}>
             <Row gutter={16}>
               <Col span={12}>
-                <Form.Item label="Họ tên" name="fullname">
+                <Form.Item label="Họ tên" name="fullname" rules={[validationRules.required("Vui lòng nhập họ tên")]}>
                   <InputCustom placeholder="Họ tên" />
                 </Form.Item>
               </Col>
@@ -127,11 +140,12 @@ export default function EditPersonalProfile() {
                   <Radio.Group>
                     <Radio value="male">Nam</Radio>
                     <Radio value="female">Nữ</Radio>
+                    <Radio value="other">Khác</Radio>
                   </Radio.Group>
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Ngày sinh" name="dateOfBirth">
+                <Form.Item label="Ngày sinh" name="dateOfBirth" rules={[validationRules.required("Vui lòng chọn ngày sinh!")]}>
                   <DatePicker
                     style={{ width: "100%" }}
                     placeholder="Ngày sinh"
@@ -148,14 +162,29 @@ export default function EditPersonalProfile() {
                   <InputCustom placeholder="Điện thoại" />
                 </Form.Item>
               </Col>
+              <Col span={12}>
+                <Form.Item label="Địa chỉ" name="address">
+                  <InputCustom placeholder="Địa chỉ" />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="Vai trò" name="role">
+                  <InputCustom placeholder="Vai trò" disabled />
+                </Form.Item>
+              </Col>
               <Col span={24}>
                 <Form.Item label="Email hiện tại" name="email">
                   <InputCustom placeholder="Email hiện tại" disabled />
                 </Form.Item>
               </Col>
+              <Col span={12}>
+                <Form.Item label="Trạng thái" name="status">
+                  <InputCustom placeholder="Trạng thái" disabled />
+                </Form.Item>
+              </Col>
             </Row>
             <Row justify="start" style={{ marginTop: 20 }}>
-              <ButtonCustom type="primary" style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }}>
+              <ButtonCustom type="primary" style={{ marginRight: 10, backgroundColor: "#00a2ae", borderColor: "#00a2ae" }} onClick={showCancelConfirm}>
                 Hủy
               </ButtonCustom>
               <ButtonCustom type="primary" htmlType="submit" style={{ backgroundColor: "#dc3545", borderColor: "#dc3545" }}>

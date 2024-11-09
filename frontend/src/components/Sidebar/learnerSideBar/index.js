@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <Sider width={250} style={{ background: "#ffa751" }}>
       <div style={{ padding: "16px", textAlign: "center" }}>
-        <Avatar size={64} icon={<UserOutlined />} style={{ backgroundColor: "#fff", color: "#f97316" }} />
+        <Avatar size={64} icon={<UserOutlined />} src={user?.avatar} style={{ backgroundColor: "#fff", color: "#f97316" }} />
         <h3 style={{ color: "#fff", margin: "16px 0" }}>{userInfo}</h3>
       </div>
       <Menu mode="inline" style={{ background: "#ffa751", color: "#fff" }} selectable={false}>

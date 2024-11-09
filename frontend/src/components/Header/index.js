@@ -136,10 +136,10 @@ export default function Navbar() {
 
           {/* Search and Buttons */}
           <div style={buttonGroupStyle}>
-            <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
+            {/* <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
               <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
               {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
-            </div>
+            </div> */}
             <ButtonCustom buttonType="primary" style={{ marginRight: "10px" }} onClick={() => navigate(CLIENT_URI.LOGIN)}>
               ĐĂNG NHẬP
             </ButtonCustom>
