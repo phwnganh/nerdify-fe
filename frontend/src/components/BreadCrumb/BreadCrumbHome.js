@@ -17,11 +17,11 @@ export default function BreadCrumbHome() {
     if (flashcardId) {
       setStorage("flashcardId", flashcardId);
     }
-    if(blogId){
+    if (blogId) {
       setStorage("blogId", blogId);
     }
-    console.log("courseId:", storedCourseId);
-    console.log("flashcardId", stotedFlashcardId);
+    // console.log("courseId:", storedCourseId);
+    // console.log("flashcardId", stotedFlashcardId);
   }, [courseId, flashcardId, blogId]);
 
   const storedCourseId = courseId || getStorage("courseId");
@@ -94,7 +94,7 @@ export default function BreadCrumbHome() {
           label: "Chỉnh sửa flashcard",
         },
       ]);
-    }else if(location.pathname === CLIENT_URI.BLOG_STUDY){
+    } else if (location.pathname === CLIENT_URI.BLOG_STUDY) {
       setBreadCrumb([
         {
           path: "/",
@@ -105,7 +105,7 @@ export default function BreadCrumbHome() {
           label: "Danh Sách Blogs"
         }
       ])
-    }else if(location.pathname.startsWith(CLIENT_URI.BLOG_STUDY)){
+    } else if (location.pathname.startsWith(CLIENT_URI.BLOG_STUDY)) {
       setBreadCrumb([
         {
           path: "/",
@@ -118,6 +118,21 @@ export default function BreadCrumbHome() {
         {
           path: `${CLIENT_URI.BLOG_STUDY}/${blogId}`,
           label: "Blog Cụ Thể"
+        }
+      ])
+    }else if(location.pathname === CLIENT_URI.LEARNING_PROGRESS){
+      setBreadCrumb([
+        {
+          path: "/",
+          label: "Trang chủ"
+        },
+        {
+          path: `${CLIENT_URI.LEVEL_DETAIL}/${storedCourseId}`,
+          label: "Trình độ"
+        },
+        {
+          path: location.pathname,
+          label: "Tiến độ học tập"
         }
       ])
     }

@@ -4,52 +4,62 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import CardCustom from "../../../../components/Card";
 import InputCustom from "../../../../components/Input";
 import { Col, Input, Row } from "antd";
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
+import { submitExercise } from "../../../../services/LearnerService";
 
-export default function WritingExercises() {
-  const [exercise, setExercise] = useState(null);
-  const { exerciseType, exerciseId } = useParams();
-  const [userAnswers, setUserAnswers] = useState({});
-  const [answerStatus, setAnswerStatus] = useState({});
+export default function WritingExercises({ exercises }) {
+  const [userSelected, setUserSelected] = useState([]);
+  const [submissionData, setSubmissionData] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [userScore, setUserScore] = useState(0);
-  const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
+  const [toggleAnswerDetail, setToggleAnswerDetail] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercise(data[0]);
-        }
-      })
-      .catch((err) => console.error("error", err));
-  }, [exerciseType, exerciseId]);
-
-  if (!exercise?.parts) {
+  if (!exercises?.parts) {
     return <div>Loading...</div>;
   }
 
-  const handleInputChange = (partId, answerId, value) => {
-    console.log("Part ID:", partId, "Answer ID:", answerId, "Value:", value);
-    setUserAnswers({
-      ...userAnswers,
-      [partId]: {
-        ...userAnswers[partId],
-        [answerId]: value,
-      },
+  const handleInputChange = (questionId, value) => {
+    setUserSelected((prevAnswers) => {
+      const questionIndex = prevAnswers.findIndex((answer) => answer.questionId === questionId);
+      if (questionIndex > -1) {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[questionIndex].userAnswer = value;
+        return updatedAnswers;
+      }
+      return [
+        ...prevAnswers,
+        {
+          questionId: questionId,
+          userAnswer: value,
+        },
+      ];
     });
   };
 
   const handleToggleAnswerDetail = (questionId) => {
-    setToggleAnswerDetail((prevState) => ({
-      ...prevState,
-      [questionId]: !prevState[questionId],
-    }));
+    setToggleAnswerDetail((prevState) => {
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
+        const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
+
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            },
+          ];
+        }
+      }
+      return prevState;
+    });
   };
 
   const renderPart1 = (part) => {
@@ -63,46 +73,65 @@ export default function WritingExercises() {
 
             <Col span={15}>
               {part?.questions?.map((question, index) => (
-                <>
-                  <div style={{ paddingBottom: "5px", marginTop: "10px" }} key={question.id}>
+                <div style={{ paddingBottom: "5px", marginTop: "10px" }} key={question.id}>
+                  {part.partType === PART_TYPE.FILL_IN_THE_BLANK ? (
                     <InputCustom
-                      key={question.id}
+                      key={question._id}
                       style={{
                         marginBottom: "10px",
-                        borderColor: isCompleted && answerStatus[question.id] === "correct" ? "#5FD855" : isCompleted && answerStatus[question.id] === "incorrect" ? "red" : "",
+                        borderWidth: "2px",
+                        borderStyle: "solid",
+                        borderColor: isCompleted ? (submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red") : "initial", // Set to default if isCompleted is false
                       }}
                       placeholder={`Điền lỗi thứ ${index + 1} tại đây`}
                       autoSize={{ minRows: 1, maxRows: 5 }}
-                      value={userAnswers[part.id]?.[question.id] || ""}
-                      onChange={(e) => handleInputChange(part.id, question.id, e.target.value)}
+                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer || ""}
+                      onChange={(e) => handleInputChange(question._id, e.target.value)}
                       disabled={isCompleted}
                     />
-                  </div>
-                  {isCompleted && (
-                    <>
-                      <TextCustom style={{ color: "red" }}>{question.answer}</TextCustom>
-                    </>
+                  ) : (
+                    <Input.TextArea
+                      placeholder="Viết lại thành đoạn văn hoàn chỉnh"
+                      autoSize={{ minRows: 10, maxRows: 15 }}
+                      style={{
+                        marginTop: "16px",
+                        borderWidth: "2px",
+                        borderStyle: "solid",
+                        borderColor: isCompleted ? (submissionData.submissionAnswer.find((answer) => answer.questionId._id === question._id).isCorrect ? "green" : "red") : "initial", // Set to default if isCompleted is false
+                      }}
+                      value={userSelected.find((answer) => answer.questionId === question._id)?.userAnswer || ""}
+                      disabled={isCompleted}
+                      onChange={(e) => handleInputChange(question._id, e.target.value)}
+                    />
                   )}
                   {isCompleted && (
                     <div style={{ paddingTop: "20px" }}>
-                      <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
+                      <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
                         Đáp án chi tiết
                       </ButtonCustom>
-                      {toggleAnswerDetail[question.id] && (
+                      {toggleAnswerDetail.some((item) => item.questionId === question._id) && (
                         <div>
-                          <TextCustom style={{ color: "blue" }}>
-                            {question?.explanation.split("\n").map((line, index) => (
-                              <React.Fragment key={index}>
-                                {line}
-                                <br />
-                              </React.Fragment>
-                            ))}
-                          </TextCustom>
+                          {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
+                            <>
+                              Đáp án:&nbsp;
+                              {toggleAnswerDetail
+                                .find((item) => item.questionId === question._id)
+                                .correctAnswer.split("|")
+                                .map((part, index) => (
+                                  <TextCustom key={index} style={{ color: "blue" }}>
+                                    {part}
+                                    {index < toggleAnswerDetail.find((item) => item.questionId === question._id).correctAnswer.split("|").length - 1 && ", "}
+                                  </TextCustom>
+                                ))}{" "}
+                              <br />
+                              Giải thích: {toggleAnswerDetail.find((item) => item.questionId === question._id).explanation}
+                            </>
+                          )}
                         </div>
                       )}
                     </div>
                   )}
-                </>
+                </div>
               ))}
             </Col>
           </Row>
@@ -111,139 +140,45 @@ export default function WritingExercises() {
     );
   };
 
-  const renderPart2 = (part) => {
-    return (
-      <Input.TextArea
-        placeholder="Viết lại thành đoạn văn hoàn chỉnh"
-        autoSize={{ minRows: 10, maxRows: 15 }}
-        style={{
-          marginTop: "16px",
-          borderColor: isCompleted && answerStatus[`paragraph_${part.id}`] === "correct" ? "#5FD855" : isCompleted && answerStatus[`paragraph_${part.id}`] === "incorrect" ? "red" : "",
-        }}
-        value={userAnswers[`paragraph_${part.id}`]?.[0] || ""}
-        disabled={isCompleted}
-        onChange={(e) => handleInputChange(`paragraph_${part.id}`, 0, e.target.value)}
-      ></Input.TextArea>
-    );
-  };
   const handleSubmit = () => {
-    const submissionDate = new Date().toISOString();
-    let correctCount = 0;
-    const totalQuestions = 4;
-    const newAnswerStatus = {};
-    const questionsArray = [];
-    exercise.parts.forEach((part) => {
-      if (part.partType === PART_TYPE.FILL_IN_THE_BLANK) {
-        part.questions.forEach((question) => {
-          const userAnswer = userAnswers[part.id]?.[question.id]?.trim() || "";
-          const correctAnswer = question.answer.trim();
-          const isCorrect = userAnswer === correctAnswer;
-          newAnswerStatus[question.id] = isCorrect ? "correct" : "incorrect";
-          if (isCorrect) {
-            console.log("new answer status: ", newAnswerStatus);
-
-            correctCount++;
-          }
-
-          questionsArray.push({
-            questionId: question.id,
-            userAnswer: userAnswer,
-            correctAnswer: correctAnswer,
-            isCorrect,
-          });
-        });
-      } else if (part.partType === PART_TYPE.WRITE_PARAGRAPH) {
-        const userAnswer = userAnswers[`paragraph_${part.id}`]?.[0]?.trim() || "";
-        const correctAnswer = part.answer.trim();
-        const isCorrect = userAnswer === correctAnswer;
-        newAnswerStatus[`paragraph_${part.id}`] = isCorrect ? "correct" : "incorrect";
-        if (isCorrect) {
-          console.log("new answer status 2: ", newAnswerStatus);
-
-          correctCount++;
-        }
-        questionsArray.push({
-          questionId: `paragraph_${part.id}`,
-          userAnswer: userAnswer,
-          correctAnswer: correctAnswer,
-          isCorrect,
-        });
-      }
-    });
-
-    const score = Math.round((correctCount / totalQuestions) * 100);
-    setAnswerStatus(newAnswerStatus);
-    setUserScore(score);
-    setIsCompleted(true);
-
-    const submissionData = {
-      submissionDate,
-      score: `${score}%`,
-      submissionAnswers: questionsArray,
-      isCompleted: true,
-      exerciseId,
-    };
-
-    fetch(`${BASE_SERVER}/exercises/${exercise?.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isCompleted: true,
-        score: `${score}%`,
-      }),
+    submitExercise({
+      exerciseId: exercises._id,
+      userSelected: userSelected,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((resp) => {
+        setSubmissionData(resp.data);
+        setIsCompleted(true);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
-
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("writing submission: ", data);
-      })
-      .catch((err) => console.log(err));
   };
 
   const handleRetry = () => {
-    setUserAnswers({});
-    setAnswerStatus({});
+    setUserSelected([]);
     setIsCompleted(false);
-    setUserScore(0);
   };
 
   return (
     <div style={{ padding: "30px", marginLeft: "70px", marginRight: "70px" }}>
       <BreadCrumbHome />
       <TitleCustom level={2} style={{ fontWeight: "bold" }}>
-        {exercise?.title}
+        {exercises?.title}
       </TitleCustom>
       <div style={{ textAlign: "center" }}>
         {isCompleted && (
           <>
             <TextCustom>Điểm: </TextCustom>
-            <span style={{ color: "red" }}>{userScore}%</span>
+            <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
           </>
         )}
       </div>
       <div>
-        {exercise.parts?.map((part, index) => (
-          <>
+        {exercises.parts?.map((part, index) => (
+          <div key={part.id}>
             <TextCustom style={{ color: "red", fontWeight: "bold", paddingTop: "16px" }}>{part.partName}</TextCustom>
-            {part.partType === PART_TYPE.FILL_IN_THE_BLANK && renderPart1(part)}
-            {part.partType === PART_TYPE.WRITE_PARAGRAPH && renderPart2(part)}
-          </>
+            {renderPart1(part)}
+          </div>
         ))}
       </div>
       <div style={{ textAlign: "center", paddingTop: "50px" }}>

@@ -1,23 +1,24 @@
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
-import LoadingSpin from "../components/Spinning";
-import STORAGE, { getStorage } from "../library/storage";
+import SpinCustom from "../components/Spin";
 
 export const LearnerGuard = ({ children }) => {
-  const userInfo = getStorage(STORAGE.USER_INFO);
+  const { isInitialized, isAuthenticated, user } = useAuth();
 
-  // Parse the user info from localStorage
-  // const user = userInfo ? JSON.parse(userInfo) : null;
-
-  if (userInfo) {
-    // Check if the role is 'learner'
-    if (userInfo?.role === ROLES.LEARNER_ROLE) {
-      return <>{children}</>;
-    }
-    return <Navigate to={CLIENT_URI.COURSE_PAGE} replace />;
+  console.log("user info: ", user);
+  
+  if (!isInitialized) {
+    return <SpinCustom size="large"></SpinCustom>;
   }
 
-  // If not authenticated, redirect to login page
+  if (isAuthenticated) {
+    if (user?.role === ROLES.LEARNER_ROLE) {
+      return <>{children}</>;
+    }
+    return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
+  }
+
   return <Navigate to={CLIENT_URI.LOGIN} replace />;
 };
 

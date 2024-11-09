@@ -8,18 +8,19 @@ import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
 import Flashcard from "..";
 import { getFlashcardList } from "../../../../services/LearnerService";
+import { LockOutlined, UnlockOutlined } from "@ant-design/icons";
 
-export default function FlashcardList() {
-  const [flashcards, setFlashcards] = useState([]);
+export default function FlashcardList({flashcards}) {
+  // const [flashcards, setFlashcards] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard`).then(res => res.json())
-      .then((data) => {
-        console.log("flashcards: ", data);
-        setFlashcards(data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(() => {
+  //  getFlashcardList()
+  //     .then((data) => {
+  //       console.log("flashcards: ", data);
+  //       setFlashcards(data.data);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   const handleViewFlashcardDetail = (id) => {
     navigate(`${CLIENT_URI.FLASH_CARD}/${id}`);
@@ -35,10 +36,10 @@ export default function FlashcardList() {
                   {flashcard?.title}
                 </TitleCustom>
                 <TitleCustom level={5}>Trình độ {flashcard?.level}</TitleCustom>
-                <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom>
+                <TextCustom>{flashcard?.cards?.length} thuật ngữ</TextCustom><span style={{marginLeft: '10px'}}>{flashcard?.isPublic ? <UnlockOutlined/> : <LockOutlined/>}</span>
               </div>
               <div style={{ marginTop: "10px" }}>
-                <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?.id)}>
+                <ButtonCustom buttonType="primary" onClick={() => handleViewFlashcardDetail(flashcard?._id)}>
                   Xem chi tiết
                 </ButtonCustom>
               </div>

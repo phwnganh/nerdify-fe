@@ -1,73 +1,203 @@
-//sample data from api
-// const dataSample = {
-//   data: {
-//     _id: "6706d47e09b1c0b43cb240fc",
-//     title: "Learning German 123",
-//     description:
-//       "This course is designed for learners aiming to achieve C1 level proficiency in German. It includes detailed lessons on grammar, vocabulary, and advanced communication skills. Additionally, the course offers numerous exercises to reinforce understanding and improve fluency. Each module of the course focuses on real-life scenarios to help learners apply what they’ve learned in practical settings.",
-//     createdBy: "6706bd968b22c99d1f5ccfe5",
-//     status: "Active",
-//     views: 5,
-//     createdAt: "2024-10-09T19:07:42.898Z",
-//     updatedAt: "2024-10-13T04:55:12.850Z",
-//     __v: 0,
-//   },
-//   success: true,
-//   message: "Fetched blog details",
+// // Path: src/services/LearnerService/BlogDetails/index.js
+// import React, { useEffect, useState } from "react";
+// import styled from "styled-components";
+// import { Card, Typography, Tag, Button, Breadcrumb, Spin, message } from "antd";
+// import { Link, useParams } from "react-router-dom";
+// import { getBlogDetail, getBlogList } from "../../../services/LearnerService";
+// import ReactMarkdown from "react-markdown";
+
+// const { Title, Text, Paragraph } = Typography;
+
+// // Styled Components for CSS-in-JS
+// const Layout = styled.div`
+//   display: flex;
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 24px;
+//   gap: 24px;
+// `;
+
+// const ContentWrapper = styled.div`
+//   flex: 3;
+// `;
+
+// const Sidebar = styled.div`
+//   flex: 1;
+//   padding: 16px;
+//   background-color: #f5f5f5;
+//   border-radius: 8px;
+//   position: fixed;
+//   top: 120px;
+//   right: 20px;
+//   width: 200px;
+//   height: fit-content;
+// `;
+
+// const RelatedArticlesTitle = styled(Title)`
+//   font-size: 18px;
+// `;
+
+// const RelatedArticleItem = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 16px;
+// `;
+
+// const RelatedArticleImage = styled.img`
+//   width: 60px;
+//   height: 60px;
+//   object-fit: cover;
+//   margin-right: 12px;
+//   border-radius: 8px;
+// `;
+
+// const RelatedArticleText = styled(Text)`
+//   font-size: 14px;
+//   line-height: 1.4;
+// `;
+
+// const ImageBanner = styled.div`
+//   margin-top: 30px;
+//   height: 450px;
+//   background-size: cover;
+//   background-position: center;
+//   margin-bottom: 24px;
+//   border-radius: 8px;
+//   background-image: url("https://api.time.com/wp-content/uploads/2020/07/never-trumpers-2020-election-01.jpg?quality=85&w=1201&h=676&crop=1");
+// `;
+
+// const ContentCard = styled(Card)`
+//   padding: 24px;
+//   background: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+// `;
+
+// const TagsWrapper = styled.div`
+//   margin-bottom: 16px;
+// `;
+
+// const AuthorInfo = styled(Text)`
+//   display: block;
+//   margin-bottom: 24px;
+// `;
+
+// // Main Component
+// const BlogDetails = () => {
+//   const { blogId } = useParams();
+//   const [blog, setBlog] = useState(null);
+//   const [relatedBlogs, setRelatedBlogs] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   // Fetch blog details
+//   const fetchBlogDetails = async () => {
+//     try {
+//       const response = await getBlogDetail(blogId);
+//       setBlog(response.data);
+//     } catch (error) {
+//       console.error("Error fetching blog details:", error);
+//       message.error("Có lỗi xảy ra khi lấy dữ liệu blog.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   // Fetch all blogs and select 5 random ones
+//   const fetchRelatedBlogs = async () => {
+//     try {
+//       const result = await getBlogList();
+
+//       const allBlogs = result.data;
+
+//       // Ensure each blog entry has an ID property; adjust this if necessary (e.g., relatedBlog._id)
+//       const shuffled = allBlogs.sort(() => 0.5 - Math.random());
+//       setRelatedBlogs(shuffled.slice(0, 5));
+//     } catch (error) {
+//       console.error("Error fetching related blogs:", error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchBlogDetails();
+//     fetchRelatedBlogs();
+//   }, [blogId]);
+
+//   if (loading) return <Spin tip="Đang tải dữ liệu..." />;
+//   if (!blog) return <p>Không tìm thấy bài viết.</p>;
+
+//   return (
+//     <Layout>
+//       {/* Main Blog Content */}
+//       <ContentWrapper>
+//         <Breadcrumb>
+//           <Breadcrumb.Item>
+//             <Link to="/">Trang chủ</Link>
+//           </Breadcrumb.Item>
+//           <Breadcrumb.Item>
+//             <Link to="/blog-study">Danh sách Blogs</Link>
+//           </Breadcrumb.Item>
+//           <Breadcrumb.Item>
+//             <span style={{ color: "#F78F2E", fontWeight: "bold", textDecoration: "none" }}>{blog.title}</span>
+//           </Breadcrumb.Item>
+//         </Breadcrumb>
+//         <ImageBanner />
+//         <ContentCard bordered={false}>
+//           <TagsWrapper>
+//             <Tag color="blue">{blog.status}</Tag>
+//             <Tag color="purple">Views: {blog.views}</Tag>
+//           </TagsWrapper>
+//           <Title level={2}>{blog.title}</Title>
+//           <AuthorInfo type="secondary">
+//             Tác giả:{" "}
+//             <Button type="link" href="#">
+//               Content Manager
+//             </Button>
+//           </AuthorInfo>
+//           <Paragraph>{blog.description}</Paragraph>
+//           {/* Render Markdown Content */}
+//           <ReactMarkdown>{blog.content}</ReactMarkdown>
+//           <Paragraph>Ngày tạo: {new Date(blog.createdAt).toLocaleDateString()}</Paragraph>
+//         </ContentCard>
+//       </ContentWrapper>
+
+//       {/* Sidebar for Related Articles */}
+//       <Sidebar>
+//         <RelatedArticlesTitle level={4}>Bài viết khác</RelatedArticlesTitle>
+//         {relatedBlogs.map((relatedBlog, index) => (
+//           <Link to={`/blog-study/${relatedBlog.id || relatedBlog._id}`} key={index} style={{ textDecoration: "none" }}>
+//             <RelatedArticleItem>
+//               <RelatedArticleImage src={relatedBlog.image || "https://via.placeholder.com/60"} />
+//               <RelatedArticleText>{relatedBlog.title}</RelatedArticleText>
+//             </RelatedArticleItem>
+//           </Link>
+//         ))}
+//       </Sidebar>
+//     </Layout>
+//   );
 // };
-import React from "react";
+
+// export default BlogDetails;
+
+// Path: src/services/LearnerService/BlogDetails/index.js
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Card, Typography, Tag, Button, Breadcrumb } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
-import { useParams, Link } from "react-router-dom"; // Import useParams to get the blog title from the URL
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+import { Card, Typography, Tag, Button, Breadcrumb, Spin, message, Row, Col } from "antd";
+import { Link, useParams } from "react-router-dom";
+import { getBlogDetail, getBlogList } from "../../../services/LearnerService";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const { Title, Text, Paragraph } = Typography;
 
 // Styled Components for CSS-in-JS
 const Layout = styled.div`
-  display: flex;
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
-  gap: 24px;
 `;
 
 const ContentWrapper = styled.div`
-  flex: 3;
-`;
-
-const Sidebar = styled.div`
-  flex: 1;
-  padding: 16px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  position: sticky;
-  top: 20px;
-  height: fit-content;
-`;
-
-const RelatedArticlesTitle = styled(Title)`
-  font-size: 18px;
-`;
-
-const RelatedArticleItem = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-`;
-
-const RelatedArticleImage = styled.img`
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  margin-right: 12px;
-  border-radius: 8px;
-`;
-
-const RelatedArticleText = styled(Text)`
-  font-size: 14px;
-  line-height: 1.4;
+  margin-bottom: 48px;
 `;
 
 const ImageBanner = styled.div`
@@ -96,86 +226,155 @@ const AuthorInfo = styled(Text)`
   margin-bottom: 24px;
 `;
 
-const StyledQuote = styled.blockquote`
-  border-left: 4px solid #1890ff;
-  padding-left: 16px;
-  margin: 16px 0;
+const RelatedArticlesSection = styled.div`
+  margin-top: 48px;
+`;
+
+const RelatedArticlesTitle = styled(Title)`
+  font-size: 24px;
+  margin-bottom: 24px;
+`;
+
+const RelatedArticleCard = styled(Card)`
+  margin-bottom: 24px;
+`;
+
+const RelatedArticleImage = styled.img`
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  margin-bottom: 16px;
+`;
+
+const RelatedArticleText = styled(Text)`
+  font-size: 16px;
+  line-height: 1.4;
+`;
+
+const StyledBlockquote = styled.blockquote`
+  font-size: 14px;
   font-style: italic;
-  color: #1890ff;
+  border-left: 4px solid #f78f2e; /* Use your brand's primary color */
+  margin: 24px 0;
+  padding: 0 16px;
+  //color light dark
+  color: #555555;
+  background-color: #f9f9f9;
+  border-radius: 4px;
 `;
 
 // Main Component
 const BlogDetails = () => {
-  const { id } = useParams(); // Get the blog ID from the URL
-  const blogTitle = "Revenge of the Never Trumpers"; // replace this with a dynamic title based on the ID
+  const { blogId } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch blog details
+  const fetchBlogDetails = async () => {
+    try {
+      const response = await getBlogDetail(blogId);
+      setBlog(response.data);
+    } catch (error) {
+      console.error("Error fetching blog details:", error);
+      message.error("Có lỗi xảy ra khi lấy dữ liệu blog.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch all blogs and select 3 random ones
+  const fetchRelatedBlogs = async () => {
+    try {
+      const result = await getBlogList();
+
+      const allBlogs = result.data;
+
+      // Exclude the current blog from related blogs
+      const otherBlogs = allBlogs.filter((b) => b._id !== blogId);
+
+      let selectedBlogs = [];
+
+      if (otherBlogs.length <= 4) {
+        // If less than or equal to 3 blogs, use them all
+        selectedBlogs = otherBlogs;
+      } else {
+        // Shuffle the array
+        const shuffledBlogs = otherBlogs.sort(() => 0.5 - Math.random());
+        // Get first 3 blogs
+        selectedBlogs = shuffledBlogs.slice(0, 4);
+      }
+
+      setRelatedBlogs(selectedBlogs);
+    } catch (error) {
+      console.error("Error fetching related blogs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogDetails();
+    fetchRelatedBlogs();
+  }, [blogId]);
+
+  if (loading) return <Spin tip="Đang tải dữ liệu..." />;
+  if (!blog) return <p>Không tìm thấy bài viết.</p>;
 
   return (
     <Layout>
       {/* Main Blog Content */}
       <ContentWrapper>
-        {/* Breadcrumb */}
-        <BreadCrumbHome/>
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to="/">Trang chủ</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/blog-study">Danh sách Blogs</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <span style={{ color: "#F78F2E", fontWeight: "bold", textDecoration: "none" }}>{blog.title}</span>
+          </Breadcrumb.Item>
+        </Breadcrumb>
         <ImageBanner />
         <ContentCard bordered={false}>
           <TagsWrapper>
-            <Tag color="blue">Election</Tag>
-            <Tag color="blue">Politics</Tag>
+            <Tag color="blue">{blog.status ? "Hoạt Động" : "Không Hoạt Động"}</Tag>
+            <Tag color="purple">Views: {blog.views}</Tag>
           </TagsWrapper>
-
-          <Title level={2}>{blogTitle}</Title>
-
           <AuthorInfo type="secondary">
             Tác giả:{" "}
             <Button type="link" href="#">
-              Ahmad Sultani
+              Quản lý nội dung
             </Button>
           </AuthorInfo>
-
-          <Paragraph>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+          <StyledBlockquote>{blog.description}</StyledBlockquote>
+          {/* Render Markdown Content */}
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{blog.content}</ReactMarkdown>
+          <Paragraph
+            style={{
+              marginTop: " 40px",
+            }}
+          >
+            Ngày tạo: {new Date(blog.createdAt).toLocaleDateString()}
           </Paragraph>
-
-          <Title level={3}>#1. What is Lorem Ipsum?</Title>
-
-          <Paragraph>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book.
-          </Paragraph>
-
-          <StyledQuote>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</StyledQuote>
-
-          <Paragraph>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</Paragraph>
-
-          <TagsWrapper>
-            <Tag color="blue">#Election</Tag>
-            <Tag color="blue">#People</Tag>
-            <Tag color="blue">#Election2020</Tag>
-            <Tag color="blue">#Trump</Tag>
-            <Tag color="blue">#Joe</Tag>
-          </TagsWrapper>
         </ContentCard>
       </ContentWrapper>
 
-      {/* Sidebar for Related Articles */}
-      <Sidebar>
-        <RelatedArticlesTitle level={4}>Bài viết liên quan</RelatedArticlesTitle>
-
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>10 Kênh Podcast Miễn Phí Giúp Học Tiếng Đức Dễ Dàng Hơn</RelatedArticleText>
-        </RelatedArticleItem>
-
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>12 cụm từ tiếng Đức kỳ lạ nên biết</RelatedArticleText>
-        </RelatedArticleItem>
-
-        <RelatedArticleItem>
-          <RelatedArticleImage src="https://via.placeholder.com/60" />
-          <RelatedArticleText>10 cách học tiếng Anh nhanh và hiệu quả</RelatedArticleText>
-        </RelatedArticleItem>
-      </Sidebar>
+      {/* Related Articles Section */}
+      <RelatedArticlesSection>
+        <RelatedArticlesTitle level={3}>Bài viết khác</RelatedArticlesTitle>
+        <Row gutter={[16, 16]}>
+          {relatedBlogs.map((relatedBlog) => (
+            <Col xs={24} sm={12} md={8} lg={6} key={relatedBlog._id}>
+              <Link to={`/blog-study/${relatedBlog._id}`} style={{ textDecoration: "none" }}>
+                <RelatedArticleCard hoverable>
+                  <RelatedArticleImage src={relatedBlog.image || "https://www.seoclerk.com/pics/000/787/824/51099d50ed6a0c6fa4e74f1260db024b.png"} alt={relatedBlog.title} />
+                  <RelatedArticleText strong>{relatedBlog.title}</RelatedArticleText>
+                </RelatedArticleCard>
+              </Link>
+            </Col>
+          ))}
+        </Row>
+      </RelatedArticlesSection>
     </Layout>
   );
 };

@@ -22,18 +22,12 @@ export const verifyEmail = async (params) => {
 };
 
 export const sendActivation = async (params) => {
-  const res = await client.post(
-    AUTH_SERVER_URI.AUTH_SERVICE.SEND_ACTIVATION,
-    params
-  );
+  const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.SEND_ACTIVATION, params);
   return res.data;
 };
 
 export const forgotPassword = async (params) => {
-  const res = await client.post(
-    AUTH_SERVER_URI.AUTH_SERVICE.FORGOT_PASSWORD,
-    params
-  );
+  const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.FORGOT_PASSWORD, params);
   return res.data;
 };
 
@@ -49,5 +43,28 @@ export const token = async (params) => {
 
 export const getCurrentUser = async () => {
   const res = await client.get(AUTH_SERVER_URI.AUTH_SERVICE.CURRENT_USER);
+  return res.data;
+};
+
+export const viewUserProfile = async () => {
+  const res = await client.get(AUTH_SERVER_URI.AUTH_SERVICE.VIEW_PROFILE);
+  return res.data;
+};
+
+export const changeUserProfile = async (params) => {
+  return client.put(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PROFILE, params, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+export const changePassword = async (params) => {
+  const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.CHANGE_PASSWORD, params);
+  return res.data;
+};
+
+export const cancelPremium = async () => {
+  const res = await client.post(AUTH_SERVER_URI.AUTH_SERVICE.CANCEL_PREMIUM);
   return res.data;
 };

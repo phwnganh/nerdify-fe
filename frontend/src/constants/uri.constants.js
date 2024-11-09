@@ -7,6 +7,7 @@ export const CLIENT_URI = {
   VERIFY_EMAIL: "/verify-email/:emailToken",
   RESET_PASSWORD: "/reset-password/:resetToken",
   BLOG_STUDY: "/blog-study",
+  BLOG_DETAIL: "/blog-study/:id",
   // LEARNER
   COURSE_PAGE: "/course-page",
   LEVEL_DETAIL: "/level-detail",
@@ -14,7 +15,7 @@ export const CLIENT_URI = {
   FINAL_EXAM: "/final-exam",
   PROFILE: "/personal-profile",
   EDIT_PROFILE: "/edit-personal-profile",
-  RESULT_DETAIL: "/result-detail",
+  
   FLASH_CARD: "/flash-card",
   CREATE_FLASH_CARD: "/create-flash-card",
   EDIT_FLASH_CARD: "/edit-flash-card",
@@ -24,12 +25,31 @@ export const CLIENT_URI = {
   PREMIUM: "/premium",
   BILLINFO: "/bill-info",
   CONFIRM_PAYMENT: "/confirm-payment",
+  SUCCESS_PAYMENT: "/success-payment",
   LEARNING_PROGRESS: "/learning-progress",
   MANAGE_FOLDER: "/manage-folder",
+  VIEW_FLASHCARDS_IN_FOLDER: "/view-flashcards-in-folder",
   MANAGE_FLASHCARD: "/manage-flashcard",
+  VIEW_MY_FLASHCARD_DETAIL: "/view-my-flashcard-detail",
+  VIEW_FLASHCARD_HISTORY_DETAIL: "/view-flashcard-history-detail",
+  VIEW_FLASHCARD_IN_FOLDER_DETAIL: "/view-flashcard-in-folder-detail",
   CHANGE_PASSWORD: "/change-password",
+  MY_SUBSCRIPTION: "/my-subscription",
+  MANAGE_SUBSCRIPTION: "/manage-subscription",
+  MY_TRANSACTION_HISTORY: "/my-transaction-history",
+  RESULTS_PRACTICE: "/results-practice",
+  RESULT_DETAIL: "/result-detail",
   // ADMIN
-  DASHBOARD: "/dashboard",
+  ADMIN_DASHBOARD: "/admin-dashboard",
+  ACCOUNT_MANAGEMENT: "/account-management",
+  PREMIUM_MANAGEMENT: "/premium-management",
+  FEEDBACK_MANAGEMENT: "/feedback-management",
   // ADMIN CONTENT
-  TABLE_EXERCISE:"/exercise"
+  TABLE_EXERCISE: "/exercise",
+  // ACCOUNTANT
+  ACCOUNTANT_DASHBOARD: "/accountant-dashboard",
+  SYSTEM_REVENUE: "/system-revenue",
+  TRANSACTION_HISTORY: "/transaction-history",
+  USER_STATISTICS: "/user-statistics",
+  TABLE_EXERCISE: "/exercise",
 };

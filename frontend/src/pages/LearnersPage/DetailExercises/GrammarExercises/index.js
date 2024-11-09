@@ -1,69 +1,83 @@
-import { Input, Row } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import InputCustom from "../../../../components/Input";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import { useParams } from "react-router-dom";
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, { useCallback, useState, useMemo } from "react";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
+import { submitExercise } from "../../../../services/LearnerService";
 
-export default function GrammarExercises() {
-  const [exercises, setExercises] = useState(null); // Initialize with null
-  const [userAnswers, setUserAnswers] = useState({});
-  const { exerciseType, exerciseId } = useParams();
-  const [userScore, setUserScore] = useState(0);
+export default function GrammarExercises({ exercises }) {
+  const [userSelected, setUserSelected] = useState([]);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-  const [answerStatus, setAnswerStatus] = useState({});
+  const [toggleAnswerDetail, setToggleAnswerDetail] = useState([]);
+  const [submissionData, setSubmissionData] = useState(null);
   const [isCompleted, setIsCompleted] = useState(false);
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [exerciseId, exerciseType]);
 
-  const handleInputChange = useCallback((partId, questionId, inputIndex, value) => {
-    const key = `${partId}-${questionId}-${inputIndex}`;
-    console.log("input key: ", key);
+  const handleInputChange = (questionId, value) => {
+    setUserSelected((prevAnswers) => {
+      const questionIndex = prevAnswers.findIndex((answer) => answer.questionId === questionId);
+      if (questionIndex > -1) {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[questionIndex].userAnswer = value;
+        return updatedAnswers;
+      }
+      return [
+        ...prevAnswers,
+        {
+          questionId: questionId,
+          userAnswer: value,
+        },
+      ];
+    });
+  };
 
-    setUserAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [key]: value, // Gán giá trị người dùng nhập vào trạng thái
-    }));
-  }, []);
+  const renderInputField = (questionId, isCompleted) => {
+    const questionData = userSelected.find((answer) => answer.questionId === questionId);
+    const userAnswer = questionData?.userAnswer || "";
 
-  const handleToggleAnswerDetail = useCallback((questionId) => {
-    setToggleAnswerDetail((prevState) => ({
-      ...prevState,
-      [questionId]: !prevState[questionId],
-    }));
-  });
+    let borderColor = "";
 
-  const renderInputField = (partKey, questionId, subIndex, question, isCompleted) => {
-    const userAnswerKey = `${partKey}-${questionId}-${subIndex}`;
-    const userAnswer = userAnswers[userAnswerKey] || "";
-    const correctAnswer = question.answer;
-    const isCorrect = typeof correctAnswer === "string" && userAnswer?.toLowerCase() === correctAnswer?.toLowerCase();
+    if (isCompleted) {
+      borderColor = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId).isCorrect ? "green" : "red";
+    }
 
     return (
       <InputCustom
         style={{
           width: "150px",
           marginRight: "8px",
-          borderColor: isCompleted ? (isCorrect ? "green" : "red") : "",
+          borderColor: borderColor,
+          borderWidth: "2px",
+          borderStyle: "solid",
         }}
         value={userAnswer}
-        onChange={(e) => handleInputChange(partKey, questionId, subIndex, e.target.value)}
+        onChange={(e) => handleInputChange(questionId, e.target.value)}
         disabled={isCompleted}
       />
     );
+  };
+
+  const handleToggleAnswerDetail = (questionId) => {
+    setToggleAnswerDetail((prevState) => {
+      const isToggled = prevState.some((item) => item.questionId === questionId);
+      if (isToggled) {
+        return prevState.filter((item) => item.questionId !== questionId);
+      } else {
+        const questionAnswer = submissionData.submissionAnswer.find((answer) => answer.questionId._id === questionId);
+
+        if (questionAnswer) {
+          return [
+            ...prevState,
+            {
+              questionId: questionId,
+              correctAnswer: questionAnswer.questionId.options[0]?.text,
+              explanation: questionAnswer.questionId.explanation,
+            },
+          ];
+        }
+      }
+      return prevState;
+    });
   };
 
   const renderPart = useCallback(
@@ -71,53 +85,44 @@ export default function GrammarExercises() {
       <div>
         {currentPart?.questions?.map((question, index) => (
           <div key={index} style={{ marginBottom: "30px" }}>
-            <TextCustom style={{ fontWeight: "bold" }}>Câu {question.id}:</TextCustom>
+            <TextCustom style={{ fontWeight: "bold" }}>Câu {index + 1}:</TextCustom>
             <div style={{ marginTop: "20px" }}>
-              {Array.isArray(question.question) ? (
-                question.question.map((subQuestion, subIndex) => (
-                  <div key={`${partKey}-${question.id}-${subIndex}`} style={{ marginBottom: "10px" }}>
-                    {subQuestion.includes("___") ? (
-                      subQuestion.split("___").map((text, i) => (
-                        <span key={`${partKey}-${question.id}-${subIndex}-${i}`}>
-                          {i > 0 && renderInputField(partKey, question.id, subIndex, question, isCompleted)}
-                          {text}
-                        </span>
-                      ))
-                    ) : (
-                      <span>{subQuestion}</span>
-                    )}
-                  </div>
-                ))
-              ) : question.question.includes("___") ? (
-                question.question.split("___").map((text, i) => (
-                  <span key={`${partKey}-${index}-${i}`}>
-                    {i > 0 && renderInputField(partKey, question.id, i, question, isCompleted)}
+              {question.question.includes("___") ? (
+                question.question.split("___").map((text, indexBlank) => (
+                  <span key={indexBlank}>
+                    {indexBlank > 0 && renderInputField(question._id, isCompleted)}
                     {text}
                   </span>
                 ))
               ) : (
-                <span>{question.question}</span>
-              )}
-              {isCompleted && userAnswers[`${partKey}-${question.id}-0`] !== question.answer && (
-                <div style={{paddingTop: '10px'}}>
-                  <TextCustom style={{ color: "red" }}>Đáp án: {Array.isArray(question.answer) ? question.answer.join(" - ") : question.answer}</TextCustom>
-                </div>
+                <span>
+                  {question.question}
+                  {renderInputField(question._id, isCompleted)}
+                </span>
               )}
               {isCompleted && (
-                <div style={{paddingTop: '20px' }}>
-                  <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
+                <div style={{ paddingTop: "20px" }}>
+                  <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
                     Đáp án chi tiết
                   </ButtonCustom>
-                  {toggleAnswerDetail[question.id] && (
+                  {toggleAnswerDetail.some((item) => item.questionId === question._id) && (
                     <div>
-                      <TextCustom style={{ color: "blue" }}>
-                        {question?.answerDetail.split("\n").map((line, index) => (
-                          <React.Fragment key={index}>
-                            {line}
-                            <br />
-                          </React.Fragment>
-                        ))}
-                      </TextCustom>
+                      {toggleAnswerDetail.find((item) => item.questionId === question._id)?.correctAnswer && (
+                        <>
+                          Đáp án:
+                          {toggleAnswerDetail
+                            .find((item) => item.questionId === question._id)
+                            .correctAnswer.split("|")
+                            .map((part, index) => (
+                              <TextCustom key={index} style={{ color: "blue" }}>
+                                {part}
+                                {index < toggleAnswerDetail.find((item) => item.questionId === question._id).correctAnswer.split("|").length - 1 && ", "}
+                              </TextCustom>
+                            ))}{" "}
+                          <br />
+                          Giải thích: {toggleAnswerDetail.find((item) => item.questionId === question._id).explanation}
+                        </>
+                      )}
                     </div>
                   )}
                 </div>
@@ -127,98 +132,30 @@ export default function GrammarExercises() {
         ))}
       </div>
     ),
-    [isCompleted, toggleAnswerDetail, userAnswers, handleInputChange, handleToggleAnswerDetail],
+    [isCompleted, toggleAnswerDetail, userSelected, handleInputChange, handleToggleAnswerDetail],
   );
 
-  const totalQuestions = useMemo(() => exercises?.parts?.reduce((acc, part) => acc + part.questions.length, 0), [exercises]);
-
-  const handleSubmit = useCallback(() => {
-    let score = 0;
-    const submissionDate = new Date().toISOString();
-    const submissionAnswers = [];
-    const newAnswerStatus = {};
-    exercises.parts.forEach((part) => {
-      part.questions.forEach((question) => {
-        const questionId = question.id;
-        const correctAnswers = Array.isArray(question.answer) ? question.answer : [question.answer];
-
-        const userAnswer = correctAnswers.map((_, index) => {
-          const key = `${part.id}-${question.id}-${index + 1}`;
-          console.log("user answer key: ", key);
-          return userAnswers[key] || "";
-        });
-
-        const isCorrect = userAnswer.every((answer, index) => {
-          const correctAnswer = correctAnswers[index];
-          return answer?.toString().toLowerCase() === correctAnswer?.toString().toLowerCase();
-        });
-
-        if (isCorrect) {
-          score++;
-        }
-
-        submissionAnswers.push({
-          questionId: questionId,
-          userAnswer: userAnswer.join(", "),
-          correctAnswer: correctAnswers.join(", "),
-          isCorrect: isCorrect,
-        });
-      });
-    });
-
-    const markValue = Math.round((score / totalQuestions) * 100);
-    setUserScore(markValue);
-    setIsCompleted(true);
-    setAnswerStatus(newAnswerStatus);
-    const submissionData = {
-      exerciseId: exercises.id,
-      submissionDate: submissionDate,
-      score: `${markValue}%`,
-      submissionAnswers: submissionAnswers,
-      isCompleted: true,
-    };
-
-    fetch(`${BASE_SERVER}/exercises/${exercises?.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isCompleted: true,
-        score: `${markValue}%`,
-      }),
+  const handleSubmit = async () => {
+    submitExercise({
+      exerciseId: exercises._id,
+      userSelected,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((resp) => {
+        setSubmissionData(resp.data);
+        setIsCompleted(true);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("grammar result: ", data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [exercises, userAnswers, totalQuestions]);
+  };
 
-  // Ensure exercises is set and has parts before trying to access them
   const currentPart = useMemo(() => exercises?.parts?.[currentPartIndex], [exercises, currentPartIndex]);
 
   const handleRetry = useCallback(() => {
-    setUserScore(0);
     setCurrentPartIndex(0);
-    setUserAnswers({});
+    setUserSelected([]);
     setIsCompleted(false);
+    setSubmissionData(null);
   }, []);
 
   return (
@@ -231,7 +168,7 @@ export default function GrammarExercises() {
         {isCompleted && (
           <>
             <TextCustom>Điểm: </TextCustom>
-            <span style={{ color: "red" }}>{userScore}%</span>
+            <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
           </>
         )}
       </div>

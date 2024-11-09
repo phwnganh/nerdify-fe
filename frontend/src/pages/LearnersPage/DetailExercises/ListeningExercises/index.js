@@ -4,7 +4,7 @@ import { Col, Row, Tabs } from "antd";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { TextCustom, TitleCustom } from "../../../../components/Typography";
 import ButtonCustom from "../../../../components/Button";
-import { BASE_SERVER, PART_TYPE } from "../../../../constants";
+import { PART_TYPE } from "../../../../constants";
 
 // Import images and audio files
 import demo1_1 from "../../../../assets/listeningExercises/1_1.png";
@@ -101,7 +101,8 @@ import part2_ques7_A2 from "../../../../assets/listeningExercises/a2-teil2-7.mp3
 import part2_ques8_A2 from "../../../../assets/listeningExercises/a2-teil2-8.mp3";
 import part2_ques9_A2 from "../../../../assets/listeningExercises/a2-teil2-9.mp3";
 import part2_ques10_A2 from "../../../../assets/listeningExercises/a2-teil2-10.mp3";
-import part3_A2 from '../../../../assets/listeningExercises/part3_A2.mp3';
+import part3_A2 from "../../../../assets/listeningExercises/part3_A2.mp3";
+import { submitExercise } from "../../../../services/LearnerService";
 
 const imagesArr = {
   demo1_1,
@@ -194,41 +195,45 @@ const audioArr = {
   part2_ques8_A2,
   part2_ques9_A2,
   part2_ques10_A2,
-  part3_A2
+  part3_A2,
 };
 
 const { TabPane } = Tabs;
 
-export default function ListeningExercise() {
-  const { exerciseType, exerciseId } = useParams();
+export default function ListeningExercise({ exercises }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState({});
-  const [exercises, setExercises] = useState(null);
+  const [userSelected, setUserSelected] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
   const [toggleAnswerDetail, setToggleAnswerDetail] = useState({});
-
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/exercises?id=${exerciseId}&exerciseType=${exerciseType}&_limit=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          setExercises(data[0]);
-        }
-      })
-      .catch((err) => console.error("Error fetching exercise data", err));
-  }, [exerciseType, exerciseId]);
+  const [submissionData, setSubmissionData] = useState(null);
 
   const handleSelectOptions = useCallback(
     (questionId, optionId) => {
       if (!isSubmitted) {
-        setUserAnswers((prev) => ({
-          ...prev,
-          [questionId]: optionId,
-        }));
+        const foundQuestion = userSelected.some((selected) => selected.questionId === questionId);
+        if (foundQuestion) {
+          const newSelected = userSelected.map((userAnswers) => {
+            if (userAnswers.questionId === questionId) {
+              return {
+                ...userAnswers,
+                userAnswer: optionId,
+              };
+            }
+            return userAnswers;
+          });
+          setUserSelected(newSelected);
+        } else {
+          setUserSelected((prev) => [
+            ...prev,
+            {
+              questionId,
+              userAnswer: optionId,
+            },
+          ]);
+        }
       }
     },
-    [isSubmitted],
+    [isSubmitted, userSelected],
   );
 
   const handleToggleAnswerDetail = useCallback((questionId) => {
@@ -238,71 +243,22 @@ export default function ListeningExercise() {
     }));
   }, []);
 
-  const totalQuestions = useMemo(() => exercises?.parts.reduce((acc, part) => acc + part.questions.length, 0), [exercises]);
-
-  const handleSubmit = useCallback(() => {
-    let correctAnswers = 0;
-    const submissionAnswers = [];
-
-    exercises.parts.forEach((part) => {
-      part.questions.forEach((question) => {
-        const userAnswer = userAnswers[question.id];
-        const isCorrect = userAnswer === question.answer;
-        if (isCorrect) {
-          correctAnswers++;
-        }
-        submissionAnswers.push({
-          questionId: question.id,
-          userAnswer,
-          correctAnswer: question.answer,
-          isCorrect,
-        });
+  const handleSubmit = async () => {
+    submitExercise({
+      exerciseId: exercises._id,
+      userSelected,
+    })
+      .then((resp) => {
+        setSubmissionData(resp.data);
+        setIsSubmitted(true);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
-
-    const calculatedScore = Math.round((correctAnswers / totalQuestions) * 100);
-    setScore(calculatedScore);
-    setIsSubmitted(true);
-
-    // Save submission to server
-    const submissionData = {
-      submissionDate: new Date().toISOString(),
-      score: `${calculatedScore}%`,
-      submissionAnswers,
-      exerciseId: exercises.id,
-      isCompleted: true,
-    };
-
-    fetch(`${BASE_SERVER}/exercisesSubmission`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("Submission saved:", data))
-      .catch((err) => console.error("Error saving submission:", err));
-
-    // Update exercise completion status
-    fetch(`${BASE_SERVER}/exercises/${exercises.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isCompleted: true,
-        score: `${calculatedScore}%`,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("Exercise updated:", data))
-      .catch((err) => console.error("Error updating exercise:", err));
-  }, [exercises, userAnswers, totalQuestions]);
+  };
 
   const handleRetry = useCallback(() => {
-    setUserAnswers({});
-    setScore(0);
+    setUserSelected([]);
     setIsSubmitted(false);
     setCurrentPartIndex(0);
   }, []);
@@ -310,14 +266,14 @@ export default function ListeningExercise() {
   const renderPart = (currentPart) => {
     return (
       <>
-        {currentPart.questions.map((question) => (
-          <div key={question.id}>
+        {currentPart.questions.map((question, index) => (
+          <div key={question._id}>
             <TextCustom style={{ paddingTop: "100px", fontWeight: "bold" }}>
-              Câu {question.id}: {question.question}
+              Câu {index + 1}: {question.question}
             </TextCustom>
-            {question.audioUrl && (
+            {question.mediaUrl && (
               <audio controls style={{ marginTop: "20px", width: "100%" }}>
-                <source src={audioArr[question.audioUrl]} type="audio/mp3" />
+                <source src={question.mediaUrl} type="audio/mp3" />
                 Trình duyệt của bạn không hỗ trợ phần tử audio.
               </audio>
             )}
@@ -327,28 +283,29 @@ export default function ListeningExercise() {
                 {question.questionImage &&
                   question.questionImage.map((image, index) => (
                     <Col key={index} span={8}>
-                      <img src={imagesArr[image]} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question.id}`} />
+                      <img src={image} width={"80%"} style={{ marginBottom: "12px" }} alt={`Question ${question._id}`} />
                     </Col>
                   ))}
               </Row>
               <Row style={{ textAlign: "center", marginTop: "10px" }}>
-                {question.options.map((option) => {
-                  const isUserSelected = option.id === userAnswers[question.id];
-                  const isCorrectAnswer = option.id === question.answer;
+                {question.options.map((option, index) => {
+                  // Check if the option is selected by the user
+                  const isUserSelected = userSelected.some((selected) => selected.questionId === question._id && selected.userAnswer === option._id);
                   let backgroundColor = isUserSelected ? "#A8703E" : "";
 
                   if (isSubmitted) {
-                    if (isCorrectAnswer) {
+                    const foundQuestion = submissionData.submissionAnswer?.find((answer) => answer.userAnswer == option._id && answer.isCorrect);
+                    if (foundQuestion) {
                       backgroundColor = "#5FD855";
-                    } else if (isUserSelected && !isCorrectAnswer) {
+                    } else if (isUserSelected) {
                       backgroundColor = "red";
                     }
                   }
 
                   return (
-                    <Col key={option.id} span={8}>
-                      <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question.id, option.id)} style={{ backgroundColor }} disabled={isSubmitted}>
-                        {option.id}. {option.text}
+                    <Col key={option._id} span={8}>
+                      <ButtonCustom buttonType="primary" onClick={() => handleSelectOptions(question._id, option._id)} style={{ backgroundColor }} disabled={isSubmitted}>
+                        {index + 1}. {option.text}
                       </ButtonCustom>
                     </Col>
                   );
@@ -357,18 +314,22 @@ export default function ListeningExercise() {
             </div>
             {isSubmitted && (
               <div style={{ padding: "20px" }}>
-                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question.id)}>
+                <ButtonCustom buttonType="primary" onClick={() => handleToggleAnswerDetail(question._id)}>
                   Đáp án chi tiết
                 </ButtonCustom>
-                {toggleAnswerDetail[question.id] && (
+                {toggleAnswerDetail[question._id] && (
                   <div>
                     <TextCustom style={{ color: "blue" }}>
-                      {question?.answerDetail.split("\n").map((line, index) => (
-                        <React.Fragment key={index}>
-                          {line}
-                          <br />
-                        </React.Fragment>
-                      ))}
+                      {submissionData?.submissionAnswer?.map((answer) => {
+                        if (answer.questionId._id === question._id) {
+                          return (
+                            <React.Fragment key={index}>
+                              {answer.questionId.explanation?.split("\n")}
+                              <br />
+                            </React.Fragment>
+                          );
+                        }
+                      })}
                     </TextCustom>
                   </div>
                 )}
@@ -402,14 +363,14 @@ export default function ListeningExercise() {
           {isSubmitted && (
             <div style={{ textAlign: "center" }}>
               <TextCustom>
-                Điểm: <span style={{ color: "red" }}>{score}%</span>
+                Điểm: <span style={{ color: "red" }}>{Math.round(submissionData.score).toFixed(2)}%</span>
               </TextCustom>
             </div>
           )}
           <TextCustom style={{ color: "red", fontWeight: "bold" }}>{currentPart.partName}</TextCustom>
-          {currentPart.audioUrl && (
+          {currentPart.mediaUrl && (
             <audio controls style={{ marginTop: "20px", width: "100%" }}>
-              <source src={audioArr[currentPart?.audioUrl]} type="audio/mp3" />
+              <source src={audioArr[currentPart?.mediaUrl]} type="audio/mp3" />
               Trình duyệt của bạn không hỗ trợ phần tử audio.
             </audio>
           )}
@@ -446,7 +407,7 @@ export default function ListeningExercise() {
                 </div>
                 <div>
                   <TextCustom>
-                    {part?.transcript.split("\n").map((line, index) => (
+                    {part?.paragraph?.split("\n")?.map((line, index) => (
                       <React.Fragment key={index}>
                         {line}
                         <br />

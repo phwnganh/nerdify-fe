@@ -98,7 +98,9 @@ export default function Navbar() {
               alignItems: "center",
               justifyContent: "center",
               width: "100px",
+              cursor: 'pointer'
             }}
+            onClick={() => navigate(CLIENT_URI.LANDING_PAGE)}
           >
             <img src={logo} alt="Deutsch Nerd" style={logoStyle} />
           </div>
@@ -125,8 +127,8 @@ export default function Navbar() {
               <MenuItem key="learning-progress" onClick={handleLearningProgressClick}>
                 TIẾN ĐỘ HỌC TẬP
               </MenuItem>
-              <MenuItem key="blog">BLOG HỌC TẬP</MenuItem>
-              <MenuItem key="payment" onClick={() => navigate(CLIENT_URI.PREMIUM)}>
+              <MenuItem key="blog" onClick={handleLearningProgressClick}>BLOG HỌC TẬP</MenuItem>
+              <MenuItem key="payment" onClick={handleLearningProgressClick}>
                 GÓI PREMIUM
               </MenuItem>
             </MenuBar>
@@ -134,10 +136,10 @@ export default function Navbar() {
 
           {/* Search and Buttons */}
           <div style={buttonGroupStyle}>
-            <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
+            {/* <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
               <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
               {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
-            </div>
+            </div> */}
             <ButtonCustom buttonType="primary" style={{ marginRight: "10px" }} onClick={() => navigate(CLIENT_URI.LOGIN)}>
               ĐĂNG NHẬP
             </ButtonCustom>

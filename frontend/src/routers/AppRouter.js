@@ -1,17 +1,18 @@
 // Importing components from react-router-dom
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // Importing Pages for Guests
 import { LandingPage } from "../pages/GuestsPage/LandingPage";
 import BlogPage from "../pages/LearnersPage/BlogPage";
 import BlogDetails from "../pages/LearnersPage/BlogDetails";
+import { CLIENT_URI, ROLES } from "../constants";
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
 
 // Importing Guards for route protection
-import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard } from "../guards";
+import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard, AccountantGuard } from "../guards";
 
 // Importing Layouts for different user roles
-import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AdminContentLayout } from "../layouts";
+import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AccountantLayout } from "../layouts";
 
 // Importing Pages for Learners
 import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
@@ -22,7 +23,6 @@ import Flashcard from "../pages/LearnersPage/FlashCard";
 import CoursePage from "../pages/LearnersPage/CoursePage";
 import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
 import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
-import ViewPersonalProfile from "../pages/LearnersPage/PersonalProfile";
 import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
 import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
 import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
@@ -34,22 +34,44 @@ import Payment from "../pages/LearnersPage/Payment";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
 import LearningProgress from "../pages/LearnersPage/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
+import AdminContentLayout from "../layouts/AdminContentLayout";
 import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
 import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
 import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
-import { CLIENT_URI } from "../constants";
-import Exercise from "../pages/ContentManager/Exercise";
-import UploadForm from "../components/Upload";
 import ConfirmPayment from "../pages/LearnersPage/Payment/ConfirmPayment";
+import AccountantDashboard from "../pages/AccountantPage/Dashboard";
+import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
+import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
+import UserStatistics from "../pages/AccountantPage/UserStatistics";
+import Exercise from "../pages/ContentManager/Exercise";
+import { Upload } from "antd";
+import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
+import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice";
+
+//admin
+import Dashboard from "../pages/AdminPage/Dashboard";
+import FeedbackManagement from "../pages/AdminPage/FeedbackManagement";
+import PremiumManagement from "../pages/AdminPage/PremiumManagement";
+import AccountManagement from "../pages/AdminPage/AccountManagement";
+import PaymentSuccess from "../pages/LearnersPage/Payment/SuccessPayment";
+import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder";
+import MyFlashcardDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/MyFlashcardDetail";
+import FlashcardHistoryDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/FlashcardHistory/FlashcardHistoryDetail";
+import ViewFlashcardInFolderDetail from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder/FlashcardInFolderDetail";
+
+
 export const routes = [
   // Guest urls
   {
     element: (
+      
       <GuestGuard>
         <GuestLayout>
           <Outlet />
         </GuestLayout>
       </GuestGuard>
+      
+
     ),
     children: [
       {
@@ -75,7 +97,7 @@ export const routes = [
             path: CLIENT_URI.RESET_PASSWORD,
             element: <ResetPasswordPage />,
           },
-        
+
 
         ],
       },
@@ -101,21 +123,19 @@ export const routes = [
         element: <VerifyEmailPage />,
       },
       // test giao diện
-
-
-
-     
     ],
   },
 
   // Learner urls
   {
     element: (
+     
       <LearnerGuard>
         <LearnerLayout>
           <Outlet />
         </LearnerLayout>
       </LearnerGuard>
+
     ),
     children: [
       {
@@ -133,6 +153,10 @@ export const routes = [
       {
         path: `${CLIENT_URI.FINAL_EXAM}/:examId`,
         element: <FinalExam />,
+      },
+      {
+        path: CLIENT_URI.TROPHY,
+        element: <TakeATrophy />,
       },
       {
         path: CLIENT_URI.FLASH_CARD,
@@ -182,33 +206,9 @@ export const routes = [
         path: CLIENT_URI.CHANGE_PASSWORD,
         element: <ChangePassword />,
       },
-      // {
-      //   path: CLIENT_URI.FINAL_EXAM,
-      //   element: <FinalExam />,
-      // },
-      // {
-      //   path: `${CLIENT_URI.ONE_EXERCISE}/:exerciseType/:exerciseId`,
-      //   element: <ExerciseDetail />,
-      // },
-      // {
-      //   path: CLIENT_URI.CREATE_FLASH_CARD,
-      //   element: <CreateFlashCard />,
-      // },
-      // {
-      //   path: `${CLIENT_URI.EDIT_FLASH_CARD}/:flashcardId`,
-      //   element: <EditFlashCard />,
-      // },
       {
         path: CLIENT_URI.CREATE_FLASH_CARD,
         element: <CreateFlashCard />,
-      },
-      // {
-      //   path: `${CLIENT_URI.TEST_FLASH_CARD}/:flashcardId/:numberOfCard`,
-      //   element: <TestFlashCard />,
-      // },
-      {
-        path: `${CLIENT_URI.PROFILE}`,
-        element: <ViewPersonalProfile />,
       },
       {
         path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
@@ -235,12 +235,57 @@ export const routes = [
         element: <BillInfo />,
       },
       {
-        path: CLIENT_URI.CONFIRM_PAYMENT,
-        element: <ConfirmPayment/>
+        path: `${CLIENT_URI.CONFIRM_PAYMENT}/:transactionId`,
+        element: <ConfirmPayment />,
+      },
+      {
+        path: `${CLIENT_URI.SUCCESS_PAYMENT}/:transactionId`,
+        element: <PaymentSuccess />,
       },
       {
         path: CLIENT_URI.LEARNING_PROGRESS,
         element: <LearningProgress />,
+      },
+
+      {
+        path: CLIENT_URI.MANAGE_FLASHCARD,
+        element: <ManageFlashcard />,
+      },
+      {
+        path: CLIENT_URI.VIEW_MY_FLASHCARD_DETAIL + "/:flashcardId",
+        element: <MyFlashcardDetail/>
+      },
+      {
+        path: CLIENT_URI.VIEW_FLASHCARD_HISTORY_DETAIL + "/:flashcardId",
+        element: <FlashcardHistoryDetail/>
+      },
+      {
+        path: CLIENT_URI.MANAGE_FOLDER,
+        element: <ManageFolder />,
+      },
+      {
+        path: `${CLIENT_URI.VIEW_FLASHCARDS_IN_FOLDER}/:folderId`,
+        element: <FlashcardsInFolder />,
+      },
+      {
+        path: CLIENT_URI.VIEW_FLASHCARD_IN_FOLDER_DETAIL + "/:flashcardId",
+        element: <ViewFlashcardInFolderDetail/>
+      },
+      {
+        path: CLIENT_URI.CHANGE_PASSWORD,
+        element: <ChangePassword />,
+      },
+      {
+        path: CLIENT_URI.MY_TRANSACTION_HISTORY,
+        element: <ViewTransactionHistoryList />,
+      },
+      {
+        path: CLIENT_URI.RESULTS_PRACTICE,
+        element: <ViewResultsPractice />,
+      },
+      {
+        path: `${CLIENT_URI.RESULT_DETAIL}/:exerciseType/:submissionId`,
+        element: <ViewResultsDetail />,
       },
     ],
   },
@@ -254,7 +299,24 @@ export const routes = [
         </AdminLayout>
       </AdminGuard>
     ),
-    children: [],
+    children: [
+      {
+        path: CLIENT_URI.ADMIN_DASHBOARD,
+        element: <Dashboard />,
+      },
+      {
+        path: CLIENT_URI.ACCOUNT_MANAGEMENT,
+        element: <AccountManagement />,
+      },
+      {
+        path: CLIENT_URI.PREMIUM_MANAGEMENT,
+        element: <PremiumManagement />,
+      },
+      {
+        path: CLIENT_URI.FEEDBACK_MANAGEMENT,
+        element: <FeedbackManagement />,
+      },
+    ],
   },
   // Admin content
   {
@@ -263,11 +325,11 @@ export const routes = [
         <AdminContentLayout>
           <Outlet />
         </AdminContentLayout>
-      </AdminContentGuard> 
+      </AdminContentGuard>
     ),
     children: [
       {
-        path: CLIENT_URI.DASHBOARD
+        path: CLIENT_URI.DASHBOARD,
       },
       {
         path: `${CLIENT_URI.TABLE_EXERCISE}`,
@@ -275,7 +337,36 @@ export const routes = [
       },
       {
         path: `/upload`,
-        element: <UploadForm />,
+        element: <Upload />,
+      },
+    ],
+  },
+  // Accountant urls
+  {
+    element: (
+      <AccountantGuard>
+        <AccountantLayout>
+          <Outlet />
+        </AccountantLayout>
+      </AccountantGuard>
+
+    ),
+    children: [
+      {
+        path: CLIENT_URI.ACCOUNTANT_DASHBOARD,
+        element: <AccountantDashboard />,
+      },
+      {
+        path: CLIENT_URI.SYSTEM_REVENUE,
+        element: <SystemRevenue />,
+      },
+      {
+        path: CLIENT_URI.TRANSACTION_HISTORY,
+        element: <TransactionHistory />,
+      },
+      {
+        path: CLIENT_URI.USER_STATISTICS,
+        element: <UserStatistics />,
       },
     ],
   },

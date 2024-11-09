@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown } from "antd";
-import { DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
-import { useParams } from "react-router-dom";
+import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown, notification } from "antd";
+import { CaretLeftOutlined, DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
+import { useNavigate, useParams } from "react-router-dom";
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../helpers/validate";
 import { BASE_SERVER } from "../../../../constants";
+import { getFlashcardDetail, updateFlashcard } from "../../../../services/LearnerService";
+import ButtonCustom from "../../../../components/Button";
 
 export default function EditFlashCard() {
+  const navigate = useNavigate();
   const { flashcardId } = useParams();
   const [flashcard, setFlashcard] = useState(null);
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedLevel, setSelectedLevel] = useState(null);
   useEffect(() => {
-    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`)
-      .then((response) => response.json())
+    getFlashcardDetail(flashcardId)
       .then((data) => {
-        setFlashcard(data);
+        setFlashcard(data.data);
+        console.log("flashcard: ", data.data);
+
         form.setFieldsValue({
-          title: data.title,
-          description: data.description,
-          level: data.level,
-          cards: data.cards,
+          title: data?.data?.title,
+          description: data?.data?.description,
+          level: data?.data?.level,
+          cards: data?.data?.cards?.map((card) => ({
+            _id: card._id, // include the ID if needed
+            terms: card.term,
+            definitions: card.definition,
+          })),
         });
       })
       .catch((err) => console.error(err));
@@ -39,31 +47,59 @@ export default function EditFlashCard() {
     form.setFieldsValue({ level: key });
   };
 
-  const handleSubmit = () => {
-    fetch(`${BASE_SERVER}/flashcard/${flashcardId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form.getFieldsValue()),
-    })
-      .then((response) => {
-        response.json();
-        messageApi.open({
-          type: "success",
-          content: "Chỉnh sửa thành công",
-        });
-      })
+  const handleSubmit = (values) => {
+    const { title, description, cards, level } = values;
+    const formattedCards = cards.map((card) => ({
+      _id: card._id,
+      term: card?.terms,
+      definition: card?.definitions,
+    }));
+
+    const data = {
+      title,
+      description,
+      cards: formattedCards,
+      level,
+    };
+
+    updateFlashcard(flashcardId, data)
+      .then((res) => {
+        notification.success({
+          message: res.message
+        })
+        messageApi.success("Cập nhật flashcard thành công!")})
       .catch((err) => {
-        console.log(err);
-        messageApi.open({
-          type: "error",
-          content: "Chỉnh sửa thất bại",
-        });
-      })
-      .then((data) => {
-        console.log("duoc roi");
+        notification.error({
+          message: err.message
+        })
+        const errorMessage = err.response?.data?.message || "Failed to create flashcard.";
+        messageApi.error(errorMessage);
+        console.error("Error:", err);
       });
+    // fetch(`${BASE_SERVER}/flashcard/${flashcardId}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(form.getFieldsValue()),
+    // })
+    //   .then((response) => {
+    //     response.json();
+    //     messageApi.open({
+    //       type: "success",
+    //       content: "Chỉnh sửa thành công",
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     messageApi.open({
+    //       type: "error",
+    //       content: "Chỉnh sửa thất bại",
+    //     });
+    //   })
+    //   .then((data) => {
+    //     console.log("duoc roi");
+    //   });
   };
 
   const handleFlashCard = () => {
@@ -96,8 +132,9 @@ export default function EditFlashCard() {
   return (
     <>
       {contextHolder}
-      <div style={{ width: "60%" }}>
-        <BreadCrumbHome />
+      <div style={{ width: "100%"}}>
+        {/* <BreadCrumbHome /> */}
+        <ButtonCustom icon={<CaretLeftOutlined />} buttonType="primary" onClick={() => navigate(-1)}>Quay lại</ButtonCustom>
         <h1 style={{ textAlign: "center" }}>CHỈNH SỬA HỌC PHẦN</h1>
         <Form
           form={form}
@@ -176,13 +213,7 @@ export default function EditFlashCard() {
                     <div>
                       <Row style={{ alignItems: "center" }}>
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "terms"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập thuật ngữ!")
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "terms"]} rules={[validationRules.required("Vui lòng nhập thuật ngữ!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 3 }}
                               placeholder="Thuật ngữ"
@@ -195,13 +226,7 @@ export default function EditFlashCard() {
                         </Col>
 
                         <Col span={9} style={{ margin: "10px" }}>
-                          <Form.Item
-                            name={[field.name, "definitions"]}
-                            rules={[
-                              validationRules.required("Vui lòng nhập định nghĩa!"),
-                            ]}
-                            noStyle
-                          >
+                          <Form.Item name={[field.name, "definitions"]} rules={[validationRules.required("Vui lòng nhập định nghĩa!")]} noStyle>
                             <Input.TextArea
                               autoSize={{ minRows: 0, maxRows: 4 }}
                               placeholder="Định nghĩa"
@@ -212,7 +237,7 @@ export default function EditFlashCard() {
                             />
                           </Form.Item>
                         </Col>
-                        <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
+                        {/* <Col span={4} style={{ margin: "20px 10px 10px 10px" }}>
                           <Form.Item name={[field.name, "fileList"]} valuePropName="fileList" getValueFromEvent={normFile}>
                             <Upload action="/upload.do" listType="picture-card">
                               <button style={{ border: 0, background: "none" }} type="button">
@@ -221,7 +246,7 @@ export default function EditFlashCard() {
                               </button>
                             </Upload>
                           </Form.Item>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </div>
                   </Card>

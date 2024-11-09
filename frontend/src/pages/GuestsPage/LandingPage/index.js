@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Card, List, Avatar } from "antd";
 import ButtonCustom from "../../../components/Button";
 import landingPageImg from "../../../assets/landingPage/landingPage.png";
@@ -15,8 +15,51 @@ import certificate from "../../../assets/landingPage/BI-QUYET-DAT-DIEM-CAO-TRONG
 import { CheckOutlined, StarFilled } from "@ant-design/icons";
 import { Courses } from "./courses/coursesList";
 import { ModalPremium } from "../../LearnersPage/PremiumPage/ModalPremium";
+import { CLIENT_URI } from "../../../constants";
+import { Link, useNavigate } from "react-router-dom";
+import { getBlogList } from "../../../services/LearnerService";
 
 export const LandingPage = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const isUserLoggedIn = () => {
+    // Giả sử bạn có hàm để kiểm tra người dùng đăng nhập
+    return !!localStorage.getItem("userToken");
+  };
+
+  const fetchBlogs = async () => {
+    try {
+      const result = await getBlogList();
+      const sortedBlogs = result.data
+        .sort((a, b) => b.views - a.views) // Sắp xếp theo số lượng view giảm dần
+        .slice(0, 3); // Lấy top 3
+      setBlogs(sortedBlogs);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const handleBlogClick = (blogId) => {
+    if (isUserLoggedIn()) {
+      navigate(`/blog-study/${blogId}`);
+    } else {
+      navigate("/login"); // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+    }
+  };
+
+  const handleClose = () => {
+    setIsModalVisible(false);
+  };
+
   const skills = [
     {
       img: listening,
@@ -69,24 +112,6 @@ export const LandingPage = () => {
     },
   ];
 
-  const blog = [
-    {
-      title: "Hướng Dẫn Học Tiếng Đức Cho Người Mới Bắt Đầu",
-      image: beginner,
-      description: "Blog cung cấp lộ trình học tiếng Đức cơ bản, bao gồm các bước khởi đầu từ việc làm quen với bảng chữ cái, phát âm và ngữ pháp nền tảng.",
-    },
-    {
-      title: "10 Cách Học Từ Vựng Tiếng Đức Hiệu Quả",
-      image: vocabularyTip,
-      description: "Bài viết chia sẻ những phương pháp ghi nhớ từ vựng tiếng Đức nhanh chóng và dễ dàng, phù hợp cho mọi trình độ học viên.",
-    },
-    {
-      title: "Bí Quyết Đạt Điểm Cao Trong Kỳ Thi Chứng Chỉ Tiếng Đức",
-      image: certificate,
-      description: "Chia sẻ kinh nghiệm ôn tập và làm bài thi các chứng chỉ tiếng Đức phổ biến như Goethe, TELC, TestDaF để đạt kết quả cao.",
-    },
-  ];
-
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <ModalPremium />
@@ -109,7 +134,7 @@ export const LandingPage = () => {
               fontSize: "22px",
               fontWeight: "600",
             }}
-            // onClick={() => navigate(CLIENT_URI.LOGIN)}
+            onClick={() => navigate(CLIENT_URI.LOGIN)}
           >
             HỌC THỬ MIỄN PHÍ
           </ButtonCustom>
@@ -146,7 +171,6 @@ export const LandingPage = () => {
           </Col>
         ))}
       </Row>
-
       {/* Benefit */}
       <Row style={{ marginTop: "100px" }}>
         <Col span={8}>
@@ -162,16 +186,11 @@ export const LandingPage = () => {
               </li>
             ))}
           </ul>
-          <ButtonCustom
-            buttonType="primary"
-            style={{ padding: "20px 30px", fontSize: "22px" }}
-            // onClick={() => navigate(CLIENT_URI.LOGIN)}
-          >
+          <ButtonCustom buttonType="primary" style={{ padding: "20px 30px", fontSize: "22px" }} onClick={() => navigate(CLIENT_URI.LOGIN)}>
             BẮT ĐẦU NGAY
           </ButtonCustom>
         </Col>
       </Row>
-
       {/* Khoa hoc */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>CÁC BÀI TẬP THEO TRÌNH ĐỘ </h2>
@@ -184,35 +203,35 @@ export const LandingPage = () => {
           <Courses />
         </div>
       </div>
-
       {/* Blog */}
       <div>
         <h2 style={{ fontSize: "40px", textAlign: "center" }}>BLOG</h2>
-        <List
-          grid={{ gutter: 16, column: 3 }}
-          dataSource={blog}
-          renderItem={(item) => (
-            <List.Item>
-              <div style={{ border: "1px solid #e8e8e8", borderRadius: "4px", padding: "16px", textAlign: "center" }}>
-                <img src={item.image} alt={item.title} style={{ width: "100%", height: "150px", objectFit: "cover", marginBottom: "16px" }} />
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            </List.Item>
-          )}
-        />
+        {blogs.length > 0 ? (
+          <List
+            grid={{ gutter: 16, column: 3 }}
+            dataSource={blogs}
+            renderItem={(item) => (
+              <List.Item>
+                <div onClick={() => handleBlogClick(item._id)} style={{ cursor: "pointer" }}>
+                  <Card
+                    hoverable
+                    cover={
+                      <img src={item.image || "https://www.seoclerk.com/pics/000/787/824/51099d50ed6a0c6fa4e74f1260db024b.png"} alt={item.title} style={{ height: "150px", objectFit: "cover" }} />
+                    }
+                  >
+                    <Card.Meta title={item.title} description={item.description.length > 100 ? `${item.description.slice(0, 100)}...` : item.description} />
+                  </Card>
+                </div>
+              </List.Item>
+            )}
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
-
       {/* Feedback - think about carousel */}
       <div>
-        <h2
-          style={{
-            fontSize: "40px",
-            textAlign: "center",
-          }}
-        >
-          FEEDBACK
-        </h2>
+        <h2 style={{ fontSize: "40px", textAlign: "center" }}>FEEDBACK</h2>
         <div
           style={{
             display: "flex",
@@ -222,14 +241,20 @@ export const LandingPage = () => {
           }}
         >
           <List
-            grid={{
-              gutter: 16, // Adjust the space between cards
-              column: 3, // Set the number of columns to 3 (like the image)
-            }}
+            grid={{ gutter: 16, column: 3 }} // Updated to 4 columns
             dataSource={feedbacks}
             renderItem={(item) => (
               <List.Item>
-                <Card style={{ width: "330px", textAlign: "center" }}>
+                <Card
+                  style={{
+                    width: "100%", // Ensures card takes up available space
+                    minHeight: "80px", // Sets consistent minimum height for cards
+                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Row gutter={[16, 16]} justify="center" align="middle">
                     <Col span={4}>
                       <Avatar src={sample} size={42} />
@@ -240,15 +265,12 @@ export const LandingPage = () => {
                       </Row>
                       <Row>
                         {Array.from({ length: item.stars }).map((_, index) => (
-                          <StarFilled
-                            key={index} // Added key to each StarFilled component
-                            style={{ color: "#FFCC33", fontSize: "20px" }}
-                          />
+                          <StarFilled key={index} style={{ color: "#FFCC33", fontSize: "20px" }} />
                         ))}
                       </Row>
                     </Col>
                   </Row>
-                  <p>{item.content}</p>
+                  <p>{item.content.length > 100 ? `${item.content.slice(0, 100)}...` : item.content}</p>
                 </Card>
               </List.Item>
             )}
@@ -281,7 +303,7 @@ export const LandingPage = () => {
             fontWeight: "600",
             padding: "30px 30px",
           }}
-          // onClick={() => navigate(CLIENT_URI.LOGIN)}
+          onClick={() => navigate(CLIENT_URI.LOGIN)}
         >
           Đăng ký
         </ButtonCustom>

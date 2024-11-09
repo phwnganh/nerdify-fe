@@ -2,18 +2,24 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
 import LoadingSpin from "../components/Spinning";
-import STORAGE, { getStorage } from "../library/storage";
 
 export const GuestLearnerGuard = ({ children }) => {
-  const userInfo = getStorage(STORAGE.USER_INFO);
+  const { isInitialized, isAuthenticated, user } = useAuth();
 
-  // Parse the user info from localStorage
-  // const user = userInfo ? JSON.parse(userInfo) : null;
+  if (!isInitialized) {
+    return <LoadingSpin />;
+  }
 
-  if (userInfo?.role === ROLES.ADMIN_ROLE) {
+  if (!isAuthenticated) {
+    return <>{children}</>;
+  }
+
+  if (isAuthenticated) {
+    if (user?.role === ROLES.LEARNER_ROLE) {
+      return <>{children}</>;
+    }
     return <Navigate to={CLIENT_URI.DASHBOARD} replace />;
   }
-  return <>{children}</>;
 };
 
 export default GuestLearnerGuard;

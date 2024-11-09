@@ -1,26 +1,26 @@
 import React from "react";
-import { Form, Checkbox, Input } from "antd";
+import { Form, Checkbox, Input, notification } from "antd";
 import InputCustom from "../../../components/Input";
 import ButtonCustom from "../../../components/Button";
 import { GoogleOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
 import loginImage from "../../../assets/loginImage.png";
-import { BASE_SERVER, CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
+import { CLIENT_URI, PASSWORD_REGEX } from "../../../constants";
 import { useAuth } from "../../../hooks";
 import { login } from "../../../services/GuestService";
 import { signin } from "../../../hooks/auth/reducers";
-import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 import { validationRules } from "../../../helpers/validate";
+import { AUTH_SERVER_URI } from "../../../services/GuestService/url";
 import { style } from "./styled";
-import STORAGE, { setStorage } from "../../../library/storage";
+import { ROLES } from "../../../constants/common.constant";
 
 export const LoginPage = () => {
   const { dispatch } = useAuth();
   const navigate = useNavigate();
 
   const onLoginWithGoogle = () => {
-    // window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
+    window.open(`${AUTH_SERVER_URI.AUTH_SERVICE.LOGIN_WITH_GOOGLE}`, "_self");
   };
 
   const onLogin = (values) => {
@@ -29,43 +29,39 @@ export const LoginPage = () => {
       password: values.password,
     };
 
-    // Make a request to the fake server
-    fetch(`${BASE_SERVER}/users`)
-      .then((response) => response.json())
-      .then((users) => {
-        // Find the user with matching email and password
-        const user = users.filter((u) => u.email === data.email && u.password === data.password);
-        if (user) {
-          // dispatch(
-          //   signin({
-          //     user: {
-          //       id: user[0].id,
-          //       email: user[0].email,
-          //       fullName: user[0].fullName,
-          //       role: user[0].role,
-          //     },
-          //   }),
-          // );
-          setStorage(STORAGE.USER_INFO, JSON.stringify(user[0]));
-          setStorage(STORAGE.USER_ID, JSON.stringify(user[0].id));
-          console.log("userId: ", user[0].id);
-          
-          navigate(CLIENT_URI.COURSE_PAGE);
-          // if (localStorage.getItem("isPremium")) {
-          //   navigate(CLIENT_URI.PREMIUM);
-          //   localStorage.removeItem("isPremium");
-          // } else {
-          //   navigate(CLIENT_URI.COURSE_PAGE);
-          // }
+    login(data)
+      .then((resp) => {
+        dispatch(
+          signin({
+            user: {
+              id: resp.data.id,
+              email: resp.data.email,
+              fullName: resp.data.fullName,
+              role: resp.data.role,
+            },
+          }),
+        );
+        notification.success({
+          message: "Đăng nhập thành công",
+          description: "Chào mừng bạn đến với Deutsch Nerd!",
+        });
+        //admin - accountant - learner
+        if (resp.data.role === ROLES.ADMIN_ROLE) {
+          navigate(CLIENT_URI.ADMIN_DASHBOARD);
+          return;
+        } else if (resp.data.role === ROLES.ACCOUNTANT_ROLE) {
+          navigate(CLIENT_URI.SYSTEM_REVENUE);
+          return;
         } else {
-          // If no user found, show an error
-          throw new Error("Login failed: Invalid email or password!");
+          navigate(CLIENT_URI.COURSE_PAGE);
+          return;
         }
       })
-      .catch((error) => {
-        console.error("Error during login:", error);
-        // Optionally, show error to user
-        alert(error.message);
+      .catch((err) => {
+        notification.error({
+          message: "Đăng nhập thất bại",
+          description: err.response?.data?.message || "Vui lòng kiểm tra email và mật khẩu của bạn.",
+        });
       });
   };
 
@@ -86,12 +82,12 @@ export const LoginPage = () => {
       <div style={style.rightSide}>
         <div style={style.formLogin}>
           <img src={logo} alt="Deutsch Nerd" style={{ width: "100px", height: "50px" }} />
-          <span style={{ fontSize: "30px", fontWeight: "bold" }}>Chào mừng đến với Deutsch Nerd</span>
-          <span>Đăng nhập để tiếp tục</span>
-          <Form layout="vertical" name="formLogin" style={{ width: "100%" }} onFinish={onLogin}>
+          <span style={{ fontSize: "28px", fontWeight: "bold", color: "#333" }}>Chào mừng đến với Deutsch Nerd</span>
+          <span style={{ color: "#555", paddingBottom: "5px", textAlign: "center" }}>Đăng nhập để tiếp tục</span>
+          <Form layout="vertical" name="formLogin" style={{ width: "100%", padding: "0 20px" }} onFinish={onLogin}>
             {/* input email */}
             <Form.Item label="Email" name="email" rules={[validationRules.required("Vui lòng nhập email"), validationRules.email("Email không hợp lệ")]}>
-              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} />
+              <InputCustom placeholder="Nhập email" prefix={<UserOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* input password */}
@@ -107,7 +103,7 @@ export const LoginPage = () => {
                 },
               ]}
             >
-              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} />
+              <Input.Password type="password" placeholder="Nhập mật khẩu" prefix={<LockOutlined />} style={{ borderRadius: "8px" }} />
             </Form.Item>
 
             {/* remember and forgot password */}
@@ -122,25 +118,39 @@ export const LoginPage = () => {
               <Form.Item name="remember" valuePropName="checked">
                 <Checkbox>Ghi nhớ đăng nhập</Checkbox>
               </Form.Item>
-              <Link to={CLIENT_URI.FORGOT_PASSWORD}>Quên mật khẩu</Link>
+              <Link to={CLIENT_URI.FORGOT_PASSWORD} style={{ color: "#ffa454" }}>
+                Quên mật khẩu
+              </Link>
             </div>
 
             {/* button login */}
             <Form.Item>
-              <ButtonCustom htmlType="submit" type="primary" style={{ width: "100%", background: "#ffa454" }}>
+              <ButtonCustom
+                htmlType="submit"
+                type="primary"
+                style={{
+                  width: "100%",
+                  background: "#ffa454",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  height: "40px",
+                }}
+              >
                 Đăng nhập
               </ButtonCustom>
             </Form.Item>
 
             {/* social login */}
-            <div style={{ justifyContent: "space-between" }}>
+            <div style={{ justifyContent: "center", marginBottom: "20px" }}>
               <span>Hoặc đăng nhập với</span>
-              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={() => onLoginWithGoogle()} />
+              <ButtonCustom type="primary" icon={<GoogleOutlined />} shape="circle" onClick={onLoginWithGoogle} style={{ marginLeft: "8px", background: "#4285F4", border: "none" }} />
             </div>
             {/* register link */}
-            <div>
-              <span>Bạn không có tài khoản?</span>
-              <Link to={CLIENT_URI.REGISTER}>Đăng ký tại đây</Link>
+            <div style={{ textAlign: "center", color: "#555" }}>
+              <span>Bạn không có tài khoản? </span>
+              <Link to={CLIENT_URI.REGISTER} style={{ color: "#ffa454" }}>
+                Đăng ký tại đây
+              </Link>
             </div>
           </Form>
         </div>
@@ -148,5 +158,3 @@ export const LoginPage = () => {
     </div>
   );
 };
-
-export default LoginPage;

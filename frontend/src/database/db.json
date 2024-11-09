@@ -4,26 +4,14 @@
       "id": "1",
       "name": "Phase 1",
       "levelId": 1,
-      "exercises": [
-        1,
-        2,
-        3,
-        7,
-        8
-      ],
+      "exercises": [1, 2, 3, 7, 8],
       "isNew": false
     },
     {
       "id": "2",
       "name": "Phase 2",
       "levelId": 1,
-      "exercises": [
-        4,
-        5,
-        6,
-        7,
-        9
-      ],
+      "exercises": [4, 5, 6, 7, 9],
       "isNew": false
     },
     {
@@ -36,21 +24,14 @@
       "id": "4",
       "name": "Phase 1",
       "levelId": 2,
-      "exercise": [
-        10,
-        11,
-        12
-      ],
+      "exercise": [10, 11, 12],
       "isNew": true
     },
     {
       "id": "5",
       "name": "Phase 2",
       "levelId": 2,
-      "exercises": [
-        15,
-        17
-      ],
+      "exercises": [15, 17],
       "isNew": true
     },
     {
@@ -63,10 +44,7 @@
       "id": "7",
       "name": "Phase 1",
       "levelId": 3,
-      "exercises": [
-        13,
-        14
-      ],
+      "exercises": [13, 14],
       "isNew": true
     },
     {
@@ -83,14 +61,8 @@
       "levelImage": "a1",
       "learners": 10,
       "description": "Ở trình độ A1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
-      "phases": [
-        1,
-        2,
-        3
-      ],
-      "finalexams": [
-        1
-      ]
+      "phases": [1, 2, 3],
+      "finalexams": [1]
     },
     {
       "id": "2",
@@ -98,14 +70,8 @@
       "levelImage": "a2",
       "learners": 10,
       "description": "Ở trình độ A2, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
-      "phases": [
-        4,
-        5,
-        6
-      ],
-      "finalexams": [
-        2
-      ]
+      "phases": [4, 5, 6],
+      "finalexams": [2]
     },
     {
       "id": "3",
@@ -113,13 +79,8 @@
       "levelImage": "b1",
       "learners": 10,
       "description": "Ở trình độ B1, bạn sẽ tìm thấy các bài tập kỹ năng nghe, đọc và viết phù hợp, giúp củng cố kiến thức và nâng cao khả năng ngôn ngữ của mình.",
-      "phases": [
-        7,
-        8
-      ],
-      "finalexams": [
-        3
-      ]
+      "phases": [7, 8],
+      "finalexams": [3]
     }
   ],
   "exercises": [
@@ -139,11 +100,7 @@
               "id": 1,
               "question": "Was kostet der Pullover?",
               "audioUrl": "part1_ques1",
-              "questionImage": [
-                "demo1_1",
-                "demo1_2",
-                "demo1_3"
-              ],
+              "questionImage": ["demo1_1", "demo1_2", "demo1_3"],
               "options": [
                 {
                   "id": "A",
@@ -165,11 +122,7 @@
               "id": 2,
               "question": "Wie spät ist es?",
               "audioUrl": "part1_ques2",
-              "questionImage": [
-                "demo2_1",
-                "demo2_2",
-                "demo2_3"
-              ],
+              "questionImage": ["demo2_1", "demo2_2", "demo2_3"],
               "options": [
                 {
                   "id": "A",
@@ -191,11 +144,7 @@
               "id": 3,
               "question": "Was isst die Frau im Restaurant?",
               "audioUrl": "part1_ques3",
-              "questionImage": [
-                "demo3_1",
-                "demo3_2",
-                "demo3_3"
-              ],
+              "questionImage": ["demo3_1", "demo3_2", "demo3_3"],
               "options": [
                 {
                   "id": "A",
@@ -217,11 +166,7 @@
               "id": 4,
               "question": "Wie kommt die Frau in den 2. Stock?",
               "audioUrl": "part1_ques4",
-              "questionImage": [
-                "demo4_1",
-                "demo4_2",
-                "demo4_3"
-              ],
+              "questionImage": ["demo4_1", "demo4_2", "demo4_3"],
               "options": [
                 {
                   "id": "A",
@@ -243,11 +188,7 @@
               "id": 5,
               "question": "Wohin fährt Herr Albers?",
               "audioUrl": "part1_ques5",
-              "questionImage": [
-                "demo5_1",
-                "demo5_2",
-                "demo5_3"
-              ],
+              "questionImage": ["demo5_1", "demo5_2", "demo5_3"],
               "options": [
                 {
                   "id": "A",
@@ -569,10 +510,7 @@
           "questions": [
             {
               "id": 6,
-              "questionImage": [
-                "demo_part2_6_1",
-                "demo_part2_6_2"
-              ],
+              "questionImage": ["demo_part2_6_1", "demo_part2_6_2"],
               "options": [
                 {
                   "id": "A",
@@ -588,10 +526,7 @@
             },
             {
               "id": 7,
-              "questionImage": [
-                "demo_part2_7_1",
-                "demo_part2_7_2"
-              ],
+              "questionImage": ["demo_part2_7_1", "demo_part2_7_2"],
               "options": [
                 {
                   "id": "A",
@@ -607,10 +542,7 @@
             },
             {
               "id": 8,
-              "questionImage": [
-                "demo_part2_8_1",
-                "demo_part2_8_2"
-              ],
+              "questionImage": ["demo_part2_8_1", "demo_part2_8_2"],
               "options": [
                 {
                   "id": "A",
@@ -626,10 +558,7 @@
             },
             {
               "id": 9,
-              "questionImage": [
-                "demo_part2_9_1",
-                "demo_part2_9_2"
-              ],
+              "questionImage": ["demo_part2_9_1", "demo_part2_9_2"],
               "options": [
                 {
                   "id": "A",
@@ -645,10 +574,7 @@
             },
             {
               "id": 10,
-              "questionImage": [
-                "demo_part2_10_1",
-                "demo_part2_10_2"
-              ],
+              "questionImage": ["demo_part2_10_1", "demo_part2_10_2"],
               "options": [
                 {
                   "id": "A",
@@ -758,7 +684,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "0%"
+      "score": "33%"
     },
     {
       "id": "3",
@@ -775,334 +701,223 @@
               "id": 1,
               "question": "die Woche",
               "matchedQuestion": "tuần",
-              "answer": [
-                "die Woche",
-                "tuần"
-              ]
+              "answer": ["die Woche", "tuần"]
             },
             {
               "id": 2,
               "question": "Montag",
               "matchedQuestion": "Thứ hai",
-              "answer": [
-                "Montag",
-                "Thứ hai"
-              ]
+              "answer": ["Montag", "Thứ hai"]
             },
             {
               "id": 3,
               "question": "Dienstag",
               "matchedQuestion": "Thứ ba",
-              "answer": [
-                "Dienstag",
-                "Thứ ba"
-              ]
+              "answer": ["Dienstag", "Thứ ba"]
             },
             {
               "id": 4,
               "question": "Mittwoch",
               "matchedQuestion": "Thứ Tư",
-              "answer": [
-                "Mittwoch",
-                "Thứ Tư"
-              ]
+              "answer": ["Mittwoch", "Thứ Tư"]
             },
             {
               "id": 5,
               "question": "Donnerstag",
               "matchedQuestion": "Thứ năm",
-              "answer": [
-                "Donnerstag",
-                "Thứ năm"
-              ]
+              "answer": ["Donnerstag", "Thứ năm"]
             },
             {
               "id": 6,
               "question": "Freitag",
               "matchedQuestion": "Thứ sáu",
-              "answer": [
-                "Freitag",
-                "Thứ sáu"
-              ]
+              "answer": ["Freitag", "Thứ sáu"]
             },
             {
               "id": 7,
               "question": "Samstag",
               "matchedQuestion": "Thứ bảy",
-              "answer": [
-                "Samstag",
-                "Thứ bảy"
-              ]
+              "answer": ["Samstag", "Thứ bảy"]
             },
             {
               "id": 8,
               "question": "Sonntag",
               "matchedQuestion": "Chủ nhật",
-              "answer": [
-                "Sonntag",
-                "Chủ nhật"
-              ]
+              "answer": ["Sonntag", "Chủ nhật"]
             },
             {
               "id": 9,
               "question": "der Frühling",
               "matchedQuestion": "mùa xuân",
-              "answer": [
-                "der Frühling",
-                "mùa xuân"
-              ]
+              "answer": ["der Frühling", "mùa xuân"]
             },
             {
               "id": 10,
               "question": "der Sommer",
               "matchedQuestion": "mùa hè",
-              "answer": [
-                "der Sommer",
-                "mùa hè"
-              ]
+              "answer": ["der Sommer", "mùa hè"]
             },
             {
               "id": 11,
               "question": "der Herbst",
               "matchedQuestion": "mùa thu",
-              "answer": [
-                "der Herbst",
-                "mùa thu"
-              ]
+              "answer": ["der Herbst", "mùa thu"]
             },
             {
               "id": 12,
               "question": "der Winter",
               "matchedQuestion": "mùa đông",
-              "answer": [
-                "der Winter",
-                "mùa đông"
-              ]
+              "answer": ["der Winter", "mùa đông"]
             },
             {
               "id": 13,
               "question": "der Tag",
               "matchedQuestion": "ngày",
-              "answer": [
-                "der Tag",
-                "ngày"
-              ]
+              "answer": ["der Tag", "ngày"]
             },
             {
               "id": 14,
               "question": "der Morgen",
               "matchedQuestion": "buổi sáng(từ 6-10 giờ)",
-              "answer": [
-                "der Morgen",
-                "buổi sáng(từ 6-10 giờ)"
-              ]
+              "answer": ["der Morgen", "buổi sáng(từ 6-10 giờ)"]
             },
             {
               "id": 15,
               "question": "der Vormittag",
               "matchedQuestion": "buổi sáng(từ 10-12 giờ)",
-              "answer": [
-                "der Vormittag",
-                "buổi sáng(từ 10-12 giờ)"
-              ]
+              "answer": ["der Vormittag", "buổi sáng(từ 10-12 giờ)"]
             },
             {
               "id": 16,
               "question": "der Mittag",
               "matchedQuestion": "giữa trưa",
-              "answer": [
-                "der Mittag",
-                "giữa trưa"
-              ]
+              "answer": ["der Mittag", "giữa trưa"]
             },
             {
               "id": 17,
               "question": "am + Tag",
               "matchedQuestion": "vào + ngày",
-              "answer": [
-                "am + Tag",
-                "vào + ngày"
-              ]
+              "answer": ["am + Tag", "vào + ngày"]
             },
             {
               "id": 18,
               "question": "der Nachmittag",
               "matchedQuestion": "buổi chiều",
-              "answer": [
-                "der Nachmittag",
-                "buổi chiều"
-              ]
+              "answer": ["der Nachmittag", "buổi chiều"]
             },
             {
               "id": 19,
               "question": "am Montag",
               "matchedQuestion": "vào thứ Hai",
-              "answer": [
-                "am Montag",
-                "vào thứ Hai"
-              ]
+              "answer": ["am Montag", "vào thứ Hai"]
             },
             {
               "id": 20,
               "question": "der Abend",
               "matchedQuestion": "buổi tối",
-              "answer": [
-                "der Abend",
-                "buổi tối"
-              ]
+              "answer": ["der Abend", "buổi tối"]
             },
             {
               "id": 21,
               "question": "das Wochenende",
               "matchedQuestion": "cuối tuần",
-              "answer": [
-                "das Wochenende",
-                "cuối tuần"
-              ]
+              "answer": ["das Wochenende", "cuối tuần"]
             },
             {
               "id": 22,
               "question": "die Nacht",
               "matchedQuestion": "đêm",
-              "answer": [
-                "die Nacht",
-                "đêm"
-              ]
+              "answer": ["die Nacht", "đêm"]
             },
             {
               "id": 23,
               "question": "am Wochenende",
               "matchedQuestion": "vào cuối tuần",
-              "answer": [
-                "am Wochenende",
-                "vào cuối tuần"
-              ]
+              "answer": ["am Wochenende", "vào cuối tuần"]
             },
             {
               "id": 24,
               "question": "am Morgen",
               "matchedQuestion": "vào buổi sáng",
-              "answer": [
-                "am Morgen",
-                "vào buổi sáng"
-              ]
+              "answer": ["am Morgen", "vào buổi sáng"]
             },
             {
               "id": 25,
               "question": "der Feiertag",
               "matchedQuestion": "kỳ nghỉ",
-              "answer": [
-                "der Feiertag",
-                "kỳ nghỉ"
-              ]
+              "answer": ["der Feiertag", "kỳ nghỉ"]
             },
             {
               "id": 26,
               "question": "am Vormittag",
               "matchedQuestion": "vào buổi sáng",
-              "answer": [
-                "am Vormittag",
-                "vào buổi sáng"
-              ]
+              "answer": ["am Vormittag", "vào buổi sáng"]
             },
             {
               "id": 27,
               "question": "das Jahr",
               "matchedQuestion": "năm",
-              "answer": [
-                "das Jahr",
-                "năm"
-              ]
+              "answer": ["das Jahr", "năm"]
             },
             {
               "id": 28,
               "question": "am Mittag",
               "matchedQuestion": "vào buổi trưa",
-              "answer": [
-                "am Mittag",
-                "vào buổi trưa"
-              ]
+              "answer": ["am Mittag", "vào buổi trưa"]
             },
             {
               "id": 29,
               "question": "der Monat",
               "matchedQuestion": "tháng",
-              "answer": [
-                "der Monat",
-                "tháng"
-              ]
+              "answer": ["der Monat", "tháng"]
             },
             {
               "id": 30,
               "question": "am Nachmittag",
               "matchedQuestion": "vào buổi chiều",
-              "answer": [
-                "am Nachmittag",
-                "vào buổi chiều"
-              ]
+              "answer": ["am Nachmittag", "vào buổi chiều"]
             },
             {
               "id": 31,
               "question": "am Abend",
               "matchedQuestion": "vào buổi tối",
-              "answer": [
-                "am Abend",
-                "vào buổi tối"
-              ]
+              "answer": ["am Abend", "vào buổi tối"]
             },
             {
               "id": 32,
               "question": "in der Nacht",
               "matchedQuestion": "vào ban đêm",
-              "answer": [
-                "in der Nacht",
-                "vào ban đêm"
-              ]
+              "answer": ["in der Nacht", "vào ban đêm"]
             },
             {
               "id": 33,
               "question": "der erste August",
               "matchedQuestion": "ngày đầu tiên của tháng 8",
-              "answer": [
-                "der erste August",
-                "ngày đầu tiên của tháng 8"
-              ]
+              "answer": ["der erste August", "ngày đầu tiên của tháng 8"]
             },
             {
               "id": 34,
               "question": "am ersten August",
               "matchedQuestion": "vào ngày đầu tiên của tháng 8",
-              "answer": [
-                "am ersten August",
-                "vào ngày đầu tiên của tháng 8"
-              ]
+              "answer": ["am ersten August", "vào ngày đầu tiên của tháng 8"]
             },
             {
               "id": 35,
               "question": "die Uhrzeit",
               "matchedQuestion": "thời gian",
-              "answer": [
-                "die Uhrzeit",
-                "thời gian"
-              ]
+              "answer": ["die Uhrzeit", "thời gian"]
             },
             {
               "id": 36,
               "question": "Wann?",
               "matchedQuestion": "Khi?",
-              "answer": [
-                "Wann?",
-                "Khi?"
-              ]
+              "answer": ["Wann?", "Khi?"]
             },
             {
               "id": 37,
               "question": "Wie spät ist es?",
               "matchedQuestion": "Bây giờ là mấy giờ?",
-              "answer": [
-                "Wie spät ist es?",
-                "Bây giờ là mấy giờ?"
-              ]
+              "answer": ["Wie spät ist es?", "Bây giờ là mấy giờ?"]
             }
           ]
         },
@@ -1265,7 +1080,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "2%"
+      "score": "0%"
     },
     {
       "id": "4",
@@ -1350,43 +1165,26 @@
           "questions": [
             {
               "id": 5,
-              "question": [
-                "Das ist Herr Gupta, ___ kommt aus Indien.",
-                "Das ist Frau Kioka, ___ kommt aus Japan.",
-                "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."
-              ],
-              "answer": [
-                "er",
-                "sie",
-                "sie"
-              ],
+              "question": ["Das ist Herr Gupta, ___ kommt aus Indien.", "Das ist Frau Kioka, ___ kommt aus Japan.", "Herr Gupta und Frau Kioka sind in Berlin. ___ lernen Deutsch."],
+              "answer": ["er", "sie", "sie"],
               "answerDetail": "Trong câu này, các đại từ 'er', 'sie' và 'sie' được sử dụng để chỉ những người đã nhắc đến. Dưới đây là phần giải thích: 'Das ist Herr Gupta, er kommt aus Indien.'. Câu này giới thiệu Herr Gupta, là nam giới. Trong tiếng Đức, đại từ 'er' được sử dụng để chỉ người nam, nên ta dùng 'er' cho Herr Gupta. 'Das ist Frau Kioka, sie kommt aus Japan.'. Tương tự, Frau Kioka là nữ giới, vì vậy ta dùng đại từ 'sie' để chỉ người nữ. 'Herr Gupta und Frau Kioka sind in Berlin. Sie lernen Deutsch.'. Ở câu này, cả Herr Gupta và Frau Kioka được nhắc đến cùng nhau. Khi có ít nhất một người nam trong nhóm, đại từ số nhiều 'sie' (họ) sẽ được dùng để chỉ chung cho nhóm người, bất kể giới tính của từng người."
             },
             {
               "id": 6,
               "question": "Hallo, Anna, woher kommst ___ ? ___ komme aus New York.",
-              "answer": [
-                "du",
-                "Ich"
-              ],
+              "answer": ["du", "Ich"],
               "answerDetail": "Ở câu thứ nhất, động từ 'kommst' là ở ngôi thứ hai số ít, nên đại từ phù hợp để điền vào chỗ trống là 'du' (bạn). Ở câu thứ hai, người nói đang trả lời câu hỏi, nên đại từ ngôi thứ nhất 'Ich' (tôi) được dùng."
             },
             {
               "id": 7,
               "question": "Marc und Dominic, wo wohnt ___ ? ___ wohnen in Frankfurt.",
-              "answer": [
-                "ihr",
-                "Wir"
-              ],
+              "answer": ["ihr", "Wir"],
               "answerDetail": "Trong câu hỏi, chủ ngữ là 'Marc und Dominic (Marc và Dominic), khi hỏi về hai người này, đại từ nhân xưng phù hợp là 'ihr' (các bạn), vì đây là cách gọi ngôi thứ hai số nhiều. Trong câu trả lời, Marc và Dominic đang tự trả lời về chính mình, vì vậy họ sử dụng đại từ nhân xưng 'Wir' (chúng tôi) để chỉ nhóm của họ."
             },
             {
               "id": 8,
               "question": "Guten Tag, wie heißen ___ ? Guten Tag, ___ heiße Berger, Roland Berger.",
-              "answer": [
-                "Sie",
-                "Ich"
-              ]
+              "answer": ["Sie", "Ich"]
             }
           ]
         },
@@ -1410,18 +1208,12 @@
             {
               "id": 11,
               "question": "Frau Meier, wo arbeiten ___ ? ___ arbeite in einer Bank.",
-              "answer": [
-                "Sie",
-                "Ich"
-              ]
+              "answer": ["Sie", "Ich"]
             },
             {
               "id": 12,
               "question": "Marie, kommst ___ bitte? Nein, ___ habe keine Zeit.",
-              "answer": [
-                "du",
-                "ich"
-              ]
+              "answer": ["du", "ich"]
             }
           ]
         },
@@ -1491,7 +1283,7 @@
         }
       ],
       "isCompleted": true,
-      "score": "9%"
+      "score": "8%"
     },
     {
       "id": "6",
@@ -1508,11 +1300,7 @@
             {
               "id": 1,
               "question": "Wo wollen die Freundinnen die Party machen?",
-              "questionImage": [
-                "demo02_1_1",
-                "demo02_1_2",
-                "demo02_1_3"
-              ],
+              "questionImage": ["demo02_1_1", "demo02_1_2", "demo02_1_3"],
               "audioUrl": "part1_ques1_2",
               "options": [
                 {
@@ -1533,11 +1321,7 @@
             {
               "id": 2,
               "question": "Wann wollen sie sich treffen?",
-              "questionImage": [
-                "demo02_2_1",
-                "demo02_2_2",
-                "demo02_2_3"
-              ],
+              "questionImage": ["demo02_2_1", "demo02_2_2", "demo02_2_3"],
               "audioUrl": "part1_ques2_2",
               "options": [
                 {
@@ -1558,11 +1342,7 @@
             {
               "id": 3,
               "question": "Wo stehen Taxis?",
-              "questionImage": [
-                "demo02_3_1",
-                "demo02_3_2",
-                "demo02_3_3"
-              ],
+              "questionImage": ["demo02_3_1", "demo02_3_2", "demo02_3_3"],
               "audioUrl": "part1_ques3_2",
               "options": [
                 {
@@ -1583,11 +1363,7 @@
             {
               "id": 4,
               "question": "Wie lange dauern die Sommerkurse?",
-              "questionImage": [
-                "demo02_4_1",
-                "demo02_4_2",
-                "demo02_4_3"
-              ],
+              "questionImage": ["demo02_4_1", "demo02_4_2", "demo02_4_3"],
               "audioUrl": "part1_ques4_2",
               "options": [
                 {
@@ -1608,11 +1384,7 @@
             {
               "id": 5,
               "question": "Was soll Johanna mitbringen?",
-              "questionImage": [
-                "demo02_5_1",
-                "demo02_5_2",
-                "demo02_5_3"
-              ],
+              "questionImage": ["demo02_5_1", "demo02_5_2", "demo02_5_3"],
               "audioUrl": "part1_ques5_2",
               "options": [
                 {
@@ -1633,11 +1405,7 @@
             {
               "id": 6,
               "question": "Wann ist Frau Horn aus dem Urlaub zurück?",
-              "questionImage": [
-                "demo02_6_1",
-                "demo02_6_2",
-                "demo02_6_3"
-              ],
+              "questionImage": ["demo02_6_1", "demo02_6_2", "demo02_6_3"],
               "audioUrl": "part1_ques6_2",
               "options": [
                 {
@@ -1731,7 +1499,7 @@
         },
         {
           "id": 3,
-          "partName": "Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
+          "partName": "Phần 3: Was ist richtig? Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal.",
           "partType": "multiple_choice",
           "questions": [
             {
@@ -1948,10 +1716,7 @@
             {
               "id": 6,
               "question": "Sie wollen viele Freunde zu Ihrem Geburtstag einladen. Sie suchen einen Ort.",
-              "questionImage": [
-                "demo_part2_6_1",
-                "demo_part2_6_2"
-              ],
+              "questionImage": ["demo_part2_6_1", "demo_part2_6_2"],
               "options": [
                 {
                   "id": "A",
@@ -1968,10 +1733,7 @@
             {
               "id": 7,
               "question": "Der Computer ist kaputt. Sie können ihn nicht allein reparieren.",
-              "questionImage": [
-                "demo_part2_7_1",
-                "demo_part2_7_2"
-              ],
+              "questionImage": ["demo_part2_7_1", "demo_part2_7_2"],
               "options": [
                 {
                   "id": "A",
@@ -1988,10 +1750,7 @@
             {
               "id": 8,
               "question": "Sie möchten am Samstagabend mit Freunden tanzen gehen.",
-              "questionImage": [
-                "demo_part2_8_1",
-                "demo_part2_8_2"
-              ],
+              "questionImage": ["demo_part2_8_1", "demo_part2_8_2"],
               "options": [
                 {
                   "id": "A",
@@ -2008,10 +1767,7 @@
             {
               "id": 9,
               "question": "Sie möchten am Wochenende Fußball spielen.",
-              "questionImage": [
-                "demo_part2_9_1",
-                "demo_part2_9_2"
-              ],
+              "questionImage": ["demo_part2_9_1", "demo_part2_9_2"],
               "options": [
                 {
                   "id": "A",
@@ -2028,10 +1784,7 @@
             {
               "id": 10,
               "question": "Sie studieren und möchten ein bisschen arbeiten.",
-              "questionImage": [
-                "demo_part2_10_1",
-                "demo_part2_10_2"
-              ],
+              "questionImage": ["demo_part2_10_1", "demo_part2_10_2"],
               "options": [
                 {
                   "id": "A",
@@ -2143,7 +1896,7 @@
     },
     {
       "id": "8",
-      "title": "QUIZ KẾT THÚC PHASE 1",
+      "title": "   KẾT THÚC PHASE 1",
       "exerciseType": "quiz",
       "phaseId": 1,
       "parts": [
@@ -2331,24 +2084,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "A"
@@ -2550,24 +2294,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "B"
@@ -2705,11 +2440,7 @@
               "id": 6,
               "question": "Wie muss die Frau gehen?",
               "audioUrl": "part2_ques6_A2",
-              "questionImage": [
-                "part2_ques6_1_A2",
-                "part2_ques6_2_A2",
-                "part2_ques6_3_A2"
-              ],
+              "questionImage": ["part2_ques6_1_A2", "part2_ques6_2_A2", "part2_ques6_3_A2"],
               "options": [
                 {
                   "id": "A",
@@ -2731,11 +2462,7 @@
               "id": 7,
               "question": "Was ist kaputt?",
               "audioUrl": "part2_ques7_A2",
-              "questionImage": [
-                "part2_ques7_1_A2",
-                "part2_ques7_2_A2",
-                "part2_ques7_3_A2"
-              ],
+              "questionImage": ["part2_ques7_1_A2", "part2_ques7_2_A2", "part2_ques7_3_A2"],
               "options": [
                 {
                   "id": "A",
@@ -2757,11 +2484,7 @@
               "id": 8,
               "question": "Was möchte die Frau kaufen?",
               "audioUrl": "part2_ques8_A2",
-              "questionImage": [
-                "part2_ques8_1_A2",
-                "part2_ques8_2_A2",
-                "part2_ques8_3_A2"
-              ],
+              "questionImage": ["part2_ques8_1_A2", "part2_ques8_2_A2", "part2_ques8_3_A2"],
               "options": [
                 {
                   "id": "A",
@@ -2783,11 +2506,7 @@
               "id": 9,
               "question": "Wohin soll der Mann gehen?",
               "audioUrl": "part2_ques9_A2",
-              "questionImage": [
-                "part2_ques9_1_A2",
-                "part2_ques9_2_A2",
-                "part2_ques9_3_A2"
-              ],
+              "questionImage": ["part2_ques9_1_A2", "part2_ques9_2_A2", "part2_ques9_3_A2"],
               "options": [
                 {
                   "id": "A",
@@ -2809,11 +2528,7 @@
               "id": 10,
               "question": "Wie kommt Herr Schneider zur Arbeit?",
               "audioUrl": "part2_ques10_A2",
-              "questionImage": [
-                "part2_ques10_1_A2",
-                "part2_ques10_2_A2",
-                "part2_ques10_3_A2"
-              ],
+              "questionImage": ["part2_ques10_1_A2", "part2_ques10_2_A2", "part2_ques10_3_A2"],
               "options": [
                 {
                   "id": "A",
@@ -3451,24 +3166,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "nette",
-                    "netter"
-                  ]
+                  "text": ["nette", "netter"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "bequeme",
-                    "nette"
-                  ]
+                  "text": ["bequeme", "nette"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "gute",
-                    "nette"
-                  ]
+                  "text": ["gute", "nette"]
                 }
               ],
               "answer": "A"
@@ -3479,24 +3185,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "neue ",
-                    "neuen"
-                  ]
+                  "text": ["neue ", "neuen"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "neue",
-                    "neue "
-                  ]
+                  "text": ["neue", "neue "]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "neune",
-                    "neue"
-                  ]
+                  "text": ["neune", "neue"]
                 }
               ],
               "answer": "B"
@@ -3519,10 +3216,7 @@
             {
               "id": 1,
               "question": "Ein Mann und eine Frau ___ (lieben) sich und ___ (heiraten). ",
-              "answer": [
-                "liebten",
-                "heirateten"
-              ],
+              "answer": ["liebten", "heirateten"],
               "answerDetail": "Đây là hình thức động từ dùng để diễn tả hành động đã xảy ra và kết thúc trong quá khứ. \nlieben (yêu): \nĐộng từ 'lieben' được chia ở thì Präteritum cho ngôi thứ ba số nhiều ('sie/Sie' hoặc 'sie' - một người phụ nữ và một người đàn ông ở đây là số nhiều), vì thế ta dùng liebten. \nheiraten (kết hôn): \nTương tự, động từ 'heiraten' cũng được chia ở thì Präteritum cho ngôi thứ ba số nhiều. Do đó, ta dùng heirateten."
             },
             {
@@ -3534,30 +3228,19 @@
             {
               "id": 3,
               "question": "Die Frau ___ (arbeiten) sehr viel und ihr Mann ___ (freuen) sich und ___ (einkaufen).",
-              "answer": [
-                "arbeitete",
-                "freute",
-                "kaufte ein"
-              ],
+              "answer": ["arbeitete", "freute", "kaufte ein"],
               "answerDetail": "'Die Frau arbeitete sehr viel': \nĐộng từ nguyên mẫu: arbeiten (làm việc) \nĐây là một động từ yếu (schwache Verben), nên quy tắc chia động từ quá khứ là thêm '-te' vào gốc động từ. \n'Die Frau' là chủ ngữ số ít, nên ta chia động từ arbeiten ở ngôi thứ ba số ít trong quá khứ đơn: arbeitete. \n'und ihr Mann freute sich': \nĐộng từ nguyên mẫu: freuen (vui mừng) \nĐây cũng là một động từ yếu, nên thêm '-te' vào gốc động từ. \n'ihr Mann' là chủ ngữ số ít, ngôi thứ ba, nên chia động từ freuen ở ngôi thứ ba số ít trong quá khứ đơn: freute. \n'sich' là đại từ phản thân đi cùng với động từ freuen, nên nó được giữ nguyên vị trí. \n'und kaufte ein': \nĐộng từ nguyên mẫu: einkaufen (mua sắm) \nĐây là một động từ tách được (trennbares Verb), nghĩa là ở thì hiện tại và quá khứ, phần tách của động từ sẽ đứng cuối câu. \n'kaufen' là động từ yếu, nên chia quá khứ đơn bằng cách thêm '-te', thành kaufte. \n'ein' là phần tách của động từ einkaufen và sẽ được đặt ở cuối câu."
             },
             {
               "id": 4,
               "question": "Die Frau ___ (verdienen) mehr Geld und sie ___ (kaufen) ein Haus, aber der Mann ___ (suchen) eine Villa. ",
-              "answer": [
-                "verdiente",
-                "kaufte",
-                "suchte"
-              ],
+              "answer": ["verdiente", "kaufte", "suchte"],
               "answerDetail": "Die Frau verdiente mehr Geld: \nĐộng từ trong ngoặc là 'verdienen' (kiếm tiền). \nỞ đây, 'Frau' là ngôi thứ 3 số ít (sie), và động từ 'verdienen' được chia ở thì quá khứ đơn (Präteritum). \nCách chia: \nIch verdiente \nDu verdientest \nEr/sie/es verdiente \nVậy, 'verdienen' -> 'verdiente'. \nsie kaufte ein Haus: \nĐộng từ trong ngoặc là 'kaufen' (mua). \nTương tự như câu trước, 'sie' (cô ấy) là ngôi thứ 3 số ít. \nCách chia: \nIch kaufte \nDu kauftest \nEr/sie/es kaufte \nVậy, 'kaufen'-> 'kaufte'. \nder Mann suchte eine Villa: \nĐộng từ trong ngoặc là 'suchen' (tìm kiếm). \n'der Mann' là ngôi thứ 3 số ít, nên động từ được chia tương tự. \nCách chia: \nIch suchte \nDu suchtest \nEr/sie/es suchte \n=>'suchen' -> 'suchte'."
             },
             {
               "id": 5,
               "question": "Die Frau ___ (verkaufen) ihren Mercedes, aber der Mann ___ (wünschen) sich ein schönes Auto und ein noch größeres Haus.",
-              "answer": [
-                "verkaufte",
-                "wünschte"
-              ],
+              "answer": ["verkaufte", "wünschte"],
               "answerDetail": "Câu trên yêu cầu điền động từ đúng dạng vào các chỗ trống và cả hai động từ cần chia ở thì quá khứ đơn (Präteritum) trong tiếng Đức. Đây là cách thức chia động từ: \nDie Frau verkaufte ihren Mercedes: Động từ trong dấu ngoặc là verkaufen (bán). Động từ này ở thì quá khứ đơn của ngôi thứ ba số ít sẽ là verkaufte. Cấu trúc này diễn tả một hành động đã xảy ra và kết thúc trong quá khứ (người phụ nữ đã bán chiếc Mercedes của mình). \nder Mann wünschte sich ein schönes Auto und ein noch größeres Haus: Động từ trong dấu ngoặc là wünschen (ước mong). Ở thì quá khứ đơn, động từ này với ngôi thứ ba số ít sẽ là wünschte. Cấu trúc này diễn tả mong ước của người đàn ông trong quá khứ (người đàn ông đã ước có một chiếc xe đẹp và một ngôi nhà to hơn)."
             },
             {
@@ -3588,19 +3271,13 @@
             {
               "id": 9,
               "question": "Ich ___ (verbringen) jede freie Minute mit dem Hund und ___ (gehen) täglich mit ihm spazieren.",
-              "answer": [
-                "verbrachte",
-                "ging"
-              ],
+              "answer": ["verbrachte", "ging"],
               "answerDetail": "verbringen (dành): Đây là một động từ mạnh, nhưng trong thì quá khứ đơn, nó chia giống động từ yếu. Dạng quá khứ đơn của nó là verbrachte. \nIch verbrachte bedeutet 'Tôi đã dành'. \ngehen (đi): Đây là một động từ bất quy tắc (irregular verb). Dạng quá khứ đơn của nó là ging. \nIch ging bedeutet 'Tôi đã đi'.Ich verbrachte jede freie Minute mit dem Hund: Hành động 'dành mọi phút rảnh với con chó' đã xảy ra trong quá khứ, vì thế dùng thì quá khứ đơn của 'verbringen' là 'verbrachte'. \nund ging täglich mit ihm spazieren: Hành động 'đi dạo hằng ngày với con chó' cũng đã xảy ra trong quá khứ, vì vậy dùng thì quá khứ đơn của 'gehen' là 'ging'."
             },
             {
               "id": 10,
               "question": "In der Nacht ___ (liegen) er in meinem Zimmer und ___(schlafen)neben meinem Bett. ",
-              "answer": [
-                "lag",
-                "schlief"
-              ],
+              "answer": ["lag", "schlief"],
               "answerDetail": "'In der Nacht' có nghĩa là 'Vào ban đêm', đây là một cụm trạng từ chỉ thời gian. \n'liegen' (nằm) và 'schlafen' (ngủ) là hai động từ cần được chia ở thì quá khứ. \n1. Liegen (nằm): \nĐộng từ 'liegen' là động từ không bất quy tắc, và ở thì quá khứ (Präteritum), nó sẽ biến đổi thành 'lag'. \nNguyên mẫu: liegen \nQuá khứ: lag \nQuá khứ hoàn thành: gelegen \n'Er lag in meinem Zimmer' có nghĩa là 'Anh ấy đã nằm trong phòng của tôi'. \n2. Schlafen (ngủ): \nĐộng từ 'schlafen' là một động từ bất quy tắc. Khi chia ở thì quá khứ, nó biến thành 'schlief'. \nNguyên mẫu: schlafen \nQuá khứ: schlief \nQuá khứ hoàn thành: geschlafen \n'und schlief neben meinem Bett' có nghĩa là 'và đã ngủ bên cạnh giường của tôi'."
             },
             {
@@ -3655,11 +3332,7 @@
             {
               "id": 18,
               "question": "Aschenputtel ___ (kochen*), ___ (waschen) und ___ (putzen*).",
-              "answer": [
-                "kochte",
-                "wusch",
-                "putze"
-              ],
+              "answer": ["kochte", "wusch", "putze"],
               "answerDetail": "Aschenputtel kochte: Động từ 'kochen' (nấu ăn) được chia thành thì quá khứ đơn (Präteritum) là 'kochte.' Đây là một động từ quy tắc, vì vậy thì quá khứ được hình thành bằng cách thêm '-te' vào gốc động từ 'koch-.' \nHiện tại: Aschenputtel kocht (Aschenputtel nấu ăn) \nQuá khứ đơn: Aschenputtel kochte (Aschenputtel đã nấu ăn) \nAschenputtel wusch: Động từ 'waschen' (rửa) là một động từ bất quy tắc (động từ mạnh). Thì quá khứ của nó là 'wusch.' Trong các động từ mạnh, nguyên âm gốc thường thay đổi khi chuyển sang quá khứ. \nHiện tại: Aschenputtel wäscht (Aschenputtel rửa) \nQuá khứ đơn: Aschenputtel wusch (Aschenputtel đã rửa) \nAschenputtel putzte: Động từ 'putzen' (dọn dẹp) cũng là một động từ quy tắc, và thì quá khứ của nó là 'putzte.' Tương tự như 'kochen,' bạn thêm '-te' vào gốc động từ 'putz-.' \nHiện tại: Aschenputtel putzt (Aschenputtel dọn dẹp) \nQuá khứ đơn: Aschenputtel putzte (Aschenputtel đã dọn dẹp)"
             },
             {
@@ -3683,19 +3356,13 @@
             {
               "id": 22,
               "question": "Er ___ (verlieben*) sich in ___(gehen) Aschenputtel. ",
-              "answer": [
-                "verliebte",
-                "lief"
-              ],
+              "answer": ["verliebte", "lief"],
               "answerDetail": "1. Verlieben (yêu): \n'Verlieben' là động từ phản thân, nên nó cần có đại từ phản thân đi kèm. Trong trường hợp này, 'Er' (anh ấy) là chủ ngữ, và đại từ phản thân tương ứng với ngôi thứ ba số ít là 'sich'. \nỞ thì quá khứ đơn (Präteritum), động từ 'verlieben' với ngôi thứ ba số ít (er/sie/es) được chia thành 'verliebte.' \nVì vậy, phần 'Er ___ sich' sẽ trở thành 'Er verliebte sich', nghĩa là 'Anh ấy yêu.' \n2. Gehen (đi): \nĐộng từ 'gehen' là một động từ bất quy tắc. Ở thì quá khứ đơn, động từ này được chia là 'lief' với ngôi thứ ba số ít. \nVì vậy, phần 'in ___ Aschenputtel' sẽ trở thành 'lief in Aschenputtel', nghĩa là 'đi tới Aschenputtel' (Cô bé Lọ Lem)."
             },
             {
               "id": 23,
               "question": "In der Nacht schnell weg. Sie ___ (laufen) Aschenputtel ___ (verlieren) einen Schuh.",
-              "answer": [
-                "lief",
-                "verlor"
-              ],
+              "answer": ["lief", "verlor"],
               "answerDetail": "laufen (lief): \nĐộng từ 'laufen' (chạy) ở đây được chia ở thì quá khứ đơn (Präteritum), dùng để mô tả một hành động đã xảy ra trong quá khứ. Chủ ngữ là 'Aschenputtel' (Cô bé Lọ Lem), đại từ ngôi thứ ba số ít, nên động từ 'laufen' sẽ chia thành 'lief' ở thì quá khứ đơn. \nCâu hoàn chỉnh: 'Sie lief.' (Cô ấy chạy.) \nverlieren (verlor): \nTương tự, động từ 'verlieren' (đánh mất) cũng được chia ở thì quá khứ đơn. Chủ ngữ ở đây vẫn là 'Aschenputtel', và với ngôi thứ ba số ít, động từ 'verlieren' sẽ được chia thành 'verlor'. \nCâu hoàn chỉnh: 'Aschenputtel verlor einen Schuh.' (Cô bé Lọ Lem đánh mất một chiếc giày.)"
             },
             {
@@ -3707,10 +3374,7 @@
             {
               "id": 25,
               "question": "Er ___ (haben) den Schuh und ___ (suchen*) Aschenputtel. ",
-              "answer": [
-                "hatte",
-                "suchte"
-              ],
+              "answer": ["hatte", "suchte"],
               "answerDetail": "Er hatte den Schuh: Ở đây, động từ 'haben' (có) ở ngôi thứ ba số ít 'er' chuyển thành 'hatte' trong thì quá khứ đơn. Thì quá khứ đơn (Präteritum) thường được sử dụng trong văn viết hoặc kể lại một câu chuyện trong quá khứ. Câu này có nghĩa là 'Anh ấy đã có chiếc giày.' \nsuchte Aschenputtel: Động từ 'suchen' (tìm kiếm) ở ngôi thứ ba số ít 'er' chuyển thành 'suchte' trong thì quá khứ đơn. 'suchte' có nghĩa là 'đã tìm kiếm'. "
             },
             {
@@ -3722,10 +3386,7 @@
             {
               "id": 27,
               "question": "Aber der Schuh ihnen nicht. Der Schuh ___ (passen*) Aschenputtel. Der Prinz und Aschenputtel ___ (leben*) glücklich bis zum Ende.",
-              "answer": [
-                "passte",
-                "lebten"
-              ],
+              "answer": ["passte", "lebten"],
               "answerDetail": "passte: Đây là dạng động từ 'passen' (phù hợp, vừa vặn) ở thì quá khứ đơn (Präteritum). Ở câu này, 'der Schuh' là chủ ngữ số ít và động từ cần được chia theo chủ ngữ này. Vì vậy, 'passen' được chia thành 'passte'. Nghĩa của câu là: 'Nhưng chiếc giày không vừa Aschenputtel.' \nlebten: Đây là dạng động từ 'leben' (sống) ở thì quá khứ đơn (Präteritum). 'Der Prinz und Aschenputtel' là chủ ngữ số nhiều, nên động từ 'leben' được chia thành 'lebten'. Nghĩa của câu là: 'Hoàng tử và Aschenputtel sống hạnh phúc đến cuối đời.'"
             }
           ]
@@ -4103,11 +3764,7 @@
             {
               "id": 6,
               "question": "Was kauft die Frau?",
-              "questionImage": [
-                "6_1_phase2_A2",
-                "6_2_phase2_A2",
-                "6_3_phase2_A2"
-              ],
+              "questionImage": ["6_1_phase2_A2", "6_2_phase2_A2", "6_3_phase2_A2"],
               "audioUrl": "part1_ques1_2",
               "options": [
                 {
@@ -4128,11 +3785,7 @@
             {
               "id": 7,
               "question": "Was bestellt der Mann?",
-              "questionImage": [
-                "7_1_phase2_A2",
-                "7_2_phase2_A2",
-                "7_3_phase2_A2"
-              ],
+              "questionImage": ["7_1_phase2_A2", "7_2_phase2_A2", "7_3_phase2_A2"],
               "audioUrl": "part2_ques7_02_A2",
               "options": [
                 {
@@ -4153,11 +3806,7 @@
             {
               "id": 8,
               "question": "Was macht Ewa heute Abend?",
-              "questionImage": [
-                "8_1_phase2_A2",
-                "8_2_phase2_A2",
-                "8_3_phase2_A2"
-              ],
+              "questionImage": ["8_1_phase2_A2", "8_2_phase2_A2", "8_3_phase2_A2"],
               "audioUrl": "part2_ques8_02_A2",
               "options": [
                 {
@@ -4178,11 +3827,7 @@
             {
               "id": 9,
               "question": "Was kauft der Mann ein?",
-              "questionImage": [
-                "9_1_phase2_A2",
-                "9_2_phase2_A2",
-                "9_3_phase2_A2"
-              ],
+              "questionImage": ["9_1_phase2_A2", "9_2_phase2_A2", "9_3_phase2_A2"],
               "audioUrl": "part2_ques9_02_A2",
               "options": [
                 {
@@ -4203,11 +3848,7 @@
             {
               "id": 10,
               "question": "Was ist das Lieblingsfach von Lena?",
-              "questionImage": [
-                "10_1_phase2_A2",
-                "10_2_phase2_A2",
-                "10_3_phase2_A2"
-              ],
+              "questionImage": ["10_1_phase2_A2", "10_2_phase2_A2", "10_3_phase2_A2"],
               "audioUrl": "part2_ques10_02_A2",
               "options": [
                 {
@@ -4478,24 +4119,15 @@
                   "options": [
                     {
                       "id": "A",
-                      "text": [
-                        "liebten",
-                        "heirateten"
-                      ]
+                      "text": ["liebten", "heirateten"]
                     },
                     {
                       "id": "B",
-                      "text": [
-                        "arbeitete",
-                        "heirateten"
-                      ]
+                      "text": ["arbeitete", "heirateten"]
                     },
                     {
                       "id": "C",
-                      "text": [
-                        "verdiente",
-                        "liebten"
-                      ]
+                      "text": ["verdiente", "liebten"]
                     }
                   ],
                   "answer": "A"
@@ -4717,24 +4349,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "nette",
-                    "netter"
-                  ]
+                  "text": ["nette", "netter"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "nette",
-                    "neue"
-                  ]
+                  "text": ["nette", "neue"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "neue",
-                    "neune"
-                  ]
+                  "text": ["neue", "neune"]
                 }
               ],
               "answer": "A"
@@ -4745,24 +4368,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "neue",
-                    "neue"
-                  ]
+                  "text": ["neue", "neue"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "neue",
-                    "netter"
-                  ]
+                  "text": ["neue", "netter"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "bequeme",
-                    "neue"
-                  ]
+                  "text": ["bequeme", "neue"]
                 }
               ],
               "answer": "A"
@@ -5084,24 +4698,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "A"
@@ -5112,59 +4717,41 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "ihr",
-                    "Wir"
-                  ]
+                  "text": ["ihr", "Wir"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 }
               ],
               "answer": "B"
             },
             {
               "id": 19,
-              "question": "Marie, kommst ____ bitte? Nein,_____ habe keine Zeit.",
+              "question": "Marie, kommst _ bitte? Nein,_ habe keine Zeit.",
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "ich"
-                  ]
+                  "text": ["du", "ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "du",
-                    "Er"
-                  ]
+                  "text": ["du", "Er"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "ich",
-                    "ich"
-                  ]
+                  "text": ["ich", "ich"]
                 }
               ],
               "answer": "A"
             },
             {
               "id": 20,
-              "question": "Der Schrank ist teuer. ______ kommt aus Italien.",
+              "question": "Der Schrank ist teuer. _ kommt aus Italien.",
               "options": [
                 {
                   "id": "A",
@@ -5537,24 +5124,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "A"
@@ -5565,24 +5143,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "ihr",
-                    "Wir"
-                  ]
+                  "text": ["ihr", "Wir"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 }
               ],
               "answer": "B"
@@ -5593,24 +5162,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "ich"
-                  ]
+                  "text": ["du", "ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "du",
-                    "Er"
-                  ]
+                  "text": ["du", "Er"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "ich",
-                    "ich"
-                  ]
+                  "text": ["ich", "ich"]
                 }
               ],
               "answer": "A"
@@ -5990,24 +5550,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Sie"
-                  ]
+                  "text": ["du", "Sie"]
                 }
               ],
               "answer": "A"
@@ -6018,24 +5569,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "Sie",
-                    "Ich"
-                  ]
+                  "text": ["Sie", "Ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "ihr",
-                    "Wir"
-                  ]
+                  "text": ["ihr", "Wir"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "du",
-                    "Ich"
-                  ]
+                  "text": ["du", "Ich"]
                 }
               ],
               "answer": "B"
@@ -6046,24 +5588,15 @@
               "options": [
                 {
                   "id": "A",
-                  "text": [
-                    "du",
-                    "ich"
-                  ]
+                  "text": ["du", "ich"]
                 },
                 {
                   "id": "B",
-                  "text": [
-                    "du",
-                    "Er"
-                  ]
+                  "text": ["du", "Er"]
                 },
                 {
                   "id": "C",
-                  "text": [
-                    "ich",
-                    "ich"
-                  ]
+                  "text": ["ich", "ich"]
                 }
               ],
               "answer": "A"
@@ -11188,6 +10721,2231 @@
       "conditionStatus": "not pass",
       "exerciseId": "8",
       "isCompleted": true
+    },
+    {
+      "submissionDate": "2024-10-18T10:23:13.928Z",
+      "score": "33%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "A",
+          "correctAnswer": "A",
+          "isCorrect": true
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "B",
+          "correctAnswer": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "A",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "B",
+          "correctAnswer": "A",
+          "isCorrect": false
+        }
+      ],
+      "exerciseId": "2",
+      "isCompleted": true,
+      "id": "KQK86cl"
+    },
+    {
+      "submissionDate": "2024-10-18T13:26:11.256Z",
+      "score": "100%",
+      "submissionAnswers": [
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        }
+      ],
+      "isCompleted": true,
+      "id": "2Cjk4Ct"
+    },
+    {
+      "submissionDate": "2024-10-18T13:39:50.289Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "SPmJkfl"
+    },
+    {
+      "submissionDate": "2024-10-18T13:39:56.553Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "0v6GO96"
+    },
+    {
+      "submissionDate": "2024-10-18T13:59:31.803Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "s_4cpl8"
+    },
+    {
+      "submissionDate": "2024-10-18T14:05:40.123Z",
+      "score": "100%",
+      "submissionAnswers": [
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        },
+        {
+          "isCorrect": true
+        }
+      ],
+      "isCompleted": true,
+      "id": "Drn0JGo"
+    },
+    {
+      "submissionDate": "2024-10-18T14:06:05.458Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "PE6xRHX"
+    },
+    {
+      "submissionDate": "2024-10-18T14:07:20.909Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "qc-I8VP"
+    },
+    {
+      "submissionDate": "2024-10-18T14:16:48.058Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "NvM2Or8"
+    },
+    {
+      "submissionDate": "2024-10-18T14:23:32.998Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "BRv6R9n"
+    },
+    {
+      "submissionDate": "2024-10-18T14:32:03.118Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "67016658529f7705e1e0b81d",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "67016658529f7705e1e0b81d",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "weEUTnE"
+    },
+    {
+      "submissionDate": "2024-10-18T14:33:45.489Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "questionId": 1,
+          "userAnswer": "die Woche - no answer",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "Montag - no answer",
+          "correctAnswer": "Montag - Thứ hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "Dienstag - no answer",
+          "correctAnswer": "Dienstag - Thứ ba",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "Mittwoch - no answer",
+          "correctAnswer": "Mittwoch - Thứ Tư",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "Donnerstag - no answer",
+          "correctAnswer": "Donnerstag - Thứ năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "Freitag - no answer",
+          "correctAnswer": "Freitag - Thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "Samstag - no answer",
+          "correctAnswer": "Samstag - Thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "Sonntag - no answer",
+          "correctAnswer": "Sonntag - Chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "der Frühling - no answer",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "der Sommer - no answer",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "der Herbst - no answer",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "der Winter - no answer",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "questionId": 13,
+          "userAnswer": "der Tag - no answer",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 14,
+          "userAnswer": "der Morgen - no answer",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 15,
+          "userAnswer": "der Vormittag - no answer",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "questionId": 16,
+          "userAnswer": "der Mittag - no answer",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 17,
+          "userAnswer": "am + Tag - no answer",
+          "correctAnswer": "am + Tag - vào + ngày",
+          "isCorrect": false
+        },
+        {
+          "questionId": 18,
+          "userAnswer": "der Nachmittag - no answer",
+          "correctAnswer": "der Nachmittag - buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 19,
+          "userAnswer": "am Montag - no answer",
+          "correctAnswer": "am Montag - vào thứ Hai",
+          "isCorrect": false
+        },
+        {
+          "questionId": 20,
+          "userAnswer": "der Abend - no answer",
+          "correctAnswer": "der Abend - buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 21,
+          "userAnswer": "das Wochenende - no answer",
+          "correctAnswer": "das Wochenende - cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 22,
+          "userAnswer": "die Nacht - no answer",
+          "correctAnswer": "die Nacht - đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 23,
+          "userAnswer": "am Wochenende - no answer",
+          "correctAnswer": "am Wochenende - vào cuối tuần",
+          "isCorrect": false
+        },
+        {
+          "questionId": 24,
+          "userAnswer": "am Morgen - no answer",
+          "correctAnswer": "am Morgen - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 25,
+          "userAnswer": "der Feiertag - no answer",
+          "correctAnswer": "der Feiertag - kỳ nghỉ",
+          "isCorrect": false
+        },
+        {
+          "questionId": 26,
+          "userAnswer": "am Vormittag - no answer",
+          "correctAnswer": "am Vormittag - vào buổi sáng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 27,
+          "userAnswer": "das Jahr - no answer",
+          "correctAnswer": "das Jahr - năm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 28,
+          "userAnswer": "am Mittag - no answer",
+          "correctAnswer": "am Mittag - vào buổi trưa",
+          "isCorrect": false
+        },
+        {
+          "questionId": 29,
+          "userAnswer": "der Monat - no answer",
+          "correctAnswer": "der Monat - tháng",
+          "isCorrect": false
+        },
+        {
+          "questionId": 30,
+          "userAnswer": "am Nachmittag - no answer",
+          "correctAnswer": "am Nachmittag - vào buổi chiều",
+          "isCorrect": false
+        },
+        {
+          "questionId": 31,
+          "userAnswer": "am Abend - no answer",
+          "correctAnswer": "am Abend - vào buổi tối",
+          "isCorrect": false
+        },
+        {
+          "questionId": 32,
+          "userAnswer": "in der Nacht - no answer",
+          "correctAnswer": "in der Nacht - vào ban đêm",
+          "isCorrect": false
+        },
+        {
+          "questionId": 33,
+          "userAnswer": "der erste August - no answer",
+          "correctAnswer": "der erste August - ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 34,
+          "userAnswer": "am ersten August - no answer",
+          "correctAnswer": "am ersten August - vào ngày đầu tiên của tháng 8",
+          "isCorrect": false
+        },
+        {
+          "questionId": 35,
+          "userAnswer": "die Uhrzeit - no answer",
+          "correctAnswer": "die Uhrzeit - thời gian",
+          "isCorrect": false
+        },
+        {
+          "questionId": 36,
+          "userAnswer": "Wann? - no answer",
+          "correctAnswer": "Wann? - Khi?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 37,
+          "userAnswer": "Wie spät ist es? - no answer",
+          "correctAnswer": "Wie spät ist es? - Bây giờ là mấy giờ?",
+          "isCorrect": false
+        },
+        {
+          "questionId": 38,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 39,
+          "userAnswer": "no answer",
+          "correctAnswer": "C",
+          "isCorrect": false
+        },
+        {
+          "questionId": 40,
+          "userAnswer": "no answer",
+          "correctAnswer": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 41,
+          "userAnswer": "no answer",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 42,
+          "userAnswer": "no answer",
+          "correctAnswer": "B",
+          "isCorrect": false
+        },
+        {
+          "questionId": 1,
+          "userAnswer": "no answer",
+          "correctAnswer": "Januar"
+        },
+        {
+          "questionId": 2,
+          "userAnswer": "no answer",
+          "correctAnswer": "Februar"
+        },
+        {
+          "questionId": 3,
+          "userAnswer": "no answer",
+          "correctAnswer": "März"
+        },
+        {
+          "questionId": 4,
+          "userAnswer": "no answer",
+          "correctAnswer": "April"
+        },
+        {
+          "questionId": 5,
+          "userAnswer": "no answer",
+          "correctAnswer": "Mai"
+        },
+        {
+          "questionId": 6,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juni"
+        },
+        {
+          "questionId": 7,
+          "userAnswer": "no answer",
+          "correctAnswer": "Juli"
+        },
+        {
+          "questionId": 8,
+          "userAnswer": "no answer",
+          "correctAnswer": "August"
+        },
+        {
+          "questionId": 9,
+          "userAnswer": "no answer",
+          "correctAnswer": "September"
+        },
+        {
+          "questionId": 10,
+          "userAnswer": "no answer",
+          "correctAnswer": "Oktober"
+        },
+        {
+          "questionId": 11,
+          "userAnswer": "no answer",
+          "correctAnswer": "November"
+        },
+        {
+          "questionId": 12,
+          "userAnswer": "no answer",
+          "correctAnswer": "Dezember"
+        }
+      ],
+      "exerciseId": "3",
+      "id": "81-IyL9"
+    },
+    {
+      "submissionDate": "2024-10-18T14:36:25.493Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "7BhHuso"
+    },
+    {
+      "submissionDate": "2024-10-18T14:38:58.159Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "oBSHzk9"
+    },
+    {
+      "submissionDate": "2024-10-18T14:42:20.842Z",
+      "score": "0%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "67016658529f7705e1e0b819",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "67016658529f7705e1e0b819",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "ME0vug0"
+    },
+    {
+      "submissionDate": "2024-10-18T14:51:39.533Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "pSULc6E"
+    },
+    {
+      "submissionDate": "2024-10-18T14:52:52.955Z",
+      "score": "7%",
+      "submissionAnswers": [
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "die Woche - tuần",
+          "isCorrect": true
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Montag - thứ hai",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Dienstag - thứ ba",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Mittwoch - thứ tư",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Donnerstag - thứ năm",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Freitag - thứ sáu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Samstag - thứ bảy",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "Sonntag - chủ nhật",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Frühling - mùa xuân",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Sommer - mùa hè",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Herbst - mùa thu",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Winter - mùa đông",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Tag - ngày",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Morgen - buổi sáng(từ 6-10 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Vormittag - buổi sáng(từ 10-12 giờ)",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "die Woche - tuần",
+          "correctAnswer": "der Mittag - giữa trưa",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer",
+          "isCorrect": false
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        },
+        {
+          "userAnswer": "no answer"
+        }
+      ],
+      "id": "MMS8OcG"
     }
   ],
   "finalExamSubmission": [
@@ -12041,10 +13799,22 @@
   "users": [
     {
       "id": "12345",
-      "fullName": "test",
-      "email": "test@gmail.com",
+      "fullName": "Đoàn Chung",
+      "email": "doanchung1006@gmail.com",
       "password": "123456Az!",
-      "role": "learner",
+      "role": "accountant",
+      "gender": "male",
+      "accountType": "freemium",
+      "phone": "0865921245",
+      "dob": "2024-10-02",
+      "avatar": ""
+    },
+    {
+      "id": "123456",
+      "fullName": "Đoàn Chung",
+      "email": "doanchung10062003@gmail.com",
+      "password": "123456Az!",
+      "role": "admin",
       "gender": "male",
       "accountType": "freemium",
       "phone": "0865921245",
@@ -12285,6 +14055,18 @@
       "discount": 0.15,
       "totalPrice": 499000,
       "processingContent": "KH NGUYEN VIET HOANG CHUYEN TIEN GOI PREMIUM 1 NĂM"
+    },
+    {
+      "id": "2d13",
+      "startDate": "16/10/2024",
+      "endDate": "16/04/2025",
+      "discount": 0.15
+    },
+    {
+      "id": "067c",
+      "startDate": "16/10/2024",
+      "endDate": "16/04/2025",
+      "discount": 0.15
     }
   ]
 }

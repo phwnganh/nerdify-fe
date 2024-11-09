@@ -24,18 +24,15 @@ export default function LearnerHeader() {
   const handleInputChange = (e) => setInputValue(e.target.value);
 
   const handleLogout = async () => {
-    // logout().then(() => {
-    //   signout();
-    //   window.location.reload();
-    // });
-    // await signout();
-    clearStorage();
-    window.location.reload();
+    logout().then(() => {
+      signout();
+      window.location.reload();
+    });
   };
 
   const userMenu = (
     <Menu>
-      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.EDIT_PROFILE)}>
+      <Menu.Item key="profile" onClick={() => navigate(CLIENT_URI.RESULTS_PRACTICE)}>
         Xem Trang Cá Nhân
       </Menu.Item>
       <Menu.Item key="subscription" onClick={() => navigate(CLIENT_URI.MY_SUBSCRIPTION)}>
@@ -134,15 +131,15 @@ export default function LearnerHeader() {
 
           {/* Search and User Actions */}
           <div style={buttonGroupStyle}>
-            <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
+            {/* <div className="search-container" onClick={handleSearchClick} style={searchContainerStyle}>
               <SearchOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
               {searchVisible && <InputCustom placeholder="Tìm kiếm" onChange={handleInputChange} value={inputValue} style={{ width: "180px", marginLeft: "10px" }} />}
-            </div>
+            </div> */}
 
-            <BellOutlined style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }} />
+            {/* <BellOutlined style={{ fontSize: "25px", cursor: "pointer", marginRight: "20px" }} /> */}
 
             <Dropdown overlay={userMenu} trigger={["click"]}>
-              <UserOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
+              <UserOutlined style={{ fontSize: "25px", cursor: "pointer" }}/>
             </Dropdown>
           </div>
         </div>

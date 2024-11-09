@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // 2. Third-party libraries
 import { Col, Row } from "antd";
-import { BarChartOutlined, UserAddOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons"; // Cleaned up duplicate imports
+import { BarChartOutlined, UserAddOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
 
 // 3. Custom components
@@ -27,17 +27,18 @@ import grammar from "../../../assets/exercisesSkill/grammar.png";
 import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 
 // Constants
-import { CLIENT_URI } from "../../../constants/uri.constants"; // URI constants for navigation
-import { BASE_SERVER, EXERCISE_TYPE } from "../../../constants/common.constant"; // Exercise types for conditional rendering
-import { getLevelDetail } from "../../../services/LearnerService";
+import { CLIENT_URI } from "../../../constants/uri.constants";
+import { ACCOUNT_TYPE, EXERCISE_TYPE } from "../../../constants/common.constant";
+import { getFinalExamDetailByCourseId, getLevelDetail } from "../../../services/LearnerService";
 import ModalCustom from "../../../components/Modal";
-
+import { useAuth } from "../../../hooks";
 
 export function StartQuizModal({ exerciseId, onClose }) {
   const navigate = useNavigate();
+
   const handleStartQuiz = () => {
-    onClose(); // Close the modal
-    navigate(`${CLIENT_URI.ONE_EXERCISE}/${EXERCISE_TYPE.QUIZ}/${exerciseId}`); // Redirect to the quiz
+    onClose();
+    navigate(`${CLIENT_URI.ONE_EXERCISE}/${EXERCISE_TYPE.QUIZ}/${exerciseId}`);
   };
 
   return (
@@ -55,118 +56,112 @@ export function StartQuizModal({ exerciseId, onClose }) {
     </ModalCustom>
   );
 }
+
 export default function ViewLevelDetail() {
-  // State for storing phases, active phase, course, etc.
-  const [phases, setPhases] = useState([]);
+  const [course, setCourse] = useState(null); // Single state for course and phases
   const [activePhase, setActivePhase] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedExerciseId, setSelectedExerciseId] = useState(null);
+  const [finalExamDetail, setFinalExamDetail] = useState(null);
   const { courseId } = useParams();
-  const [isModalVisible, setIsModalVisible] = useState(false); // State to handle modal visibility
+  const { user } = useAuth();
+  console.log("check user type: ", user?.accountType?.type);
+  const navigate = useNavigate();
 
-  const [selectedExerciseId, setSelectedExerciseId] = useState(null); // Store the selected exercise id
+  const imgLevelArr = { a1: a1, a2: a2, b1: b1 };
 
-  // console.log("courseId", courseId);
-  
-  const [course, setCourse] = useState(null);
-  const navigate = useNavigate(); // Hook to programmatically navigate
-
-  const imgLevelArr = { a1: a1, a2: a2, b1: b1 }; // Mapping images for course levels
-
-  // Fetch course details based on courseId
   useEffect(() => {
-    fetch(`${BASE_SERVER}/levels/${courseId}`)
-      .then((response) => response.json())
-      .then((course) => {
-        setCourse(course);
-      })
-      .catch((err) => console.error(err));
-    // const retrieveCourseLevelDetail = async () => {
-    //   try {
-    //     const response = await getLevelDetail(courseId);
-    //     setCourse(response?.data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // retrieveCourseLevelDetail();
-  }, [courseId]);
-
-  // Fetch phases and their respective exercises
-  useEffect(() => {
-    fetch(`${BASE_SERVER}/phases?levelId=${courseId}`)
-      .then((response) => response.json())
-      .then((phases) => {
-        // Fetch exercises for each phase
-        const fetchExercises = phases.map((phase) =>
-          fetch(`${BASE_SERVER}/exercises?phaseId=${phase.id}`)
-            .then((res) => res.json())
-            .then((exercises) => ({ ...phase, exercises })),
-        );
-
-        // Wait for all exercises to be fetched before setting the state
-        Promise.all(fetchExercises).then((phaseWithExercises) => {
-          setPhases(phaseWithExercises);
-          if (phaseWithExercises.length > 0) {
-            setActivePhase(phaseWithExercises[0].name); // Set default active phase
-          }
+    if (courseId) {
+      getLevelDetail(courseId)
+        .then((resp) => {
+          const phaseWithLock = resp.data.phases.map((phase, index, phases) => {
+            const isLocked =
+              user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !phases.slice(0, index).every((prevPhase) => prevPhase.exercises.every((exercise) => exercise.isCompleted));
+            return { ...phase, isLocked };
+          });
+          setCourse({ ...resp.data, phases: phaseWithLock });
+          if (phaseWithLock.length > 0) setActivePhase(phaseWithLock[0].title);
+        })
+        .catch((error) => {
+          console.error("Error fetching course details", error);
         });
-      })
-      .catch((err) => console.error(err)); // Handle error for phases fetch
-  }, [courseId]);
+    }
+  }, [courseId, user?.accountType?.type]);
 
-  // Handle when a user clicks on a phase
-  const handlePhaseClick = (phase) => {
-    setActivePhase(phase); // Set the clicked phase as the active phase
+  useEffect(() => {
+    if (activePhase === "Final Exam" && courseId) {
+      getFinalExamDetailByCourseId(courseId)
+        .then((res) => {
+          console.log("final exam detail: ", res.data[0]);
+          setFinalExamDetail(res.data[0]);
+        })
+        .catch((err) => {
+          console.error("Error fetching final exam details", err);
+        });
+    }
+  }, [activePhase, courseId]);
+
+  const handlePhaseClick = (phaseTitle) => {
+    if (user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM) {
+      // Find the current index of the clicked phase
+      const currentIndex = course.phases.findIndex((phase) => phase.title === phaseTitle);
+      // Find the index of the last completed phase for Freemium users
+      const lastCompletedPhaseIndex = course.phases.findIndex((phase) => phase?.exercises.every((exercise) => exercise?.isCompleted));
+
+      // Check if the clicked phase is allowed
+      if (currentIndex > lastCompletedPhaseIndex + 1) return; // Do not allow clicking on locked phases
+    }
+    setActivePhase(phaseTitle);
   };
 
-  // Handle when a user clicks on an exercise
   const handleExerciseClick = (exerciseType, exerciseId) => {
-    if(exerciseType === EXERCISE_TYPE.QUIZ){
-      setSelectedExerciseId(exerciseId); // Set the quiz exercise ID
-      setIsModalVisible(true); // Show the modal
+    if (exerciseType === EXERCISE_TYPE.QUIZ) {
+      setSelectedExerciseId(exerciseId);
+      setIsModalVisible(true);
+    } else {
+      navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`);
     }
-    navigate(`${CLIENT_URI.ONE_EXERCISE}/${exerciseType}/${exerciseId}`); // Navigate to the exercise page
-    
   };
 
   const handleCloseModal = () => {
-    setIsModalVisible(false); // Close the modal
+    setIsModalVisible(false);
   };
-  // Handle when a user clicks on the final exam
+
   const handleFinalExamClick = (examId) => {
-    navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`); // Navigate to the final exam page
+    navigate(`${CLIENT_URI.FINAL_EXAM}/${examId}`);
   };
 
-  // Render the content for the selected phase
   const renderContent = () => {
-    const selectedPhase = phases.find((phase) => phase.name === activePhase);
+    const selectedPhase = course?.phases.find((phase) => phase.title === activePhase);
 
-    // Check if the selected phase is the Final Exam
-    if (selectedPhase?.name === "Final Exam") {
-      const examId = selectedPhase?.examId;
-      return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <CardCustom
-            bordered={true}
-            style={{
-              marginTop: 20,
-              marginBottom: 20,
-              textAlign: "center",
-              backgroundColor: "#EAA68D",
-            }}
-          >
-            <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
-            {/* Fixed: Pass the function, not invoke it */}
-            <ButtonToDoExam onClick={() => handleFinalExamClick(examId)}>Vào làm bài</ButtonToDoExam>
-          </CardCustom>
-        </div>
-      );
-    } else if (selectedPhase) {
-      // Render exercises for the selected phase
+    if (!selectedPhase) return null;
+    if (selectedPhase.title === "Final Exam") {
+      const examId = finalExamDetail?.exercises[0]?._id;
+      console.log("examId: ", examId);
+      return selectedPhase.exercises.map((exercise, index) => {
+        const isLocked = user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 1 && !exercise?.isCompleted;
+        return (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <CardCustom
+              bordered={true}
+              style={{
+                marginTop: 20,
+                marginBottom: 20,
+                textAlign: "center",
+                backgroundColor: "#EAA68D",
+              }}
+            >
+              <ParagraphCustom style={{ color: "#FFFFFF" }}>Bạn cần hoàn thành final exam để được nhận cúp</ParagraphCustom>
+              <ButtonToDoExam onClick={() => handleFinalExamClick(selectedPhase?._id)}>Vào làm bài</ButtonToDoExam>
+            </CardCustom>
+          </div>
+        );
+      });
+    } else {
       return selectedPhase.exercises.map((exercise, index) => (
-        <CardCustom key={index} bordered={true} style={{ marginBottom: 20, cursor: "pointer", width: "800px" }} onClick={() => handleExerciseClick(exercise.exerciseType, exercise.id)}>
+        <CardCustom key={index} bordered={true} style={{ marginBottom: 20, cursor: "pointer", width: "800px" }} onClick={() => handleExerciseClick(exercise.exerciseType, exercise._id)}>
           <Row gutter={[16, 16]}>
             <Col md={12}>
-              {/* Conditional image based on exercise type */}
               <img
                 src={
                   exercise.exerciseType === EXERCISE_TYPE.LISTENING
@@ -192,13 +187,13 @@ export default function ViewLevelDetail() {
                     <div style={{ textAlign: "center" }}>
                       <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                       <CheckOutlined style={{ color: "green" }} /> &nbsp;
-                      <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                      <TextCustom style={{ color: "green" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                     </div>
                   ) : (
                     <div style={{ textAlign: "center" }}>
                       <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                       <CloseOutlined style={{ color: "red" }} /> &nbsp;
-                      <TextCustom style={{ color: "red" }}>{exercise?.score}</TextCustom>
+                      <TextCustom style={{ color: "red" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                     </div>
                   )
                 ) : (
@@ -206,12 +201,11 @@ export default function ViewLevelDetail() {
                     {exercise?.title}
                   </TitleCustom>
                 )
-              ) : // Default case for non-quiz exercises (passed case only)
-              exercise?.isCompleted ? (
+              ) : exercise?.isCompleted ? (
                 <div style={{ textAlign: "center" }}>
                   <TitleCustom level={4}>{exercise?.title}</TitleCustom>
                   <CheckOutlined style={{ color: "green" }} /> &nbsp;
-                  <TextCustom style={{ color: "green" }}>{exercise?.score}</TextCustom>
+                  <TextCustom style={{ color: "green" }}>{Math.round(exercise?.score).toFixed(2)}%</TextCustom>
                 </div>
               ) : (
                 <TitleCustom level={4} style={{ textAlign: "center" }}>
@@ -227,34 +221,25 @@ export default function ViewLevelDetail() {
 
   return (
     <div style={{ padding: "50px 10px 20px 10px" }}>
-      {isModalVisible && (
-        <StartQuizModal exerciseId={selectedExerciseId} onClose={() => setIsModalVisible(false)} />
-      )}
+      {isModalVisible && <StartQuizModal exerciseId={selectedExerciseId} onClose={handleCloseModal} />}
       <div style={{ marginBottom: 16 }}>
         <BreadCrumbHome />
       </div>
 
-      {/* Main content area */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ maxWidth: 1000, margin: "auto" }}>
           <CardCustom bordered={false}>
             <Row gutter={[16, 16]}>
               <Col md={12}>
-                <img src={imgLevelArr[course?.levelImage]} alt="" width={"50%"} height="auto" />
+                <img src={course?.levelImage} alt="" width={"50%"} height="auto" />
               </Col>
               <Col md={12}>
                 <TitleCustom level={2}>{course?.title}</TitleCustom>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: 16,
-                  }}
-                >
+                <div style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
                   <UserAddOutlined style={{ marginRight: 8, color: "#9a9a9a" }} />
                   <TextCustom>{course?.learners} người học</TextCustom>
                   <BarChartOutlined style={{ marginLeft: 70, marginRight: 8, color: "#9a9a9a" }} />
-                  <TextCustom>{course?.phases?.length} phase</TextCustom>
+                  <TextCustom>{course?.phases?.length} phases</TextCustom>
                 </div>
                 <ParagraphCustom>{course?.description}</ParagraphCustom>
               </Col>
@@ -262,26 +247,44 @@ export default function ViewLevelDetail() {
           </CardCustom>
         </div>
 
-        {/* Phase buttons */}
         <div style={{ width: "100%" }}>
-          <ScrollablePhaseDiv>
+          {/* <ScrollablePhaseDiv>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              {phases.map((phase, index) => (
+              {course?.phases?.map((phase, index) => (
                 <ButtonPhase
                   key={index}
                   style={{
-                    backgroundColor: activePhase === phase.name ? "#ff855d" : "#ffa751",
+                    backgroundColor: activePhase === phase.title ? "#FFA26B" : "#F0F0F0",
+                    color: activePhase === phase.title ? "#FFFFFF" : "#000000",
                   }}
-                  onClick={() => handlePhaseClick(phase.name)}
+                  onClick={() => handlePhaseClick(phase.title)}
                 >
-                  {phase.name}
+                  {phase.title}
                 </ButtonPhase>
               ))}
             </div>
+          </ScrollablePhaseDiv> */}
+          <ScrollablePhaseDiv>
+            {course?.phases?.map((phase, index) => {
+              const isPhaseLocked =
+                user?.accountType?.type === ACCOUNT_TYPE.FREEMIUM && index > 0 && !course.phases.slice(0, index).every((prevPhase) => prevPhase.exercises.every((exercise) => exercise?.isCompleted));
+              return (
+                <ButtonPhase
+                  key={index}
+                  style={{
+                    backgroundColor: activePhase === phase.title ? "#ff855d" : "#ffa751",
+                    cursor: isPhaseLocked ? "not-allowed" : "pointer",
+                    opacity: isPhaseLocked ? 0.5 : 1,
+                  }}
+                  onClick={() => !isPhaseLocked && handlePhaseClick(phase.title)}
+                >
+                  {phase.title}
+                </ButtonPhase>
+              );
+            })}
           </ScrollablePhaseDiv>
         </div>
 
-        {/* Render content for the active phase */}
         <div>{activePhase && <div style={{ marginTop: "16px" }}>{renderContent()}</div>}</div>
       </div>
     </div>
