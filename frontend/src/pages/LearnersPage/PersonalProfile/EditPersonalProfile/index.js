@@ -40,7 +40,6 @@ export default function EditPersonalProfile() {
             dateOfBirth: dob,
             phone: res?.data[0]?.phone,
             email: res?.data[0]?.email,
-            role: res?.data[0]?.role,
             address: res?.data[0]?.address,
           };
           form.setFieldsValue(values);
@@ -65,7 +64,6 @@ export default function EditPersonalProfile() {
       formData.append("dateOfBirth", values.dateOfBirth ? values.dateOfBirth.format("YYYY-MM-DD") : null);
       formData.append("phone", values.phone);
       formData.append("address", values.address);
-      formData.append("role", values.role);
       if (avatarFile) {
         formData.append("avatar", avatarFile);
       }
@@ -78,10 +76,10 @@ export default function EditPersonalProfile() {
         description: "Cập nhật thông tin cá nhân thành công",
       });
       if (res.data?.avatar) {
-        setAvatarPhoto(res.data.avatar);
+        setAvatarPhoto(res.data.avatarUrl);
       }
       setInitialValues(values);
-      console.log(res.data.avatar);
+      console.log(res.data.avatarUrl);
     } catch (error) {
       console.error("Error updating profile:", error);
       const errorMsg = error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại.";
@@ -145,7 +143,6 @@ export default function EditPersonalProfile() {
                   <Radio.Group>
                     <Radio value="male">Nam</Radio>
                     <Radio value="female">Nữ</Radio>
-                    <Radio value="other">Khác</Radio>
                   </Radio.Group>
                 </Form.Item>
               </Col>
@@ -172,12 +169,12 @@ export default function EditPersonalProfile() {
                   <InputCustom placeholder="Địa chỉ" />
                 </Form.Item>
               </Col>
-              <Col span={12}>
+              {/* <Col span={12}>
                 <Form.Item label="Vai trò" name="role">
                   <InputCustom placeholder="Vai trò" disabled />
                 </Form.Item>
-              </Col>
-              <Col span={24}>
+              </Col> */}
+              <Col span={12}>
                 <Form.Item label="Email hiện tại" name="email">
                   <InputCustom placeholder="Email hiện tại" disabled />
                 </Form.Item>
