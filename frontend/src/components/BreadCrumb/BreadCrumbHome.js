@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BreadCrumbCustom, BreadCrumbItem } from ".";
+import { BreadCrumbCustom, BreadCrumbItem } from "./BreadCumbCustom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import storage, { getStorage, setStorage } from "../../library/storage";
 import { CLIENT_URI } from "../../constants";

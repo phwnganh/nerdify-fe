@@ -19,12 +19,12 @@ import {
 } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
-import ButtonCustom from "../../../../../components/Button/ButtonCustom";
-import { TextCustom, TitleCustom } from "../../../../../components/Typography/TypographyCustom";
-import { Container } from "./styled";
+import ButtonCustom from "../../../../../../components/Button";
+import { TextCustom, TitleCustom } from "../../../../../../components/Typography";
+import { Container } from "./FlashcardHistoryDetail/styled";
 import BreadCrumbHome from "../../../../../components/BreadCrumb/BreadCrumbHome";
-import ModalCustom from "../../../../../components/Modal/ModalCustom";
-import InputCustom from "../../../../../components/Input/InputCustom";
+import ModalCustom from "../../../../../../components/Modal";
+import InputCustom from "../../../../../../components/Input";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../../constants";
 import { Option } from "antd/es/mentions";
@@ -32,7 +32,7 @@ import { addFlashcardToFolder, getFlashcardDetail, getMyFolder, updateFlashcardS
 import { useAuth } from "../../../../../hooks";
 import moment from "moment";
 
-export default function ViewFlashcardInFolderDetail() {
+export default function FlashcardHistoryDetail() {
   const navigate = useNavigate();
   const { flashcardId } = useParams();
   const { user } = useAuth();

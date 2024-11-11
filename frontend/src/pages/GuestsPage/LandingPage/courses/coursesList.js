@@ -1,5 +1,5 @@
 import { List } from "antd";
-import { Course } from "./course";
+import { Course } from "./CourseCustom";
 import { useEffect, useState } from "react";
 import { getCourseLevelList, getLevelDetail } from "../../../../services/LearnerService";
 import { BASE_SERVER } from "../../../../constants";
