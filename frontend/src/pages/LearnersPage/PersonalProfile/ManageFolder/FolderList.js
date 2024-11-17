@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
 
 import { Alert, Col, Image, Modal, notification, Row, Space, Pagination } from "antd";
-import CardCustom from "../../../../components/Card";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import ButtonCustom from "../../../../components/Button";
+import CardCustom from "../../../../components/Card/CardCustom";
+import { TextCustom, TitleCustom } from "../../../../components/Typography/TypographyCustom";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
 import { getMyFolderDetail, removeFolder } from "../../../../services/LearnerService";
 
 export default function Folder({ folders: initialFolders }) {

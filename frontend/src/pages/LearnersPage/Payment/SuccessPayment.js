@@ -1,6 +1,6 @@
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import CardCustom from "../../../../components/Card";
-import ButtonCustom from '../../../../components/Button'
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
+import CardCustom from "../../../components/Card/CardCustom";
+import ButtonCustom from '../../../components/Button/ButtonCustom'
 import { Col, Row } from "antd";
 import { userGetTransactionDetail } from "../../../services/LearnerService";
 import { useNavigate, useParams } from "react-router-dom";

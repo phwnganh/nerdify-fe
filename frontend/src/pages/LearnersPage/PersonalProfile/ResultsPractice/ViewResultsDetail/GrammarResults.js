@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import ButtonCustom from "../../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
+import ButtonCustom from "../../../../../components/Button/ButtonCustom";
+import { TextCustom, TitleCustom } from "../../../../../components/Typography/TypographyCustom";
 import BreadCrumbHome from "../../../../../components/BreadCrumb/BreadCrumbHome";
 import { PART_TYPE } from "../../../../../constants";
-import InputCustom from "../../../../components/Input";
+import InputCustom from "../../../../../components/Input/InputCustom";
 import { useNavigate } from "react-router-dom";
 
 export default function GrammarResults({ exerciseResults }) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider } from "antd";
-import LearnerHeader from "../components/Header/LearnerHeader";
-import Footer from "../components/Footer";
+import LearnerHeader from "../components/Header/LearnerHeader/LearnerHeader";
+import Footer from "../components/Footer/Footer";
 
 // LearnerLayout Component
 export const LearnerLayout = ({ children }) => {

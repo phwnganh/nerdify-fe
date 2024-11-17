@@ -1,8 +1,8 @@
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import InputCustom from "../../../../components/Input";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
+import InputCustom from "../../../components/Input/InputCustom";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
 import React, { useCallback, useState, useMemo } from "react";
-import ButtonCustom from "../../../../components/Button";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { PART_TYPE } from "../../../constants";
 import { submitExercise } from "../../../services/LearnerService";
 

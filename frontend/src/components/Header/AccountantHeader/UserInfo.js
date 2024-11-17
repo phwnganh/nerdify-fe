@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "../../../hooks";
-import SpinCustom from "../../Spin";
+import SpinCustom from "../../Spinning/SpinningCustom";
 
 const UserInfo = () => {
   const { isInitialized, isAuthenticated, user } = useAuth();

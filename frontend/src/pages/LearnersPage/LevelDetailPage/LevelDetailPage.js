@@ -7,9 +7,9 @@ import { BarChartOutlined, UserAddOutlined, CheckOutlined, CloseOutlined } from 
 import { useNavigate, useParams } from "react-router-dom";
 
 // 3. Custom components
-import CardCustom from "../../../components/Card";
-import { TitleCustom, TextCustom, ParagraphCustom } from "../../../components/Typography";
-import ButtonCustom from "../../../components/Button";
+import CardCustom from "../../../components/Card/CardCustom";
+import { TitleCustom, TextCustom, ParagraphCustom } from "../../../components/Typography/TypographyCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
 
 // 4. Styled components
@@ -30,7 +30,7 @@ import quiz from "../../../assets/exercisesSkill/checkpointQuiz.jpg";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import { ACCOUNT_TYPE, EXERCISE_TYPE } from "../../../constants/common.constant";
 import { getFinalExamDetailByCourseId, getLevelDetail } from "../../../services/LearnerService";
-import ModalCustom from "../../../components/Modal";
+import ModalCustom from "../../../components/Modal/ModalCustom";
 import { useAuth } from "../../../hooks";
 
 export function StartQuizModal({ exerciseId, onClose }) {

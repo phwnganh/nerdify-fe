@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ButtonCustom from "../../../components/Button";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import ModalCustom from "../../../components/Modal/ModalCustom";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants";

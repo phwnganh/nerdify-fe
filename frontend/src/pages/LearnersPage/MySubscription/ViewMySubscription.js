@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { TextCustom, TitleCustom } from "../../../components/Typography";
-import ButtonCustom from "../../../components/Button";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { useNavigate } from "react-router-dom";
 import { ACCOUNT_TYPE, BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { useAuth } from "../../../hooks";

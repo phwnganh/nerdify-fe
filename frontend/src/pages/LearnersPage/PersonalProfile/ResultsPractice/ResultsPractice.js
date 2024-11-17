@@ -2,15 +2,12 @@ import { useState, useEffect } from "react";
 import { Card, Tag, Button, Alert, Pagination } from "antd";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import { TitleCustom } from "../../../../components/Typography";
-import CardCustom from "../../../../components/Card";
-import ButtonCustom from "../../../../components/Button";
+import Sidebar from "../../../../components/Sidebar/LearnerSideBar/SideBarCustom";
+import { TitleCustom } from "../../../../components/Typography/TypographyCustom";
+import CardCustom from "../../../../components/Card/CardCustom";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
 import { getAllSubmissions, getUserTrophy } from "../../../../services/LearnerService";
 import { CLIENT_URI } from "../../../../constants";
-import a1_trophy from "../../../../assets/trophy/a1_trophy.png";
-import a2_trophy from "../../../../assets/trophy/a1_trophy.png";
-import b1_trophy from "../../../../assets/trophy/a1_trophy.png";
 
 export default function ViewResultsPractice() {
   const [practiceResults, setPracticeResults] = useState([]);

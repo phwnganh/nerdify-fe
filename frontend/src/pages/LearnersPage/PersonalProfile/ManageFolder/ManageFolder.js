@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import ButtonCustom from "../../../../components/Button";
-import CardCustom from "../../../../components/Card";
-import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import FlashcardList from "../../FlashCard/FlashCardList";
-import { BASE_SERVER, CLIENT_URI } from "../../../../constants";
-import MyFlashCard from "../ManageFlashcard/MyFlashCard";
-import Folder from "../../FlashCard/Folder";
-import { TitleCustom } from "../../../../components/Typography";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
+import CardCustom from "../../../../components/Card/CardCustom";
+import Sidebar from "../../../../components/Sidebar/LearnerSideBar/SideBarCustom";
+import Folder from "../../PersonalProfile/ManageFolder/FolderList";
+import { TitleCustom } from "../../../../components/Typography/TypographyCustom";
 import { useEffect, useState } from "react";
-import ModalCustom from "../../../../components/Modal";
+import ModalCustom from "../../../../components/Modal/ModalCustom";
 import { Button, message, notification } from "antd";
-import InputCustom from "../../../../components/Input";
+import InputCustom from "../../../../components/Input/InputCustom";
 import { createFolder, getMyFolder } from "../../../../services/LearnerService";
 
 export default function ManageFolder() {

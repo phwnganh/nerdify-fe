@@ -19,12 +19,11 @@ import {
 } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../../../constants/uri.constants";
 import { useNavigate, useParams } from "react-router-dom";
-import ButtonCustom from "../../../../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../../../../components/Typography";
+import ButtonCustom from "../../../../../../components/Button/ButtonCustom";
+import { TextCustom, TitleCustom } from "../../../../../../components/Typography/TypographyCustom";
 import { Container } from "./styled";
-import BreadCrumbHome from "../../../../../../components/BreadCrumb/BreadCrumbHome";
-import ModalCustom from "../../../../../../components/Modal";
-import InputCustom from "../../../../../../components/Input";
+import ModalCustom from "../../../../../../components/Modal/ModalCustom";
+import InputCustom from "../../../../../../components/Input/InputCustom";
 import ReactCardFlip from "react-card-flip";
 import { BASE_SERVER } from "../../../../../../constants";
 import { Option } from "antd/es/mentions";

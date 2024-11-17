@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../components/Header";
-import Footer from "../components/Footer";
+import Navbar from "../components/Header/GuestHeader/GuestHeader";
+import Footer from "../components/Footer/Footer";
 import { Divider } from "antd";
 
 export const AdminContentLayout = ({ children }) => {

@@ -1,10 +1,10 @@
 import { Alert, Col, Dropdown, Menu, Row, Select, Space } from "antd";
-import InputCustom from "../../../../components/Input";
+import InputCustom from "../../../../components/Input/InputCustom";
 import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
-import { TextCustom } from "../../../../components/Typography";
+import { TextCustom } from "../../../../components/Typography/TypographyCustom";
 import { Option } from "antd/es/mentions";
-import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import ButtonCustom from "../../../../components/Button";
+import Sidebar from "../../../../components/Sidebar/LearnerSideBar/SideBarCustom";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
 import TableCustom from "../../../../components/Table/TableCustom";
 import { useEffect, useState } from "react";
 import { historyTransaction } from "../../../../services/LearnerService";

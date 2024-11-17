@@ -1,17 +1,13 @@
-import CardCustom from "../../../../components/Card";
-import ButtonCustom from "../../../../components/Button";
+import CardCustom from "../../../components/Card/CardCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants";
 import { ReadOutlined } from "@ant-design/icons";
-import a1 from "../../../../assets/levelImage/a1.png";
-import a2 from "../../../../assets/levelImage/a2.png";
-import b1 from "../../../../assets/levelImage/b1.png";
 import { getEnrollLearnerByCourseId } from "../../../services/LearnerService";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../hooks";
 
 export default function CourseList({ course }) {
-  const levelImgArr = { a1: a1, a2: a2, b1: b1 };
   const levelImage = course.levelImage;
   const [isEnrolled, setIsEnrolled] = useState(false);
   const { user } = useAuth();

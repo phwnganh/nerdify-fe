@@ -1,8 +1,8 @@
 import { Alert, Carousel, Col, Progress, Row, Pagination } from "antd";
-import { TextCustom, TitleCustom } from "../../../components/Typography";
-import CardCustom from "../../../components/Card";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
+import CardCustom from "../../../components/Card/CardCustom";
 import { useEffect, useState } from "react";
-import ButtonCustom from "../../../components/Button";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { BASE_SERVER, CLIENT_URI } from "../../../constants";
 import { learningProgress } from "../../../services/LearnerService";
 import { useNavigate } from "react-router-dom";

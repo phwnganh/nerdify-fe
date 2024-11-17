@@ -1,12 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { TitleCustom } from "../../../../components/Typography";
-import a1_trophy from "../../../../assets/trophy/a1_trophy.png";
-import a2_trophy from "../../../../assets/trophy/a2_trophy.png";
-import b1_trophy from "../../../../assets/trophy/b1_trophy.png";
+import { TitleCustom } from "../../../components/Typography/TypographyCustom";
 import ReactConfetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { Col, Row } from "antd";
-import ButtonCustom from "../../../../components/Button";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { useEffect, useState } from "react";
 import { getTrophyByPhaseId } from "../../../services/LearnerService";
 export default function TakeATrophy() {
@@ -14,11 +11,6 @@ export default function TakeATrophy() {
   const { examId, title } = location.state || {};
   const [levelTrophy, setLevelTrophy] = useState(null);
   // console.log(trophy);
-  const trophy = {
-    a1_trophy,
-    a2_trophy,
-    b1_trophy,
-  };
 
   useEffect(() => {
     if (examId) {

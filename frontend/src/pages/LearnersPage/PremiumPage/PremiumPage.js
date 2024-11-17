@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Layout, Typography, Card, Radio, List, notification } from "antd";
-import ButtonCustom from "../../../components/Button";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { AudioOutlined, BookOutlined, EditOutlined, ReadOutlined } from "@ant-design/icons";
-import CardCustom from "../../../components/Card";
+import CardCustom from "../../../components/Card/CardCustom";
 import { useNavigate } from "react-router-dom";
 import { BASE_SERVER, CLIENT_URI } from "../../../constants";
-import { TextCustom, TitleCustom } from "../../../components/Typography";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
 import moment from "moment";
 import { createPayment, getPackageDetail, getPackageList } from "../../../services/LearnerService";
 

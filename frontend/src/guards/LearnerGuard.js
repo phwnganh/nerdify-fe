@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { CLIENT_URI, ROLES } from "../constants";
-import SpinCustom from "../components/Spin";
+import SpinCustom from "../components/Spinning/SpinningCustom";
 
 export const LearnerGuard = ({ children }) => {
   const { isInitialized, isAuthenticated, user } = useAuth();

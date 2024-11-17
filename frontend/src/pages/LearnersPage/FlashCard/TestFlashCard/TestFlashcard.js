@@ -1,9 +1,9 @@
 import { Card, Col, Progress, Row } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import ButtonCustom from "../../../../components/Button";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
 import { CLIENT_URI } from "../../../../constants/uri.constants";
-import CardCustom from "../../../../components/Card";
+import CardCustom from "../../../../components/Card/CardCustom";
 import { BASE_SERVER } from "../../../../constants";
 import { getFlashcardDetail } from "../../../../services/LearnerService";
 

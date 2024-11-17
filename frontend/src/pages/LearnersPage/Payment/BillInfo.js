@@ -1,14 +1,14 @@
 import { Checkbox, Col, Divider, Row } from "antd";
-import CardCustom from "../../../../components/Card";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import ButtonCustom from "../../../../components/Button";
+import CardCustom from "../../../components/Card/CardCustom";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { useNavigate, useParams } from "react-router-dom";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import { BASE_SERVER } from "../../../constants";
 import { createPayment, userGetTransactionDetail } from "../../../services/LearnerService";
-import qrCode from "../../../../assets/qrCode.jpg"; // Importing QR code image
+import qrCode from "../../../assets/qrCode.jpg"; // Importing QR code image
 
 export default function BillInfo() {
   const navigate = useNavigate();

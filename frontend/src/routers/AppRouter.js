@@ -2,12 +2,15 @@
 import { Outlet, useNavigate } from "react-router-dom";
 
 // Importing Pages for Guests
-import { LandingPage } from "../pages/GuestsPage/LandingPage";
-import BlogPage from "../pages/LearnersPage/BlogPage";
-import BlogDetails from "../pages/LearnersPage/BlogDetails";
+import { LandingPage } from "../pages/GuestsPage/LandingPage/LandingPage";
+import BlogPage from "../pages/LearnersPage/BlogPage/BlogPage";
+import BlogDetails from "../pages/LearnersPage/BlogPage/BlogDetails";
 import { CLIENT_URI, ROLES } from "../constants";
-import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage, VerifyEmailPage } from "../pages/GuestsPage";
-
+import {ForgotPasswordPage} from "../pages/GuestsPage/ForgotPasswordPage/ForgotPassword";
+import {LoginPage} from '../pages/GuestsPage/Login/Login';
+import {RegisterPage} from '../pages/GuestsPage/Register/Register';
+import {ResetPasswordPage} from '../pages/GuestsPage/ResetPasswordPage/ResetPassword'
+import {VerifyEmailPage} from '../pages/GuestsPage/VerifyEmailPage/VerifyEmail'
 // Importing Guards for route protection
 import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGuard, AccountantGuard } from "../guards";
 
@@ -15,48 +18,46 @@ import { AdminContentGuard, AdminGuard, GuestGuard, GuestLearnerGuard, LearnerGu
 import { AdminLayout, GuestLayout, LearnerLayout, GuestLearnerLayout, AccountantLayout } from "../layouts";
 
 // Importing Pages for Learners
-import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage";
-import CreateFlashCard from "../pages/LearnersPage/FlashCard/CreateFlashCard";
-import ExerciseDetail from "../pages/LearnersPage/DetailExercises";
-import FinalExam from "../pages/LearnersPage/FinalExam";
-import Flashcard from "../pages/LearnersPage/FlashCard";
-import CoursePage from "../pages/LearnersPage/CoursePage";
-import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail";
-import EditFlashCard from "../pages/LearnersPage/FlashCard/EditFlashCard";
-import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile";
-import ViewResultsDetail from "../pages/LearnersPage/ViewResultsDetail";
-import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard";
-import MySubscription from "../pages/LearnersPage/MySubscription";
+import ViewLevelDetail from "../pages/LearnersPage/LevelDetailPage/LevelDetailPage";
+import CreateFlashCard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/CreateOwnFlashcard";
+import ExerciseDetail from "../pages/LearnersPage/DetailExercises/ExerciseDetail";
+import FinalExam from "../pages/LearnersPage/FinalExam/FinalExam";
+import CoursePage from "../pages/LearnersPage/CoursePage/CoursePage";
+import FlashcardDetail from "../pages/LearnersPage/FlashCard/FlashcardDetail/FlashcardDetail";
+import EditFlashCard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/EditOwnFlashcard";
+import EditPersonalProfile from "../pages/LearnersPage/PersonalProfile/EditPersonalProfile/EditPersonalProfile";
+import ViewResultsDetail from "../pages/LearnersPage/PersonalProfile/ResultsPractice/ViewResultsDetail/ResultsExerciseDetail";
+import { TestFlashCard } from "../pages/LearnersPage/FlashCard/TestFlashCard/TestFlashcard";
+import MySubscription from "../pages/LearnersPage/MySubscription/ViewMySubscription";
 import ManageSubscription from "../pages/LearnersPage/MySubscription/ManageSubscription";
-import { PremiumPage } from "../pages/LearnersPage/PremiumPage";
-import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword";
-import Payment from "../pages/LearnersPage/Payment";
+import { PremiumPage } from "../pages/LearnersPage/PremiumPage/PremiumPage";
+import ChangePassword from "../pages/LearnersPage/PersonalProfile/ChangePassword/ChangePassword";
 import BillInfo from "../pages/LearnersPage/Payment/BillInfo";
-import LearningProgress from "../pages/LearnersPage/LearningProgress";
+import LearningProgress from "../pages/LearnersPage/LearningProgress/LearningProgress";
 import TakeATrophy from "../pages/LearnersPage/FinalExam/TakeATrophy";
 import AdminContentLayout from "../layouts/AdminContentLayout";
-import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard";
-import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder";
-import FlashcardList from "../pages/LearnersPage/FlashCard/FlashCardList";
+import ManageFlashcard from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashcardCustom";
+import ManageFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ManageFolder";
+import Flashcard from "../pages/LearnersPage/FlashCard/FlashCardList/FlashcardCustom";
 import ConfirmPayment from "../pages/LearnersPage/Payment/ConfirmPayment";
-import AccountantDashboard from "../pages/AccountantPage/Dashboard";
-import SystemRevenue from "../pages/AccountantPage/SystemRevenue";
-import TransactionHistory from "../pages/AccountantPage/TransactionHistory";
-import UserStatistics from "../pages/AccountantPage/UserStatistics";
+import AccountantDashboard from "../pages/AccountantPage/Dashboard/AccountantDashboard";
+import SystemRevenue from "../pages/AccountantPage/SystemRevenue/SystemRevenue";
+import TransactionHistory from "../pages/AccountantPage/TransactionHistory/TransactionHistory";
+import UserStatistics from "../pages/AccountantPage/UserStatistics/UserStatistics";
 import Exercise from "../pages/ContentManager/Exercise";
 import { Upload } from "antd";
-import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory";
-import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice";
+import ViewTransactionHistoryList from "../pages/LearnersPage/PersonalProfile/TransactionHistory/TransactionHistoryList";
+import ViewResultsPractice from "../pages/LearnersPage/PersonalProfile/ResultsPractice/ResultsPractice";
 
 //admin
-import Dashboard from "../pages/AdminPage/Dashboard";
-import FeedbackManagement from "../pages/AdminPage/FeedbackManagement";
-import PremiumManagement from "../pages/AdminPage/PremiumManagement";
-import AccountManagement from "../pages/AdminPage/AccountManagement";
+import Dashboard from "../pages/AdminPage/Dashboard/AdminDashboard";
+import FeedbackManagement from "../pages/AdminPage/FeedbackManagement/FeedbackManagement";
+import PremiumManagement from "../pages/AdminPage/PremiumManagement/PremiumManagement";
+import AccountManagement from "../pages/AdminPage/AccountManagement/AccountManagement";
 import PaymentSuccess from "../pages/LearnersPage/Payment/SuccessPayment";
-import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder";
-import MyFlashcardDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/MyFlashcardDetail";
-import FlashcardHistoryDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/FlashcardHistory/FlashcardHistoryDetail";
+import FlashcardsInFolder from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder/ViewFlashcardList";
+import MyFlashcardDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/MyFlashCard/MyFlashcardDetail/MyFlashcardDetail";
+import FlashcardHistoryDetail from "../pages/LearnersPage/PersonalProfile/ManageFlashcard/FlashcardHistory/DetailFlashcardHistory";
 import ViewFlashcardInFolderDetail from "../pages/LearnersPage/PersonalProfile/ManageFolder/ViewFlashcardInFolder/FlashcardInFolderDetail";
 
 
@@ -225,10 +226,6 @@ export const routes = [
       {
         path: CLIENT_URI.PREMIUM,
         element: <PremiumPage />,
-      },
-      {
-        path: `${CLIENT_URI.PAYMENT}/:transactionId`,
-        element: <Payment />,
       },
       {
         path: `${CLIENT_URI.BILLINFO}/:transactionId`,

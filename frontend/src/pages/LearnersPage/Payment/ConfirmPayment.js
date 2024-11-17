@@ -3,12 +3,12 @@ import axios from "axios";
 import { Button, Row, Upload, Typography, Modal, Space, notification } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useAFileUpload } from "../../../components/Upload/UploadAFile"; // Import custom hook
-import { TitleCustom } from "../../../../components/Typography";
-import ButtonCustom from "../../../../components/Button";
-import CardCustom from "../../../../components/Card";
+import { TitleCustom } from "../../../components/Typography/TypographyCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
+import CardCustom from "../../../components/Card/CardCustom";
 import { useNavigate, useParams } from "react-router-dom";
 import { finishPayment } from "../../../services/LearnerService";
-import SpinCustom from "../../../../components/Spin";
+import SpinCustom from "../../../components/Spinning/SpinningCustom";
 import { CLIENT_URI } from "../../../constants";
 export default function ConfirmPayment() {
   const { transactionId } = useParams();

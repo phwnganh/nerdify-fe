@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import TableUser from "../../../components/Table/TableUser";
 import UserInfo from "../../../components/Header/AdminHeader/UserInfo";
 import HoverableCard from "../../../components/Card/HoverableCard";
-import ModalCreateAccount from "../../../components/Modal/ModalCreateAccount";
+import ModalCreateAccount from "../../../components/Modal/AdminModalCreateAccount/ModalCreateAccount";
 import { Button } from "antd";
 import { getAllUsers } from "../../../services/AdminService";
 import { UserOutlined } from "@ant-design/icons";

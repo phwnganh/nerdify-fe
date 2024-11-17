@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Input, Row, Upload, Card, message, Typography, Dropdown, notification } from "antd";
 import { CaretLeftOutlined, DeleteOutlined, MenuOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
-import BreadCrumbHome from "../../../../../components/BreadCrumb/BreadCrumbHome";
 import { validationRules } from "../../../../../helpers/validate";
 import { BASE_SERVER } from "../../../../../constants";
 import { getFlashcardDetail, updateFlashcard } from "../../../../../services/LearnerService";
-import ButtonCustom from "../../../../components/Button";
+import ButtonCustom from "../../../../../components/Button/ButtonCustom";
 
 export default function EditFlashCard() {
   const navigate = useNavigate();

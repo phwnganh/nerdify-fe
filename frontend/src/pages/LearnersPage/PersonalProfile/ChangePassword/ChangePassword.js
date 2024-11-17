@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Input, notification } from "antd";
-import CardCustom from "../../../../components/Card";
-import ButtonCustom from "../../../../components/Button";
-import Sidebar from "../../../../components/Sidebar/learnerSideBar";
+import CardCustom from "../../../../components/Card/CardCustom";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
+import Sidebar from "../../../../components/Sidebar/LearnerSideBar/SideBarCustom";
 import { changePassword } from "../../../../services/GuestService";
 import { PASSWORD_REGEX } from "../../../../constants";
 

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { CLIENT_URI, ROLES } from "../constants";
-import SpinCustom from "../components/Spin";
+import SpinCustom from "../components/Spinning/SpinningCustom";
 import { useAuth } from "../hooks";
 
 export const AdminGuard = ({ children }) => {

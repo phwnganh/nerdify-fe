@@ -1,6 +1,6 @@
 import { Button, Col, Image, Row } from "antd";
-import ModalCustom from "../../../../components/Modal/index";
-import { TitleCustom } from "../../../../components/Typography";
+import ModalCustom from "../../../../components/Modal/ModalCustom";
+import { TitleCustom } from "../../../../components/Typography/TypographyCustom";
 import moment from "moment";
 import { TRANSACTION_STATUS } from "../../../../constants";
 export default function TransactionDetailModal({ visible, onClose, transaction }) {

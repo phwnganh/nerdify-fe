@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import CardCustom from "../../../../../components/Card";
-import { TextCustom, TitleCustom } from "../../../../../components/Typography";
+import CardCustom from "../../../../../components/Card/CardCustom";
+import { TextCustom, TitleCustom } from "../../../../../components/Typography/TypographyCustom";
 import { Alert, Col, Modal, notification, Row, Space } from "antd";
-import ButtonCustom from "../../../../../components/Button";
+import ButtonCustom from "../../../../../components/Button/ButtonCustom";
 import { CaretLeftOutlined, LockOutlined, UnlockOutlined } from "@ant-design/icons";
 import { CLIENT_URI } from "../../../../../constants";
 import { Navigate, useNavigate, useParams } from "react-router-dom";

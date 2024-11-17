@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import ButtonCustom from "../../../../components/Button";
-import CardCustom from "../../../../components/Card";
-import Sidebar from "../../../../components/Sidebar/learnerSideBar";
-import FlashcardList from "../../FlashCard/FlashCardList";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
+import CardCustom from "../../../../components/Card/CardCustom";
+import Sidebar from "../../../../components/Sidebar/LearnerSideBar/SideBarCustom";
 import { CLIENT_URI } from "../../../../constants";
 import MyFlashCard from "./MyFlashCard/MyFlashcardList";
-import FlashcardHistory from "./FlashcardHistory";
+import FlashcardHistory from "./FlashcardHistory/FlashcardHistory";
 
 export default function ManageFlashcard() {
   const navigate = useNavigate();

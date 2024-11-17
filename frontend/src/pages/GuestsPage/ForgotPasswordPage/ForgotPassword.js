@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "antd";
-import InputCustom from "../../../components/Input";
-import ButtonCustom from "../../../components/Button";
+import InputCustom from "../../../components/Input/InputCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo1.png";

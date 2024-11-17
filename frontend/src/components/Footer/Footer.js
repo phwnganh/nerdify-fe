@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import logo from "../../assets/logo1.png";
 import { FacebookOutlined, MailOutlined, PhoneOutlined, TikTokOutlined } from "@ant-design/icons";
-import { TitleCustom } from "../Typography";
+import { TitleCustom } from "../Typography/TypographyCustom";
 
 export default function Footer() {
   return (

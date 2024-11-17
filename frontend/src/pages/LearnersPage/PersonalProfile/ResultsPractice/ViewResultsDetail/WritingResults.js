@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import ButtonCustom from "../../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import { CLIENT_URI, PART_TYPE } from "../../../constants";
+import BreadCrumbHome from "../../../../../components/BreadCrumb/BreadCrumbHome";
+import ButtonCustom from "../../../../../components/Button/ButtonCustom";
+import { TextCustom, TitleCustom } from "../../../../../components/Typography/TypographyCustom";
+import { CLIENT_URI, PART_TYPE } from "../../../../../constants";
 import { useState } from "react";
-import CardCustom from "../../../../components/Card";
+import CardCustom from "../../../../../components/Card/CardCustom";
 import { Col, Input, Row } from "antd";
-import InputCustom from "../../../../components/Input";
+import InputCustom from "../../../../../components/Input/InputCustom";
 
 export default function WritingResults({ exerciseResults }) {
   const [isCompleted, setIsCompleted] = useState(true);

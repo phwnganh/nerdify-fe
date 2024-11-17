@@ -1,8 +1,8 @@
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import ButtonCustom from "../../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import CardCustom from "../../../../components/Card";
-import InputCustom from "../../../../components/Input";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
+import CardCustom from "../../../components/Card/CardCustom";
+import InputCustom from "../../../components/Input/InputCustom";
 import { Col, Input, Row } from "antd";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";

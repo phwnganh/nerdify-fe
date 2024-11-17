@@ -1,11 +1,10 @@
-import { TitleCustom } from "../../../components/Typography";
+import { TitleCustom } from "../../../../components/Typography/TypographyCustom";
 import { SearchOutlined } from "@ant-design/icons";
-import InputCustom from "../../../components/Input";
+import InputCustom from "../../../../components/Input/InputCustom";
 
 import BreadCrumbHome from "../../../../components/BreadCrumb/BreadCrumbHome";
 import FlashcardList from "./FlashcardList";
 import { Col, Row } from "antd";
-import ButtonCustom from "../../../components/Button";
 import { CLIENT_URI } from "../../../../constants";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";

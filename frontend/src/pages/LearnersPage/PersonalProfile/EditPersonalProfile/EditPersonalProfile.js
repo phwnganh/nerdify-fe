@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Col, DatePicker, Form, Input, Modal, notification, Radio, Row, Upload } from "antd";
-import CardCustom from "../../../../components/Card";
-import InputCustom from "../../../../components/Input";
-import ButtonCustom from "../../../../components/Button";
-import Sidebar from "../../../../components/Sidebar/learnerSideBar";
+import CardCustom from "../../../../components/Card/CardCustom";
+import InputCustom from "../../../../components/Input/InputCustom";
+import ButtonCustom from "../../../../components/Button/ButtonCustom";
+import Sidebar from "../../../../components/Sidebar/LearnerSideBar/SideBarCustom";
 import { EditOutlined, UploadOutlined } from "@ant-design/icons";
 import moment from "moment";
 import dayjs from "dayjs";

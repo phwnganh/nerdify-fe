@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ModalCustom from "../../../../components/Modal";
-import ButtonCustom from "../../../../components/Button";
-import { TextCustom } from "../../../../components/Typography";
+import ModalCustom from "../../../components/Modal/ModalCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
+import { TextCustom } from "../../../components/Typography/TypographyCustom";
 import { useNavigate } from "react-router-dom";
 
 export default function StartExamModal({ onStart }) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HoverableCard from "../../../components/Card/HoverableCard";
-import CustomLineChart from "../../../components/Chart/CustomLineChart";
+import CustomLineChart from "../../../components/Chart/LineChartCustom";
 import { BellOutlined } from "@ant-design/icons";
 import UserInfo from "../../../components/Header/AccountantHeader/UserInfo";
 import { Select } from "antd";

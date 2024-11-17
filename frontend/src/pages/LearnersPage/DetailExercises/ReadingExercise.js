@@ -1,25 +1,25 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
 import { useParams } from "react-router-dom";
-import ButtonCustom from "../../../../components/Button";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { PART_TYPE } from "../../../constants";
-import demo_part2_6_1 from "../../../../assets/readingExercises/demo_part2_6_1.png";
-import demo_part2_6_2 from "../../../../assets/readingExercises/demo_part2_6_2.png";
-import demo_part2_7_1 from "../../../../assets/readingExercises/demo_part2_7_1.png";
-import demo_part2_7_2 from "../../../../assets/readingExercises/demo_part2_7_2.png";
-import demo_part2_8_1 from "../../../../assets/readingExercises/demo_part2_8_1.png";
-import demo_part2_8_2 from "../../../../assets/readingExercises/demo_part2_8_2.png";
-import demo_part2_9_1 from "../../../../assets/readingExercises/demo_part2_9_1.png";
-import demo_part2_9_2 from "../../../../assets/readingExercises/demo_part2_9_2.png";
-import demo_part2_10_1 from "../../../../assets/readingExercises/demo_part2_10_1.png";
-import demo_part2_10_2 from "../../../../assets/readingExercises/demo_part2_10_2.png";
+import demo_part2_6_1 from "../../../assets/readingExercises/demo_part2_6_1.png";
+import demo_part2_6_2 from "../../../assets/readingExercises/demo_part2_6_2.png";
+import demo_part2_7_1 from "../../../assets/readingExercises/demo_part2_7_1.png";
+import demo_part2_7_2 from "../../../assets/readingExercises/demo_part2_7_2.png";
+import demo_part2_8_1 from "../../../assets/readingExercises/demo_part2_8_1.png";
+import demo_part2_8_2 from "../../../assets/readingExercises/demo_part2_8_2.png";
+import demo_part2_9_1 from "../../../assets/readingExercises/demo_part2_9_1.png";
+import demo_part2_9_2 from "../../../assets/readingExercises/demo_part2_9_2.png";
+import demo_part2_10_1 from "../../../assets/readingExercises/demo_part2_10_1.png";
+import demo_part2_10_2 from "../../../assets/readingExercises/demo_part2_10_2.png";
 
-import demo_part3_1 from "../../../../assets/readingExercises/demo_part3_1.png";
-import demo_part3_2 from "../../../../assets/readingExercises/demo_part3_2.png";
-import demo_part3_3 from "../../../../assets/readingExercises/demo_part3_3.png";
-import demo_part3_4 from "../../../../assets/readingExercises/demo_part3_4.png";
-import demo_part3_5 from "../../../../assets/readingExercises/demo_part3_5.png";
+import demo_part3_1 from "../../../assets/readingExercises/demo_part3_1.png";
+import demo_part3_2 from "../../../assets/readingExercises/demo_part3_2.png";
+import demo_part3_3 from "../../../assets/readingExercises/demo_part3_3.png";
+import demo_part3_4 from "../../../assets/readingExercises/demo_part3_4.png";
+import demo_part3_5 from "../../../assets/readingExercises/demo_part3_5.png";
 
 //A2 exercises
 import { Col, Row } from "antd";

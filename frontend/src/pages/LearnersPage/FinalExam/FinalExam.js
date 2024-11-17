@@ -1,17 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import StartExamModal from "./ModalBeforeDoingExam";
 import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
-import { ParagraphCustom, TextCustom, TitleCustom } from "../../../components/Typography";
+import { ParagraphCustom, TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
 import { Col, Row } from "antd";
-import ButtonCustom from "../../../components/Button";
-import demo_1_1 from "../../../assets/vocabExercises/1_1.png";
-import demo_1_2 from "../../../assets/vocabExercises/1_2.png";
-import demo_1_3 from "../../../assets/vocabExercises/1_3.png";
-import demo_2_1 from "../../../assets/vocabExercises/2_1.png";
-import demo_2_2 from "../../../assets/vocabExercises/2_2.png";
-import demo_2_3 from "../../../assets/vocabExercises/2_3.png";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 
-import part2_ques7 from "../../../assets/listeningExercises/teil 2-07.mp3";
 
 import { BASE_SERVER, CLIENT_URI, PART_TYPE } from "../../../constants";
 import { useNavigate, useParams } from "react-router-dom";
@@ -31,11 +24,6 @@ export default function FinalExam() {
   const navigate = useNavigate();
   const { examId } = useParams();
 
-  const imgArrVocab = [demo_1_1, demo_1_2, demo_1_3, demo_2_1, demo_2_2, demo_2_3];
-
-  const audioArr = {
-    part2_ques7,
-  };
 
   const handleStart = () => {
     setHasStarted(true);

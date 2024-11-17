@@ -1,45 +1,13 @@
 import { useEffect, useState } from "react";
-import demo_1_1 from "../../../../assets/vocabExercises/1_1.png";
-import demo_1_2 from "../../../../assets/vocabExercises/1_2.png";
-import demo_1_3 from "../../../../assets/vocabExercises/1_3.png";
-import demo_2_1 from "../../../../assets/vocabExercises/2_1.png";
-import demo_2_2 from "../../../../assets/vocabExercises/2_2.png";
-import demo_2_3 from "../../../../assets/vocabExercises/2_3.png";
-import demo_3_1 from "../../../../assets/vocabExercises/3_1.png";
-import demo_3_2 from "../../../../assets/vocabExercises/3_2.png";
-import demo_3_3 from "../../../../assets/vocabExercises/3_3.png";
-import demo_4_1 from "../../../../assets/vocabExercises/4_1.png";
-import demo_4_2 from "../../../../assets/vocabExercises/4_2.png";
-import demo_4_3 from "../../../../assets/vocabExercises/4_3.png";
-import demo_5_1 from "../../../../assets/vocabExercises/5_1.png";
-import demo_5_2 from "../../../../assets/vocabExercises/5_2.png";
-import demo_5_3 from "../../../../assets/vocabExercises/5_3.png";
 
-import { PART_TYPE } from "../../../constants";
-import ButtonCustom from "../../../../components/Button";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import BreadCrumbHome from "../../../components/BreadCrumb/BreadCrumbHome";
+import { PART_TYPE } from "../../../../../constants";
+import ButtonCustom from "../../../../../components/Button/ButtonCustom";
+import { TextCustom, TitleCustom } from "../../../../../components/Typography/TypographyCustom";
+import BreadCrumbHome from "../../../../../components/BreadCrumb/BreadCrumbHome";
 import { Col, Radio, Row } from "antd";
-import InputCustom from "../../../../components/Input";
-import { submitExercise } from "../../../services/LearnerService";
+import InputCustom from "../../../../../components/Input/InputCustom";
+import { submitExercise } from "../../../../../services/LearnerService";
 
-const vocabImg = {
-  demo_1_1: demo_1_1,
-  demo_1_2: demo_1_2,
-  demo_1_3: demo_1_3,
-  demo_2_1: demo_2_1,
-  demo_2_2: demo_2_2,
-  demo_2_3: demo_2_3,
-  demo_3_1,
-  demo_3_2,
-  demo_3_3,
-  demo_4_1,
-  demo_4_2,
-  demo_4_3,
-  demo_5_1,
-  demo_5_2,
-  demo_5_3,
-};
 
 export default function VocabularyResults({ exerciseResults }) {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
@@ -167,7 +135,7 @@ export default function VocabularyResults({ exerciseResults }) {
                   {question.questionImage &&
                     question.questionImage.map((image, index) => (
                       <Col key={index} span={8} style={{ textAlign: "center" }}>
-                        <img src={vocabImg[image]} width={"50%"} alt={`Question ${question._id}`} />
+                        <img src={image} width={"50%"} alt={`Question ${question._id}`} />
                       </Col>
                     ))}
                   {question.options.map((option, index) => {

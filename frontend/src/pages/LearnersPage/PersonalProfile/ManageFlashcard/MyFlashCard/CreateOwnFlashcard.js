@@ -6,7 +6,7 @@ import BreadCrumbHome from "../../../../../components/BreadCrumb/BreadCrumbHome"
 import { validationRules } from "../../../../../helpers/validate";
 import { BASE_SERVER } from "../../../../../constants";
 import { createNewFlashcard } from "../../../../../services/LearnerService";
-import ButtonCustom from "../../../../components/Button";
+import ButtonCustom from "../../../../../components/Button/ButtonCustom";
 import { useNavigate } from "react-router-dom";
 export default function CreateFlashCard() {
   const navigate = useNavigate();

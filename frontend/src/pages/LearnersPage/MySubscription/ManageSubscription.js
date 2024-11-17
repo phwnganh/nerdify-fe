@@ -1,7 +1,7 @@
 import { Modal, Row } from "antd";
-import CardCustom from "../../../../components/Card";
-import { TextCustom, TitleCustom } from "../../../../components/Typography";
-import ButtonCustom from "../../../../components/Button";
+import CardCustom from "../../../components/Card/CardCustom";
+import { TextCustom, TitleCustom } from "../../../components/Typography/TypographyCustom";
+import ButtonCustom from "../../../components/Button/ButtonCustom";
 import { useEffect, useState } from "react";
 import { getCurrentPremiumPackage } from "../../../services/LearnerService";
 import { cancelPremium } from "../../../services/GuestService";

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { List, Spin, Alert } from "antd";
 import CourseList from "./CourseList";
 import { getCourseLevelList } from "../../../services/LearnerService";
-import SpinCustom from "../../../components/Spin";
+import SpinCustom from "../../../components/Spinning/SpinningCustom";
 
 export default function CoursePage() {
   const [course, setCourse] = useState([]);

@@ -4,10 +4,10 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import MenuBar from "../../Menu/MenuCustom";
 import InputCustom from "../../Input/InputCustom";
-import ButtonCustom from "../Button";
+import ButtonCustom from "../../Button/ButtonCustom";
 import MenuItem from "../../Menu/MenuItem";
 import ModalRequireToLogin from "../../../pages/GuestsPage/LandingPage/ModalRequireToLogin";
-import logo from "../../assets/logo1.png";
+import logo from "../../../assets/logo1.png";
 import { CLIENT_URI } from "../../../constants/uri.constants";
 
 const { Header } = Layout;

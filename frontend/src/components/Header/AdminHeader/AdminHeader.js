@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { Layout } from "antd";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks"; // Use the same hook for user data
-import SpinCustom from "../../Spin/SpinCustom"; // Custom loading spinner
+import SpinCustom from "../../Spinning/SpinningCustom"; // Custom loading spinner
 import { CLIENT_URI } from "../../../constants/uri.constants";
 
 const { Header } = Layout;

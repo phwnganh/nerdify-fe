@@ -4,8 +4,8 @@ import ReadingResults from "./ReadingResults";
 import WritingResults from "./WritingResults";
 import GrammarResults from "./GrammarResults";
 import { useEffect, useState } from "react";
-import { getSubmissionDetail } from "../../../services/LearnerService";
-import { EXERCISE_TYPE } from "../../../constants";
+import { getSubmissionDetail } from "../../../../../services/LearnerService";
+import { EXERCISE_TYPE } from "../../../../../constants";
 import VocabularyResults from "./VocabularyResults";
 
 export default function ViewResultsDetail() {
